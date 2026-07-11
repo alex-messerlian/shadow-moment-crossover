@@ -93,6 +93,7 @@ class AdaptiveNegativityEnv(EnvBase):
         dB: int | None = None,
         seed: int | None = None,
         device: str | torch.device = "cpu",
+        terminate_at_horizon: bool = True,
     ) -> None:
         super().__init__(device=device, batch_size=torch.Size([]))
 
@@ -113,6 +114,13 @@ class AdaptiveNegativityEnv(EnvBase):
         self._dA = dA
         self._dB = dB
         self._total_budget = n_steps * shots_per_step
+        # The fixed budget is a *truncation* (time limit), not a true terminal.
+        # By default (Phase 3 behaviour) the env signals the horizon as
+        # ``terminated``; set this False for RL and impose the horizon with a
+        # StepCounter(max_steps=n_steps) transform, which sets ``truncated``
+        # while ``terminated`` stays False so a value estimator bootstraps at the
+        # cutoff instead of assuming zero future value.
+        self._terminate_at_horizon = terminate_at_horizon
 
         self._settings: list[Setting] = all_local_pauli_settings(n)
         self._n_settings = len(self._settings)  # 3**n
@@ -247,10 +255,12 @@ class AdaptiveNegativityEnv(EnvBase):
         # Potential-based reward: reduction in estimation error.
         reward = prev_error - new_error
 
-        # Fixed-horizon episode ends after n_steps.  Per spec we signal this as
-        # `terminated` (done); a future value-learning phase that distinguishes a
-        # time-limit truncation from an absorbing terminal may revisit this.
-        terminated = self._step_idx >= self._n_steps
+        # Fixed-horizon episode ends after n_steps.  When self-terminating we
+        # signal it as `terminated` (Phase 3 default).  In RL/truncation mode the
+        # env never self-terminates; a StepCounter transform imposes the horizon
+        # as `truncated` (terminated stays False) so the value estimator
+        # bootstraps at the cutoff.
+        terminated = self._terminate_at_horizon and (self._step_idx >= self._n_steps)
         obs = self._observation(expectations)
         return TensorDict(
             {
