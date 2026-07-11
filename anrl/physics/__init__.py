@@ -34,6 +34,11 @@ from .measurement import (
     single_qubit_rotation,
 )
 from .pauli import PAULI, PAULI_LABELS, kron_all, pauli_matrix, pauli_string
+from .witness import (
+    estimate_negativity_witness,
+    negativity_witness_estimator,
+    witness_weights,
+)
 from .states import (
     bell_phi_plus,
     depolarize,
@@ -73,4 +78,8 @@ __all__ = [
     "estimate_pauli_expectations",
     "reconstruct",
     "project_to_density_matrix",
+    # witness estimators
+    "witness_weights",
+    "estimate_negativity_witness",
+    "negativity_witness_estimator",
 ]
