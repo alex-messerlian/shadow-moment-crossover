@@ -70,11 +70,19 @@ def shadow_purity_estimate(
 
     ``n_snapshots`` independent local shadows are drawn; the purity is the mean
     of ``Tr(rho_hat_i @ rho_hat_j)`` over ``n_pairs`` randomly subsampled
-    distinct snapshot pairs (unbiased U-statistic).  ``n_pairs`` defaults to
-    ``n_snapshots // 2`` — an O(n_snapshots) efficient pairing (each snapshot
-    used about once) that is consistent as the snapshot count grows and reflects
-    the realistic single-copy variance (many-more pairs would only lower the
-    Monte-Carlo pairing noise, understating the estimator's true difficulty).
+    distinct snapshot pairs (unbiased U-statistic).
+
+    NOTE on ``n_pairs`` (copy accounting): the copy budget is ``n_snapshots``;
+    forming pairs from the already-collected snapshots is **classical
+    post-processing that consumes no copies**.  More pairs only lower the
+    variance (toward the full-U-statistic minimum), so the *copy-optimal*
+    single-copy estimator uses as many pairs as feasible.  The default
+    ``n_pairs = n_snapshots // 2`` is an O(n_snapshots) subsampling *convention*
+    (it reproduces the original sandbox RMSE anchor); it deliberately leaves
+    variance on the table and is therefore an over-estimate of the true
+    single-copy difficulty.  For an honest single-copy-vs-collective comparison
+    at a fixed copy budget, pass a large ``n_pairs`` (see
+    :mod:`anrl.benchmark.sweep`, which reports both conventions).
     """
     if n_snapshots < 2:
         raise ValueError(f"shadow purity needs >= 2 snapshots, got {n_snapshots}")

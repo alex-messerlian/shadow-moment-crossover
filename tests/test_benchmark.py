@@ -131,9 +131,15 @@ def test_evaluate_estimator_copy_accounting_and_pairing() -> None:
 
 
 # ---------------------------------------------------------------------------
-# 5 — the core anchor: exponential single-copy growth; collective wins at n=4
+# 5 — exponential single-copy growth; collective wins at n=4 (O(M) convention)
 # ---------------------------------------------------------------------------
 def test_anchor_exponential_growth_and_collective_win() -> None:
+    # NOTE: this pins the single-copy estimator under the default O(M) = M//2
+    # pairing *convention*.  That convention over-states single-copy difficulty
+    # (forming more pairs costs no copies) — see
+    # test_fair_estimator_reveals_purity_crossover for the honest comparison.
+    # The exponential blow-up in n and the collective win *at n=4* hold under
+    # both conventions (crossovers are a low-n effect).
     budget = 2000
     n_states = 12
 
@@ -158,3 +164,33 @@ def test_anchor_exponential_growth_and_collective_win() -> None:
             )
             assert res["rmse"] < shadow_rmse[4]
             assert res["rmse"] < 0.2  # collective stays small even under noise
+
+
+# ---------------------------------------------------------------------------
+# 6 — the honest comparison: the O(M) pairing handicaps single-copy, and the
+# copy-optimal estimator reveals a crossover at low n under noise.
+# ---------------------------------------------------------------------------
+def test_fair_estimator_reveals_purity_crossover() -> None:
+    # Forming U-statistic pairs is classical post-processing (zero copy cost), so
+    # the copy-optimal single-copy estimator uses many pairs from the same
+    # snapshots.  At the SAME copy budget it is far better than the O(M) default.
+    budget = 2000
+    states = _noisy_states(2, 12, seed=1002)
+
+    subsampled = evaluate_estimator(
+        make_shadow_estimator(), states, budget, np.random.default_rng(2)
+    )["rmse"]
+    fair = evaluate_estimator(
+        make_shadow_estimator(n_pairs=50000), states, budget, np.random.default_rng(2)
+    )["rmse"]
+    # The O(M) convention inflates single-copy RMSE (measured ~3.2x here).
+    assert fair < 0.6 * subsampled
+
+    # Crossover: at n=2 under gate noise, the copy-optimal single-copy estimate
+    # beats the collective one — the collective advantage is NOT robust at low n,
+    # and the O(M) "collective wins" result is partly a post-processing artifact.
+    collective = evaluate_estimator(
+        make_collective_estimator(0.1, gates_all_to_all), states, budget, np.random.default_rng(7)
+    )["rmse"]
+    assert collective < subsampled       # collective beats the handicapped single-copy
+    assert fair < collective             # ...but loses to the copy-optimal single-copy
