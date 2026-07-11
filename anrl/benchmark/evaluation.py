@@ -19,7 +19,9 @@ import numpy as np
 
 from anrl.physics import purity
 
+from .channels import collective_moment_signal
 from .collective import collective_purity_estimate
+from .moments import collective_moment_estimate, shadow_moment_estimate
 from .shadows import shadow_purity_estimate
 
 Estimator = Callable[[np.ndarray, int, np.random.Generator], float]
@@ -47,6 +49,34 @@ def make_collective_estimator(p_gate: float, gate_count_fn: Callable[[int], int]
 
     estimator.copies_per_use = 2  # type: ignore[attr-defined]
     estimator.name = f"collective SWAP (p_gate={p_gate}, {gate_count_fn.__name__})"  # type: ignore[attr-defined]
+    return estimator
+
+
+def make_shadow_moment_estimator(k: int, n_tuples: int | None = None) -> Estimator:
+    """Single-copy shadow estimator of ``Tr(rho^k)`` — ``copies_per_use = 1``."""
+
+    def estimator(rho: np.ndarray, n_uses: int, rng: np.random.Generator) -> float:
+        return shadow_moment_estimate(rho, k, n_uses, rng, n_tuples=n_tuples)
+
+    estimator.copies_per_use = 1  # type: ignore[attr-defined]
+    estimator.name = f"single-copy shadow (k={k})"  # type: ignore[attr-defined]
+    return estimator
+
+
+def make_collective_moment_estimator(k: int, noise_model: str, rate: float) -> Estimator:
+    """k-copy cyclic-test estimator of ``Tr(rho^k)`` — ``copies_per_use = k``.
+
+    The noisy signal is computed per state from ``noise_model`` and ``rate``
+    (closed form for depolarizing; explicit Kraus channel otherwise).
+    """
+
+    def estimator(rho: np.ndarray, n_uses: int, rng: np.random.Generator) -> float:
+        n = int(round(np.log2(rho.shape[0])))
+        signal = collective_moment_signal(rho, k, noise_model, rate, n)
+        return collective_moment_estimate(k, n_uses, signal, rng)
+
+    estimator.copies_per_use = k  # type: ignore[attr-defined]
+    estimator.name = f"collective (k={k}, {noise_model}, rate={rate})"  # type: ignore[attr-defined]
     return estimator
 
 
