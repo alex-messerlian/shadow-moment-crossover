@@ -23,7 +23,12 @@ from functools import reduce
 
 import numpy as np
 
-from .shadows import _snapshots
+from .shadows import _snapshots, full_purity_ustatistic
+
+# k=4 (and higher) has no closed-form full U-statistic over non-commuting
+# snapshots (ABAB-type terms), so the copy-fair estimator there is a large
+# random subsample of tuples (still zero extra copy cost, far more than M//k).
+_HIGH_K_FAIR_TUPLES = 200_000
 
 
 def moment(rho: np.ndarray, k: int) -> float:
@@ -111,11 +116,18 @@ def shadow_moment_estimate(
     """Single-copy classical-shadow estimate of ``Tr(rho^k)``.
 
     The k-th order U-statistic: the mean of ``Tr(snap_{i1} @ ... @ snap_{ik})``
-    over ``n_tuples`` random distinct index k-tuples, computed via the exact
-    per-qubit factorization ``prod_q Tr(snap_{i1}^q @ ... @ snap_{ik}^q)``.
-    Unbiased for ``Tr(rho^k)``.  ``n_tuples`` defaults to ``n_snapshots // k`` —
-    the same O(n_snapshots) subsampling convention as the k=2 purity estimator
-    (each snapshot used about once).
+    over distinct index k-tuples, unbiased for ``Tr(rho^k)`` (per-qubit
+    factorization ``prod_q Tr(snap_{i1}^q @ ... @ snap_{ik}^q)``).
+
+    Copy accounting: forming tuples is classical post-processing (zero copy
+    cost), so the copy-fair estimator uses as many tuples as possible.
+
+    * ``n_tuples is None`` (default): the copy-fair estimator — the EXACT full
+      U-statistic for k=2 and k=3, and a large random subsample
+      (``_HIGH_K_FAIR_TUPLES``) for k>=4 (no closed form there).
+    * ``n_tuples`` given: a random subsample of that many tuples — variance
+      inflating (saves no copies), kept only for comparison / the old
+      ``n_snapshots // k`` convention.
     """
     if k < 2:
         raise ValueError(f"moment order k must be >= 2, got {k}")
@@ -125,8 +137,38 @@ def shadow_moment_estimate(
     n = int(round(np.log2(rho.shape[0])))
 
     snaps = _snapshots(rho, n, n_snapshots, rng)  # (M, n, 2, 2)
-    t = max(1, n_snapshots // k) if n_tuples is None else n_tuples
-    return moment_ustatistic_from_snapshots(snaps, k, t, rng)
+    if n_tuples is None:
+        return fair_moment_ustatistic(snaps, k, rng)
+    return moment_ustatistic_from_snapshots(snaps, k, n_tuples, rng)
+
+
+def full_moment_ustatistic_k3(snaps: np.ndarray) -> float:
+    """Exact full 3rd-order U-statistic of ``Tr(rho^3)`` over all distinct triples.
+
+    Uses the non-commutative power-sum identity (all two-index coincidence
+    patterns are cyclically equal to ``Tr(A^2 B)``):
+    ``sum_{distinct i,j,l} Tr(G_i G_j G_l) = Tr(S^3) - 3 Tr(P2 S) + 2 Tr(P3)``
+    with ``S = sum G_i``, ``P2 = sum G_i^2``, ``P3 = sum G_i^3`` and ``G_i`` the
+    full 2^n-dim snapshot.  Divide by ``M(M-1)(M-2)``.
+    """
+    m, n = snaps.shape[0], snaps.shape[1]
+    g = np.array([reduce(np.kron, list(snaps[i])) for i in range(m)])  # (M, d, d)
+    s = g.sum(axis=0)
+    p2 = np.einsum("mab,mbc->ac", g, g)
+    p3 = np.einsum("mab,mbc,mcd->ad", g, g, g)
+    val = np.trace(s @ s @ s) - 3.0 * np.trace(p2 @ s) + 2.0 * np.trace(p3)
+    return float(val.real / (m * (m - 1) * (m - 2)))
+
+
+def fair_moment_ustatistic(snaps: np.ndarray, k: int, rng: np.random.Generator) -> float:
+    """Copy-fair U-statistic of ``Tr(rho^k)``: exact for k=2,3; large subsample k>=4."""
+    if k == 2:
+        return full_purity_ustatistic(snaps)
+    if k == 3:
+        return full_moment_ustatistic_k3(snaps)
+    total = snaps.shape[0]
+    total_tuples = min(_HIGH_K_FAIR_TUPLES, total * (total - 1))
+    return moment_ustatistic_from_snapshots(snaps, k, total_tuples, rng)
 
 
 def moment_ustatistic_from_snapshots(

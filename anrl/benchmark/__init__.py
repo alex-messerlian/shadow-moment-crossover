@@ -36,12 +36,14 @@ from .moments import (
     collective_moment_estimate,
     cyclic_permutation_operator,
     depolarizing_moment_signal,
+    fair_moment_ustatistic,
+    full_moment_ustatistic_k3,
     kron_power,
     moment,
     moment_ustatistic_from_snapshots,
     shadow_moment_estimate,
 )
-from .shadows import haar_unitary, shadow_purity_estimate
+from .shadows import full_purity_ustatistic, haar_unitary, shadow_purity_estimate
 from .sweep import run_sweep, save_sweep
 
 __all__ = [
@@ -51,7 +53,10 @@ __all__ = [
     # single-copy shadows
     "haar_unitary",
     "shadow_purity_estimate",
+    "full_purity_ustatistic",
     "shadow_moment_estimate",
+    "fair_moment_ustatistic",
+    "full_moment_ustatistic_k3",
     # collective cyclic test
     "collective_signal",
     "collective_purity_estimate",

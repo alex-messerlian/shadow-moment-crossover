@@ -7,9 +7,12 @@ saves the machine-readable results to results/benchmark_sweep.json, and prints
 the three questions that matter with their numbers, under BOTH single-copy
 estimator conventions:
 
-* subsampled — the O(M) = n_snapshots//k tuple convention (as specified).
-* fair — the copy-optimal U-statistic (many more tuples; forming tuples costs
-  no copies), i.e. the honest single-copy performance.
+* subsampled — the O(M) = n_snapshots//k tuple convention (variance-inflating).
+* fair — the copy-fair estimator (forming tuples costs no copies): the EXACT
+  full U-statistic for k=2,3, and a large 200000-tuple subsample for k=4 (no
+  closed form there, so the k=4 fair is conservatively inflated — the true
+  copy-optimal single-copy would be even better, so k=4 crossovers are
+  understated).
 """
 
 from __future__ import annotations
@@ -42,8 +45,10 @@ def main() -> None:
         "budget": BUDGET, "n_states": N_STATES, "seed": SEED, "sizes": list(SIZES),
         "ks": list(KS), "noise_models": list(NOISE_MODELS), "rates": list(RATES),
         "single_estimators": {
-            "subsampled": "O(M) = n_snapshots // k tuple U-statistic (the specified convention)",
-            "fair": "copy-optimal U-statistic (50000 tuples); forming tuples costs no copies",
+            "subsampled": "O(M) = n_snapshots // k tuple U-statistic (variance-inflating convention)",
+            "fair": "copy-fair estimator (tuples are free post-processing): EXACT full "
+                    "U-statistic for k=2,3; a 200000-tuple subsample for k=4 (no closed form, "
+                    "so k=4 fair is conservatively inflated -> its crossovers are understated)",
         },
         "note": "single-copy shadow RMSE is noise-independent; noise degrades only the collective route.",
     }
@@ -51,7 +56,7 @@ def main() -> None:
     print(f"Sweep done in {wall:.1f}s -> {OUT.relative_to(REPO)} ({len(rows)} cells)\n")
 
     print("Single-copy shadow RMSE by (n, k)  [noise-independent]:")
-    print(f"  {'(n,k)':8s} {'subsampled O(M)':>16s} {'fair (copy-optimal)':>20s}")
+    print(f"  {'(n,k)':8s} {'subsampled O(M)':>16s} {'fair (exact k<=3 / subsample k=4)':>34s}")
     seen = set()
     for r in rows:
         if (r["n"], r["k"]) not in seen:
@@ -59,8 +64,8 @@ def main() -> None:
             print(f"  n={r['n']} k={r['k']}   {r['single_rmse_subsampled']:16.3f} {r['single_rmse_fair']:20.3f}")
 
     for convention, wkey, fkey in (
-        ("SUBSAMPLED O(M) single-copy (as specified)", "winner_subsampled", "factor_subsampled"),
-        ("FAIR copy-optimal single-copy (honest comparison)", "winner_fair", "factor_fair"),
+        ("SUBSAMPLED O(M) single-copy (variance-inflating convention)", "winner_subsampled", "factor_subsampled"),
+        ("FAIR single-copy (exact full U-statistic k<=3; k=4 subsample, honest comparison)", "winner_fair", "factor_fair"),
     ):
         print(f"\n================ {convention} ================")
         # Q1 — every task k?

@@ -110,15 +110,16 @@ def test_shadow_moment_estimators_unbiased() -> None:
 def test_sweep_runs_and_saves(tmp_path) -> None:
     rows = run_sweep(
         sizes=(2,), ks=(2, 3), noise_models=("depolarizing", "amplitude_damping"),
-        rates=(0.0, 0.1), budget=400, n_states=4, n_tuples_fair=5000, seed=0,
+        rates=(0.0, 0.1), budget=400, n_states=4, seed=0,
     )
     # 1 size x 2 k x 2 noise x 2 rates = 8 cells.
     assert len(rows) == 8
     for row in rows:
         assert row["winner_subsampled"] in ("collective", "single-copy")
         assert row["winner_fair"] in ("collective", "single-copy")
-        # The fair (copy-optimal) estimator uses no extra copies, so it is never
-        # worse than the subsampled one at the same budget.
+        # The fair estimator uses no extra copies and has lower variance, so its
+        # aggregate RMSE is <= the subsampled one at the same budget (a variance
+        # property; holds on aggregate / in expectation, deterministic here).
         assert row["single_rmse_fair"] <= row["single_rmse_subsampled"] + 1e-9
         assert row["collective_rmse"] >= 0.0
         assert row["single_copies"] == 400

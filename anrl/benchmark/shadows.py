@@ -60,6 +60,34 @@ def _snapshots(rho: np.ndarray, n: int, n_snapshots: int, rng: np.random.Generat
     return snaps
 
 
+def full_purity_ustatistic(snaps: np.ndarray) -> float:
+    """Exact full pairwise U-statistic of ``Tr(rho^2)`` over ALL distinct pairs.
+
+    The copy-optimal single-copy purity estimate.  Because
+    ``Tr(rho_hat_i @ rho_hat_j) = prod_q phi(rho_hat_i^q) . phi(rho_hat_j^q)``
+    for the real per-qubit feature ``phi`` (with
+    ``phi(A) = [A00, A11, sqrt2*Re A01, sqrt2*Im A01]``), the tensor feature
+    ``Phi_i = (x)_q phi(rho_hat_i^q)`` satisfies ``Tr(G_i G_j) = Phi_i . Phi_j``,
+    so the full U-statistic is ``(|sum_i Phi_i|^2 - sum_i |Phi_i|^2) / (M(M-1))``
+    — exact in ``O(M * 4^n)``, no pair enumeration or subsampling.
+    """
+    m, n = snaps.shape[0], snaps.shape[1]
+    phi = np.stack(
+        [
+            snaps[:, :, 0, 0].real,
+            snaps[:, :, 1, 1].real,
+            np.sqrt(2.0) * snaps[:, :, 0, 1].real,
+            np.sqrt(2.0) * snaps[:, :, 0, 1].imag,
+        ],
+        axis=-1,
+    )  # (M, n, 4)
+    feat = phi[:, 0, :]
+    for q in range(1, n):
+        feat = (feat[:, :, None] * phi[:, q, None, :]).reshape(m, -1)  # row-wise kron -> (M, 4^n)
+    total = feat.sum(axis=0)
+    return float((total @ total - np.einsum("ma,ma->", feat, feat)) / (m * (m - 1)))
+
+
 def shadow_purity_estimate(
     rho: np.ndarray,
     n_snapshots: int,
@@ -68,21 +96,22 @@ def shadow_purity_estimate(
 ) -> float:
     """Single-copy classical-shadow estimate of ``Tr(rho^2)``.
 
-    ``n_snapshots`` independent local shadows are drawn; the purity is the mean
-    of ``Tr(rho_hat_i @ rho_hat_j)`` over ``n_pairs`` randomly subsampled
-    distinct snapshot pairs (unbiased U-statistic).
+    ``n_snapshots`` independent local shadows are drawn; the purity is the
+    U-statistic ``mean of Tr(rho_hat_i @ rho_hat_j)`` over distinct snapshot
+    pairs (unbiased).
 
-    NOTE on ``n_pairs`` (copy accounting): the copy budget is ``n_snapshots``;
-    forming pairs from the already-collected snapshots is **classical
-    post-processing that consumes no copies**.  More pairs only lower the
-    variance (toward the full-U-statistic minimum), so the *copy-optimal*
-    single-copy estimator uses as many pairs as feasible.  The default
-    ``n_pairs = n_snapshots // 2`` is an O(n_snapshots) subsampling *convention*
-    (it reproduces the original sandbox RMSE anchor); it deliberately leaves
-    variance on the table and is therefore an over-estimate of the true
-    single-copy difficulty.  For an honest single-copy-vs-collective comparison
-    at a fixed copy budget, pass a large ``n_pairs`` (see
-    :mod:`anrl.benchmark.sweep`, which reports both conventions).
+    Copy accounting: the copy budget is ``n_snapshots``.  Forming pairs from the
+    already-collected snapshots is **classical post-processing that consumes no
+    copies**, so the copy-fair estimator uses the FULL set of pairs (minimum
+    variance).  Therefore:
+
+    * ``n_pairs is None`` (default): the exact full pairwise U-statistic over all
+      ``M(M-1)/2`` pairs — the correct, copy-optimal estimator
+      (:func:`full_purity_ustatistic`).
+    * ``n_pairs`` given: a random subsample of that many pairs.  Subsampling only
+      inflates the variance (it saves no copies), so it is NOT copy-fair; it is
+      kept only for comparison / to reproduce the old ``n_pairs = M // 2``
+      sandbox convention.  Documented as variance-inflating.
     """
     if n_snapshots < 2:
         raise ValueError(f"shadow purity needs >= 2 snapshots, got {n_snapshots}")
@@ -90,20 +119,16 @@ def shadow_purity_estimate(
     n = int(round(np.log2(rho.shape[0])))
 
     snaps = _snapshots(rho, n, n_snapshots, rng)
+    if n_pairs is None:
+        return full_purity_ustatistic(snaps)  # exact, copy-optimal
 
+    # Variance-inflating subsample (kept for comparison only; not copy-fair).
     total_pairs = n_snapshots * (n_snapshots - 1) // 2
-    default_pairs = max(1, n_snapshots // 2)
-    k = min(total_pairs, default_pairs if n_pairs is None else n_pairs)
-
-    # Sample k distinct ordered pairs (i, j != i); Tr is symmetric so ordered
-    # sampling is unbiased for the unordered U-statistic mean.
+    k = min(total_pairs, n_pairs)
     idx_i = rng.integers(0, n_snapshots, size=k)
     offset = rng.integers(1, n_snapshots, size=k)
     idx_j = (idx_i + offset) % n_snapshots
-
-    a = snaps[idx_i]  # (k, n, 2, 2)
+    a = snaps[idx_i]
     b = snaps[idx_j]
-    # Per-qubit Tr(A @ B) = sum_{ab} A_ab B_ba, then product over qubits.
     per_qubit_trace = np.einsum("knab,knba->kn", a, b).real
-    pair_terms = per_qubit_trace.prod(axis=1)
-    return float(pair_terms.mean())
+    return float(per_qubit_trace.prod(axis=1).mean())

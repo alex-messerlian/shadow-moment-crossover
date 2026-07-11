@@ -14,11 +14,12 @@ Two single-copy estimators are reported from the SAME snapshots (same copy
 budget), differing only in classical post-processing:
 
 * ``subsampled`` — the ``n_snapshots // k`` U-statistic tuple convention (the
-  existing O(M) convention).
-* ``fair`` — a copy-optimal U-statistic using many more tuples (forming tuples
-  costs no copies), i.e. what an experimenter with the same copies would
-  actually do.  The ``fair`` estimator is the honest single-copy performance;
-  the gap between the two is pure post-processing, not measurement.
+  existing O(M) convention; variance-inflating).
+* ``fair`` — the copy-fair estimator (forming tuples costs no copies): the EXACT
+  full U-statistic for k=2 and k=3, and a large 200000-tuple subsample for k=4
+  (no closed form there, so the k=4 ``fair`` is conservatively inflated — the
+  true copy-optimal single-copy would be even better).  The gap between the two
+  conventions is pure post-processing, not measurement.
 """
 
 from __future__ import annotations
@@ -31,7 +32,12 @@ import numpy as np
 from anrl.physics import depolarize, random_density
 
 from .channels import NOISE_MODELS, collective_moment_signal
-from .moments import collective_moment_estimate, moment, moment_ustatistic_from_snapshots
+from .moments import (
+    collective_moment_estimate,
+    fair_moment_ustatistic,
+    moment,
+    moment_ustatistic_from_snapshots,
+)
 from .shadows import _snapshots
 
 
@@ -48,11 +54,13 @@ def _rmse(errors: list[float]) -> float:
     return float(np.sqrt(np.mean(arr ** 2)))
 
 
-def _single_copy_rmse(states, n, k, budget, n_tuples_fair, rng):
-    """RMSE of the single-copy shadow estimate of Tr(rho^k), both tuple conventions.
+def _single_copy_rmse(states, n, k, budget, rng):
+    """RMSE of the single-copy shadow estimate of Tr(rho^k), both conventions.
 
     Both estimates are formed from the SAME ``budget`` snapshots per state; only
-    the number of U-statistic tuples (classical post-processing) differs.
+    the classical post-processing differs.  ``fair`` is the copy-optimal
+    estimator (exact full U-statistic for k=2,3; large subsample for k>=4);
+    ``subsampled`` is the old variance-inflating ``budget // k`` convention.
     """
     subsampled, fair = [], []
     m_sub = max(1, budget // k)
@@ -60,7 +68,7 @@ def _single_copy_rmse(states, n, k, budget, n_tuples_fair, rng):
         snaps = _snapshots(state, n, budget, rng)
         true = moment(state, k)
         subsampled.append(abs(moment_ustatistic_from_snapshots(snaps, k, m_sub, rng) - true))
-        fair.append(abs(moment_ustatistic_from_snapshots(snaps, k, n_tuples_fair, rng) - true))
+        fair.append(abs(fair_moment_ustatistic(snaps, k, rng) - true))
     return _rmse(subsampled), _rmse(fair)
 
 
@@ -81,7 +89,6 @@ def run_sweep(
     rates: tuple[float, ...] = (0.0, 0.02, 0.05, 0.1),
     budget: int = 2000,
     n_states: int = 12,
-    n_tuples_fair: int = 50_000,
     seed: int = 0,
 ) -> list[dict]:
     """Run the full sweep; one row per (n, k, noise_model, rate) cell.
@@ -95,7 +102,7 @@ def run_sweep(
         states = _make_states(n, n_states, np.random.default_rng([seed, n, 0]))
         for k in ks:
             single_sub, single_fair = _single_copy_rmse(
-                states, n, k, budget, n_tuples_fair, np.random.default_rng([seed, n, k, 1])
+                states, n, k, budget, np.random.default_rng([seed, n, k, 1])
             )
             for noise_model in noise_models:
                 for rate in rates:
