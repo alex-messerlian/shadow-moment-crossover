@@ -24,7 +24,7 @@ from .collective import (
     gates_all_to_all,
     gates_linear_1d,
 )
-from .ensembles import NoisyState, noisy_pure, random_mixed
+from .ensembles import NoisyState, ghz_noisy, haar_pure, low_rank, noisy_pure, random_mixed
 from .evaluation import (
     evaluate_estimator,
     make_collective_estimator,
@@ -119,6 +119,9 @@ __all__ = [
     "NoisyState",
     "noisy_pure",
     "random_mixed",
+    "haar_pure",
+    "low_rank",
+    "ghz_noisy",
     "snapshots_factored",
     "collective_purity_signal",
     "run_scaling",

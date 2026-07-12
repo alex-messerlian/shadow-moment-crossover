@@ -27,6 +27,12 @@ from .crossover import (
     predicted_collective_rmse,
     predicted_single_rmse,
 )
+from .general import (
+    estimate_hoeffding_components_general,
+    predict_crossover_general,
+    predicted_collective_rmse_general,
+    sample_batched_general,
+)
 from .variance import (
     alpha_eff,
     estimate_hoeffding_components,
@@ -69,4 +75,9 @@ __all__ = [
     "predict_crossover",
     "load_measured_crossovers",
     "build_comparison",
+    # state-agnostic estimators (stress test: any ensemble)
+    "sample_batched_general",
+    "estimate_hoeffding_components_general",
+    "predicted_collective_rmse_general",
+    "predict_crossover_general",
 ]

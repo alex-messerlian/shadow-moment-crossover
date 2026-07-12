@@ -69,6 +69,46 @@ def noisy_pure(n: int, q: float, rng: np.random.Generator) -> NoisyState:
     return NoisyState(_normalized(psi.reshape(dim, 1)), float(q), n)
 
 
+def haar_pure(n: int, rng: np.random.Generator) -> NoisyState:
+    """Haar-random pure state (``q = 0``), purity exactly ``1.0``.
+
+    The maximal-shadow-variance case — a stress test for the single-copy variance
+    model (shadow variance grows with state purity).
+    """
+    dim = 2 ** n
+    psi = rng.standard_normal(dim) + 1j * rng.standard_normal(dim)
+    return NoisyState(_normalized(psi.reshape(dim, 1)), 0.0, n)
+
+
+def low_rank(n: int, rank: int = 2, rng: np.random.Generator | None = None) -> NoisyState:
+    """Rank-``r`` mixed state ``G G^dag`` (Ginibre, no depolarizing), ``r`` = ``rank``.
+
+    A structured mixed state whose eigenspectrum is NOT the rank-1-plus-identity
+    form the noisy-pure closed forms assume, so it exercises the general theory.
+    """
+    if rng is None:
+        raise ValueError("low_rank requires an rng")
+    dim = 2 ** n
+    r = min(rank, dim)
+    if r < 1:
+        raise ValueError(f"rank must be >= 1, got {rank}")
+    g = rng.standard_normal((dim, r)) + 1j * rng.standard_normal((dim, r))
+    return NoisyState(_normalized(g), 0.0, n)
+
+
+def ghz_noisy(n: int, q: float = 0.15, rng: np.random.Generator | None = None) -> NoisyState:
+    """Depolarized GHZ state ``(1-q)|GHZ><GHZ| + q I/2^n``, ``|GHZ> = (|0..0>+|1..1>)/sqrt2``.
+
+    Highly structured and NOT Haar-typical — where an ensemble-specific variance
+    model should break.  ``rng`` is accepted for a uniform ensemble signature but
+    the state is deterministic (GHZ is fixed).
+    """
+    dim = 2 ** n
+    ghz = np.zeros(dim, dtype=np.complex128)
+    ghz[0] = ghz[dim - 1] = 1.0 / np.sqrt(2.0)
+    return NoisyState(ghz.reshape(dim, 1), float(q), n)
+
+
 def random_mixed(n: int, q: float, rng: np.random.Generator, rank: int | None = None) -> NoisyState:
     """Old ensemble: Ginibre high-rank component depolarized at rate ``q``.
 
