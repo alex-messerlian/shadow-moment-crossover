@@ -72,6 +72,16 @@ MARGINAL_Z = 3.0
 _WINNER_ORDER = {"single-copy": 0, "tie": 1, "collective": 2}
 _BOOTSTRAP_RESAMPLES = 2000
 
+# Deterministic integer id per noise model, and a stable integer key per rate, so
+# collective substreams are seeded by VALUE (not loop position) — a cell's draws
+# then depend only on its (noise_model, rate), not on how the grid is sliced.
+_NOISE_ID = {"depolarizing": 0, "amplitude_damping": 1, "dephasing": 2}
+
+
+def _rate_key(rate: float) -> int:
+    """Stable integer seed component for a noise rate (value-based, not positional)."""
+    return int(round(float(rate) * 1_000_000_000))
+
 
 def state_errors(
     ensemble: str,
@@ -108,10 +118,14 @@ def state_errors(
     ]
 
     coll_se: dict[str, list[float]] = {}
-    for noise_idx, noise_model in enumerate(noise_models):
-        for rate_idx, rate in enumerate(rates):
+    for noise_model in noise_models:
+        for rate in rates:
             signal = collective_purity_signal(state, noise_model, rate)
-            cell_rng = np.random.default_rng([seed, eid, n, state_idx, 2, noise_idx, rate_idx])
+            # Seed by VALUE (noise id + rate key), so a cell's draws are the same
+            # regardless of loop order / which other cells are swept.
+            cell_rng = np.random.default_rng(
+                [seed, eid, n, state_idx, 2, _NOISE_ID[noise_model], _rate_key(rate)]
+            )
             key = f"{noise_model}@{rate}"
             coll_se[key] = [
                 (collective_moment_estimate(2, budget // 2, signal, cell_rng) - true) ** 2
@@ -252,11 +266,17 @@ def _state_errors_star(packed: tuple) -> dict:
     )
 
 
-def crossover_table(rows: list[dict], marginal_z: float = MARGINAL_Z) -> list[dict]:
-    """Per ``(ensemble, noise_model, rate)``: the resolved crossover n and flags.
+def crossover_table(
+    rows: list[dict],
+    group_keys: tuple[str, ...] = ("ensemble", "noise_model", "rate"),
+    marginal_z: float = MARGINAL_Z,
+) -> list[dict]:
+    """Per group (default ``(ensemble, noise_model, rate)``): crossover n and flags.
 
-    ``crossover_n`` is the smallest n whose paired verdict is ``collective``.
-    ``ambiguous`` is set when the boundary is not cleanly resolved, i.e. any of:
+    ``group_keys`` chooses the fields that define a single curve-in-``n`` (e.g.
+    ``("k", "noise_model", "rate")`` for the moment sweep).  ``crossover_n`` is
+    the smallest n whose paired verdict is ``collective``.  ``ambiguous`` is set
+    when the boundary is not cleanly resolved, i.e. any of:
 
     * the winner sequence is non-monotone in ``single-copy < tie < collective``
       order anywhere (a tie/single win sandwiched between collective wins, or a
@@ -271,11 +291,11 @@ def crossover_table(rows: list[dict], marginal_z: float = MARGINAL_Z) -> list[di
     rows carry no ``paired_z``).
     """
     table: list[dict] = []
-    keys = sorted({(r["ensemble"], r["noise_model"], r["rate"]) for r in rows})
-    for ensemble, noise_model, rate in keys:
+    keys = sorted({tuple(r[g] for g in group_keys) for r in rows})
+    for keyvals in keys:
+        sel = dict(zip(group_keys, keyvals))
         cells = sorted(
-            (r for r in rows if r["ensemble"] == ensemble
-             and r["noise_model"] == noise_model and r["rate"] == rate),
+            (r for r in rows if all(r[g] == sel[g] for g in group_keys)),
             key=lambda r: r["n"],
         )
         winners = {c["n"]: c["winner"] for c in cells}
@@ -299,9 +319,7 @@ def crossover_table(rows: list[dict], marginal_z: float = MARGINAL_Z) -> list[di
                 ambiguous = True
         table.append(
             {
-                "ensemble": ensemble,
-                "noise_model": noise_model,
-                "rate": float(rate),
+                **sel,
                 "crossover_n": crossover_n,
                 "crossover_z": crossover_z,
                 "ambiguous": ambiguous,

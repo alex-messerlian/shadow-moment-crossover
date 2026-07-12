@@ -33,6 +33,7 @@ from .evaluation import (
     make_shadow_moment_estimator,
 )
 from .functionals import purity
+from .moment_ustats import exact_moment_ustatistic
 from .moments import (
     collective_moment_estimate,
     cyclic_permutation_operator,
@@ -56,6 +57,12 @@ from .scaling import (
     run_scaling,
     save_scaling,
     snapshots_factored,
+)
+from .sweep_hardened import (
+    moment_state_errors,
+    run_moment_sweep,
+    save_moment_sweep,
+    skipped_cells,
 )
 from .shadows import full_purity_ustatistic, haar_unitary, shadow_purity_estimate
 from .sweep import run_sweep, save_sweep
@@ -112,4 +119,11 @@ __all__ = [
     "save_hardened",
     "crossover_table",
     "state_errors",
+    # efficient exact moment U-statistics (k=2,3,4, scale to large n)
+    "exact_moment_ustatistic",
+    # corrected hardened moment sweep
+    "run_moment_sweep",
+    "save_moment_sweep",
+    "moment_state_errors",
+    "skipped_cells",
 ]

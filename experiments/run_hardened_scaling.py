@@ -72,9 +72,10 @@ def main() -> None:
                        "single and collective per-state MSE are ~independent (pairing is a "
                        "valid framing, not a power gain).  No family-wise correction across "
                        "cells; the 12 (noise,rate) cells at fixed (ensemble,n) share the "
-                       "single-copy sample so are positively correlated; boundaries at "
-                       "|z| < 3 are flagged 'ambiguous'.  RMSE intervals are 68% bootstrap "
-                       "over states.",
+                       "single-copy sample so are positively correlated.  A crossover boundary "
+                       "is flagged 'ambiguous' when the winner sequence is non-monotone in "
+                       "single-copy<tie<collective order, a 'tie' sits below the crossover n, "
+                       "OR the boundary |z| < 3.  RMSE intervals are 68% bootstrap over states.",
         "wall_seconds": round(wall, 1),
     }
     save_hardened(rows, table, OUT, metadata)
