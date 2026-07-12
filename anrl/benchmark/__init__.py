@@ -33,6 +33,15 @@ from .evaluation import (
     make_shadow_moment_estimator,
 )
 from .functionals import purity
+from .budget import moment_ustat_linear, sample_batched
+from .budget_sweep import (
+    budgets_for,
+    fit_budget_exponent,
+    fit_budget_exponent_bootstrap,
+    predicted_bias_floor,
+    run_budget_sweep,
+    save_budget_sweep,
+)
 from .moment_ustats import exact_moment_ustatistic
 from .moments import (
     collective_moment_estimate,
@@ -121,6 +130,15 @@ __all__ = [
     "state_errors",
     # efficient exact moment U-statistics (k=2,3,4, scale to large n)
     "exact_moment_ustatistic",
+    # budget-scaling primitives + sweep (M-linear exact U-statistics)
+    "sample_batched",
+    "moment_ustat_linear",
+    "run_budget_sweep",
+    "save_budget_sweep",
+    "budgets_for",
+    "predicted_bias_floor",
+    "fit_budget_exponent",
+    "fit_budget_exponent_bootstrap",
     # corrected hardened moment sweep
     "run_moment_sweep",
     "save_moment_sweep",

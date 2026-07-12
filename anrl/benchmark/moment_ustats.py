@@ -26,6 +26,9 @@ from .shadows import full_purity_ustatistic
 # bounded (matters at n=8, where one such array is ~270 MB at chunk 256, and
 # several workers run in parallel).
 _CHUNK = 96
+# Row-chunk for the k=4 alternating term's M x M product, so its transient stays
+# O(chunk * M) instead of O(M^2) (~1 GB at M=8000, which swaps under many workers).
+_CHUNK_XALT = 1024
 
 
 def _perqubit_powers(snaps: np.ndarray, max_power: int) -> list[np.ndarray]:
@@ -64,13 +67,18 @@ def _tr_xalt(snaps: np.ndarray) -> complex:
     product over qubits of the ``M x M`` matrices ``A_q B_q^T``, summed.
     """
     m, n = snaps.shape[0], snaps.shape[1]
-    w = np.ones((m, m), dtype=np.complex128)
-    for q in range(n):
-        g = snaps[:, q]  # (M, 2, 2)
-        a = np.einsum("jab,jcd->jabcd", g, g).reshape(m, 16)
-        b = np.einsum("jbc,jda->jabcd", g, g).reshape(m, 16)
-        w *= a @ b.T
-    return complex(w.sum())
+    # Per-qubit M x 16 factors (small); the M x M elementwise product is done in
+    # row chunks so the transient is O(chunk * M), not O(M^2) (which is ~1 GB at
+    # M=8000 and would swap under multiprocessing).
+    a_facs = [np.einsum("jab,jcd->jabcd", snaps[:, q], snaps[:, q]).reshape(m, 16) for q in range(n)]
+    b_facs = [np.einsum("jbc,jda->jabcd", snaps[:, q], snaps[:, q]).reshape(m, 16) for q in range(n)]
+    total = 0.0 + 0.0j
+    for s in range(0, m, _CHUNK_XALT):
+        w = np.ones((min(_CHUNK_XALT, m - s), m), dtype=np.complex128)
+        for q in range(n):
+            w *= a_facs[q][s:s + _CHUNK_XALT] @ b_facs[q].T
+        total += w.sum()
+    return complex(total)
 
 
 def _apply_left_2x2(gq: np.ndarray, y: np.ndarray, q: int) -> np.ndarray:
