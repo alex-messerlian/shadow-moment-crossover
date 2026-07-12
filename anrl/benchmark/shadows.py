@@ -63,15 +63,18 @@ def _snapshots(rho: np.ndarray, n: int, n_snapshots: int, rng: np.random.Generat
 def full_purity_ustatistic(snaps: np.ndarray) -> float:
     """Exact full pairwise U-statistic of ``Tr(rho^2)`` over ALL distinct pairs.
 
-    The copy-optimal single-copy purity estimate.  Because
-    ``Tr(rho_hat_i @ rho_hat_j) = prod_q phi(rho_hat_i^q) . phi(rho_hat_j^q)``
-    for the real per-qubit feature ``phi`` (with
-    ``phi(A) = [A00, A11, sqrt2*Re A01, sqrt2*Im A01]``), the tensor feature
-    ``Phi_i = (x)_q phi(rho_hat_i^q)`` satisfies ``Tr(G_i G_j) = Phi_i . Phi_j``,
-    so the full U-statistic is ``(|sum_i Phi_i|^2 - sum_i |Phi_i|^2) / (M(M-1))``
-    — exact in ``O(M * 4^n)``, no pair enumeration or subsampling.
+    The copy-optimal single-copy purity estimate.  Using the per-qubit
+    factorization ``Tr(G_i G_j) = prod_q Tr(G_i^q G_j^q)`` with the real feature
+    ``phi(A) = [A00, A11, sqrt2*Re A01, sqrt2*Im A01]`` (so
+    ``Tr(G_i^q G_j^q) = phi_i^q . phi_j^q``), form the ``M x M`` pairwise-trace
+    matrix ``P[i,j] = prod_q (Phi_q Phi_q^T)[i,j]`` and return
+    ``(sum P - trace P) / (M(M-1))``.  This is ``O(M^2 * n)`` time and ``O(M^2)``
+    memory — it stays computable at large ``n`` (unlike an ``O(4^n)`` dense
+    feature vector).
     """
     m, n = snaps.shape[0], snaps.shape[1]
+    if m < 2:
+        raise ValueError(f"purity U-statistic needs >= 2 snapshots, got {m}")
     phi = np.stack(
         [
             snaps[:, :, 0, 0].real,
@@ -81,11 +84,10 @@ def full_purity_ustatistic(snaps: np.ndarray) -> float:
         ],
         axis=-1,
     )  # (M, n, 4)
-    feat = phi[:, 0, :]
-    for q in range(1, n):
-        feat = (feat[:, :, None] * phi[:, q, None, :]).reshape(m, -1)  # row-wise kron -> (M, 4^n)
-    total = feat.sum(axis=0)
-    return float((total @ total - np.einsum("ma,ma->", feat, feat)) / (m * (m - 1)))
+    pair_trace = np.ones((m, m), dtype=np.float64)
+    for q in range(n):
+        pair_trace *= phi[:, q, :] @ phi[:, q, :].T  # (M,M): Tr(G_i^q G_j^q)
+    return float((pair_trace.sum() - np.trace(pair_trace)) / (m * (m - 1)))
 
 
 def shadow_purity_estimate(

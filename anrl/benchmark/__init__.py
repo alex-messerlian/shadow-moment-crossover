@@ -24,6 +24,7 @@ from .collective import (
     gates_all_to_all,
     gates_linear_1d,
 )
+from .ensembles import NoisyState, noisy_pure, random_mixed
 from .evaluation import (
     evaluate_estimator,
     make_collective_estimator,
@@ -42,6 +43,12 @@ from .moments import (
     moment,
     moment_ustatistic_from_snapshots,
     shadow_moment_estimate,
+)
+from .scaling import (
+    collective_purity_signal,
+    run_scaling,
+    save_scaling,
+    snapshots_factored,
 )
 from .shadows import full_purity_ustatistic, haar_unitary, shadow_purity_estimate
 from .sweep import run_sweep, save_sweep
@@ -84,4 +91,12 @@ __all__ = [
     # sweep
     "run_sweep",
     "save_sweep",
+    # scaling study (single-copy vs collective vs system size)
+    "NoisyState",
+    "noisy_pure",
+    "random_mixed",
+    "snapshots_factored",
+    "collective_purity_signal",
+    "run_scaling",
+    "save_scaling",
 ]
