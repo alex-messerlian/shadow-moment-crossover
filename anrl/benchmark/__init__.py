@@ -39,10 +39,17 @@ from .moments import (
     depolarizing_moment_signal,
     fair_moment_ustatistic,
     full_moment_ustatistic_k3,
+    full_moment_ustatistic_k4,
     kron_power,
     moment,
     moment_ustatistic_from_snapshots,
     shadow_moment_estimate,
+)
+from .hardened import (
+    crossover_table,
+    run_hardened,
+    save_hardened,
+    state_errors,
 )
 from .scaling import (
     collective_purity_signal,
@@ -64,6 +71,7 @@ __all__ = [
     "shadow_moment_estimate",
     "fair_moment_ustatistic",
     "full_moment_ustatistic_k3",
+    "full_moment_ustatistic_k4",
     # collective cyclic test
     "collective_signal",
     "collective_purity_estimate",
@@ -99,4 +107,9 @@ __all__ = [
     "collective_purity_signal",
     "run_scaling",
     "save_scaling",
+    # hardened scaling study (error bars + paired crossover test)
+    "run_hardened",
+    "save_hardened",
+    "crossover_table",
+    "state_errors",
 ]

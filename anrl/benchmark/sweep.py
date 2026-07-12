@@ -16,10 +16,10 @@ budget), differing only in classical post-processing:
 * ``subsampled`` — the ``n_snapshots // k`` U-statistic tuple convention (the
   existing O(M) convention; variance-inflating).
 * ``fair`` — the copy-fair estimator (forming tuples costs no copies): the EXACT
-  full U-statistic for k=2 and k=3, and a large 200000-tuple subsample for k=4
-  (no closed form there, so the k=4 ``fair`` is conservatively inflated — the
-  true copy-optimal single-copy would be even better).  The gap between the two
-  conventions is pure post-processing, not measurement.
+  full U-statistic for k=2, k=3 AND k=4 (the k=4 exact U-statistic is the Mobius
+  inversion over the 15 set partitions of the 4 cyclic slots, verified against
+  brute force — so no subsampling artifact remains at any k here).  The gap
+  between the two conventions is pure post-processing, not measurement.
 """
 
 from __future__ import annotations
@@ -59,8 +59,8 @@ def _single_copy_rmse(states, n, k, budget, rng):
 
     Both estimates are formed from the SAME ``budget`` snapshots per state; only
     the classical post-processing differs.  ``fair`` is the copy-optimal
-    estimator (exact full U-statistic for k=2,3; large subsample for k>=4);
-    ``subsampled`` is the old variance-inflating ``budget // k`` convention.
+    estimator (EXACT full U-statistic for k=2,3,4; large subsample only for
+    k>=5); ``subsampled`` is the old variance-inflating ``budget // k`` convention.
     """
     subsampled, fair = [], []
     m_sub = max(1, budget // k)

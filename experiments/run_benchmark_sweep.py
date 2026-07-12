@@ -9,10 +9,9 @@ estimator conventions:
 
 * subsampled — the O(M) = n_snapshots//k tuple convention (variance-inflating).
 * fair — the copy-fair estimator (forming tuples costs no copies): the EXACT
-  full U-statistic for k=2,3, and a large 200000-tuple subsample for k=4 (no
-  closed form there, so the k=4 fair is conservatively inflated — the true
-  copy-optimal single-copy would be even better, so k=4 crossovers are
-  understated).
+  full U-statistic for k=2, k=3 AND k=4 (the k=4 exact U-statistic is a Mobius
+  inversion over the 15 set partitions of the 4 cyclic slots, verified against
+  brute force — no subsampling artifact remains at any k here).
 """
 
 from __future__ import annotations
@@ -47,8 +46,8 @@ def main() -> None:
         "single_estimators": {
             "subsampled": "O(M) = n_snapshots // k tuple U-statistic (variance-inflating convention)",
             "fair": "copy-fair estimator (tuples are free post-processing): EXACT full "
-                    "U-statistic for k=2,3; a 200000-tuple subsample for k=4 (no closed form, "
-                    "so k=4 fair is conservatively inflated -> its crossovers are understated)",
+                    "U-statistic for k=2, k=3 AND k=4 (k=4 via Mobius inversion over the 15 "
+                    "set partitions, verified vs brute force -> no subsampling artifact at any k)",
         },
         "note": "single-copy shadow RMSE is noise-independent; noise degrades only the collective route.",
     }
@@ -56,7 +55,7 @@ def main() -> None:
     print(f"Sweep done in {wall:.1f}s -> {OUT.relative_to(REPO)} ({len(rows)} cells)\n")
 
     print("Single-copy shadow RMSE by (n, k)  [noise-independent]:")
-    print(f"  {'(n,k)':8s} {'subsampled O(M)':>16s} {'fair (exact k<=3 / subsample k=4)':>34s}")
+    print(f"  {'(n,k)':8s} {'subsampled O(M)':>16s} {'fair (exact full U-stat, k=2,3,4)':>34s}")
     seen = set()
     for r in rows:
         if (r["n"], r["k"]) not in seen:
@@ -65,7 +64,7 @@ def main() -> None:
 
     for convention, wkey, fkey in (
         ("SUBSAMPLED O(M) single-copy (variance-inflating convention)", "winner_subsampled", "factor_subsampled"),
-        ("FAIR single-copy (exact full U-statistic k<=3; k=4 subsample, honest comparison)", "winner_fair", "factor_fair"),
+        ("FAIR single-copy (exact full U-statistic for k=2,3,4 — no subsampling artifact)", "winner_fair", "factor_fair"),
     ):
         print(f"\n================ {convention} ================")
         # Q1 — every task k?

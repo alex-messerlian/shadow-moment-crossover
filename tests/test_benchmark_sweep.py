@@ -10,6 +10,9 @@ from __future__ import annotations
 import numpy as np
 import pytest
 
+import itertools
+from functools import reduce
+
 from anrl.physics import depolarize, random_density
 from anrl.benchmark import (
     amplitude_damping_kraus,
@@ -18,12 +21,15 @@ from anrl.benchmark import (
     dephasing_kraus,
     depolarizing_moment_signal,
     explicit_channel_collective_signal,
+    fair_moment_ustatistic,
+    full_moment_ustatistic_k4,
     kron_power,
     moment,
     run_sweep,
     save_sweep,
     shadow_moment_estimate,
 )
+from anrl.benchmark.shadows import _snapshots
 
 
 # ---------------------------------------------------------------------------
@@ -102,6 +108,60 @@ def test_shadow_moment_estimators_unbiased() -> None:
     for k in (2, 3):
         estimates = [shadow_moment_estimate(rho2, k, 2500, rng, n_tuples=10000) for _ in range(35)]
         assert abs(float(np.mean(estimates)) - moment(rho2, k)) < 0.04
+
+
+# ---------------------------------------------------------------------------
+# 4b — the EXACT k=4 full U-statistic matches brute-force enumeration (1e-9)
+# ---------------------------------------------------------------------------
+def _brute_force_k4(snaps: np.ndarray) -> float:
+    """Reference: mean of Tr(G_a G_b G_c G_d) over ALL distinct ordered 4-tuples."""
+    m = snaps.shape[0]
+    g = np.array([reduce(np.kron, list(snaps[i])) for i in range(m)])  # (M, d, d)
+    total = 0.0 + 0.0j
+    for a, b, c, e in itertools.permutations(range(m), 4):
+        total += np.trace(g[a] @ g[b] @ g[c] @ g[e])
+    return float((total / (m * (m - 1) * (m - 2) * (m - 3))).real)
+
+
+def test_exact_k4_matches_brute_force() -> None:
+    rng = np.random.default_rng(21)
+    for n in (1, 2):
+        d = 2 ** n
+        rho = depolarize(random_density(d, d, rng), 0.2)
+        for m in (5, 7, 9):
+            snaps = _snapshots(rho, n, m, rng)
+            exact = full_moment_ustatistic_k4(snaps)
+            brute = _brute_force_k4(snaps)
+            assert exact == pytest.approx(brute, abs=1e-9)
+            # The fair default must route k=4 to the exact estimator (no subsample).
+            assert fair_moment_ustatistic(snaps, 4, rng) == pytest.approx(brute, abs=1e-9)
+
+
+def test_exact_k4_rejects_too_few_snapshots() -> None:
+    rng = np.random.default_rng(22)
+    snaps = _snapshots(depolarize(random_density(2, 2, rng), 0.2), 1, 3, rng)
+    with pytest.raises(ValueError):
+        full_moment_ustatistic_k4(snaps)  # needs >= 4 snapshots
+
+
+def test_fair_moment_k5_rejects_too_few_snapshots() -> None:
+    # k>=5 falls back to the subsample path, which must fail fast (not hang) when
+    # there are fewer than k snapshots to form a distinct tuple.
+    rng = np.random.default_rng(24)
+    snaps = _snapshots(depolarize(random_density(2, 2, rng), 0.2), 1, 4, rng)  # m=4 < k=5
+    with pytest.raises(ValueError):
+        fair_moment_ustatistic(snaps, 5, rng)
+
+
+def test_exact_k4_unbiased() -> None:
+    # A full U-statistic is exactly unbiased by construction (proven by the 1e-9
+    # brute-force match); confirm the Monte-Carlo mean converges to Tr(rho^4).
+    # n=1 keeps the k=4 shadow variance manageable so the check is not flaky.
+    rng = np.random.default_rng(23)
+    rho = depolarize(random_density(2, 2, rng), 0.2)  # n=1
+    truth = moment(rho, 4)
+    estimates = [full_moment_ustatistic_k4(_snapshots(rho, 1, 300, rng)) for _ in range(300)]
+    assert abs(float(np.mean(estimates)) - truth) < 0.03
 
 
 # ---------------------------------------------------------------------------
