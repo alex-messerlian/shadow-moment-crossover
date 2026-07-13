@@ -1,0 +1,154 @@
+{
+  "config": {
+    "p2": 0.009,
+    "p1": 0.001,
+    "p_ro": 0.02,
+    "sigma_target": 5.0,
+    "recommended_shots_per_config": 20000
+  },
+  "predictions": {
+    "g_bell": 0.142344,
+    "bell_measured": 0.893242,
+    "per_state": [
+      {
+        "state": "bell",
+        "true_purity": 1.0,
+        "swap_measured_qiskit": 0.893242,
+        "swap_biaslaw_g_bell": 0.893242,
+        "swap_discrepancy": 0.0,
+        "swap_own_g_full": 0.142344,
+        "swap_own_g_gate_only": 0.04448,
+        "shadow_measured_mean": 0.869944,
+        "shadow_se_at_Mref": 0.04155,
+        "shadow_se_at_budget": 0.013139,
+        "collective_bias": 0.106758
+      },
+      {
+        "state": "haar",
+        "true_purity": 1.0,
+        "swap_measured_qiskit": 0.916802,
+        "swap_biaslaw_g_bell": 0.893242,
+        "swap_discrepancy": 0.02356,
+        "swap_own_g_full": 0.110931,
+        "swap_own_g_gate_only": 0.039409,
+        "shadow_measured_mean": 0.887187,
+        "shadow_se_at_Mref": 0.051422,
+        "shadow_se_at_budget": 0.016261,
+        "collective_bias": 0.083198
+      },
+      {
+        "state": "mixed_P0.7",
+        "true_purity": 0.7,
+        "swap_measured_qiskit": 0.651194,
+        "swap_biaslaw_g_bell": 0.635945,
+        "swap_discrepancy": 0.015249,
+        "swap_own_g_full": 0.108458,
+        "swap_own_g_gate_only": 0.038599,
+        "shadow_measured_mean": 0.64551,
+        "shadow_se_at_Mref": 0.030273,
+        "shadow_se_at_budget": 0.009573,
+        "collective_bias": 0.048806
+      },
+      {
+        "state": "mixed_P0.5",
+        "true_purity": 0.5,
+        "swap_measured_qiskit": 0.471377,
+        "swap_biaslaw_g_bell": 0.464414,
+        "swap_discrepancy": 0.006963,
+        "swap_own_g_full": 0.114492,
+        "swap_own_g_gate_only": 0.039931,
+        "shadow_measured_mean": 0.468774,
+        "shadow_se_at_Mref": 0.022802,
+        "shadow_se_at_budget": 0.007211,
+        "collective_bias": 0.028623
+      }
+    ]
+  },
+  "readout_sensitivity": [
+    {
+      "p_ro": 0.005,
+      "bell_measured": 0.947732
+    },
+    {
+      "p_ro": 0.01,
+      "bell_measured": 0.9292
+    },
+    {
+      "p_ro": 0.02,
+      "bell_measured": 0.893242
+    },
+    {
+      "p_ro": 0.03,
+      "bell_measured": 0.85872
+    },
+    {
+      "p_ro": 0.05,
+      "bell_measured": 0.793813
+    }
+  ],
+  "shot_budget": {
+    "recommended_shots_per_config": 20000,
+    "device_max_shots_per_circuit": 50000,
+    "binding_shots_to_resolve_all_biases_5sigma": 23735,
+    "n_configs": 8,
+    "total_shots": 160000,
+    "total_credits": 41.6,
+    "credit_budget": 45.0,
+    "within_budget": true,
+    "per_state": [
+      {
+        "state": "bell",
+        "collective_bias": 0.106758,
+        "shots_for_5sigma": 444,
+        "swap_se_at_recommended": 0.003179,
+        "swap_bias_sigma_at_recommended": 33.58
+      },
+      {
+        "state": "haar",
+        "collective_bias": 0.083198,
+        "shots_for_5sigma": 576,
+        "swap_se_at_recommended": 0.002824,
+        "swap_bias_sigma_at_recommended": 29.46
+      },
+      {
+        "state": "mixed_P0.7",
+        "collective_bias": 0.048806,
+        "shots_for_5sigma": 6045,
+        "swap_se_at_recommended": 0.005366,
+        "swap_bias_sigma_at_recommended": 9.09
+      },
+      {
+        "state": "mixed_P0.5",
+        "collective_bias": 0.028623,
+        "shots_for_5sigma": 23735,
+        "swap_se_at_recommended": 0.006236,
+        "swap_bias_sigma_at_recommended": 4.59
+      }
+    ]
+  },
+  "calibration_inversion_demo": {
+    "measured": 0.893242,
+    "consistent_p_ro_p2": [
+      [
+        0.005,
+        0.028942
+      ],
+      [
+        0.01,
+        0.022385
+      ],
+      [
+        0.02,
+        0.009
+      ],
+      [
+        0.03,
+        0.0
+      ],
+      [
+        0.05,
+        0.0
+      ]
+    ]
+  }
+}
