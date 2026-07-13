@@ -1,0 +1,106 @@
+{
+  "d0": {
+    "job_id": "33e56ff0-fe87-4007-bff9-71c269f69d66",
+    "cost": 1,
+    "shots": 3000,
+    "ncz": 0,
+    "status": "Completed",
+    "submitted_at": "2026-07-13T06:21:49.800Z",
+    "counts_file": "cz_d0_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 40,
+      "spark": 16
+    }
+  },
+  "d8": {
+    "job_id": "d173b7af-580b-4108-ae26-568e7eb47844",
+    "cost": 1,
+    "shots": 3000,
+    "ncz": 8,
+    "status": "Completed",
+    "submitted_at": "2026-07-13T06:36:23.868Z",
+    "bal_before": {
+      "full": 40,
+      "spark": 16
+    },
+    "counts_file": "cz_d8_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 40,
+      "spark": 15
+    }
+  },
+  "d16": {
+    "job_id": "88662aa0-6e41-40a9-bc3d-ef5257da70b6",
+    "cost": 1,
+    "shots": 3000,
+    "ncz": 16,
+    "status": "Completed",
+    "submitted_at": "2026-07-13T06:40:03.453Z",
+    "bal_before": {
+      "full": 40,
+      "spark": 15
+    },
+    "counts_file": "cz_d16_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 40,
+      "spark": 14
+    }
+  },
+  "d24": {
+    "job_id": "623502e5-4cb2-4fe4-aea0-d99751ff03da",
+    "cost": 1,
+    "shots": 3000,
+    "ncz": 24,
+    "status": "Completed",
+    "submitted_at": "2026-07-13T06:42:52.732Z",
+    "bal_before": {
+      "full": 40,
+      "spark": 14
+    },
+    "counts_file": "cz_d24_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 40,
+      "spark": 13
+    }
+  },
+  "d32": {
+    "job_id": "0ee8f27e-6e0b-4e2d-b1f7-7732c557fb3a",
+    "cost": 1,
+    "shots": 3000,
+    "ncz": 32,
+    "status": "Completed",
+    "submitted_at": "2026-07-13T06:45:48.212Z",
+    "bal_before": {
+      "full": 40,
+      "spark": 13
+    },
+    "counts_file": "cz_d32_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 40,
+      "spark": 12
+    }
+  },
+  "d48": {
+    "job_id": "63194ec2-cbd1-4320-b571-646eb208533f",
+    "cost": 1,
+    "shots": 3000,
+    "ncz": 48,
+    "status": "Completed",
+    "submitted_at": "2026-07-13T06:50:28.571Z",
+    "bal_before": {
+      "full": 40,
+      "spark": 12
+    },
+    "counts_file": "cz_d48_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 40,
+      "spark": 11
+    }
+  }
+}
