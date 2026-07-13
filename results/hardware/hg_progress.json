@@ -1,0 +1,308 @@
+{
+  "coll_n2": {
+    "job_id": "f46e969a-6c57-4cb8-997b-6feac63f5a5c",
+    "cost": 3,
+    "shots": 10000,
+    "status": "Completed",
+    "submitted_at": "2026-07-13T10:22:01.535Z",
+    "bal_before": {
+      "full": 40,
+      "spark": 4
+    },
+    "counts_file": "hg_coll_n2_counts.json",
+    "actual_cost": 3,
+    "bal_after": {
+      "full": 40,
+      "spark": 1
+    }
+  },
+  "coll_n3": {
+    "job_id": "be79bf96-8ecb-4640-91e6-eda83265833a",
+    "cost": 3,
+    "shots": 10000,
+    "status": "Completed",
+    "submitted_at": "2026-07-13T10:24:39.296Z",
+    "bal_before": {
+      "full": 40,
+      "spark": 1
+    },
+    "counts_file": "hg_coll_n3_counts.json",
+    "actual_cost": 3,
+    "bal_after": {
+      "full": 38,
+      "spark": 0
+    }
+  },
+  "coll_n4": {
+    "job_id": "b5af47ca-72d7-43c9-b996-a7a089546293",
+    "cost": 3,
+    "shots": 10000,
+    "status": "Completed",
+    "submitted_at": "2026-07-13T10:28:17.320Z",
+    "bal_before": {
+      "full": 38,
+      "spark": 0
+    },
+    "counts_file": "hg_coll_n4_counts.json",
+    "actual_cost": 3,
+    "bal_after": {
+      "full": 35,
+      "spark": 0
+    }
+  },
+  "single_n2_b00": {
+    "job_id": "b5355a1a-60ca-4d5c-ad45-74dce64e57cd",
+    "cost": 1,
+    "shots": 600,
+    "status": "Completed",
+    "submitted_at": "2026-07-13T10:29:54.549Z",
+    "bal_before": {
+      "full": 35,
+      "spark": 0
+    },
+    "counts_file": "hg_single_n2_b00_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 34,
+      "spark": 0
+    }
+  },
+  "single_n2_b01": {
+    "job_id": "2f068b7c-5e19-4502-8642-958aa50bb22c",
+    "cost": 1,
+    "shots": 600,
+    "status": "Completed",
+    "submitted_at": "2026-07-13T10:33:02.571Z",
+    "bal_before": {
+      "full": 34,
+      "spark": 0
+    },
+    "counts_file": "hg_single_n2_b01_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 33,
+      "spark": 0
+    }
+  },
+  "single_n2_b02": {
+    "job_id": "c8bd3928-1edb-4f4d-b538-db254dbfc1db",
+    "cost": 1,
+    "shots": 600,
+    "status": "Completed",
+    "submitted_at": "2026-07-13T10:35:10.233Z",
+    "bal_before": {
+      "full": 33,
+      "spark": 0
+    },
+    "counts_file": "hg_single_n2_b02_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 32,
+      "spark": 0
+    }
+  },
+  "single_n2_b03": {
+    "job_id": "25a4821f-aec0-4e6d-ac76-7f25b2d17601",
+    "cost": 1,
+    "shots": 600,
+    "status": "Completed",
+    "submitted_at": "2026-07-13T10:38:18.221Z",
+    "bal_before": {
+      "full": 32,
+      "spark": 0
+    },
+    "counts_file": "hg_single_n2_b03_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 31,
+      "spark": 0
+    }
+  },
+  "single_n2_b04": {
+    "job_id": "d2789066-57a4-4e5f-b872-727802bfeed7",
+    "cost": 1,
+    "shots": 600,
+    "status": "Completed",
+    "submitted_at": "2026-07-13T10:40:25.602Z",
+    "bal_before": {
+      "full": 31,
+      "spark": 0
+    },
+    "counts_file": "hg_single_n2_b04_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 30,
+      "spark": 0
+    }
+  },
+  "single_n2_b05": {
+    "job_id": "0506da44-9eda-4801-9729-9752bd35f5bd",
+    "cost": 1,
+    "shots": 600,
+    "status": "Completed",
+    "submitted_at": "2026-07-13T10:43:03.320Z",
+    "bal_before": {
+      "full": 30,
+      "spark": 0
+    },
+    "counts_file": "hg_single_n2_b05_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 29,
+      "spark": 0
+    }
+  },
+  "single_n2_b06": {
+    "job_id": "1010240c-d6c3-4737-a2f9-4b32f143fa77",
+    "cost": 1,
+    "shots": 600,
+    "status": "Completed",
+    "submitted_at": "2026-07-13T10:45:41.201Z",
+    "bal_before": {
+      "full": 29,
+      "spark": 0
+    },
+    "counts_file": "hg_single_n2_b06_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 28,
+      "spark": 0
+    }
+  },
+  "single_n2_b07": {
+    "job_id": "18263725-51a5-4276-9eb5-2aa2fc17b43e",
+    "cost": 1,
+    "shots": 600,
+    "status": "Completed",
+    "submitted_at": "2026-07-13T10:47:48.526Z",
+    "bal_before": {
+      "full": 28,
+      "spark": 0
+    },
+    "counts_file": "hg_single_n2_b07_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 27,
+      "spark": 0
+    }
+  },
+  "single_n2_b08": {
+    "job_id": "855df5b4-dde2-40f5-87f7-fd16c97e223d",
+    "cost": 1,
+    "shots": 600,
+    "status": "Completed",
+    "submitted_at": "2026-07-13T10:50:56.366Z",
+    "bal_before": {
+      "full": 27,
+      "spark": 0
+    },
+    "counts_file": "hg_single_n2_b08_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 26,
+      "spark": 0
+    }
+  },
+  "single_n2_b09": {
+    "job_id": "b2766522-091a-4ad8-90af-2f110418b6f6",
+    "cost": 1,
+    "shots": 600,
+    "status": "Completed",
+    "submitted_at": "2026-07-13T10:52:33.526Z",
+    "bal_before": {
+      "full": 26,
+      "spark": 0
+    },
+    "counts_file": "hg_single_n2_b09_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 25,
+      "spark": 0
+    }
+  },
+  "single_n2_b10": {
+    "job_id": "0e2f3355-292c-4499-ba19-aed16be37063",
+    "cost": 1,
+    "shots": 600,
+    "status": "Completed",
+    "submitted_at": "2026-07-13T10:56:11.614Z",
+    "bal_before": {
+      "full": 25,
+      "spark": 0
+    },
+    "counts_file": "hg_single_n2_b10_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 24,
+      "spark": 0
+    }
+  },
+  "single_n2_b11": {
+    "job_id": "0810652e-2919-4698-bc6f-8bdc8a8d21a4",
+    "cost": 1,
+    "shots": 600,
+    "status": "Completed",
+    "submitted_at": "2026-07-13T10:57:48.959Z",
+    "bal_before": {
+      "full": 24,
+      "spark": 0
+    },
+    "counts_file": "hg_single_n2_b11_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 23,
+      "spark": 0
+    }
+  },
+  "single_n2_b12": {
+    "job_id": "04ab1838-9412-4a7a-86f0-4af10aff3730",
+    "cost": 1,
+    "shots": 600,
+    "status": "Completed",
+    "submitted_at": "2026-07-13T11:01:27.077Z",
+    "bal_before": {
+      "full": 23,
+      "spark": 0
+    },
+    "counts_file": "hg_single_n2_b12_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 22,
+      "spark": 0
+    }
+  },
+  "single_n2_b13": {
+    "job_id": "c632db2c-3ce0-4768-b327-c5d94dd8056e",
+    "cost": 1,
+    "shots": 600,
+    "status": "Completed",
+    "submitted_at": "2026-07-13T11:05:05.409Z",
+    "bal_before": {
+      "full": 22,
+      "spark": 0
+    },
+    "counts_file": "hg_single_n2_b13_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 21,
+      "spark": 0
+    }
+  },
+  "single_n2_b14": {
+    "job_id": "45d721c2-cdaf-41f2-8d0a-99d4374b6eac",
+    "cost": 1,
+    "shots": 600,
+    "status": "Completed",
+    "submitted_at": "2026-07-13T11:07:07.862Z",
+    "bal_before": {
+      "full": 21,
+      "spark": 0
+    },
+    "counts_file": "hg_single_n2_b14_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 20,
+      "spark": 0
+    }
+  }
+}

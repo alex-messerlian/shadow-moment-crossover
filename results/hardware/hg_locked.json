@@ -1,0 +1,144 @@
+{
+  "collective": {
+    "2": {
+      "cz": 4,
+      "phys_clbit_order": [
+        0,
+        1,
+        9,
+        10
+      ],
+      "v2_swap_band": {
+        "lo": 0.7258,
+        "mid": 0.7163,
+        "hi": 0.7023
+      },
+      "v2_swap_mid": 0.7163,
+      "v2_gate_penalty": 0.042,
+      "v2_readout_penalty": 0.2417
+    },
+    "3": {
+      "cz": 7,
+      "phys_clbit_order": [
+        0,
+        1,
+        2,
+        9,
+        10,
+        11
+      ],
+      "v2_swap_band": {
+        "lo": 0.6241,
+        "mid": 0.6088,
+        "hi": 0.5866
+      },
+      "v2_swap_mid": 0.6088,
+      "v2_gate_penalty": 0.0742,
+      "v2_readout_penalty": 0.317
+    },
+    "4": {
+      "cz": 10,
+      "phys_clbit_order": [
+        0,
+        1,
+        2,
+        3,
+        9,
+        10,
+        11,
+        12
+      ],
+      "v2_swap_band": {
+        "lo": 0.5519,
+        "mid": 0.5321,
+        "hi": 0.5038
+      },
+      "v2_swap_mid": 0.5321,
+      "v2_gate_penalty": 0.1053,
+      "v2_readout_penalty": 0.3626
+    }
+  },
+  "single_anchor_n2": {
+    "n_bases": 15,
+    "shots_per_basis": 600,
+    "total_shots": 9000,
+    "seed": 20260713,
+    "bases": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        0,
+        2
+      ]
+    ],
+    "locked_prediction": {
+      "lo": {
+        "mean": 1.5125953128125331,
+        "se": 0.02763491283393397
+      },
+      "mid": {
+        "mean": 1.500012901433491,
+        "se": 0.027740200114194605
+      },
+      "hi": {
+        "mean": 1.4804771396821854,
+        "se": 0.027597187405805693
+      }
+    },
+    "estimator": "full copy-fair U-statistic (biased under grouped bases; same estimator on sim and hardware -> validates the pipeline)"
+  }
+}
