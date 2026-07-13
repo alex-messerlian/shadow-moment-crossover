@@ -116,6 +116,52 @@ def swap_pred(n: int, R: np.ndarray) -> float:
     return float(signs @ (R @ q))
 
 
+def _frechet_column(col: np.ndarray, mode: str) -> np.ndarray:
+    """Same 2-bit marginals as `col` (read_idx=2a+b), correlation pushed to a physical
+    extreme: mode='max' Frechet upper bound, 'min' lower, 'indep' product."""
+    pa1 = col[2] + col[3]
+    pb1 = col[1] + col[3]
+    both = {"max": min(pa1, pb1), "min": max(0.0, pa1 + pb1 - 1.0)}.get(mode, pa1 * pb1)
+    return np.array([1 - pa1 - pb1 + both, pb1 - both, pa1 - both, both])
+
+
+def physical_sensitivity(n: int, states: dict) -> dict:
+    """Bracket the SWAP prediction over ALL physically-valid cross-copy correlations that
+    PRESERVE the measured single-qubit flip rates (only correlation varies, to its Frechet
+    extremes). This is the honest power test: max both-flip prob per pair <= min(marginals),
+    so tiny measured flip rates cap how much any readout correlation can bend the parity."""
+    m = 2 * n
+    pairs = [(i, i + n) for i in range(n)]
+
+    def pred(mode: str) -> float:
+        Rp = {}
+        for (ci, cj) in pairs:
+            R = pair_confusion(states, ci, cj).copy()
+            for prep in range(4):
+                R[:, prep] = _frechet_column(R[:, prep], mode)
+            Rp[(ci, cj)] = R
+        dim = 2 ** m
+        R = np.ones((dim, dim))
+        for read in range(dim):
+            for prep in range(dim):
+                v = 1.0
+                for (ci, cj) in pairs:
+                    ra = (read >> ci) & 1; rb = (read >> cj) & 1
+                    pa = (prep >> ci) & 1; pb = (prep >> cj) & 1
+                    v *= Rp[(ci, cj)][2 * ra + rb, 2 * pa + pb]
+                R[read, prep] = v
+        return swap_pred(n, R)
+
+    p_max, p_min = pred("max"), pred("min")
+    max_both = [round(float(min(marginal(states["s0"], i, 1), marginal(states["s0"], i + n, 1))), 4)
+                for i in range(n)]
+    return {"max_corr_pred": round(p_max, 4), "min_corr_pred": round(p_min, 4),
+            "bracket_lo": round(min(p_max, p_min), 4), "bracket_hi": round(max(p_max, p_min), 4),
+            "bracket_width": round(abs(p_max - p_min), 4),
+            "max_both_flip_prob_per_pair": max_both,
+            "residual_at_max_correlation": round(MEASURED_SWAP[n] - min(p_max, p_min), 4)}
+
+
 def cross_copy_corr(states: dict, n: int) -> dict:
     """Pearson correlation of readout flips for each qubit pair, from the all-idle state (both flips)."""
     d = states["s0"]; m = 2 * n
@@ -156,10 +202,12 @@ def analyze_n(n: int) -> dict:
     R_indep = build_R_indep(n, states)
     pred_joint = swap_pred(n, R_joint)
     pred_indep = swap_pred(n, R_indep)
+    phys_sens = physical_sensitivity(n, states)
     measured = MEASURED_SWAP[n]
     return {"n": n, "shots": shots, "tvd_s0_vs_independent": round(tvd_s0, 4),
             "cross_copy_correlation": corr,
             "swap_pred_independent": round(pred_indep, 4), "swap_pred_joint": round(pred_joint, 4),
+            "physical_correlation_sensitivity": phys_sens,
             "measured": measured,
             "residual_independent": round(measured - pred_indep, 4),
             "residual_joint": round(measured - pred_joint, 4),
@@ -181,6 +229,9 @@ def main():
         print(f"  SWAP pred independent={r['swap_pred_independent']}, joint={r['swap_pred_joint']}, measured={r['measured']}")
         print(f"  residual: indep {r['residual_independent']:+.3f} -> joint {r['residual_joint']:+.3f}; "
               f"gap closed {r['gap_closed_fraction']}")
+        ps = r["physical_correlation_sensitivity"]
+        print(f"  physical corr bracket (marginals fixed): [{ps['bracket_lo']}, {ps['bracket_hi']}] "
+              f"width {ps['bracket_width']}; residual even at MAX corr = {ps['residual_at_max_correlation']:+.3f}")
 
 
 if __name__ == "__main__":
