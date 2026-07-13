@@ -1,0 +1,54 @@
+{
+  "n_shots": 5000,
+  "measured_purity": 0.7184,
+  "measured_purity_reversed_bits": 0.7184,
+  "analytic_se": 0.009837697291541348,
+  "bootstrap_ci95": [
+    0.6992,
+    0.7376
+  ],
+  "bootstrap_se": 0.009749259388158673,
+  "locked_prediction": 0.9412,
+  "analytic_bias_law": 0.9401,
+  "deviation_from_prediction": -0.2228,
+  "in_predicted_band": false,
+  "prediction_in_ci": false,
+  "effective_g": 0.3754666666666666,
+  "consistent_p_ro_p2": [
+    [
+      0.005,
+      0.102972412109375,
+      0.07722930908203124
+    ],
+    [
+      0.01,
+      0.09691543579101562,
+      0.07268657684326171
+    ],
+    [
+      0.02,
+      0.08455047607421876,
+      0.06341285705566407
+    ],
+    [
+      0.03,
+      0.07183837890625001,
+      0.053878784179687514
+    ],
+    [
+      0.05,
+      0.0453033447265625,
+      0.033977508544921875
+    ]
+  ],
+  "implied_p2_at_pro0.02": 0.08455047607421876,
+  "implied_cz_avg_err_at_pro0.02": 0.06341285705566407,
+  "readout_needed_at_spec_gates": 0.07353569294009782,
+  "spec_cz_avg_err": 0.009,
+  "credits_consumed": 2,
+  "credits_pool": "spark",
+  "balance_after": {
+    "full": 20,
+    "spark": 23
+  }
+}
