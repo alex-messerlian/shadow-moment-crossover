@@ -41,6 +41,21 @@ def bell_state() -> PreparedState:
     return PreparedState(2, np.outer(psi, psi.conj()), "bell", qc)
 
 
+def ghz_state(n: int) -> PreparedState:
+    """The ``n``-qubit GHZ state ``(|0...0> + |1...1>)/sqrt2`` (purity 1.0).
+
+    Prepared by ``H(0)`` then a CNOT chain ``0->1->...->(n-1)`` (linear connectivity),
+    which is NISQ-friendly and maps onto a qubit path with little routing.
+    """
+    from anrl.physics.states import ghz
+
+    qc = QuantumCircuit(n, name=f"ghz_n{n}")
+    qc.h(0)
+    for i in range(n - 1):
+        qc.cx(i, i + 1)
+    return PreparedState(n, ghz(n), f"ghz_n{n}", qc)
+
+
 def haar_pure(n: int, seed: int) -> PreparedState:
     """A Haar-random ``n``-qubit pure state (seeded, reproducible), purity 1.0.
 
