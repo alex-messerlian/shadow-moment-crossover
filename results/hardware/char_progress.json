@@ -1,0 +1,87 @@
+{
+  "A_0000": {
+    "job_id": "51349c76-318c-444d-9042-64781e572e99",
+    "cost": 1,
+    "shots": 2000,
+    "status": "Completed",
+    "submitted_at": "2026-07-13T05:41:54.343Z",
+    "counts_file": "char_A_0000_counts.json",
+    "actual_cost": 1,
+    "bal_before": {
+      "full": 40,
+      "spark": 23
+    },
+    "bal_after": {
+      "full": 40,
+      "spark": 22
+    }
+  },
+  "A_0011": {
+    "job_id": "b6bad17e-b1bf-4bd0-9a59-cb7b1fb7a955",
+    "cost": 1,
+    "shots": 2000,
+    "status": "Completed",
+    "submitted_at": "2026-07-13T05:43:46.982Z",
+    "counts_file": "char_A_0011_counts.json",
+    "actual_cost": 1,
+    "bal_before": {
+      "full": 40,
+      "spark": 22
+    },
+    "bal_after": {
+      "full": 40,
+      "spark": 21
+    }
+  },
+  "A_1100": {
+    "job_id": "e61bb892-68f4-4624-96e6-23c0557a2a9d",
+    "cost": 1,
+    "shots": 2000,
+    "status": "Completed",
+    "submitted_at": "2026-07-13T05:47:56.135Z",
+    "counts_file": "char_A_1100_counts.json",
+    "actual_cost": 1,
+    "bal_before": {
+      "full": 40,
+      "spark": 21
+    },
+    "bal_after": {
+      "full": 40,
+      "spark": 20
+    }
+  },
+  "A_1111": {
+    "job_id": "7812b625-c96c-4f0a-98e8-fbc36597632f",
+    "cost": 1,
+    "shots": 2000,
+    "status": "Completed",
+    "submitted_at": "2026-07-13T05:50:49.729Z",
+    "counts_file": "char_A_1111_counts.json",
+    "actual_cost": 1,
+    "bal_before": {
+      "full": 40,
+      "spark": 20
+    },
+    "bal_after": {
+      "full": 40,
+      "spark": 19
+    }
+  },
+  "B_cz_echo": {
+    "job_id": "a27f6e19-0fed-4ac6-a486-95b59c396c02",
+    "cost": 2,
+    "shots": 4000,
+    "status": "Completed",
+    "submitted_at": "2026-07-13T05:53:42.804Z",
+    "counts_file": "char_B_cz_echo_counts.json",
+    "actual_cost": 2,
+    "bal_before": {
+      "full": 40,
+      "spark": 19
+    },
+    "bal_after": {
+      "full": 40,
+      "spark": 17
+    }
+  }
+}
