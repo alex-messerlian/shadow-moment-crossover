@@ -1,0 +1,13 @@
+OPENQASM 3.0;
+include "stdgates.inc";
+bit[8] c;
+x $0;
+x $1;
+c[0] = measure $0;
+c[1] = measure $1;
+c[2] = measure $2;
+c[3] = measure $3;
+c[4] = measure $9;
+c[5] = measure $10;
+c[6] = measure $11;
+c[7] = measure $12;

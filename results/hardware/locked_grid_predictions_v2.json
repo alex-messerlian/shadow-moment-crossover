@@ -1,0 +1,411 @@
+{
+  "timestamp": "2026-07-13T02:39:18",
+  "parameters": {
+    "readout": "measured correlated (device-characterization phase)",
+    "cz_error_median": 0.009,
+    "cz_band": [
+      0.005,
+      0.015
+    ],
+    "p1": 0.001,
+    "shots_per_cell": 10000
+  },
+  "step1_bell_reconciliation": {
+    "measured": 0.7184,
+    "band": {
+      "lo": {
+        "correlated": 0.7258071282021603,
+        "independent": 0.7595923339847747
+      },
+      "mid": {
+        "correlated": 0.716280154397802,
+        "independent": 0.749412448229499
+      },
+      "hi": {
+        "correlated": 0.7022761285397408,
+        "independent": 0.7344486846801784
+      }
+    },
+    "residual_corr_mid": 0.0021198456021980228,
+    "residual_ind_mid": -0.031012448229499
+  },
+  "grid": [
+    {
+      "n": 2,
+      "state": "ghz",
+      "swap": {
+        "purity_band": {
+          "lo": 0.7258,
+          "mid": 0.7163,
+          "hi": 0.7023
+        },
+        "purity_mid": 0.7163,
+        "se_10k": 0.007,
+        "cz_device": 4,
+        "routing_overhead": 0,
+        "phys_qubits": [
+          0,
+          1,
+          9,
+          10
+        ],
+        "gate_penalty": 0.042,
+        "readout_penalty": 0.2417
+      },
+      "shadow": {
+        "purity_band": {
+          "lo": 0.7255,
+          "mid": 0.7212,
+          "hi": 0.7142
+        },
+        "purity_mid": 0.7212,
+        "se_10k": 0.017,
+        "phys_qubits": [
+          0,
+          1
+        ]
+      },
+      "analytic": {
+        "effective_g_full": 0.3783,
+        "bias_law_singleg": 0.7163,
+        "bias_law_discrepancy": 0.0
+      },
+      "winner_smaller_se": "SWAP",
+      "se_ratio_shadow_over_swap": 2.43
+    },
+    {
+      "n": 2,
+      "state": "haar",
+      "swap": {
+        "purity_band": {
+          "lo": 0.827,
+          "mid": 0.8167,
+          "hi": 0.8015
+        },
+        "purity_mid": 0.8167,
+        "se_10k": 0.0058,
+        "cz_device": 4,
+        "routing_overhead": 0,
+        "phys_qubits": [
+          1,
+          0,
+          10,
+          9
+        ],
+        "gate_penalty": 0.0385,
+        "readout_penalty": 0.1449
+      },
+      "shadow": {
+        "purity_band": {
+          "lo": 0.7402,
+          "mid": 0.7351,
+          "hi": 0.7275
+        },
+        "purity_mid": 0.7351,
+        "se_10k": 0.0154,
+        "phys_qubits": [
+          0,
+          1
+        ]
+      },
+      "analytic": {
+        "effective_g_full": 0.2444,
+        "bias_law_singleg": 0.7163,
+        "bias_law_discrepancy": -0.1004
+      },
+      "winner_smaller_se": "SWAP",
+      "se_ratio_shadow_over_swap": 2.67
+    },
+    {
+      "n": 3,
+      "state": "ghz",
+      "swap": {
+        "purity_band": {
+          "lo": 0.6241,
+          "mid": 0.6088,
+          "hi": 0.5866
+        },
+        "purity_mid": 0.6088,
+        "se_10k": 0.0079,
+        "cz_device": 7,
+        "routing_overhead": 0,
+        "phys_qubits": [
+          0,
+          1,
+          2,
+          9,
+          10,
+          11
+        ],
+        "gate_penalty": 0.0742,
+        "readout_penalty": 0.317,
+        "purity_band_v1": {
+          "lo": 0.5918,
+          "mid": 0.5776,
+          "hi": 0.5569
+        },
+        "purity_mid_v1": 0.5776,
+        "delta_vs_v1": 0.0312
+      },
+      "shadow": {
+        "purity_band": {
+          "lo": 0.5589,
+          "mid": 0.5501,
+          "hi": 0.5364
+        },
+        "purity_mid": 0.5501,
+        "se_10k": 0.0206,
+        "phys_qubits": [
+          0,
+          1,
+          2
+        ]
+      },
+      "analytic": {
+        "effective_g_full": 0.4828,
+        "bias_law_singleg": 0.669,
+        "bias_law_discrepancy": 0.0914
+      },
+      "winner_smaller_se": "SWAP",
+      "se_ratio_shadow_over_swap": 2.53
+    },
+    {
+      "n": 3,
+      "state": "haar",
+      "swap": {
+        "purity_band": {
+          "lo": 0.6652,
+          "mid": 0.6324,
+          "hi": 0.5869
+        },
+        "purity_mid": 0.6324,
+        "se_10k": 0.0077,
+        "cz_device": 15,
+        "routing_overhead": 4,
+        "phys_qubits": [
+          1,
+          0,
+          2,
+          10,
+          9,
+          11
+        ],
+        "gate_penalty": 0.1386,
+        "readout_penalty": 0.2289,
+        "purity_band_v1": {
+          "lo": 0.6488,
+          "mid": 0.617,
+          "hi": 0.5727
+        },
+        "purity_mid_v1": 0.617,
+        "delta_vs_v1": 0.0154
+      },
+      "shadow": {
+        "purity_band": {
+          "lo": 0.5243,
+          "mid": 0.5084,
+          "hi": 0.4849
+        },
+        "purity_mid": 0.5084,
+        "se_10k": 0.021,
+        "phys_qubits": [
+          0,
+          1,
+          2
+        ]
+      },
+      "analytic": {
+        "effective_g_full": 0.4378,
+        "bias_law_singleg": 0.669,
+        "bias_law_discrepancy": 0.052
+      },
+      "winner_smaller_se": "SWAP",
+      "se_ratio_shadow_over_swap": 2.67
+    },
+    {
+      "n": 4,
+      "state": "ghz",
+      "swap": {
+        "purity_band": {
+          "lo": 0.5519,
+          "mid": 0.5321,
+          "hi": 0.5038
+        },
+        "purity_mid": 0.5321,
+        "se_10k": 0.0085,
+        "cz_device": 10,
+        "routing_overhead": 0,
+        "phys_qubits": [
+          0,
+          1,
+          2,
+          3,
+          9,
+          10,
+          11,
+          12
+        ],
+        "gate_penalty": 0.1053,
+        "readout_penalty": 0.3626,
+        "purity_band_v1": {
+          "lo": 0.4975,
+          "mid": 0.4804,
+          "hi": 0.4561
+        },
+        "purity_mid_v1": 0.4804,
+        "delta_vs_v1": 0.0517
+      },
+      "shadow": {
+        "purity_band": {
+          "lo": 0.4308,
+          "mid": 0.419,
+          "hi": 0.4051
+        },
+        "purity_mid": 0.419,
+        "se_10k": 0.0215,
+        "phys_qubits": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "analytic": {
+        "effective_g_full": 0.5542,
+        "bias_law_singleg": 0.6454,
+        "bias_law_discrepancy": 0.1649
+      },
+      "winner_smaller_se": "SWAP",
+      "se_ratio_shadow_over_swap": 2.45
+    },
+    {
+      "n": 4,
+      "state": "haar",
+      "swap": {
+        "purity_band": {
+          "lo": 0.4702,
+          "mid": 0.3977,
+          "hi": 0.3134
+        },
+        "purity_mid": 0.3977,
+        "se_10k": 0.0092,
+        "cz_device": 46,
+        "routing_overhead": 20,
+        "phys_qubits": [
+          1,
+          19,
+          18,
+          11,
+          0,
+          10,
+          9,
+          2
+        ],
+        "gate_penalty": 0.3873,
+        "readout_penalty": 0.215,
+        "purity_band_v1": {
+          "lo": 0.4468,
+          "mid": 0.3786,
+          "hi": 0.2994
+        },
+        "purity_mid_v1": 0.3786,
+        "delta_vs_v1": 0.0191
+      },
+      "shadow": {
+        "purity_band": {
+          "lo": 0.2816,
+          "mid": 0.2567,
+          "hi": 0.2156
+        },
+        "purity_mid": 0.2567,
+        "se_10k": 0.0213,
+        "phys_qubits": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "analytic": {
+        "effective_g_full": 0.6628,
+        "bias_law_singleg": 0.6454,
+        "bias_law_discrepancy": 0.2668
+      },
+      "winner_smaller_se": "SWAP",
+      "se_ratio_shadow_over_swap": 2.3
+    }
+  ],
+  "analytic_reference_g": 0.3783,
+  "route_comparison_copy_fair_paper_theory": {
+    "q": 0.1,
+    "copy_budget": 20000,
+    "crossover_n_star": 8,
+    "per_n": [
+      {
+        "n": 2,
+        "single_rmse": 0.0143,
+        "collective_rmse": 0.061,
+        "winner": "single",
+        "gap_ratio_coll_over_single": 4.27
+      },
+      {
+        "n": 3,
+        "single_rmse": 0.0178,
+        "collective_rmse": 0.0712,
+        "winner": "single",
+        "gap_ratio_coll_over_single": 4.0
+      },
+      {
+        "n": 4,
+        "single_rmse": 0.0218,
+        "collective_rmse": 0.0762,
+        "winner": "single",
+        "gap_ratio_coll_over_single": 3.5
+      },
+      {
+        "n": 5,
+        "single_rmse": 0.0259,
+        "collective_rmse": 0.0788,
+        "winner": "single",
+        "gap_ratio_coll_over_single": 3.04
+      },
+      {
+        "n": 6,
+        "single_rmse": 0.037,
+        "collective_rmse": 0.08,
+        "winner": "single",
+        "gap_ratio_coll_over_single": 2.16
+      },
+      {
+        "n": 7,
+        "single_rmse": 0.0715,
+        "collective_rmse": 0.0807,
+        "winner": "single",
+        "gap_ratio_coll_over_single": 1.13
+      },
+      {
+        "n": 8,
+        "single_rmse": 0.1728,
+        "collective_rmse": 0.081,
+        "winner": "collective",
+        "gap_ratio_coll_over_single": 0.47
+      },
+      {
+        "n": 9,
+        "single_rmse": 0.4588,
+        "collective_rmse": 0.0811,
+        "winner": "collective",
+        "gap_ratio_coll_over_single": 0.18
+      }
+    ]
+  },
+  "budget": {
+    "cells": 12,
+    "shots_per_cell": 10000,
+    "total_shots": 120000,
+    "credits": 31.2,
+    "available_credits": 51
+  },
+  "derived_from": "locked_grid_predictions.json (v1)",
+  "readout_update": "measured 8-qubit correlated readout (readout-extension phase); n=3,4 SWAP cells re-locked; n=2 kept (device-char, Bell-validated)"
+}
