@@ -1,0 +1,64 @@
+"""State preparation for the hardware purity experiment.
+
+Each prepared state records its EXACT classical density matrix, so the true
+purity ``Tr(rho^2)`` is always known and the two measurement routes can be scored
+against ground truth.  Pure states carry a Qiskit prep circuit (runnable on
+hardware); mixed states carry only the density matrix (used for exact,
+circuit-free validation of the estimators via ``rho (x) rho``).
+"""
+
+from __future__ import annotations
+
+from dataclasses import dataclass
+
+import numpy as np
+from qiskit import QuantumCircuit
+from qiskit.quantum_info import random_statevector
+
+from anrl.physics import random_density
+
+
+@dataclass(frozen=True)
+class PreparedState:
+    """A prepared ``n``-qubit state: exact ``rho`` (always) and an optional circuit."""
+
+    n: int
+    rho: np.ndarray  # 2^n x 2^n exact density matrix
+    label: str
+    circuit: QuantumCircuit | None  # n-qubit prep on |0...0>; None for mixed states
+
+    def purity(self) -> float:
+        return float(np.trace(self.rho @ self.rho).real)
+
+
+def bell_state() -> PreparedState:
+    """The 2-qubit Bell state ``|Phi+> = (|00> + |11>)/sqrt2`` (purity exactly 1.0)."""
+    qc = QuantumCircuit(2, name="bell")
+    qc.h(0)
+    qc.cx(0, 1)
+    psi = np.zeros(4, dtype=np.complex128)
+    psi[0] = psi[3] = 1.0 / np.sqrt(2.0)
+    return PreparedState(2, np.outer(psi, psi.conj()), "bell", qc)
+
+
+def haar_pure(n: int, seed: int) -> PreparedState:
+    """A Haar-random ``n``-qubit pure state (seeded, reproducible), purity 1.0.
+
+    The state vector is prepared with Qiskit's ``prepare_state`` so it runs on
+    hardware; the exact ``rho = |psi><psi|`` is recorded classically.
+    """
+    psi = random_statevector(2 ** n, seed=seed).data
+    qc = QuantumCircuit(n, name=f"haar_n{n}_s{seed}")
+    qc.prepare_state(psi, range(n))
+    return PreparedState(n, np.outer(psi, psi.conj()), f"haar_n{n}_s{seed}", qc)
+
+
+def random_mixed(n: int, seed: int, rank: int | None = None) -> PreparedState:
+    """A random ``n``-qubit mixed state ``G G^dag`` (purity < 1), density matrix only.
+
+    Used to validate the estimators on mixed inputs via ``rho (x) rho`` (no physical
+    prep circuit is needed for that check).
+    """
+    dim = 2 ** n
+    rho = random_density(dim, rank if rank is not None else dim, np.random.default_rng(seed))
+    return PreparedState(n, rho, f"mixed_n{n}_s{seed}", None)
