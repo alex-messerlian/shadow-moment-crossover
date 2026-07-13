@@ -1,0 +1,75 @@
+{
+  "collective": [
+    {
+      "n": 2,
+      "shots": 10000,
+      "measured": 0.709,
+      "measured_rev": 0.709,
+      "ci95": [
+        0.6954,
+        0.7224
+      ],
+      "band": {
+        "lo": 0.7258,
+        "mid": 0.7163,
+        "hi": 0.7023
+      },
+      "inside_band": true,
+      "dist_outside": 0.0,
+      "gate_penalty": 0.042,
+      "readout_penalty": 0.2417
+    },
+    {
+      "n": 3,
+      "shots": 10000,
+      "measured": 0.3168,
+      "measured_rev": 0.3168,
+      "ci95": [
+        0.2988,
+        0.3356
+      ],
+      "band": {
+        "lo": 0.6241,
+        "mid": 0.6088,
+        "hi": 0.5866
+      },
+      "inside_band": false,
+      "dist_outside": 0.2698,
+      "gate_penalty": 0.0742,
+      "readout_penalty": 0.317
+    },
+    {
+      "n": 4,
+      "shots": 10000,
+      "measured": 0.4308,
+      "measured_rev": 0.4308,
+      "ci95": [
+        0.4134,
+        0.4484
+      ],
+      "band": {
+        "lo": 0.5519,
+        "mid": 0.5321,
+        "hi": 0.5038
+      },
+      "inside_band": false,
+      "dist_outside": 0.073,
+      "gate_penalty": 0.1053,
+      "readout_penalty": 0.3626
+    }
+  ],
+  "single_anchor_n2": {
+    "measured_ustatistic": 1.3438,
+    "ci95": [
+      1.2662,
+      1.4329
+    ],
+    "locked_prediction": {
+      "mean": 1.500012901433491,
+      "se": 0.027740200114194605
+    },
+    "n_snapshots": 9000,
+    "validated": false,
+    "deviation": -0.1562
+  }
+}
