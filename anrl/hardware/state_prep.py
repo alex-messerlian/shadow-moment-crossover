@@ -13,7 +13,7 @@ from dataclasses import dataclass
 
 import numpy as np
 from qiskit import QuantumCircuit
-from qiskit.quantum_info import random_statevector
+from qiskit.quantum_info import random_statevector, random_unitary
 
 from anrl.physics import random_density
 
@@ -62,3 +62,54 @@ def random_mixed(n: int, seed: int, rank: int | None = None) -> PreparedState:
     dim = 2 ** n
     rho = random_density(dim, rank if rank is not None else dim, np.random.default_rng(seed))
     return PreparedState(n, rho, f"mixed_n{n}_s{seed}", None)
+
+
+@dataclass(frozen=True)
+class MixedEnsemble:
+    """A mixed state realized as a per-shot classical ensemble of pure prep circuits.
+
+    ``rho = sum_i w_i |v_i><v_i|`` with the ``|v_i>`` an orthonormal eigenbasis.
+    On hardware: for each shot, sample component ``i`` with probability ``w_i`` and
+    run its pure prep circuit — NO mid-circuit measurement, no ancilla.  For the
+    two-copy SWAP test the two copies sample independently, so the measured
+    observable averages to ``Tr(rho^2)``.  ``rho`` is the exact recorded matrix.
+    """
+
+    n: int
+    rho: np.ndarray
+    label: str
+    components: tuple[tuple[float, PreparedState], ...]  # (weight, pure component)
+
+    def purity(self) -> float:
+        return float(np.trace(self.rho @ self.rho).real)
+
+
+def mixed_ensemble(n: int, target_purity: float, seed: int, rank: int = 2) -> MixedEnsemble:
+    """A rank-``rank`` mixed state with a prescribed purity, as a hardware ensemble.
+
+    The eigenbasis is Haar-random (seeded, reproducible); the spectrum is chosen to
+    hit ``target_purity`` exactly.  For ``rank = 2`` the two weights are
+    ``(a, 1-a)`` with ``a = (1 + sqrt(2P - 1)) / 2`` (requires ``P >= 0.5``); each
+    eigenvector is a Haar-random pure state prepared with ``prepare_state``.
+    """
+    if rank != 2:
+        raise NotImplementedError("only rank-2 ensembles are supported (covers P in [0.5, 1))")
+    if not (0.5 <= target_purity < 1.0):
+        raise ValueError(f"rank-2 purity must be in [0.5, 1), got {target_purity}")
+    a = 0.5 * (1.0 + np.sqrt(2.0 * target_purity - 1.0))
+    weights = (a, 1.0 - a)
+
+    dim = 2 ** n
+    u = random_unitary(dim, seed=seed).data  # Haar-random; columns are orthonormal
+    components = []
+    rho = np.zeros((dim, dim), dtype=np.complex128)
+    for idx, w in enumerate(weights):
+        v = u[:, idx]
+        rho += w * np.outer(v, v.conj())
+        qc = QuantumCircuit(n, name=f"mix{idx}")
+        qc.prepare_state(v, range(n))
+        label = f"mixed_ens_n{n}_P{target_purity:.2f}_s{seed}_c{idx}"
+        components.append((float(w), PreparedState(n, np.outer(v, v.conj()), label, qc)))
+    return MixedEnsemble(
+        n, rho, f"mixed_ens_n{n}_P{target_purity:.2f}_s{seed}", tuple(components)
+    )
