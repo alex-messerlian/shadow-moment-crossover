@@ -1,0 +1,28 @@
+{
+  "d0": {
+    "job_id": "33e56ff0-fe87-4007-bff9-71c269f69d66",
+    "cost": 1,
+    "shots": 3000,
+    "ncz": 0,
+    "status": "Completed",
+    "submitted_at": "2026-07-13T06:21:49.800Z",
+    "counts_file": "cz_d0_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 40,
+      "spark": 16
+    }
+  },
+  "d8": {
+    "job_id": "57989138-0be0-472b-95f8-31a1c2819258",
+    "cost": 1,
+    "shots": 3000,
+    "ncz": 8,
+    "status": "Failed",
+    "submitted_at": "2026-07-13T06:26:53.105Z",
+    "bal_before": {
+      "full": 40,
+      "spark": 16
+    }
+  }
+}

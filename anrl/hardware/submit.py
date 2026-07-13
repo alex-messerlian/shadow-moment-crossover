@@ -69,10 +69,22 @@ def submit_prepared(sched, org: str, prepared: dict):
 
 
 def poll_job(sched, job_id: str, timeout: int = 600, interval: int = 15, log=print):
-    """FREE read-only polling until terminal status (no resubmission)."""
+    """FREE read-only polling until terminal status (no resubmission).
+
+    Tolerates transient network errors: a dropped connection on ``get_job`` (a
+    read-only call) is retried, never a resubmission.
+    """
+    import requests
+
     last, deadline = None, time.time() + timeout
     while time.time() < deadline:
-        job = sched.get_job(job_id)
+        try:
+            job = sched.get_job(job_id)
+        except (requests.exceptions.ConnectionError, requests.exceptions.Timeout,
+                requests.exceptions.ChunkedEncodingError) as e:
+            log(f"    [poll] transient network error, retrying: {type(e).__name__}")
+            time.sleep(interval)
+            continue
         if job.status != last:
             log(f"    [{time.strftime('%H:%M:%S')}] {job_id[:8]} -> {job.status}"
                 + (f" ({job.message})" if job.message else ""))
