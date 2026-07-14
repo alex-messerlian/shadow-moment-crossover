@@ -10,12 +10,12 @@
 
 **This must be resolved before the paper is submitted anywhere.**
 
-- **Reference [7]** (arXiv:2106.10190) currently carries a title the drafting model could not verify and **may belong to a different paper entirely**. It must be checked against **arxiv.org/abs/2106.10190** before submission.
-- The same applies to **[8]** (arXiv:2102.10132), **[6]** (arXiv:2512.10929), and the **co-author list of [4]** (Gong et al. — the "et al." is unconfirmed and incomplete).
-- More broadly, **every reference except [5] and [10]** has an author list, journal, volume, or page numbers that has **not** been confirmed against the arXiv or journal record. Each such entry is marked with a visible `% UNVERIFIED` comment in `refs.bib` and in the `thebibliography` block of `paper.tex`.
-- **The author must verify all references personally against arxiv.org.** Neither Claude Code nor the drafting model has done so reliably.
+- **Reference [7]** (arXiv:2106.10190, "Experimental quantum state measurement with classical shadows"): the **title is now confirmed** and the paper does contain the second-order variance split we cite it for, but its **author list is still unconfirmed** and must be checked against **arxiv.org/abs/2106.10190** before submission. (That paper states the bound citing its own references, so our attribution is to a statement, not a derivation — reflected in the bibliography note.)
+- The **co-author list of [4]** (Gong et al.) is unconfirmed and incomplete ("et al.") and must be completed.
+- More broadly, **references [2], [3], [4], [9], and [11]–[16]** still have an author list, journal, volume, or page numbers **not** confirmed against the arXiv or journal record. Each is marked with a visible `% UNVERIFIED` comment in `refs.bib` and in the `thebibliography` block of `paper.tex`; [7] carries a `% PARTIAL` marker (title confirmed, authors not).
+- **The author must verify all remaining references personally against arxiv.org.** Neither Claude Code nor the drafting model has done so reliably.
 
-Only **[5]** (arXiv:2605.21346, Danaci et al. — author list and content confirmed against the paper's full text) and **[10]** (Open Quantum white paper, required by the Public Tier licence) are verified.
+Confirmed to date: **[1]** (Huang–Kueng–Preskill, *Nature Physics* 16(10), 1050–1057), **[5]** (Danaci et al.), **[6]** (Cotler–Gong–Kannan, "Noisy Quantum Learning Theory"), **[8]** (Hu & You, *Phys. Rev. Research* 4, 013054), and **[10]** (Open Quantum white paper, required by the Public Tier licence). **[7]**'s title is confirmed; its authors are not.
 
 ---
 
