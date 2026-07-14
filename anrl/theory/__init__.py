@@ -10,6 +10,8 @@
   single-qubit closed form.
 * :mod:`~anrl.theory.crossover` — Part 3: the crossover predictor and the
   comparison against the measured sweeps in ``results/``.
+* :mod:`~anrl.theory.clipping` — closed-form RMSE of a Gaussian purity estimate
+  clipped to a physical range [a, b], for pipelines that clip (anrl's own does not).
 """
 
 from __future__ import annotations
@@ -37,6 +39,7 @@ from .general import (
     predicted_collective_rmse_general,
     sample_batched_general,
 )
+from .clipping import clipped_mse, clipped_rmse
 from .single_copy_law import (
     REFERENCE_SCALINGS_Q0_1,
     crossover_budget,
@@ -89,6 +92,9 @@ __all__ = [
     "single_qubit_second_moment",
     "single_qubit_zeta1",
     "REFERENCE_SCALINGS_Q0_1",
+    # clipped-estimator RMSE (for pipelines that clip to a physical range)
+    "clipped_mse",
+    "clipped_rmse",
     # crossover (Part 3)
     "noisy_pure_moment",
     "predicted_single_rmse",
