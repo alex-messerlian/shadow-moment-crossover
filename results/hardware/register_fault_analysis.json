@@ -1,0 +1,246 @@
+{
+  "locked_predictions": {
+    "n3_std": {
+      "n": 3,
+      "phys": [
+        0,
+        1,
+        2,
+        9,
+        10,
+        11
+      ],
+      "band": {
+        "lo": 0.7165,
+        "mid": 0.6983,
+        "hi": 0.672
+      },
+      "gate_penalty": 0.0742,
+      "readout_penalty": 0.2275
+    },
+    "n4": {
+      "n": 4,
+      "phys": [
+        0,
+        1,
+        2,
+        3,
+        9,
+        10,
+        11,
+        12
+      ],
+      "band": {
+        "lo": 0.6266,
+        "mid": 0.604,
+        "hi": 0.5718
+      },
+      "gate_penalty": 0.1053,
+      "readout_penalty": 0.2907
+    },
+    "n3_alt": {
+      "n": 3,
+      "phys": [
+        1,
+        2,
+        3,
+        10,
+        11,
+        12
+      ],
+      "band": {
+        "lo": 0.6912,
+        "mid": 0.6738,
+        "hi": 0.6487
+      },
+      "gate_penalty": 0.0742,
+      "readout_penalty": 0.252
+    }
+  },
+  "cells": {
+    "n3_std": {
+      "n": 3,
+      "phys": [
+        0,
+        1,
+        2,
+        9,
+        10,
+        11
+      ],
+      "measured": 0.5808,
+      "ci95": [
+        0.5584,
+        0.6036
+      ],
+      "band": {
+        "lo": 0.7165,
+        "mid": 0.6983,
+        "hi": 0.672
+      },
+      "inside_band": false,
+      "below_band": true,
+      "deficit_vs_mid": 0.1175,
+      "shots": 5000
+    },
+    "n4": {
+      "n": 4,
+      "phys": [
+        0,
+        1,
+        2,
+        3,
+        9,
+        10,
+        11,
+        12
+      ],
+      "measured": 0.3716,
+      "ci95": [
+        0.3456,
+        0.3976
+      ],
+      "band": {
+        "lo": 0.6266,
+        "mid": 0.604,
+        "hi": 0.5718
+      },
+      "inside_band": false,
+      "below_band": true,
+      "deficit_vs_mid": 0.2324,
+      "shots": 5000
+    },
+    "n3_alt": {
+      "n": 3,
+      "phys": [
+        1,
+        2,
+        3,
+        10,
+        11,
+        12
+      ],
+      "measured": 0.5808,
+      "ci95": [
+        0.5584,
+        0.6028
+      ],
+      "band": {
+        "lo": 0.6912,
+        "mid": 0.6738,
+        "hi": 0.6487
+      },
+      "inside_band": false,
+      "below_band": true,
+      "deficit_vs_mid": 0.093,
+      "shots": 5000
+    }
+  },
+  "raw_cross_register": {
+    "n3_std_measured": 0.5808,
+    "n4_measured": 0.3716,
+    "n3_alt_measured": 0.5808,
+    "gap_n3std_minus_n4": 0.2092,
+    "n4_below_n3std_sig": true,
+    "gap_n3std_minus_n3alt": 0.0,
+    "n3alt_below_n3std_sig": false
+  },
+  "decoupling_strict": false,
+  "all_cells_below_band": true,
+  "localized_to_3_12": false,
+  "drift": {
+    "rows": [
+      {
+        "q": 0,
+        "p10_A": 0.0579,
+        "p10_C": 0.0366,
+        "p10_shift": -0.0213,
+        "p01_A": 0.0718,
+        "p01_C": 0.079,
+        "p01_shift": 0.0072,
+        "sig": true
+      },
+      {
+        "q": 1,
+        "p10_A": 0.0415,
+        "p10_C": 0.0368,
+        "p10_shift": -0.0047,
+        "p01_A": 0.0773,
+        "p01_C": 0.07,
+        "p01_shift": -0.0073,
+        "sig": false
+      },
+      {
+        "q": 2,
+        "p10_A": 0.0613,
+        "p10_C": 0.1136,
+        "p10_shift": 0.0523,
+        "p01_A": 0.1256,
+        "p01_C": 0.1196,
+        "p01_shift": -0.006,
+        "sig": true
+      },
+      {
+        "q": 3,
+        "p10_A": 0.0176,
+        "p10_C": 0.0191,
+        "p10_shift": 0.0015,
+        "p01_A": 0.0749,
+        "p01_C": 0.0744,
+        "p01_shift": -0.0005,
+        "sig": false
+      },
+      {
+        "q": 9,
+        "p10_A": 0.0197,
+        "p10_C": 0.0171,
+        "p10_shift": -0.0027,
+        "p01_A": 0.0562,
+        "p01_C": 0.0548,
+        "p01_shift": -0.0014,
+        "sig": false
+      },
+      {
+        "q": 10,
+        "p10_A": 0.0455,
+        "p10_C": 0.0492,
+        "p10_shift": 0.0037,
+        "p01_A": 0.0717,
+        "p01_C": 0.0556,
+        "p01_shift": -0.0161,
+        "sig": true
+      },
+      {
+        "q": 11,
+        "p10_A": 0.0173,
+        "p10_C": 0.0169,
+        "p10_shift": -0.0004,
+        "p01_A": 0.0572,
+        "p01_C": 0.0528,
+        "p01_shift": -0.0044,
+        "sig": false
+      },
+      {
+        "q": 12,
+        "p10_A": 0.0462,
+        "p10_C": 0.0377,
+        "p10_shift": -0.0085,
+        "p01_A": 0.0835,
+        "p01_C": 0.0932,
+        "p01_shift": 0.0097,
+        "sig": false
+      }
+    ],
+    "closing_states_used": [
+      "w0",
+      "w2",
+      "w4a",
+      "w4b"
+    ],
+    "mean_abs_p10_shift": 0.0119,
+    "mean_abs_p01_shift": 0.0066,
+    "n_sig": 3,
+    "mean_p10_A": 0.0384
+  },
+  "verdict": "NEITHER clean. All three cells fell below their (clean-readout) predictions this session, so the readout calibration OVER-predicted purity for every cell \u2014 the deficit is not captured by readout. A REJECTED (deficit does not track the clean readout). The RAW comparison shows n=4 sits +0.209 below n=3 (significant: True) this session, but the n4-vs-n3 ORDERING FLIPPED across the 4-session history (n=4 was ABOVE n=3 in the first two sessions on the identical register), so this is SESSION-DEPENDENT, not a fixed n=4-geometry fault -> B not supported as a standing register fault. Localization REFUTED: the {3,12}-containing n3_alt is NOT more anomalous than n3_std (gap +0.000, sig False). Net: session-dependent, register-differentiated deficit; not the {3,12} pair; needs a repeated same-session time series + per-edge RB."
+}
