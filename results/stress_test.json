@@ -1,0 +1,1457 @@
+{
+  "meta": {
+    "seed": 0,
+    "n_samples": 60000,
+    "budgets": [
+      2000,
+      8000
+    ]
+  },
+  "part2": [
+    {
+      "ensemble": "haar_pure",
+      "n": 3,
+      "k": 2,
+      "budget": 2000,
+      "measured": 0.06978361193974192,
+      "ci": [
+        0.06499228845843491,
+        0.07452355266490801
+      ],
+      "predicted": 0.06463060439219116,
+      "rel_err": 0.07384266025095367,
+      "in_ci": false
+    },
+    {
+      "ensemble": "haar_pure",
+      "n": 3,
+      "k": 2,
+      "budget": 8000,
+      "measured": 0.0319662728577822,
+      "ci": [
+        0.03036057855563834,
+        0.03352542036006248
+      ],
+      "predicted": 0.03177751472739885,
+      "rel_err": 0.005904915196811906,
+      "in_ci": true
+    },
+    {
+      "ensemble": "haar_pure",
+      "n": 3,
+      "k": 3,
+      "budget": 2000,
+      "measured": 0.09026326885357655,
+      "ci": [
+        0.08492395351204811,
+        0.0950076719725249
+      ],
+      "predicted": 0.09567433743381779,
+      "rel_err": 0.05994762486409586,
+      "in_ci": false
+    },
+    {
+      "ensemble": "haar_pure",
+      "n": 3,
+      "k": 3,
+      "budget": 8000,
+      "measured": 0.045475421561665,
+      "ci": [
+        0.04272342439519595,
+        0.04816929622602376
+      ],
+      "predicted": 0.04758154992476834,
+      "rel_err": 0.04631355336085038,
+      "in_ci": true
+    },
+    {
+      "ensemble": "haar_pure",
+      "n": 4,
+      "k": 2,
+      "budget": 2000,
+      "measured": 0.0855575161480116,
+      "ci": [
+        0.08142133815707628,
+        0.08922675050879882
+      ],
+      "predicted": 0.08312131998556417,
+      "rel_err": 0.028474367561499743,
+      "in_ci": true
+    },
+    {
+      "ensemble": "haar_pure",
+      "n": 4,
+      "k": 2,
+      "budget": 8000,
+      "measured": 0.03494280457436685,
+      "ci": [
+        0.03290333408723735,
+        0.036846999885763995
+      ],
+      "predicted": 0.038571801934966905,
+      "rel_err": 0.10385535462320042,
+      "in_ci": false
+    },
+    {
+      "ensemble": "haar_pure",
+      "n": 4,
+      "k": 3,
+      "budget": 2000,
+      "measured": 0.12102396010014072,
+      "ci": [
+        0.11441716691759003,
+        0.1272929146414389
+      ],
+      "predicted": 0.11426190735345483,
+      "rel_err": 0.05587366948735321,
+      "in_ci": false
+    },
+    {
+      "ensemble": "haar_pure",
+      "n": 4,
+      "k": 3,
+      "budget": 8000,
+      "measured": 0.05554959283483283,
+      "ci": [
+        0.05179519824039883,
+        0.05896294897013113
+      ],
+      "predicted": 0.05644953420409253,
+      "rel_err": 0.016200683449391278,
+      "in_ci": true
+    },
+    {
+      "ensemble": "haar_pure",
+      "n": 5,
+      "k": 2,
+      "budget": 2000,
+      "measured": 0.11371244675334792,
+      "ci": [
+        0.10679370213305756,
+        0.12011038786679488
+      ],
+      "predicted": 0.12733841464223566,
+      "rel_err": 0.11982828861684457,
+      "in_ci": false
+    },
+    {
+      "ensemble": "haar_pure",
+      "n": 5,
+      "k": 2,
+      "budget": 8000,
+      "measured": 0.05281529398873284,
+      "ci": [
+        0.04981109390320681,
+        0.05552859300234365
+      ],
+      "predicted": 0.04895605446732553,
+      "rel_err": 0.07307049208569404,
+      "in_ci": false
+    },
+    {
+      "ensemble": "haar_pure",
+      "n": 5,
+      "k": 3,
+      "budget": 2000,
+      "measured": 0.13245286454821464,
+      "ci": [
+        0.12477407719538294,
+        0.13956473282491852
+      ],
+      "predicted": 0.13433899266091948,
+      "rel_err": 0.014239994877711807,
+      "in_ci": true
+    },
+    {
+      "ensemble": "haar_pure",
+      "n": 5,
+      "k": 3,
+      "budget": 8000,
+      "measured": 0.05833520190933996,
+      "ci": [
+        0.0557942656137036,
+        0.061022409782026214
+      ],
+      "predicted": 0.06495173513445184,
+      "rel_err": 0.11342265062174253,
+      "in_ci": false
+    },
+    {
+      "ensemble": "low_rank",
+      "n": 3,
+      "k": 2,
+      "budget": 2000,
+      "measured": 0.042809558814916666,
+      "ci": [
+        0.04046686842621775,
+        0.044995149425158885
+      ],
+      "predicted": 0.045464081470409874,
+      "rel_err": 0.06200770876826368,
+      "in_ci": false
+    },
+    {
+      "ensemble": "low_rank",
+      "n": 3,
+      "k": 2,
+      "budget": 8000,
+      "measured": 0.02261629073110643,
+      "ci": [
+        0.021203327278861872,
+        0.023898621164661973
+      ],
+      "predicted": 0.02199116799450093,
+      "rel_err": 0.027640374101917064,
+      "in_ci": true
+    },
+    {
+      "ensemble": "low_rank",
+      "n": 3,
+      "k": 3,
+      "budget": 2000,
+      "measured": 0.04336781024015156,
+      "ci": [
+        0.0397817301884312,
+        0.04680301571382647
+      ],
+      "predicted": 0.044892392128596505,
+      "rel_err": 0.03515468915775303,
+      "in_ci": true
+    },
+    {
+      "ensemble": "low_rank",
+      "n": 3,
+      "k": 3,
+      "budget": 8000,
+      "measured": 0.02209632459352604,
+      "ci": [
+        0.020376255330395856,
+        0.02381340341731638
+      ],
+      "predicted": 0.022142133073738204,
+      "rel_err": 0.0020731266875751993,
+      "in_ci": true
+    },
+    {
+      "ensemble": "low_rank",
+      "n": 4,
+      "k": 2,
+      "budget": 2000,
+      "measured": 0.061433863398919784,
+      "ci": [
+        0.05717401598897719,
+        0.06567933351803978
+      ],
+      "predicted": 0.06398546235379003,
+      "rel_err": 0.041534079312275735,
+      "in_ci": true
+    },
+    {
+      "ensemble": "low_rank",
+      "n": 4,
+      "k": 2,
+      "budget": 8000,
+      "measured": 0.02809188986824394,
+      "ci": [
+        0.02671755417011447,
+        0.02947141536906348
+      ],
+      "predicted": 0.02809683114210739,
+      "rel_err": 0.0001758968117355618,
+      "in_ci": true
+    },
+    {
+      "ensemble": "low_rank",
+      "n": 4,
+      "k": 3,
+      "budget": 2000,
+      "measured": 0.04862934751193524,
+      "ci": [
+        0.04545665195206516,
+        0.05140274984571156
+      ],
+      "predicted": 0.05576941591338881,
+      "rel_err": 0.14682632539334736,
+      "in_ci": false
+    },
+    {
+      "ensemble": "low_rank",
+      "n": 4,
+      "k": 3,
+      "budget": 8000,
+      "measured": 0.024491703807942314,
+      "ci": [
+        0.023107596456341785,
+        0.025731174592733046
+      ],
+      "predicted": 0.02707372641557463,
+      "rel_err": 0.10542437667382709,
+      "in_ci": false
+    },
+    {
+      "ensemble": "low_rank",
+      "n": 5,
+      "k": 2,
+      "budget": 2000,
+      "measured": 0.10564545979252934,
+      "ci": [
+        0.09991110764794592,
+        0.11155465964474758
+      ],
+      "predicted": 0.10909057154156368,
+      "rel_err": 0.032610125941994854,
+      "in_ci": true
+    },
+    {
+      "ensemble": "low_rank",
+      "n": 5,
+      "k": 2,
+      "budget": 8000,
+      "measured": 0.03994665259494274,
+      "ci": [
+        0.03722549405106112,
+        0.04241986152095033
+      ],
+      "predicted": 0.036795127679818275,
+      "rel_err": 0.07889334175458419,
+      "in_ci": false
+    },
+    {
+      "ensemble": "low_rank",
+      "n": 5,
+      "k": 3,
+      "budget": 2000,
+      "measured": 0.05798543202039557,
+      "ci": [
+        0.05464620097503919,
+        0.06106722870756413
+      ],
+      "predicted": 0.0538288788801364,
+      "rel_err": 0.07168271400991137,
+      "in_ci": false
+    },
+    {
+      "ensemble": "low_rank",
+      "n": 5,
+      "k": 3,
+      "budget": 8000,
+      "measured": 0.027840462001805035,
+      "ci": [
+        0.025607513954933967,
+        0.030084175273877953
+      ],
+      "predicted": 0.023544127345824856,
+      "rel_err": 0.15431980459597353,
+      "in_ci": false
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "n": 3,
+      "k": 2,
+      "budget": 2000,
+      "measured": 0.0645435761953389,
+      "ci": [
+        0.053096885545634735,
+        0.07519971769921972
+      ],
+      "predicted": 0.05260691478136811,
+      "rel_err": 0.1849395728839831,
+      "in_ci": false
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "n": 3,
+      "k": 2,
+      "budget": 8000,
+      "measured": 0.025588133908184627,
+      "ci": [
+        0.02270466766327295,
+        0.02821667648818977
+      ],
+      "predicted": 0.025682278944018633,
+      "rel_err": 0.0036792458634075298,
+      "in_ci": true
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "n": 3,
+      "k": 3,
+      "budget": 2000,
+      "measured": 0.05896309163543172,
+      "ci": [
+        0.053158067559891324,
+        0.06438780568000932
+      ],
+      "predicted": 0.0683219003143857,
+      "rel_err": 0.15872316765239197,
+      "in_ci": false
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "n": 3,
+      "k": 3,
+      "budget": 8000,
+      "measured": 0.03277602890942649,
+      "ci": [
+        0.029706026572568045,
+        0.03576565466950665
+      ],
+      "predicted": 0.03395351334027209,
+      "rel_err": 0.035925170620866566,
+      "in_ci": true
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "n": 4,
+      "k": 2,
+      "budget": 2000,
+      "measured": 0.06916546349887498,
+      "ci": [
+        0.06092807309324661,
+        0.07693439350187142
+      ],
+      "predicted": 0.07507727089519312,
+      "rel_err": 0.08547340099028318,
+      "in_ci": true
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "n": 4,
+      "k": 2,
+      "budget": 8000,
+      "measured": 0.030727445439520468,
+      "ci": [
+        0.027934065721358092,
+        0.03322775243280417
+      ],
+      "predicted": 0.03426762399766022,
+      "rel_err": 0.11521226406886763,
+      "in_ci": false
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "n": 4,
+      "k": 3,
+      "budget": 2000,
+      "measured": 0.07128846009601532,
+      "ci": [
+        0.06171521133272721,
+        0.0794211076242727
+      ],
+      "predicted": 0.08820612794027144,
+      "rel_err": 0.23731285290032147,
+      "in_ci": false
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "n": 4,
+      "k": 3,
+      "budget": 8000,
+      "measured": 0.045060655839057724,
+      "ci": [
+        0.04042639678764603,
+        0.04930814588177736
+      ],
+      "predicted": 0.04347561699064589,
+      "rel_err": 0.03517567196698342,
+      "in_ci": true
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "n": 5,
+      "k": 2,
+      "budget": 2000,
+      "measured": 0.13291901614080254,
+      "ci": [
+        0.1216255252529875,
+        0.14427128959992994
+      ],
+      "predicted": 0.12519639840915728,
+      "rel_err": 0.058100172239197195,
+      "in_ci": true
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "n": 5,
+      "k": 2,
+      "budget": 8000,
+      "measured": 0.04298317764572066,
+      "ci": [
+        0.03867139916365707,
+        0.04696315550559982
+      ],
+      "predicted": 0.04767386559538892,
+      "rel_err": 0.10912845923887289,
+      "in_ci": false
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "n": 5,
+      "k": 3,
+      "budget": 2000,
+      "measured": 0.08625320355738297,
+      "ci": [
+        0.07591679203258156,
+        0.09469557236596338
+      ],
+      "predicted": 0.11248233792059363,
+      "rel_err": 0.3040946107672488,
+      "in_ci": false
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "n": 5,
+      "k": 3,
+      "budget": 8000,
+      "measured": 0.05001680217020441,
+      "ci": [
+        0.04349257987838914,
+        0.055490151769491285
+      ],
+      "predicted": 0.05388378194188721,
+      "rel_err": 0.07731361470338871,
+      "in_ci": true
+    }
+  ],
+  "part3": [
+    {
+      "ensemble": "haar_pure",
+      "n": 2,
+      "k": 2,
+      "noise": "depolarizing",
+      "g": 0.2,
+      "error": 0.0
+    },
+    {
+      "ensemble": "haar_pure",
+      "n": 2,
+      "k": 2,
+      "noise": "depolarizing",
+      "g": 0.3,
+      "error": 1.1102230246251565e-16
+    },
+    {
+      "ensemble": "haar_pure",
+      "n": 2,
+      "k": 3,
+      "noise": "depolarizing",
+      "g": 0.2,
+      "error": 5.551115123125783e-16
+    },
+    {
+      "ensemble": "haar_pure",
+      "n": 2,
+      "k": 3,
+      "noise": "depolarizing",
+      "g": 0.3,
+      "error": 2.220446049250313e-16
+    },
+    {
+      "ensemble": "haar_pure",
+      "n": 2,
+      "k": 4,
+      "noise": "depolarizing",
+      "g": 0.2,
+      "error": 5.662137425588298e-15
+    },
+    {
+      "ensemble": "haar_pure",
+      "n": 2,
+      "k": 4,
+      "noise": "depolarizing",
+      "g": 0.3,
+      "error": 2.220446049250313e-16
+    },
+    {
+      "ensemble": "haar_pure",
+      "n": 2,
+      "k": 2,
+      "noise": "amplitude_damping",
+      "g": 0.2,
+      "error": 1.1102230246251565e-16
+    },
+    {
+      "ensemble": "haar_pure",
+      "n": 2,
+      "k": 2,
+      "noise": "amplitude_damping",
+      "g": 0.3,
+      "error": 1.1102230246251565e-16
+    },
+    {
+      "ensemble": "haar_pure",
+      "n": 2,
+      "k": 3,
+      "noise": "amplitude_damping",
+      "g": 0.2,
+      "error": 4.440892098500626e-16
+    },
+    {
+      "ensemble": "haar_pure",
+      "n": 2,
+      "k": 3,
+      "noise": "amplitude_damping",
+      "g": 0.3,
+      "error": 4.440892098500626e-16
+    },
+    {
+      "ensemble": "haar_pure",
+      "n": 2,
+      "k": 4,
+      "noise": "amplitude_damping",
+      "g": 0.2,
+      "error": 7.771561172376096e-16
+    },
+    {
+      "ensemble": "haar_pure",
+      "n": 2,
+      "k": 4,
+      "noise": "amplitude_damping",
+      "g": 0.3,
+      "error": 1.2212453270876722e-15
+    },
+    {
+      "ensemble": "haar_pure",
+      "n": 2,
+      "k": 2,
+      "noise": "dephasing",
+      "g": 0.2,
+      "error": 3.3306690738754696e-16
+    },
+    {
+      "ensemble": "haar_pure",
+      "n": 2,
+      "k": 2,
+      "noise": "dephasing",
+      "g": 0.3,
+      "error": 2.220446049250313e-16
+    },
+    {
+      "ensemble": "haar_pure",
+      "n": 2,
+      "k": 3,
+      "noise": "dephasing",
+      "g": 0.2,
+      "error": 2.220446049250313e-16
+    },
+    {
+      "ensemble": "haar_pure",
+      "n": 2,
+      "k": 3,
+      "noise": "dephasing",
+      "g": 0.3,
+      "error": 0.0
+    },
+    {
+      "ensemble": "haar_pure",
+      "n": 2,
+      "k": 4,
+      "noise": "dephasing",
+      "g": 0.2,
+      "error": 7.771561172376096e-16
+    },
+    {
+      "ensemble": "haar_pure",
+      "n": 2,
+      "k": 4,
+      "noise": "dephasing",
+      "g": 0.3,
+      "error": 9.992007221626409e-16
+    },
+    {
+      "ensemble": "haar_pure",
+      "n": 3,
+      "k": 2,
+      "noise": "depolarizing",
+      "g": 0.2,
+      "error": 0.0
+    },
+    {
+      "ensemble": "haar_pure",
+      "n": 3,
+      "k": 2,
+      "noise": "depolarizing",
+      "g": 0.3,
+      "error": 1.1102230246251565e-16
+    },
+    {
+      "ensemble": "haar_pure",
+      "n": 3,
+      "k": 3,
+      "noise": "depolarizing",
+      "g": 0.2,
+      "error": 1.1102230246251565e-16
+    },
+    {
+      "ensemble": "haar_pure",
+      "n": 3,
+      "k": 3,
+      "noise": "depolarizing",
+      "g": 0.3,
+      "error": 4.440892098500626e-16
+    },
+    {
+      "ensemble": "haar_pure",
+      "n": 3,
+      "k": 2,
+      "noise": "amplitude_damping",
+      "g": 0.2,
+      "error": 4.440892098500626e-16
+    },
+    {
+      "ensemble": "haar_pure",
+      "n": 3,
+      "k": 2,
+      "noise": "amplitude_damping",
+      "g": 0.3,
+      "error": 1.1102230246251565e-16
+    },
+    {
+      "ensemble": "haar_pure",
+      "n": 3,
+      "k": 3,
+      "noise": "amplitude_damping",
+      "g": 0.2,
+      "error": 2.7755575615628914e-16
+    },
+    {
+      "ensemble": "haar_pure",
+      "n": 3,
+      "k": 3,
+      "noise": "amplitude_damping",
+      "g": 0.3,
+      "error": 4.996003610813204e-16
+    },
+    {
+      "ensemble": "haar_pure",
+      "n": 3,
+      "k": 2,
+      "noise": "dephasing",
+      "g": 0.2,
+      "error": 0.0
+    },
+    {
+      "ensemble": "haar_pure",
+      "n": 3,
+      "k": 2,
+      "noise": "dephasing",
+      "g": 0.3,
+      "error": 1.1102230246251565e-16
+    },
+    {
+      "ensemble": "haar_pure",
+      "n": 3,
+      "k": 3,
+      "noise": "dephasing",
+      "g": 0.2,
+      "error": 9.992007221626409e-16
+    },
+    {
+      "ensemble": "haar_pure",
+      "n": 3,
+      "k": 3,
+      "noise": "dephasing",
+      "g": 0.3,
+      "error": 1.6653345369377348e-16
+    },
+    {
+      "ensemble": "low_rank",
+      "n": 2,
+      "k": 2,
+      "noise": "depolarizing",
+      "g": 0.2,
+      "error": 2.220446049250313e-16
+    },
+    {
+      "ensemble": "low_rank",
+      "n": 2,
+      "k": 2,
+      "noise": "depolarizing",
+      "g": 0.3,
+      "error": 0.0
+    },
+    {
+      "ensemble": "low_rank",
+      "n": 2,
+      "k": 3,
+      "noise": "depolarizing",
+      "g": 0.2,
+      "error": 5.551115123125783e-17
+    },
+    {
+      "ensemble": "low_rank",
+      "n": 2,
+      "k": 3,
+      "noise": "depolarizing",
+      "g": 0.3,
+      "error": 5.551115123125783e-17
+    },
+    {
+      "ensemble": "low_rank",
+      "n": 2,
+      "k": 4,
+      "noise": "depolarizing",
+      "g": 0.2,
+      "error": 2.7755575615628914e-16
+    },
+    {
+      "ensemble": "low_rank",
+      "n": 2,
+      "k": 4,
+      "noise": "depolarizing",
+      "g": 0.3,
+      "error": 1.1102230246251565e-16
+    },
+    {
+      "ensemble": "low_rank",
+      "n": 2,
+      "k": 2,
+      "noise": "amplitude_damping",
+      "g": 0.2,
+      "error": 2.220446049250313e-16
+    },
+    {
+      "ensemble": "low_rank",
+      "n": 2,
+      "k": 2,
+      "noise": "amplitude_damping",
+      "g": 0.3,
+      "error": 2.220446049250313e-16
+    },
+    {
+      "ensemble": "low_rank",
+      "n": 2,
+      "k": 3,
+      "noise": "amplitude_damping",
+      "g": 0.2,
+      "error": 3.885780586188048e-16
+    },
+    {
+      "ensemble": "low_rank",
+      "n": 2,
+      "k": 3,
+      "noise": "amplitude_damping",
+      "g": 0.3,
+      "error": 3.885780586188048e-16
+    },
+    {
+      "ensemble": "low_rank",
+      "n": 2,
+      "k": 4,
+      "noise": "amplitude_damping",
+      "g": 0.2,
+      "error": 4.440892098500626e-16
+    },
+    {
+      "ensemble": "low_rank",
+      "n": 2,
+      "k": 4,
+      "noise": "amplitude_damping",
+      "g": 0.3,
+      "error": 6.661338147750939e-16
+    },
+    {
+      "ensemble": "low_rank",
+      "n": 2,
+      "k": 2,
+      "noise": "dephasing",
+      "g": 0.2,
+      "error": 4.440892098500626e-16
+    },
+    {
+      "ensemble": "low_rank",
+      "n": 2,
+      "k": 2,
+      "noise": "dephasing",
+      "g": 0.3,
+      "error": 2.220446049250313e-16
+    },
+    {
+      "ensemble": "low_rank",
+      "n": 2,
+      "k": 3,
+      "noise": "dephasing",
+      "g": 0.2,
+      "error": 3.3306690738754696e-16
+    },
+    {
+      "ensemble": "low_rank",
+      "n": 2,
+      "k": 3,
+      "noise": "dephasing",
+      "g": 0.3,
+      "error": 2.7755575615628914e-16
+    },
+    {
+      "ensemble": "low_rank",
+      "n": 2,
+      "k": 4,
+      "noise": "dephasing",
+      "g": 0.2,
+      "error": 3.885780586188048e-16
+    },
+    {
+      "ensemble": "low_rank",
+      "n": 2,
+      "k": 4,
+      "noise": "dephasing",
+      "g": 0.3,
+      "error": 4.996003610813204e-16
+    },
+    {
+      "ensemble": "low_rank",
+      "n": 3,
+      "k": 2,
+      "noise": "depolarizing",
+      "g": 0.2,
+      "error": 5.551115123125783e-17
+    },
+    {
+      "ensemble": "low_rank",
+      "n": 3,
+      "k": 2,
+      "noise": "depolarizing",
+      "g": 0.3,
+      "error": 1.1102230246251565e-16
+    },
+    {
+      "ensemble": "low_rank",
+      "n": 3,
+      "k": 3,
+      "noise": "depolarizing",
+      "g": 0.2,
+      "error": 3.3306690738754696e-16
+    },
+    {
+      "ensemble": "low_rank",
+      "n": 3,
+      "k": 3,
+      "noise": "depolarizing",
+      "g": 0.3,
+      "error": 2.7755575615628914e-16
+    },
+    {
+      "ensemble": "low_rank",
+      "n": 3,
+      "k": 2,
+      "noise": "amplitude_damping",
+      "g": 0.2,
+      "error": 2.220446049250313e-16
+    },
+    {
+      "ensemble": "low_rank",
+      "n": 3,
+      "k": 2,
+      "noise": "amplitude_damping",
+      "g": 0.3,
+      "error": 5.551115123125783e-17
+    },
+    {
+      "ensemble": "low_rank",
+      "n": 3,
+      "k": 3,
+      "noise": "amplitude_damping",
+      "g": 0.2,
+      "error": 1.3877787807814457e-16
+    },
+    {
+      "ensemble": "low_rank",
+      "n": 3,
+      "k": 3,
+      "noise": "amplitude_damping",
+      "g": 0.3,
+      "error": 3.885780586188048e-16
+    },
+    {
+      "ensemble": "low_rank",
+      "n": 3,
+      "k": 2,
+      "noise": "dephasing",
+      "g": 0.2,
+      "error": 2.7755575615628914e-16
+    },
+    {
+      "ensemble": "low_rank",
+      "n": 3,
+      "k": 2,
+      "noise": "dephasing",
+      "g": 0.3,
+      "error": 5.551115123125783e-17
+    },
+    {
+      "ensemble": "low_rank",
+      "n": 3,
+      "k": 3,
+      "noise": "dephasing",
+      "g": 0.2,
+      "error": 2.7755575615628914e-16
+    },
+    {
+      "ensemble": "low_rank",
+      "n": 3,
+      "k": 3,
+      "noise": "dephasing",
+      "g": 0.3,
+      "error": 1.3877787807814457e-17
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "n": 2,
+      "k": 2,
+      "noise": "depolarizing",
+      "g": 0.2,
+      "error": 2.220446049250313e-16
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "n": 2,
+      "k": 2,
+      "noise": "depolarizing",
+      "g": 0.3,
+      "error": 1.1102230246251565e-16
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "n": 2,
+      "k": 3,
+      "noise": "depolarizing",
+      "g": 0.2,
+      "error": 2.220446049250313e-16
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "n": 2,
+      "k": 3,
+      "noise": "depolarizing",
+      "g": 0.3,
+      "error": 2.220446049250313e-16
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "n": 2,
+      "k": 4,
+      "noise": "depolarizing",
+      "g": 0.2,
+      "error": 3.3306690738754696e-16
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "n": 2,
+      "k": 4,
+      "noise": "depolarizing",
+      "g": 0.3,
+      "error": 2.7755575615628914e-16
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "n": 2,
+      "k": 2,
+      "noise": "amplitude_damping",
+      "g": 0.2,
+      "error": 3.3306690738754696e-16
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "n": 2,
+      "k": 2,
+      "noise": "amplitude_damping",
+      "g": 0.3,
+      "error": 0.0
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "n": 2,
+      "k": 3,
+      "noise": "amplitude_damping",
+      "g": 0.2,
+      "error": 3.885780586188048e-16
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "n": 2,
+      "k": 3,
+      "noise": "amplitude_damping",
+      "g": 0.3,
+      "error": 0.0
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "n": 2,
+      "k": 4,
+      "noise": "amplitude_damping",
+      "g": 0.2,
+      "error": 2.7755575615628914e-16
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "n": 2,
+      "k": 4,
+      "noise": "amplitude_damping",
+      "g": 0.3,
+      "error": 5.551115123125783e-17
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "n": 2,
+      "k": 2,
+      "noise": "dephasing",
+      "g": 0.2,
+      "error": 0.0
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "n": 2,
+      "k": 2,
+      "noise": "dephasing",
+      "g": 0.3,
+      "error": 1.1102230246251565e-16
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "n": 2,
+      "k": 3,
+      "noise": "dephasing",
+      "g": 0.2,
+      "error": 2.220446049250313e-16
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "n": 2,
+      "k": 3,
+      "noise": "dephasing",
+      "g": 0.3,
+      "error": 1.6653345369377348e-16
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "n": 2,
+      "k": 4,
+      "noise": "dephasing",
+      "g": 0.2,
+      "error": 0.0
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "n": 2,
+      "k": 4,
+      "noise": "dephasing",
+      "g": 0.3,
+      "error": 1.3877787807814457e-16
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "n": 3,
+      "k": 2,
+      "noise": "depolarizing",
+      "g": 0.2,
+      "error": 1.1102230246251565e-16
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "n": 3,
+      "k": 2,
+      "noise": "depolarizing",
+      "g": 0.3,
+      "error": 2.220446049250313e-16
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "n": 3,
+      "k": 3,
+      "noise": "depolarizing",
+      "g": 0.2,
+      "error": 0.0
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "n": 3,
+      "k": 3,
+      "noise": "depolarizing",
+      "g": 0.3,
+      "error": 5.551115123125783e-17
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "n": 3,
+      "k": 2,
+      "noise": "amplitude_damping",
+      "g": 0.2,
+      "error": 5.551115123125783e-17
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "n": 3,
+      "k": 2,
+      "noise": "amplitude_damping",
+      "g": 0.3,
+      "error": 5.551115123125783e-17
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "n": 3,
+      "k": 3,
+      "noise": "amplitude_damping",
+      "g": 0.2,
+      "error": 1.1102230246251565e-16
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "n": 3,
+      "k": 3,
+      "noise": "amplitude_damping",
+      "g": 0.3,
+      "error": 0.0
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "n": 3,
+      "k": 2,
+      "noise": "dephasing",
+      "g": 0.2,
+      "error": 0.0
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "n": 3,
+      "k": 2,
+      "noise": "dephasing",
+      "g": 0.3,
+      "error": 0.0
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "n": 3,
+      "k": 3,
+      "noise": "dephasing",
+      "g": 0.2,
+      "error": 5.551115123125783e-17
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "n": 3,
+      "k": 3,
+      "noise": "dephasing",
+      "g": 0.3,
+      "error": 8.326672684688674e-17
+    }
+  ],
+  "part4": [
+    {
+      "ensemble": "haar_pure",
+      "noise": "depolarizing",
+      "rate": 0.05,
+      "predicted_n": 2,
+      "measured_n": 2,
+      "delta": 0
+    },
+    {
+      "ensemble": "haar_pure",
+      "noise": "depolarizing",
+      "rate": 0.1,
+      "predicted_n": 5,
+      "measured_n": 5,
+      "delta": 0
+    },
+    {
+      "ensemble": "haar_pure",
+      "noise": "depolarizing",
+      "rate": 0.3,
+      "predicted_n": null,
+      "measured_n": null,
+      "delta": null
+    },
+    {
+      "ensemble": "haar_pure",
+      "noise": "amplitude_damping",
+      "rate": 0.05,
+      "predicted_n": 6,
+      "measured_n": null,
+      "delta": null
+    },
+    {
+      "ensemble": "haar_pure",
+      "noise": "amplitude_damping",
+      "rate": 0.1,
+      "predicted_n": null,
+      "measured_n": null,
+      "delta": null
+    },
+    {
+      "ensemble": "haar_pure",
+      "noise": "amplitude_damping",
+      "rate": 0.3,
+      "predicted_n": null,
+      "measured_n": null,
+      "delta": null
+    },
+    {
+      "ensemble": "haar_pure",
+      "noise": "dephasing",
+      "rate": 0.05,
+      "predicted_n": 6,
+      "measured_n": null,
+      "delta": null
+    },
+    {
+      "ensemble": "haar_pure",
+      "noise": "dephasing",
+      "rate": 0.1,
+      "predicted_n": null,
+      "measured_n": null,
+      "delta": null
+    },
+    {
+      "ensemble": "haar_pure",
+      "noise": "dephasing",
+      "rate": 0.3,
+      "predicted_n": null,
+      "measured_n": null,
+      "delta": null
+    },
+    {
+      "ensemble": "low_rank",
+      "noise": "depolarizing",
+      "rate": 0.05,
+      "predicted_n": 2,
+      "measured_n": 2,
+      "delta": 0
+    },
+    {
+      "ensemble": "low_rank",
+      "noise": "depolarizing",
+      "rate": 0.1,
+      "predicted_n": 4,
+      "measured_n": 4,
+      "delta": 0
+    },
+    {
+      "ensemble": "low_rank",
+      "noise": "depolarizing",
+      "rate": 0.3,
+      "predicted_n": 6,
+      "measured_n": 6,
+      "delta": 0
+    },
+    {
+      "ensemble": "low_rank",
+      "noise": "amplitude_damping",
+      "rate": 0.05,
+      "predicted_n": 6,
+      "measured_n": 6,
+      "delta": 0
+    },
+    {
+      "ensemble": "low_rank",
+      "noise": "amplitude_damping",
+      "rate": 0.1,
+      "predicted_n": 6,
+      "measured_n": 6,
+      "delta": 0
+    },
+    {
+      "ensemble": "low_rank",
+      "noise": "amplitude_damping",
+      "rate": 0.3,
+      "predicted_n": null,
+      "measured_n": null,
+      "delta": null
+    },
+    {
+      "ensemble": "low_rank",
+      "noise": "dephasing",
+      "rate": 0.05,
+      "predicted_n": 6,
+      "measured_n": 6,
+      "delta": 0
+    },
+    {
+      "ensemble": "low_rank",
+      "noise": "dephasing",
+      "rate": 0.1,
+      "predicted_n": 6,
+      "measured_n": 6,
+      "delta": 0
+    },
+    {
+      "ensemble": "low_rank",
+      "noise": "dephasing",
+      "rate": 0.3,
+      "predicted_n": null,
+      "measured_n": null,
+      "delta": null
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "noise": "depolarizing",
+      "rate": 0.05,
+      "predicted_n": 2,
+      "measured_n": 2,
+      "delta": 0
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "noise": "depolarizing",
+      "rate": 0.1,
+      "predicted_n": 4,
+      "measured_n": 5,
+      "delta": -1
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "noise": "depolarizing",
+      "rate": 0.3,
+      "predicted_n": 6,
+      "measured_n": 6,
+      "delta": 0
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "noise": "amplitude_damping",
+      "rate": 0.05,
+      "predicted_n": 6,
+      "measured_n": 6,
+      "delta": 0
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "noise": "amplitude_damping",
+      "rate": 0.1,
+      "predicted_n": null,
+      "measured_n": 6,
+      "delta": null
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "noise": "amplitude_damping",
+      "rate": 0.3,
+      "predicted_n": null,
+      "measured_n": null,
+      "delta": null
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "noise": "dephasing",
+      "rate": 0.05,
+      "predicted_n": 6,
+      "measured_n": 6,
+      "delta": 0
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "noise": "dephasing",
+      "rate": 0.1,
+      "predicted_n": 6,
+      "measured_n": 6,
+      "delta": 0
+    },
+    {
+      "ensemble": "ghz_noisy",
+      "noise": "dephasing",
+      "rate": 0.3,
+      "predicted_n": null,
+      "measured_n": null,
+      "delta": null
+    }
+  ],
+  "wall_seconds": 2.8
+}

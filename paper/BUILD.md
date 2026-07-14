@@ -4,11 +4,13 @@
 
 | file | what it is |
 |---|---|
-| `paper.tex` | The LaTeX source. Self-contained: the bibliography is embedded, so there is no separate `.bib` step. |
-| `paper.pdf` | Compiled output, 29 pages. Verified to build with zero errors. |
-| `PAPER.md` | The markdown source. Edit here if you prefer, then regenerate. |
-| `VERIFICATION.md` | The 40-row checklist. **Nothing is submittable until this is green.** |
-| `refs.bib` | BibTeX version of the references, if you later want to switch to `\bibliography{refs}`. |
+| `paper.tex` | **The single source of truth.** Self-contained LaTeX: the bibliography is embedded, so there is no separate `.bib` step. |
+| `paper.pdf` | Compiled output, 36 pages. Builds with zero errors. |
+| `refs.bib` | BibTeX version of the references (all author-verified against arXiv), if you later want to switch to `\bibliography{refs}`. |
+| `VERIFICATION.md` | The verification record. Every paper number was checked against the saved results, and all 16 references were verified against arXiv (closure note at the top). |
+| `DISCREPANCIES.md` | Audit log of the corrections made during verification. |
+| `archive/PAPER_draft.md` | Historical Markdown draft, superseded by `paper.tex`. Do not edit. |
+| `archive/OUTLINE_draft.md` | Historical planning outline. Do not edit. |
 
 ## Easiest path: Overleaf
 
@@ -44,9 +46,12 @@ The document class line is:
 
 **Pandoc `longtable`.** Pandoc emits `longtable` with `calc`-computed column widths, which conflicts with REVTeX. All tables were converted to plain `tabular` inside `table` environments.
 
+## Done during verification
+
+1. **Verified every number against the `anrl` repo.** Each quantitative claim was checked against the saved results; corrections are logged in `DISCREPANCIES.md`.
+2. **Figures.** All six figures are inserted (`\includegraphics`); they regenerate from `anrl/figures/` — see the repository `README.md`.
+3. **References.** All 16 were verified against arXiv (one, the misapplied coherence-of-noise paper, was removed, leaving 15).
+
 ## Still to do before submission
 
-1. **Run `VERIFICATION.md` against the `anrl` repo.** Every number in the paper was written from the conversation record, not from the saved results. One number in this project was previously misreported. Do not skip this.
-2. **Figures.** The paper currently has no `\includegraphics`. Five figures exist in `results/figures/` and a sixth (hardware: measured vs pre-registered bands, plus cross-session drift) does not yet exist and must be generated.
-3. **Affiliation and mentor authorship.** Placeholders in the preamble.
-4. **Confirm all 16 references bibliographically.** Titles came from web search; author lists mostly did not.
+1. **Affiliation and mentor authorship.** Placeholders remain in the preamble (`[affiliation]`, mentor name).

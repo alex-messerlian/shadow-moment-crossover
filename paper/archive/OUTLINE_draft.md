@@ -1,3 +1,8 @@
+<!-- HISTORICAL DRAFT. Superseded by paper.tex. Do not edit. -->
+
+> **⚠️ HISTORICAL DRAFT — superseded by [`paper.tex`](../paper.tex). Do not edit.**
+> Kept for provenance only; the compiled paper is the single source of truth.
+
 # The Sample-Complexity Transition in Single-Copy Estimation of Quantum State Moments
 
 **Working title.** Alternative: "When Is Collective Quantum Measurement Worth the Noise? An Exact Variance Law and Its Crossover"
