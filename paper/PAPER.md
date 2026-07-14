@@ -30,7 +30,7 @@ Two routes exist to obtain them. The single-copy route measures one copy of the 
 
 The asymptotic separation between the two is settled. Single-copy strategies require exponentially more samples than collective ones for a family of learning tasks [2, 3], and the lower bound for purity estimation without quantum memory is $\Omega(\max\{1/\varepsilon^2, 2^{n/2}/\varepsilon\})$ [4]. What is not settled is the practical question that an experimentalist actually faces: on this device, at this noise level, at this system size, which route costs less? The collective route buys variance reduction and pays in noise-induced bias. Whether that trade is worth making depends on numbers, and the numbers have not been computed.
 
-The gap is visible in recent experimental work. A May 2026 study of quantum machine learning advantage on tens of noisy qubits [5] considered collective measurements and rejected them, on the grounds that the inter-copy entangling operations would increase qubit count, two-qubit depth, and routing overhead, introducing an additional noise source. The authors restricted attention to single-copy schemes and left a systematic multi-copy benchmark for future work. On the theory side, a January 2026 result [6] showed that implementing collective-measurement primitives on noisy systems can inflate sample complexity exponentially. The caution is reasonable. It has never been measured.
+The gap is visible in recent work. A May 2026 study of quantum machine learning advantage on tens of noisy qubits [5] declined to give its measure-first protocol multi-copy access, citing both a theoretical result specific to their learning task—even multiple noiseless copies do not let a measure-first protocol solve it efficiently—and the resource demands of multi-copy entangled measurements, which increase qubit count, two-qubit depth, and routing overhead. Their learning task is not moment estimation, so their open questions are not ours; but their caution about the resource cost of multi-copy measurement is a premise we can now test quantitatively. The caution is reasonable. It has never been measured.
 
 The reason the numbers have not been computed is that the single-copy side of the ledger has been available only as worst-case bounds. The shadow-norm analysis of second-order functionals splits the variance into a kernel term bounded by $4^{|AB|}$ and linear terms bounded by $2^{|AB|}$ [7, 8]. Bounds of this kind are state-independent by construction, and they express sample complexity as a fixed power of the budget. That framing conceals a structural feature of the estimator, and the feature turns out not to be a detail.
 
@@ -260,7 +260,7 @@ at $n = 2, 4, 6, 8, 10$, growing by roughly a factor of 2.5 per qubit and accele
 
 At ten qubits the single-copy estimate carries an error fifteen times larger than the quantity it is estimating. The collective route over the same range stays bounded, because its error is a bias floor and the floor cannot exceed $\mathrm{Tr}(\rho^k)$.
 
-This is the number that answers the question left open in [5]. The entangling overhead those authors were concerned about is real, and it is not the binding constraint. The binding constraint is that single-copy estimation of nonlinear functionals does not survive to the system sizes they are entering. Whether the collective route survives on a real device is a separate question, and it is the one we take up next.
+This number speaks directly to the resource-cost concern behind the choice in [5] to keep its measure-first protocol single-copy—though that learning task is not moment estimation, and the open questions it poses are not ours. The entangling overhead that motivates such caution is real, and it is not the binding constraint. The binding constraint is that single-copy estimation of nonlinear functionals does not survive to the system sizes they are entering. Whether the collective route survives on a real device is a separate question, and it is the one we take up next.
 
 ---
 
@@ -284,7 +284,7 @@ Jobs were submitted as OpenQASM 3 with physical-qubit addressing, which the plat
 
 The destructive SWAP test at $n = 2$ transpiles onto physical qubits $\{0, 1, 9, 10\}$ using four CZ gates and zero routing SWAPs. The GHZ ladders at $n = 3$ and $n = 4$ likewise map with zero routing, at $3n - 2$ CZ gates, and the ladders nest. Measured CZ error on these qubits is at or below the published median of 0.9%, and gate error accounts for roughly 0.042 of the purity deficit at $n = 2$ against a total deficit of 0.29.
 
-The concern that motivated the field's retreat to single-copy schemes, namely that collective measurement demands significant qubit count, two-qubit depth, and routing overhead [5], does not materialize for the destructive SWAP test on a square-lattice device. Four two-qubit gates and no routing is not an overhead problem, and the gates contribute about a seventh (roughly 14%) of the observed error. Whatever is degrading the collective measurement on this hardware, it is not the entangling overhead.
+The resource-demand concern cited in [5]—that collective measurement demands significant qubit count, two-qubit depth, and routing overhead—does not materialize for the destructive SWAP test on a square-lattice device. Four two-qubit gates and no routing is not an overhead problem, and the gates contribute about a seventh (roughly 14%) of the observed error. Whatever is degrading the collective measurement on this hardware, it is not the entangling overhead.
 
 For contrast and for honesty about scope: Haar-random states at $n = 4$ require 46 CZ gates including 20 routing SWAPs on this topology. The favorable transpilation is a property of structured states on a matched topology, not of the SWAP test in general. We therefore restrict the hardware series to GHZ ladders and say so.
 
@@ -376,7 +376,7 @@ Single-copy classical shadows are therefore economically infeasible on per-circu
 
 **Sample-complexity lower bounds for purity.** Gong et al. [4] improve the lower bound for purity estimation without quantum memory to $\Omega(\max\{1/\varepsilon^2,\, 2^{n/2}/\varepsilon\})$. Our exact variance is consistent with this bound and supplies the state-dependent constant it leaves open.
 
-**Collective measurement on noisy hardware.** The exponential single-copy versus collective separation is established in [2, 3]. The practical question of whether it survives noise is raised and left open in [5], and the theoretical hazard is characterized in [6]. Section 5 answers the first question and Section 6 tests the answer on hardware.
+**Collective measurement on noisy hardware.** The exponential single-copy versus collective separation is established in [2, 3]. A recent study of quantum machine learning on tens of noisy qubits [5] keeps its measure-first protocol single-copy, partly to avoid the resource cost of multi-copy entangled measurements; that cost concern, though raised for a different learning task, is one our moment-estimation results speak to directly. See also [6]. Section 5 quantifies the separation under noise, and Section 6 tests the collective route on hardware.
 
 **NISQ device stability.** Dasgupta and Humble [11, 12] quantify the temporal and spatial instability of superconducting devices over 22 months, and related work analyzes calibration drift across devices [13]. Section 6.6 confirms their conclusions in the specific setting of collective-measurement protocols and claims no priority over them.
 
@@ -440,7 +440,7 @@ All code, raw measurement counts, and analysis are available at [repository URL]
 
 [4] W. Gong et al., "On the sample complexity of purity and inner product estimation." arXiv:2410.12712.
 
-[5] "Evidence of quantum machine learning advantage with tens of noisy qubits" (2026). arXiv:2605.21346.
+[5] O. Danaci, Y. J. Patel, R. Molteni, E. van Nieuwenburg, V. Dunjko, and J. A. Krzywda, "Evidence of quantum machine learning advantage with tens of noisy qubits" (2026). arXiv:2605.21346.
 
 [6] "Noisy quantum learning theory" (2026). arXiv:2512.10929.
 

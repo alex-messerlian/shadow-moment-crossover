@@ -6,6 +6,19 @@
 
 ---
 
+## 🛑 SUBMISSION BLOCKER: references unverified
+
+**This must be resolved before the paper is submitted anywhere.**
+
+- **Reference [7]** (arXiv:2106.10190) currently carries a title the drafting model could not verify and **may belong to a different paper entirely**. It must be checked against **arxiv.org/abs/2106.10190** before submission.
+- The same applies to **[8]** (arXiv:2102.10132), **[6]** (arXiv:2512.10929), and the **co-author list of [4]** (Gong et al. — the "et al." is unconfirmed and incomplete).
+- More broadly, **every reference except [5] and [10]** has an author list, journal, volume, or page numbers that has **not** been confirmed against the arXiv or journal record. Each such entry is marked with a visible `% UNVERIFIED` comment in `refs.bib` and in the `thebibliography` block of `paper.tex`.
+- **The author must verify all references personally against arxiv.org.** Neither Claude Code nor the drafting model has done so reliably.
+
+Only **[5]** (arXiv:2605.21346, Danaci et al. — author list and content confirmed against the paper's full text) and **[10]** (Open Quantum white paper, required by the Public Tier licence) are verified.
+
+---
+
 ## Section 2 — Estimators
 
 | # | Claim in paper | Where to check | Status |
