@@ -4,6 +4,10 @@
   laws (global depolarizing; per-qubit channel).
 * :mod:`~anrl.theory.variance` — Part 2: the single-copy variance law (Hoeffding
   decomposition, the budget threshold ``M*``, the effective exponent).
+* :mod:`~anrl.theory.single_copy_law` — Part 2 (derived + independently verified):
+  the exact k=2 Hoeffding variance ``[4(M-2)zeta1 + 2 zeta2]/[M(M-1)]``, the
+  corrected crossover ``M* = zeta2/(2 zeta1)``, the alpha predictor, and the
+  single-qubit closed form.
 * :mod:`~anrl.theory.crossover` — Part 3: the crossover predictor and the
   comparison against the measured sweeps in ``results/``.
 """
@@ -32,6 +36,15 @@ from .general import (
     predict_crossover_general,
     predicted_collective_rmse_general,
     sample_batched_general,
+)
+from .single_copy_law import (
+    REFERENCE_SCALINGS_Q0_1,
+    crossover_budget,
+    hoeffding_rmse,
+    hoeffding_variance,
+    predicted_alpha,
+    single_qubit_second_moment,
+    single_qubit_zeta1,
 )
 from .variance import (
     alpha_eff,
@@ -68,6 +81,14 @@ __all__ = [
     "alpha_eff",
     "fitted_alpha",
     "exact_fitted_alpha",
+    # first-principles single-copy law (derived + verified)
+    "hoeffding_variance",
+    "hoeffding_rmse",
+    "crossover_budget",
+    "predicted_alpha",
+    "single_qubit_second_moment",
+    "single_qubit_zeta1",
+    "REFERENCE_SCALINGS_Q0_1",
     # crossover (Part 3)
     "noisy_pure_moment",
     "predicted_single_rmse",

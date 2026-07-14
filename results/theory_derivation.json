@@ -1,0 +1,353 @@
+{
+  "claim1": {
+    "verdict": "VERIFIED",
+    "rows": [
+      {
+        "case": "noisy_pure n=1 q=0.1",
+        "M": 4,
+        "brute_var": 1.4370767354358502,
+        "exact_formula": 1.3923473038481948,
+        "ratio": 1.032
+      },
+      {
+        "case": "noisy_pure n=1 q=0.1",
+        "M": 8,
+        "brute_var": 0.42365941566828696,
+        "exact_formula": 0.4250827349053514,
+        "ratio": 0.997
+      },
+      {
+        "case": "noisy_pure n=2 q=0.1",
+        "M": 4,
+        "brute_var": 9.178313653311518,
+        "exact_formula": 9.181485068024996,
+        "ratio": 1.0
+      },
+      {
+        "case": "noisy_pure n=2 q=0.1",
+        "M": 8,
+        "brute_var": 2.3068310270813517,
+        "exact_formula": 2.255591953470968,
+        "ratio": 1.023
+      },
+      {
+        "case": "ghz n=2 q=0.15",
+        "M": 4,
+        "brute_var": 8.809742149657627,
+        "exact_formula": 8.77667946345222,
+        "ratio": 1.004
+      },
+      {
+        "case": "ghz n=2 q=0.15",
+        "M": 8,
+        "brute_var": 2.152844302426838,
+        "exact_formula": 2.1444737059288763,
+        "ratio": 1.004
+      }
+    ]
+  },
+  "claim2_scalings": {
+    "fits_n2_7": {
+      "zeta1": {
+        "base": 1.3460713833231341,
+        "base_se": 0.0311003390473138,
+        "prefactor": 0.6296743100824801,
+        "prefactor_se": 0.07002365601546347,
+        "slope": 0.2971902634887628,
+        "slope_se": 0.02310452434590383
+      },
+      "zeta2": {
+        "base": 6.928455180740133,
+        "base_se": 0.019595034110312062,
+        "prefactor": 1.0976275639982653,
+        "prefactor_se": 0.014941575425372399,
+        "slope": 1.9356368707098648,
+        "slope_se": 0.002828196704625117
+      },
+      "M_star_2z1": {
+        "base": 5.147167725708127,
+        "base_se": 0.12182871444337673,
+        "prefactor": 0.8715835682215534,
+        "prefactor_se": 0.0992938042125856,
+        "slope": 1.6384466072211015,
+        "slope_se": 0.023669078012532808
+      }
+    },
+    "fits_n2_9": {
+      "zeta1": {
+        "base": 1.298741029373945,
+        "base_se": 0.02256528374791641,
+        "prefactor": 0.7213971867346767,
+        "prefactor_se": 0.07468043844187967,
+        "slope": 0.2613953562844006,
+        "slope_se": 0.017374736947206443
+      },
+      "zeta2": {
+        "base": 6.941341102106439,
+        "base_se": 0.012226335869763683,
+        "prefactor": 1.0895878887998167,
+        "prefactor_se": 0.011434821233565581,
+        "slope": 1.9374949982282592,
+        "slope_se": 0.0017613794927976445
+      },
+      "M_star_2z1": {
+        "base": 5.344669141200917,
+        "base_se": 0.09669981743985476,
+        "prefactor": 0.7551927764867749,
+        "prefactor_se": 0.08140982708828966,
+        "slope": 1.6760996419438585,
+        "slope_se": 0.018092760259829078
+      }
+    },
+    "per_n": {
+      "2": {
+        "N": 500000,
+        "n_states": 4,
+        "zeta1": 1.02376377208956,
+        "zeta1_spread": 0.0021536902239431125,
+        "zeta1_se": 0.001102435013788205,
+        "zeta2": 53.1848586175165,
+        "zeta2_spread": 0.009929863881026553,
+        "zeta2_se": 0.26405920330179045,
+        "M_star_2z1": 25.975161491094365,
+        "M_star_4z1": 12.987580745547183
+      },
+      "3": {
+        "N": 500000,
+        "n_states": 4,
+        "zeta1": 1.5701376765503454,
+        "zeta1_spread": 0.0315713217033332,
+        "zeta1_se": 0.02478566085244754,
+        "zeta2": 358.652768992517,
+        "zeta2_spread": 0.010790977303567706,
+        "zeta2_se": 1.9351069450299812,
+        "M_star_2z1": 114.21061170269199,
+        "M_star_4z1": 57.105305851345996
+      },
+      "4": {
+        "N": 500000,
+        "n_states": 4,
+        "zeta1": 2.3098904143359538,
+        "zeta1_spread": 0.03585640081220071,
+        "zeta1_se": 0.041412178264345165,
+        "zeta2": 2558.3513117448992,
+        "zeta2_spread": 0.014704334131816398,
+        "zeta2_se": 18.809426257233888,
+        "M_star_2z1": 553.7819664229337,
+        "M_star_4z1": 276.89098321146685
+      },
+      "5": {
+        "N": 500000,
+        "n_states": 4,
+        "zeta1": 2.9120525174540743,
+        "zeta1_spread": 0.04604589617840745,
+        "zeta1_se": 0.06704403394238018,
+        "zeta2": 17446.67119033979,
+        "zeta2_spread": 0.004468167068567216,
+        "zeta2_se": 38.97732083439832,
+        "M_star_2z1": 2995.596934768355,
+        "M_star_4z1": 1497.7984673841775
+      },
+      "6": {
+        "N": 500000,
+        "n_states": 4,
+        "zeta1": 3.85675400581189,
+        "zeta1_spread": 0.04061476943044853,
+        "zeta1_se": 0.07832058734800434,
+        "zeta2": 121255.9814139464,
+        "zeta2_spread": 0.00807982239572211,
+        "zeta2_se": 489.86339712183405,
+        "M_star_2z1": 15719.952741505049,
+        "M_star_4z1": 7859.976370752524
+      },
+      "7": {
+        "N": 1000000,
+        "n_states": 4,
+        "zeta1": 4.564406443509859,
+        "zeta1_spread": 0.018898855919695447,
+        "zeta1_se": 0.04313102986741117,
+        "zeta2": 843480.4553713719,
+        "zeta2_spread": 0.008230458708975074,
+        "zeta2_se": 3471.115529880785,
+        "M_star_2z1": 92397.60588923,
+        "M_star_4z1": 46198.802944615
+      },
+      "8": {
+        "N": 1000000,
+        "n_states": 3,
+        "zeta1": 5.548791585112087,
+        "zeta1_spread": 0.007985299513436026,
+        "zeta1_se": 0.025581676098142676,
+        "zeta2": 5841586.334354494,
+        "zeta2_spread": 0.003114580122908495,
+        "zeta2_se": 10504.361998925307,
+        "M_star_2z1": 526383.6499128928,
+        "M_star_4z1": 263191.8249564464
+      },
+      "9": {
+        "N": 1000000,
+        "n_states": 2,
+        "zeta1": 6.8652364196830105,
+        "zeta1_spread": 0.01150895961261566,
+        "zeta1_se": 0.05586972914656944,
+        "zeta2": 41225239.95951661,
+        "zeta2_spread": 0.0032407077712146774,
+        "zeta2_se": 94468.72739843623,
+        "M_star_2z1": 3002463.2393810633,
+        "M_star_4z1": 1501231.6196905316
+      }
+    }
+  },
+  "claim3_alpha": {
+    "rows": [
+      {
+        "n": 2,
+        "budgets": [
+          2000,
+          8000,
+          32000,
+          128000
+        ],
+        "alpha_pred": 0.5014,
+        "alpha_meas": 0.495,
+        "alpha_meas_se": 0.0126,
+        "resid": 0.0064,
+        "within_2se": true
+      },
+      {
+        "n": 3,
+        "budgets": [
+          2000,
+          8000,
+          32000,
+          128000
+        ],
+        "alpha_pred": 0.5062,
+        "alpha_meas": 0.5214,
+        "alpha_meas_se": 0.01,
+        "resid": -0.0151,
+        "within_2se": true
+      },
+      {
+        "n": 4,
+        "budgets": [
+          2000,
+          8000,
+          32000,
+          128000
+        ],
+        "alpha_pred": 0.5277,
+        "alpha_meas": 0.5276,
+        "alpha_meas_se": 0.0123,
+        "resid": 0.0001,
+        "within_2se": true
+      },
+      {
+        "n": 5,
+        "budgets": [
+          2000,
+          8000,
+          32000,
+          128000
+        ],
+        "alpha_pred": 0.6048,
+        "alpha_meas": 0.6052,
+        "alpha_meas_se": 0.0121,
+        "resid": -0.0004,
+        "within_2se": true
+      },
+      {
+        "n": 6,
+        "budgets": [
+          2000,
+          8000,
+          32000,
+          128000
+        ],
+        "alpha_pred": 0.7483,
+        "alpha_meas": 0.766,
+        "alpha_meas_se": 0.0122,
+        "resid": -0.0177,
+        "within_2se": true
+      },
+      {
+        "n": 7,
+        "budgets": [
+          2000,
+          8000,
+          32000
+        ],
+        "alpha_pred": 0.9503,
+        "alpha_meas": 0.9469,
+        "alpha_meas_se": 0.0148,
+        "resid": 0.0034,
+        "within_2se": true
+      },
+      {
+        "n": 8,
+        "budgets": [
+          2000,
+          8000,
+          32000
+        ],
+        "alpha_pred": 0.9901,
+        "alpha_meas": 0.9842,
+        "alpha_meas_se": 0.0175,
+        "resid": 0.0059,
+        "within_2se": true
+      },
+      {
+        "n": 9,
+        "budgets": [
+          2000,
+          8000,
+          32000
+        ],
+        "alpha_pred": 0.9983,
+        "alpha_meas": 1.0064,
+        "alpha_meas_se": 0.0225,
+        "resid": -0.0081,
+        "within_2se": true
+      }
+    ],
+    "n_within_2se": 8,
+    "n_total": 8,
+    "verdict": "exact-formula alpha within 2*SE of measured at 8/8 n"
+  },
+  "claim4_mstar": {
+    "derived_base_n2_7": 5.147,
+    "derived_base_n2_9": 5.345,
+    "empirical_base_earlier_phase": 5.343,
+    "crossover": "M*=z2/(2 z1) (exact-formula crossover; corrects two-term z2/(4 z1))",
+    "verdict": "derived 5.345 agrees with empirical 5.343"
+  },
+  "partE": {
+    "single_qubit_identity": {
+      "verdict": "VERIFIED",
+      "rows": [
+        {
+          "t": 0.0,
+          "mc": 0.25,
+          "pred": 0.25
+        },
+        {
+          "t": 0.5,
+          "mc": 0.5622,
+          "pred": 0.5625
+        },
+        {
+          "t": 1.0,
+          "mc": 1.5005,
+          "pred": 1.5
+        }
+      ]
+    },
+    "single_qubit_zeta1_closed": "(3/4)t^2-(1/4)t^4",
+    "weight_only_n2": {
+      "max_resid": 0.123,
+      "rms_resid": 0.057,
+      "verdict": "FAILS across diverse states"
+    },
+    "closed_form_verdict": "no simple weight-only closed form for n>=2 (zeta1 numerical); single-qubit closed form only"
+  }
+}
