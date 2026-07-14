@@ -59,10 +59,10 @@ def test_pipeline_writes_all_outputs(tmp_path, monkeypatch) -> None:
 
 
 @needs_results
-def test_all_five_figures_present() -> None:
+def test_all_six_figures_present() -> None:
     assert set(ALL_FIGURES) == {
         "fig1_crossover_map", "fig2_crossover_boundary", "fig3_alpha_transition",
-        "fig4_out_of_ensemble", "fig5_exponential_wall",
+        "fig4_out_of_ensemble", "fig5_exponential_wall", "fig6_hardware",
     }
 
 

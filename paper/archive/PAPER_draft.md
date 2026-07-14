@@ -1,3 +1,8 @@
+<!-- HISTORICAL DRAFT. Superseded by paper.tex. Do not edit. -->
+
+> **⚠️ HISTORICAL DRAFT — superseded by [`paper.tex`](../paper.tex). Do not edit.**
+> Kept for provenance only; the compiled paper is the single source of truth.
+
 # Sample-complexity transition in shadow-based estimation of quantum state moments and the crossover to collective measurement
 
 **Alexander Messerlian**

@@ -1,0 +1,16 @@
+panel,n,series,value,lo,hi
+a,2,measured,0.6864,0.6722,0.7004
+a,2,opening_band,,0.7184,0.742
+a,2,closing_band,,0.7044,0.7276
+a,3,measured,0.3784,0.3604,0.3968
+a,3,opening_band,,0.5968,0.6342
+a,3,closing_band,,0.5934,0.6307
+a,4,measured,0.4204,0.4024,0.4388
+a,4,opening_band,,0.5065,0.5532
+a,4,closing_band,,0.5197,0.568
+b,3,session1,0.3168,,
+b,3,session2,0.3784,,
+b,3,session3,0.5872,,
+b,4,session1,0.4308,,
+b,4,session2,0.4204,,
+b,4,session3,0.3816,,
