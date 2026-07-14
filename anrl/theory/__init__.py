@@ -12,6 +12,9 @@
   comparison against the measured sweeps in ``results/``.
 * :mod:`~anrl.theory.clipping` — closed-form RMSE of a Gaussian purity estimate
   clipped to a physical range [a, b], for pipelines that clip (anrl's own does not).
+* :mod:`~anrl.theory.general_k` — state-agnostic Hoeffding components zeta_1..zeta_k
+  for the moment U-statistic (k=2,3,4), verified so the k=2 variance theorem extends
+  across the moment family.
 """
 
 from __future__ import annotations
@@ -40,6 +43,7 @@ from .general import (
     sample_batched_general,
 )
 from .clipping import clipped_mse, clipped_rmse
+from .general_k import hoeffding_component_mc, hoeffding_components_mc
 from .single_copy_law import (
     REFERENCE_SCALINGS_Q0_1,
     crossover_budget,
@@ -95,6 +99,9 @@ __all__ = [
     # clipped-estimator RMSE (for pipelines that clip to a physical range)
     "clipped_mse",
     "clipped_rmse",
+    # state-agnostic general-k Hoeffding components (k=2,3,4; any state incl low-rank)
+    "hoeffding_component_mc",
+    "hoeffding_components_mc",
     # crossover (Part 3)
     "noisy_pure_moment",
     "predicted_single_rmse",

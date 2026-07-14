@@ -1,0 +1,207 @@
+{
+  "q": 0.1,
+  "estimator": "exact_moment_ustatistic (full U-statistic, not subsampled)",
+  "step3_verification_recorded": {
+    "k3_n3": {
+      "noisy_pure": [
+        1.023,
+        1.024
+      ],
+      "ghz": [
+        0.992,
+        0.995
+      ],
+      "low_rank": [
+        0.997,
+        1.0
+      ]
+    },
+    "k4_n2": {
+      "noisy_pure": [
+        1.019,
+        0.992
+      ],
+      "ghz": [
+        1.029,
+        1.018
+      ],
+      "low_rank": [
+        0.985,
+        0.982
+      ]
+    },
+    "M_values": [
+      20,
+      40
+    ],
+    "max_abs_dev": 0.029,
+    "note": "all ratios within ~3%; z-scores within +-1.1 (k=4) / +-2.9 (k=3 noisy_pure)."
+  },
+  "step4_alpha_and_scalings": {
+    "k3": {
+      "zeta_scaling_bases": {
+        "zeta_1": 1.298,
+        "zeta_2": 2.859,
+        "zeta_3": 14.927
+      },
+      "alpha": [
+        {
+          "n": 2,
+          "budgets": [
+            2000,
+            8000,
+            32000
+          ],
+          "alpha_pred": 0.5014,
+          "alpha_meas": 0.5001,
+          "alpha_se": 0.0155,
+          "within_2se": true
+        },
+        {
+          "n": 3,
+          "budgets": [
+            2000,
+            8000,
+            32000
+          ],
+          "alpha_pred": 0.5026,
+          "alpha_meas": 0.496,
+          "alpha_se": 0.0186,
+          "within_2se": true
+        },
+        {
+          "n": 4,
+          "budgets": [
+            2000,
+            8000,
+            32000
+          ],
+          "alpha_pred": 0.5066,
+          "alpha_meas": 0.516,
+          "alpha_se": 0.0169,
+          "within_2se": true
+        },
+        {
+          "n": 5,
+          "budgets": [
+            2000,
+            8000,
+            32000
+          ],
+          "alpha_pred": 0.5181,
+          "alpha_meas": 0.5473,
+          "alpha_se": 0.0136,
+          "within_2se": false
+        },
+        {
+          "n": 6,
+          "budgets": [
+            2000,
+            8000,
+            32000
+          ],
+          "alpha_pred": 0.5758,
+          "alpha_meas": 0.6071,
+          "alpha_se": 0.0165,
+          "within_2se": true
+        },
+        {
+          "n": 7,
+          "budgets": [
+            2000,
+            8000,
+            32000
+          ],
+          "alpha_pred": 0.8102,
+          "alpha_meas": 0.8257,
+          "alpha_se": 0.0219,
+          "within_2se": true
+        },
+        {
+          "n": 8,
+          "budgets": [
+            2000,
+            8000,
+            32000
+          ],
+          "alpha_pred": 1.1822,
+          "alpha_meas": 1.1584,
+          "alpha_se": 0.0204,
+          "within_2se": true
+        }
+      ],
+      "alpha_within_2se": "6/7"
+    },
+    "k4": {
+      "zeta_scaling_bases": {
+        "zeta_1": 1.336,
+        "zeta_2": 2.611,
+        "zeta_3": 6.531,
+        "zeta_4": 36.236
+      },
+      "alpha": [
+        {
+          "n": 2,
+          "budgets": [
+            500,
+            2000,
+            8000
+          ],
+          "alpha_pred": 0.5067,
+          "alpha_meas": 0.4864,
+          "alpha_se": 0.0179,
+          "within_2se": true
+        },
+        {
+          "n": 3,
+          "budgets": [
+            500,
+            2000,
+            8000
+          ],
+          "alpha_pred": 0.5123,
+          "alpha_meas": 0.5235,
+          "alpha_se": 0.019,
+          "within_2se": true
+        },
+        {
+          "n": 4,
+          "budgets": [
+            500,
+            2000,
+            8000
+          ],
+          "alpha_pred": 0.5285,
+          "alpha_meas": 0.5438,
+          "alpha_se": 0.0243,
+          "within_2se": true
+        },
+        {
+          "n": 5,
+          "budgets": [
+            500,
+            2000,
+            8000
+          ],
+          "alpha_pred": 0.5733,
+          "alpha_meas": 0.5707,
+          "alpha_se": 0.0212,
+          "within_2se": true
+        },
+        {
+          "n": 6,
+          "budgets": [
+            500,
+            2000,
+            8000
+          ],
+          "alpha_pred": 0.7931,
+          "alpha_meas": 0.8018,
+          "alpha_se": 0.0169,
+          "within_2se": true
+        }
+      ],
+      "alpha_within_2se": "5/5"
+    }
+  }
+}
