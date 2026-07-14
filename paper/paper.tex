@@ -107,7 +107,8 @@ operator, whose expectation is exactly \(\mathrm{Tr}(\rho^k)\). It has
 The asymptotic separation between the two is settled. Single-copy
 strategies require exponentially more samples than collective ones for a
 family of learning tasks \cite{huang2022advantage,chen2022separations},
-and the lower bound for purity estimation without quantum memory is
+and, for protocols restricted to an identical single-copy
+projection-valued measurement, the lower bound for purity estimation is
 \(\Omega(\max\{1/\varepsilon^2, 2^{n/2}/\varepsilon\})\)
 \cite{gong2024purity}. What is not settled is the practical question
 that an experimentalist actually faces: on this device, at this noise
@@ -366,11 +367,7 @@ Compounded over \(n\) qubits, that factor is the origin of the
 exponential cost, and it is state-dependent rather than universal. This
 is the analytic reason why the ensemble choice of Section 2.5 is not
 cosmetic: a low-purity ensemble is not a harder instance of the same
-problem, it is a different and much easier problem. Independent
-numerical work has observed that shadow-based purity estimation scales
-exponentially in \(n\) and linearly in the purity of the state
-\cite{coherence2024}; the identity above is the single-qubit mechanism
-behind that observation.
+problem, it is a different and much easier problem.
 
 The identity also passes the boundary check. At \(t = 0\) it gives
 \(\zeta_1 = 0\), which is correct: for a maximally mixed qubit,
@@ -997,8 +994,10 @@ scale.
 
 This is not a new observation about NISQ devices in general, and we do
 not claim it as one. Temporal and spatial instability of superconducting
-processors is documented, with month-to-month Hellinger distances
-between characterizations exceeding 0.2
+processors is documented: observations collected over 22 months reveal
+large fluctuations in gate fidelities, duty cycles, and register
+addressability across temporal and spatial scales, underscoring the
+limited scales on which NISQ devices may be considered reliable
 \cite{dasgupta2021stability,dasgupta2022assessing}, and
 calibration-drift analyses identify gate error as the dominant
 cross-device mismatch and readout as secondary \cite{fewshot2026}. Our
@@ -1041,7 +1040,10 @@ rather than eliding it.
 framework \cite{huang2020shadows} gives sample-complexity bounds via the
 shadow norm. For second-order nonlinear functionals, the variance splits
 into a kernel term bounded by \(4^{|AB|}\) and linear terms bounded by
-\(2^{|AB|}\) \cite{shadownorm2021}. These are worst-case, state-independent
+\(2^{|AB|}\) \cite{shadownorm2021}. Reference~\cite{shadownorm2021}
+states and applies this bound, citing its own references for it rather
+than deriving it, so we attribute the statement rather than its origin.
+These are worst-case, state-independent
 bounds. Our contribution is the exact, state-dependent variance, from
 which the exponent transition follows. A fixed-power bound cannot
 exhibit that transition, which is why it has not previously been
@@ -1066,9 +1068,11 @@ Hoeffding technique itself.
 
 \textbf{Crossovers in shadow sample complexity.} A crossover in shot
 cost between Pauli and Clifford shadow ensembles for multipartite
-entanglement witnesses has been reported \cite{paulicliffordxover2026},
-with Pauli favored for local witnesses (cost \(\sim 4^n\)) and Clifford
-for global ones (cost \(\sim 2^{N-n}\)). That is a crossover in the
+entanglement witnesses has been reported \cite{paulicliffordxover2026}:
+ensemble-dependent variance bounds yield qualitatively distinct
+snapshot-cost scaling, with Pauli-favorable performance for local
+witnesses crossing over to Clifford-favorable performance as the witness
+becomes more global. That is a crossover in the
 choice of measurement ensemble, not between single-copy and collective
 measurement, and its mechanism is unrelated to ours.
 
@@ -1087,10 +1091,12 @@ and they are not the same effect.
 
 \textbf{Sample-complexity lower bounds for purity.} Gong et
 al.~\cite{gong2024purity} improve the lower bound for purity estimation
-without quantum memory to
-\(\Omega(\max\{1/\varepsilon^2,\, 2^{n/2}/\varepsilon\})\). Our exact
-variance is consistent with this bound and supplies the state-dependent
-constant it leaves open.
+to \(\Omega(\max\{1/\varepsilon^2,\, 2^{n/2}/\varepsilon\})\) for
+protocols using an identical single-copy projection-valued measurement;
+their general bound for arbitrary \(k\)-qubit-memory protocols is
+\(\Omega(\mathrm{median}\{1/\varepsilon^2,\, 2^{n/2}/\sqrt{\varepsilon},\, 2^{n-k}/\varepsilon^2\})\).
+Our exact variance is consistent with these bounds and supplies the
+state-dependent constant they leave open.
 
 \textbf{Collective measurement on noisy hardware.} The exponential
 single-copy versus collective separation is established in
@@ -1315,90 +1321,82 @@ was committed before the corresponding measurement was submitted.
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 
-\begin{thebibliography}{16}
+\begin{thebibliography}{15}
 
-% VERIFIED [1]: authors, journal, volume/issue, page range, DOI, arXiv confirmed
 \bibitem{huang2020shadows}
-H.-Y. Huang, R. Kueng, and J. Preskill,
-\emph{Predicting many properties of a quantum system from very few measurements},
-Nature Physics \textbf{16}(10), 1050--1057 (2020), doi:10.1038/s41567-020-0932-7, arXiv:2002.08953.
+Hsin-Yuan Huang, Richard Kueng, and John Preskill,
+\emph{Predicting Many Properties of a Quantum System from Very Few Measurements},
+Nature Physics \textbf{16}, 1050--1057 (2020), doi:10.1038/s41567-020-0932-7, arXiv:2002.08953.
 
-% UNVERIFIED: author/journal/volume/pages not confirmed against arXiv or journal record -- verify before submission
 \bibitem{huang2022advantage}
-H.-Y. Huang, M. Broughton, J. Cotler, S. Chen, J. Li, M. Mohseni, H. Neven, R. Babbush, R. Kueng, J. Preskill, and J. R. McClean,
+Hsin-Yuan Huang, Michael Broughton, Jordan Cotler, Sitan Chen, Jerry Li, Masoud Mohseni, Hartmut Neven, Ryan Babbush, Richard Kueng, John Preskill, and Jarrod R. McClean,
 \emph{Quantum advantage in learning from experiments},
-Science \textbf{376}, 1182 (2022), arXiv:2112.00778.
+Science \textbf{376}, 1182--1186 (2022), doi:10.1126/science.abn7293, arXiv:2112.00778.
 
-% UNVERIFIED: author/journal/volume/pages not confirmed against arXiv or journal record -- verify before submission
 \bibitem{chen2022separations}
-S. Chen, J. Cotler, H.-Y. Huang, and J. Li,
+Sitan Chen, Jordan Cotler, Hsin-Yuan Huang, and Jerry Li,
 \emph{Exponential separations between learning with and without quantum memory},
-FOCS (2022), arXiv:2111.05881.
+FOCS 2021, arXiv:2111.05881.
 
-% UNVERIFIED: co-author list ("et al.") incomplete and unconfirmed -- complete and verify before submission
 \bibitem{gong2024purity}
-W. Gong \emph{et al.},
+Weiyuan Gong, Jonas Haferkamp, Qi Ye, and Zhihan Zhang,
 \emph{On the sample complexity of purity and inner product estimation},
-arXiv:2410.12712.
+arXiv:2410.12712 (2024).
 
-% VERIFIED [5]: author list and characterization confirmed against the paper's full text (2026-07-14)
 \bibitem{qmladvantage2026}
-O. Danaci, Y. J. Patel, R. Molteni, E. van Nieuwenburg, V. Dunjko, and J. A. Krzywda,
-\emph{Evidence of quantum machine learning advantage with tens of noisy qubits} (2026), arXiv:2605.21346.
+Onur Danaci, Yash J. Patel, Riccardo Molteni, Evert van Nieuwenburg, Vedran Dunjko, and Jan A. Krzywda,
+\emph{Evidence of Quantum Machine Learning Advantage with Tens of Noisy Qubits},
+arXiv:2605.21346 (20 May 2026).
 
-% VERIFIED [6]: authors and content confirmed against the paper's full text
 \bibitem{noisylearning2026}
-J. Cotler, W. Gong, and I. Kannan,
-\emph{Noisy Quantum Learning Theory} (2026), arXiv:2512.10929.
+Jordan Cotler, Weiyuan Gong, and Ishaan Kannan,
+\emph{Noisy Quantum Learning Theory},
+arXiv:2512.10929 (11 Dec 2025, rev. 14 Jan 2026).
 
-% PARTIAL [7]: title CONFIRMED; author list still UNVERIFIED -- verify before submission
 \bibitem{shadownorm2021}
-\emph{Experimental quantum state measurement with classical shadows}, arXiv:2106.10190. (Author list unconfirmed; cited for the second-order variance split, which this paper states citing its own references rather than originating.)
+Ting Zhang, Jinzhao Sun, Xiao-Xu Fang, Xiao-Ming Zhang, Xiao Yuan, and He Lu,
+\emph{Experimental quantum state measurement with classical shadows},
+Phys. Rev. Lett. \textbf{127}, 200501 (2021), doi:10.1103/PhysRevLett.127.200501, arXiv:2106.10190.
 
-% VERIFIED [8]: authors, title, venue confirmed (Hu \& You, Phys. Rev. Research 4, 013054, 2022)
 \bibitem{hamiltonianshadow2021}
-H.-Y. Hu and Y.-Z. You,
+Hong-Ye Hu and Yi-Zhuang You,
 \emph{Hamiltonian-Driven Shadow Tomography of Quantum States},
-Phys. Rev. Research \textbf{4}, 013054 (2022), arXiv:2102.10132.
+Phys. Rev. Research \textbf{4}, 013054 (2022), doi:10.1103/PhysRevResearch.4.013054, arXiv:2102.10132.
 
-% UNVERIFIED: author/journal/volume/pages not confirmed against arXiv or journal record -- verify before submission
-\bibitem{coherence2024}
-\emph{Estimating the coherence of noise in mid-scale quantum systems}, arXiv:2409.02110.
-
-% VERIFIED [10]: Public Tier licence citation; author/institution confirmed
 \bibitem{wold2025openquantum}
-B. Wold, O. Armbruster, and R. Kuhn,
+Bob Wold, Omar Armbruster, and Ryan Kuhn,
 \emph{Open Quantum: Democratizing Access to Quantum Computing Resources},
 Quantum Rings Inc., Broomfield, CO. \url{https://www.openquantum.com}.
 
-% UNVERIFIED: author/journal/volume/pages not confirmed against arXiv or journal record -- verify before submission
 \bibitem{dasgupta2021stability}
-S. Dasgupta and T. S. Humble,
+Samudra Dasgupta and Travis S. Humble,
 \emph{Stability of noisy quantum computing devices},
-arXiv:2105.09472.
+arXiv:2105.09472 (20 May 2021).
 
-% UNVERIFIED: author/journal/volume/pages not confirmed against arXiv or journal record -- verify before submission
 \bibitem{dasgupta2022assessing}
-S. Dasgupta and T. S. Humble,
-\emph{Assessing the stability of noisy quantum computation},
-arXiv:2208.07219.
+Samudra Dasgupta and Travis S. Humble,
+\emph{Assessing the Stability of Noisy Quantum Computation},
+Proc. SPIE Quantum Communications and Quantum Imaging XX (2022), arXiv:2208.07219.
 
-% UNVERIFIED: author/journal/volume/pages not confirmed against arXiv or journal record -- verify before submission
 \bibitem{fewshot2026}
-\emph{Few-shot cross-device transfer for quantum noise modeling on real hardware} (2026), arXiv:2604.24397.
+Sahil Al Farib, Sheikh Redwanul Islam, and Azizur Rahman Anik,
+\emph{Few-Shot Cross-Device Transfer for Quantum Noise Modeling on Real Hardware},
+arXiv:2604.24397 (27 Apr 2026), submitted to IEEE QCE 2026.
 
-% UNVERIFIED: author/journal/volume/pages not confirmed against arXiv or journal record -- verify before submission
 \bibitem{straeter2026}
-M. Straeter, M. Tsesmelis, and L.-C. Kwek,
-\emph{Detecting entanglement of non-Gaussian continuous-variable states from single-copy homodyne measurements} (2026), arXiv:2606.28698.
+Moritz Straeter, Michael Tsesmelis, and Leong-Chuan Kwek,
+\emph{Detecting entanglement of non-Gaussian continuous-variable states from single-copy homodyne measurements},
+arXiv:2606.28698 (27 Jun 2026).
 
-% UNVERIFIED: author/journal/volume/pages not confirmed against arXiv or journal record -- verify before submission
 \bibitem{paulicliffordxover2026}
-\emph{Sample complexity for embedded multipartite entanglement witness via Pauli and Clifford classical shadows} (2026), arXiv:2601.00859.
+Ziran Zhang,
+\emph{Sample Complexity for Embedded Multipartite Entanglement Witness via Pauli and Clifford Classical Shadows},
+arXiv:2601.00859 (30 Dec 2025).
 
-% UNVERIFIED: author/journal/volume/pages not confirmed against arXiv or journal record -- verify before submission
 \bibitem{hardwarehorizon2026}
-\emph{Transition from statistical to hardware-limited scaling in photonic quantum state reconstruction} (2026), arXiv:2603.12235.
+Attila Baumann, Zsolt Kis, J\'{a}nos Koltai, and G\'{a}bor Vattay,
+\emph{Transition from Statistical to Hardware-Limited Scaling in Photonic Quantum State Reconstruction},
+arXiv:2603.12235 (12 Mar 2026, rev. 30 Jun 2026).
 
 \end{thebibliography}
 

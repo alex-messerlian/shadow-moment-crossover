@@ -28,7 +28,7 @@ That failure matters because the quantity is not exotic. The moments $\mathrm{Tr
 
 Two routes exist to obtain them. The single-copy route measures one copy of the state at a time in randomized local bases, builds classical shadows [1], and forms an unbiased U-statistic from the snapshots. It uses no entangling gates and is therefore hardware-friendly. The collective route holds $k$ copies simultaneously and measures a joint observable, the cyclic-permutation operator, whose expectation is exactly $\mathrm{Tr}(\rho^k)$. It has $O(1)$ variance but requires entangling operations across copies.
 
-The asymptotic separation between the two is settled. Single-copy strategies require exponentially more samples than collective ones for a family of learning tasks [2, 3], and the lower bound for purity estimation without quantum memory is $\Omega(\max\{1/\varepsilon^2, 2^{n/2}/\varepsilon\})$ [4]. What is not settled is the practical question that an experimentalist actually faces: on this device, at this noise level, at this system size, which route costs less? The collective route buys variance reduction and pays in noise-induced bias. Whether that trade is worth making depends on numbers, and the numbers have not been computed.
+The asymptotic separation between the two is settled. Single-copy strategies require exponentially more samples than collective ones for a family of learning tasks [2, 3], and, for protocols restricted to an identical single-copy projection-valued measurement, the lower bound for purity estimation is $\Omega(\max\{1/\varepsilon^2, 2^{n/2}/\varepsilon\})$ [4]. What is not settled is the practical question that an experimentalist actually faces: on this device, at this noise level, at this system size, which route costs less? The collective route buys variance reduction and pays in noise-induced bias. Whether that trade is worth making depends on numbers, and the numbers have not been computed.
 
 The gap is visible in recent work. A May 2026 study of quantum machine learning advantage on tens of noisy qubits [5] declined to give its measure-first protocol multi-copy access, citing both a theoretical result specific to their learning task—even multiple noiseless copies do not let a measure-first protocol solve it efficiently—and the resource demands of multi-copy entangled measurements, which increase qubit count, two-qubit depth, and routing overhead. Their learning task is not moment estimation, so their open questions are not ours; but their caution about the resource cost of multi-copy measurement is a premise we can now test quantitatively. On the theory side, a recent result [6] shows that the exponential two-copy advantage for purity *testing* collapses under local depolarizing noise, and that SWAP-test and Bell-basis primitives are fragile to noise absent latent error-correcting structure; their task is testing and ours is estimation, a distinction that turns out to be the crux and that we take up in Section 7. The caution is reasonable. It has never been measured.
 
@@ -140,7 +140,7 @@ $$\zeta_1 = \tfrac{3}{4} t^2 - \tfrac{1}{4} t^4.$$
 
 We verified this numerically across the full Bloch range. The identity is exact, and two consequences follow from it.
 
-The second moment grows by a factor of six from a maximally mixed qubit, where it equals $1/4$, to a pure qubit, where it equals $3/2$. Compounded over $n$ qubits, that factor is the origin of the exponential cost, and it is state-dependent rather than universal. This is the analytic reason why the ensemble choice of Section 2.5 is not cosmetic: a low-purity ensemble is not a harder instance of the same problem, it is a different and much easier problem. Independent numerical work has observed that shadow-based purity estimation scales exponentially in $n$ and linearly in the purity of the state [9]; the identity above is the single-qubit mechanism behind that observation.
+The second moment grows by a factor of six from a maximally mixed qubit, where it equals $1/4$, to a pure qubit, where it equals $3/2$. Compounded over $n$ qubits, that factor is the origin of the exponential cost, and it is state-dependent rather than universal. This is the analytic reason why the ensemble choice of Section 2.5 is not cosmetic: a low-purity ensemble is not a harder instance of the same problem, it is a different and much easier problem.
 
 The identity also passes the boundary check. At $t = 0$ it gives $\zeta_1 = 0$, which is correct: for a maximally mixed qubit, $\mathrm{Tr}(Gr) = 1/2$ deterministically, with no variance to speak of.
 
@@ -274,11 +274,11 @@ This section reports a prediction that failed, and the diagnosis of why it faile
 
 All measurements were performed on Rigetti Cepheus-1-108Q, a 108-qubit superconducting processor built from twelve interconnected nine-qubit chiplets. Published median fidelities at the time of the experiments were 99.1% for the two-qubit CZ gate and 99.9% for single-qubit gates. Readout error is not published, a fact that turns out to matter (Section 6.3).
 
-Access was obtained through the Open Quantum platform operated by Quantum Rings [10], which provides a unified API to QPUs from multiple vendors. We used the Public Tier throughout. Two properties of that tier are material to the interpretation of our results and we state them rather than bury them.
+Access was obtained through the Open Quantum platform operated by Quantum Rings [9], which provides a unified API to QPUs from multiple vendors. We used the Public Tier throughout. Two properties of that tier are material to the interpretation of our results and we state them rather than bury them.
 
-First, the Public Tier does not route jobs directly to the vendor. It is powered by the Quantum Compute subnet (SN48) on the Bittensor network, operated by qBitTensor Labs: circuits are routed to distributed operators who execute them on the target hardware, and validators perform spot checks to confirm that circuits were executed on the appropriate target QPU [10]. We therefore cannot independently verify the execution path of any individual job beyond the platform's own validation. This does not affect Sections 6.2 and 6.3, which are internally consistent characterizations, but it is a candidate contributor to the session-to-session variability reported in Section 6.4 that we are not able to rule out, and we list it as such in Section 8.
+First, the Public Tier does not route jobs directly to the vendor. It is powered by the Quantum Compute subnet (SN48) on the Bittensor network, operated by qBitTensor Labs: circuits are routed to distributed operators who execute them on the target hardware, and validators perform spot checks to confirm that circuits were executed on the appropriate target QPU [9]. We therefore cannot independently verify the execution path of any individual job beyond the platform's own validation. This does not affect Sections 6.2 and 6.3, which are internally consistent characterizations, but it is a candidate contributor to the session-to-session variability reported in Section 6.4 that we are not able to rule out, and we list it as such in Section 8.
 
-Second, use of the Public Tier carries two licence conditions: publications resulting from work on the tier are required to cite the platform paper [10], which we do, and circuits, results, and metadata are contributed in anonymized aggregated form to a common repository maintained by Open Quantum [10].
+Second, use of the Public Tier carries two licence conditions: publications resulting from work on the tier are required to cite the platform paper [9], which we do, and circuits, results, and metadata are contributed in anonymized aggregated form to a common repository maintained by Open Quantum [9].
 
 Jobs were submitted as OpenQASM 3 with physical-qubit addressing, which the platform required because it rejects non-contiguous virtual registers.
 
@@ -356,7 +356,7 @@ What is left is a large, incoherent, session-dependent fault that appears and di
 
 The conclusion the data support is narrower than "we found a new error mechanism" and more useful than "the device is noisy." Static device characterization cannot predict collective-measurement performance on this hardware, because the device is not stationary at the relevant scale.
 
-This is not a new observation about NISQ devices in general, and we do not claim it as one. Temporal and spatial instability of superconducting processors is documented, with month-to-month Hellinger distances between characterizations exceeding 0.2 [11, 12], and calibration-drift analyses identify gate error as the dominant cross-device mismatch and readout as secondary [13]. Our contribution is to demonstrate, with pre-registered predictions and a seven-mechanism elimination, that this instability is the binding constraint specifically for collective-measurement protocols, at magnitudes that dwarf every error source such protocols are conventionally modeled with. A protocol whose entire advantage rests on a bounded, characterizable bias floor cannot be deployed on a device whose bias floor moves by 0.2 between sessions.
+This is not a new observation about NISQ devices in general, and we do not claim it as one. Temporal and spatial instability of superconducting processors is documented: observations collected over 22 months reveal large fluctuations in gate fidelities, duty cycles, and register addressability across temporal and spatial scales, underscoring the limited scales on which NISQ devices may be considered reliable [10, 11], and calibration-drift analyses identify gate error as the dominant cross-device mismatch and readout as secondary [12]. Our contribution is to demonstrate, with pre-registered predictions and a seven-mechanism elimination, that this instability is the binding constraint specifically for collective-measurement protocols, at magnitudes that dwarf every error source such protocols are conventionally modeled with. A protocol whose entire advantage rests on a bounded, characterizable bias floor cannot be deployed on a device whose bias floor moves by 0.2 between sessions.
 
 ### 6.7 A practical finding about cloud QPU economics
 
@@ -368,15 +368,15 @@ Single-copy classical shadows are therefore economically infeasible on per-circu
 
 ## 7. Related work
 
-**Classical shadows and variance bounds.** The classical-shadow framework [1] gives sample-complexity bounds via the shadow norm. For second-order nonlinear functionals, the variance splits into a kernel term bounded by $4^{|AB|}$ and linear terms bounded by $2^{|AB|}$ [7]. These are worst-case, state-independent bounds. Our contribution is the exact, state-dependent variance, from which the exponent transition follows. A fixed-power bound cannot exhibit that transition, which is why it has not previously been reported. Alternative shadow ensembles, such as the Hamiltonian-driven shadows of [8], target different observable classes and sample-complexity questions rather than the variance of nonlinear functionals.
+**Classical shadows and variance bounds.** The classical-shadow framework [1] gives sample-complexity bounds via the shadow norm. For second-order nonlinear functionals, the variance splits into a kernel term bounded by $4^{|AB|}$ and linear terms bounded by $2^{|AB|}$ [7]. Reference [7] states and applies this bound, citing its own references for it rather than deriving it, so we attribute the statement rather than its origin. These are worst-case, state-independent bounds. Our contribution is the exact, state-dependent variance, from which the exponent transition follows. A fixed-power bound cannot exhibit that transition, which is why it has not previously been reported. Alternative shadow ensembles, such as the Hamiltonian-driven shadows of [8], target different observable classes and sample-complexity questions rather than the variance of nonlinear functionals.
 
-**U-statistics and the Hoeffding decomposition for quantum moments.** Straeter, Tsesmelis and Kwek [14] construct unbiased U-statistic estimators for the partial-transpose moments $p_2$ and $p_3$ from randomized homodyne data in continuous-variable systems and derive their variance via a Hoeffding decomposition, obtaining sample-complexity bounds for a $p_3$-PPT entanglement criterion. This is the closest methodological neighbour to Section 3. The differences are the platform (continuous-variable homodyne rather than qubit Pauli shadows), the target (entanglement detection rather than moment estimation and the collective-measurement trade-off), and the result (bounds rather than the exact state-dependent variance, and consequently no exponent transition). We do not claim novelty for the Hoeffding technique itself.
+**U-statistics and the Hoeffding decomposition for quantum moments.** Straeter, Tsesmelis and Kwek [13] construct unbiased U-statistic estimators for the partial-transpose moments $p_2$ and $p_3$ from randomized homodyne data in continuous-variable systems and derive their variance via a Hoeffding decomposition, obtaining sample-complexity bounds for a $p_3$-PPT entanglement criterion. This is the closest methodological neighbour to Section 3. The differences are the platform (continuous-variable homodyne rather than qubit Pauli shadows), the target (entanglement detection rather than moment estimation and the collective-measurement trade-off), and the result (bounds rather than the exact state-dependent variance, and consequently no exponent transition). We do not claim novelty for the Hoeffding technique itself.
 
-**Crossovers in shadow sample complexity.** A crossover in shot cost between Pauli and Clifford shadow ensembles for multipartite entanglement witnesses has been reported [15], with Pauli favored for local witnesses (cost $\sim 4^n$) and Clifford for global ones (cost $\sim 2^{N-n}$). That is a crossover in the choice of measurement ensemble, not between single-copy and collective measurement, and its mechanism is unrelated to ours.
+**Crossovers in shadow sample complexity.** A crossover in shot cost between Pauli and Clifford shadow ensembles for multipartite entanglement witnesses has been reported [14]: ensemble-dependent variance bounds yield qualitatively distinct snapshot-cost scaling, with Pauli-favorable performance for local witnesses crossing over to Clifford-favorable performance as the witness becomes more global. That is a crossover in the choice of measurement ensemble, not between single-copy and collective measurement, and its mechanism is unrelated to ours.
 
-**Statistical-to-bias-floor transitions on hardware.** A March 2026 study of shadow tomography on an integrated photonic processor [16] reports that reconstruction error initially follows $O(M^{-1/2})$ in a variance-dominated regime and then saturates at a hardware-determined floor, a transition the authors term a Hardware Horizon. The structure of that argument, statistical error meeting an irreducible hardware bias floor, is adjacent to Section 5, and the two should be distinguished carefully. Their transition is between statistical scaling and a bias floor at fixed system size. Ours is a change in the statistical exponent itself as a function of system size, occurring before any hardware bias enters. Both effects are real and they are not the same effect.
+**Statistical-to-bias-floor transitions on hardware.** A March 2026 study of shadow tomography on an integrated photonic processor [15] reports that reconstruction error initially follows $O(M^{-1/2})$ in a variance-dominated regime and then saturates at a hardware-determined floor, a transition the authors term a Hardware Horizon. The structure of that argument, statistical error meeting an irreducible hardware bias floor, is adjacent to Section 5, and the two should be distinguished carefully. Their transition is between statistical scaling and a bias floor at fixed system size. Ours is a change in the statistical exponent itself as a function of system size, occurring before any hardware bias enters. Both effects are real and they are not the same effect.
 
-**Sample-complexity lower bounds for purity.** Gong et al. [4] improve the lower bound for purity estimation without quantum memory to $\Omega(\max\{1/\varepsilon^2,\, 2^{n/2}/\varepsilon\})$. Our exact variance is consistent with this bound and supplies the state-dependent constant it leaves open.
+**Sample-complexity lower bounds for purity.** Gong et al. [4] improve the lower bound for purity estimation to $\Omega(\max\{1/\varepsilon^2,\, 2^{n/2}/\varepsilon\})$ for protocols using an identical single-copy projection-valued measurement; their general bound for arbitrary $k$-qubit-memory protocols is $\Omega(\mathrm{median}\{1/\varepsilon^2,\, 2^{n/2}/\sqrt{\varepsilon},\, 2^{n-k}/\varepsilon^2\})$. Our exact variance is consistent with these bounds and supplies the state-dependent constant they leave open.
 
 **Collective measurement on noisy hardware.** The exponential single-copy versus collective separation is established in [2, 3]. Its fate under noise is the subject of [6] (Cotler, Gong, and Kannan), the closest theoretical work to ours and the one that analyzes the exact primitive we build on. For purity testing — distinguishing an $n$-qubit Haar-random pure state from the maximally mixed state, given two copies each subject to per-qubit depolarizing noise $D_\lambda(\rho) = (1-\lambda)\rho + \lambda I/2$ — their Theorem 2.4 proves a sample-complexity lower bound of
 
@@ -390,7 +390,7 @@ The two results nonetheless share a mechanism, and this is a strength rather tha
 
 Finally, [6] argues explicitly that the asymptotic $n \to \infty$ limit at fixed noise is not the regime relevant to near-term experiments: instance size is effectively fixed by the hardware, the operative question is how performance improves as the noise rate falls, and what is needed is a quantitative condition on $\lambda$ for a meaningful two-copy advantage at fixed $n$. Our crossover law is exactly that condition. At the rates and sizes of our experiments ($\lambda \approx 0.1$, $n \le 10$) their lower bound is on the order of tens of samples — from under two at $n=2$ to about twenty at $n=10$ — so at the scales this paper operates in it imposes no practical obstruction. The bound is a small-base exponential: at $\lambda = 0.1$ its base $b \approx 1.35 < \sqrt{2}$, so the $2^{n/2}$ branch never binds and the cost grows at every $n$, but it reaches only tens of samples by $n=10$ and becomes an obstruction only at much larger $n$. Section 5 quantifies the separation under noise, and Section 6 tests the collective route on hardware.
 
-**NISQ device stability.** Dasgupta and Humble [11, 12] quantify the temporal and spatial instability of superconducting devices over 22 months, and related work analyzes calibration drift across devices [13]. Section 6.6 confirms their conclusions in the specific setting of collective-measurement protocols and claims no priority over them.
+**NISQ device stability.** Dasgupta and Humble [10, 11] quantify the temporal and spatial instability of superconducting devices over 22 months, and related work analyzes calibration drift across devices [12]. Section 6.6 confirms their conclusions in the specific setting of collective-measurement protocols and claims no priority over them.
 
 ---
 
@@ -434,7 +434,7 @@ Three questions follow from this work. Whether $\zeta_1$ admits a closed form un
 
 ## Acknowledgements
 
-Quantum hardware access was provided by the Open Quantum platform operated by Quantum Rings Inc. [10], on the Public Tier, whose licence conditions require citation of the platform paper and contribution of anonymized aggregated circuit data to a common repository. All hardware experiments ran on Rigetti Computing's Cepheus-1-108Q processor. [Mentor acknowledgement.]
+Quantum hardware access was provided by the Open Quantum platform operated by Quantum Rings Inc. [9], on the Public Tier, whose licence conditions require citation of the platform paper and contribution of anonymized aggregated circuit data to a common repository. All hardware experiments ran on Rigetti Computing's Cepheus-1-108Q processor. [Mentor acknowledgement.]
 
 ## Data and code availability
 
@@ -444,39 +444,35 @@ All code, raw measurement counts, and analysis are available at [repository URL]
 
 ## References
 
-[1] H.-Y. Huang, R. Kueng, and J. Preskill, "Predicting many properties of a quantum system from very few measurements," *Nature Physics* **16**(10), 1050–1057 (2020). doi:10.1038/s41567-020-0932-7. arXiv:2002.08953.
+[1] Hsin-Yuan Huang, Richard Kueng, and John Preskill, "Predicting Many Properties of a Quantum System from Very Few Measurements," *Nature Physics* **16**, 1050–1057 (2020). arXiv:2002.08953. DOI 10.1038/s41567-020-0932-7.
 
-[2] H.-Y. Huang, M. Broughton, J. Cotler, S. Chen, J. Li, M. Mohseni, H. Neven, R. Babbush, R. Kueng, J. Preskill, and J. R. McClean, "Quantum advantage in learning from experiments," *Science* **376**, 1182 (2022). arXiv:2112.00778.
+[2] Hsin-Yuan Huang, Michael Broughton, Jordan Cotler, Sitan Chen, Jerry Li, Masoud Mohseni, Hartmut Neven, Ryan Babbush, Richard Kueng, John Preskill, and Jarrod R. McClean, "Quantum advantage in learning from experiments," *Science* **376**, 1182–1186 (2022). arXiv:2112.00778. DOI 10.1126/science.abn7293.
 
-[3] S. Chen, J. Cotler, H.-Y. Huang, and J. Li, "Exponential separations between learning with and without quantum memory," *FOCS* (2022). arXiv:2111.05881.
+[3] Sitan Chen, Jordan Cotler, Hsin-Yuan Huang, and Jerry Li, "Exponential separations between learning with and without quantum memory," *FOCS 2021*. arXiv:2111.05881.
 
-[4] W. Gong et al., "On the sample complexity of purity and inner product estimation." arXiv:2410.12712.
+[4] Weiyuan Gong, Jonas Haferkamp, Qi Ye, and Zhihan Zhang, "On the sample complexity of purity and inner product estimation," arXiv:2410.12712 (2024).
 
-[5] O. Danaci, Y. J. Patel, R. Molteni, E. van Nieuwenburg, V. Dunjko, and J. A. Krzywda, "Evidence of quantum machine learning advantage with tens of noisy qubits" (2026). arXiv:2605.21346.
+[5] Onur Danaci, Yash J. Patel, Riccardo Molteni, Evert van Nieuwenburg, Vedran Dunjko, and Jan A. Krzywda, "Evidence of Quantum Machine Learning Advantage with Tens of Noisy Qubits," arXiv:2605.21346 (20 May 2026).
 
-[6] J. Cotler, W. Gong, and I. Kannan, "Noisy Quantum Learning Theory" (2026). arXiv:2512.10929.
+[6] Jordan Cotler, Weiyuan Gong, and Ishaan Kannan, "Noisy Quantum Learning Theory," arXiv:2512.10929 (11 Dec 2025, rev. 14 Jan 2026).
 
-[7] "Experimental quantum state measurement with classical shadows." arXiv:2106.10190. (Author list unconfirmed; cited for the second-order variance split, which this paper states citing its own references rather than originating.)
+[7] Ting Zhang, Jinzhao Sun, Xiao-Xu Fang, Xiao-Ming Zhang, Xiao Yuan, and He Lu, "Experimental quantum state measurement with classical shadows," *Phys. Rev. Lett.* **127**, 200501 (2021). arXiv:2106.10190. DOI 10.1103/PhysRevLett.127.200501.
 
-[8] H.-Y. Hu and Y.-Z. You, "Hamiltonian-Driven Shadow Tomography of Quantum States," *Phys. Rev. Research* **4**, 013054 (2022). arXiv:2102.10132.
+[8] Hong-Ye Hu and Yi-Zhuang You, "Hamiltonian-Driven Shadow Tomography of Quantum States," *Phys. Rev. Research* **4**, 013054 (2022). arXiv:2102.10132. DOI 10.1103/PhysRevResearch.4.013054.
 
-[9] "Estimating the coherence of noise in mid-scale quantum systems." arXiv:2409.02110.
+[9] Bob Wold, Omar Armbruster, and Ryan Kuhn, "Open Quantum: Democratizing Access to Quantum Computing Resources," Quantum Rings Inc., Broomfield, CO. https://www.openquantum.com.
 
-[10] B. Wold, O. Armbruster, and R. Kuhn, "Open Quantum: Democratizing Access to Quantum Computing Resources," Quantum Rings Inc., Broomfield, CO. Available at www.openquantum.com.
+[10] Samudra Dasgupta and Travis S. Humble, "Stability of noisy quantum computing devices," arXiv:2105.09472 (20 May 2021).
 
-[11] S. Dasgupta and T. S. Humble, "Stability of noisy quantum computing devices." arXiv:2105.09472.
+[11] Samudra Dasgupta and Travis S. Humble, "Assessing the Stability of Noisy Quantum Computation," Proc. SPIE Quantum Communications and Quantum Imaging XX (2022). arXiv:2208.07219.
 
-[12] S. Dasgupta and T. S. Humble, "Assessing the stability of noisy quantum computation." arXiv:2208.07219.
+[12] Sahil Al Farib, Sheikh Redwanul Islam, and Azizur Rahman Anik, "Few-Shot Cross-Device Transfer for Quantum Noise Modeling on Real Hardware," arXiv:2604.24397 (27 Apr 2026). Submitted to IEEE QCE 2026.
 
-[13] "Few-shot cross-device transfer for quantum noise modeling on real hardware" (2026). arXiv:2604.24397.
+[13] Moritz Straeter, Michael Tsesmelis, and Leong-Chuan Kwek, "Detecting entanglement of non-Gaussian continuous-variable states from single-copy homodyne measurements," arXiv:2606.28698 (27 Jun 2026).
 
-[14] M. Straeter, M. Tsesmelis, and L.-C. Kwek, "Detecting entanglement of non-Gaussian continuous-variable states from single-copy homodyne measurements" (2026). arXiv:2606.28698.
+[14] Ziran Zhang, "Sample Complexity for Embedded Multipartite Entanglement Witness via Pauli and Clifford Classical Shadows," arXiv:2601.00859 (30 Dec 2025).
 
-[15] "Sample complexity for embedded multipartite entanglement witness via Pauli and Clifford classical shadows" (2026). arXiv:2601.00859.
-
-[16] "Transition from statistical to hardware-limited scaling in photonic quantum state reconstruction" (2026). arXiv:2603.12235.
-
----
+[15] Attila Baumann, Zsolt Kis, János Koltai, and Gábor Vattay, "Transition from Statistical to Hardware-Limited Scaling in Photonic Quantum State Reconstruction," arXiv:2603.12235 (12 Mar 2026, rev. 30 Jun 2026).
 
 # Appendix A. The exact fourth-moment U-statistic
 
@@ -520,7 +516,7 @@ The circuit uses exactly $n$ two-qubit gates, no ancilla, and has depth two afte
 
 # Appendix C. Hardware protocol
 
-**Platform.** Open Quantum (Quantum Rings Inc.) [10], Public Tier, Standard queue, Rigetti Cepheus-1-108Q. Jobs were submitted as OpenQASM 3 with physical-qubit addressing (`$0`, `$1`, and so on), which the platform required because it rejects non-contiguous virtual registers. The Public Tier routes jobs through the Quantum Compute subnet (SN48) on the Bittensor network, operated by qBitTensor Labs, with validator spot-checking of execution on the target QPU [10]; see Section 6.1 for the interpretive consequences.
+**Platform.** Open Quantum (Quantum Rings Inc.) [9], Public Tier, Standard queue, Rigetti Cepheus-1-108Q. Jobs were submitted as OpenQASM 3 with physical-qubit addressing (`$0`, `$1`, and so on), which the platform required because it rejects non-contiguous virtual registers. The Public Tier routes jobs through the Quantum Compute subnet (SN48) on the Bittensor network, operated by qBitTensor Labs, with validator spot-checking of execution on the target QPU [9]; see Section 6.1 for the interpretive consequences.
 
 **Registers.** GHZ ladders, verified by re-transpilation to require zero routing SWAPs:
 
