@@ -106,5 +106,239 @@
       "full": 21,
       "spark": 0
     }
+  },
+  "n3_tw04": {
+    "job_id": "0921271c-8434-4d4e-9856-803e1b877b11",
+    "cost": 1,
+    "shots": 2000,
+    "kind": "twirl",
+    "status": "Completed",
+    "submitted_at": "2026-07-14T00:11:56.310Z",
+    "bal_before": {
+      "full": 21,
+      "spark": 0
+    },
+    "counts_file": "ce_n3_tw04_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 20,
+      "spark": 0
+    }
+  },
+  "n3_tw05": {
+    "job_id": "41205160-5e20-4f09-98b4-f54ef57389fe",
+    "cost": 1,
+    "shots": 2000,
+    "kind": "twirl",
+    "status": "Completed",
+    "submitted_at": "2026-07-14T00:14:33.743Z",
+    "bal_before": {
+      "full": 20,
+      "spark": 0
+    },
+    "counts_file": "ce_n3_tw05_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 19,
+      "spark": 0
+    }
+  },
+  "n3_tw06": {
+    "job_id": "1d7b34c3-3c33-4a23-9a33-9053e14f6433",
+    "cost": 1,
+    "shots": 2000,
+    "kind": "twirl",
+    "status": "Completed",
+    "submitted_at": "2026-07-14T00:16:11.006Z",
+    "bal_before": {
+      "full": 19,
+      "spark": 0
+    },
+    "counts_file": "ce_n3_tw06_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 18,
+      "spark": 0
+    }
+  },
+  "n3_tw07": {
+    "job_id": "25819b5d-0de7-4d19-aa02-4e1bf17af08d",
+    "cost": 1,
+    "shots": 2000,
+    "kind": "twirl",
+    "status": "Completed",
+    "submitted_at": "2026-07-14T00:19:49.132Z",
+    "bal_before": {
+      "full": 18,
+      "spark": 0
+    },
+    "counts_file": "ce_n3_tw07_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 17,
+      "spark": 0
+    }
+  },
+  "n3_tw08": {
+    "job_id": "e3c30b46-a306-4675-b6fc-2a807a1143d5",
+    "cost": 1,
+    "shots": 2000,
+    "kind": "twirl",
+    "status": "Completed",
+    "submitted_at": "2026-07-14T00:21:26.598Z",
+    "bal_before": {
+      "full": 17,
+      "spark": 0
+    },
+    "counts_file": "ce_n3_tw08_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 16,
+      "spark": 0
+    }
+  },
+  "n3_tw09": {
+    "job_id": "860dd543-708c-4478-98f9-c4470e58b7a0",
+    "cost": 1,
+    "shots": 2000,
+    "kind": "twirl",
+    "status": "Completed",
+    "submitted_at": "2026-07-14T00:25:04.290Z",
+    "bal_before": {
+      "full": 16,
+      "spark": 0
+    },
+    "counts_file": "ce_n3_tw09_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 15,
+      "spark": 0
+    }
+  },
+  "n3_tw10": {
+    "job_id": "d7c7dcc8-cd67-4e79-9568-9630dbf654e0",
+    "cost": 1,
+    "shots": 2000,
+    "kind": "twirl",
+    "status": "Completed",
+    "submitted_at": "2026-07-14T00:26:41.853Z",
+    "bal_before": {
+      "full": 15,
+      "spark": 0
+    },
+    "counts_file": "ce_n3_tw10_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 14,
+      "spark": 0
+    }
+  },
+  "n3_tw11": {
+    "job_id": "8f2f3ffa-efbb-47f0-acfb-d3655fd927d7",
+    "cost": 1,
+    "shots": 2000,
+    "kind": "twirl",
+    "status": "Completed",
+    "submitted_at": "2026-07-14T00:30:19.563Z",
+    "bal_before": {
+      "full": 14,
+      "spark": 0
+    },
+    "counts_file": "ce_n3_tw11_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 13,
+      "spark": 0
+    }
+  },
+  "n4_untw": {
+    "job_id": "2711c2fc-e335-44a2-89c7-b31b813ce72a",
+    "cost": 1,
+    "shots": 2500,
+    "kind": "untwirled",
+    "status": "Completed",
+    "submitted_at": "2026-07-14T00:33:57.626Z",
+    "bal_before": {
+      "full": 13,
+      "spark": 0
+    },
+    "counts_file": "ce_n4_untw_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 12,
+      "spark": 0
+    }
+  },
+  "n4_tw00": {
+    "job_id": "4d4b240e-293a-4118-8050-673f2018cdc5",
+    "cost": 1,
+    "shots": 2000,
+    "kind": "twirl",
+    "status": "Completed",
+    "submitted_at": "2026-07-14T00:36:35.472Z",
+    "bal_before": {
+      "full": 12,
+      "spark": 0
+    },
+    "counts_file": "ce_n4_tw00_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 11,
+      "spark": 0
+    }
+  },
+  "n4_tw01": {
+    "job_id": "8f7bf071-1d5b-4dc4-88e1-73577228cade",
+    "cost": 1,
+    "shots": 2000,
+    "kind": "twirl",
+    "status": "Completed",
+    "submitted_at": "2026-07-14T00:40:13.639Z",
+    "bal_before": {
+      "full": 11,
+      "spark": 0
+    },
+    "counts_file": "ce_n4_tw01_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 10,
+      "spark": 0
+    }
+  },
+  "n4_tw02": {
+    "job_id": "4e474f5f-ad35-4036-aa12-a5a3ebbe7627",
+    "cost": 1,
+    "shots": 2000,
+    "kind": "twirl",
+    "status": "Completed",
+    "submitted_at": "2026-07-14T00:41:20.815Z",
+    "bal_before": {
+      "full": 10,
+      "spark": 0
+    },
+    "counts_file": "ce_n4_tw02_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 9,
+      "spark": 0
+    }
+  },
+  "n4_tw03": {
+    "job_id": "614ce028-c1f7-4133-a474-7d6ca655dd19",
+    "cost": 1,
+    "shots": 2000,
+    "kind": "twirl",
+    "status": "Completed",
+    "submitted_at": "2026-07-14T00:44:58.773Z",
+    "bal_before": {
+      "full": 9,
+      "spark": 0
+    },
+    "counts_file": "ce_n4_tw03_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 8,
+      "spark": 0
+    }
   }
 }
