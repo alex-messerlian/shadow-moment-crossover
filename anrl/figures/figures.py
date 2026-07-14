@@ -339,10 +339,91 @@ def make_fig5():
     return fig, header, rows, caption
 
 
+def make_fig6():
+    """Hardware: (a) measured collective purity below the pre-registered same-session
+    bands at n=2,3,4; (b) cross-session drift on byte-identical circuits (20x the
+    within-session drift). All numbers from the committed raw counts / analysis JSON."""
+    import json
+    from pathlib import Path
+    from anrl.hardware.swap_test import purity_from_counts
+
+    HW = Path(__file__).resolve().parents[2] / "results" / "hardware"
+    ss = json.loads((HW / "same_session_analysis.json").read_text())["cells"]
+
+    fig, (axa, axb) = plt.subplots(1, 2, figsize=(7.0, 3.1))
+    rows = []
+
+    # --- panel (a): measured vs opening/closing prediction bands ---
+    c_open, c_close = OKABE_ITO["sky"], OKABE_ITO["orange"]
+    ns = [c["n"] for c in ss]
+    for c in ss:
+        n = c["n"]
+        a_hi, a_lo = c["A_band"]["hi"], c["A_band"]["lo"]   # pessimistic..optimistic
+        cl_hi, cl_lo = c["C_band"]["hi"], c["C_band"]["lo"]
+        axa.add_patch(plt.Rectangle((n - 0.32, a_hi), 0.28, a_lo - a_hi, facecolor=c_open,
+                                    alpha=0.45, edgecolor="none", zorder=1))
+        axa.add_patch(plt.Rectangle((n + 0.04, cl_hi), 0.28, cl_lo - cl_hi, facecolor=c_close,
+                                    alpha=0.45, edgecolor="none", zorder=1))
+        lo, hi = c["ci95"]
+        axa.errorbar([n], [c["measured"]], yerr=[[c["measured"] - lo], [hi - c["measured"]]],
+                     fmt="o", color=C_SINGLE, ms=5, lw=1.2, zorder=4)
+        rows.append(["a", n, "measured", c["measured"], lo, hi])
+        rows.append(["a", n, "opening_band", "", a_hi, a_lo])
+        rows.append(["a", n, "closing_band", "", cl_hi, cl_lo])
+    axa.plot([], [], "s", color=c_open, alpha=0.6, ms=7, label="opening cal. band")
+    axa.plot([], [], "s", color=c_close, alpha=0.6, ms=7, label="closing cal. band")
+    axa.plot([], [], "o", color=C_SINGLE, ms=5, label="measured (95% CI)")
+    axa.set_xlabel("system size n (qubits)")
+    axa.set_ylabel(r"collective purity $\mathrm{Tr}(\rho^2)$")
+    axa.set_xticks(ns); axa.set_xlim(1.5, 4.5)
+    axa.legend(loc="upper right", fontsize=6.6, handletextpad=0.4)
+    axa.set_title("(a) same session: measured below both bands", fontsize=8)
+
+    # --- panel (b): cross-session drift, byte-identical circuits ---
+    def pur(f, n):
+        c = {k.replace(" ", ""): int(v) for k, v in json.loads((HW / f).read_text()).items()}
+        return purity_from_counts(c, n)
+    sess = {3: [pur("hg_coll_n3_counts.json", 3), pur("ss_B_n3_counts.json", 3), pur("ce_n3_untw_counts.json", 3)],
+            4: [pur("hg_coll_n4_counts.json", 4), pur("ss_B_n4_counts.json", 4), pur("ce_n4_untw_counts.json", 4)]}
+    x = [1, 2, 3]
+    for n, col in ((3, C_K[3]), (4, C_K[4])):
+        axb.plot(x, sess[n], "-o", color=col, ms=4.5, lw=1.4, label=f"n = {n}")
+        # within-session drift ~1% shown as a scale error bar on the last point
+        axb.errorbar([x[-1] + 0.12], [sess[n][-1]], yerr=[0.01], fmt="none", ecolor=col, lw=1.2, capsize=3)
+        for xi, yi in zip(x, sess[n]):
+            rows.append(["b", n, f"session{xi}", round(yi, 4), "", ""])
+    axb.annotate("within-session\ndrift ~1%", xy=(3.12, sess[4][-1]), xytext=(2.3, 0.30),
+                 fontsize=6.6, color=C_TRUE, ha="left",
+                 arrowprops=dict(arrowstyle="->", color=C_TRUE, lw=0.7))
+    axb.text(1.0, 0.60, "cross-session swing ~0.2\n= 20x within-session", fontsize=6.8, color=C_TRUE, va="top")
+    axb.set_xlabel("session (chronological)")
+    axb.set_ylabel(r"collective purity $\mathrm{Tr}(\rho^2)$")
+    axb.set_xticks(x); axb.set_xlim(0.7, 3.5); axb.set_ylim(0.28, 0.66)
+    axb.legend(loc="lower right", fontsize=7)
+    axb.set_title("(b) cross-session: byte-identical circuits", fontsize=8)
+
+    fig.tight_layout()
+    caption = (
+        "Figure 6. Hardware: the prediction fails, and drift is why. "
+        "(a) Measured collective purity (vermillion, 95% bootstrap CI) at n=2,3,4 against the pre-registered "
+        "same-session prediction bands from the opening (blue) and closing (orange) readout calibrations, "
+        "which bracket within-session drift. Every measurement falls BELOW both bands, so within-session "
+        "drift does not account for the gap; the degradation is also non-monotonic (n=3 below n=4). "
+        "(b) The same byte-identical circuits run across three sessions on the same physical qubits: the "
+        "n=3 register healed (0.32 -> 0.59) while the n=4 register drifted down (0.43 -> 0.38), and the "
+        "ordering flipped. Cross-session drift is ~0.2 in purity, about 20x the ~1% within-session drift "
+        "(scale bar), and exceeds every modeled error source. The reader should conclude that device "
+        "non-stationarity, not gate or readout error, is the binding constraint for collective measurement "
+        "on this hardware.")
+    header = ["panel", "n", "series", "value", "lo", "hi"]
+    return fig, header, rows, caption
+
+
 ALL_FIGURES = {
     "fig1_crossover_map": make_fig1,
     "fig2_crossover_boundary": make_fig2,
     "fig3_alpha_transition": make_fig3,
     "fig4_out_of_ensemble": make_fig4,
     "fig5_exponential_wall": make_fig5,
+    "fig6_hardware": make_fig6,
 }
