@@ -1,0 +1,94 @@
+{
+  "step1_audit": {
+    "single_copy_estimator": "anrl.benchmark.shadows.full_purity_ustatistic / anrl.benchmark.budget.moment_ustat_linear",
+    "clips_estimate": false,
+    "detail": "Both return the raw unbiased U-statistic (M(M-1) or M(M-1)(M-2) denominators), no projection to [0,1] or [0,inf). run_stress_test._measure_worker computes (moment_ustat_linear(...) - truth)^2 with NO clip; predicted RMSE is the raw Hoeffding exact_single_copy_rmse. Both sides UNCLIPPED. The np.clip calls in the repo are on sampling probabilities (shadows/scaling) and the collective p_plus (collective.py), never the single-copy purity estimate."
+  },
+  "step1_gap": {
+    "n_cells": 36,
+    "median_abs_rel": 0.06684521138908753,
+    "median_signed_rel": 0.03388240754987394,
+    "mean_signed_rel": 0.032737764161983214,
+    "over_predict_cells": 24,
+    "direction": "theory over-predicts (measured lower)"
+  },
+  "step3_clipping_correction": {
+    "median_abs_rel_raw": 0.06684521138908753,
+    "median_abs_rel_clipping_corrected": 0.1310192933444297,
+    "by_ensemble": {
+      "haar_pure": {
+        "raw": 0.057910647175724535,
+        "clipped": 0.2821308137789802
+      },
+      "low_rank": {
+        "raw": 0.0517708940402697,
+        "clipped": 0.05177089403970575
+      },
+      "ghz_noisy": {
+        "raw": 0.09730093011457804,
+        "clipped": 0.09716588565929818
+      }
+    },
+    "verdict": "clipping does NOT close the gap; it WORSENS it (measured is unclipped, so clipping the prediction pulls mu~1 pure-state cells ~30% below measured)"
+  },
+  "step4_ci_coverage": {
+    "prediction_in_68pct_CI": "17/36",
+    "coverage": 0.4722222222222222,
+    "median_CI_halfwidth_over_measured": 0.06476649286440889,
+    "note": "CI half-width (~6.5%) = finite-trial measured-RMSE noise (sqrt((kurt-1)/(4N)), N~144 non-det / 36 ghz). Coverage 47%<68% because the CI captures only the MEASURED-side noise, not the predicted-side zeta MC error."
+  },
+  "step4_diagnosis": {
+    "cells": [
+      "haar_pure n4 k2 M2000",
+      "low_rank n4 k3 M2000",
+      "ghz_noisy n5 k3 M2000"
+    ],
+    "skewness": [
+      0.15,
+      0.34,
+      0.3
+    ],
+    "kurtosis": [
+      3.1,
+      3.2,
+      3.2
+    ],
+    "zeta_converged_delta_60k_vs_200k_pct": [
+      0.0,
+      0.4,
+      0.4
+    ],
+    "measured_rmse_trials_144_to_20k": {
+      "haar": [
+        0.0848,
+        0.0819,
+        0.0809,
+        0.0807
+      ],
+      "low_rank": [
+        0.0572,
+        0.054,
+        0.0549,
+        0.0549
+      ],
+      "ghz": [
+        0.1055,
+        0.1157,
+        0.1132,
+        0.1134
+      ]
+    },
+    "predicted": {
+      "haar": 0.0804,
+      "low_rank": 0.0549,
+      "ghz": 0.113
+    },
+    "gap_at_20k_trials_pct": [
+      -0.3,
+      0.0,
+      -0.3
+    ],
+    "finite_trial_rmse_bias_at_144_pct": 0.2,
+    "conclusion": "Estimator ~Gaussian at M>=2000 (kurtosis ~3); zeta converged; measured RMSE converges to predicted at high trials (gap +-0.3%). The theory RMSE point prediction is exact; the ~6.7% stress gap is finite-sample estimation noise on BOTH sides (measured RMSE from ~144 trials + predicted-side zeta MC error). The +3.4% signed is ~1.3-1.8 sigma after cell correlation -> within noise."
+  }
+}
