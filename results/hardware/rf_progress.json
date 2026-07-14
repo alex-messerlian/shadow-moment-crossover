@@ -1,0 +1,251 @@
+{
+  "A_w0": {
+    "job_id": "5691a954-9d54-41a6-bb91-79af9a288072",
+    "cost": 1,
+    "shots": 2500,
+    "status": "Completed",
+    "submitted_at": "2026-07-14T06:22:13.677Z",
+    "bal_before": {
+      "full": 28,
+      "spark": 0
+    },
+    "counts_file": "rf_A_w0_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 27,
+      "spark": 0
+    }
+  },
+  "A_w2": {
+    "job_id": "62952770-618a-4a25-8294-ad39108f6a15",
+    "cost": 1,
+    "shots": 2500,
+    "status": "Completed",
+    "submitted_at": "2026-07-14T06:23:51.170Z",
+    "bal_before": {
+      "full": 27,
+      "spark": 0
+    },
+    "counts_file": "rf_A_w2_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 26,
+      "spark": 0
+    }
+  },
+  "A_w4a": {
+    "job_id": "8132b493-6041-4493-905a-b33927563bc5",
+    "cost": 1,
+    "shots": 2500,
+    "status": "Completed",
+    "submitted_at": "2026-07-14T06:27:29.546Z",
+    "bal_before": {
+      "full": 26,
+      "spark": 0
+    },
+    "counts_file": "rf_A_w4a_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 25,
+      "spark": 0
+    }
+  },
+  "A_w4b": {
+    "job_id": "c447a8a9-0a19-4d37-8de9-2d7057012a2c",
+    "cost": 1,
+    "shots": 2500,
+    "status": "Completed",
+    "submitted_at": "2026-07-14T06:29:02.785Z",
+    "bal_before": {
+      "full": 25,
+      "spark": 0
+    },
+    "counts_file": "rf_A_w4b_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 24,
+      "spark": 0
+    }
+  },
+  "A_w6a": {
+    "job_id": "ae8d21c0-53f8-4390-bf4e-3316ec963195",
+    "cost": 1,
+    "shots": 2500,
+    "status": "Completed",
+    "submitted_at": "2026-07-14T06:32:41.740Z",
+    "bal_before": {
+      "full": 24,
+      "spark": 0
+    },
+    "counts_file": "rf_A_w6a_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 23,
+      "spark": 0
+    }
+  },
+  "A_w6b": {
+    "job_id": "a6459c32-4c1f-4d16-b2c2-a3c967d4c342",
+    "cost": 1,
+    "shots": 2500,
+    "status": "Completed",
+    "submitted_at": "2026-07-14T06:34:19.302Z",
+    "bal_before": {
+      "full": 23,
+      "spark": 0
+    },
+    "counts_file": "rf_A_w6b_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 22,
+      "spark": 0
+    }
+  },
+  "A_w8": {
+    "job_id": "343284bc-b0d1-41c5-a1a5-1c8295965ea0",
+    "cost": 1,
+    "shots": 2500,
+    "status": "Completed",
+    "submitted_at": "2026-07-14T06:37:27.654Z",
+    "bal_before": {
+      "full": 22,
+      "spark": 0
+    },
+    "counts_file": "rf_A_w8_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 21,
+      "spark": 0
+    }
+  },
+  "B_n3_std": {
+    "job_id": "b79b556a-daf1-4c0d-9963-896d7cf35177",
+    "cost": 2,
+    "shots": 5000,
+    "status": "Completed",
+    "submitted_at": "2026-07-14T06:39:05.848Z",
+    "bal_before": {
+      "full": 21,
+      "spark": 0
+    },
+    "counts_file": "rf_B_n3_std_counts.json",
+    "actual_cost": 2,
+    "bal_after": {
+      "full": 19,
+      "spark": 0
+    }
+  },
+  "B_n4": {
+    "job_id": "5fd52649-75cc-418a-82ed-0c2cb0ae6b68",
+    "cost": 2,
+    "shots": 5000,
+    "status": "Completed",
+    "submitted_at": "2026-07-14T06:42:14.256Z",
+    "bal_before": {
+      "full": 19,
+      "spark": 0
+    },
+    "counts_file": "rf_B_n4_counts.json",
+    "actual_cost": 2,
+    "bal_after": {
+      "full": 17,
+      "spark": 0
+    }
+  },
+  "B_n3_alt": {
+    "job_id": "7f7ebe99-da7b-4b34-b1d6-75651998fd2a",
+    "cost": 2,
+    "shots": 5000,
+    "status": "Completed",
+    "submitted_at": "2026-07-14T06:45:52.544Z",
+    "bal_before": {
+      "full": 17,
+      "spark": 0
+    },
+    "counts_file": "rf_B_n3_alt_counts.json",
+    "actual_cost": 2,
+    "bal_after": {
+      "full": 15,
+      "spark": 0
+    }
+  },
+  "C_w0": {
+    "job_id": "748432b4-edeb-4dd3-b727-b88430229ce4",
+    "cost": 1,
+    "shots": 2500,
+    "status": "Completed",
+    "submitted_at": "2026-07-14T06:49:00.996Z",
+    "bal_before": {
+      "full": 15,
+      "spark": 0
+    },
+    "counts_file": "rf_C_w0_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 14,
+      "spark": 0
+    }
+  },
+  "C_w2": {
+    "job_id": "22dd26f1-d3a4-497e-b295-2dbce1893388",
+    "cost": 1,
+    "shots": 2500,
+    "status": "Completed",
+    "submitted_at": "2026-07-14T06:52:04.792Z",
+    "bal_before": {
+      "full": 14,
+      "spark": 0
+    },
+    "counts_file": "rf_C_w2_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 13,
+      "spark": 0
+    }
+  },
+  "C_w4a": {
+    "job_id": "5677b999-0e1d-4df9-bd04-99085edbef97",
+    "cost": 1,
+    "shots": 2500,
+    "status": "Completed",
+    "submitted_at": "2026-07-14T06:54:07.574Z",
+    "bal_before": {
+      "full": 13,
+      "spark": 0
+    },
+    "counts_file": "rf_C_w4a_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 12,
+      "spark": 0
+    }
+  },
+  "C_w4b": {
+    "job_id": "504e8a3c-7650-40a9-b567-1ef0590cf606",
+    "cost": 1,
+    "shots": 2500,
+    "status": "Completed",
+    "submitted_at": "2026-07-14T06:57:15.838Z",
+    "bal_before": {
+      "full": 12,
+      "spark": 0
+    },
+    "counts_file": "rf_C_w4b_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 11,
+      "spark": 0
+    }
+  },
+  "C_w6a": {
+    "job_id": "302b6191-a21d-46c8-865d-8bb83f638e1f",
+    "cost": 1,
+    "shots": 2500,
+    "status": "Created",
+    "submitted_at": "2026-07-14T06:59:54.052Z",
+    "bal_before": {
+      "full": 11,
+      "spark": 0
+    }
+  }
+}
