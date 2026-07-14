@@ -116,17 +116,17 @@ buys variance reduction and pays in noise-induced bias. Whether that
 trade is worth making depends on numbers, and the numbers have not been
 computed.
 
-The gap is visible in recent experimental work. A May 2026 study of
-quantum machine learning advantage on tens of noisy qubits
-\cite{qmladvantage2026} considered collective measurements and rejected
-them, on the grounds that the inter-copy entangling operations would
-increase qubit count, two-qubit depth, and routing overhead, introducing
-an additional noise source. The authors restricted attention to
-single-copy schemes and left a systematic multi-copy benchmark for
-future work. On the theory side, a January 2026 result
-\cite{noisylearning2026} showed that implementing collective-measurement
-primitives on noisy systems can inflate sample complexity exponentially.
-The caution is reasonable. It has never been measured.
+The gap is visible in recent work. A May 2026 study of quantum machine
+learning advantage on tens of noisy qubits \cite{qmladvantage2026}
+declined to give its measure-first protocol multi-copy access, citing
+both a theoretical result specific to their learning task---even
+multiple noiseless copies do not let a measure-first protocol solve it
+efficiently---and the resource demands of multi-copy entangled
+measurements, which increase qubit count, two-qubit depth, and routing
+overhead. Their learning task is not moment estimation, so their open
+questions are not ours; but their caution about the resource cost of
+multi-copy measurement is a premise we can now test quantitatively. The
+caution is reasonable. It has never been measured.
 
 The reason the numbers have not been computed is that the single-copy
 side of the ledger has been available only as worst-case bounds. The
@@ -678,10 +678,12 @@ larger than the quantity it is estimating. The collective route over the
 same range stays bounded, because its error is a bias floor and the
 floor cannot exceed \(\mathrm{Tr}(\rho^k)\).
 
-This is the number that answers the question left open in
-\cite{qmladvantage2026}. The entangling overhead those authors were
-concerned about is real, and it is not the binding constraint. The
-binding constraint is that single-copy estimation of nonlinear
+This number speaks directly to the resource-cost concern behind the
+choice in \cite{qmladvantage2026} to keep its measure-first protocol
+single-copy---though that learning task is not moment estimation, and
+the open questions it poses are not ours. The entangling overhead that
+motivates such caution is real, and it is not the binding constraint.
+The binding constraint is that single-copy estimation of nonlinear
 functionals does not survive to the system sizes they are entering.
 Whether the collective route survives on a real device is a separate
 question, and it is the one we take up next.
@@ -754,14 +756,14 @@ qubits is at or below the published median of 0.9\%, and gate error
 accounts for roughly 0.042 of the purity deficit at \(n = 2\) against a
 total deficit of 0.29.
 
-The concern that motivated the field's retreat to single-copy schemes,
-namely that collective measurement demands significant qubit count,
-two-qubit depth, and routing overhead \cite{qmladvantage2026}, does not
-materialize for the destructive SWAP test on a square-lattice device.
-Four two-qubit gates and no routing is not an overhead problem, and the
-gates contribute about a seventh (roughly 14\%) of the observed error. Whatever is
-degrading the collective measurement on this hardware, it is not the
-entangling overhead.
+The resource-demand concern cited in \cite{qmladvantage2026}---that
+collective measurement demands significant qubit count, two-qubit depth,
+and routing overhead---does not materialize for the destructive SWAP
+test on a square-lattice device. Four two-qubit gates and no routing is
+not an overhead problem, and the gates contribute about a seventh
+(roughly 14\%) of the observed error. Whatever is degrading the
+collective measurement on this hardware, it is not the entangling
+overhead.
 
 For contrast and for honesty about scope: Haar-random states at
 \(n = 4\) require 46 CZ gates including 20 routing SWAPs on this
@@ -1068,11 +1070,14 @@ constant it leaves open.
 
 \textbf{Collective measurement on noisy hardware.} The exponential
 single-copy versus collective separation is established in
-\cite{huang2022advantage,chen2022separations}. The practical question of
-whether it survives noise is raised and left open in
-\cite{qmladvantage2026}, and the theoretical hazard is characterized in
-\cite{noisylearning2026}. Section 5 answers the first question and
-Section 6 tests the answer on hardware.
+\cite{huang2022advantage,chen2022separations}. A recent study of quantum
+machine learning on tens of noisy qubits \cite{qmladvantage2026} keeps
+its measure-first protocol single-copy, partly to avoid the resource
+cost of multi-copy entangled measurements; that cost concern, though
+raised for a different learning task, is one our moment-estimation
+results speak to directly. See also \cite{noisylearning2026}. Section 5
+quantifies the separation under noise, and Section 6 tests the
+collective route on hardware.
 
 \textbf{NISQ device stability.} Dasgupta and Humble
 \cite{dasgupta2021stability,dasgupta2022assessing} quantify the temporal
@@ -1226,66 +1231,83 @@ was committed before the corresponding measurement was submitted.
 
 \begin{thebibliography}{16}
 
+% UNVERIFIED: author/journal/volume/pages not confirmed against arXiv or journal record -- verify before submission
 \bibitem{huang2020shadows}
 H.-Y. Huang, R. Kueng, and J. Preskill,
 \emph{Predicting many properties of a quantum system from very few measurements},
 Nature Physics \textbf{16}, 1050 (2020), arXiv:2002.08953.
 
+% UNVERIFIED: author/journal/volume/pages not confirmed against arXiv or journal record -- verify before submission
 \bibitem{huang2022advantage}
 H.-Y. Huang, M. Broughton, J. Cotler, S. Chen, J. Li, M. Mohseni, H. Neven, R. Babbush, R. Kueng, J. Preskill, and J. R. McClean,
 \emph{Quantum advantage in learning from experiments},
 Science \textbf{376}, 1182 (2022), arXiv:2112.00778.
 
+% UNVERIFIED: author/journal/volume/pages not confirmed against arXiv or journal record -- verify before submission
 \bibitem{chen2022separations}
 S. Chen, J. Cotler, H.-Y. Huang, and J. Li,
 \emph{Exponential separations between learning with and without quantum memory},
 FOCS (2022), arXiv:2111.05881.
 
+% UNVERIFIED: co-author list ("et al.") incomplete and unconfirmed -- complete and verify before submission
 \bibitem{gong2024purity}
 W. Gong \emph{et al.},
 \emph{On the sample complexity of purity and inner product estimation},
 arXiv:2410.12712.
 
+% VERIFIED [5]: author list and characterization confirmed against the paper's full text (2026-07-14)
 \bibitem{qmladvantage2026}
+O. Danaci, Y. J. Patel, R. Molteni, E. van Nieuwenburg, V. Dunjko, and J. A. Krzywda,
 \emph{Evidence of quantum machine learning advantage with tens of noisy qubits} (2026), arXiv:2605.21346.
 
+% UNVERIFIED: author/journal/volume/pages not confirmed against arXiv or journal record -- verify before submission
 \bibitem{noisylearning2026}
 \emph{Noisy quantum learning theory} (2026), arXiv:2512.10929.
 
+% UNVERIFIED: title AND authors unconfirmed -- may belong to a different paper entirely; check arxiv.org/abs/2106.10190 before submission
 \bibitem{shadownorm2021}
 Shadow-norm analysis of second-order functionals, arXiv:2106.10190.
 
+% UNVERIFIED: title AND authors unconfirmed -- check arxiv.org/abs/2102.10132 before submission
 \bibitem{hamiltonianshadow2021}
 Hamiltonian-driven shadow tomography, arXiv:2102.10132.
 
+% UNVERIFIED: author/journal/volume/pages not confirmed against arXiv or journal record -- verify before submission
 \bibitem{coherence2024}
 \emph{Estimating the coherence of noise in mid-scale quantum systems}, arXiv:2409.02110.
 
+% VERIFIED [10]: Public Tier licence citation; author/institution confirmed
 \bibitem{wold2025openquantum}
 B. Wold, O. Armbruster, and R. Kuhn,
 \emph{Open Quantum: Democratizing Access to Quantum Computing Resources},
 Quantum Rings Inc., Broomfield, CO. \url{https://www.openquantum.com}.
 
+% UNVERIFIED: author/journal/volume/pages not confirmed against arXiv or journal record -- verify before submission
 \bibitem{dasgupta2021stability}
 S. Dasgupta and T. S. Humble,
 \emph{Stability of noisy quantum computing devices},
 arXiv:2105.09472.
 
+% UNVERIFIED: author/journal/volume/pages not confirmed against arXiv or journal record -- verify before submission
 \bibitem{dasgupta2022assessing}
 S. Dasgupta and T. S. Humble,
 \emph{Assessing the stability of noisy quantum computation},
 arXiv:2208.07219.
 
+% UNVERIFIED: author/journal/volume/pages not confirmed against arXiv or journal record -- verify before submission
 \bibitem{fewshot2026}
 \emph{Few-shot cross-device transfer for quantum noise modeling on real hardware} (2026), arXiv:2604.24397.
 
+% UNVERIFIED: author/journal/volume/pages not confirmed against arXiv or journal record -- verify before submission
 \bibitem{straeter2026}
 M. Straeter, M. Tsesmelis, and L.-C. Kwek,
 \emph{Detecting entanglement of non-Gaussian continuous-variable states from single-copy homodyne measurements} (2026), arXiv:2606.28698.
 
+% UNVERIFIED: author/journal/volume/pages not confirmed against arXiv or journal record -- verify before submission
 \bibitem{paulicliffordxover2026}
 \emph{Sample complexity for embedded multipartite entanglement witness via Pauli and Clifford classical shadows} (2026), arXiv:2601.00859.
 
+% UNVERIFIED: author/journal/volume/pages not confirmed against arXiv or journal record -- verify before submission
 \bibitem{hardwarehorizon2026}
 \emph{Transition from statistical to hardware-limited scaling in photonic quantum state reconstruction} (2026), arXiv:2603.12235.
 
