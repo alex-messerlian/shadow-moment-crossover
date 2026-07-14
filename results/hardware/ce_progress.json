@@ -1,0 +1,110 @@
+{
+  "n3_untw": {
+    "job_id": "f14efbc1-727d-48b3-8335-252133a08938",
+    "cost": 1,
+    "shots": 2500,
+    "kind": "untwirled",
+    "status": "Completed",
+    "submitted_at": "2026-07-13T23:07:23.346Z",
+    "bal_before": {
+      "full": 27,
+      "spark": 0
+    },
+    "counts_file": "ce_n3_untw_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 26,
+      "spark": 0
+    }
+  },
+  "n3_posctrl": {
+    "job_id": "4fe0832c-1674-4fc7-888f-7b1afc3b8f97",
+    "cost": 1,
+    "shots": 2500,
+    "kind": "positive_control",
+    "status": "Completed",
+    "submitted_at": "2026-07-13T23:51:13.669Z",
+    "bal_before": {
+      "full": 26,
+      "spark": 0
+    },
+    "counts_file": "ce_n3_posctrl_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 25,
+      "spark": 0
+    }
+  },
+  "n3_tw00": {
+    "job_id": "eb6f9d73-bb5e-413e-94c9-35b8f4c2149e",
+    "cost": 1,
+    "shots": 2000,
+    "kind": "twirl",
+    "status": "Completed",
+    "submitted_at": "2026-07-13T23:56:21.866Z",
+    "bal_before": {
+      "full": 25,
+      "spark": 0
+    },
+    "counts_file": "ce_n3_tw00_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 24,
+      "spark": 0
+    }
+  },
+  "n3_tw01": {
+    "job_id": "7d563ff6-10fa-4f24-992e-52ce3482e49b",
+    "cost": 1,
+    "shots": 2000,
+    "kind": "twirl",
+    "status": "Completed",
+    "submitted_at": "2026-07-14T00:01:00.126Z",
+    "bal_before": {
+      "full": 24,
+      "spark": 0
+    },
+    "counts_file": "ce_n3_tw01_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 23,
+      "spark": 0
+    }
+  },
+  "n3_tw02": {
+    "job_id": "5f3ae021-1d95-4a13-9036-dfc7c407b734",
+    "cost": 1,
+    "shots": 2000,
+    "kind": "twirl",
+    "status": "Completed",
+    "submitted_at": "2026-07-14T00:04:08.506Z",
+    "bal_before": {
+      "full": 23,
+      "spark": 0
+    },
+    "counts_file": "ce_n3_tw02_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 22,
+      "spark": 0
+    }
+  },
+  "n3_tw03": {
+    "job_id": "03f4606b-5e84-4b8a-b514-b5439029566d",
+    "cost": 1,
+    "shots": 2000,
+    "kind": "twirl",
+    "status": "Completed",
+    "submitted_at": "2026-07-14T00:06:15.923Z",
+    "bal_before": {
+      "full": 22,
+      "spark": 0
+    },
+    "counts_file": "ce_n3_tw03_counts.json",
+    "actual_cost": 1,
+    "bal_after": {
+      "full": 21,
+      "spark": 0
+    }
+  }
+}
