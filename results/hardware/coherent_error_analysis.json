@@ -1,0 +1,211 @@
+{
+  "positive_control": {
+    "shots": 2500,
+    "P_on_posctrl_support": 0.5076,
+    "P_on_untwirled_support": 0.0936,
+    "gates_around_cz_execute": true,
+    "verdict": "EXECUTED \u2014 mid-circuit gates around CZ run (twirl survives)"
+  },
+  "n3": {
+    "n": 3,
+    "depol_prediction": 0.606,
+    "untwirled_historical": 0.3784,
+    "untwirled_same_session": {
+      "purity": 0.5872,
+      "ci95": [
+        0.556,
+        0.6184
+      ],
+      "shots": 2500,
+      "drift_vs_historical": 0.2088
+    },
+    "anomaly": {
+      "untwirled_same_session": 0.5872,
+      "depol_prediction": 0.606,
+      "gap_same_session": 0.0188,
+      "gap_historical": 0.2276,
+      "anomaly_present_this_session": false
+    },
+    "twirled": {
+      "n_twirls": 12,
+      "rc_estimate": 0.5504,
+      "rc_sem": 0.0044,
+      "per_twirl_purity": [
+        0.551,
+        0.547,
+        0.558,
+        0.536,
+        0.562,
+        0.559,
+        0.551,
+        0.58,
+        0.529,
+        0.529,
+        0.539,
+        0.564
+      ],
+      "scatter_std": 0.0154,
+      "observed_var": 0.0002357196969696965,
+      "shot_noise_var": 0.0003484127083333333,
+      "physical_scatter_var": -0.000113,
+      "physical_scatter_std": 0.0,
+      "scatter_exceeds_shot_noise": false,
+      "baseline_used": 0.5872,
+      "depol_prediction": 0.606,
+      "shift_vs_untwirled": -0.0368,
+      "gap_closed_fraction": -1.957,
+      "z_shift_vs_untwirled": -8.3,
+      "z_vs_depol_prediction": -12.54,
+      "intra_run_drift": {
+        "early_mean": 0.5522,
+        "late_mean": 0.5487,
+        "early_minus_late": 0.0035
+      }
+    },
+    "twirl_rows": [
+      {
+        "k": 0,
+        "purity": 0.551,
+        "shots": 2000
+      },
+      {
+        "k": 1,
+        "purity": 0.547,
+        "shots": 2000
+      },
+      {
+        "k": 2,
+        "purity": 0.558,
+        "shots": 2000
+      },
+      {
+        "k": 3,
+        "purity": 0.536,
+        "shots": 2000
+      },
+      {
+        "k": 4,
+        "purity": 0.562,
+        "shots": 2000
+      },
+      {
+        "k": 5,
+        "purity": 0.559,
+        "shots": 2000
+      },
+      {
+        "k": 6,
+        "purity": 0.551,
+        "shots": 2000
+      },
+      {
+        "k": 7,
+        "purity": 0.58,
+        "shots": 2000
+      },
+      {
+        "k": 8,
+        "purity": 0.529,
+        "shots": 2000
+      },
+      {
+        "k": 9,
+        "purity": 0.529,
+        "shots": 2000
+      },
+      {
+        "k": 10,
+        "purity": 0.539,
+        "shots": 2000
+      },
+      {
+        "k": 11,
+        "purity": 0.564,
+        "shots": 2000
+      }
+    ]
+  },
+  "n4": {
+    "n": 4,
+    "depol_prediction": 0.579,
+    "untwirled_historical": 0.4204,
+    "untwirled_same_session": {
+      "purity": 0.3816,
+      "ci95": [
+        0.3456,
+        0.4192
+      ],
+      "shots": 2500,
+      "drift_vs_historical": -0.0388
+    },
+    "anomaly": {
+      "untwirled_same_session": 0.3816,
+      "depol_prediction": 0.579,
+      "gap_same_session": 0.1974,
+      "gap_historical": 0.1586,
+      "anomaly_present_this_session": true
+    },
+    "twirled": {
+      "n_twirls": 4,
+      "rc_estimate": 0.3687,
+      "rc_sem": 0.0076,
+      "per_twirl_purity": [
+        0.382,
+        0.379,
+        0.365,
+        0.349
+      ],
+      "scatter_std": 0.0151,
+      "observed_var": 0.0002282500000000004,
+      "shot_noise_var": 0.00043192612500000005,
+      "physical_scatter_var": -0.000204,
+      "physical_scatter_std": 0.0,
+      "scatter_exceeds_shot_noise": false,
+      "baseline_used": 0.3816,
+      "depol_prediction": 0.579,
+      "shift_vs_untwirled": -0.0129,
+      "gap_closed_fraction": -0.065,
+      "z_shift_vs_untwirled": -1.7,
+      "z_vs_depol_prediction": -27.83,
+      "intra_run_drift": {
+        "early_mean": 0.3805,
+        "late_mean": 0.357,
+        "early_minus_late": 0.0235
+      }
+    },
+    "twirl_rows": [
+      {
+        "k": 0,
+        "purity": 0.382,
+        "shots": 2000
+      },
+      {
+        "k": 1,
+        "purity": 0.379,
+        "shots": 2000
+      },
+      {
+        "k": 2,
+        "purity": 0.365,
+        "shots": 2000
+      },
+      {
+        "k": 3,
+        "purity": 0.349,
+        "shots": 2000
+      }
+    ]
+  },
+  "non_monotonicity": {
+    "historical_untwirled_n3": 0.3784,
+    "historical_untwirled_n4": 0.4204,
+    "historical_n3_lt_n4": true,
+    "same_session_untwirled_n3": 0.5872,
+    "same_session_untwirled_n4": 0.3816,
+    "same_session_untwirled_n3_gt_n4": true,
+    "twirled_rc_n3": 0.5504,
+    "twirled_rc_n4": 0.3687,
+    "twirled_n3_gt_n4": true,
+    "note": "This-session UNTWIRLED already shows n3>n4 (reversed vs the historical n3<n4). The reversal is due to cross-session DRIFT, not twirling: twirled and untwirled give the same ordering. The anomaly moved from the n=3 register to the n=4 register."
+  }
+}
