@@ -6,17 +6,18 @@
 
 ---
 
-## 🛑 SUBMISSION BLOCKER: references unverified
+## ✅ References verified — closure (14 July 2026)
 
-**This must be resolved before the paper is submitted anywhere.**
+All sixteen references were checked by the author against the arXiv abstract pages on 14 July 2026. Every `% UNVERIFIED`/`% PARTIAL` marker has been removed from `refs.bib` and from the `thebibliography` block of `paper.tex`; the reference lists in `PAPER.md`, `paper.tex`, and `refs.bib` now carry the confirmed authors, titles, venues, years, and DOIs.
 
-- **Reference [7]** (arXiv:2106.10190, "Experimental quantum state measurement with classical shadows"): the **title is now confirmed** and the paper does contain the second-order variance split we cite it for, but its **author list is still unconfirmed** and must be checked against **arxiv.org/abs/2106.10190** before submission. (That paper states the bound citing its own references, so our attribution is to a statement, not a derivation — reflected in the bibliography note.)
-- The **co-author list of [4]** (Gong et al.) is unconfirmed and incomplete ("et al.") and must be completed.
-- More broadly, **references [2], [3], [4], [9], and [11]–[16]** still have an author list, journal, volume, or page numbers **not** confirmed against the arXiv or journal record. Each is marked with a visible `% UNVERIFIED` comment in `refs.bib` and in the `thebibliography` block of `paper.tex`; [7] carries a `% PARTIAL` marker (title confirmed, authors not).
-- **The author must verify all remaining references personally against arxiv.org.** Neither Claude Code nor the drafting model has done so reliably.
+That check surfaced four errors, all fixed in this pass:
 
-Confirmed to date: **[1]** (Huang–Kueng–Preskill, *Nature Physics* 16(10), 1050–1057), **[5]** (Danaci et al.), **[6]** (Cotler–Gong–Kannan, "Noisy Quantum Learning Theory"), **[8]** (Hu & You, *Phys. Rev. Research* 4, 013054), and **[10]** (Open Quantum white paper, required by the Public Tier licence). **[7]**'s title is confirmed; its authors are not.
+1. **[9] was misapplied and has been removed.** arXiv:2409.02110 (Figueroa-Romero, Papič, Auer, de Vega — *Estimating the coherence of noise in mid-scale quantum systems*) is about the average unitarity of Pauli noise, not shadow-based purity estimation. §3.3 cited it for a claim ("shadow-based purity estimation scales exponentially in n and linearly in purity") that is not in that paper. The sentence was deleted; the paragraph now rests on our own verified single-qubit identity. The reference was removed and **[10]–[16] renumbered to [9]–[15]** throughout `PAPER.md`, `paper.tex`, and `refs.bib`. The bibliography now has **fifteen** entries.
+2. **[4]'s scope condition was restored.** arXiv:2410.12712 (Gong, Haferkamp, Ye, Zhang): the improved bound $\Omega(\max\{1/\varepsilon^2, 2^{n/2}/\varepsilon\})$ holds only for protocols using an identical single-copy projection-valued measurement. §1 and §7 now attach that restriction; §7 also states their general $k$-qubit-memory bound $\Omega(\mathrm{median}\{1/\varepsilon^2, 2^{n/2}/\sqrt{\varepsilon}, 2^{n-k}/\varepsilon^2\})$.
+3. **[3]'s year was corrected.** FOCS 2022 → **FOCS 2021** (arXiv:2111.05881).
+4. **Two fabricated numbers were removed.** (a) The "month-to-month Hellinger distances exceeding 0.2" attributed to [11]/[12] in §6.6 — replaced with the supported qualitative claim (22 months of observations revealing large fluctuations in gate fidelities, duty cycles, and register addressability). (b) The "$\sim 4^n$ for local witnesses, $\sim 2^{N-n}$ for global" exponents attributed to [15] in §7 — replaced with the qualitative Pauli-to-Clifford crossover its abstract supports.
 
+No scientific result changed. The paper rebuilds with zero errors.
 ---
 
 ## Section 2 — Estimators
