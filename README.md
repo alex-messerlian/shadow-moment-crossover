@@ -41,7 +41,6 @@ Everything is in the `anrl` package:
 | `anrl/physics/` | state ensembles (Haar-pure, noisy-pure, low-rank, GHZ) and Pauli machinery |
 | `anrl/figures/` | the publication figure builders (Okabe–Ito palette; PDF/PNG/CSV export) |
 | `anrl/hardware/` | Open Quantum / Rigetti Cepheus backend, circuit builders, the destructive-SWAP protocol |
-| `anrl/agents/`, `anrl/baselines/`, `anrl/envs/` | scaffolding from an earlier reinforcement-learning direction that the paper does **not** use; kept for history, safe to ignore |
 
 `experiments/` holds one runnable script per result; `results/` holds the saved outputs;
 `tests/` is the test suite.
@@ -57,10 +56,10 @@ pip install --upgrade pip
 pip install numpy scipy matplotlib pytest
 ```
 
-For the full pinned environment (including the `torch`/`torchrl` trio used only by the
-retired RL scaffolding), use `pip install -r requirements.txt` instead. The hardware
-module additionally needs `qiskit` and the `openquantum_sdk` (see
-[Hardware](#hardware-runs-cost-real-money) below).
+For the full pinned environment, use `pip install -r requirements.txt` instead — it still
+pins the `torch`/`torchrl` trio from an earlier development phase, though only `check_env.py`
+now touches it. The hardware module additionally needs `qiskit` and the `openquantum_sdk`
+(see [Hardware](#hardware-runs-cost-real-money) below).
 
 ## Reproduce the theory results
 
@@ -126,8 +125,8 @@ paper's numbers depend on:
 - **Figure data** — `results/figures/*.csv` (the exact plotted values). The rendered
   `*.pdf`/`*.png` regenerate from these with `make_figures.py`.
 
-Not tracked (regenerable or unrelated to the paper): the retired RL training artifacts
-(`ppo_*`) and a few ephemeral hardware working files (credit quotes, status).
+Not tracked (regenerable or unrelated to the paper): a few ephemeral hardware working
+files (credit quotes, status).
 
 ## License
 
