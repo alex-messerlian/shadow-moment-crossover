@@ -3,6 +3,11 @@
 **Generated for the public-release decision.** Read-only audit — nothing was deleted, moved, or
 edited to produce this file.
 
+> **Post-audit update (repo-final-trim pass):** Decision 1 (prune the torch/torchrl/tensordict/gymnasium
+> stack) and Decision 3 (delete `VOICE_NOTES.md`) were executed, and the stale RL line in
+> `witness.py`'s docstring was fixed. The tables below still describe the pre-trim state; treat the
+> `torch`/`VOICE_NOTES` rows and Decision 1 as historical.
+
 - **Tracked files:** 362 · **Tracked size:** ~3.8 MB (results/ 2.0 MB, paper/ 0.9 MB, anrl/ 0.4 MB, experiments/ 0.3 MB, tests/ 0.2 MB).
 - **State of the repo.** After the RL/witness declutter, the repository is the code, data, and paper
   for one project: the exact single-copy variance law, the two collective bias laws, the crossover,
@@ -84,7 +89,7 @@ Legend — **Recommendation**: KEEP (load-bearing or clearly belongs public) · 
 | `states.py` | State construction: `depolarize`, `random_density`, `ghz`, `maximally_mixed`. **Live** (benchmark + hardware import these). | §2.5, §5, §6 | KEEP |
 | `pauli.py` | Pauli machinery: `kron_all`, Pauli matrices/strings. **Live** (benchmark imports `kron_all`). | §2.1, §3 | KEEP |
 | `entanglement.py` | **Mixed:** defines `purity()` — **live**, imported by 12 benchmark/hardware files — *and* the abandoned witness-line functions `partial_transpose`/`negativity`/`pt_moment` (0 live callers). | `purity`: yes; rest: no | KEEP (file), but see Decision 2 |
-| `witness.py` | Entanglement-witness estimators (`witness_weights`, `negativity_witness_estimator`). **0 live callers** — only `test_witness`. Docstring still says "no reinforcement-learning logic." | No | CONSIDER CUTTING — abandoned witness line (Decision 2) |
+| `witness.py` | Entanglement-witness estimators (`witness_weights`, `negativity_witness_estimator`). **0 live callers** — only `test_witness`. | No | CONSIDER CUTTING — abandoned witness line (Decision 2) |
 | `measurement.py` | Local-Pauli measurement simulator (`estimate_pauli_expectations`, `sample_counts`, …). **0 live callers** — only `test_measurement`. | No | CONSIDER CUTTING — abandoned witness line (Decision 2) |
 
 ### `anrl/figures/` — publication figure builders (load-bearing)
@@ -178,8 +183,9 @@ Legend — **Recommendation**: KEEP (load-bearing or clearly belongs public) · 
 | `BUILD.md` | How to build the paper (Overleaf / local tectonic). | — | KEEP — useful build instructions. |
 | `VERIFICATION.md` | Verification checklist + the "all 16 refs verified" closure note. | — | OPTIONAL — verification **provenance** (valuable to show rigor); not required to build (Decision 3). |
 | `DISCREPANCIES.md` | The number-by-number correction audit (WRONG/CONFIRMED table + fixes). | — | OPTIONAL — strong provenance of the verification pass (Decision 3). |
-| `VOICE_NOTES.md` | Before/after log of the prose voice-consistency pass. | — | CONSIDER CUTTING — internal editing log, least reader-facing of the four (Decision 3). |
 | `archive/PAPER_draft.md`, `archive/OUTLINE_draft.md` | Historical Markdown draft + planning outline, headed "HISTORICAL DRAFT — superseded by paper.tex." | — | OPTIONAL — clearly labelled history; harmless. |
+
+*(`VOICE_NOTES.md`, the internal prose-editing log, was deleted in the repo-final-trim pass.)*
 
 ---
 
@@ -198,7 +204,7 @@ Legend — **Recommendation**: KEEP (load-bearing or clearly belongs public) · 
 
 2. **Cut the abandoned entanglement-witness code?** `physics/witness.py` and `physics/measurement.py` have **0 live callers** (only `test_witness`/`test_measurement`), and the `negativity`/`partial_transpose`/`pt_moment` functions in `physics/entanglement.py` are likewise dead. The catch: `entanglement.py` also defines **`purity()`, which 12 live benchmark/hardware files import**, and `physics/__init__.py` re-exports all of it. So a clean cut is a small refactor, not a delete: move `purity()` to `states.py`, delete `witness.py`/`measurement.py` and the dead functions in `entanglement.py`, update `physics/__init__.py`, and drop the three tests. *Recommendation:* **cut it** for a public repo (it's a visibly abandoned line, and `witness.py` even still says "no reinforcement-learning logic"), but only via that refactor — I did **not** touch it because it's coupled to live `purity`.
 
-3. **Ship the paper's process/provenance docs?** `VERIFICATION.md` and `DISCREPANCIES.md` are genuine verification provenance — they show every number was checked and record what was corrected, which *strengthens* a reader's trust; I'd **keep** them (or move under `paper/archive/`). `VOICE_NOTES.md` is an internal prose-editing log with the least reader value — **consider cutting** it. `BUILD.md` is plainly useful — keep. *Recommendation:* keep VERIFICATION + DISCREPANCIES as provenance; drop or archive VOICE_NOTES.
+3. **Ship the paper's process/provenance docs?** `VERIFICATION.md` and `DISCREPANCIES.md` are genuine verification provenance — they show every number was checked and record what was corrected, which *strengthens* a reader's trust; I'd **keep** them (or move under `paper/archive/`). `VOICE_NOTES.md` (an internal prose-editing log with the least reader value) **was deleted** in the repo-final-trim pass. `BUILD.md` is plainly useful — keep. *Recommendation:* keep VERIFICATION + DISCREPANCIES as provenance.
 
 4. **Confirm the canonical scaling / ζ files.** Two pairs have similar names: `scaling_crossover.json` (backs §2.4's "purity near 0.8"; not read by figures) vs `scaling_hardened.json` (the Fig-5 source); and `theory_zetas.json` (canonical, used by figures/tests) vs `theory_zetas_recomputed.json` (a verification recompute). Neither pair is strictly redundant, but the similar names invite confusion. *Recommendation:* keep all four, and consider a one-line note in each JSON's producing script clarifying which is which — **author should confirm** none is a stale leftover.
 

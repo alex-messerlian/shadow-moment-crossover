@@ -1,11 +1,6 @@
 # Reproducible, mutually compatible pin set for shadow-moment-crossover.
 # Verified on macOS arm64 / Python 3.12.12 — all imports succeed.
 #
-# torch, tensordict, and torchrl are version-coupled and MUST move in lockstep:
-# the torchrl/tensordict 0.13 line is pinned to the maintainer-tested pairing
-# torch 2.12.1. Do not bump one of the three without bumping the other two to a
-# matching release, or `import torchrl` will fail with a C++/ABI mismatch.
-#
 # Full transitive lock (optional):  pip freeze > requirements.lock
 
 # --- core scientific stack ---
@@ -13,13 +8,7 @@ numpy==2.5.1
 scipy==1.18.0
 matplotlib==3.11.0
 
-# --- deep learning + RL (coupled trio — keep aligned) ---
-torch==2.12.1
-tensordict==0.13.0
-torchrl==0.13.2
-
-# --- environments & utilities ---
-gymnasium==1.3.0
+# --- utilities ---
 tqdm==4.68.4
 
 # --- testing ---

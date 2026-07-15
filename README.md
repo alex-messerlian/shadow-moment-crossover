@@ -56,9 +56,8 @@ pip install --upgrade pip
 pip install numpy scipy matplotlib pytest
 ```
 
-For the full pinned environment, use `pip install -r requirements.txt` instead — it still
-pins the `torch`/`torchrl` trio from an earlier development phase, though only `check_env.py`
-now touches it. The hardware module additionally needs `qiskit` and the `openquantum_sdk`
+For the full pinned versions, use `pip install -r requirements.txt` instead. The hardware
+module additionally needs `qiskit` and the `openquantum_sdk`
 (see [Hardware](#hardware-runs-cost-real-money) below).
 
 ## Reproduce the theory results
