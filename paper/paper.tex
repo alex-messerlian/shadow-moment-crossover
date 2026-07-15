@@ -18,7 +18,7 @@
 \title{Sample-complexity transition in shadow-based estimation of\\ quantum state moments and the crossover to collective measurement}
 
 \author{Alexander Messerlian}
-\affiliation{[affiliation]}
+\affiliation{[Independent Research]}
 
 \date{\today}
 
@@ -35,9 +35,9 @@ bounds.
 
 We derive the exact, state-dependent variance of the \(k\)-th moment
 U-statistic estimator under local-Pauli classical shadows via the
-Hoeffding decomposition, and verify it against brute-force enumeration
+Hoeffding decomposition, and then verify it against brute-force enumeration
 for \(k = 2, 3, 4\). The law exposes a phenomenon that fixed-exponent
-bounds cannot see: the sample-complexity exponent \(\alpha\), defined by
+bounds cannot in fact see: the sample-complexity exponent \(\alpha\), defined by
 \(\mathrm{RMSE} \propto M^{-\alpha}\) in the measurement budget \(M\),
 is not the constant \(1/2\). It migrates continuously to \(1\) as \(M\)
 falls below a threshold \(M^*\) that grows exponentially in the number
@@ -49,12 +49,12 @@ agree at every point we tested, with no fitted parameters.
 
 For the collective route we give two exact, parameter-free bias laws,
 distinguished by the geometry of the noise channel rather than by its
-rate. Under global depolarizing noise at rate \(g\), the measured value
+rate alone. Under global depolarizing noise at rate \(g\), the measured value
 is \((1-g)\mathrm{Tr}(\rho^k) + g\,2^{n(1-k)}\), linear in \(g\) with no
 compounding across qubits. Under any per-qubit channel \(\mathcal{E}\),
 the \(k\)-copy test returns exactly \(\mathrm{Tr}(\sigma^k)\) with
 \(\sigma = \mathcal{E}^{\otimes n}(\rho)\): the noise does not corrupt
-the measurement, it relabels which state is measured. Both are exact to
+the measurement, it relabels which state is being measured. Both are exact to
 machine precision across state ensembles and out to three times the
 noise range in which they were derived. The collective error is a bias
 floor and is therefore independent of the shot budget.
@@ -63,14 +63,14 @@ Combining the two gives a parameter-free crossover law. It predicts the
 system size at which collective measurement overtakes single-copy for
 99\% of measured crossovers within one qubit across 83 cells and four
 state ensembles, three of which the theory never saw. We then test the
-law on a 108-qubit superconducting processor with predictions registered
-before submission. The prediction fails, and we report the failure and
-its diagnosis: the entangling overhead the field has been cautious about
-is nearly free on this device, readout error is roughly three times the
-published value and strongly correlated, and cross-session drift on
-byte-identical circuits exceeds every modeled error source by a factor
-of twenty. Seven candidate mechanisms are eliminated with quantitative
-bounds. Static device characterization cannot predict
+law on what the platform reports as a 108-qubit superconducting processor,
+with predictions registered before submission. The prediction however fails,
+and we report the failure and its diagnosis: the entangling overhead the field 
+has been cautious about is nearly free on this device, the readout error is
+roughly three times the published value and strongly correlated, and cross-session
+drift on byte-identical circuits exceeds every modeled error source by
+a factor of twenty. Seven candidate mechanisms are then eliminated with
+quantitative bounds. Static device characterization cannot predict
 collective-measurement performance on this hardware.
 
 \end{abstract}
@@ -82,7 +82,7 @@ collective-measurement performance on this hardware.
 
 At ten qubits, the standard single-copy method for estimating the purity
 of a quantum state returns an error fifteen times larger than the
-quantity it is estimating. The estimate is not noisy. It is not an
+quantity it is estimating. The estimate is not noisy. It is also not an
 estimate.
 
 That failure matters because the quantity is not exotic. The moments
@@ -99,7 +99,7 @@ Two routes exist to obtain them. The single-copy route measures one copy
 of the state at a time in randomized local bases, builds classical
 shadows \cite{huang2020shadows}, and forms an unbiased U-statistic from
 the snapshots. It uses no entangling gates and is therefore
-hardware-friendly. The collective route holds \(k\) copies
+fairly hardware-friendly. The collective route holds \(k\) copies
 simultaneously and measures a joint observable, the cyclic-permutation
 operator, whose expectation is exactly \(\mathrm{Tr}(\rho^k)\). It has
 \(O(1)\) variance but requires entangling operations across copies.
@@ -112,9 +112,9 @@ projection-valued measurement, the lower bound for purity estimation is
 \(\Omega(\max\{1/\varepsilon^2, 2^{n/2}/\varepsilon\})\)
 \cite{gong2024purity}. What is not settled is the practical question
 that an experimentalist actually faces: on this device, at this noise
-level, at this system size, which route costs less? The collective route
+level, with this system size, which route costs less? The collective route
 buys variance reduction and pays in noise-induced bias. Whether that
-trade is worth making depends on numbers, and the numbers have not been
+trade is worth making depends on the numbers, and the numbers have not been
 computed.
 
 The gap is visible in recent work. A May 2026 study of quantum machine
@@ -131,9 +131,8 @@ the theory side, a recent result \cite{noisylearning2026} shows that the
 exponential two-copy advantage for purity \emph{testing} collapses under
 local depolarizing noise, and that SWAP-test and Bell-basis primitives
 are fragile to noise absent latent error-correcting structure; their
-task is testing and ours is estimation, a distinction that turns out to
-be the crux and that we take up in Section~7. The caution is reasonable.
-It has never been measured.
+task is testing and ours is estimation, a distinction we take up in
+Section~7. The caution is reasonable. It has never been measured.
 
 The reason the numbers have not been computed is that the single-copy
 side of the ledger has been available only as worst-case bounds. The
@@ -142,8 +141,7 @@ into a kernel term bounded by \(4^{|AB|}\) and linear terms bounded by
 \(2^{|AB|}\) \cite{shadownorm2021}. Bounds of this
 kind are state-independent by construction, and they express sample
 complexity as a fixed power of the budget. That framing conceals a
-structural feature of the estimator, and the feature turns out not to be
-a detail.
+structural feature of the estimator.
 
 \textbf{Thesis.} The sample-complexity exponent for shadow-based moment
 estimation is not a constant. It is a function of system size and
@@ -159,7 +157,7 @@ ensemble, each invert the conclusion of the benchmark if made
 carelessly. Section 3 derives the exact variance law from the Hoeffding
 decomposition, gives the exact single-qubit projection variance, and
 establishes the \(\alpha\) transition together with its out-of-sample
-validation. Section 4 derives two exact collective bias laws and shows
+validation. Section 4 derives the two exact collective bias laws and shows
 that the relevant distinction is the geometry of the noise channel, not
 its rate. Section 5 combines them into a parameter-free crossover law
 and validates it against 83 measured crossovers across four state
@@ -206,11 +204,12 @@ already-collected snapshots is classical post-processing and consumes no
 additional copies of the state, so subsampling them saves nothing
 physical while inflating the variance. In our sweeps a subsampled
 estimator inflated the single-copy RMSE by a factor of about five at
-\(n = 2\), growing to more than fiftyfold at \(n = 4\), relative to the exact one. That factor is larger than the effect the
-benchmark is trying to measure, and it is enough to reverse the
-benchmark's conclusion. Any comparison between single-copy and
-collective measurement must use the exact estimator on the single-copy
-side, or it is measuring an implementation choice rather than physics.
+\(n = 2\), growing to more than fiftyfold at \(n = 4\), relative to the 
+exact one. That factor is larger than the effect the benchmark is trying
+to measure, and it is enough to reverse the benchmark's conclusion. Any
+comparison between single-copy and collective measurement must use the
+exact estimator on the single-copy side, or it is measuring an implementation
+choice rather than physics.
 
 For \(k = 2\) the full U-statistic reduces to an \(O(M^2)\) closed form
 via power sums. For \(k = 4\) it does not, because the snapshots do not
@@ -229,13 +228,13 @@ dimension \(d = 2^n\). It satisfies
 \[\mathrm{Tr}\!\left( C_k\, \rho^{\otimes k} \right) = \mathrm{Tr}(\rho^k), \qquad \mathrm{Tr}(C_k) = d,\]
 
 the second identity because the cyclic permutation on \(k\) registers
-has a single cycle. That second identity is not decoration; it is what
+has a single cycle. The second identity is what
 makes the depolarizing bias law of Section 4.1 come out linear in the
 noise rate.
 
 We use the destructive SWAP test rather than the ancilla-based
 controlled-SWAP construction, because the latter decomposes into many
-two-qubit gates and would be dominated by gate noise on current
+two-qubit gates and would otherwise be dominated by gate noise on current
 hardware. Two copies of the state are prepared on \(2n\) qubits. For
 each pair \((i, i+n)\) a CNOT is applied with control \(i\) and target
 \(i+n\), followed by a Hadamard on qubit \(i\), and all \(2n\) qubits
@@ -248,8 +247,8 @@ where \(a_i, b_i\) are the outcomes on the two copies of qubit \(i\).
 The circuit uses exactly \(n\) two-qubit gates for an \(n\)-qubit state,
 requires no ancilla, and has depth two after state preparation. We
 verified the sign rule against exact simulation to \(10^{-16}\)
-(Appendix B). The gate count matters for Section 6: it is the reason the
-entangling overhead turns out to be affordable on real hardware.
+(Appendix B). The gate count is the reason the
+entangling overhead is affordable on real hardware (Section 6).
 
 \hypertarget{copy-fair-accounting}{%
 \subsubsection{2.4 Copy-fair accounting}\label{copy-fair-accounting}}
@@ -266,9 +265,9 @@ choice}\label{the-state-ensemble-is-not-a-free-choice}}
 The variance of shadow-based purity estimation scales with the purity of
 the state being measured, a fact we derive exactly in Section 3.3. The
 consequence is a trap. A random Ginibre state under heavy depolarizing
-noise has purity approaching \(2^{-n}\), which tends to zero with system
-size. Estimating a quantity that is approximately zero is easy for any
-estimator, and single-copy estimation of such states shows no
+noise has purity approaching \(2^{-n}\), which tends to zero with the
+system's size. Estimating a quantity that is approximately zero is easy
+for any estimator, and single-copy estimation of such states shows no
 exponential blow-up at all. That absence is an artifact of the ensemble,
 not a property of the task.
 
@@ -278,9 +277,8 @@ modest depolarizing noise, with purity of order one. We therefore use
 \[\rho = (1-q)\lvert \psi \rangle \langle \psi \rvert + q\,\mathbb{I}/2^n, \qquad \lvert \psi \rangle \sim \text{Haar}, \qquad q \in [0.05,\, 0.3],\]
 
 for which the purity stays near \(0.8\) at every size tested. Choosing
-the wrong ensemble inverts the conclusion of the benchmark. We report
-this because we made the error ourselves, and correcting it reversed a
-headline result.
+the wrong ensemble inverts the conclusion of the benchmark. We made this
+error, and correcting it reversed a headline result.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -311,15 +309,14 @@ low-rank states, with all ratios within 3\%, and confirmed that it
 reduces to the \(k=2\) form at a ratio of \(1.000000\). The law is
 exact, not asymptotic, and it holds at every budget.
 
-One warning is worth making explicit, because the error is easy to make
-and it is silent. For \(k = 2\) the second-order projection \emph{is}
+One subtlety is easy to get wrong and can pass unnoticed. For \(k = 2\) the second-order projection \emph{is}
 the kernel, so \(\zeta_2\) is the kernel variance. For \(k \geq 3\) this
 is false: \(\zeta_2\) is the two-argument projection, and the kernel
 variance is \(\zeta_k\). Substituting one for the other is wrong by
 roughly a factor of seven and corrupts any variance estimate at higher
 moments while appearing to work at \(k=2\). We made this error, and it
 produced an approximation that failed at \(k \geq 3\) for reasons that
-looked like physics and were not.
+looked like physics and in fact were not.
 
 \hypertarget{two-terms-compete-and-their-ratio-is-a-budget-threshold}{%
 \subsubsection{3.2 Two terms compete, and their ratio is a budget
@@ -394,7 +391,7 @@ local-shadow second moment
 \(3^{|P| + |P'|}\) multiplied by a term that does not factorize for
 entangled states, so weight alone does not determine the coefficient.
 
-The failure is worth reporting because the ansatz \emph{appears} to
+The ansatz nonetheless \emph{appears} to
 hold. Tested only within a narrow single-parameter family, Haar-pure
 states at a fixed depolarizing rate of \(q = 0.1\), it fits to 0.1\%,
 because that family spans a low-dimensional invariant subspace. A closed
@@ -444,15 +441,15 @@ range actually used in the experiment:
 
 The predictions are computed from projection variances estimated from
 shadow snapshots, fed into the exact variance formula. Nothing is fitted
-to the \(\alpha\) data (Fig.~\ref{fig:alpha}). Across every system size and moment order for
-which we have measurements, the derived law matches: 8 of 8 within two
-standard errors at \(k = 2\), 6 of 7 at \(k = 3\), where the single miss
-sits on the two-sigma boundary and is sensitive to the random seed, and
-5 of 5 at \(k = 4\).
+to the \(\alpha\) data (Fig.~\ref{fig:alpha}). Across every system size
+and moment order for which we have measurements, the derived law matches:
+8 of 8 within two standard errors at \(k = 2\), 6 of 7 at \(k = 3\), where
+the single miss sits on the two-sigma boundary and is sensitive to the
+random seed, and 5 of 5 at \(k = 4\).
 
-The exact combinatorial structure is load-bearing rather than
-decorative. A two-term approximation of the form
-\(\mathrm{Var} \approx 4\zeta_1/M + \zeta_2/M^2\), which is the natural
+The exact combinatorial structure is necessary, not a convenience. A
+two-term approximation of the form
+\(\mathrm{Var} \approx 4\zeta_1/M + \zeta_2/M^2\), the natural
 shortcut, manages only 5 of 8 at \(k = 2\) and fails at \(n = 6\) by
 nearly seven standard errors.
 
@@ -476,13 +473,13 @@ independent route.
 matters}\label{why-a-changing-exponent-matters}}
 
 A fixed-exponent bound of the form \(\mathrm{RMSE} \leq C_n / \sqrt{M}\)
-is not wrong. It is a bound, and bounds hold. But it describes the wrong
+is not wrong. It is a bound, and it holds. But it describes the wrong
 regime for the systems people are actually running. At nine qubits, with
 the budgets accessible on current hardware, the estimator sits in the
 \(\alpha = 1\) regime, where additional shots buy error reduction faster
 than \(1/\sqrt{M}\) but from a variance that is already exponentially
 large. The improved rate does not rescue the protocol, because the
-exponential prefactor still dominates. What the transition establishes
+exponential prefactor still dominates it. What the transition establishes
 is that the shape of the sample-complexity curve is not the shape a
 fixed-exponent analysis assumes, and that any extrapolation of measured
 scaling to larger systems which presumes \(\alpha = 1/2\) will be wrong
@@ -549,11 +546,11 @@ and the cyclic test of a product of identical states returns the
 so that the bias is
 \(\left| \mathrm{Tr}(\sigma^k) - \mathrm{Tr}(\rho^k) \right|\).
 
-The statement is stronger than a bias formula, and the strength is the
-point. The noise does not corrupt the measurement. It relabels which
-state is being measured. The collective test performs exactly as
-designed; it simply answers a question about the damaged state
-\(\sigma\) rather than the intended state \(\rho\).
+Under a per-qubit channel the noise does not corrupt the measurement; it
+relabels which state is measured. The collective test performs exactly
+as designed, returning the true \(k\)-th moment of the damaged state
+\(\sigma = \mathcal{E}^{\otimes n}(\rho)\) rather than of the intended
+\(\rho\).
 
 This explains a puzzle in the data that a rate-based model cannot. No
 universal effective attenuation rate fits the measured biases, because
@@ -660,16 +657,14 @@ for the exponentially growing single-copy error to climb over.
 Confirmed.
 
 A larger budget moves the crossover later. The single-copy error falls
-with budget while the bias floor does not. Confirmed, and the
-confirmation is sharper than it sounds: the collective RMSE plateaus
+with budget while the bias floor does not. Confirmed. The collective RMSE plateaus
 exactly at the predicted floor as the budget grows, while the
-single-copy RMSE keeps falling. That is a direct test of the
+single-copy RMSE keeps falling---a direct test of the
 bias-versus-variance distinction on which the whole crossover rests, and
 it holds.
 
-Higher \(k\) moves the crossover later. This one is counterintuitive,
-and it is the sharpest test of whether the mechanism is understood
-rather than merely fitted. A naive variance argument says that higher
+Higher \(k\) moves the crossover later. This is counterintuitive: a
+naive variance argument says that higher
 moments compound the single-copy variance faster and should therefore
 cross earlier. The data say the opposite, and the law explains why:
 \(\mathrm{Tr}(\rho^k)\) shrinks with \(k\), so the absolute bias floor
@@ -721,24 +716,24 @@ question, and it is the one we take up next.
 Cepheus-1-108Q}\label{hardware-a-pre-registered-test-on-rigetti-cepheus-1-108q}}
 
 This section reports a prediction that failed, and the diagnosis of why
-it failed. That is its content and its value.
+it failed.
 
 \hypertarget{platform-and-a-disclosure-about-the-execution-path}{%
 \subsubsection{6.1 Platform, and a disclosure about the execution
 path}\label{platform-and-a-disclosure-about-the-execution-path}}
 
-All measurements were performed on Rigetti Cepheus-1-108Q, a 108-qubit
-superconducting processor built from twelve interconnected nine-qubit
-chiplets. Published median fidelities at the time of the experiments
-were 99.1\% for the two-qubit CZ gate and 99.9\% for single-qubit gates.
-Readout error is not published, a fact that turns out to matter (Section
-6.3).
+All measurements were submitted to the Rigetti Cepheus-1-108Q backend
+as provisioned by the platform, a 108-qubit superconducting processor 
+built from twelve interconnected nine-qubit chiplets. Published median 
+fidelities at the time of the experiments were 99.1\% for the two-qubit 
+CZ gate and 99.9\% for single-qubit gates. Readout error is not published, 
+a fact that matters (Section 6.3).
 
 Access was obtained through the Open Quantum platform operated by
 Quantum Rings \cite{wold2025openquantum}, which provides a unified API
 to QPUs from multiple vendors. We used the Public Tier throughout. Two
 properties of that tier are material to the interpretation of our
-results and we state them rather than bury them.
+results.
 
 First, the Public Tier does not route jobs directly to the vendor. It is
 powered by the Quantum Compute subnet (SN48) on the Bittensor network,
@@ -784,11 +779,11 @@ not an overhead problem, and the gates contribute about a seventh
 collective measurement on this hardware, it is not the entangling
 overhead.
 
-For contrast and for honesty about scope: Haar-random states at
+By contrast, Haar-random states at
 \(n = 4\) require 46 CZ gates including 20 routing SWAPs on this
 topology. The favorable transpilation is a property of structured states
 on a matched topology, not of the SWAP test in general. We therefore
-restrict the hardware series to GHZ ladders and say so.
+restrict the hardware series to GHZ ladders.
 
 \hypertarget{readout-is-the-wall-and-it-is-not-in-the-datasheet}{%
 \subsubsection{6.3 Readout is the wall, and it is not in the
@@ -1013,8 +1008,8 @@ whose bias floor moves by 0.2 between sessions.
 \subsubsection{6.7 A practical finding about cloud QPU
 economics}\label{a-practical-finding-about-cloud-qpu-economics}}
 
-One further constraint emerged and it is worth stating because it
-affects reproducibility rather than physics. The single-copy shadow
+One further constraint emerged that affects reproducibility rather than
+physics. The single-copy shadow
 route requires many independent random measurement bases. On a
 per-circuit-priced cloud platform without circuit batching, each basis
 is a separately billable job. An unbiased shadow purity estimate at the
@@ -1028,8 +1023,7 @@ per-circuit-priced cloud QPUs at the scale required to reproduce their
 own sample-complexity claims. This is the reason our hardware
 single-copy baseline at \(n \geq 3\) is computed from independently
 measured device parameters rather than measured directly, with the
-\(n = 2\) point measured directly as an anchor. We flag the substitution
-rather than eliding it.
+\(n = 2\) point measured directly as an anchor. We flag the substitution.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -1118,7 +1112,7 @@ single-copy and \(O(1)\) two-copy; their bound shows the two-copy
 advantage is degraded by noise by a factor exponential in \(n\), and
 that no adaptive strategy circumvents it.
 
-The relationship to our result turns on the task, and this is the crux.
+The relationship to our result turns on the task.
 They study purity \emph{testing}: deciding between two hypotheses whose
 distinguishing gap shrinks exponentially under noise. We study purity
 \emph{estimation}: additive error \(\varepsilon\) on
@@ -1130,8 +1124,7 @@ comes from the testing task requiring an exponentially small
 being intrinsically exponential for estimation. We do not evade their
 lower bound; we solve a different problem.
 
-The two results nonetheless share a mechanism, and this is a strength
-rather than a coincidence. Our Section 4.2 identity --- that under a
+The two results nonetheless share a mechanism. Our Section 4.2 identity --- that under a
 per-qubit channel the \(k\)-copy test returns exactly
 \(\mathrm{Tr}(\sigma^k)\) with \(\sigma = \mathcal{E}^{\otimes n}(\rho)\)
 --- is the finite-\(n\) mechanism underneath their asymptotic theorem for
@@ -1184,8 +1177,6 @@ priority over them.
 \hypertarget{limitations}{%
 \subsection{8. Limitations}\label{limitations}}
 
-We state these ourselves rather than leave them to be found.
-
 \textbf{The variance law's inputs are numerical.} The law is exact and
 the single-qubit projection variance has a closed form. For
 \(n \geq 2\), \(\zeta_1\) has no weight-only closed form (Section 3.4)
@@ -1200,8 +1191,7 @@ rather than round it to 7 of 7.
 and independent per-qubit channels are idealizations. The bias laws are
 exact given the channel, and they say nothing about whether the channel
 describes any particular device. Section 6 documents exactly where a
-real device departs from them, and that departure is a finding rather
-than a concealed assumption.
+real device departs from them.
 
 \textbf{The crossover was not demonstrated on hardware.} It sits at
 \(n \approx 5\) to \(8\) under realistic noise, and device
