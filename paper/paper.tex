@@ -122,9 +122,9 @@ computed.
 The gap is visible in recent work. A May 2026 study of quantum machine
 learning advantage on tens of noisy qubits \cite{qmladvantage2026}
 declined to give its measure-first protocol multi-copy access, citing
-both a theoretical result specific to their learning task-even
+both a theoretical result specific to their learning task (even
 multiple noiseless copies do not let a measure-first protocol solve it
-efficiently-and the resource demands of multi-copy entangled
+efficiently) and the resource demands of multi-copy entangled
 measurements, which increase qubit count, two-qubit depth, and routing
 overhead. Their learning task is not moment estimation, so their open
 questions are not ours; but their caution about the resource cost of
@@ -466,7 +466,7 @@ independent route.
 \begin{figure}[tb]
 \centering
 \includegraphics[width=0.74\linewidth]{fig3_alpha_transition}
-\caption{The sample-complexity exponent transition-the paper's central phenomenon. Measured budget-scaling exponent $\alpha$ (RMSE $\propto M^{-\alpha}$, fitted over budgets $2000$--$128000$; markers with bootstrap standard errors) versus system size $n$ for moment orders $k=2,3,4$, with the derived-law prediction (lines). \emph{The prediction curves are parameter-free-computed from projection variances fed into the exact variance formula of Sec.~III\,A, and are not fits to the plotted points.} As $n$ grows at fixed budget and $M$ falls below the threshold $M^*$, $\alpha$ migrates continuously from $1/2$ toward $1$.}
+\caption{The sample-complexity exponent transition, the paper's central phenomenon. Measured budget-scaling exponent $\alpha$ (RMSE $\propto M^{-\alpha}$, fitted over budgets $2000$--$128000$; markers with bootstrap standard errors) versus system size $n$ for moment orders $k=2,3,4$, with the derived-law prediction (lines). \emph{The prediction curves are parameter-free, computed from projection variances fed into the exact variance formula of Sec.~III\,A, and are not fits to the plotted points.} As $n$ grows at fixed budget and $M$ falls below the threshold $M^*$, $\alpha$ migrates continuously from $1/2$ toward $1$.}
 \label{fig:alpha}
 \end{figure}
 
@@ -600,10 +600,10 @@ bounded random variable, so estimating \(\mathrm{Tr}(\rho^k)\) to fixed
 \(\varepsilon\) costs \(O(1/\varepsilon^2)\) shots at every \(n\), and
 the collective error saturates at the bias floor rather than growing. It
 is not a claim that collective measurement is cheap for all tasks. For a
-task whose target precision must itself shrink exponentially in \(n\) -
-purity \emph{testing} of a Haar-random pure state against the maximally
+task whose target precision must itself shrink exponentially in \(n\)
+(purity \emph{testing} of a Haar-random pure state against the maximally
 mixed state is the canonical case, where the gap to be resolved closes
-exponentially under noise - \cite{noisylearning2026} proves that
+exponentially under noise), \cite{noisylearning2026} proves that
 exponentially many samples are required even with two copies, and that
 no adaptive strategy escapes this. Our floor bounds the bias of
 estimation; it does not make exponentially fine testing cheap. The
@@ -661,7 +661,7 @@ Confirmed.
 A larger budget moves the crossover later. The single-copy error falls
 with budget while the bias floor does not. Confirmed. The collective RMSE plateaus
 exactly at the predicted floor as the budget grows, while the
-single-copy RMSE keeps falling-a direct test of the
+single-copy RMSE keeps falling, a direct test of the
 bias-versus-variance distinction on which the whole crossover rests, and
 it holds.
 
@@ -696,7 +696,7 @@ floor cannot exceed \(\mathrm{Tr}(\rho^k)\).
 
 This number speaks directly to the resource-cost concern behind the
 choice in \cite{qmladvantage2026} to keep its measure-first protocol
-single-copy-though that learning task is not moment estimation, and
+single-copy, though that learning task is not moment estimation, and
 the open questions it poses are not ours. The entangling overhead that
 motivates such caution is real, and it is not the binding constraint.
 The binding constraint is that single-copy estimation of nonlinear
@@ -772,9 +772,9 @@ qubits is at or below the published median of 0.9\%, and gate error
 accounts for roughly 0.042 of the purity deficit at \(n = 2\) against a
 total deficit of 0.29.
 
-The resource-demand concern cited in \cite{qmladvantage2026}-that
+The resource-demand concern cited in \cite{qmladvantage2026}, that
 collective measurement demands significant qubit count, two-qubit depth,
-and routing overhead-does not materialize for the destructive SWAP
+and routing overhead, does not materialize for the destructive SWAP
 test on a square-lattice device. Four two-qubit gates and no routing is
 not an overhead problem, and the gates contribute about a seventh
 (roughly 14\%) of the observed error. Whatever is degrading the
@@ -1099,10 +1099,10 @@ single-copy versus collective separation is established in
 \cite{huang2022advantage,chen2022separations}. Its fate under noise is
 the subject of \cite{noisylearning2026} (Cotler, Gong, and Kannan), the
 closest theoretical work to ours and the one that analyzes the exact
-primitive we build on. For purity testing - distinguishing an
+primitive we build on. For purity testing, distinguishing an
 \(n\)-qubit Haar-random pure state from the maximally mixed state, given
 two copies each subject to per-qubit depolarizing noise
-\(D_\lambda(\rho) = (1-\lambda)\rho + \lambda I/2\) - their Theorem 2.4
+\(D_\lambda(\rho) = (1-\lambda)\rho + \lambda I/2\), their Theorem 2.4
 proves a sample-complexity lower bound of
 \[
 \Omega\!\left(\min\left\{\,2^{n/2},\ \left(\tfrac{4}{1 + 3(1-\lambda)^4}\right)^{n}\right\}\right),
@@ -1122,14 +1122,14 @@ distinguishing gap shrinks exponentially under noise. We study purity
 bounded random variable, so estimation to a fixed \(\varepsilon\) costs
 \(O(1/\varepsilon^2)\) shots regardless of \(n\). Their exponential cost
 comes from the testing task requiring an exponentially small
-\(\varepsilon\) - the hypothesis gap itself - not from the SWAP test
+\(\varepsilon\), the hypothesis gap itself, not from the SWAP test
 being intrinsically exponential for estimation. We do not evade their
 lower bound; we solve a different problem.
 
-The two results nonetheless share a mechanism. Our Section 4.2 identity - that under a
+The two results nonetheless share a mechanism. Our Section 4.2 identity, that under a
 per-qubit channel the \(k\)-copy test returns exactly
-\(\mathrm{Tr}(\sigma^k)\) with \(\sigma = \mathcal{E}^{\otimes n}(\rho)\)
-- is the finite-\(n\) mechanism underneath their asymptotic theorem for
+\(\mathrm{Tr}(\sigma^k)\) with \(\sigma = \mathcal{E}^{\otimes n}(\rho)\),
+is the finite-\(n\) mechanism underneath their asymptotic theorem for
 SWAP-based protocols. The collective test faithfully reports the purity
 of the damaged state \(\sigma\), and because per-qubit depolarizing
 drives \(\mathrm{Tr}(\sigma^2)\) toward \(2^{-n}\) under \emph{both} the
@@ -1138,7 +1138,7 @@ our exact law into their setup at \(\lambda = 0.1\), the gap
 \(\Delta(n,\lambda) = \mathrm{Tr}(\sigma_{\text{pure}}^2) - 2^{-n}\)
 falls from \(0.54\) at \(n=2\) to \(0.21\) at \(n=10\), and the implied
 SWAP-test shot count \(1/\Delta^2\) rises from \(3.5\) to \(22\), sitting
-at or above their lower bound at every size we checked - as it must for
+at or above their lower bound at every size we checked, as it must for
 any admissible strategy. Its asymptotic base
 \(\big(4/(1+3(1-\lambda)^2)\big)^2\) equals their base
 \(4/(1+3(1-\lambda)^4)\) at \(\lambda = 0\) and exceeds it at finite
@@ -1156,8 +1156,8 @@ noise rate falls, and what is needed is a quantitative condition on
 \(\lambda\) for a meaningful two-copy advantage at fixed \(n\). Our
 crossover law is exactly that condition. At the rates and sizes of our
 experiments (\(\lambda \approx 0.1\), \(n \le 10\)) their lower bound is
-on the order of tens of samples - from under two at \(n=2\) to about
-twenty at \(n=10\) - so at the scales this paper operates in it imposes
+on the order of tens of samples, from under two at \(n=2\) to about
+twenty at \(n=10\), so at the scales this paper operates in it imposes
 no practical obstruction. The bound is a small-base exponential: at
 \(\lambda = 0.1\) its base \(b \approx 1.35 < \sqrt{2}\), so the
 \(2^{n/2}\) branch never binds and the cost grows at every \(n\), but it
