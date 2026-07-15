@@ -26,7 +26,8 @@ This module provides:
   witness from the reconstructed state, then evaluate it on the measured Pauli
   expectations.
 
-No environment / agent / reinforcement-learning logic lives here.
+These entanglement-negativity utilities are exercised only by the test suite,
+not by the paper's moment-estimation code.
 """
 
 from __future__ import annotations

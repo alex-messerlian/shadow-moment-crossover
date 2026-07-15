@@ -1,12 +1,9 @@
 """Environment verification for shadow-moment-crossover.
 
-Imports the pinned dependency stack, prints versions, and reports hardware
-acceleration availability (CUDA and Apple MPS). Run inside the project venv:
+Imports the project's dependency stack and prints each package's version, so a
+reader can confirm a working environment. Run inside the project venv:
 
     .venv/bin/python check_env.py
-
-The theory and figures need only numpy/scipy/matplotlib; torch/torchrl are
-still checked because requirements.txt pins the full historical environment.
 """
 
 from __future__ import annotations
@@ -34,50 +31,16 @@ def main() -> int:
     print(f"Machine          : {platform.machine()}")
     print("-" * 60)
 
-    # Core stack the project depends on.
+    # The stack the project depends on.
     for name in (
         "numpy",
         "scipy",
         "matplotlib",
-        "torch",
-        "tensordict",
-        "torchrl",
-        "gymnasium",
         "tqdm",
         "pytest",
     ):
         print(f"{name:<16} : {_version(name)}")
 
-    print("-" * 60)
-
-    # Hardware acceleration report. On this machine (Apple Silicon) CUDA is
-    # unavailable; MPS is the relevant accelerator. On Linux/NVIDIA hosts CUDA
-    # would report available.
-    import torch  # noqa: PLC0415 - imported here so version check runs first
-
-    cuda_ok = torch.cuda.is_available()
-    mps_ok = getattr(torch.backends, "mps", None) is not None and torch.backends.mps.is_available()
-
-    print(f"CUDA available   : {cuda_ok}")
-    if cuda_ok:
-        print(f"CUDA device      : {torch.cuda.get_device_name(0)}")
-        print(f"CUDA device count: {torch.cuda.device_count()}")
-    print(f"MPS available    : {mps_ok}")
-
-    if cuda_ok:
-        device = "cuda"
-    elif mps_ok:
-        device = "mps"
-    else:
-        device = "cpu"
-    print(f"Default device   : {device}")
-
-    # Prove torchrl actually initializes (imports its compiled extensions).
-    import torchrl  # noqa: PLC0415
-
-    print("-" * 60)
-    print(f"torchrl import OK (v{torchrl.__version__}); GPU accelerator: "
-          f"{'yes' if (cuda_ok or mps_ok) else 'no (CPU only)'}")
     print("=" * 60)
     return 0
 
