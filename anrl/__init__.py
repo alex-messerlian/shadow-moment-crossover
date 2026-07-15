@@ -1,14 +1,16 @@
-"""adaptive-negativity-rl (anrl).
+"""shadow-moment-crossover (``anrl``).
 
-Reinforcement-learning research codebase. This top-level package hosts the
-project's subpackages:
+Code for the exact variance law and the crossover to collective measurement in
+shadow-based estimation of quantum state moments. Subpackages:
 
-- ``anrl.physics``   : physics / dynamics models (empty scaffold)
-- ``anrl.envs``      : Gymnasium / TorchRL environments (empty scaffold)
-- ``anrl.agents``    : RL agents and policies (empty scaffold)
-- ``anrl.baselines`` : baseline methods for comparison (empty scaffold)
-
-No simulation, environment, or agent logic is implemented yet.
+- ``anrl.theory``    : the exact Hoeffding/U-statistic variance law, the two
+  collective bias laws, the crossover, and the threshold ``M*``
+- ``anrl.benchmark`` : Monte-Carlo estimators (single-copy shadows, collective
+  SWAP test), noise channels, and moment operators
+- ``anrl.physics``   : state ensembles and Pauli machinery shared by the above
+- ``anrl.hardware``  : Open Quantum / Rigetti Cepheus backend, circuit builders,
+  and the destructive-SWAP protocol
+- ``anrl.figures``   : publication figure builders
 """
 
 __version__ = "0.0.0"

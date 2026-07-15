@@ -1,4 +1,4 @@
-# Reproducible, mutually compatible pin set for adaptive-negativity-rl.
+# Reproducible, mutually compatible pin set for shadow-moment-crossover.
 # Verified on macOS arm64 / Python 3.12.12 — all imports succeed.
 #
 # torch, tensordict, and torchrl are version-coupled and MUST move in lockstep:

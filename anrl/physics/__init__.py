@@ -1,9 +1,8 @@
-"""Physics core for adaptive-negativity-rl.
+"""Physics core for shadow-moment-crossover.
 
-Exact bipartite-entanglement computation and single-copy local-Pauli
-measurement simulation for n-qubit density matrices.  No reinforcement-learning,
-environment, or agent logic lives here — this package is pure quantum-state
-math and measurement.
+State construction, Pauli machinery, and single-copy local-Pauli measurement
+simulation for n-qubit density matrices, shared by the benchmark and hardware
+modules. This package is pure quantum-state math and measurement.
 
 Submodules
 ----------

@@ -1,12 +1,12 @@
-"""Environment verification for adaptive-negativity-rl.
+"""Environment verification for shadow-moment-crossover.
 
-Imports the core scientific/RL stack, prints versions, and reports hardware
+Imports the pinned dependency stack, prints versions, and reports hardware
 acceleration availability (CUDA and Apple MPS). Run inside the project venv:
 
     .venv/bin/python check_env.py
 
-This is a scaffold-only sanity check — it exercises no simulation, environment,
-or agent logic.
+The theory and figures need only numpy/scipy/matplotlib; torch/torchrl are
+still checked because requirements.txt pins the full historical environment.
 """
 
 from __future__ import annotations
@@ -26,7 +26,7 @@ def _version(module_name: str) -> str:
 
 def main() -> int:
     print("=" * 60)
-    print("adaptive-negativity-rl — environment check")
+    print("shadow-moment-crossover — environment check")
     print("=" * 60)
 
     print(f"Python           : {sys.version.split()[0]} ({platform.python_implementation()})")
