@@ -9,6 +9,11 @@
 \usepackage{xcolor}
 \usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
 
+% Arabic section and subsection numbering, matching the textual
+% "Section N" / "Section N.M" references used throughout the prose.
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+
 % pandoc compatibility
 \providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \providecommand{\passthrough}[1]{#1}
@@ -37,8 +42,8 @@ bounds.
 
 We derive the exact, state-dependent variance of the \(k\)-th moment
 U-statistic estimator under local random-unitary classical shadows via the
-Hoeffding decomposition, and then verify it against brute-force enumeration
-for \(k = 2, 3, 4\). The law exposes a phenomenon that fixed-exponent
+Hoeffding decomposition, and then verify it against brute-force Monte Carlo
+of the exact estimator for \(k = 2, 3, 4\). The law exposes a phenomenon that fixed-exponent
 bounds cannot in fact see: the effective budget-scaling exponent \(\alpha\), defined by
 \(\mathrm{RMSE} \propto M^{-\alpha}\) over the measurement budget \(M\) in use,
 is not the constant \(1/2\). It migrates continuously toward \(1\), and past it for
@@ -50,7 +55,8 @@ in the higher-order-dominated regime, where \(\alpha \approx 1\) or above, and
 the estimator's scaling behavior
 changes character as the system grows. The asymptotic scaling at fixed \(n\)
 remains the familiar square-root law; the migration is a finite-budget effect. Predicted and measured \(\alpha\)
-agree at every point we tested, with no fitted parameters.
+agree at every system size and moment order we tested but one, a single
+\(k = 3\) case sitting on the two-sigma boundary, with no fitted parameters.
 
 For the collective route we give two exact, parameter-free bias laws
 (nothing is fitted; the state and the noise channel enter as inputs),
@@ -73,8 +79,8 @@ law on what the platform reports as a 108-qubit superconducting processor,
 with predictions registered before submission. The prediction however is not borne out, and we report the diagnosis: the entangling overhead the field 
 has been cautious about is nearly free on this device, the readout error is
 roughly three times the assumed value and strongly correlated, and cross-session
-drift on byte-identical circuits exceeds every modeled error source by
-a factor of twenty. Seven candidate mechanisms are then eliminated with
+drift on byte-identical circuits exceeds the within-session drift by
+a factor of twenty and every modeled error source outright. Seven candidate mechanisms are then eliminated with
 quantitative bounds. Static device characterization cannot predict
 collective-measurement performance on this hardware.
 
@@ -83,7 +89,7 @@ collective-measurement performance on this hardware.
 \maketitle
 
 \hypertarget{introduction}{%
-\subsection{1. Introduction}\label{introduction}}
+\section{Introduction}\label{introduction}}
 
 At ten qubits, the standard single-copy method for estimating the purity
 of a quantum state returns an error fifteen times larger than the
@@ -93,7 +99,7 @@ estimate.
 That failure matters because the quantity is not exotic. The moments
 \(\mathrm{Tr}(\rho^k)\) of an unknown state are the entry point to a
 large fraction of what one wants to know about it. The second moment is
-the purity. Logarithms of the moments give the R\textquotesingle enyi
+the purity. Logarithms of the moments give the R\'enyi
 entropies. Moments of the partial transpose furnish PPT entanglement
 criteria and bounds on negativity. Purity appears directly in
 error-mitigation protocols such as virtual distillation. Any experiment
@@ -176,10 +182,10 @@ Section 9 concludes.
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{setting-and-estimators}{%
-\subsection{2. Setting and estimators}\label{setting-and-estimators}}
+\section{Setting and estimators}\label{setting-and-estimators}}
 
 \hypertarget{local-pauli-classical-shadows}{%
-\subsubsection{2.1 Local random-unitary classical
+\subsection{Local random-unitary classical
 shadows}\label{local-pauli-classical-shadows}}
 
 Let \(\rho\) be an unknown \(n\)-qubit state. A single snapshot is
@@ -194,7 +200,7 @@ The snapshot is an unbiased estimator of the state,
 copies of \(\rho\).
 
 \hypertarget{the-estimator-must-be-the-exact-u-statistic}{%
-\subsubsection{2.2 The estimator must be the exact
+\subsection{The estimator must be the exact
 U-statistic}\label{the-estimator-must-be-the-exact-u-statistic}}
 
 The \(k\)-th moment is estimated by the U-statistic over distinct
@@ -225,7 +231,7 @@ evaluated by a tensor contraction. The construction matches brute-force
 enumeration to \(\lesssim 10^{-13}\).
 
 \hypertarget{the-collective-route}{%
-\subsubsection{2.3 The collective route}\label{the-collective-route}}
+\subsection{The collective route}\label{the-collective-route}}
 
 Let \(C_k\) be the cyclic permutation operator on \(k\) registers of
 dimension \(d = 2^n\). It satisfies
@@ -256,7 +262,7 @@ verified the sign rule against exact simulation to \(10^{-16}\)
 entangling overhead is affordable on real hardware (Section 6).
 
 \hypertarget{copy-fair-accounting}{%
-\subsubsection{2.4 Copy-fair accounting}\label{copy-fair-accounting}}
+\subsection{Copy-fair accounting}\label{copy-fair-accounting}}
 
 A single-copy protocol at budget \(M\) consumes \(M\) copies of
 \(\rho\). A \(k\)-copy collective test at budget \(M\) consumes \(M/k\)
@@ -264,7 +270,7 @@ measurements, each using \(k\) copies. All comparisons in this paper
 hold the total number of state copies fixed.
 
 \hypertarget{the-state-ensemble-is-not-a-free-choice}{%
-\subsubsection{2.5 The state ensemble is not a free
+\subsection{The state ensemble is not a free
 choice}\label{the-state-ensemble-is-not-a-free-choice}}
 
 The variance of shadow-based purity estimation scales with the purity of
@@ -290,11 +296,11 @@ the wrong ensemble inverts the conclusion of the benchmark.
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{the-single-copy-variance-law}{%
-\subsection{3. The single-copy variance
+\section{The single-copy variance
 law}\label{the-single-copy-variance-law}}
 
 \hypertarget{the-hoeffding-decomposition-gives-the-variance-exactly}{%
-\subsubsection{3.1 The Hoeffding decomposition gives the variance
+\subsection{The Hoeffding decomposition gives the variance
 exactly}\label{the-hoeffding-decomposition-gives-the-variance-exactly}}
 
 For a symmetric kernel \(h\) of order \(k\), define the \(c\)-th order
@@ -326,7 +332,7 @@ breaks down at \(k \geq 3\), for reasons that can look like physics but
 are not.
 
 \hypertarget{two-terms-compete-and-their-ratio-is-a-budget-threshold}{%
-\subsubsection{3.2 Two terms compete, and their ratio is a budget
+\subsection{Two terms compete, and their ratio is a budget
 threshold}\label{two-terms-compete-and-their-ratio-is-a-budget-threshold}}
 
 The exact variance contains two competing terms with different budget
@@ -355,7 +361,7 @@ state-dependent. To see what that dependence is, we compute them exactly
 for one qubit.
 
 \hypertarget{the-single-qubit-second-moment-exactly}{%
-\subsubsection{3.3 The single-qubit second moment,
+\subsection{The single-qubit second moment,
 exactly}\label{the-single-qubit-second-moment-exactly}}
 
 For a single qubit in state \(r\) with Bloch length \(t\) and purity
@@ -384,9 +390,9 @@ The identity also passes the boundary check. At \(t = 0\) it gives
 of.
 
 \hypertarget{there-is-no-weight-only-closed-form-at-n-geq-2}{%
-\subsubsection{\texorpdfstring{3.4 The weight-only quadratic ansatz fails
+\subsection{\texorpdfstring{The weight-only quadratic ansatz fails
 at
-\(n \geq 2\)}{3.4 The weight-only quadratic ansatz fails at n \textbackslash geq 2}}\label{there-is-no-weight-only-closed-form-at-n-geq-2}}
+\(n \geq 2\)}{The weight-only quadratic ansatz fails at n \textbackslash geq 2}}\label{there-is-no-weight-only-closed-form-at-n-geq-2}}
 
 The single-qubit result invites a generalization. If the second moment
 carries a factor of \(3\) per qubit in the support of a Pauli string,
@@ -417,8 +423,8 @@ the projection variances must be computed numerically, and the variance
 law is exact while its inputs are not analytic.
 
 \hypertarget{the-alpha-transition}{%
-\subsubsection{\texorpdfstring{3.5 The \(\alpha\)
-transition}{3.5 The \textbackslash alpha transition}}\label{the-alpha-transition}}
+\subsection{\texorpdfstring{The \(\alpha\)
+transition}{The \textbackslash alpha transition}}\label{the-alpha-transition}}
 
 Computing the projection variances numerically for noisy-pure states
 gives clean exponential scalings. Over \(n = 2\) to \(7\),
@@ -447,12 +453,10 @@ range actually used in the experiment:
 \toprule
 \(n\) & \(M^*(n)\) & predicted \(\alpha\) & measured \(\alpha\) \\
 \midrule
-
-\bottomrule
-
 2 & \textasciitilde22 & 0.501 & \(0.495 \pm 0.013\) \\
 4 & \textasciitilde604 & 0.528 & \(0.528 \pm 0.012\) \\
 9 & \(\approx 2.3 \times 10^{6}\) & 0.998 & \(1.006 \pm 0.023\) \\
+\bottomrule
 \end{tabular}
 \end{table}
 
@@ -481,12 +485,12 @@ independent route.
 \begin{figure}[tb]
 \centering
 \includegraphics[width=0.74\linewidth]{fig3_alpha_transition}
-\caption{The effective budget-scaling exponent transition, the paper's central phenomenon. Measured budget-scaling exponent $\alpha$ (RMSE $\propto M^{-\alpha}$, fitted over budgets $2000$--$128000$; markers with bootstrap standard errors) versus system size $n$ for moment orders $k=2,3,4$, with the derived-law prediction (lines). \emph{The prediction curves are parameter-free, computed from projection variances fed into the exact variance formula of Sec.~III\,A, and are not fits to the plotted points.} As $n$ grows at fixed budget and $M$ falls below the threshold $M^*$, $\alpha$ migrates continuously from $1/2$ toward $1$, and past it for the higher moment orders.}
+\caption{The effective budget-scaling exponent transition, the paper's central phenomenon. Measured budget-scaling exponent $\alpha$ (RMSE $\propto M^{-\alpha}$, fitted over budgets $2000$--$128000$; markers with bootstrap standard errors) versus system size $n$ for moment orders $k=2,3,4$, with the derived-law prediction (lines). \emph{The prediction curves are parameter-free, computed from projection variances fed into the exact variance formula of Sec.~3.1, and are not fits to the plotted points.} As $n$ grows at fixed budget and $M$ falls below the threshold $M^*$, $\alpha$ migrates continuously from $1/2$ toward $1$, and past it for the higher moment orders.}
 \label{fig:alpha}
 \end{figure}
 
 \hypertarget{why-a-changing-exponent-matters}{%
-\subsubsection{3.6 Why a changing exponent
+\subsection{Why a changing exponent
 matters}\label{why-a-changing-exponent-matters}}
 
 A fixed-exponent bound of the form \(\mathrm{RMSE} \leq C_n / \sqrt{M}\)
@@ -512,7 +516,7 @@ collective route, where the error has a different character entirely.
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{the-collective-route-two-exact-bias-laws}{%
-\subsection{4. The collective route: two exact bias
+\section{The collective route: two exact bias
 laws}\label{the-collective-route-two-exact-bias-laws}}
 
 The collective route's error under noise is dominated by a bias rather
@@ -524,9 +528,9 @@ applies is determined by the geometry of the noise channel rather than
 by its rate.
 
 \hypertarget{global-depolarizing-noise-linear-in-g-with-no-compounding}{%
-\subsubsection{\texorpdfstring{4.1 Global depolarizing noise: linear in
+\subsection{\texorpdfstring{Global depolarizing noise: linear in
 \(g\), with no
-compounding}{4.1 Global depolarizing noise: linear in g, with no compounding}}\label{global-depolarizing-noise-linear-in-g-with-no-compounding}}
+compounding}{Global depolarizing noise: linear in g, with no compounding}}\label{global-depolarizing-noise-linear-in-g-with-no-compounding}}
 
 Let the \(kn\)-qubit collective register be subject to global
 depolarizing noise at rate \(g\), so that
@@ -549,7 +553,7 @@ the compounding, and any treatment that ignores the channel's geometry
 will get this wrong by an exponential factor.
 
 \hypertarget{per-qubit-channels-the-noise-relabels-the-state}{%
-\subsubsection{4.2 Per-qubit channels: the noise relabels the
+\subsection{Per-qubit channels: the noise relabels the
 state}\label{per-qubit-channels-the-noise-relabels-the-state}}
 
 Let \(\mathcal{E}\) be any single-qubit channel applied to every qubit
@@ -580,7 +584,7 @@ that particular state's spectrum, and the two states of identical purity can
 be deformed by different amounts.
 
 \hypertarget{verification}{%
-\subsubsection{4.3 Verification}\label{verification}}
+\subsection{Verification}\label{verification}}
 
 Both laws are exact identities rather than approximations, and we
 verified them accordingly: against explicit construction of \(C_k\) and
@@ -598,16 +602,17 @@ exactly, the crossover follows by setting one against the other.
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{the-crossover}{%
-\subsection{5. The crossover}\label{the-crossover}}
+\section{The crossover}\label{the-crossover}}
 
 \hypertarget{the-law}{%
-\subsubsection{5.1 The law}\label{the-law}}
+\subsection{The law}\label{the-law}}
 
 The single-copy error grows exponentially in \(n\) and falls with the
 budget. The collective error is a bias floor plus a finite-shot variance:
 the floor is bounded above by \(\mathrm{Tr}(\rho^k)\) and is independent
 of the budget, while the shot term vanishes as the budget grows. The
-crossover size \(n^*\) is where the former rises above the latter,
+crossover size \(n^*\) is where the single-copy error rises above the
+collective error,
 
 \[\underbrace{\sqrt{\mathrm{Var}(U_M)}}_{\text{exponential in } n,\ \text{falls with } M} \;=\; \underbrace{\sqrt{\text{bias}(g, k, n)^2 + \frac{1 - \mu^2}{N}}}_{\text{bounded floor}\;+\;\text{shot noise}}\]
 
@@ -640,12 +645,12 @@ quantitative reconciliation, including why our operating regime is
 unaffected, is in Section~7.
 
 \hypertarget{validation-on-83-cells-and-four-ensembles}{%
-\subsubsection{5.2 Validation on 83 cells and four
+\subsection{Validation on 83 cells and four
 ensembles}\label{validation-on-83-cells-and-four-ensembles}}
 
 Across 83 cells spanning moment order \(k \in \{2,3,4\}\), three noise
 models (depolarizing, amplitude damping, and dephasing), noise rates from 0
-to 0.3, system sizes \(n = 2\) to \(10\), four budget multipliers, and
+to 0.3, system sizes \(n = 2\) to \(9\), four budget multipliers, and
 four state ensembles, the law predicts 99\% of measured crossovers
 within one qubit and 88\% exactly (Figs.~\ref{fig:crossmap} and~\ref{fig:boundary}).
 The comparison is not symmetric between the two routes. The single-copy
@@ -668,7 +673,7 @@ is not a curve fit to the ensemble it was built on.
 \begin{figure}[tb]
 \centering
 \includegraphics[width=0.74\linewidth]{fig1_crossover_map}
-\caption{The crossover for purity ($k=2$). Single-copy classical-shadow RMSE (vermillion) and collective two-copy RMSE (green) versus system size $n$ at a fixed copy budget, for three noise channels. \emph{The theory curves are parameter-free predictions from the exact variance and bias laws (Secs.~III--IV), not fits to these points.} The crossover $n^*$ is where the exponentially growing single-copy error overtakes the collective error, a bounded bias floor plus a finite-shot variance that vanishes as the budget grows.}
+\caption{The crossover for purity ($k=2$). Single-copy classical-shadow RMSE (vermillion) and collective two-copy RMSE (green) versus system size $n$ at a fixed copy budget, for three noise channels. \emph{The theory curves are parameter-free predictions from the exact variance and bias laws (Secs.~3--4), not fits to these points.} The crossover $n^*$ is where the exponentially growing single-copy error overtakes the collective error, a bounded bias floor plus a finite-shot variance that vanishes as the budget grows.}
 \label{fig:crossmap}
 \end{figure}
 
@@ -682,13 +687,16 @@ is not a curve fit to the ensemble it was built on.
 \begin{figure}[tb]
 \centering
 \includegraphics[width=0.74\linewidth]{fig4_out_of_ensemble}
-\caption{Out-of-ensemble validation of the variance law. Predicted versus measured single-copy RMSE on three ensembles the theory never saw (Haar-pure, low-rank, GHZ-noisy). The scatter about the diagonal is finite-trial estimation noise (median relative deviation 6.7\%; Sec.~VIII), not a systematic error.}
+\caption{Out-of-ensemble validation of the variance law. Predicted versus measured single-copy RMSE on three ensembles the theory never saw (Haar-pure, low-rank, GHZ-noisy). The scatter about the diagonal is finite-trial estimation noise (median relative deviation 6.7\%; Sec.~8), not a systematic error.}
 \label{fig:ooe}
 \end{figure}
 
 \hypertarget{three-qualitative-predictions-and-the-one-we-got-wrong}{%
-\subsubsection{5.3 Three qualitative predictions, and the one we got
+\subsection{Three qualitative predictions, and the one we got
 wrong}\label{three-qualitative-predictions-and-the-one-we-got-wrong}}
+
+Two of the three we predicted correctly in advance; the third we got
+backwards, and the law corrected us.
 
 Higher noise moves the crossover later. A larger bias floor therefore takes longer
 for the exponentially growing single-copy error to climb over.
@@ -712,7 +720,7 @@ therefore holds out to larger \(n\) values. Purity (\(k=2\)) crosses at
 argument dominates the variance-compounding argument.
 
 \hypertarget{the-exponential-wall}{%
-\subsubsection{5.4 The exponential wall}\label{the-exponential-wall}}
+\subsection{The exponential wall}\label{the-exponential-wall}}
 
 The practical statement of the result is a single sequence of numbers.
 Using the exact copy-fair estimator on noisy-pure states at a fixed copy
@@ -720,8 +728,9 @@ budget, the single-copy purity RMSE runs
 
 \[0.043 \;\to\; 0.072 \;\to\; 0.270 \;\to\; 1.62 \;\to\; 11.98\]
 
-at \(n = 2, 4, 6, 8, 10\), growing by roughly a factor of 2.5 per qubit
-and accelerating. The true purity of these states is approximately 0.81. (Fig.~\ref{fig:wall}).
+at \(n = 2, 4, 6, 8, 10\), growing by a factor of about two per qubit on
+average and accelerating, to roughly 2.7 per qubit over the last step.
+The true purity of these states is approximately 0.81. (Fig.~\ref{fig:wall}).
 
 At ten qubits the single-copy estimate carries an error fifteen times
 larger than the quantity it is estimating. The collective route over the
@@ -748,11 +757,11 @@ question, and it is the one we take up next.
 \end{figure}
 
 \hypertarget{hardware-a-pre-registered-test-on-rigetti-cepheus-1-108q}{%
-\subsection{6. Hardware: a pre-registered test on Rigetti
+\section{Hardware: a pre-registered test on Rigetti
 Cepheus-1-108Q}\label{hardware-a-pre-registered-test-on-rigetti-cepheus-1-108q}}
 
 \hypertarget{platform-and-a-disclosure-about-the-execution-path}{%
-\subsubsection{6.1 Platform, and a disclosure about the execution
+\subsection{Platform, and a disclosure about the execution
 path}\label{platform-and-a-disclosure-about-the-execution-path}}
 
 All measurements were submitted to the Rigetti Cepheus-1-108Q backend
@@ -792,7 +801,7 @@ the platform required because it rejects non-contiguous virtual
 registers.
 
 \hypertarget{the-entangling-overhead-is-nearly-free}{%
-\subsubsection{6.2 The entangling overhead is nearly
+\subsection{The entangling overhead is nearly
 free}\label{the-entangling-overhead-is-nearly-free}}
 
 The destructive SWAP test at \(n = 2\) transpiles onto physical qubits
@@ -819,7 +828,7 @@ on a matched topology, not of the SWAP test in general. We therefore
 restrict the hardware series to GHZ ladders.
 
 \hypertarget{readout-is-the-wall-and-it-is-not-in-the-datasheet}{%
-\subsubsection{6.3 Readout is the wall, and it is not in the
+\subsection{Readout is the wall, and it is not in the
 datasheet}\label{readout-is-the-wall-and-it-is-not-in-the-datasheet}}
 
 Our first prediction, computed from the published gate fidelities and an
@@ -850,13 +859,11 @@ prepared with X gates only and no two-qubit gates, gave:
 \toprule
 qubit & \(P(1 \mid 0)\) & \(P(0 \mid 1)\) \\
 \midrule
-
-\bottomrule
-
 \(q_0\) & 9.3\% & 8.9\% \\
 \(q_1\) & 0.7\% & 7.8\% \\
 \(q_9\) & 6.7\% & 9.8\% \\
 \(q_{10}\) & 3.2\% & 6.0\% \\
+\bottomrule
 \end{tabular}
 \end{table}
 
@@ -884,7 +891,7 @@ at each excitation weight rather than extrapolated; extrapolating instead
 would have made the \(n = 4\) predictions pessimistic by five points.
 
 \hypertarget{the-prediction-fails-and-drift-is-why}{%
-\subsubsection{6.4 Cross-session drift accounts for the
+\subsection{Cross-session drift accounts for the
 gap}\label{the-prediction-fails-and-drift-is-why}}
 
 With every parameter on the GHZ ladder measured rather than assumed, we
@@ -900,12 +907,10 @@ was stable while the experiment ran.
 \toprule
 \(n\) & measured & opening band & closing band \\
 \midrule
-
-\bottomrule
-
 2 & 0.686 {[}0.672, 0.700{]} & 0.718 -- 0.742 & 0.704 -- 0.728 \\
 3 & 0.378 {[}0.360, 0.397{]} & 0.597 -- 0.634 & 0.593 -- 0.631 \\
 4 & 0.420 {[}0.402, 0.439{]} & 0.506 -- 0.553 & 0.520 -- 0.568 \\
+\bottomrule
 \end{tabular}
 \end{table}
 
@@ -925,11 +930,9 @@ circuits, on the same physical qubits, in different sessions:
 \toprule
 register & session 1 & session 2 & session 3 \\
 \midrule
-
-\bottomrule
-
 \(n = 3\) & 0.317 & 0.378 & 0.587 \\
 \(n = 4\) & 0.431 & 0.420 & 0.382 \\
+\bottomrule
 \end{tabular}
 \end{table}
 
@@ -949,7 +952,7 @@ days, which is not standard practice.
 \end{figure}
 
 \hypertarget{the-elimination-ledger}{%
-\subsubsection{6.5 The elimination
+\subsection{The elimination
 ledger}\label{the-elimination-ledger}}
 
 Each candidate mechanism was eliminated with a quantitative argument,
@@ -1000,7 +1003,7 @@ session-dependent, not geometric. \\
 \end{longtable}
 
 \hypertarget{what-remains-and-what-we-conclude}{%
-\subsubsection{6.6 What remains, and what we
+\subsection{What remains, and what we
 conclude}\label{what-remains-and-what-we-conclude}}
 
 What is left is a large, incoherent, session-dependent fault that
@@ -1034,7 +1037,7 @@ a bounded, characterizable bias floor cannot be deployed on a device
 whose bias floor moves by 0.2 between sessions.
 
 \hypertarget{a-practical-finding-about-cloud-qpu-economics}{%
-\subsubsection{6.7 A practical finding about cloud QPU
+\subsection{A practical finding about cloud QPU
 economics}\label{a-practical-finding-about-cloud-qpu-economics}}
 
 One further constraint emerged that affects reproducibility rather than
@@ -1057,7 +1060,7 @@ measured device parameters rather than measured directly, with the
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{related-work}{%
-\subsection{7. Related work}\label{related-work}}
+\section{Related work}\label{related-work}}
 
 \textbf{Classical shadows and variance bounds.} The classical-shadow
 framework \cite{huang2020shadows} gives sample-complexity bounds via the
@@ -1204,7 +1207,7 @@ priority over them.
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{limitations}{%
-\subsection{8. Limitations}\label{limitations}}
+\section{Limitations}\label{limitations}}
 
 \textbf{The variance law's inputs are numerical.} The law is exact and
 the single-qubit projection variance has a closed form. For
@@ -1255,7 +1258,7 @@ cell correlations are accounted for.
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{conclusion}{%
-\subsection{9. Conclusion}\label{conclusion}}
+\section{Conclusion}\label{conclusion}}
 
 We began with a number: at ten qubits, single-copy estimation of purity
 returns an error fifteen times the quantity being estimated. That number
@@ -1267,7 +1270,7 @@ a constant. It is a function of system size and measurement budget, and
 it changes character at a threshold that grows exponentially in the
 number of qubits. We derived this from the exact Hoeffding decomposition
 of the U-statistic estimator, verified the derivation against
-brute-force enumeration at three moment orders and four state ensembles,
+brute-force Monte Carlo of the exact estimator at three moment orders and three state ensembles,
 and confirmed its prediction of the exponent out of sample with no
 fitted parameters. The mechanism is a competition between two terms in
 the estimator's variance whose ratio diverges exponentially, and it is
@@ -1292,8 +1295,8 @@ What blocks the demonstration is neither variance nor gate error. It is
 readout fidelity, which on the device we used is three times the
 value we assumed and strongly correlated with neighboring excitations,
 and above all it is device stability. Cross-session drift on
-byte-identical circuits exceeded every modeled error source by a factor
-of twenty and could not be attributed to any of seven candidate
+byte-identical circuits exceeded the within-session drift by a factor of
+twenty, exceeded every modeled error source, and could not be attributed to any of seven candidate
 mechanisms, each ruled out with a quantitative bound. A protocol whose advantage rests on a
 bounded, characterizable bias floor cannot be fielded on a device whose
 floor moves by 0.2 between sessions.
@@ -1319,7 +1322,7 @@ run.
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
 \hypertarget{acknowledgements}{%
-\subsection{Acknowledgements}\label{acknowledgements}}
+\section*{Acknowledgements}\label{acknowledgements}}
 
 Quantum hardware access was provided by the Open Quantum platform
 operated by Quantum Rings Inc.~\cite{wold2025openquantum}, on the Public
@@ -1329,7 +1332,7 @@ repository. All hardware experiments ran on the backend reported by the platform
 Rigetti Computing's Cepheus-1-108Q processor. {[}Mentor acknowledgement.{]}
 
 \hypertarget{data-and-code-availability}{%
-\subsection{Data and code
+\section*{Data and code
 availability}\label{data-and-code-availability}}
 
 All code, raw measurement counts, and analysis are available at
@@ -1421,7 +1424,7 @@ arXiv:2603.12235 (12 Mar 2026, rev. 30 Jun 2026).
 
 \appendix
 \hypertarget{appendix-a.-the-exact-fourth-moment-u-statistic}{%
-\section{Appendix A. The exact fourth-moment
+\section{The exact fourth-moment
 U-statistic}\label{appendix-a.-the-exact-fourth-moment-u-statistic}}
 
 The full U-statistic for \(\mathrm{Tr}(\rho^4)\) requires the sum over
@@ -1476,7 +1479,7 @@ estimator matches brute-force enumeration over all distinct 4-tuples to
 \(\lesssim 10^{-13}\).
 
 \hypertarget{appendix-b.-the-destructive-swap-test}{%
-\section{Appendix B. The destructive SWAP
+\section{The destructive SWAP
 test}\label{appendix-b.-the-destructive-swap-test}}
 
 Two copies of an \(n\)-qubit state occupy qubits \(0 \ldots n-1\) (copy
@@ -1495,7 +1498,7 @@ affect the result. We verified the rule against exact simulation for
 pure and mixed states to \(10^{-16}\).
 
 \hypertarget{appendix-c.-hardware-protocol}{%
-\section{Appendix C. Hardware
+\section{Hardware
 protocol}\label{appendix-c.-hardware-protocol}}
 
 \textbf{Platform.} Open Quantum (Quantum Rings Inc.)
@@ -1517,12 +1520,10 @@ zero routing SWAPs:
 \toprule
 \(n\) & physical qubits & CZ gates \\
 \midrule
-
-\bottomrule
-
 2 & \(\{0, 1, 9, 10\}\) & 4 \\
 3 & \(\{0, 1, 2, 9, 10, 11\}\) & 7 \\
 4 & \(\{0, 1, 2, 3, 9, 10, 11, 12\}\) & 10 \\
+\bottomrule
 \end{tabular}
 \end{table}
 
