@@ -187,7 +187,12 @@ def _mstar_crosses(mstar: dict, k: int, target: float) -> float:
 def make_fig3():
     bs = D.load("budget_scaling.json")
     comps = D.zeta_components()
-    mstar = D.m_star_table()
+    # The band uses the boxed threshold M* = zeta2 / (2 zeta1) of Sec. 3.2.  The
+    # "M_star" stored in theory_zetas.json is the superseded two-term zeta2/(4 zeta1)
+    # (see anrl.theory.single_copy_law.crossover_budget), which is a factor 2 low.
+    mstar = {(z["n"], z["k"]): z["zeta2"] / (2.0 * z["zeta1"])
+             for z in D.load("theory_zetas.json")["zetas"]
+             if z["k"] == 2 and z["zeta1"] > 0}
     fig, ax = plt.subplots(figsize=(3.6, 3.2))
     rows = []
     # M* transition band for k=2: where M*(n) spans the budget window (2000..128000).

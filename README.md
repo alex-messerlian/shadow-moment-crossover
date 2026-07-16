@@ -18,7 +18,7 @@ sides of that ledger exactly.
 The main results:
 
 - An **exact, state-dependent variance law** for the $k$-th-moment U-statistic estimator
-  under local-Pauli classical shadows, derived via the Hoeffding decomposition and
+  under local random-unitary classical shadows, derived via the Hoeffding decomposition and
   verified against brute-force enumeration for $k = 2, 3, 4$.
 - A **sample-complexity exponent transition**: the exponent $\alpha$ in
   $\mathrm{RMSE} \propto M^{-\alpha}$ is not the constant $1/2$ — it migrates to $1$ as the
