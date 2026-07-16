@@ -88,19 +88,23 @@ def make_fig1():
                 rows.append([nm, g, 2, n, "collective", "theory", c, "", ""])
             ax.set_yscale("log")
             ax.set_xticks(ns)
+            # This 3x2 grid is 7in wide but is included at 0.74\linewidth (~4.8in),
+            # i.e. shrunk to ~69%, whereas the single-panel figures are enlarged.
+            # Size the type ~1.45x so it lands at body size on the page.
+            ax.tick_params(labelsize=11)
             if i == 0:
-                ax.set_title(f"noise rate g = {g}", fontsize=8.5)
+                ax.set_title(f"noise rate g = {g}", fontsize=12)
             if j == 0:
-                ax.set_ylabel(f"{NOISE_LABEL[nm]}\nRMSE", fontsize=8.5)
+                ax.set_ylabel(f"{NOISE_LABEL[nm]}\nRMSE", fontsize=12)
             if i == 2:
-                ax.set_xlabel("system size n (qubits)")
+                ax.set_xlabel("system size n (qubits)", fontsize=12)
     # one shared legend
     handles = [
         plt.Line2D([], [], color=C_SINGLE, marker="o", ls="-", ms=3.4, label="single-copy (points: measured, line: theory)"),
         plt.Line2D([], [], color=C_COLL, marker="o", ls="-", ms=3.4, label="collective (points: measured, line: theory)"),
         plt.Line2D([], [], color=C_COLL, lw=6, alpha=0.15, label="collective wins (n ≥ n*)"),
     ]
-    fig.legend(handles=handles, loc="upper center", ncol=3, bbox_to_anchor=(0.5, 1.03), fontsize=7.2)
+    fig.legend(handles=handles, loc="upper center", ncol=3, bbox_to_anchor=(0.5, 1.03), fontsize=10.5)
     fig.tight_layout(rect=(0, 0, 1, 0.97))
     caption = (
         "Figure 1. The crossover, k=2 (purity). Single-copy classical-shadow RMSE (vermillion) "
@@ -148,7 +152,7 @@ def make_fig2():
         if not m:
             continue
         jx = rng.uniform(-0.13, 0.13, len(m)); jy = rng.uniform(-0.13, 0.13, len(m))
-        lab = "noisy-pure (dev)" if ens == "noisy_pure" else ens
+        lab = "noisy-pure (dev)" if ens == "noisy_pure" else ens.replace("_", "-")
         ax.scatter(np.array(m) + jx, np.array(pr) + jy, s=16, color=color, alpha=0.8,
                    edgecolors="white", linewidths=0.3, label=lab, zorder=3)
     ax.set_xlabel("measured crossover n*")
