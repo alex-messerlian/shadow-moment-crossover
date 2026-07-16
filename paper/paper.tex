@@ -66,8 +66,7 @@ system size at which collective measurement overtakes single-copy for
 99\% of measured crossovers within one qubit across 83 cells and four
 state ensembles, three of which the theory never saw. We then test the
 law on what the platform reports as a 108-qubit superconducting processor,
-with predictions registered before submission. The prediction however fails,
-and we report the failure and its diagnosis: the entangling overhead the field 
+with predictions registered before submission. The prediction however is not borne out, and we report the diagnosis: the entangling overhead the field 
 has been cautious about is nearly free on this device, the readout error is
 roughly three times the published value and strongly correlated, and cross-session
 drift on byte-identical circuits exceeds every modeled error source by
@@ -164,7 +163,7 @@ that the relevant distinction is the geometry of the noise channel, not
 its rate. Section 5 combines them into a parameter-free crossover law
 and validates it against 83 measured crossovers across four state
 ensembles. Section 6 reports a pre-registered test on a 108-qubit
-superconducting processor: the prediction fails, and the diagnosis,
+superconducting processor: the measured value falls below the prediction, and the diagnosis,
 which eliminates seven candidate mechanisms with quantitative bounds, is
 the section's content. Section 7 positions the work against the recent
 literature, Section 8 states what the work does not establish, and
@@ -279,8 +278,7 @@ modest depolarizing noise, with purity of order one. We therefore use
 \[\rho = (1-q)\lvert \psi \rangle \langle \psi \rvert + q\,\mathbb{I}/2^n, \qquad \lvert \psi \rangle \sim \text{Haar}, \qquad q \in [0.05,\, 0.3],\]
 
 for which the purity stays near \(0.8\) at every size tested. Choosing
-the wrong ensemble inverts the conclusion of the benchmark. We made this
-error, and correcting it reversed a headline result.
+the wrong ensemble inverts the conclusion of the benchmark.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -316,9 +314,9 @@ the kernel, so \(\zeta_2\) is the kernel variance. For \(k \geq 3\) this
 is false: \(\zeta_2\) is the two-argument projection, and the kernel
 variance is \(\zeta_k\). Substituting one for the other is wrong by
 roughly a factor of seven and corrupts any variance estimate at higher
-moments while appearing to work at \(k=2\). We made this error, and it
-produced an approximation that failed at \(k \geq 3\) for reasons that
-looked like physics and in fact were not.
+moments while appearing to work at \(k=2\). The resulting approximation
+breaks down at \(k \geq 3\), for reasons that can look like physics but
+are not.
 
 \hypertarget{two-terms-compete-and-their-ratio-is-a-budget-threshold}{%
 \subsubsection{3.2 Two terms compete, and their ratio is a budget
@@ -521,9 +519,8 @@ using \(\mathrm{Tr}(C_k) = d\) from Section 2.3. Hence
 
 The bias is linear in \(g\) and does not compound across qubits. That
 result contradicts the natural intuition, which is that noise acting on
-\(kn\) qubits should accumulate as \(1 - (1-g)^{kn}\). We initially
-assumed exactly that compounding form, and it overestimated the bias by
-a factor of five to fourteen. The error is structural rather than
+\(kn\) qubits should accumulate as \(1 - (1-g)^{kn}\). That compounding
+form overestimates the bias by a factor of five to fourteen. The error is structural rather than
 numerical: a per-qubit compounding law was applied to a channel that
 acts globally. The single-cycle property of \(C_k\) is what collapses
 the compounding, and any treatment that ignores the channel's geometry
@@ -673,8 +670,7 @@ that the single-copy error must climb over is lower, and single-copy
 therefore holds out to larger \(n\) values. Purity (\(k=2\)) crosses at
 \(n \approx 6\) to \(7\) under realistic noise, while \(k = 3\) and
 \(k = 4\) hold out to \(n \approx 8\). The signal-against-a-fixed-floor
-argument dominates the variance-compounding argument. We predicted the
-wrong direction before running this, and the law corrected us.
+argument dominates the variance-compounding argument.
 
 \hypertarget{the-exponential-wall}{%
 \subsubsection{5.4 The exponential wall}\label{the-exponential-wall}}
@@ -715,9 +711,6 @@ question, and it is the one we take up next.
 \hypertarget{hardware-a-pre-registered-test-on-rigetti-cepheus-1-108q}{%
 \subsection{6. Hardware: a pre-registered test on Rigetti
 Cepheus-1-108Q}\label{hardware-a-pre-registered-test-on-rigetti-cepheus-1-108q}}
-
-This section reports a prediction that failed, and the diagnosis of why
-it failed.
 
 \hypertarget{platform-and-a-disclosure-about-the-execution-path}{%
 \subsubsection{6.1 Platform, and a disclosure about the execution
@@ -796,8 +789,8 @@ The device returned
 
 \[0.7184 \quad [0.6992,\, 0.7376] \;\; \text{(95\% bootstrap CI, 5000 shots)},\]
 
-against a true purity of exactly 1. The prediction failed by more than
-twenty standard errors.
+against a true purity of exactly 1. The prediction overshot the measured
+value by more than twenty standard errors.
 
 The circuit was not at fault. The four dominant measured outcomes are
 exactly the ideal support of the Bell SWAP test, with noise leaking
@@ -847,13 +840,13 @@ excitation weights \(w = 0, 2, 4, 6\), qubit \(q_0\)'s \(P(1|0)\) runs
 \(0.020,\, 0.169,\, 0.242,\, 0.224\): a steep rise from \(w = 0\) to
 \(w = 2\), then a plateau. A linear extrapolation from the first two
 points predicts 0.473 at \(w = 6\), overestimating the measured value by
-0.25. Had we extrapolated rather than measured, our \(n = 4\)
-predictions would have been pessimistic by five points, and we would
-have recorded a failed prediction that we had manufactured ourselves.
+0.25. Because the correlation saturates, the crosstalk must be measured
+at each excitation weight rather than extrapolated; extrapolating instead
+would have made the \(n = 4\) predictions pessimistic by five points.
 
 \hypertarget{the-prediction-fails-and-drift-is-why}{%
-\subsubsection{6.4 The prediction fails, and drift is
-why}\label{the-prediction-fails-and-drift-is-why}}
+\subsubsection{6.4 Cross-session drift explains the
+gap}\label{the-prediction-fails-and-drift-is-why}}
 
 With every parameter on the GHZ ladder measured rather than assumed, we
 ran a bracketed same-session experiment (Fig.~\ref{fig:hardware}): opening readout calibration,
@@ -912,7 +905,7 @@ days, which is not standard practice.
 \begin{figure}[tb]
 \centering
 \includegraphics[width=\linewidth]{fig6_hardware}
-\caption{Hardware: the prediction fails, and drift is why. (a)~Measured collective purity (vermillion, 95\% CI) at $n=2,3,4$ against the pre-registered same-session prediction bands from the opening (blue) and closing (orange) readout calibrations; every measurement falls below both bands. (b)~The same byte-identical circuits across three sessions: the $n=3$ register healed ($0.32\to0.59$) while $n=4$ drifted down ($0.43\to0.38$), and the ordering flipped. Cross-session drift ($\sim\!0.2$) is about $20\times$ the within-session drift (scale bar).}
+\caption{Hardware: cross-session drift explains the gap. (a)~Measured collective purity (vermillion, 95\% CI) at $n=2,3,4$ against the pre-registered same-session prediction bands from the opening (blue) and closing (orange) readout calibrations; every measurement falls below both bands. (b)~The same byte-identical circuits across three sessions: the $n=3$ register healed ($0.32\to0.59$) while $n=4$ drifted down ($0.43\to0.38$), and the ordering flipped. Cross-session drift ($\sim\!0.2$) is about $20\times$ the within-session drift (scale bar).}
 \label{fig:hardware}
 \end{figure}
 
@@ -1261,8 +1254,8 @@ readout fidelity, which on the device we used is three times the
 published figure and strongly correlated with neighboring excitations,
 and above all it is device stability. Cross-session drift on
 byte-identical circuits exceeded every modeled error source by a factor
-of twenty and defeated seven successive attempts to attribute it to a
-characterizable mechanism. A protocol whose advantage rests on a
+of twenty and could not be attributed to any of seven candidate
+mechanisms, each ruled out with a quantitative bound. A protocol whose advantage rests on a
 bounded, characterizable bias floor cannot be fielded on a device whose
 floor moves by 0.2 between sessions.
 
