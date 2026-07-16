@@ -92,6 +92,17 @@ the six figures as a vector PDF, a 300-dpi PNG, and a CSV of the exact plotted d
 .venv/bin/python -m pytest -q
 ```
 
+## Building the paper
+
+The paper source is [`paper/paper.tex`](paper/paper.tex). Build it with:
+
+```bash
+tectonic paper/paper.tex
+```
+
+or with two `pdflatex` passes (the second resolves cross-references). The bibliography is
+embedded in the `.tex`, so there is no separate BibTeX step.
+
 ## Hardware runs cost real money
 
 The hardware experiments in `anrl/hardware/` and the `experiments/run_*` / `experiments/*_analysis.py`
