@@ -20,6 +20,9 @@ dependencies = [
     "tqdm>=4.68",
 ]
 
+[project.urls]
+Repository = "https://github.com/alex-messerlian/shadow-moment-crossover"
+
 [project.optional-dependencies]
 dev = ["pytest>=9.1"]
 

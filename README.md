@@ -50,6 +50,8 @@ Everything is in the `anrl` package:
 The theory and figures need only the core scientific stack (no GPU, no deep-learning deps):
 
 ```bash
+git clone https://github.com/alex-messerlian/shadow-moment-crossover.git
+cd shadow-moment-crossover
 python3.12 -m venv .venv
 source .venv/bin/activate
 pip install --upgrade pip
