@@ -210,17 +210,27 @@ def make_fig3():
             rows.append([k, a["n"], "measured", a["alpha"], a["alpha_se"]])
             if (a["n"], k) in comps:
                 rows.append([k, a["n"], "theory", D.theory_alpha(a["budgets"], k, comps, a["n"]), ""])
+    # Annotate the two reference exponents on the right, where no curve runs:
+    # the k=3 rise occupies the lower-right, so a left-anchored label collides
+    # with the n=3/n=4 markers.
     for yv, lab in [(0.5, r"$\alpha=0.5$  (1/$\sqrt{M}$)"), (1.0, r"$\alpha=1.0$  (1/$M$)")]:
         ax.axhline(yv, color="0.55", lw=0.8, ls=":", zorder=1)
-        ax.text(2.05, yv + 0.018, lab, fontsize=6.6, color="0.4", va="bottom", ha="left")
+    ax.text(9.35, 0.518, r"$\alpha=0.5$  (1/$\sqrt{M}$)", fontsize=6.6, color="0.4",
+            va="bottom", ha="right")
+    ax.text(2.05, 1.018, r"$\alpha=1.0$  (1/$M$)", fontsize=6.6, color="0.4",
+            va="bottom", ha="left")
     ax.text((nb_lo + nb_hi) / 2, 1.235, r"$M^{*}(k{=}2)\approx$ budget", fontsize=6.4, color="0.4",
             ha="center", va="top")
     ax.set_xlabel("system size n (qubits)")
     ax.set_ylabel(r"budget-scaling exponent $\alpha$")
     ax.set_xticks(range(2, 10))
     ax.set_ylim(0.42, 1.25)
-    ax.legend(loc="lower right", fontsize=7.0, handletextpad=0.4, title="measured (pts) / theory (line)",
-              title_fontsize=6.6)
+    # Legend upper-left: the data are flat at 0.5 on the left and rise to the
+    # right, so the upper-left quadrant is the only region free of curves.
+    # Anchored to the very top so it clears the alpha=1.0 reference label below it.
+    ax.legend(loc="upper left", bbox_to_anchor=(0.015, 1.0), fontsize=6.6, handletextpad=0.4,
+              labelspacing=0.28, borderpad=0.25,
+              title="measured (pts) / theory (line)", title_fontsize=6.2, framealpha=0.0)
     fig.tight_layout()
     caption = (
         "Figure 3. The single-copy mechanism: the budget-scaling exponent alpha. Measured alpha "
@@ -397,7 +407,7 @@ def make_fig6():
         axb.errorbar([x[-1] + 0.12], [sess[n][-1]], yerr=[0.01], fmt="none", ecolor=col, lw=1.2, capsize=3)
         for xi, yi in zip(x, sess[n]):
             rows.append(["b", n, f"session{xi}", round(yi, 4), "", ""])
-    axb.annotate("within-session\ndrift ~1%", xy=(3.12, sess[4][-1]), xytext=(2.3, 0.30),
+    axb.annotate("within-session\ndrift ~1%", xy=(3.12, sess[4][-1]), xytext=(1.75, 0.30),
                  fontsize=6.6, color=C_TRUE, ha="left",
                  arrowprops=dict(arrowstyle="->", color=C_TRUE, lw=0.7))
     axb.text(1.0, 0.60, "cross-session swing ~0.2\n= 20x within-session", fontsize=6.8, color=C_TRUE, va="top")

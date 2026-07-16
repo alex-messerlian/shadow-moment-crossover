@@ -184,9 +184,9 @@ Section 9 concludes.
 \hypertarget{setting-and-estimators}{%
 \section{Setting and estimators}\label{setting-and-estimators}}
 
-\hypertarget{local-pauli-classical-shadows}{%
+\hypertarget{local-random-unitary-classical-shadows}{%
 \subsection{Local random-unitary classical
-shadows}\label{local-pauli-classical-shadows}}
+shadows}\label{local-random-unitary-classical-shadows}}
 
 Let \(\rho\) be an unknown \(n\)-qubit state. A single snapshot is
 produced by drawing an independent Haar-random single-qubit unitary
@@ -389,10 +389,10 @@ The identity also passes the boundary check. At \(t = 0\) it gives
 \(\mathrm{Tr}(Gr) = 1/2\) deterministically, with no variance to speak
 of.
 
-\hypertarget{there-is-no-weight-only-closed-form-at-n-geq-2}{%
+\hypertarget{the-weight-only-quadratic-ansatz-fails}{%
 \subsection{\texorpdfstring{The weight-only quadratic ansatz fails
 at
-\(n \geq 2\)}{The weight-only quadratic ansatz fails at n \textbackslash geq 2}}\label{there-is-no-weight-only-closed-form-at-n-geq-2}}
+\(n \geq 2\)}{The weight-only quadratic ansatz fails at n \textbackslash geq 2}}\label{the-weight-only-quadratic-ansatz-fails}}
 
 The single-qubit result invites a generalization. If the second moment
 carries a factor of \(3\) per qubit in the support of a Pauli string,
@@ -449,12 +449,13 @@ range actually used in the experiment:
 
 \begin{table}[htbp]
 \centering
+\setlength{\tabcolsep}{10pt}
 \begin{tabular}{@{}llll@{}}
 \toprule
 \(n\) & \(M^*(n)\) & predicted \(\alpha\) & measured \(\alpha\) \\
 \midrule
-2 & \textasciitilde22 & 0.501 & \(0.495 \pm 0.013\) \\
-4 & \textasciitilde604 & 0.528 & \(0.528 \pm 0.012\) \\
+2 & \(\approx 22\) & 0.501 & \(0.495 \pm 0.013\) \\
+4 & \(\approx 604\) & 0.528 & \(0.528 \pm 0.012\) \\
 9 & \(\approx 2.3 \times 10^{6}\) & 0.998 & \(1.006 \pm 0.023\) \\
 \bottomrule
 \end{tabular}
@@ -855,6 +856,7 @@ prepared with X gates only and no two-qubit gates, gave:
 
 \begin{table}[htbp]
 \centering
+\setlength{\tabcolsep}{10pt}
 \begin{tabular}{@{}lll@{}}
 \toprule
 qubit & \(P(1 \mid 0)\) & \(P(0 \mid 1)\) \\
@@ -890,9 +892,9 @@ points predicts 0.473 at \(w = 6\), overestimating the measured value by
 at each excitation weight rather than extrapolated; extrapolating instead
 would have made the \(n = 4\) predictions pessimistic by five points.
 
-\hypertarget{the-prediction-fails-and-drift-is-why}{%
+\hypertarget{cross-session-drift-accounts-for-the-gap}{%
 \subsection{Cross-session drift accounts for the
-gap}\label{the-prediction-fails-and-drift-is-why}}
+gap}\label{cross-session-drift-accounts-for-the-gap}}
 
 With every parameter on the GHZ ladder measured rather than assumed, we
 ran a bracketed same-session experiment (Fig.~\ref{fig:hardware}): opening readout calibration,
@@ -903,6 +905,7 @@ was stable while the experiment ran.
 
 \begin{table}[htbp]
 \centering
+\setlength{\tabcolsep}{10pt}
 \begin{tabular}{@{}llll@{}}
 \toprule
 \(n\) & measured & opening band & closing band \\
@@ -926,6 +929,7 @@ circuits, on the same physical qubits, in different sessions:
 
 \begin{table}[htbp]
 \centering
+\setlength{\tabcolsep}{10pt}
 \begin{tabular}{@{}llll@{}}
 \toprule
 register & session 1 & session 2 & session 3 \\
@@ -1516,6 +1520,7 @@ zero routing SWAPs:
 
 \begin{table}[htbp]
 \centering
+\setlength{\tabcolsep}{10pt}
 \begin{tabular}{@{}lll@{}}
 \toprule
 \(n\) & physical qubits & CZ gates \\
