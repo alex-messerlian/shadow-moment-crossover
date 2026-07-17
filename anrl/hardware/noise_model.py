@@ -40,8 +40,17 @@ from qiskit_aer.noise import NoiseModel, ReadoutError, depolarizing_error
 
 # Reference values (Rigetti GA announcement / AWS Braket, Cepheus-1-108Q).
 # Medians across 108 qubits with real spread; drift between calibrations.
-REF_P2 = 0.009  # user-anchored two-qubit depolarizing parameter (~99.1% CZ fidelity headline)
-REF_P1 = 0.001  # single-qubit depolarizing parameter (~99.9% 1q fidelity headline)
+#
+# CONVENTION (see the module docstring): the two gate values below are the published
+# AVERAGE GATE ERRORS r = 1 - fidelity, entered directly into the depolarizing-parameter
+# slot.  They are therefore not the datasheet-faithful lambdas: those would be
+# lambda = 4r/3 = 0.012 (CZ) and lambda = 2r = 0.002 (1q).  As used here they correspond
+# to 99.325% CZ / 99.95% 1q rather than to the 99.1% / 99.9% headlines -- i.e. marginally
+# optimistic.  The locked predictions in experiments/cepheus_locked_predictions.json were
+# computed with these values, so changing them would invalidate a committed prediction:
+# use avg_gate_error_to_depol_param() for the datasheet-faithful reading instead.
+REF_P2 = 0.009  # published median CZ average gate error, 1 - 0.991, used as the depolarizing input
+REF_P1 = 0.001  # published median 1q average gate error, 1 - 0.999, used as the depolarizing input
 REF_P_RO = 0.02  # assumed per-qubit readout error — see justification in docs/report
 
 CEPHEUS_BASIS_GATES = ["cz", "rx", "rz"]
