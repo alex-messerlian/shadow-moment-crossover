@@ -875,22 +875,23 @@ extend to it.
 \subsection{Readout is the wall, and it is not in the
 datasheet}\label{readout-is-the-wall-and-it-is-not-in-the-datasheet}}
 
-Our first prediction, computed from the published gate fidelities and an
-assumed 2\% readout error, was a measured Bell-state purity of 0.9412.
+Our locked prediction, computed from the published gate fidelities and an
+assumed 2\% readout error and committed to version control before the job
+was submitted, was a measured Bell-state purity of 0.8932.
 The device returned
 
 \[0.7184 \quad [0.6992,\, 0.7376] \;\; \text{(95\% bootstrap CI, 5000 shots)},\]
 
 against a true purity of exactly 1. The prediction overshot the measured
-value by more than twenty standard errors.
+value by more than seventeen standard errors.
 
 The circuit was not at fault. The four dominant measured outcomes are
 exactly the ideal support of the Bell SWAP test, with noise leaking
 approximately 25\% of the weight into the remaining twelve outcomes.
 This is a correctly executed circuit on a noisier device than we
 modeled. Inverting the bias law of Section 4.1 gives an effective global
-depolarizing rate of \(g = 0.375\), nearly five times what the published
-specifications imply.
+depolarizing rate of \(g = 0.375\), roughly two and a half times the
+\(g = 0.142\) our locked prediction implied.
 
 A single measurement cannot separate gate error from readout error,
 because both enter the same number. We therefore measured them
@@ -917,7 +918,7 @@ platform's OpenQASM 3 syntax. The mean is approximately 6.5\% per qubit,
 roughly three times the value we assumed, and it is asymmetric in the
 direction expected from \(T_1\) decay during readout. Feeding the
 measured readout back into the model moves the predicted Bell purity
-from 0.94 to approximately 0.75, against the measured 0.7184. The device
+from 0.89 to approximately 0.75, against the measured 0.7184. The device
 model was correct and the inputs were wrong, and the input that was
 wrong is precisely the one the vendor does not publish.
 
@@ -998,6 +999,22 @@ days, which is not standard practice.
 \caption{Hardware: cross-session drift accounts for the gap. (a)~Measured collective purity (vermillion, 95\% CI) at $n=2,3,4$ against the pre-registered same-session prediction bands from the opening (blue) and closing (orange) readout calibrations; every measurement falls below both bands. (b)~The same byte-identical circuits across three sessions: the $n=3$ register healed ($0.32\to0.59$) while $n=4$ drifted down ($0.43\to0.38$), and the ordering flipped. Cross-session drift ($\sim\!0.2$) is about $20\times$ the within-session drift (scale bar).}
 \label{fig:hardware}
 \end{figure}
+
+The single-copy route failed the same way. Alongside the collective
+measurements we ran a fifteen-basis single-copy anchor at \(n = 2\),
+whose purity our shadow pipeline predicted at \(1.500 \pm 0.028\) from
+the same device parameters. The device returned \(1.344\), with a 95\%
+bootstrap interval of \([1.266,\, 1.433]\) over 9000 snapshots:
+a miss of 5.6 standard errors, with the intervals disjoint. We do not
+adjust the model to fit. Three signals therefore fail together in this
+session: the collective purities at \(n = 3, 4\) fall below their bands,
+their ordering is non-monotonic, and the single-copy pipeline does not
+reproduce its own anchor. One common cause accounts for all three, and
+it is the one this section has been describing: the device parameters
+were characterized in earlier sessions, and the device has moved since.
+That two protocols with different circuits and different estimators both
+miss their locked predictions in the same session is what makes drift,
+rather than any protocol-specific defect, the parsimonious explanation.
 
 \hypertarget{the-elimination-ledger}{%
 \subsection{The elimination
@@ -1103,8 +1120,11 @@ Single-copy classical shadows are therefore economically infeasible on
 per-circuit-priced cloud QPUs at the scale required to reproduce their
 own sample-complexity claims. This is the reason our hardware
 single-copy baseline at \(n \geq 3\) is computed from independently
-measured device parameters rather than measured directly, with the
-\(n = 2\) point measured directly as an anchor. We flag the substitution.
+measured device parameters rather than measured directly, with a
+fifteen-basis \(n = 2\) anchor as the one point we could afford to
+measure. That anchor did not reproduce its prediction (Section 6.4), so
+the computed points are model output that the hardware did not
+corroborate, and we present them as such.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -1281,9 +1301,12 @@ us. Section 6 is a test of the model, not a demonstration of the
 advantage.
 
 \textbf{The hardware single-copy baseline at \(n \geq 3\) is computed,
-not measured}, for the economic reason given in Section 6.7. The
-\(n = 2\) point is measured directly and is what earns the computed
-points whatever credibility they have.
+not measured}, for the economic reason given in Section 6.7. The one
+point we could afford to measure, the \(n = 2\) anchor, missed its
+prediction by 5.6 standard errors (Section 6.4). The computed points are
+therefore model output on a device that our own anchor shows the model
+does not currently track, and nothing in Section 6 should be read as a
+hardware measurement of the single-copy route.
 
 \textbf{The execution path on the Public Tier is not independently
 verifiable by us.} Jobs were routed through a decentralized network with
