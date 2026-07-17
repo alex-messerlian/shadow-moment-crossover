@@ -20,7 +20,7 @@
 
 \begin{document}
 
-\title{Sample-complexity transition in shadow-based estimation of\\ quantum state moments and the crossover to collective measurement}
+\title{Sample-complexity transition in shadow-based moment estimation\\ and the crossover to collective measurement}
 
 \author{Alexander Messerlian}
 \affiliation{Independent Researcher}
@@ -586,13 +586,14 @@ the two make parametrically different predictions.
 state}\label{per-qubit-channels-the-noise-relabels-the-state}}
 
 Let \(\mathcal{E}\) be any single-qubit channel acting on every qubit of
-every copy at measurement time: the noise the collective test itself
-suffers, so that \(\rho\) is the state one holds and
-\(\mathrm{Tr}(\rho^k)\) is the estimand. Where the channel sits is what
-makes the bias below a bias rather than an identity, and we state it
-explicitly for that reason. Applying the same channel to every qubit of
-every copy is identical to applying \(\mathcal{E}^{\otimes n}\) to each
-copy independently, so
+every copy of the register held for the collective test: the noise this
+route bears and the single-copy route does not, with \(\rho\) the
+reference state and \(\mathrm{Tr}(\rho^k)\) the estimand. What makes the
+quantity below a bias rather than an identity is that \(\mathcal{E}\) is
+specific to this route, and we say so explicitly because it is a
+modeling choice and not a derivation. Applying the same channel to every
+qubit of every copy is identical to applying \(\mathcal{E}^{\otimes n}\)
+to each copy independently, so
 
 \[\mathcal{E}^{\otimes nk}\!\left( \rho^{\otimes k} \right) = \left( \mathcal{E}^{\otimes n}(\rho) \right)^{\otimes k} = \sigma^{\otimes k}, \qquad \sigma \equiv \mathcal{E}^{\otimes n}(\rho),\]
 
@@ -607,12 +608,20 @@ so that the bias is
 Under a per-qubit channel the noise does not corrupt the measurement in
 the usual sense; it relabels which state is measured. The cyclic test
 returns the exact \(k\)-th moment of the damaged state
-\(\sigma = \mathcal{E}^{\otimes n}(\rho)\) rather than of the state
-\(\rho\) one holds, and that substitution is the entire bias. The
-distinction matters: were \(\mathcal{E}\) instead preparation noise,
-\(\sigma\) would be the state one holds, the same identity would report
-it exactly, and the bias would vanish. The law is a statement about
-measurement-time noise.
+\(\sigma = \mathcal{E}^{\otimes n}(\rho)\) rather than of the reference
+\(\rho\), and that substitution is the entire bias.
+
+Two things this does not say. It does not exclude preparation noise,
+which is already in the model and absorbed into \(\rho\): the noisy-pure
+ensemble of Section 2.5 is a prepared pure state carrying depolarizing
+noise at rate \(q\), both routes see it, and it contributes no bias at
+all. And it is not a claim about when \(\mathcal{E}\) acts. A channel
+common to both routes would bias the single-copy route by the same
+substitution, since shadows of \(\sigma\) estimate
+\(\mathrm{Tr}(\sigma^k)\) and not \(\mathrm{Tr}(\rho^k)\); the
+substitution would then cancel from the comparison and carry no
+information about which route is cheaper. What the law requires is that
+\(\mathcal{E}\) be borne by the collective route alone.
 
 This explains a puzzle in the data that a rate-based model cannot. No
 universal effective attenuation rate fits the measured biases, because
@@ -691,11 +700,26 @@ models (depolarizing, amplitude damping, and dephasing), noise rates from 0
 to 0.3, system sizes \(n = 2\) to \(9\), four budget multipliers, and
 four state ensembles, the law predicts 99\% of measured crossovers
 within one qubit and 88\% exactly (Figs.~\ref{fig:crossmap} and~\ref{fig:boundary}).
-The comparison is not symmetric between the two routes. The single-copy
+The comparison is asymmetric between the two routes in two respects, and
+both are deliberate. The first is evidential. The single-copy
 side of each cell is a forward simulation of the estimator, fresh
 snapshots reduced by the U-statistic, so the variance law is tested
 against data it did not generate; the collective side is the exact bias
-law evaluated analytically plus its shot noise. These cells
+law evaluated analytically plus its shot noise.
+
+The second is the noise model, and it is the stronger assumption. The
+channel of Section 4 degrades the collective route only; the single-copy
+route is the ideal, noiseless statistical baseline, on the reading that a
+joint \(k\)-copy measurement is the harder thing to implement cleanly.
+Real shadow readout is not noiseless, and Section 6.3 finds readout to be
+the dominant error on the device we tested, so this understates the
+single-copy cost. It understates it in the direction that costs us: any
+noise added to the single-copy route raises its error and moves the
+crossover to smaller \(n\), so the sizes reported here are an upper bound
+on where collective measurement overtakes, and a fairer model can only
+move the boundary earlier. What the asymmetry does shape, and we do not
+claim otherwise, is the dependence of \(n^*\) on the noise rate: that
+dependence is a property of the collective side by construction. These cells
 therefore demonstrate consistency with the derived identities, and the
 out-of-ensemble transfer below is the evidence that the law generalizes.
 
@@ -893,7 +917,8 @@ against a true purity of exactly 1. The prediction overshot the measured
 value by more than seventeen standard errors. The estimand in this
 section is the target the circuit was written to prepare, so \(\rho\) is
 the ideal Bell state and every deviation from it --- gate error, readout
-error, drift --- is charged to the channel of Section 4. That is target
+error, drift --- is charged to the global-depolarizing channel of
+Section 4.1, which has no single-copy reading to be relabelled into. That is target
 verification rather than characterization of whatever the device
 actually produced, and the two coincide only when the preparation is
 exact.

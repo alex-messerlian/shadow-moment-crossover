@@ -1,8 +1,8 @@
-# Sample-complexity transition in shadow-based estimation of quantum state moments
+# Sample-complexity transition in shadow-based moment estimation
 
 Code, data, and analysis for the paper:
 
-> **Sample-complexity transition in shadow-based estimation of quantum state moments and the crossover to collective measurement**
+> **Sample-complexity transition in shadow-based moment estimation and the crossover to collective measurement**
 > Alexander Messerlian (Independent Researcher) and Ziwei Gu (Harvard John A. Paulson School of Engineering and Applied Sciences).
 > Compiled manuscript: [`paper/paper.pdf`](paper/paper.pdf) · LaTeX source: [`paper/paper.tex`](paper/paper.tex)
 
