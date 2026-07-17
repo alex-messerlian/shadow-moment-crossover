@@ -32,8 +32,12 @@ derivation (500k-1M snapshots, cross-checked for convergence):
 
 so M*'s base is ``zeta2_base / zeta1_base ~ 5.1-5.3`` — the base is independent of the
 2-vs-4 prefactor above.  ``zeta1`` and ``zeta2`` have NO simple weight-only closed form
-for n >= 2 (the local-shadow second moment does not factorize for entangled states);
-they must be estimated numerically (see :func:`~anrl.theory.variance.estimate_zetas`).
+for n >= 2.  The reason is NOT entanglement: because the snapshots are drawn from rho,
+the second moment is cubic in rho while a weight-only sum of <P>^2 is quadratic in the
+Pauli expectations, and the missing dependence is on the relative orientation of the
+marginal Bloch vectors through the correlation matrix — an invariant already nonzero for
+separable, classically correlated states (see Section 3.4 of the paper).  They must
+therefore be estimated numerically (see :func:`~anrl.theory.variance.estimate_zetas`).
 The only closed form is the single qubit: :func:`single_qubit_zeta1`.
 """
 
@@ -102,7 +106,10 @@ def single_qubit_zeta1(t: float) -> float:
 
     (``p = (1+t^2)/2``, so ``p^2 = (1 + 2 t^2 + t^4)/4`` and the identity collapses.)
     This is the ONLY n for which ``zeta1`` has a simple closed form; for n >= 2 the
-    weight-only Pauli ansatz ``zeta1 = sum_P c_{|P|} <P>^2`` fails (entanglement couples
-    the per-qubit shadow outcomes), so ``zeta1`` must be computed numerically.
+    weight-only Pauli ansatz ``zeta1 = sum_P c_{|P|} <P>^2`` fails — not because of
+    entanglement, but because the ansatz is quadratic in the Pauli expectations while the
+    second moment is cubic in rho, and it misses the correlation-matrix invariant that is
+    already nonzero for separable states (Section 3.4).  ``zeta1`` must be computed
+    numerically.
     """
     return 0.75 * t * t - 0.25 * t ** 4

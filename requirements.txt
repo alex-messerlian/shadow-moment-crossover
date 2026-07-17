@@ -1,5 +1,5 @@
 # Reproducible, mutually compatible pin set for shadow-moment-crossover.
-# Verified on macOS arm64 / Python 3.12.12 — all imports succeed.
+# Verified on macOS arm64 / Python 3.12.12 — every module in anrl/ imports under this set.
 #
 # Full transitive lock (optional):  pip freeze > requirements.lock
 
@@ -7,6 +7,17 @@
 numpy==2.5.1
 scipy==1.18.0
 matplotlib==3.11.0
+
+# --- quantum stack ---
+# anrl.hardware imports these at module level: without them `import anrl.hardware` fails,
+# and so do the *_analysis.py scripts that recompute the hardware numbers from the
+# committed counts, and figure 6.
+qiskit==2.5.0
+qiskit-aer==0.17.2
+
+# --- hardware submission only (not needed to reproduce any number in the paper) ---
+openquantum-sdk==0.3.7
+requests==2.34.2
 
 # --- utilities ---
 tqdm==4.68.4

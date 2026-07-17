@@ -3,7 +3,7 @@
 Code, data, and analysis for the paper:
 
 > **Sample-complexity transition in shadow-based estimation of quantum state moments and the crossover to collective measurement**
-> Alexander Messerlian.
+> Alexander Messerlian (Independent Researcher) and Ziwei Gu (Harvard John A. Paulson School of Engineering and Applied Sciences).
 > Compiled manuscript: [`paper/paper.pdf`](paper/paper.pdf) · LaTeX source: [`paper/paper.tex`](paper/paper.tex)
 
 ## What the paper is
@@ -19,10 +19,12 @@ The main results:
 
 - An **exact, state-dependent variance law** for the $k$-th-moment U-statistic estimator
   under local random-unitary classical shadows, derived via the Hoeffding decomposition and
-  verified against brute-force enumeration for $k = 2, 3, 4$.
-- A **sample-complexity exponent transition**: the exponent $\alpha$ in
-  $\mathrm{RMSE} \propto M^{-\alpha}$ is not the constant $1/2$ — it migrates to $1$ as the
-  budget $M$ falls below a threshold $M^* \approx 5.3^n$ that diverges exponentially in $n$.
+  verified against brute-force Monte Carlo for $k = 2, 3, 4$.
+- A **budget-scaling exponent transition**: the *effective* exponent $\alpha$ in
+  $\mathrm{RMSE} \propto M^{-\alpha}$, over the budget $M$ in use, is not the constant $1/2$ —
+  it migrates continuously toward $1$, and past it for higher moment orders, as $M$ falls below
+  a threshold $M^* \approx 5.3^n$ that diverges exponentially in $n$. The asymptotic scaling at
+  fixed $n$ remains the familiar square-root law; the migration is a finite-budget effect.
 - Two **exact, parameter-free collective bias laws** (global-depolarizing and per-qubit-channel).
 - A **parameter-free crossover law** for the system size at which collective measurement
   becomes cheaper, validated across 83 cells and four state ensembles.
@@ -47,7 +49,7 @@ Everything is in the `anrl` package:
 
 ## Setup
 
-The theory and figures need only the core scientific stack (no GPU, no deep-learning deps):
+No GPU and no deep-learning dependencies. The pinned set installs everything:
 
 ```bash
 git clone https://github.com/alex-messerlian/shadow-moment-crossover.git
@@ -55,12 +57,16 @@ cd shadow-moment-crossover
 python3.12 -m venv .venv
 source .venv/bin/activate
 pip install --upgrade pip
-pip install numpy scipy matplotlib pytest
+pip install -r requirements.txt
 ```
 
-For the full pinned versions, use `pip install -r requirements.txt` instead. The hardware
-module additionally needs `qiskit` and the `openquantum_sdk`
-(see [Hardware](#hardware-runs-cost-real-money) below).
+The theory results and the figures need only the core scientific stack, so
+`pip install numpy scipy matplotlib` is enough for those. Everything else needs
+`qiskit` and `qiskit-aer`, which `requirements.txt` pins: `anrl.hardware` imports them at
+module level, so they are required to re-analyse the committed hardware counts, and three
+of the test modules import them, which means `pytest` aborts at collection without them.
+Submitting new jobs additionally needs the `openquantum_sdk` and `requests`
+(see [Hardware](#hardware-runs-cost-real-money) below); reproducing the paper does not.
 
 ## Reproduce the theory results
 
@@ -119,7 +125,8 @@ Cepheus-1-108Q). **Each job is billed in platform credits — running them costs
 - You do **not** need credentials to reproduce any number in the paper. Every raw
   measurement count is already committed under `results/hardware/`, and every
   `*_analysis.py` script recomputes the paper's hardware numbers from those committed counts
-  offline and for free.
+  offline and for free. They do need `qiskit` and `qiskit-aer` installed (they import
+  `anrl.hardware`), which `requirements.txt` provides — but no credentials and no credits.
 
 ## Data availability
 

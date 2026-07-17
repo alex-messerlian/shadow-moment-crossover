@@ -25,6 +25,16 @@ Repository = "https://github.com/alex-messerlian/shadow-moment-crossover"
 
 [project.optional-dependencies]
 dev = ["pytest>=9.1"]
+# anrl.hardware imports qiskit and qiskit-aer at module level, so `import anrl.hardware`
+# fails without this group -- as do the *_analysis.py scripts that recompute the paper's
+# hardware numbers from the committed counts, and figure 6. openquantum-sdk and requests
+# are needed only to SUBMIT jobs (anrl/hardware/submit.py, backend.py), not to re-analyse.
+hardware = [
+    "qiskit>=2.5",
+    "qiskit-aer>=0.17",
+    "openquantum-sdk>=0.3.7",
+    "requests>=2.32",
+]
 
 [tool.setuptools.packages.find]
 include = ["anrl*"]
