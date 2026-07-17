@@ -56,7 +56,7 @@ collective side of the \(k > 2\) cells is modelled as a bounded
 circuit would require.
 
 We then confront the prediction with what the platform reports as a
-108-qubit superconducting processor, with predictions registered before
+108-qubit superconducting processor, with predictions committed before
 submission. Both failed: a Bell-state purity locked at \(0.89\) measured
 \(0.72\), and a single-copy anchor locked at \(1.50\) measured \(1.34\)
 with disjoint intervals; byte-identical circuits also varied substantially
@@ -157,7 +157,7 @@ formula no longer suffices even when its coefficients are correct. A
 hardware comparison of the two routes has been reported
 \cite{peng2025beyond}; what we add is the predictive law and a test of it
 locked in advance. We confront that prediction with a superconducting
-device and report the outcome as measured, including a pre-registered
+device and report the outcome as measured, including a committed-in-advance
 prediction the hardware did not bear out. What the confrontation
 established is the shape of the obstacle: the dominant error was readout
 rather than the entangling overhead the crossover argument prices, and
@@ -175,7 +175,7 @@ that the relevant distinction is the geometry of the noise channel, not
 its rate. Section 5 combines them into a crossover criterion with
 nothing fitted to the crossover data it predicts, and validates it
 against 83 simulated crossover cells across four state
-ensembles. Section 6 reports a pre-registered test on a 108-qubit
+ensembles. Section 6 reports a test with predictions committed before execution on a 108-qubit
 superconducting processor: the measured value falls below the prediction, and the diagnosis,
 which bounds or excludes seven candidate mechanisms with quantitative arguments, is
 the section's content. Section 7 positions the work against the recent
@@ -382,7 +382,7 @@ The variance of the U-statistic is then exactly
 
 This is the standard Hoeffding decomposition for U-statistics
 \cite{hoeffding1948, serfling1980}, and we
-claim no novelty for it; what is new here is its exact evaluation for
+claim no novelty for it; what is new here is its numerical evaluation for
 the local-shadow kernel and the state-dependent \(\zeta_c\) that follow.
 
 For \(k = 2\) this reduces to
@@ -473,8 +473,8 @@ of.
 
 \hypertarget{the-weight-only-quadratic-ansatz-fails}{%
 \subsection{\texorpdfstring{The weight-only quadratic ansatz fails
-at
-\(n \geq 2\)}{The weight-only quadratic ansatz fails at n \textbackslash geq 2}}\label{the-weight-only-quadratic-ansatz-fails}}
+already at one
+qubit}{The weight-only quadratic ansatz fails already at one qubit}}\label{the-weight-only-quadratic-ansatz-fails}}
 
 The single-qubit result invites a generalization. If the second moment
 carries a factor of \(3\) per qubit in the support of a Pauli string,
@@ -483,18 +483,32 @@ coefficient depending only on the Pauli weight,
 
 \[\zeta_1 \stackrel{?}{=} \sum_P c_{|P|} \langle P \rangle^2 .\]
 
-This is false. Tested against a diverse family of 19 states at
-\(n = 2\), varying depolarizing rate, rank, and structure, the best-fit
-ansatz leaves a residual of up to 12.2\%. The reason is structural, and
-it is not entanglement: because the snapshots are drawn from \(\rho\),
-the second moment is cubic in \(\rho\), while a weight-only sum of
-\(\langle P \rangle^2\) is quadratic in the Pauli expectations. The
-missing dependence is on the relative orientation of the two marginal
-Bloch vectors through the correlation matrix, an invariant that is
-already nonzero for separable, classically correlated states, so weight
-alone does not determine the coefficient. What fails is this ansatz
-rather than every weight-based expression; we do not rule out a closed
-form built from a richer set of invariants.
+This already fails at a single qubit, and provably so. With universal
+weight coefficients the most general such form for one qubit is
+\(c_0 \langle I \rangle^2 + c_1 (\langle X \rangle^2 + \langle Y \rangle^2 + \langle Z \rangle^2) = c_0 + c_1 t^2\),
+an affine function of \(t^2\), because the three squared Pauli
+expectations sum to the squared Bloch length \(t^2\) and carry no further
+invariant. The exact single-qubit projection variance of Section 3.3 is
+\(\zeta_1 = \tfrac{3}{4} t^2 - \tfrac{1}{4} t^4\), whose quartic term has
+coefficient \(-\tfrac{1}{4}\) whatever \(c_0\) and \(c_1\) are chosen: no
+weight-only quadratic form reproduces it. The obstruction is a quartic
+dependence on the state that a form quadratic in the Pauli expectations
+cannot carry, and it is present before any question of entanglement or
+correlation arises.
+
+The insufficiency persists and grows with size. Tested against a diverse
+family of 19 states at \(n = 2\), varying depolarizing rate, rank, and
+structure, the best-fit weight-only ansatz leaves a residual of up to
+12.2\%. A reading of what is missing, offered as an observation from the
+algebra rather than a theorem, is that because the snapshots are drawn
+from \(\rho\) the second moment is cubic in \(\rho\) while a weight-only
+sum of \(\langle P \rangle^2\) is quadratic in the Pauli expectations, so
+the shortfall tracks the relative orientation of the marginal Bloch
+vectors through the correlation matrix --- an invariant already nonzero
+for separable, classically correlated states. We do not prove this is the
+only missing ingredient, nor rule out a closed form built from a richer
+set of invariants; we establish only that a weight-only quadratic form is
+insufficient.
 
 The ansatz nonetheless \emph{appears} to
 hold. Tested only within a narrow single-parameter family, Haar-pure
@@ -522,9 +536,7 @@ The kernel variance grows roughly five times faster per qubit than the
 linear variance. Their ratio, the threshold \(M^*\), therefore grows approximately exponentially in \(n\) over the range we fit (\(n = 2\) to \(9\)). This is the mechanism, and within that range its consequence is direct: at a fixed budget, increasing \(n\) pushes \(M\) below \(M^*\), the higher-order term takes over, and the effective
 exponent migrates from \(1/2\) toward \(1\), and past it for higher \(k\).
 
-Defining \(\alpha\) as the local slope
-\(-\,\mathrm{d}\log \mathrm{RMSE} / \mathrm{d}\log M\) over the budget
-range actually used in the experiment:
+Defining \(\alpha\) as the effective exponent --- the negative slope of \(\log \mathrm{RMSE}\) against \(\log M\) fitted by least squares over the budget range actually used, as in Appendix D, so it is a window-averaged rather than a pointwise quantity and the window itself shifts with \(n\):
 
 \begin{table}[htbp]
 \centering
@@ -938,7 +950,7 @@ question, and it is the one we take up next.
 \end{figure}
 
 \hypertarget{hardware-a-pre-registered-test-on-rigetti-cepheus-1-108q}{%
-\section{Hardware: a pre-registered test on Rigetti
+\section{Hardware: a committed-in-advance test on Rigetti
 Cepheus-1-108Q}\label{hardware-a-pre-registered-test-on-rigetti-cepheus-1-108q}}
 
 \hypertarget{platform-and-a-disclosure-about-the-execution-path}{%
@@ -1000,9 +1012,7 @@ total deficit of 0.29.
 The resource-demand concern cited in \cite{qmladvantage2026}, that
 collective measurement demands significant qubit count, two-qubit depth,
 and routing overhead, does not materialize for the destructive SWAP
-test on a square-lattice device. Four two-qubit gates and no routing is
-not an overhead problem, and the gates contribute about a seventh
-(roughly 14\%) of the observed error. Whatever is degrading the
+test on a square-lattice device. Four two-qubit gates and no routing make the entangling overhead a small part of this case under the assumed CZ error: the gates account for about a seventh (roughly 14\%) of the observed error under that model. Whatever is degrading the
 collective measurement on this hardware, it is not the entangling
 overhead.
 
@@ -1018,8 +1028,7 @@ cost we have not measured, and the conclusion of this section does not
 extend to it.
 
 \hypertarget{readout-is-the-wall-and-it-is-not-in-the-datasheet}{%
-\subsection{Readout is the wall, and it is not in the
-datasheet}\label{readout-is-the-wall-and-it-is-not-in-the-datasheet}}
+\subsection{Consistent with readout and SPAM error dominating, and not in the datasheet}\label{readout-is-the-wall-and-it-is-not-in-the-datasheet}}
 
 Our locked prediction, computed from the published gate fidelities and an
 assumed 2\% readout error and committed to version control before the job
@@ -1050,8 +1059,7 @@ depolarizing rate of \(g = 0.375\), roughly two and a half times the
 
 A single measurement cannot separate gate error from readout error,
 because both enter the same number. We therefore measured them
-separately. Readout characterization, using computational basis states
-prepared with X gates only and no two-qubit gates, gave:
+separately. Readout characterization, using computational basis states prepared with X gates only and no two-qubit gates, gave the numbers below. What this isolates is the combined state-preparation-and-measurement error --- X-gate preparation, relaxation during readout, assignment error, and measurement crosstalk together --- not the assignment error alone, so ``readout'' here should be read as SPAM:
 
 \begin{table}[htbp]
 \centering
@@ -1154,7 +1162,7 @@ days, which is not standard practice.
 \begin{figure}[tb]
 \centering
 \includegraphics[width=\linewidth]{fig6_hardware}
-\caption{Hardware: cross-session variation is the leading explanation for the gap. (a)~Measured collective purity (vermillion, 95\% CI) at $n=2,3,4$ against the pre-registered same-session prediction bands from the opening (blue) and closing (orange) readout calibrations; every measurement falls below both bands. (b)~The same byte-identical circuits across three sessions: the $n=3$ register healed ($0.32\to0.59$) while $n=4$ drifted down ($0.43\to0.38$), and the ordering flipped. Cross-session drift ($\sim\!0.2$) is about $20\times$ the within-session drift (scale bar).}
+\caption{Hardware: cross-session variation is the leading explanation for the gap. (a)~Measured collective purity (vermillion, 95\% CI) at $n=2,3,4$ against the same-session prediction bands committed in advance from the opening (blue) and closing (orange) readout calibrations; every measurement falls below both bands. (b)~The same byte-identical circuits across three sessions: the $n=3$ register healed ($0.32\to0.59$) while $n=4$ drifted down ($0.43\to0.38$), and the ordering flipped. Cross-session drift ($\sim\!0.2$) is about $20\times$ the within-session drift (scale bar).}
 \label{fig:hardware}
 \end{figure}
 
@@ -1177,8 +1185,7 @@ adjust the model to fit. Three signals therefore fail together in this
 session: the collective purities at \(n = 3, 4\) fall below their bands,
 their ordering is non-monotonic, and the single-copy pipeline does not
 reproduce its own anchor. One common cause accounts for all three, and
-it is the one this section has been describing: the device parameters
-were characterized in earlier sessions, and the device has moved since.
+it is the one this section has been describing: the device parameters were characterized in earlier sessions, and the effective execution channel changed between sessions --- byte-identical QASM does not guarantee an identical pulse schedule, and the decentralized route cannot be verified per job.
 That two protocols with different circuits and different estimators both
 miss their locked predictions in the same session is what makes drift,
 rather than any protocol-specific defect, the parsimonious explanation.
@@ -1216,8 +1223,7 @@ single-qubit flip rates fixed and pushing every copy-pair to its maximum
 physically realizable correlation, which is bounded because
 \(P(\text{both flip}) \leq \min\) of the two marginals and the measured
 marginals are small, the entire achievable range of predicted purity is
-\([0.611, 0.669]\) at \(n = 3\). The measurement is 0.378. Even maximal
-correlation leaves 0.23 unexplained. There is no room. \\
+\([0.611, 0.669]\) at \(n = 3\). The measurement is 0.378. Even maximal correlation leaves 0.23 of the deficit unexplained by this mechanism. \\
 Coherent gate error & Randomized compiling. Pauli-twirled SWAP circuits,
 with a positive control confirming that the inserted gates physically
 execute (5.4:1 mass on the disjoint support), moved the purity by
@@ -1262,7 +1268,7 @@ limited scales on which NISQ devices may be considered reliable
 \cite{dasgupta2021stability,dasgupta2022assessing}, and
 calibration-drift analyses identify gate error as the dominant
 cross-device mismatch and readout as secondary \cite{fewshot2026}. Our
-contribution is to demonstrate, with pre-registered predictions and a
+contribution is to demonstrate, with committed-in-advance predictions and a
 seven-mechanism ledger, that this instability is the binding
 constraint specifically for collective-measurement protocols, at
 magnitudes that dwarf every error source such protocols are
@@ -1307,7 +1313,13 @@ into a kernel term bounded by \(4^{|AB|}\) and linear terms bounded by
 states and applies this bound, citing its own references for it rather
 than deriving it, so we attribute the statement rather than its origin.
 These are worst-case, state-independent
-bounds. The exact finite-\(M\) decomposition of this variance is the
+bounds. For local randomized measurements specifically, Huang, Wang and
+Xu \cite{huang2026worstcase} give worst-case sample-complexity bounds
+whose exponential base depends on the measurement ensemble --- Clifford,
+local-Haar, and Pauli shadows scale with different constants --- for the
+related task of distributed inner-product estimation; these remain
+worst-case envelopes rather than evaluated coefficients or a budget
+threshold. The exact finite-\(M\) decomposition of this variance is the
 standard Hoeffding U-statistic identity
 \cite{hoeffding1948, serfling1980}; in the classical-shadow setting it is
 already stated as an equality by \cite{huang2020shadows}, and again by
@@ -1542,7 +1554,7 @@ fitted parameters. That evaluation fixes the threshold, and with it the
 exponent over the budget window an experiment can actually reach. The
 asymptotic scaling at fixed system size is not what moves: that remains
 the square-root law. Because the fitted threshold grows steeply with \(n\) over this range, that window is where the experiments at the sizes we reach sit. The mechanism
-is a competition between two terms in the estimator's variance whose ratio grows approximately exponentially over the tested range, and locating it is what the exact coefficients buy.
+is a competition between two terms in the estimator's variance whose ratio grows approximately exponentially over the tested range, and locating it is what the numerically evaluated coefficients buy.
 
 Paired with two exact bias laws for the collective route, distinguished
 by the geometry of the noise channel rather than by its rate, the
@@ -1570,12 +1582,10 @@ bounded, characterizable bias floor cannot be fielded on a device whose
 floor moves by 0.2 between sessions.
 
 That is the actionable conclusion for hardware developers, and it is
-more specific than a call for better gates. Two-qubit gate fidelity, the
-figure of merit the field advertises, was not the limitation. Readout
+more specific than a call for better gates. Under the assumed median-CZ model, two-qubit gate error came out smaller than the observed deficit; the figure of merit the field advertises was not what limited this test. Readout
 fidelity, which vendors do not publish, and run-to-run stability, which
 vendors do not characterize, are what stand between current devices and
-a collective-measurement advantage that the theory says is waiting at
-six qubits.
+a collective-measurement advantage that the criterion places near six qubits under the noise we model.
 
 Three questions follow from this work. Whether \(\zeta_1\) admits a
 closed form under a richer ansatz than Pauli weight, which would make
@@ -1712,6 +1722,11 @@ Phys. Rev. Applied \textbf{23}, 014075 (2025), doi:10.1103/PhysRevApplied.23.014
 Adrian Skasberg Aasen and Martin G\"arttner,
 \emph{Limitations for adaptive quantum state tomography in the presence of detector noise},
 Phys. Rev. A \textbf{114}, 012414 (2026), doi:10.1103/3q13-xpc8, arXiv:2601.04020.
+
+\bibitem{huang2026worstcase}
+Zhenyuan Huang, Kun Wang, and Ping Xu,
+\emph{Worst-case sample complexity bounds for distributed inner product estimation with local randomized measurements},
+arXiv:2605.14256 (May 2026).
 
 \end{thebibliography}
 
