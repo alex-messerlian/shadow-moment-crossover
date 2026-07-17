@@ -20,7 +20,7 @@
 
 \begin{document}
 
-\title{Exact projection variances for shadow-based moment estimation\\ and a pre-registered test of the collective-measurement crossover}
+\title{State-dependent projection variances for shadow-based moment estimation\\ and a pre-registered test of the collective-measurement crossover}
 
 \author{Alexander Messerlian}
 \affiliation{Independent Researcher}
@@ -48,8 +48,9 @@ exponent has been tracked directly in adaptive tomography. What the bounds
 leave open is where the regimes meet. Separate upper bounds on the two
 projection variances \(\zeta_1\) and \(\zeta_2\) constrain their ratio not
 at all, so the threshold budget does not follow from them. We evaluate the
-projection variances exactly for depolarized Haar-random pure states at a
-single noise rate, and verify the resulting variance against brute-force
+state-dependent projection variances for depolarized Haar-random pure
+states at a single noise rate --- numerically, since for \(n \geq 2\) they
+have no closed form --- and verify the resulting variance against brute-force
 Monte Carlo of the exact estimator for \(k = 2, 3, 4\). The evaluation
 fixes the threshold. The effective budget-scaling exponent \(\alpha\), defined by
 \(\mathrm{RMSE} \propto M^{-\alpha}\) over the measurement budget \(M\) in use,
@@ -111,8 +112,8 @@ collective-measurement performance on this hardware.
 At ten qubits, on the noisy-pure states we benchmark and at a fixed
 measurement budget, the standard single-copy method for estimating the
 purity of a quantum state returns an error fifteen times larger than the
-quantity it is estimating. The estimate is not noisy. It is also not an
-estimate.
+quantity it is estimating. The estimator is still unbiased; it is the
+spread that has become useless.
 
 That failure matters because the quantity is not exotic. The moments
 \(\mathrm{Tr}(\rho^k)\) of an unknown state are the entry point to a
@@ -178,8 +179,9 @@ Separate upper bounds on \(\zeta_1\) and \(\zeta_2\) constrain their ratio
 not at all, so the budget at which the two terms exchange dominance does
 not follow from them.
 
-\textbf{Thesis.} We evaluate the projection variances exactly for
-depolarized Haar-random pure states at a single noise rate. That fixes
+\textbf{Thesis.} We evaluate the state-dependent projection variances for
+depolarized Haar-random pure states at a single noise rate, numerically,
+and feed them into the exact variance formula. That fixes
 the crossover budget \(M^* = \zeta_2/(2\zeta_1)\), which grows
 exponentially in \(n\) with a base near five over the sizes we reach, and,
 set against two exact bias laws for the collective route, yields a
@@ -207,8 +209,9 @@ decomposition, gives the exact single-qubit projection variance, and
 establishes the \(\alpha\) transition together with its out-of-sample
 validation. Section 4 derives the two exact collective bias laws and shows
 that the relevant distinction is the geometry of the noise channel, not
-its rate. Section 5 combines them into a parameter-free crossover law
-and validates it against 83 simulated crossover cells across four state
+its rate. Section 5 combines them into a crossover law with
+nothing fitted to the crossover data it predicts, and validates it
+against 83 simulated crossover cells across four state
 ensembles. Section 6 reports a pre-registered test on a 108-qubit
 superconducting processor: the measured value falls below the prediction, and the diagnosis,
 which bounds or excludes seven candidate mechanisms with quantitative arguments, is
@@ -494,7 +497,11 @@ carry over to arbitrary entangled or correlated states, which is what
 Section 3.4 shows when the weight-only ansatz fails at \(n \geq 2\). This
 is the analytic reason why the ensemble choice of Section 2.5 is not
 cosmetic: a low-purity ensemble is not a harder instance of the same
-problem, it is a different and much easier problem.
+problem but a different one, and an easier benchmark to score well on at a
+fixed absolute error, because the target itself shrinks toward the
+depolarizing floor. The estimator's own variance stays exponential there,
+as Section 2.5 shows; it is the quantity being resolved that gets smaller,
+not the noise on it.
 
 The identity also passes the boundary check. At \(t = 0\) it gives
 \(\zeta_1 = 0\), which is correct: for a maximally mixed qubit,
@@ -889,7 +896,8 @@ wrong}\label{three-qualitative-predictions-and-the-one-we-got-wrong}}
 Two of the three we predicted correctly in advance; the third we got
 backwards, and the law corrected us.
 
-Higher noise moves the crossover later. A larger bias floor therefore takes longer
+Higher noise moves the crossover later on the channels and rates we
+swept. A larger bias floor therefore takes longer
 for the exponentially growing single-copy error to climb over.
 
 A larger budget moves the crossover later. The single-copy error falls
@@ -1059,7 +1067,9 @@ verification rather than characterization of whatever the device
 actually produced, and the two coincide only when the preparation is
 exact.
 
-The circuit was not at fault. The four dominant measured outcomes are
+The observed output structure is consistent with the intended circuit,
+and the dominant discrepancy is quantitatively accounted for by readout
+error. The four dominant measured outcomes are
 exactly the ideal support of the Bell SWAP test, with noise leaking
 approximately 25\% of the weight into the remaining twelve outcomes.
 This is a correctly executed circuit on a noisier device than we
@@ -1159,8 +1169,11 @@ register & session 1 & session 2 & session 3 \\
 \end{tabular}
 \end{table}
 
-Within-session drift is approximately 1\%. Cross-session drift is
-approximately 0.2 in purity, twenty times larger. The \(n = 3\) anomaly
+Within-session drift is approximately 1\% per qubit in readout error,
+which is not itself a purity. Propagated through the device model it moves
+the predicted purity by about 0.01 --- the gap between the opening and
+closing bands above. Cross-session drift is approximately 0.2 in purity,
+roughly twenty times larger on that like-for-like comparison. The \(n = 3\) anomaly
 healed across sessions and the \(n = 4\) anomaly persisted, after which
 the ordering between them flipped. The non-monotonicity that sent us
 hunting for a physical mechanism was a drift artifact, and identifying
@@ -1572,7 +1585,9 @@ simulated crossovers within one qubit.
 
 The practical guidance follows. For estimating purity of noisy-pure
 states under per-qubit amplitude-damping or dephasing noise at the rates
-and copy budgets tested here, single-copy classical shadows stop working
+and copy budgets tested here, single-copy classical shadows --- the exact
+copy-fair U-statistic on local Pauli shadows, judged by absolute RMSE
+against a target of order one --- stop being the cheaper route
 beyond roughly six to seven qubits; the higher moments hold out to about
 eight, and under global depolarizing noise the crossover falls earlier
 still. In every case the law says which side of the boundary a given
