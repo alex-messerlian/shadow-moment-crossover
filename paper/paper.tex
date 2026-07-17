@@ -163,8 +163,9 @@ term and a linear term carrying different powers of the budget, bounded
 by \(4^{|AB|}\) and \(2^{|AB|}\) respectively \cite{shadownorm2021};
 Elben et al.~\cite{elben2020mixed} derive that decomposition and
 identify the two decay regimes it produces. Bounds of this kind are
-state-independent by construction, so they fix neither coefficient. What
-has not been available is their exact state-dependent value.
+state-independent by construction, and being inequalities they fix
+neither coefficient. What has not been available is their exact
+state-dependent value.
 
 \textbf{Thesis.} The effective budget-scaling exponent for shadow-based
 moment estimation is not a constant. It is a function of system size and
@@ -1146,9 +1147,9 @@ days, which is not standard practice.
 The single-copy route failed the same way. Alongside the collective
 measurements we ran a fifteen-basis single-copy anchor at \(n = 2\),
 whose U-statistic our shadow pipeline predicted at \(1.500 \pm 0.028\)
-from the same device parameters. That statistic is not a purity: pooling
-many shots into each of a few fixed bases leaves roughly a sixth of the
-snapshot pairs sharing a unitary, which biases the estimator upward, here
+from the same device parameters. That statistic is not a purity: the
+fifteen bases collapse to eight distinct unitaries, so about 15\% of the
+snapshot pairs share one, which biases the estimator upward, here
 past the physical bound \(\mathrm{Tr}(\rho^2) \leq 1\). Because the same estimator is
 applied to the simulated and the measured data, the anchor tests the
 pipeline rather than measuring a purity. The device returned
@@ -1297,9 +1298,10 @@ identity from the Hoeffding combinatorics and then bound \(\zeta_1\) and
 in which both regimes appear but no threshold in \(M\); they treat
 \(k = 3\) the same way, with a three-regime bound. What this work adds is
 the evaluation: the state-dependent coefficients, the resulting
-threshold \(M^* = \zeta_2/(2\zeta_1)\) and its exponential growth in
-\(n\), and the comparison against the collective route, which that work
-does not treat. Alternative shadow ensembles, such as the Hamiltonian-driven
+threshold \(M^* = \zeta_2/(2\zeta_1)\) --- the budget at which their two
+terms cross --- whose value and growth base follow only from those
+coefficients, and the comparison against the collective route, which that
+work does not treat. Alternative shadow ensembles, such as the Hamiltonian-driven
 shadows of \cite{hamiltonianshadow2021}, target different observable
 classes and sample-complexity questions rather than the variance of
 nonlinear functionals.
