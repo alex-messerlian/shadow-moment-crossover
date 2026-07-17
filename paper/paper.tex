@@ -616,7 +616,13 @@ independent route.
 matters}\label{why-a-changing-exponent-matters}}
 
 A fixed-exponent bound of the form \(\mathrm{RMSE} \leq C_n / \sqrt{M}\)
-is not wrong. It is a bound, and it holds. But it describes the wrong
+is not wrong. It is a bound, and it holds. Nor is a fixed exponent what
+the tighter analyses assume: the two-term treatments keep both orders and
+exhibit the two regimes directly \cite{elben2020mixed}. What they leave
+open is where the regimes meet, since bounding \(\zeta_1\) and \(\zeta_2\)
+separately does not constrain their ratio, and that is what the exact
+evaluation supplies. The fixed-exponent summary is still worth
+addressing, because it describes the wrong
 regime for the systems people are actually running. At nine qubits, with
 the budgets accessible on current hardware, the estimator sits in the
 \(\alpha = 1\) regime, where additional shots buy error reduction faster
