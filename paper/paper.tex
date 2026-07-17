@@ -1334,7 +1334,12 @@ snapshot-cost scaling, with Pauli-favorable performance for local
 witnesses crossing over to Clifford-favorable performance as the witness
 becomes more global. That is a crossover in the
 choice of measurement ensemble, not between single-copy and collective
-measurement, and its mechanism is unrelated to ours.
+measurement, and its mechanism is unrelated to ours. The single-copy
+versus collective comparison has, however, been made on hardware: Peng
+et al.~\cite{peng2025beyond} implement a Fredkin gate and report a
+reduction in sample complexity for a hybrid two-copy scheme against
+single-copy shadows. That comparison is empirical and at fixed settings,
+and is not accompanied by a law locating where the two routes cross.
 
 \textbf{Statistical-to-bias-floor transitions on hardware.} A March 2026
 study of shadow tomography on an integrated photonic processor
@@ -1347,7 +1352,14 @@ and the two should be distinguished carefully. Their transition is
 between statistical scaling and a bias floor at fixed system size. Ours
 is a change in the statistical exponent itself as a function of system
 size, occurring before any hardware bias enters. Both effects are real
-and they are not the same effect.
+and they are not the same effect. The rolling-exponent diagnostic itself
+is not ours: Aasen and G\"arttner \cite{aasen2026limitations} fit a
+power-law exponent to adaptive-tomography infidelity in sliding budget
+windows and report it drifting from the ideal \(1/N\) toward
+\(1/\sqrt{N}\) as the measurement count grows. Their migration is driven
+by detector noise eroding an adaptive advantage; the one in Section 3.5
+is a property of the noiseless estimator's own variance, set by the
+ratio of the two Hoeffding terms.
 
 \textbf{Sample-complexity lower bounds for purity.} Gong et
 al.~\cite{gong2024purity} improve the lower bound for purity estimation
@@ -1680,6 +1692,16 @@ Wiley, New York (1980), Ch.~5, doi:10.1002/9780470316481.
 Andreas Elben, Richard Kueng, Hsin-Yuan Huang, Rick van Bijnen, Christian Kokail, Marcello Dalmonte, Pasquale Calabrese, Barbara Kraus, John Preskill, Peter Zoller, and Beno\^it Vermersch,
 \emph{Mixed-state entanglement from local randomized measurements},
 Phys. Rev. Lett. \textbf{125}, 200501 (2020), doi:10.1103/PhysRevLett.125.200501, arXiv:2007.06305.
+
+\bibitem{peng2025beyond}
+Xu-Jie Peng, Qing Liu, Lu Liu, Ting Zhang, You Zhou, and He Lu,
+\emph{Experimental shadow tomography beyond single-copy measurements},
+Phys. Rev. Applied \textbf{23}, 014075 (2025), doi:10.1103/PhysRevApplied.23.014075.
+
+\bibitem{aasen2026limitations}
+Adrian Skasberg Aasen and Martin G\"arttner,
+\emph{Limitations for adaptive quantum state tomography in the presence of detector noise},
+Phys. Rev. A \textbf{114}, 012414 (2026), doi:10.1103/3q13-xpc8, arXiv:2601.04020.
 
 \end{thebibliography}
 
