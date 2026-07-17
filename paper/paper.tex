@@ -101,8 +101,9 @@ collective-measurement performance on this hardware.
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
 
-At ten qubits, the standard single-copy method for estimating the purity
-of a quantum state returns an error fifteen times larger than the
+At ten qubits, on the noisy-pure states we benchmark and at a fixed
+measurement budget, the standard single-copy method for estimating the
+purity of a quantum state returns an error fifteen times larger than the
 quantity it is estimating. The estimate is not noisy. It is also not an
 estimate.
 
@@ -315,14 +316,38 @@ choice}\label{the-state-ensemble-is-not-a-free-choice}}
 
 The variance of shadow-based purity estimation scales with the purity of
 the state being measured, a fact we derive exactly in Section 3.3. The
-consequence is a trap. A random Ginibre state under heavy depolarizing
-noise has purity approaching \(2^{-n}\), which tends to zero with the
-system's size. Estimating a quantity that is approximately zero is easy
-for any estimator at a fixed absolute error --- the same is not true of
-relative precision, nor of testing, where the gap to be resolved shrinks
-too (Section 7) --- and single-copy estimation of such states shows no
-exponential blow-up at all. That absence is an artifact of the ensemble,
-not a property of the task.
+consequence is a trap, though not the one it first appears to be. A
+random Ginibre state under heavy depolarizing noise has purity
+approaching \(2^{-n}\), which tends to zero with the system's size, and a
+quantity that is approximately zero is easy to estimate at a fixed
+absolute error --- the same is not true of relative precision, nor of
+testing, where the gap to be resolved shrinks too (Section 7). What does
+not follow is that the estimator is well behaved there. Those are
+different claims, and only the first is true.
+
+Low purity does not remove the exponential cost. It concentrates it. At
+\(\rho = \mathbb{I}/2^n\) every snapshot gives
+\(\mathrm{Tr}(G\rho) = 2^{-n}\) deterministically, so \(\zeta_1 = 0\)
+exactly, as the single-qubit identity of Section 3.3 already records at
+zero Bloch length. The threshold \(M^* = \zeta_2/(2\zeta_1)\) therefore
+diverges and the estimator sits in the higher-order regime at every
+budget. The kernel term does not vanish with \(\zeta_1\): the
+single-qubit second moment \(\mathbb{E}[\mathrm{Tr}(G_1 G_2)^2]\) is
+\(7\) for a maximally mixed qubit, so \(\zeta_2 = 7^n - 4^{-n}\), and the
+variance \(2\zeta_2 / M(M-1)\) gives an error of order \(7^{n/2}/M\) ---
+exponential in \(n\), against a target that is itself shrinking as
+\(2^{-n}\).
+
+The exponential is therefore a property of the estimator rather than of
+high-purity states. Its base is set by \(\zeta_2\), which barely moves
+with purity: exactly \(7\) per qubit at the maximally mixed state, and
+\(6.93\) fitted on the noisy-pure ensemble below. Purity governs
+\(\zeta_1\), and so \(M^*\) and the exponent, not the exponential itself.
+The ensemble still decides what the benchmark measures, but for a
+different reason than an easy estimator: at \(\rho = \mathbb{I}/2^n\) the
+collective bias vanishes identically too, because \(\mathrm{Tr}(\rho^k)\)
+sits exactly on the depolarizing floor \(2^{n(1-k)}\), so both routes
+degenerate at once and the comparison stops being informative.
 
 One relevant NISQ regime, and the one we benchmark on, is noisy-pure: a prepared pure state subject to
 modest depolarizing noise, with purity of order one. We therefore use
@@ -332,8 +357,13 @@ modest depolarizing noise, with purity of order one. We therefore use
 for which the purity is stable across the sizes tested but is set by
 \(q\), approaching \((1-q)^2\) at large \(n\): approximately \(0.90\) at
 \(q = 0.05\), \(0.81\) at the representative \(q = 0.1\) used for the
-headline states, and \(0.49\) at \(q = 0.3\). Choosing
-the wrong ensemble inverts the conclusion of the benchmark.
+headline states, and \(0.49\) at \(q = 0.3\). The reason to benchmark
+here is not that the alternative is easy. It is that these states keep
+the problem both hard and meaningful at once: the moment being estimated
+is of order one, so an absolute error is a statement about something, and
+the collective route has a bias to pay, so the two routes are actually in
+competition. Choosing the wrong ensemble does not make the estimator
+cheap; it makes the comparison vacuous.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -1420,8 +1450,9 @@ cell correlations are accounted for.
 \hypertarget{conclusion}{%
 \section{Conclusion}\label{conclusion}}
 
-We began with a number: at ten qubits, single-copy estimation of purity
-returns an error fifteen times the quantity being estimated. That number
+We began with a number: at ten qubits, on noisy-pure states at a fixed
+budget, single-copy estimation of purity returns an error fifteen times
+the quantity being estimated. That number
 is not an accident of implementation, and this paper explains where it
 comes from.
 
@@ -1443,8 +1474,8 @@ invisible to any analysis that fixes the exponent in advance.
 Paired with two exact bias laws for the collective route, distinguished
 by the geometry of the noise channel rather than by its rate, the
 variance law predicts without free parameters the system size at which
-collective measurement becomes the cheaper option. It gets 99\% of
-of the simulated crossovers within one qubit.
+collective measurement becomes the cheaper option. It gets 99\% of the
+simulated crossovers within one qubit.
 
 The practical guidance follows. For estimating purity of noisy-pure
 states under per-qubit amplitude-damping or dephasing noise at the rates
@@ -1608,7 +1639,7 @@ U-statistic}\label{appendix-a.-the-exact-fourth-moment-u-statistic}}
 The full U-statistic for \(\mathrm{Tr}(\rho^4)\) requires the sum over
 all distinct ordered 4-tuples of snapshots,
 
-\[S = \sum_{i \neq j \neq k \neq l} \mathrm{Tr}(G_i G_j G_k G_l).\]
+\[S = \sum_{(i,j,k,l)\ \text{pairwise distinct}} \mathrm{Tr}(G_i G_j G_k G_l).\]
 
 Because the snapshots do not commute, this does not reduce to matrix
 power sums. It is obtained by M\"obius inversion over the partition
