@@ -841,8 +841,13 @@ free}\label{the-entangling-overhead-is-nearly-free}}
 The destructive SWAP test at \(n = 2\) transpiles onto physical qubits
 \(\{0, 1, 9, 10\}\) using four CZ gates and zero routing SWAPs. The GHZ
 ladders at \(n = 3\) and \(n = 4\) likewise map with zero routing, at
-\(3n - 2\) CZ gates, and the ladders nest. Measured CZ error on these
-qubits is at or below the published median of 0.9\%, and gate error
+\(3n - 2\) CZ gates, and the ladders nest. CZ error on these qubits was
+not measured directly: the platform compiler resynthesized our
+characterization echo and optimized its gates away, and the verbatim box
+that would have prevented this failed at execution. We therefore assume
+CZ error at the published median of 0.9\%. The Bell run supports that
+assumption indirectly, since reconciling it against the measured readout
+favors spec-level CZ over zero CZ. On that assumption, gate error
 accounts for roughly 0.042 of the purity deficit at \(n = 2\) against a
 total deficit of 0.29.
 
@@ -934,7 +939,8 @@ would have made the \(n = 4\) predictions pessimistic by five points.
 \subsection{Cross-session drift accounts for the
 gap}\label{cross-session-drift-accounts-for-the-gap}}
 
-With every parameter on the GHZ ladder measured rather than assumed, we
+With readout on the GHZ ladder measured in the same session rather than
+assumed, and CZ error still taken at the published median, we
 ran a bracketed same-session experiment (Fig.~\ref{fig:hardware}): opening readout calibration,
 predictions locked and committed to version control from that
 calibration, SWAP measurements, as well as closing readout calibration.
