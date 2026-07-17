@@ -345,9 +345,13 @@ with purity: exactly \(7\) per qubit at the maximally mixed state, and
 \(\zeta_1\), and so \(M^*\) and the exponent, not the exponential itself.
 The ensemble still decides what the benchmark measures, but for a
 different reason than an easy estimator: at \(\rho = \mathbb{I}/2^n\) the
-collective bias vanishes identically too, because \(\mathrm{Tr}(\rho^k)\)
-sits exactly on the depolarizing floor \(2^{n(1-k)}\), so both routes
-degenerate at once and the comparison stops being informative.
+collective bias vanishes identically too for every \emph{unital} channel,
+because \(\mathrm{Tr}(\rho^k)\) then sits exactly on the depolarizing
+floor \(2^{n(1-k)}\) and a unital channel leaves \(\mathbb{I}/2^n\)
+fixed, so both routes degenerate at once and the comparison stops being
+informative. The restriction is not decorative: amplitude damping is not
+unital, and it carries \(\mathbb{I}/2\) to a state of purity
+\((1 + \gamma^2)/2\).
 
 One relevant NISQ regime, and the one we benchmark on, is noisy-pure: a prepared pure state subject to
 modest depolarizing noise, with purity of order one. We therefore use
@@ -551,11 +555,20 @@ and moment order for which we have measurements, the derived law matches:
 the single miss sits on the two-sigma boundary and is sensitive to the
 random seed, and 5 of 5 at \(k = 4\).
 
-The exact combinatorial structure is necessary, not a convenience. A
-two-term approximation of the form
-\(\mathrm{Var} \approx 4\zeta_1/M + \zeta_2/M^2\), the natural
-shortcut, manages only 5 of 8 at \(k = 2\) and fails at \(n = 6\) by
-nearly seven standard errors.
+The exact combinatorial structure is necessary, not a convenience,
+although \(k = 2\) is the wrong place to look for the evidence. There the
+large-\(M\) truncation of Section 3.2,
+\(\mathrm{Var} \approx 4\zeta_1/M + 2\zeta_2/M^2\), tracks the exact
+variance to within 0.05\% across the budgets used here and reproduces the
+measured \(\alpha\) at 8 of 8, indistinguishable from the exact law: at
+\(k = 2\) the second projection and the full kernel variance are the same
+quantity, so the truncation discards nothing. They separate at higher
+orders. Keeping the same two terms with their correct coefficients,
+\(k^2\zeta_1/M + \tfrac{1}{2}k^2(k-1)^2\zeta_2/M^2\), gives 15 of 20
+across \(k = 2, 3, 4\) against the exact law's 19 of 20, and misses
+\(k = 3\), \(n = 8\) by twenty-six standard errors --- by then
+\(\zeta_3/\zeta_2\) exceeds \(10^4\) and the discarded terms carry the
+variance.
 
 The threshold base is also stable across independent Monte Carlo
 samplings. Derived here from \(\zeta_2/(2\zeta_1)\) on a fresh estimate
@@ -704,10 +717,22 @@ Both laws are exact identities rather than approximations, and we
 verified them accordingly: against explicit construction of \(C_k\) and
 the noise-damaged \(k\)-copy state, at \(n = 2, 3\) and \(k = 2, 3, 4\),
 for global depolarizing, amplitude damping, and dephasing, agreeing to
-approximately \(10^{-15}\). They continue to hold at three times the
+approximately \(10^{-15}\). We take the single-qubit Kraus operators at
+rate \(g\) in the standard form: amplitude damping as
+\(K_0 = \mathrm{diag}(1, \sqrt{1-g})\) and
+\(K_1 = \sqrt{g}\,\lvert 0 \rangle \langle 1 \rvert\); dephasing as
+\(K_0 = \sqrt{1 - g/2}\,\mathbb{I}\) and \(K_1 = \sqrt{g/2}\,Z\); and
+global depolarizing in the closed form of Section 4.1. Each is applied to
+every qubit of every copy. They continue to hold at three times the
 noise rates in which they were derived, and on state ensembles they had
-never been tested against, including Haar-pure, low-rank, and GHZ-noisy
-states. An exact identity is not expected to degrade under
+never been tested against: Haar-pure (\(q = 0\)); low-rank,
+\(\rho = GG^\dagger\) with \(G\) a \(2^n \times 2\) complex Ginibre
+matrix normalized to unit trace, whose spectrum is not the
+rank-one-plus-identity form the noisy-pure closed forms assume; and
+GHZ-noisy, \((1-q)\lvert \mathrm{GHZ} \rangle \langle \mathrm{GHZ} \rvert + q\,\mathbb{I}/2^n\)
+at \(q = 0.15\) with
+\(\lvert \mathrm{GHZ} \rangle = (\lvert 0 \cdots 0 \rangle + \lvert 1 \cdots 1 \rangle)/\sqrt{2}\).
+An exact identity is not expected to degrade under
 extrapolation, and it does not.
 
 With the single-copy variance and the collective bias both known
@@ -896,7 +921,7 @@ question, and it is the one we take up next.
 \begin{figure}[tb]
 \centering
 \includegraphics[width=0.72\linewidth]{fig5_exponential_wall}
-\caption{The exponential wall. Single-copy purity RMSE versus $n$ out to $n=10$ (log scale; measured points with 68\% CIs, parameter-free theory line), with the true purity $\mathrm{Tr}(\rho^2)\approx0.81$ marked. By $n=10$ the single-copy error reaches $\sim\!12$, about fifteen times the quantity being estimated, while the collective error (green) stays bounded.}
+\caption{The exponential wall. Single-copy purity RMSE versus $n$ out to $n=10$ at a fixed copy budget of $M=2000$ (log scale; measured points with 68\% CIs, parameter-free theory line; noisy-pure ensemble, collective route under dephasing at $g=0.05$), with the true purity $\mathrm{Tr}(\rho^2)\approx0.81$ marked. By $n=10$ the single-copy error reaches $\sim\!12$, about fifteen times the quantity being estimated, while the collective error (green) stays bounded.}
 \label{fig:wall}
 \end{figure}
 

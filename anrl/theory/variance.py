@@ -239,8 +239,47 @@ def exact_fitted_alpha(budgets: list[int], components: list[float], k: int) -> f
     return -float(((x - xm) * (y - y.mean())).sum() / ((x - xm) ** 2).sum())
 
 
+def truncated_variance(components: list[float], k: int, m: float) -> float:
+    """Correct large-``M`` two-term truncation of the exact U-statistic variance.
+
+    Keeping only the first two orders of the Hoeffding sum gives
+    ``k^2 zeta_1 / M + [k^2 (k-1)^2 / 2] zeta_2 / M^2``, where ``zeta_2`` is the
+    SECOND PROJECTION variance ``components[1]`` — not ``zeta_k``, the full kernel
+    variance.  The two coincide at ``k = 2`` (hence ``2 zeta_2 / M^2`` there) and
+    diverge sharply above it: ``zeta_3 / zeta_2`` already exceeds ``1e4`` at
+    ``k = 3, n = 6``, which is why this truncation reproduces the measured alpha at
+    ``k = 2`` but fails at higher orders.  See :func:`single_copy_variance` for the
+    naive shortcut this replaces.
+    """
+    if len(components) < min(k, 2):
+        raise ValueError(f"need >= {min(k, 2)} components for k={k}, got {len(components)}")
+    out = k * k * components[0] / m
+    if k >= 2:
+        out += (k * k * (k - 1) ** 2 / 2.0) * components[1] / (m * m)
+    return float(out)
+
+
+def truncated_fitted_alpha(budgets: list[int], components: list[float], k: int) -> float:
+    """The alpha a log-log fit of the TRUNCATED-variance RMSE curve reports."""
+    x = np.log(np.asarray(budgets, dtype=np.float64))
+    if x.size < 2:
+        raise ValueError(f"truncated_fitted_alpha needs >= 2 budgets, got {x.size}")
+    y = np.log([np.sqrt(truncated_variance(components, k, m)) for m in budgets])
+    xm = x.mean()
+    return -float(((x - xm) * (y - y.mean())).sum() / ((x - xm) ** 2).sum())
+
+
 def single_copy_variance(k: int, zeta1: float, zeta2: float, m: float) -> float:
-    """Theory single-copy variance ``k^2 zeta1 / M + zeta2 / M^2`` (two-term model)."""
+    """Naive two-term shortcut ``k^2 zeta1 / M + zeta2 / M^2``.
+
+    RETAINED AS THE STRAW MAN IT IS, not as a model to use.  It is wrong twice: the
+    ``1/M^2`` coefficient should be ``k^2 (k-1)^2 / 2`` (``2`` at ``k = 2``, not
+    ``1``), and its ``zeta2`` argument is fed ``zeta_k``, the full kernel variance,
+    where the second projection belongs.  Dropping the ``k = 2`` factor of two
+    halves the kernel term wherever it dominates.  Use :func:`truncated_variance`
+    for the correct truncation and :func:`exact_ustatistic_variance` for the truth.
+    Nothing the paper reports depends on this function.
+    """
     return k * k * zeta1 / m + zeta2 / (m * m)
 
 

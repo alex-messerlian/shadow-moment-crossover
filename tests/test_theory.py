@@ -154,8 +154,25 @@ def test_exact_model_reproduces_alpha_where_two_term_fails() -> None:
     assert 0.50 < exact < 0.70  # exact model near the measured 0.607
 
 
+def test_truncated_variance_has_the_correct_second_order_coefficient() -> None:
+    # The 1/M^2 coefficient is k^2 (k-1)^2 / 2 times the SECOND PROJECTION zeta_2 --
+    # so 2 zeta_2 at k=2, not zeta_2.  Section 3.5 rests on this.
+    from anrl.theory import exact_ustatistic_variance, truncated_variance
+
+    assert truncated_variance([1.0, 50.0], 2, 1000) == pytest.approx(4 / 1000 + 2 * 50 / 1e6)
+    assert truncated_variance([1.0, 50.0, 7e3], 3, 1000) == pytest.approx(9 / 1000 + 18 * 50 / 1e6)
+    # the truncation is the large-M limit of the exact law: the ratio -> 1 as M grows.
+    for k in (2, 3, 4):
+        comps = [1.0, 50.0, 7e3, 9e5][:k]
+        ratios = [truncated_variance(comps, k, m) / exact_ustatistic_variance(comps, k, m)
+                  for m in (1e5, 1e7, 1e9)]
+        assert ratios == sorted(ratios, reverse=True)  # monotone approach from above
+        assert ratios[-1] == pytest.approx(1.0, abs=1e-6)
+
+
 def test_variance_and_alpha_formulas() -> None:
-    # single_copy_variance = k^2 zeta1/M + zeta2/M^2; alpha_eff interpolates 0.5..1.
+    # single_copy_variance is the retained STRAW MAN (wrong 1/M^2 coefficient) -- pinned
+    # here so it cannot silently drift into looking correct.  Use truncated_variance.
     assert single_copy_variance(2, 1.0, 50.0, 1000) == pytest.approx(4 / 1000 + 50 / 1e6)
     assert single_copy_rmse(2, 1.0, 50.0, 1000) == pytest.approx(np.sqrt(4 / 1000 + 50 / 1e6))
     assert alpha_eff(1e9, 1.0) == pytest.approx(0.5, abs=1e-6)  # M >> M* -> 0.5

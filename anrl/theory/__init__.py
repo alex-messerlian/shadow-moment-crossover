@@ -65,6 +65,8 @@ from .variance import (
     fitted_alpha,
     single_copy_rmse,
     single_copy_variance,
+    truncated_fitted_alpha,
+    truncated_variance,
 )
 
 __all__ = [
@@ -85,6 +87,8 @@ __all__ = [
     "single_copy_rmse",
     "exact_ustatistic_variance",
     "exact_single_copy_rmse",
+    "truncated_variance",
+    "truncated_fitted_alpha",
     "alpha_eff",
     "fitted_alpha",
     "exact_fitted_alpha",
