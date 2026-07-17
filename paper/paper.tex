@@ -20,7 +20,7 @@
 
 \begin{document}
 
-\title{The exponential wall: a crossover law for shadow-based\\ moment estimation, tested on quantum hardware}
+\title{The exponential wall: a finite-size crossover criterion\\ for shadow-based moment estimation, with a hardware case study}
 
 \author{Alexander Messerlian}
 \affiliation{Independent Researcher}
@@ -30,78 +30,41 @@
 \date{\today}
 
 \begin{abstract}
-Nonlinear functionals of a quantum state, such as the purity
-\(\mathrm{Tr}(\rho^2)\) and the higher moments \(\mathrm{Tr}(\rho^k)\),
-can be estimated from single-copy randomized measurements at a cost that
-grows exponentially with system size, or from collective measurements on
-\(k\) copies at \(O(1)\) variance but at the price of entangling gates
-as well as the noise they carry. Deciding which route is cheaper on a given
-device requires a quantitative account of both costs, and the
-single-copy side of that account has been available only as worst-case
-bounds.
+Classical shadows estimate nonlinear functions of a quantum state, such as
+the moments \(\mathrm{Tr}(\rho^k)\), from randomized single-copy
+measurements. The finite-sample variance of the resulting U-statistic
+estimators splits into terms of different budget order --- a Hoeffding
+decomposition \cite{hoeffding1948, serfling1980} stated for shadows in
+\cite{huang2020shadows} --- whose two decay regimes are known
+\cite{elben2020mixed, aasen2026limitations}. These analyses bound the
+state-dependent projection variances; we evaluate them numerically for
+depolarized Haar-random pure states, locating the budget
+\(M^* = \zeta_2/(2\zeta_1)\) at which the estimator's effective error
+exponent crosses over. Over the sizes we reach (\(n = 2\) to \(9\)) this
+budget grows approximately exponentially, with a fitted base near \(5.3\)
+for this ensemble --- an empirical finite-size fit over that range, not a
+proven asymptotic rate.
 
-The variance of the \(k\)-th moment U-statistic estimator under local
-random-unitary classical shadows is the standard Hoeffding decomposition,
-and the two budget-scaling regimes it produces are established: both are
-stated and plotted in the classical-shadow literature, and the migrating
-exponent has been tracked directly in adaptive tomography. What the bounds
-leave open is where the regimes meet. Separate upper bounds on the two
-projection variances \(\zeta_1\) and \(\zeta_2\) constrain their ratio not
-at all, so the threshold budget does not follow from them. We evaluate the
-state-dependent projection variances for depolarized Haar-random pure
-states at a single noise rate --- numerically, since for \(n \geq 2\) they
-have no closed form --- and verify the resulting variance against brute-force
-Monte Carlo of the exact estimator for \(k = 2, 3, 4\). The evaluation
-fixes the threshold. The effective budget-scaling exponent \(\alpha\), defined by
-\(\mathrm{RMSE} \propto M^{-\alpha}\) over the measurement budget \(M\) in use,
-migrates from \(1/2\) toward \(1\), and past it for
-higher moment orders, as \(M\)
-falls below a threshold \(M^*\) that then grows exponentially in the number
-of qubits, with \(M^* = \zeta_2 / (2\zeta_1)\) fitting \(\approx 5.3^n\)
-for purity on the noisy-pure ensemble over the sizes we test. The base is
-a fitted value for that ensemble, not a universal constant: \(M^*\) is
-built from state-dependent projection variances and moves with the state.
-Because \(M^*\) diverges exponentially, any fixed budget eventually sits
-in the higher-order-dominated regime, where \(\alpha \approx 1\) or above, and
-the estimator's scaling behavior
-changes character as the system grows. The asymptotic scaling at fixed \(n\)
-remains the familiar square-root law; the migration is a finite-budget effect. Predicted and measured \(\alpha\)
-agree at every system size and moment order we tested but one, a single
-\(k = 3\) case sitting on the two-sigma boundary, with no fitted parameters.
+Evaluating the coefficients turns the regime structure into a plug-in
+criterion, with no parameters fitted to the crossover data, for when a
+collective two-copy measurement becomes cheaper than single-copy shadows.
+Across \(83\) simulated cells spanning four state ensembles, three of them
+held out from the derivation, the criterion predicts the crossover size to
+within one qubit in \(82\). These cells are simulation throughout, and the
+collective side of the \(k > 2\) cells is modelled as a bounded
+\(\pm 1\) outcome that does not carry the gates, depth, or routing its
+circuit would require.
 
-For the collective route we give two exact, parameter-free bias laws
-(nothing is fitted; the state and the noise channel enter as inputs),
-distinguished by the geometry of the noise channel rather than by its
-rate alone. Under global depolarizing noise at rate \(g\), the measured value
-is \((1-g)\mathrm{Tr}(\rho^k) + g\,2^{n(1-k)}\), linear in \(g\) with no
-compounding across qubits. Under any per-qubit channel \(\mathcal{E}\),
-the \(k\)-copy test returns exactly \(\mathrm{Tr}(\sigma^k)\) with
-\(\sigma = \mathcal{E}^{\otimes n}(\rho)\): the noise does not corrupt
-the measurement, it simply relabels which state is being measured. Both
-are exact to machine precision across state ensembles and out to three
-times the noise range in which they were derived. The collective error
-approaches a bias floor that is independent of the shot budget.
-
-Combining the two gives a crossover law with no parameter fitted to the
-crossover data it predicts --- the state-dependent projection variances,
-the noise channel, and its rate enter as inputs, the variances themselves
-estimated numerically. It predicts the
-system size at which collective measurement overtakes single-copy for
-99\% of simulated crossovers within one qubit across 83 cells and four
-state ensembles, three of which the theory never saw. Those cells are
-simulation throughout, and the \(k > 2\) ones doubly so: they model the
-collective outcome as a bounded \(\pm 1\) variable and do not carry the
-gate count, depth, routing, or ancilla noise of the controlled-cyclic-shift
-circuit that \(k > 2\) would actually require. We then test the
-law on what the platform reports as a 108-qubit superconducting processor,
-with predictions registered before submission. The prediction however is not borne out, and we report the diagnosis: the entangling overhead the field 
-has been cautious about is nearly free on this device, the readout error is
-roughly three times the assumed value and strongly correlated, and cross-session
-drift on byte-identical circuits exceeds the within-session drift by
-a factor of twenty and every modeled error source outright. Seven candidate mechanisms are then bounded or
-excluded by quantitative argument. On this device, over this execution path, static characterization did not predict
-collective-measurement performance on this hardware.
-
+We then confront the prediction with what the platform reports as a
+108-qubit superconducting processor, with predictions registered before
+submission. Both failed: a Bell-state purity locked at \(0.89\) measured
+\(0.72\), and a single-copy anchor locked at \(1.50\) measured \(1.34\)
+with disjoint intervals; byte-identical circuits also varied substantially
+between sessions. We do not demonstrate the crossover on hardware --- at
+\(n \ge 3\) the single-copy baseline is model output, and the one point we
+could measure failed --- but the failure is informative: static,
+single-session characterization did not predict collective-measurement
+performance on the platform and execution path we tested.
 \end{abstract}
 
 \maketitle
