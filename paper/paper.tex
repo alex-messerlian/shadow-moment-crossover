@@ -390,8 +390,10 @@ for one qubit.
 \subsection{The single-qubit second moment,
 exactly}\label{the-single-qubit-second-moment-exactly}}
 
-For a single qubit in state \(r\) with Bloch length \(t\) and purity
-\(p = (1+t^2)/2\),
+For a single qubit with density matrix \(r\) --- throughout this
+subsection we write \(r\) for a single-qubit state, reserving \(\rho\)
+for the full \(n\)-qubit state, because the identity below holds only at
+one qubit --- with Bloch length \(t\) and purity \(p = (1+t^2)/2\),
 
 \[\boxed{\;\mathbb{E}\!\left[ \mathrm{Tr}(G r)^2 \right] = \tfrac{1}{4} + \tfrac{5}{4} t^2 = \tfrac{5}{2} p - 1\;}\]
 
@@ -412,7 +414,7 @@ problem, it is a different and much easier problem.
 
 The identity also passes the boundary check. At \(t = 0\) it gives
 \(\zeta_1 = 0\), which is correct: for a maximally mixed qubit,
-\(\mathrm{Tr}(Gr) = 1/2\) deterministically, with no variance to speak
+\(\mathrm{Tr}(G r) = 1/2\) deterministically, with no variance to speak
 of.
 
 \hypertarget{the-weight-only-quadratic-ansatz-fails}{%
@@ -586,10 +588,14 @@ the two make parametrically different predictions.
 \subsection{Per-qubit channels: the noise relabels the
 state}\label{per-qubit-channels-the-noise-relabels-the-state}}
 
-Let \(\mathcal{E}\) be any single-qubit channel applied to every qubit
-of every copy. Applying the same channel to every qubit of every copy is
-identical to applying \(\mathcal{E}^{\otimes n}\) to each copy
-independently, so
+Let \(\mathcal{E}\) be any single-qubit channel acting on every qubit of
+every copy at measurement time: the noise the collective test itself
+suffers, so that \(\rho\) is the state one holds and
+\(\mathrm{Tr}(\rho^k)\) is the estimand. Where the channel sits is what
+makes the bias below a bias rather than an identity, and we state it
+explicitly for that reason. Applying the same channel to every qubit of
+every copy is identical to applying \(\mathcal{E}^{\otimes n}\) to each
+copy independently, so
 
 \[\mathcal{E}^{\otimes nk}\!\left( \rho^{\otimes k} \right) = \left( \mathcal{E}^{\otimes n}(\rho) \right)^{\otimes k} = \sigma^{\otimes k}, \qquad \sigma \equiv \mathcal{E}^{\otimes n}(\rho),\]
 
@@ -601,11 +607,15 @@ and the cyclic test of a product of identical states returns the
 so that the bias is
 \(\left| \mathrm{Tr}(\sigma^k) - \mathrm{Tr}(\rho^k) \right|\).
 
-Under a per-qubit channel the noise does not corrupt the measurement; it
-relabels which state is measured. The collective test performs exactly
-as designed, returning the true \(k\)-th moment of the damaged state
-\(\sigma = \mathcal{E}^{\otimes n}(\rho)\) rather than of the intended
-\(\rho\).
+Under a per-qubit channel the noise does not corrupt the measurement in
+the usual sense; it relabels which state is measured. The cyclic test
+returns the exact \(k\)-th moment of the damaged state
+\(\sigma = \mathcal{E}^{\otimes n}(\rho)\) rather than of the state
+\(\rho\) one holds, and that substitution is the entire bias. The
+distinction matters: were \(\mathcal{E}\) instead preparation noise,
+\(\sigma\) would be the state one holds, the same identity would report
+it exactly, and the bias would vanish. The law is a statement about
+measurement-time noise.
 
 This explains a puzzle in the data that a rate-based model cannot. No
 universal effective attenuation rate fits the measured biases, because
@@ -883,7 +893,13 @@ The device returned
 \[0.7184 \quad [0.6992,\, 0.7376] \;\; \text{(95\% bootstrap CI, 5000 shots)},\]
 
 against a true purity of exactly 1. The prediction overshot the measured
-value by more than seventeen standard errors.
+value by more than seventeen standard errors. The estimand in this
+section is the target the circuit was written to prepare, so \(\rho\) is
+the ideal Bell state and every deviation from it --- gate error, readout
+error, drift --- is charged to the channel of Section 4. That is target
+verification rather than characterization of whatever the device
+actually produced, and the two coincide only when the preparation is
+exact.
 
 The circuit was not at fault. The four dominant measured outcomes are
 exactly the ideal support of the Bell SWAP test, with noise leaking
