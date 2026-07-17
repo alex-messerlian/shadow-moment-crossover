@@ -5,9 +5,9 @@ Single job on Rigetti Cepheus-1-108Q (Public Compute, Standard queue), 5000 shot
 ## Measured purity vs locked prediction
 
 * **Measured purity: 0.7184**  (95% bootstrap CI [0.6992, 0.7376], analytic SE 0.0098). Endianness-invariant (0.7184).
-* Locked prediction: 0.9412 (Qiskit), 0.9401 (bias law); true Bell purity is exactly 1.0.
-* **Deviation: -0.2228** — measured is LOWER than predicted.
-* In predicted band (0.92, 0.96)? **False**. Prediction inside measured CI? False.
+* Locked prediction: **0.893242** (Qiskit gate-level sim at p2=0.009, p1=0.001, p_ro=0.02), read from `experiments/cepheus_locked_predictions.json :: predictions.bell_measured`; true Bell purity is exactly 1.0.
+* **Deviation: -0.1748** (17.77 sigma) — measured is LOWER than predicted.
+* Inside the lock's own readout-sensitivity envelope [0.7938, 0.9477] (p_ro = 0.5%–5%)? **False**. Prediction inside measured CI? False.
 
 **Prediction NOT confirmed.** The device is noisier on our specific qubits than the published-median-based prediction. The measured distribution is a correctly-executed but noisy Bell-SWAP test: its four dominant outcomes are exactly the ideal support {0000,0011,1100,1111}, with ~25% of weight leaked into the other 12 outcomes by noise.
 

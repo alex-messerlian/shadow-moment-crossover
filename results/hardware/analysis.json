@@ -8,10 +8,15 @@
     0.7376
   ],
   "bootstrap_se": 0.009749259388158673,
-  "locked_prediction": 0.9412,
-  "analytic_bias_law": 0.9401,
-  "deviation_from_prediction": -0.2228,
-  "in_predicted_band": false,
+  "locked_prediction": 0.893242,
+  "locked_prediction_source": "experiments/cepheus_locked_predictions.json :: predictions.bell_measured",
+  "deviation_from_prediction": -0.17484199999999994,
+  "deviation_sigma": 17.772655004371057,
+  "locked_readout_sensitivity_band": [
+    0.793813,
+    0.947732
+  ],
+  "in_locked_readout_band": false,
   "prediction_in_ci": false,
   "effective_g": 0.3754666666666666,
   "consistent_p_ro_p2": [
