@@ -300,22 +300,25 @@ def make_fig5():
     # single-copy is noise-independent for noisy_pure; take one (noise, rate) per n.
     single = {}
     coll = {}
-    true_val = None
+    true_by = {}
     for r in sh:
         if r["ensemble"] != "noisy_pure":
             continue
         single.setdefault(r["n"], (r["single_rmse"], r["single_rmse_ci68"]))
         if r["noise_model"] == "dephasing" and r["rate"] == 0.05:
             coll[r["n"]] = (r["collective_rmse"], r["collective_rmse_ci68"])
-        true_val = r["mean_true_purity"]
+        true_by[r["n"]] = r["mean_true_purity"]  # exact Tr(rho^2) = 0.81 + 0.19/2^n, per n
     ns = sorted(single)
+    true_val = true_by[max(ns)]  # asymptotic reference (n=10), for the blow-up ratio
     fig, ax = plt.subplots(figsize=(3.6, 3.2))
     rows = []
-    # true value line
-    ax.axhline(true_val, color=C_TRUE, lw=1.1, ls="-")
-    ax.text(ns[0], true_val * 1.15, r"true value  Tr($\rho^2$) $\approx$ %.2f" % true_val,
-            fontsize=6.8, color=C_TRUE, va="bottom")
-    rows.append(["", "true_value", true_val, "", ""])
+    # true value: the exact per-n purity Tr(rho^2) = 0.81 + 0.19/2^n (NOT a constant)
+    tv = [true_by[n] for n in ns]
+    ax.plot(ns, tv, color=C_TRUE, lw=1.1, ls="-")
+    ax.text(ns[0], true_by[ns[0]] * 1.15, r"true value  Tr($\rho^2$)$= 0.81 + 0.19/2^{n}$",
+            fontsize=6.4, color=C_TRUE, va="bottom")
+    for n in ns:
+        rows.append([n, "true_value", true_by[n], "", ""])
     # single-copy measured
     ys = [single[n][0] for n in ns]
     yerr = np.array([_err(single[n][1][0], single[n][1][1], single[n][0]) for n in ns]).T

@@ -47,8 +47,7 @@ proven asymptotic rate.
 
 Evaluating the coefficients turns the regime structure into a plug-in
 criterion, with no parameters fitted to the crossover data, for when a
-collective two-copy measurement becomes cheaper than single-copy shadows.
-Across \(83\) simulated cells spanning four state ensembles, three of them
+collective two-copy measurement attains a lower RMSE at equal copy budget than single-copy shadows. Across \(83\) simulated cells spanning four state ensembles, three of them
 held out from the derivation, the criterion predicts the crossover size to
 within one qubit in \(82\). These cells are simulation throughout, and the
 collective side of the \(k > 2\) cells is modelled as a bounded
@@ -149,8 +148,7 @@ the crossover budget \(M^* = \zeta_2/(2\zeta_1)\), which grows
 exponentially in \(n\) with a base near five over the sizes we reach, and,
 set against two exact bias laws for the collective route, yields a
 prediction --- with nothing fitted to the crossover data --- of the system
-size at which a collective two-copy measurement becomes cheaper than
-single-copy shadows. The same evaluation runs at \(k = 3\) and \(4\),
+size at which a collective two-copy measurement attains a lower RMSE at equal copy budget than single-copy shadows. The same evaluation runs at \(k = 3\) and \(4\),
 where prior treatments bound the higher-moment variance, Elben et al.'s
 Appendix D.2 among them, and where the two-term truncation of the exact
 formula no longer suffices even when its coefficients are correct. A
@@ -612,8 +610,7 @@ is not wrong. It is a bound, and it holds. Nor is a fixed exponent what
 the tighter analyses assume: the two-term treatments keep both orders and
 exhibit the two regimes directly \cite{elben2020mixed}. What they leave
 open is where the regimes meet, since bounding \(\zeta_1\) and \(\zeta_2\)
-separately does not constrain their ratio, and that is what the exact
-evaluation supplies. The fixed-exponent summary is still worth
+separately does not constrain their ratio, and that is what evaluating the coefficients supplies. The fixed-exponent summary is still worth
 addressing, because it describes the wrong
 regime for the systems people are actually running. At nine qubits, with
 the budgets accessible on current hardware, the estimator sits in the
@@ -829,12 +826,7 @@ route is the ideal, noiseless statistical baseline, on the reading that a
 joint \(k\)-copy measurement is the harder thing to implement cleanly.
 Real shadow readout is not noiseless, and Section 6.3 finds readout to be
 the dominant error on the device we tested, so this understates the
-single-copy cost. It understates it in the direction that costs us: any
-noise of the kind modelled here, added to the single-copy route, raises
-its error and moves the crossover to smaller \(n\), so the sizes reported
-here are an upper bound
-on where collective measurement overtakes, and a fairer model can only
-move the boundary earlier. What the asymmetry does shape, and we do not
+single-copy cost. It understates it in the direction that costs us: in the cases we checked, adding noise of the kind modelled here to the single-copy route raised its RMSE at these budgets and moved the crossover to smaller \(n\). We report this as an empirical observation for the tested noise models and budgets, not a monotonicity theorem: added noise shifts bias and variance together, and at small budgets it can lower the finite-sample error by reducing variance faster than it adds bias, so the reported sizes are not a guaranteed upper bound. What the asymmetry does shape, and we do not
 claim otherwise, is the dependence of \(n^*\) on the noise rate: that
 dependence is a property of the collective side by construction. These cells
 therefore demonstrate consistency with the derived identities, and the
@@ -935,8 +927,7 @@ choice in \cite{qmladvantage2026} to keep its measure-first protocol
 single-copy, though that learning task is not moment estimation, and
 the open questions it poses are not ours. The entangling overhead that
 motivates such caution is real, and it is not the binding constraint.
-The binding constraint is that single-copy estimation of nonlinear
-functionals does not survive to the system sizes they are entering.
+The binding constraint is that single-copy estimation of nonlinear functionals by the local-randomized-measurement shadow U-statistic we study does not survive to the system sizes they are entering --- a statement about this protocol, not about every single-copy strategy.
 Whether the collective route survives on a real device is a separate
 question, and it is the one we take up next.
 
@@ -945,7 +936,7 @@ question, and it is the one we take up next.
 \begin{figure}[tb]
 \centering
 \includegraphics[width=0.72\linewidth]{fig5_exponential_wall}
-\caption{The exponential wall. Single-copy purity RMSE versus $n$ out to $n=10$ at a fixed copy budget of $M=2000$ (log scale; measured points with 68\% CIs, theory line with no parameters fitted to the crossover data; noisy-pure ensemble, collective route under dephasing at $g=0.05$), with the true purity $\mathrm{Tr}(\rho^2)\approx0.81$ marked. By $n=10$ the single-copy error reaches $\sim\!12$, about fifteen times the quantity being estimated, while the collective error (green) stays bounded.}
+\caption{The exponential wall. Single-copy purity RMSE versus $n$ out to $n=10$ at a fixed copy budget of $M=2000$ (log scale; measured points with 68\% CIs, theory line with no parameters fitted to the crossover data; noisy-pure ensemble, collective route under dephasing at $g=0.05$), with the exact per-$n$ true purity $\mathrm{Tr}(\rho^2)=0.81+0.19/2^{n}$ marked ($0.858$ at $n=2$, approaching $0.81$). By $n=10$ the single-copy error reaches $\sim\!12$, about fifteen times the quantity being estimated, while the collective error (green) stays bounded.}
 \label{fig:wall}
 \end{figure}
 
@@ -1002,8 +993,7 @@ ladders at \(n = 3\) and \(n = 4\) likewise map with zero routing, at
 \(3n - 2\) CZ gates, and the ladders nest. CZ error on these qubits was
 not measured directly: the platform compiler resynthesized our
 characterization echo and optimized its gates away, and the verbatim box
-that would have prevented this failed at execution. We therefore assume
-CZ error at the published median of 0.9\%. The Bell run supports that
+that would have prevented this failed at execution. We therefore assume CZ error at the published median of 0.9\%. The published figure is an average gate infidelity \(r\); under the depolarizing convention \(\Lambda(\rho) = (1-p)\rho + p\,\mathbb{I}/d\) it corresponds to a channel parameter \(p = \tfrac{d}{d-1} r = \tfrac{4}{3} r = 0.012\) for a two-qubit gate (\(d = 4\)), the value the deficit decomposition below uses. This is a device-wide median, not an edge-specific measurement, and a depolarizing model does not capture coherent error or leakage, so the gate contribution should be read as a rough scale, not a precise figure. The Bell run supports that
 assumption indirectly, since reconciling it against the measured readout
 favors spec-level CZ over zero CZ. On that assumption, gate error
 accounts for roughly 0.042 of the purity deficit at \(n = 2\) against a
@@ -1344,8 +1334,7 @@ unbiased U-statistic estimators for the partial-transpose moments
 systems and derive their variance via a Hoeffding decomposition,
 obtaining sample-complexity bounds for a \(p_3\)-PPT entanglement
 criterion. This is the closest methodological neighbor to Section 3.
-The differences are the platform (continuous-variable homodyne rather
-than qubit Pauli shadows), the target (entanglement detection rather
+The differences are the platform (continuous-variable homodyne rather than qubit local-random-unitary shadows), the target (entanglement detection rather
 than moment estimation and the collective-measurement trade-off), and
 the result: their decomposition is exact, as ours is, but the projection
 variances are bounded rather than evaluated for a state, and no change of
@@ -1558,15 +1547,13 @@ is a competition between two terms in the estimator's variance whose ratio grows
 
 Paired with two exact bias laws for the collective route, distinguished
 by the geometry of the noise channel rather than by its rate, the
-variance law predicts without free parameters the system size at which
-collective measurement becomes the cheaper option. It places 82 of the 83 simulated crossovers within one qubit.
+variance law predicts without free parameters the system size at which collective measurement attains the lower RMSE at equal copy budget. It places 82 of the 83 simulated crossovers within one qubit.
 
 The practical guidance follows. For estimating purity of noisy-pure
 states under per-qubit amplitude-damping or dephasing noise at the rates
 and copy budgets tested here, single-copy classical shadows --- the exact
-copy-fair U-statistic on local Pauli shadows, judged by absolute RMSE
-against a target of order one --- stop being the cheaper route
-beyond roughly six to seven qubits; the higher moments hold out to about
+copy-fair U-statistic on local Haar-random single-qubit shadows, judged by absolute RMSE
+against a target of order one --- stop being the lower-RMSE route at equal copy budget beyond roughly six to seven qubits; the higher moments hold out to about
 eight, and under global depolarizing noise the crossover falls earlier
 still. In every case the law says which side of the boundary a given
 experiment is on. Collective measurement does work in principle, and the entangling overhead that has made the field cautious about it is, for these structured \(n = 2\) circuits on matched topology and under the assumed median CZ error, a minor contribution: the two-copy destructive SWAP test adds two two-qubit gates of measurement overhead on top of the two that prepare the copies, with no routing, and under that error model the four together account for about a seventh of the observed error.
