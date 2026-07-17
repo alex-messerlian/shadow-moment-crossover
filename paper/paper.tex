@@ -20,7 +20,7 @@
 
 \begin{document}
 
-\title{Budget-scaling transition in shadow-based moment estimation\\ and the crossover to collective measurement}
+\title{Exact projection variances for shadow-based moment estimation\\ and a pre-registered test of the collective-measurement crossover}
 
 \author{Alexander Messerlian}
 \affiliation{Independent Researcher}
@@ -154,26 +154,43 @@ exponential two-copy advantage for purity \emph{testing} collapses under
 local depolarizing noise, and that SWAP-test and Bell-basis primitives
 are fragile to noise absent latent error-correcting structure; their
 task is testing and ours is estimation, a distinction we take up in
-Section~7. The caution is reasonable. It has just never been measured.
+Section~7. The caution is reasonable. What has not been available is a
+prediction of the system size at which it stops applying.
 
-The reason the numbers have not been computed is that the single-copy
-side of the ledger has been available only as worst-case bounds. The
-finite-\(M\) variance of second-order functionals splits into a kernel
-term and a linear term carrying different powers of the budget, bounded
-by \(4^{|AB|}\) and \(2^{|AB|}\) respectively \cite{shadownorm2021};
-Elben et al.~\cite{elben2020mixed} identify the two decay regimes that
-decomposition produces. Bounds of this kind are
-state-independent by construction, and being inequalities they fix
-neither coefficient. What has not been available is their exact
-state-dependent value.
+The finite-sample variance of a shadow-based moment estimator splits into
+projection terms carrying different powers of the budget: the standard
+Hoeffding decomposition for U-statistics
+\cite{hoeffding1948, serfling1980}, stated for classical shadows in
+\cite{huang2020shadows}. That the resulting error decay rate changes with
+the budget is established as well. Elben et al.~\cite{elben2020mixed}
+state both regimes in their main text and plot them, and Aasen and
+G\"arttner \cite{aasen2026limitations} track the scaling exponent
+migrating between the same two rates under detector noise. What those
+analyses do not do is evaluate the projection variances; they bound them.
+Separate upper bounds on \(\zeta_1\) and \(\zeta_2\) constrain their ratio
+not at all, so the budget at which the two terms exchange dominance does
+not follow from them.
 
-\textbf{Thesis.} The effective budget-scaling exponent for shadow-based
-moment estimation is not a constant. It is a function of system size and
-measurement budget, changing character at a threshold that grows
-exponentially in the number of qubits, and the exact variance law that
-produces it, paired with two exact bias laws for the collective route,
-predicts without any free parameter the system size at which collective
-measurement becomes the cheaper option.
+\textbf{Thesis.} We evaluate the projection variances exactly for
+depolarized Haar-random pure states at a single noise rate. That fixes
+the crossover budget \(M^* = \zeta_2/(2\zeta_1)\), which grows
+exponentially in \(n\) with a base near five over the sizes we reach, and,
+set against two exact bias laws for the collective route, yields a
+prediction --- with nothing fitted to the crossover data --- of the system
+size at which a collective two-copy measurement becomes cheaper than
+single-copy shadows. The same evaluation runs at \(k = 3\) and \(4\),
+where prior treatments bound the higher-moment variance, Elben et al.'s
+Appendix D.2 among them, and where the two-term truncation of the exact
+formula no longer suffices even when its coefficients are correct. A
+hardware comparison of the two routes has been reported
+\cite{peng2025beyond}; what we add is the predictive law and a test of it
+locked in advance. We confront that prediction with a superconducting
+device and report the outcome as measured, including a pre-registered
+prediction the hardware did not bear out. What the confrontation
+established is the shape of the obstacle: the dominant error was readout
+rather than the entangling overhead the crossover argument prices, and
+device parameters characterized in earlier sessions did not describe the
+device we ran on.
 
 \textbf{Roadmap.} Section 2 fixes the estimators and shows that two
 seemingly innocuous choices, the tuple-sampling scheme and the state
