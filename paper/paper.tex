@@ -158,12 +158,13 @@ Section~7. The caution is reasonable. It has just never been measured.
 
 The reason the numbers have not been computed is that the single-copy
 side of the ledger has been available only as worst-case bounds. The
-shadow-norm analysis of second-order functionals splits the variance
-into a kernel term bounded by \(4^{|AB|}\) and linear terms bounded by
-\(2^{|AB|}\) \cite{shadownorm2021}. Bounds of this
-kind are state-independent by construction, and they express sample
-complexity as a fixed power of the budget. That framing conceals a
-structural feature of the estimator.
+finite-\(M\) variance of second-order functionals splits into a kernel
+term and a linear term carrying different powers of the budget, bounded
+by \(4^{|AB|}\) and \(2^{|AB|}\) respectively \cite{shadownorm2021};
+Elben et al.~\cite{elben2020mixed} derive that decomposition and
+identify the two decay regimes it produces. Bounds of this kind are
+state-independent by construction, so they fix neither coefficient. What
+has not been available is their exact state-dependent value.
 
 \textbf{Thesis.} The effective budget-scaling exponent for shadow-based
 moment estimation is not a constant. It is a function of system size and
@@ -1144,8 +1145,14 @@ days, which is not standard practice.
 
 The single-copy route failed the same way. Alongside the collective
 measurements we ran a fifteen-basis single-copy anchor at \(n = 2\),
-whose purity our shadow pipeline predicted at \(1.500 \pm 0.028\) from
-the same device parameters. The device returned \(1.344\), with a 95\%
+whose U-statistic our shadow pipeline predicted at \(1.500 \pm 0.028\)
+from the same device parameters. That statistic is not a purity: pooling
+many shots into each of a few fixed bases leaves roughly a sixth of the
+snapshot pairs sharing a unitary, which biases the estimator upward, here
+past the physical bound \(\mathrm{Tr}(\rho^2) \leq 1\). Because the same estimator is
+applied to the simulated and the measured data, the anchor tests the
+pipeline rather than measuring a purity. The device returned
+\(1.344\), with a 95\%
 bootstrap interval of \([1.266,\, 1.433]\) over 9000 snapshots:
 a miss of 5.6 standard errors, with the intervals disjoint. We do not
 adjust the model to fit. Three signals therefore fail together in this
@@ -1282,10 +1289,17 @@ into a kernel term bounded by \(4^{|AB|}\) and linear terms bounded by
 states and applies this bound, citing its own references for it rather
 than deriving it, so we attribute the statement rather than its origin.
 These are worst-case, state-independent
-bounds. Our contribution is the exact, state-dependent variance, from
-which the exponent transition follows. A fixed-power bound cannot
-exhibit that transition, which is why it has not previously been
-reported. Alternative shadow ensembles, such as the Hamiltonian-driven
+bounds. The exact finite-\(M\) decomposition of this variance, and the
+two-regime budget scaling that follows from it, are due to Elben
+et al.~\cite{elben2020mixed}, who obtain the decomposition as an
+identity from the Hoeffding combinatorics and then bound \(\zeta_1\) and
+\(\zeta_2\) rather than evaluating them, giving a sample-complexity bound
+in which both regimes appear but no threshold in \(M\); they treat
+\(k = 3\) the same way, with a three-regime bound. What this work adds is
+the evaluation: the state-dependent coefficients, the resulting
+threshold \(M^* = \zeta_2/(2\zeta_1)\) and its exponential growth in
+\(n\), and the comparison against the collective route, which that work
+does not treat. Alternative shadow ensembles, such as the Hamiltonian-driven
 shadows of \cite{hamiltonianshadow2021}, target different observable
 classes and sample-complexity questions rather than the variance of
 nonlinear functionals.
@@ -1653,6 +1667,11 @@ Ann. Math. Statist. \textbf{19}, 293--325 (1948), doi:10.1214/aoms/1177730196.
 Robert J. Serfling,
 \emph{Approximation Theorems of Mathematical Statistics},
 Wiley, New York (1980), Ch.~5, doi:10.1002/9780470316481.
+
+\bibitem{elben2020mixed}
+Andreas Elben, Richard Kueng, Hsin-Yuan Huang, Rick van Bijnen, Christian Kokail, Marcello Dalmonte, Pasquale Calabrese, Barbara Kraus, John Preskill, Peter Zoller, and Beno\^it Vermersch,
+\emph{Mixed-state entanglement from local randomized measurements},
+Phys. Rev. Lett. \textbf{125}, 200501 (2020), doi:10.1103/PhysRevLett.125.200501, arXiv:2007.06305.
 
 \end{thebibliography}
 
