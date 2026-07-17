@@ -611,6 +611,19 @@ gave 5.343. This agreement is a reproducibility check on the
 projection-variance estimate, not corroboration by a methodologically
 independent route.
 
+A log-linear regression of \(M^*(n)\) over \(n = 2\) to \(9\) returns a
+base of \(5.34\) with a 95\% confidence interval of \([5.14,\, 5.54]\) and
+a prefactor of \(0.75 \pm 0.09\) (regression standard errors, treating
+each \(M^*(n)\) as fixed); \(\zeta_1\) and \(\zeta_2\) fit to bases
+\(1.30\ [1.26,\, 1.34]\) and \(6.94\ [6.90,\, 6.98]\). The regression
+residuals are not flat --- positive at both ends of the range and negative
+through the middle --- so the fitted base drifts upward as the window
+moves out, from \(5.14\) over \(n = 2\) to \(7\) to \(5.60\) over
+\(n = 4\) to \(9\). This is a finite-size fit over the sizes we reach,
+with the base robust to dropping any single \(n\) (it stays within
+\([5.25,\, 5.49]\)), not a measurement of an asymptotic rate. Appendix D
+gives the residual and leave-one-out detail.
+
 \begin{figure}[tb]
 \centering
 \includegraphics[width=0.74\linewidth]{fig3_alpha_transition}
@@ -1872,5 +1885,204 @@ charging.
 
 \textbf{Total hardware expenditure.} Approximately 115 platform credits
 across nine experimental campaigns.
+
+
+\hypertarget{appendix-d.-reproducibility-and-statistics}{%
+\section{Reproducibility and statistics}\label{appendix-d.-reproducibility-and-statistics}}
+
+This appendix records the sampling design behind every headline number, so
+that the agreement between prediction and measurement can be judged against
+how the two were generated. All counts are read from the committed
+generating code; the sizes and seeds below are those actually used.
+
+\textbf{State and snapshot counts.} The projection variances
+\(\zeta_c\) that feed the theory curves are estimated from \(4\)
+independently drawn states per \((n, k)\), each from \(120{,}000\) shadow
+snapshots (\texttt{results/\allowbreak theory\_zetas.json}: \texttt{n\_states}~\(=4\),
+\texttt{n\_samples}~\(=120{,}000\)). The measured \(\alpha\) points and the
+noisy-pure crossover cells are averaged over \(48\) independently drawn
+states per size, \(8\) Monte Carlo trials each
+(\texttt{run\_budget\_sweep.py}: \texttt{N\_STATES}~\(=48\),
+\texttt{N\_TRIALS}~\(=8\)). The held-out stress ensembles use \(4\) states
+for the variance estimate and \(24\) for the measurement on the random
+families (Haar-pure, low-rank), and a single fixed state with \(36\) trials
+for the deterministic GHZ-noisy family
+(\texttt{run\_stress\_test.py}); their variance estimates use \(60{,}000\)
+snapshots. All states are depolarized Haar-random pure states at
+\(q = 0.1\), except the low-rank and GHZ-noisy families defined in
+Section~4.3.
+
+\textbf{Train/test separation.} The prediction and the measurement it is
+compared against do not share snapshots. The \(\zeta_c\) are estimated from
+one pseudorandom substream (seeded \([\,0, n, s, k, 3\,]\)) and the measured
+RMSE from a disjoint one (seeded \([\,0, n, s, 1, k, t\,]\)), so the shot
+noise in the theory curve and the shot noise in the measured points are
+independent by construction. The theory curve is never fit to the measured
+\(\alpha\): it is the exact-variance RMSE evaluated at the estimated
+\(\zeta_c\) and fit over the budget grid on its own
+(\texttt{figures/data.py}: the components are read from
+\texttt{theory\_zetas.json} and ``not re-estimated''). The state draws do
+overlap: the four states used for \(\zeta_c\) are, at this seed, the first
+four of the forty-eight used for the measured points, since both draw
+\(\rho\) from \texttt{noisy\_pure}\((n, 0.1, \mathrm{rng}[0, n, s, 0])\).
+The agreement is therefore not built in through shared shots, though it is
+not a fully held-out state set either.
+
+\textbf{Bootstrap resampling units.} The \(\alpha\) standard errors resample
+the state as the independent unit (\(2000\) resamples, each carrying its
+whole correlated budget vector; \texttt{fit\_\allowbreak budget\_\allowbreak exponent\_\allowbreak bootstrap}),
+which is the honest unit because the nested budgets share a draw. The
+hardware confidence intervals resample differently and less
+cleanly: the single-copy anchor resamples the \(9000\) snapshots
+(\(300\) resamples, ``within the fixed \(15\) bases''), and the
+collective and Bell-SWAP intervals resample per-shot \(\pm 1\) values
+(\(4000\) and \(5000\) resamples). Shots within one circuit and one
+calibration are not independent draws of the estimator, so these hardware
+intervals capture shot noise conditional on the realized circuit and
+calibration, not the full run-to-run variability; they should be read as
+lower bounds on the true uncertainty.
+
+\textbf{The \(\alpha\) regression.} Both the measured and the theory
+\(\alpha\) are the negative ordinary-least-squares slope of
+\(\log \mathrm{RMSE}\) against \(\log M\) over the same per-cell budget grid
+(\(k = 2\): \(2000\)--\(128{,}000\), capped to \(2000\)--\(32{,}000\) for
+\(n \ge 7\); \(k = 3\): \(2000\)--\(32{,}000\); \(k = 4\):
+\(500\)--\(8000\)), with \(\mathrm{RMSE}(M) = \sqrt{\overline{\mathrm{MSE}}}\)
+averaged over states. The two differ only in their input --- measured MSE
+versus the exact-variance RMSE --- and are otherwise the identical
+procedure.
+
+\textbf{Crossover definition.} The crossover \(n^*\) is the smallest size
+from which the single-copy RMSE exceeds the collective RMSE and stays above
+it for the remainder of the swept range (the sustained crossover of
+\texttt{predict\_crossover}). It is an integer from the swept sizes; no
+interpolation is used, and a cell whose curves do not cross inside the
+tested range is censored (returns none) and excluded from the aggregate
+rather than counted as a hit or a miss.
+
+\textbf{Fit uncertainty.} The exponential-fit residuals in Section~3.5 are
+positive at both ends of the range (\(+0.20\) at \(n = 2\), \(+0.13\) at
+\(n = 9\) in \(\log M^*\)) and negative through the middle, the signature of
+mild upward curvature; the fitted base accordingly rises with the window,
+\(5.14\) over \(n = 2\)--\(7\), \(5.34\) over \(2\)--\(9\), \(5.60\) over
+\(4\)--\(9\). Refitting with each \(n\) dropped in turn moves the base
+within \([5.25, 5.49]\), with the low-\(n\) point exerting the most leverage
+(dropping \(n = 2\) raises it to \(5.49\)). The base is a finite-size fit
+over the sizes reached, not an estimate of an asymptotic rate.
+
+\textbf{The full crossover table.} The aggregate ``\(99\%\) within one
+qubit, \(88\%\) exact'' is over \(83\) resolved cells: \(68\) noisy-pure
+cells drawn from two independent sweeps
+(\texttt{budget\_scaling.json} and \texttt{moment\_\allowbreak sweep\_\allowbreak corrected.json}),
+which comprise \(54\) distinct \((k, \text{channel}, \text{rate},
+\text{budget})\) configurations with \(14\) evaluated in both sweeps ---
+and all \(14\) replications agree on both the measured and the predicted
+\(n^*\) --- plus \(15\) cells across the three held-out ensembles.
+Table~\ref{tab:cells} lists all \(83\). One cell misses by more than one
+qubit (noisy-pure, \(k = 4\), predicted \(4\) against measured \(2\)),
+giving \(82/83 = 98.8\%\) within one qubit and \(73/83 = 88.0\%\) exact.
+
+\begin{center}
+\footnotesize
+\setlength{\tabcolsep}{5pt}
+\begin{longtable}{@{}llllrrrc@{}}
+\caption{All \(83\) resolved crossover cells. ``mult'' is the copy budget as
+a multiple of the \(2000\) baseline. A cell counts as within one qubit
+(\(\checkmark\)) when \(|\,n^*_{\text{pred}} - n^*_{\text{meas}}\,| \le 1\).}
+\label{tab:cells}\\
+\toprule
+ensemble & \(k\) & channel & rate & mult & \(n^*_{\text{meas}}\) & \(n^*_{\text{pred}}\) & \(\le 1\) \\
+\midrule
+\endfirsthead
+\toprule
+ensemble & \(k\) & channel & rate & mult & \(n^*_{\text{meas}}\) & \(n^*_{\text{pred}}\) & \(\le 1\) \\
+\midrule
+\endhead
+noisy-pure & 2 & amp.\ damp. & 0.00 & 1 & 2 & 2 & $\checkmark$ \\
+noisy-pure & 2 & amp.\ damp. & 0.02 & 1 & 2 & 2 & $\checkmark$ \\
+noisy-pure & 2 & amp.\ damp. & 0.05 & 1 & 6 & 6 & $\checkmark$ \\
+noisy-pure & 2 & amp.\ damp. & 0.05 & 1 & 6 & 6 & $\checkmark$ \\
+noisy-pure & 2 & amp.\ damp. & 0.05 & 4 & 8 & 8 & $\checkmark$ \\
+noisy-pure & 2 & amp.\ damp. & 0.10 & 1 & 7 & 7 & $\checkmark$ \\
+noisy-pure & 2 & amp.\ damp. & 0.10 & 1 & 7 & 7 & $\checkmark$ \\
+noisy-pure & 2 & amp.\ damp. & 0.10 & 4 & 9 & 9 & $\checkmark$ \\
+noisy-pure & 2 & dephas. & 0.00 & 1 & 2 & 2 & $\checkmark$ \\
+noisy-pure & 2 & dephas. & 0.02 & 1 & 2 & 2 & $\checkmark$ \\
+noisy-pure & 2 & dephas. & 0.05 & 1 & 6 & 6 & $\checkmark$ \\
+noisy-pure & 2 & dephas. & 0.05 & 1 & 6 & 6 & $\checkmark$ \\
+noisy-pure & 2 & dephas. & 0.05 & 4 & 8 & 8 & $\checkmark$ \\
+noisy-pure & 2 & dephas. & 0.10 & 1 & 7 & 7 & $\checkmark$ \\
+noisy-pure & 2 & dephas. & 0.10 & 1 & 7 & 7 & $\checkmark$ \\
+noisy-pure & 2 & dephas. & 0.10 & 4 & 9 & 9 & $\checkmark$ \\
+noisy-pure & 2 & depol. & 0.00 & 1 & 2 & 2 & $\checkmark$ \\
+noisy-pure & 2 & depol. & 0.02 & 1 & 2 & 2 & $\checkmark$ \\
+noisy-pure & 2 & depol. & 0.05 & 1 & 2 & 2 & $\checkmark$ \\
+noisy-pure & 2 & depol. & 0.05 & 1 & 2 & 2 & $\checkmark$ \\
+noisy-pure & 2 & depol. & 0.05 & 4 & 5 & 5 & $\checkmark$ \\
+noisy-pure & 2 & depol. & 0.05 & 16 & 7 & 7 & $\checkmark$ \\
+noisy-pure & 2 & depol. & 0.10 & 1 & 5 & 5 & $\checkmark$ \\
+noisy-pure & 2 & depol. & 0.10 & 1 & 5 & 5 & $\checkmark$ \\
+noisy-pure & 2 & depol. & 0.10 & 4 & 7 & 7 & $\checkmark$ \\
+noisy-pure & 2 & depol. & 0.10 & 16 & 8 & 8 & $\checkmark$ \\
+noisy-pure & 3 & amp.\ damp. & 0.00 & 1 & 2 & 2 & $\checkmark$ \\
+noisy-pure & 3 & amp.\ damp. & 0.02 & 1 & 2 & 2 & $\checkmark$ \\
+noisy-pure & 3 & amp.\ damp. & 0.05 & 1 & 8 & 7 & $\checkmark$ \\
+noisy-pure & 3 & amp.\ damp. & 0.05 & 1 & 8 & 7 & $\checkmark$ \\
+noisy-pure & 3 & amp.\ damp. & 0.10 & 1 & 8 & 8 & $\checkmark$ \\
+noisy-pure & 3 & amp.\ damp. & 0.10 & 1 & 8 & 8 & $\checkmark$ \\
+noisy-pure & 3 & dephas. & 0.00 & 1 & 2 & 2 & $\checkmark$ \\
+noisy-pure & 3 & dephas. & 0.02 & 1 & 2 & 2 & $\checkmark$ \\
+noisy-pure & 3 & dephas. & 0.05 & 1 & 8 & 7 & $\checkmark$ \\
+noisy-pure & 3 & dephas. & 0.05 & 1 & 8 & 7 & $\checkmark$ \\
+noisy-pure & 3 & dephas. & 0.10 & 1 & 8 & 8 & $\checkmark$ \\
+noisy-pure & 3 & dephas. & 0.10 & 1 & 8 & 8 & $\checkmark$ \\
+noisy-pure & 3 & depol. & 0.00 & 1 & 2 & 2 & $\checkmark$ \\
+noisy-pure & 3 & depol. & 0.02 & 1 & 2 & 2 & $\checkmark$ \\
+noisy-pure & 3 & depol. & 0.05 & 1 & 2 & 2 & $\checkmark$ \\
+noisy-pure & 3 & depol. & 0.05 & 1 & 2 & 2 & $\checkmark$ \\
+noisy-pure & 3 & depol. & 0.05 & 4 & 4 & 4 & $\checkmark$ \\
+noisy-pure & 3 & depol. & 0.05 & 16 & 8 & 8 & $\checkmark$ \\
+noisy-pure & 3 & depol. & 0.10 & 1 & 4 & 4 & $\checkmark$ \\
+noisy-pure & 3 & depol. & 0.10 & 1 & 4 & 4 & $\checkmark$ \\
+noisy-pure & 3 & depol. & 0.10 & 4 & 8 & 7 & $\checkmark$ \\
+noisy-pure & 4 & amp.\ damp. & 0.00 & 1 & 2 & 2 & $\checkmark$ \\
+noisy-pure & 4 & amp.\ damp. & 0.02 & 1 & 2 & 2 & $\checkmark$ \\
+noisy-pure & 4 & amp.\ damp. & 0.05 & 0.25 & 2 & 4 & $\times$ \\
+noisy-pure & 4 & amp.\ damp. & 0.05 & 1 & 8 & 8 & $\checkmark$ \\
+noisy-pure & 4 & amp.\ damp. & 0.10 & 0.25 & 6 & 6 & $\checkmark$ \\
+noisy-pure & 4 & amp.\ damp. & 0.10 & 1 & 8 & 8 & $\checkmark$ \\
+noisy-pure & 4 & dephas. & 0.00 & 1 & 2 & 2 & $\checkmark$ \\
+noisy-pure & 4 & dephas. & 0.02 & 1 & 2 & 2 & $\checkmark$ \\
+noisy-pure & 4 & dephas. & 0.05 & 0.25 & 2 & 2 & $\checkmark$ \\
+noisy-pure & 4 & dephas. & 0.05 & 1 & 8 & 8 & $\checkmark$ \\
+noisy-pure & 4 & dephas. & 0.10 & 0.25 & 6 & 6 & $\checkmark$ \\
+noisy-pure & 4 & dephas. & 0.10 & 1 & 8 & 8 & $\checkmark$ \\
+noisy-pure & 4 & depol. & 0.00 & 1 & 2 & 2 & $\checkmark$ \\
+noisy-pure & 4 & depol. & 0.02 & 1 & 2 & 2 & $\checkmark$ \\
+noisy-pure & 4 & depol. & 0.05 & 0.25 & 2 & 2 & $\checkmark$ \\
+noisy-pure & 4 & depol. & 0.05 & 1 & 2 & 2 & $\checkmark$ \\
+noisy-pure & 4 & depol. & 0.05 & 1 & 2 & 2 & $\checkmark$ \\
+noisy-pure & 4 & depol. & 0.05 & 4 & 3 & 2 & $\checkmark$ \\
+noisy-pure & 4 & depol. & 0.10 & 0.25 & 2 & 2 & $\checkmark$ \\
+noisy-pure & 4 & depol. & 0.10 & 1 & 3 & 2 & $\checkmark$ \\
+noisy-pure & 4 & depol. & 0.10 & 1 & 3 & 2 & $\checkmark$ \\
+haar-pure & 2 & depol. & 0.05 & 1 & 2 & 2 & $\checkmark$ \\
+haar-pure & 2 & depol. & 0.10 & 1 & 5 & 5 & $\checkmark$ \\
+low-rank & 2 & amp.\ damp. & 0.05 & 1 & 6 & 6 & $\checkmark$ \\
+low-rank & 2 & amp.\ damp. & 0.10 & 1 & 6 & 6 & $\checkmark$ \\
+low-rank & 2 & dephas. & 0.05 & 1 & 6 & 6 & $\checkmark$ \\
+low-rank & 2 & dephas. & 0.10 & 1 & 6 & 6 & $\checkmark$ \\
+low-rank & 2 & depol. & 0.05 & 1 & 2 & 2 & $\checkmark$ \\
+low-rank & 2 & depol. & 0.10 & 1 & 4 & 4 & $\checkmark$ \\
+low-rank & 2 & depol. & 0.30 & 1 & 6 & 6 & $\checkmark$ \\
+ghz-noisy & 2 & amp.\ damp. & 0.05 & 1 & 6 & 6 & $\checkmark$ \\
+ghz-noisy & 2 & dephas. & 0.05 & 1 & 6 & 6 & $\checkmark$ \\
+ghz-noisy & 2 & dephas. & 0.10 & 1 & 6 & 6 & $\checkmark$ \\
+ghz-noisy & 2 & depol. & 0.05 & 1 & 2 & 2 & $\checkmark$ \\
+ghz-noisy & 2 & depol. & 0.10 & 1 & 5 & 4 & $\checkmark$ \\
+ghz-noisy & 2 & depol. & 0.30 & 1 & 6 & 6 & $\checkmark$ \\
+\bottomrule
+\end{longtable}
+\end{center}
 
 \end{document}
