@@ -40,13 +40,20 @@ device requires a quantitative account of both costs, and the
 single-copy side of that account has been available only as worst-case
 bounds.
 
-We derive the exact, state-dependent variance of the \(k\)-th moment
-U-statistic estimator under local random-unitary classical shadows via the
-Hoeffding decomposition, and then verify it against brute-force Monte Carlo
-of the exact estimator for \(k = 2, 3, 4\). The law exposes a phenomenon that fixed-exponent
-bounds cannot in fact see: the effective budget-scaling exponent \(\alpha\), defined by
+The variance of the \(k\)-th moment U-statistic estimator under local
+random-unitary classical shadows is the standard Hoeffding decomposition,
+and the two budget-scaling regimes it produces are established: both are
+stated and plotted in the classical-shadow literature, and the migrating
+exponent has been tracked directly in adaptive tomography. What the bounds
+leave open is where the regimes meet. Separate upper bounds on the two
+projection variances \(\zeta_1\) and \(\zeta_2\) constrain their ratio not
+at all, so the threshold budget does not follow from them. We evaluate the
+projection variances exactly for depolarized Haar-random pure states at a
+single noise rate, and verify the resulting variance against brute-force
+Monte Carlo of the exact estimator for \(k = 2, 3, 4\). The evaluation
+fixes the threshold. The effective budget-scaling exponent \(\alpha\), defined by
 \(\mathrm{RMSE} \propto M^{-\alpha}\) over the measurement budget \(M\) in use,
-is not the constant \(1/2\). It migrates continuously toward \(1\), and past it for
+migrates from \(1/2\) toward \(1\), and past it for
 higher moment orders, as \(M\)
 falls below a threshold \(M^*\) that then grows exponentially in the number
 of qubits, with \(M^* = \zeta_2 / (2\zeta_1)\) fitting \(\approx 5.3^n\)
@@ -1532,20 +1539,24 @@ the quantity being estimated. That number
 is not an accident of implementation, and this paper explains where it
 comes from.
 
-The effective budget-scaling exponent for shadow-based moment estimation
-is not a constant. It is a function of system size and measurement
-budget, and it changes character at a threshold that grows exponentially
-in the number of qubits. The asymptotic scaling at fixed system size is
-not what moves: that remains the square-root law. What moves is the
-exponent over the budget window an experiment can actually reach, and
-because the threshold diverges exponentially, that window is where every
-experiment at interesting sizes sits. We derived this from the exact Hoeffding decomposition
-of the U-statistic estimator, verified the derivation against
+That the effective budget-scaling exponent for shadow-based moment
+estimation is not a constant, and changes character with the measurement
+budget, is established \cite{elben2020mixed, aasen2026limitations}. What
+does not follow from the bounds is where it changes: separate upper bounds
+on \(\zeta_1\) and \(\zeta_2\) constrain their ratio not at all, so the
+threshold is not located by them. We evaluate the projection variances
+exactly for depolarized Haar-random pure states at a single noise rate,
+verify the resulting variance against
 brute-force Monte Carlo of the exact estimator at three moment orders and three state ensembles,
-and confirmed its prediction of the exponent out of sample with no
-fitted parameters. The mechanism is a competition between two terms in
-the estimator's variance whose ratio diverges exponentially, and it is
-invisible to any analysis that fixes the exponent in advance.
+and confirm its prediction of the exponent out of sample with no
+fitted parameters. That evaluation fixes the threshold, and with it the
+exponent over the budget window an experiment can actually reach. The
+asymptotic scaling at fixed system size is not what moves: that remains
+the square-root law. Because the threshold diverges exponentially, that
+window is where every experiment at interesting sizes sits. The mechanism
+is a competition between two terms in the estimator's variance whose ratio
+diverges exponentially, and locating it is what the exact coefficients
+buy.
 
 Paired with two exact bias laws for the collective route, distinguished
 by the geometry of the noise channel rather than by its rate, the
