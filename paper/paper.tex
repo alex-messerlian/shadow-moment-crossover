@@ -161,8 +161,8 @@ side of the ledger has been available only as worst-case bounds. The
 finite-\(M\) variance of second-order functionals splits into a kernel
 term and a linear term carrying different powers of the budget, bounded
 by \(4^{|AB|}\) and \(2^{|AB|}\) respectively \cite{shadownorm2021};
-Elben et al.~\cite{elben2020mixed} derive that decomposition and
-identify the two decay regimes it produces. Bounds of this kind are
+Elben et al.~\cite{elben2020mixed} identify the two decay regimes that
+decomposition produces. Bounds of this kind are
 state-independent by construction, and being inequalities they fix
 neither coefficient. What has not been available is their exact
 state-dependent value.
@@ -1154,8 +1154,11 @@ past the physical bound \(\mathrm{Tr}(\rho^2) \leq 1\). Because the same estimat
 applied to the simulated and the measured data, the anchor tests the
 pipeline rather than measuring a purity. The device returned
 \(1.344\), with a 95\%
-bootstrap interval of \([1.266,\, 1.433]\) over 9000 snapshots:
-a miss of 5.6 standard errors, with the intervals disjoint. We do not
+bootstrap interval of \([1.266,\, 1.433]\) over 9000 snapshots. The gap is
+5.6 times the spread the model predicts for a single run of this anchor,
+and 3.7 times the wider spread the data themselves show; the intervals are
+disjoint on either accounting, and no simulated run of the locked model
+reaches the measured value. We do not
 adjust the model to fit. Three signals therefore fail together in this
 session: the collective purities at \(n = 3, 4\) fall below their bands,
 their ordering is non-monotonic, and the single-copy pipeline does not
@@ -1290,12 +1293,14 @@ into a kernel term bounded by \(4^{|AB|}\) and linear terms bounded by
 states and applies this bound, citing its own references for it rather
 than deriving it, so we attribute the statement rather than its origin.
 These are worst-case, state-independent
-bounds. The exact finite-\(M\) decomposition of this variance, and the
-two-regime budget scaling that follows from it, are due to Elben
-et al.~\cite{elben2020mixed}, who obtain the decomposition as an
-identity from the Hoeffding combinatorics and then bound \(\zeta_1\) and
-\(\zeta_2\) rather than evaluating them, giving a sample-complexity bound
-in which both regimes appear but no threshold in \(M\); they treat
+bounds. The exact finite-\(M\) decomposition of this variance is the
+standard Hoeffding U-statistic identity
+\cite{hoeffding1948, serfling1980}; in the classical-shadow setting it is
+already stated as an equality by \cite{huang2020shadows}, and again by
+Elben et al.~\cite{elben2020mixed}, who read the two-regime budget
+scaling off it. Both bound \(\zeta_1\) and
+\(\zeta_2\) rather than evaluating them, and neither gives a threshold in
+\(M\); \cite{elben2020mixed} treats
 \(k = 3\) the same way, with a three-regime bound. What this work adds is
 the evaluation: the state-dependent coefficients, the resulting
 threshold \(M^* = \zeta_2/(2\zeta_1)\) --- the budget at which their two
@@ -1316,8 +1321,9 @@ criterion. This is the closest methodological neighbor to Section 3.
 The differences are the platform (continuous-variable homodyne rather
 than qubit Pauli shadows), the target (entanglement detection rather
 than moment estimation and the collective-measurement trade-off), and
-the result (bounds rather than the exact state-dependent variance, and
-consequently no exponent transition). We do not claim novelty for the
+the result: their decomposition is exact, as ours is, but the projection
+variances are bounded rather than evaluated for a state, and no change of
+scaling regime is considered. We do not claim novelty for the
 Hoeffding technique itself.
 
 \textbf{Crossovers in shadow sample complexity.} A crossover in shot
@@ -1462,7 +1468,7 @@ advantage.
 \textbf{The hardware single-copy baseline at \(n \geq 3\) is computed,
 not measured}, for the economic reason given in Section 6.7. The one
 point we could afford to measure, the \(n = 2\) anchor, missed its
-prediction by 5.6 standard errors (Section 6.4). The computed points are
+prediction by 5.6 predicted standard deviations (Section 6.4). The computed points are
 therefore model output on a device that our own anchor shows the model
 does not currently track, and nothing in Section 6 should be read as a
 hardware measurement of the single-copy route.
