@@ -172,7 +172,7 @@ decomposition, gives the exact single-qubit projection variance, and
 establishes the \(\alpha\) transition together with its out-of-sample
 validation. Section 4 derives the two exact collective bias laws and shows
 that the relevant distinction is the geometry of the noise channel, not
-its rate. Section 5 combines them into a crossover law with
+its rate. Section 5 combines them into a crossover criterion with
 nothing fitted to the crossover data it predicts, and validates it
 against 83 simulated crossover cells across four state
 ensembles. Section 6 reports a pre-registered test on a 108-qubit
@@ -519,10 +519,7 @@ curved, reading approximately \(1.35\) at small \(n\) and \(1.30\) over
 the full range, which accounts for the difference between the two fits.
 
 The kernel variance grows roughly five times faster per qubit than the
-linear variance. Their ratio, the threshold \(M^*\), therefore diverges
-exponentially. This is the entire mechanism, and its consequence is
-immediate: at any fixed budget, increasing \(n\) eventually pushes \(M\)
-below \(M^*\), the higher-order term takes over, and the effective
+linear variance. Their ratio, the threshold \(M^*\), therefore grows approximately exponentially in \(n\) over the range we fit (\(n = 2\) to \(9\)). This is the mechanism, and within that range its consequence is direct: at a fixed budget, increasing \(n\) pushes \(M\) below \(M^*\), the higher-order term takes over, and the effective
 exponent migrates from \(1/2\) toward \(1\), and past it for higher \(k\).
 
 Defining \(\alpha\) as the local slope
@@ -590,7 +587,7 @@ gives the residual and leave-one-out detail.
 \begin{figure}[tb]
 \centering
 \includegraphics[width=0.74\linewidth]{fig3_alpha_transition}
-\caption{The effective budget-scaling exponent transition, the paper's central phenomenon. Measured budget-scaling exponent $\alpha$ (RMSE $\propto M^{-\alpha}$, fitted over budgets $2000$--$128000$; markers with bootstrap standard errors) versus system size $n$ for moment orders $k=2,3,4$, with the derived-law prediction (lines). \emph{The prediction curves are parameter-free, computed from projection variances fed into the exact variance formula of Sec.~3.1, and are not fits to the plotted points.} As $n$ grows at fixed budget and $M$ falls below the threshold $M^*$, $\alpha$ migrates continuously from $1/2$ toward $1$, and past it for the higher moment orders.}
+\caption{The effective budget-scaling exponent transition, the paper's central phenomenon. Measured budget-scaling exponent $\alpha$ (RMSE $\propto M^{-\alpha}$, fitted over budgets $2000$--$128000$; markers with bootstrap standard errors) versus system size $n$ for moment orders $k=2,3,4$, with the derived-law prediction (lines). \emph{The prediction curves have no parameters fitted to the plotted points, computed from projection variances fed into the exact variance formula of Sec.~3.1, and are not fits to the plotted points.} As $n$ grows at fixed budget and $M$ falls below the threshold $M^*$, $\alpha$ migrates continuously from $1/2$ toward $1$, and past it for the higher moment orders.}
 \label{fig:alpha}
 \end{figure}
 
@@ -806,8 +803,7 @@ ensembles}\label{validation-on-83-cells-and-four-ensembles}}
 Across 83 cells spanning moment order \(k \in \{2,3,4\}\), three noise
 models (depolarizing, amplitude damping, and dephasing), noise rates from 0
 to 0.3, system sizes \(n = 2\) to \(9\), four budget multipliers, and
-four state ensembles, the law predicts 99\% of the simulated crossovers
-within one qubit and 88\% exactly (Figs.~\ref{fig:crossmap} and~\ref{fig:boundary}).
+four state ensembles, the criterion predicts 82 of the 83 simulated crossovers within one qubit and 73 of 83 exactly (Figs.~\ref{fig:crossmap} and~\ref{fig:boundary}).
 The comparison is asymmetric between the two routes in two respects, and
 both are deliberate. The first is evidential. The single-copy
 side of each cell is a forward simulation of the estimator, fresh
@@ -847,14 +843,14 @@ is not a curve fit to the ensemble it was built on.
 \begin{figure}[tb]
 \centering
 \includegraphics[width=0.74\linewidth]{fig1_crossover_map}
-\caption{The crossover for purity ($k=2$). Single-copy classical-shadow RMSE (vermillion) and collective two-copy RMSE (green) versus system size $n$ at a fixed copy budget, for three noise channels. \emph{The theory curves are parameter-free predictions from the exact variance and bias laws (Secs.~3--4), not fits to these points.} The crossover $n^*$ is where the exponentially growing single-copy error overtakes the collective error, a bounded bias floor plus a finite-shot variance that vanishes as the budget grows.}
+\caption{The crossover for purity ($k=2$). Single-copy classical-shadow RMSE (vermillion) and collective two-copy RMSE (green) versus system size $n$ at a fixed copy budget, for three noise channels. \emph{The theory curves are predictions with no parameters fitted to these points, from the exact variance and bias laws (Secs.~3--4), not fits to these points.} The crossover $n^*$ is where the exponentially growing single-copy error overtakes the collective error, a bounded bias floor plus a finite-shot variance that vanishes as the budget grows.}
 \label{fig:crossmap}
 \end{figure}
 
 \begin{figure}[tb]
 \centering
 \includegraphics[width=0.74\linewidth]{fig2_crossover_boundary}
-\caption{Crossover validation across 83 cells. Predicted versus Monte-Carlo-observed crossover size $n^*$ over moment orders $k\in\{2,3,4\}$, three noise models, and four state ensembles (three unseen by the theory). The law places 99\% of these simulated crossovers within one qubit of the prediction and 88\% exactly; the cells are simulation, not hardware.}
+\caption{Crossover validation across 83 cells. Predicted versus Monte-Carlo-observed crossover size $n^*$ over moment orders $k\in\{2,3,4\}$, three noise models, and four state ensembles (three unseen by the theory). The criterion places 82 of these 83 simulated crossovers within one qubit of the prediction and 73 of 83 exactly; the cells are simulation, not hardware.}
 \label{fig:boundary}
 \end{figure}
 
@@ -937,7 +933,7 @@ question, and it is the one we take up next.
 \begin{figure}[tb]
 \centering
 \includegraphics[width=0.72\linewidth]{fig5_exponential_wall}
-\caption{The exponential wall. Single-copy purity RMSE versus $n$ out to $n=10$ at a fixed copy budget of $M=2000$ (log scale; measured points with 68\% CIs, parameter-free theory line; noisy-pure ensemble, collective route under dephasing at $g=0.05$), with the true purity $\mathrm{Tr}(\rho^2)\approx0.81$ marked. By $n=10$ the single-copy error reaches $\sim\!12$, about fifteen times the quantity being estimated, while the collective error (green) stays bounded.}
+\caption{The exponential wall. Single-copy purity RMSE versus $n$ out to $n=10$ at a fixed copy budget of $M=2000$ (log scale; measured points with 68\% CIs, theory line with no parameters fitted to the crossover data; noisy-pure ensemble, collective route under dephasing at $g=0.05$), with the true purity $\mathrm{Tr}(\rho^2)\approx0.81$ marked. By $n=10$ the single-copy error reaches $\sim\!12$, about fifteen times the quantity being estimated, while the collective error (green) stays bounded.}
 \label{fig:wall}
 \end{figure}
 
@@ -986,8 +982,7 @@ the platform required because it rejects non-contiguous virtual
 registers.
 
 \hypertarget{the-entangling-overhead-is-nearly-free}{%
-\subsection{The two-copy entangling overhead is nearly
-free}\label{the-entangling-overhead-is-nearly-free}}
+\subsection{The modeled entangling overhead is small for the tested circuits}\label{the-entangling-overhead-is-nearly-free}}
 
 The destructive SWAP test at \(n = 2\) transpiles onto physical qubits
 \(\{0, 1, 9, 10\}\) using four CZ gates and zero routing SWAPs. The GHZ
@@ -1448,8 +1443,7 @@ Finally, \cite{noisylearning2026} argues explicitly that the asymptotic
 near-term experiments: instance size is effectively fixed by the
 hardware, the operative question is how performance improves as the
 noise rate falls, and what is needed is a quantitative condition on
-\(\lambda\) for a meaningful two-copy advantage at fixed \(n\). Our
-crossover law is exactly that condition. At the rates and sizes of our
+\(\lambda\) for a meaningful two-copy advantage at fixed \(n\). Our crossover criterion is exactly that condition. At the rates and sizes of our
 experiments (\(\lambda \approx 0.1\), \(n \le 10\)) their lower bound is
 on the order of tens of samples, from under two at \(n=2\) to about
 twenty at \(n=10\), so at the scales this paper operates in it imposes
@@ -1547,17 +1541,13 @@ and confirm its prediction of the exponent out of sample with no
 fitted parameters. That evaluation fixes the threshold, and with it the
 exponent over the budget window an experiment can actually reach. The
 asymptotic scaling at fixed system size is not what moves: that remains
-the square-root law. Because the threshold diverges exponentially, that
-window is where every experiment at interesting sizes sits. The mechanism
-is a competition between two terms in the estimator's variance whose ratio
-diverges exponentially, and locating it is what the exact coefficients
-buy.
+the square-root law. Because the fitted threshold grows steeply with \(n\) over this range, that window is where the experiments at the sizes we reach sit. The mechanism
+is a competition between two terms in the estimator's variance whose ratio grows approximately exponentially over the tested range, and locating it is what the exact coefficients buy.
 
 Paired with two exact bias laws for the collective route, distinguished
 by the geometry of the noise channel rather than by its rate, the
 variance law predicts without free parameters the system size at which
-collective measurement becomes the cheaper option. It gets 99\% of the
-simulated crossovers within one qubit.
+collective measurement becomes the cheaper option. It places 82 of the 83 simulated crossovers within one qubit.
 
 The practical guidance follows. For estimating purity of noisy-pure
 states under per-qubit amplitude-damping or dephasing noise at the rates
@@ -1567,12 +1557,7 @@ against a target of order one --- stop being the cheaper route
 beyond roughly six to seven qubits; the higher moments hold out to about
 eight, and under global depolarizing noise the crossover falls earlier
 still. In every case the law says which side of the boundary a given
-experiment is on. Collective measurement does work in principle, and the
-entangling overhead that has made the field cautious about it turns out,
-on the hardware we tested, to be nearly free: the two-copy destructive
-SWAP test adds two two-qubit gates of measurement overhead on top of the
-two that prepare the copies, with no routing, and the four together
-contribute about a seventh of the observed error.
+experiment is on. Collective measurement does work in principle, and the entangling overhead that has made the field cautious about it is, for these structured \(n = 2\) circuits on matched topology and under the assumed median CZ error, a minor contribution: the two-copy destructive SWAP test adds two two-qubit gates of measurement overhead on top of the two that prepare the copies, with no routing, and under that error model the four together account for about a seventh of the observed error.
 
 What blocks the demonstration is neither variance nor gate error. It is
 readout fidelity, which on the device we used is three times the
@@ -1933,8 +1918,7 @@ within \([5.25, 5.49]\), with the low-\(n\) point exerting the most leverage
 (dropping \(n = 2\) raises it to \(5.49\)). The base is a finite-size fit
 over the sizes reached, not an estimate of an asymptotic rate.
 
-\textbf{The full crossover table.} The aggregate ``\(99\%\) within one
-qubit, \(88\%\) exact'' is over \(83\) resolved cells: \(68\) noisy-pure
+\textbf{The full crossover table.} The 83 resolved cells break down as: \(68\) noisy-pure
 cells drawn from two independent sweeps
 (\texttt{budget\_scaling.json} and \texttt{moment\_\allowbreak sweep\_\allowbreak corrected.json}),
 which comprise \(54\) distinct \((k, \text{channel}, \text{rate},
