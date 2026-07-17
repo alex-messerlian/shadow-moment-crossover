@@ -20,7 +20,7 @@
 
 \begin{document}
 
-\title{Sample-complexity transition in shadow-based moment estimation\\ and the crossover to collective measurement}
+\title{Budget-scaling transition in shadow-based moment estimation\\ and the crossover to collective measurement}
 
 \author{Alexander Messerlian}
 \affiliation{Independent Researcher}
@@ -154,8 +154,8 @@ kind are state-independent by construction, and they express sample
 complexity as a fixed power of the budget. That framing conceals a
 structural feature of the estimator.
 
-\textbf{Thesis.} The sample-complexity exponent for shadow-based moment
-estimation is not a constant. It is a function of system size and
+\textbf{Thesis.} The effective budget-scaling exponent for shadow-based
+moment estimation is not a constant. It is a function of system size and
 measurement budget, changing character at a threshold that grows
 exponentially in the number of qubits, and the exact variance law that
 produces it, paired with two exact bias laws for the collective route,
@@ -1375,10 +1375,14 @@ returns an error fifteen times the quantity being estimated. That number
 is not an accident of implementation, and this paper explains where it
 comes from.
 
-The sample-complexity exponent for shadow-based moment estimation is not
-a constant. It is a function of system size and measurement budget, and
-it changes character at a threshold that grows exponentially in the
-number of qubits. We derived this from the exact Hoeffding decomposition
+The effective budget-scaling exponent for shadow-based moment estimation
+is not a constant. It is a function of system size and measurement
+budget, and it changes character at a threshold that grows exponentially
+in the number of qubits. The asymptotic scaling at fixed system size is
+not what moves: that remains the square-root law. What moves is the
+exponent over the budget window an experiment can actually reach, and
+because the threshold diverges exponentially, that window is where every
+experiment at interesting sizes sits. We derived this from the exact Hoeffding decomposition
 of the U-statistic estimator, verified the derivation against
 brute-force Monte Carlo of the exact estimator at three moment orders and three state ensembles,
 and confirmed its prediction of the exponent out of sample with no
