@@ -23,14 +23,18 @@ The main results:
 - A **budget-scaling exponent transition**: the *effective* exponent $\alpha$ in
   $\mathrm{RMSE} \propto M^{-\alpha}$, over the budget $M$ in use, is not the constant $1/2$ —
   it migrates continuously toward $1$, and past it for higher moment orders, as $M$ falls below
-  a threshold $M^* \approx 5.3^n$ that diverges exponentially in $n$. The asymptotic scaling at
-  fixed $n$ remains the familiar square-root law; the migration is a finite-budget effect.
+  a threshold $M^*$ that diverges exponentially in $n$ — fitting $\approx 5.3^n$ for purity on the
+  noisy-pure ensemble over the sizes tested, a fitted base for that ensemble rather than a
+  universal constant. The asymptotic scaling at fixed $n$ remains the familiar square-root law;
+  the migration is a finite-budget effect.
 - Two **exact, parameter-free collective bias laws** (global-depolarizing and per-qubit-channel).
-- A **parameter-free crossover law** for the system size at which collective measurement
-  becomes cheaper, validated across 83 cells and four state ensembles.
-- A **pre-registered hardware test** on a 108-qubit superconducting processor. The prediction
-  fails, and the paper reports the failure and its diagnosis (readout error and cross-session
-  drift dominate; the entangling overhead does not).
+- A **crossover law** with no parameter fitted to the crossover data it predicts, for the system
+  size at which collective measurement becomes cheaper, validated across 83 simulated cells and
+  four state ensembles. Those cells are Monte Carlo plus analytic evaluation — not hardware.
+- A **pre-registered hardware test** on a 108-qubit superconducting processor. Neither the
+  collective nor the single-copy prediction is borne out, and the paper reports both failures and
+  their diagnosis (readout error and cross-session drift dominate; the entangling overhead does
+  not).
 
 ## What the code does
 
