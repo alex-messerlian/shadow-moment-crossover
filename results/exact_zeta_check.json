@@ -1,0 +1,282 @@
+{
+  "meta": {
+    "commit": "406c53e",
+    "q": 0.1,
+    "n_states": 4,
+    "seed": 0,
+    "method_zeta1": "Clifford-3-design TOTAL (8^n) minus Tr(rho^2)^2",
+    "method_zeta2": "factorized 4^n einsum Tr[(rho x rho) prod_q W_q] minus Tr(rho^2)^2",
+    "note": "exact, sampling-free per state"
+  },
+  "ensemble_equivalence_all_k": {
+    "argument": "U-statistic kernel h = mean_orderings prod_q Tr(g_{o1}..g_{ok}); each snapshot appears once per trace-product => h multilinear => h_c multilinear in c snapshots => Var[h_c] quadratic in each => depends only on 2nd-moment matrix E[x_P x_Q], which is entrywise Haar=Pauli (PASS 7, 1.8e-15)",
+    "numeric_multiseed": {
+      "k3_n2": {
+        "N": 300000,
+        "seeds": 6,
+        "zeta_1": {
+          "haar": 0.9195,
+          "haar_sem": 0.0007,
+          "pauli": 0.921,
+          "pauli_sem": 0.0016,
+          "dev": 0.0016,
+          "two_sig_comb": 0.0034,
+          "agree": true
+        },
+        "zeta_2": {
+          "haar": 9.0609,
+          "haar_sem": 0.0115,
+          "pauli": 9.0569,
+          "pauli_sem": 0.0137,
+          "dev": 0.004,
+          "two_sig_comb": 0.0358,
+          "agree": true
+        },
+        "zeta_3": {
+          "haar": 138.9066,
+          "haar_sem": 0.3179,
+          "pauli": 138.8966,
+          "pauli_sem": 0.2609,
+          "dev": 0.01,
+          "two_sig_comb": 0.8226,
+          "agree": true
+        }
+      },
+      "k3_n3": {
+        "N": 200000,
+        "seeds": 6,
+        "zeta_1": {
+          "haar": 1.3114,
+          "haar_sem": 0.0017,
+          "pauli": 1.3106,
+          "pauli_sem": 0.0013,
+          "dev": 0.0008,
+          "two_sig_comb": 0.0043,
+          "agree": true
+        },
+        "zeta_2": {
+          "haar": 22.1861,
+          "haar_sem": 0.0308,
+          "pauli": 22.2023,
+          "pauli_sem": 0.0398,
+          "dev": 0.0161,
+          "two_sig_comb": 0.1006,
+          "agree": true
+        },
+        "zeta_3": {
+          "haar": 1767.1624,
+          "haar_sem": 4.2683,
+          "pauli": 1789.2109,
+          "pauli_sem": 11.1603,
+          "dev": 22.0485,
+          "two_sig_comb": 23.8973,
+          "agree": true
+        }
+      },
+      "k4_n2": {
+        "N": 200000,
+        "seeds": 6,
+        "zeta_1": {
+          "haar": 0.7884,
+          "haar_sem": 0.0004,
+          "pauli": 0.7874,
+          "pauli_sem": 0.0004,
+          "dev": 0.001,
+          "two_sig_comb": 0.0012,
+          "agree": true
+        },
+        "zeta_2": {
+          "haar": 4.9235,
+          "haar_sem": 0.0106,
+          "pauli": 4.9299,
+          "pauli_sem": 0.0135,
+          "dev": 0.0064,
+          "two_sig_comb": 0.0343,
+          "agree": true
+        },
+        "zeta_3": {
+          "haar": 27.8647,
+          "haar_sem": 0.0626,
+          "pauli": 27.8465,
+          "pauli_sem": 0.1045,
+          "dev": 0.0182,
+          "two_sig_comb": 0.2437,
+          "agree": true
+        },
+        "zeta_4": {
+          "haar": 377.8533,
+          "haar_sem": 0.4272,
+          "pauli": 378.4357,
+          "pauli_sem": 1.5151,
+          "dev": 0.5825,
+          "two_sig_comb": 3.1484,
+          "agree": true
+        }
+      }
+    }
+  },
+  "exact_vs_committed": {
+    "2": {
+      "z1_exact": 1.023277244806938,
+      "z2_exact": 53.28499951653627,
+      "z1_MC": 1.0206851566726236,
+      "z2_MC": 53.450148537242825,
+      "Mstar_exact": 26.036443098365567,
+      "Mstar_MC": 26.18346518895568,
+      "z1_reldev": 0.002539556999892604,
+      "z2_reldev": -0.0030897766465791164,
+      "z1_in_spread": true,
+      "z2_in_spread": true,
+      "z1_rel_spread": 0.0026895631331293893,
+      "z2_rel_spread": 0.00993809072642334,
+      "wall_z1": 0.00030612945556640625
+    },
+    "3": {
+      "z1_exact": 1.5718580214309186,
+      "z2_exact": 358.2567985737535,
+      "z1_MC": 1.5713320792991323,
+      "z2_MC": 357.3998130927955,
+      "Mstar_exact": 113.9596559260548,
+      "Mstar_MC": 113.72510553345542,
+      "z1_reldev": 0.0003347110001221627,
+      "z2_reldev": 0.002397834160969372,
+      "z1_in_spread": true,
+      "z2_in_spread": true,
+      "z1_rel_spread": 0.02817111771506351,
+      "z2_rel_spread": 0.00934984971705182,
+      "wall_z1": 0.00033783912658691406
+    },
+    "4": {
+      "z1_exact": 2.3123921207782203,
+      "z2_exact": 2546.7506439636018,
+      "z1_MC": 2.3132464306959113,
+      "z2_MC": 2536.138453941036,
+      "Mstar_exact": 550.6744771095548,
+      "Mstar_MC": 548.1773191752144,
+      "z1_reldev": -0.0003693121088849872,
+      "z2_reldev": 0.004184389068378711,
+      "z1_in_spread": true,
+      "z2_in_spread": true,
+      "z1_rel_spread": 0.03262004800490431,
+      "z2_rel_spread": 0.012219613778916406,
+      "wall_z1": 0.0006248950958251953
+    },
+    "5": {
+      "z1_exact": 2.9126837467901923,
+      "z2_exact": 17379.2097493661,
+      "z1_MC": 2.9187927703255196,
+      "z2_MC": 17566.432855651812,
+      "Mstar_exact": 2983.3671040527774,
+      "Mstar_MC": 3009.1949374146056,
+      "z1_reldev": -0.002092996665414542,
+      "z2_reldev": -0.010658003695125647,
+      "z1_in_spread": true,
+      "z2_in_spread": true,
+      "z1_rel_spread": 0.04461758421858744,
+      "z2_rel_spread": 0.011558428337470492,
+      "wall_z1": 0.0024700164794921875
+    },
+    "6": {
+      "z1_exact": 3.8577399550039977,
+      "z2_exact": 121533.77521106291,
+      "z1_MC": 3.844344295956244,
+      "z2_MC": 119782.77169146982,
+      "Mstar_exact": 15751.939818211122,
+      "Mstar_MC": 15579.090017700275,
+      "z1_reldev": 0.0034845107556688566,
+      "z2_reldev": 0.014618158311641228,
+      "z1_in_spread": true,
+      "z2_in_spread": true,
+      "z1_rel_spread": 0.04829252447461946,
+      "z2_rel_spread": 0.023489592102248356,
+      "wall_z1": 0.014200210571289062
+    },
+    "7": {
+      "z1_exact": 4.562185568045984,
+      "z2_exact": 837842.960881893,
+      "z1_MC": 4.560145570810145,
+      "z2_MC": 838920.5384173429,
+      "Mstar_exact": 91824.73491984096,
+      "Mstar_MC": 91983.96469921268,
+      "z1_reldev": 0.0004473535338206925,
+      "z2_reldev": -0.0012844810516652381,
+      "z1_in_spread": true,
+      "z2_in_spread": true,
+      "z1_rel_spread": 0.02583389058694044,
+      "z2_rel_spread": 0.009976404485960384,
+      "wall_z1": 0.37616991996765137
+    },
+    "8": {
+      "z1_exact": 5.574753575325549,
+      "z2_exact": 5834107.190474201,
+      "z1_MC": 5.564141450563223,
+      "z2_MC": 5751989.472347543,
+      "Mstar_exact": 523261.4421107848,
+      "Mstar_MC": 516880.2342152269,
+      "z1_reldev": 0.001907234899869713,
+      "z2_reldev": 0.01427640271621427,
+      "z1_in_spread": true,
+      "z2_in_spread": false,
+      "z1_rel_spread": 0.013095531911619633,
+      "z2_rel_spread": 0.005893328486872159,
+      "wall_z1": 2.436228036880493
+    },
+    "9": {
+      "z1_exact": 6.834968972687177,
+      "z2_exact": 40680438.76330549,
+      "z1_MC": 6.871649276026286,
+      "z2_MC": 41815752.15508103,
+      "Mstar_exact": 2975905.152303268,
+      "Mstar_MC": 3042628.5215812195,
+      "z1_reldev": -0.005337918433508927,
+      "z2_reldev": -0.027150375953182253,
+      "z1_in_spread": true,
+      "z2_in_spread": true,
+      "z1_rel_spread": 0.009119093544758787,
+      "z2_rel_spread": 0.05382095418180753,
+      "wall_z1": 20.350559949874878
+    }
+  },
+  "exact_base_refits": {
+    "[2,7]": {
+      "z1": 1.345939061078334,
+      "z2": 6.922106431725858,
+      "Mstar": 5.142956788979758
+    },
+    "[2,9]": {
+      "z1": 1.2985183058708856,
+      "z2": 6.932463940804548,
+      "Mstar": 5.3387494881368704
+    },
+    "[4,9]": {
+      "z1": 1.240183837978537,
+      "z2": 6.933480202406562,
+      "Mstar": 5.590687436878659
+    }
+  },
+  "mc_fitted_reference_bases": {
+    "zeta1": 1.3,
+    "zeta2": 6.94,
+    "Mstar": 5.34,
+    "windows": "[2,9]"
+  },
+  "feasibility": {
+    "zeta1_wall_seconds": {
+      "7": 0.4,
+      "8": 2.4,
+      "9": 20.4
+    },
+    "zeta1_max_n_under_10min": 9,
+    "zeta1_n10": "8^10=1.07e9 complex ~17GB for K3 -> OOM",
+    "zeta2_wall_seconds": {
+      "9": 0.01,
+      "10": 0.07,
+      "11": 0.29,
+      "12": 1.43,
+      "13": 6.31
+    },
+    "zeta2_max_n_impl_limited": 13,
+    "zeta2_limit_reason": "52-letter einsum labelling at n=13; compute is ~4x/n",
+    "paper_range_n2_9": "both zetas exactly computable; hybrid not needed within paper range"
+  }
+}
