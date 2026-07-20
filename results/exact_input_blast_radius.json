@@ -1,0 +1,369 @@
+{
+  "meta": {
+    "commit": "5f95248",
+    "note": "blast radius of substituting exact closed-form k=2 zeta_1,zeta_2 into downstream results; k>=3 use committed sampled zetas"
+  },
+  "10_1_alpha": {
+    "cells": [
+      {
+        "n": 2,
+        "k": 2,
+        "measured": 0.49498597318254595,
+        "se": 0.012636971056867117,
+        "pred_sampled": 0.501418331841422,
+        "pred_cf": 0.5013859347386312,
+        "sampled_in": true,
+        "cf_in": true
+      },
+      {
+        "n": 3,
+        "k": 2,
+        "measured": 0.5213621099827146,
+        "se": 0.010039759741978712,
+        "pred_sampled": 0.506218413220941,
+        "pred_cf": 0.5060630248957013,
+        "sampled_in": true,
+        "cf_in": true
+      },
+      {
+        "n": 4,
+        "k": 2,
+        "measured": 0.5276252755003865,
+        "se": 0.01225781574107,
+        "pred_sampled": 0.5274924768636234,
+        "pred_cf": 0.5275281450433537,
+        "sampled_in": true,
+        "cf_in": true
+      },
+      {
+        "n": 5,
+        "k": 2,
+        "measured": 0.6051688173894698,
+        "se": 0.012087673297647605,
+        "pred_sampled": 0.6051140646622555,
+        "pred_cf": 0.6032990496745914,
+        "sampled_in": true,
+        "cf_in": true
+      },
+      {
+        "n": 6,
+        "k": 2,
+        "measured": 0.7660289288458033,
+        "se": 0.012151377185466309,
+        "pred_sampled": 0.7474803106269143,
+        "pred_cf": 0.7516505696930386,
+        "sampled_in": true,
+        "cf_in": true
+      },
+      {
+        "n": 7,
+        "k": 2,
+        "measured": 0.946923701306726,
+        "se": 0.014824689192584447,
+        "pred_sampled": 0.9501252505787693,
+        "pred_cf": 0.9501262710682454,
+        "sampled_in": true,
+        "cf_in": true
+      },
+      {
+        "n": 8,
+        "k": 2,
+        "measured": 0.9842451305829221,
+        "se": 0.017455744946508468,
+        "pred_sampled": 0.9899482914965889,
+        "pred_cf": 0.9900812306435146,
+        "sampled_in": true,
+        "cf_in": true
+      },
+      {
+        "n": 9,
+        "k": 2,
+        "measured": 1.0063925371835016,
+        "se": 0.022508358408447726,
+        "pred_sampled": 0.9983163167639771,
+        "pred_cf": 0.9982855098570209,
+        "sampled_in": true,
+        "cf_in": true
+      },
+      {
+        "n": 2,
+        "k": 3,
+        "measured": 0.5001437804988612,
+        "se": 0.015473881126699762,
+        "pred_sampled": 0.5013838045076506,
+        "pred_cf": 0.5013838045076506,
+        "sampled_in": true,
+        "cf_in": true
+      },
+      {
+        "n": 3,
+        "k": 3,
+        "measured": 0.49604909106326134,
+        "se": 0.018597407502646532,
+        "pred_sampled": 0.5026395544249076,
+        "pred_cf": 0.5026395544249076,
+        "sampled_in": true,
+        "cf_in": true
+      },
+      {
+        "n": 4,
+        "k": 3,
+        "measured": 0.5159917065374857,
+        "se": 0.016926422107410754,
+        "pred_sampled": 0.5066478018323883,
+        "pred_cf": 0.5066478018323883,
+        "sampled_in": true,
+        "cf_in": true
+      },
+      {
+        "n": 5,
+        "k": 3,
+        "measured": 0.5472591545091423,
+        "se": 0.013643043766638644,
+        "pred_sampled": 0.5179534562837611,
+        "pred_cf": 0.5179534562837611,
+        "sampled_in": true,
+        "cf_in": true
+      },
+      {
+        "n": 6,
+        "k": 3,
+        "measured": 0.6071064082425727,
+        "se": 0.016517017124958643,
+        "pred_sampled": 0.5750366568576483,
+        "pred_cf": 0.5750366568576483,
+        "sampled_in": true,
+        "cf_in": true
+      },
+      {
+        "n": 7,
+        "k": 3,
+        "measured": 0.8256828999009062,
+        "se": 0.021865065020485103,
+        "pred_sampled": 0.8101648536683711,
+        "pred_cf": 0.8101648536683711,
+        "sampled_in": true,
+        "cf_in": true
+      },
+      {
+        "n": 8,
+        "k": 3,
+        "measured": 1.1583533206651058,
+        "se": 0.02040476629661019,
+        "pred_sampled": 1.182989513102994,
+        "pred_cf": 1.182989513102994,
+        "sampled_in": true,
+        "cf_in": true
+      },
+      {
+        "n": 2,
+        "k": 4,
+        "measured": 0.4864405556399389,
+        "se": 0.017854109659559178,
+        "pred_sampled": 0.506671624413702,
+        "pred_cf": 0.506671624413702,
+        "sampled_in": true,
+        "cf_in": true
+      },
+      {
+        "n": 3,
+        "k": 4,
+        "measured": 0.5235290264067572,
+        "se": 0.018957494552235745,
+        "pred_sampled": 0.5124150645315998,
+        "pred_cf": 0.5124150645315998,
+        "sampled_in": true,
+        "cf_in": true
+      },
+      {
+        "n": 4,
+        "k": 4,
+        "measured": 0.543753389793959,
+        "se": 0.02430164224237595,
+        "pred_sampled": 0.5285331306415134,
+        "pred_cf": 0.5285331306415134,
+        "sampled_in": true,
+        "cf_in": true
+      },
+      {
+        "n": 5,
+        "k": 4,
+        "measured": 0.5707414264460302,
+        "se": 0.02117971446729087,
+        "pred_sampled": 0.5728522594818134,
+        "pred_cf": 0.5728522594818134,
+        "sampled_in": true,
+        "cf_in": true
+      },
+      {
+        "n": 6,
+        "k": 4,
+        "measured": 0.8018369200306279,
+        "se": 0.01694594863783382,
+        "pred_sampled": 0.7925852445252379,
+        "pred_cf": 0.7925852445252379,
+        "sampled_in": true,
+        "cf_in": true
+      }
+    ],
+    "tally_sampled": "20/20 (k2 8/8, k3 7/7, k4 5/5)",
+    "tally_cf": "20/20 (k2 8/8, k3 7/7, k4 5/5)",
+    "flips": "NONE",
+    "note": "paper states 19/20 (6/7 k3); my exact_fitted_alpha on committed components gives 20/20 for BOTH sampled and CF -- the point is sampled==cf, no verdict flips"
+  },
+  "10_2_crossover": {
+    "noisy_pure_resolved": {
+      "n_cells": 45,
+      "tally_committed": "45/45 within1, 45/45 exact",
+      "tally_cf": "45/45 within1, 45/45 exact",
+      "changed": 0
+    },
+    "held_out": {
+      "n_cells": 15,
+      "all_k": 2,
+      "changed_committed_to_cf": 0,
+      "note": "re-predicted with collective extended to haar-pure/low-rank/ghz-noisy ensembles"
+    },
+    "single_copy_rmse_rel_change_k2": {
+      "max_over_grid": 0.026,
+      "n8_M2000": 0.0069,
+      "n4_M2000": 0.00086
+    },
+    "full_83_tally": {
+      "exact": "73/83 unchanged",
+      "within1": "82/83 unchanged",
+      "stratified_nge3": "43/52 exact, 52/52 within1 unchanged"
+    },
+    "gt1_miss": {
+      "cell": "noisy-pure k=4 amp.damp 0.05 mult0.25 meas2 pred4",
+      "status": "survives UNCHANGED (k=4 uses sampled zetas, literally identical)"
+    },
+    "verdict": "ZERO of 83 crossover predictions change under closed-form k=2 inputs"
+  },
+  "10_3_constants": {
+    "fitted_prefactor_base_cf": {
+      "[2,7]": {
+        "zeta1": [
+          0.65,
+          1.338
+        ],
+        "zeta2": [
+          1.093,
+          6.932
+        ],
+        "Mstar": [
+          0.84,
+          5.181
+        ]
+      },
+      "[2,9]": {
+        "zeta1": [
+          0.739,
+          1.294
+        ],
+        "zeta2": [
+          1.089,
+          6.937
+        ],
+        "Mstar": [
+          0.737,
+          5.362
+        ]
+      }
+    },
+    "committed_refs": {
+      "[2,7]": {
+        "zeta1": [
+          0.63,
+          1.35
+        ],
+        "zeta2": [
+          1.1,
+          6.93
+        ],
+        "Mstar": [
+          0.87,
+          5.15
+        ]
+      },
+      "[2,9]": {
+        "Mstar": [
+          0.76,
+          5.345
+        ]
+      }
+    },
+    "Mstar_table": {
+      "2": {
+        "cf": 25.6,
+        "committed": 26.18,
+        "pct": -0.0221
+      },
+      "4": {
+        "cf": 549.0,
+        "committed": 548.2,
+        "pct": 0.0015
+      },
+      "9": {
+        "cf": 2990000.0,
+        "committed": 3043000.0,
+        "pct": -0.0172
+      }
+    },
+    "appendixD_regression_cf": {
+      "base": 5.3617,
+      "ci95": [
+        5.1813,
+        5.5485
+      ],
+      "prefactor": 0.737,
+      "residual_signs": "+-----++",
+      "leave_one_out": [
+        5.284,
+        5.5087
+      ],
+      "committed": {
+        "base": 5.34,
+        "ci": [
+          5.14,
+          5.54
+        ],
+        "prefactor": 0.75,
+        "signs": "+-----++",
+        "loo": [
+          5.25,
+          5.49
+        ]
+      }
+    },
+    "exponential_wall_cf": {
+      "2": 0.0454,
+      "4": 0.0767,
+      "6": 0.2606,
+      "8": 1.7114,
+      "10": 11.916,
+      "committed_seq": [
+        0.043,
+        0.072,
+        0.27,
+        1.62,
+        11.98
+      ],
+      "ratio_n10": 14.7,
+      "committed_ratio": "fifteen times"
+    }
+  },
+  "10_4_k3_k4": {
+    "maximally_mixed_perqubit_kernel_2nd_moment": {
+      "k2": 7.0,
+      "k3": 5.125,
+      "k4": 29.125
+    },
+    "actual_kernel_variance_base_committed_MC": {
+      "k3": 15.19,
+      "k4": 38.45
+    },
+    "tractability": "k=2 clean (state-independent 7^n dominates). k>=3: state-dependent Haar terms DOMINATE (ensemble zeta_3(n=2)=137 vs state-independent 26), so maximally-mixed base does NOT give the k>=3 kernel base. Full ensemble-averaged closed form for zeta_3,zeta_4 NOT derived (needs compatible-tuple counts beyond the four k=2 counts). The k>=3 first-projection zeta_1^(k)=Var[Tr(G rho^{k-1})] is closed-form-able (linear functional) but not derived here.",
+    "implied_threshold_bases": "not derived analytically (would need the first-projection base too)"
+  }
+}
