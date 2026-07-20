@@ -1,3 +1,29 @@
+% #####################################################################
+% PASS 7 PRIOR-ART FLAG (2026-07-20) — READ BEFORE USING THIS DRAFT.
+% The closed-form second-moment identity below (Block A, the
+% E[Tr(G rho)^2] display) is NOT new. It is HKP Lemma 4
+% (arXiv:2002.08953, eq. S52 = the paper's ref huang2020shadows),
+% restated as Hayashi Proposition 4 (arXiv:2606.00527, 30 May 2026,
+% Sec IV.D), which Hayashi himself attributes to HKP ("the underlying
+% second-moment mechanism already appears in ... Huang-Kueng-Preskill
+% [11, Lemma 4]"). Verified: substituting that second moment into
+% E[Tr(G rho)^2] reproduces this draft's formula to ~1e-14 at n=2,3,4.
+% See paper/PRIOR_ART_MAP.md, section "PASS 7".
+%   => BLOCK A and BLOCK C REQUIRE REWRITING before use: present the
+%      closed form as a corollary of HKP Lemma 4 (cite HKP; add Hayashi),
+%      not as this work's result. Block C's "zeta_1 does admit a closed
+%      form ... closed in Section~..." must be reworded.
+%   => What survives as this paper's own (no prior art found in HKP or
+%      Hayashi): the (5/4)^n diagonal growth, the OFF limit 2(1-q)^3, the
+%      composite zeta_1 limit, and the M* -> (28/5)^n base (A1). Only the
+%      closed-form framing (A2) has prior art.
+%   => Also verified: local Haar and local Pauli shadows give IDENTICAL
+%      k=2 second moments (E[x_P x_Q], hence zeta_1, zeta_2, M*). Do not
+%      frame the closed form as Haar-specific.
+% Advisory only; the body below is UNCHANGED. Rewrite is the author's
+% next turn.
+% #####################################################################
+%
 % =====================================================================
 % DROP-IN DRAFT v2 — supersedes asymptotic_draft.tex
 % Two results: an exact closed form for zeta_1, and the asymptotic base
