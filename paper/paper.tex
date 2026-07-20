@@ -497,7 +497,7 @@ correlation arises.
 The insufficiency persists and grows with size. Tested against a diverse
 family of 19 states at \(n = 2\), varying depolarizing rate, rank, and
 structure, the best-fit weight-only ansatz leaves a residual of up to
-12.2\%. A reading of what is missing, offered as an observation from the
+12.3\%. A reading of what is missing, offered as an observation from the
 algebra rather than a theorem, is that because the snapshots are drawn
 from \(\rho\) the second moment is cubic in \(\rho\) while a weight-only
 sum of \(\langle P \rangle^2\) is quadratic in the Pauli expectations, so
@@ -585,7 +585,10 @@ A log-linear regression of \(M^*(n)\) over \(n = 2\) to \(9\) returns a
 base of \(5.34\) with a 95\% confidence interval of \([5.14,\, 5.54]\) and
 a prefactor of \(0.75 \pm 0.09\) (regression standard errors, treating
 each \(M^*(n)\) as fixed); \(\zeta_1\) and \(\zeta_2\) fit to bases
-\(1.30\ [1.26,\, 1.34]\) and \(6.94\ [6.90,\, 6.98]\). The regression
+\(1.30\ [1.26,\, 1.34]\) and \(6.94\ [6.90,\, 6.98]\). The \(\zeta_2\)
+base sits just below the exact per-qubit second moment \(7\) at the
+maximally mixed state (Section 3.3) and barely moves across the fitting
+windows; the base drift below is carried by \(\zeta_1\). The regression
 residuals are not flat --- positive at both ends of the range and negative
 through the middle --- so the fitted base drifts upward as the window
 moves out, from \(5.14\) over \(n = 2\) to \(7\) to \(5.60\) over
@@ -1006,9 +1009,9 @@ test on a square-lattice device. Four two-qubit gates and no routing make the en
 collective measurement on this hardware, it is not the entangling
 overhead.
 
-By contrast, Haar-random states at
-\(n = 4\) require 46 CZ gates including 20 routing SWAPs on this
-topology. The favorable transpilation is a property of structured states
+By contrast, generic (Haar-random) states at
+\(n = 4\) route heavily on this topology, requiring many more entangling
+gates once routing SWAPs are inserted. The favorable transpilation is a property of structured states
 on a matched topology, not of the SWAP test in general. We therefore
 restrict the hardware series to GHZ ladders.
 
@@ -1116,7 +1119,10 @@ was stable while the experiment ran.
 \end{table}
 
 All three cells fall below both bands rather than between them, so drift
-within the session does not account for the gap. The degradation is also
+within the session does not account for the gap. The \(n = 2\) cell here
+(\(0.686\), 10{,}000 shots) is the session-study SWAP test, a different
+circuit and run from the \(0.7184\) Bell-purity anchor above, so the two
+are not repeated readings of one quantity. The degradation is also
 non-monotonic: \(n = 3\) is worse than \(n = 4\), despite the \(n = 4\)
 register containing the \(n = 3\) register. Neither readout error, which
 scales with the \(2n\) measured qubits, nor CZ count, which grows with
@@ -1162,7 +1168,11 @@ whose U-statistic our shadow pipeline predicted at \(1.500 \pm 0.028\)
 from the same device parameters. That statistic is not a purity: the
 fifteen bases collapse to eight distinct unitaries, so about 15\% of the
 snapshot pairs share one, which biases the estimator upward, here
-past the physical bound \(\mathrm{Tr}(\rho^2) \leq 1\). Because the same estimator is
+past the physical bound \(\mathrm{Tr}(\rho^2) \leq 1\). The settings are
+random Pauli-basis measurements, of which there are nine at \(n = 2\), so
+repeats among fifteen draws are an expected consequence of sampling a
+finite set rather than a flaw, and the \(1.500\) prediction is locked for
+this Pauli-basis pipeline. Because the same estimator is
 applied to the simulated and the measured data, the anchor tests the
 pipeline rather than measuring a purity. The device returned
 \(1.344\), with a 95\%
@@ -1217,14 +1227,15 @@ marginals are small, the entire achievable range of predicted purity is
 Coherent gate error & Randomized compiling. Pauli-twirled SWAP circuits,
 with a positive control confirming that the inserted gates physically
 execute (5.4:1 mass on the disjoint support), moved the purity by
-\(-0.013\) against a 0.197 deficit, and twirl-to-twirl scatter was
+\(-0.013\) against the 0.197 same-session \(n = 4\) gap, and twirl-to-twirl scatter was
 shot-noise limited with zero physical scatter. A masking bound places
 any hidden coherent contribution at no more than 14\% of the deficit.
 The residual is incoherent. \\
 A specific bad qubit pair (\(\{3, 12\}\)) & Localization test. An
-\(n=3\) ladder that includes the suspect pair measured 0.58080,
-identical to the standard \(n=3\) ladder's 0.58080, from genuinely
-distinct raw data. Adding the suspect qubits changes nothing. \\
+\(n=3\) ladder that includes the suspect pair measured 0.581, matching
+the standard \(n=3\) ladder's 0.581 to well within the \(\approx 0.012\)
+shot-noise standard deviation at 5000 shots, from genuinely distinct raw
+data. Adding the suspect qubits changes nothing. \\
 A fixed register-geometry fault & The \(n=4\) versus \(n=3\) ordering
 flips sign across sessions on identical registers. The deficit is
 session-dependent, not geometric. \\
@@ -1516,7 +1527,9 @@ converged to better than 1\%, and the measured RMSE converges to the
 predicted value to within \(\pm 0.3\%\) as the trial count increases.
 The 6.7\% figure matches the intrinsic RMSE noise at the trial counts
 used, and the signed deviation is +3.4\%, which is within noise once
-cell correlations are accounted for.
+cell correlations are accounted for. The predicted crossover
+\(n^*_{\text{pred}}\) is reported as an integer throughout, and we do not
+propagate the projection-variance estimation uncertainty onto it.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -1930,6 +1943,13 @@ and all \(14\) replications agree on both the measured and the predicted
 Table~\ref{tab:cells} lists all \(83\). One cell misses by more than one
 qubit (noisy-pure, \(k = 4\), predicted \(4\) against measured \(2\)),
 giving \(82/83 = 98.8\%\) within one qubit and \(73/83 = 88.0\%\) exact.
+Stratified by the measured crossover, all \(52\) cells with
+\(n^*_{\text{meas}} \ge 3\) fall within one qubit and \(43\) are exact;
+the one miss beyond a qubit sits in the \(31\)-cell
+\(n^*_{\text{meas}} = 2\) group. Counted as configurations rather than
+evaluations, the \(83\) cells are \(69\) independent settings ---
+\(54\) distinct noisy-pure plus \(15\) held-out --- with \(14\)
+noisy-pure replications.
 
 \begin{center}
 \footnotesize
