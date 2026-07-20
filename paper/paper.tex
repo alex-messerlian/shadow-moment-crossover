@@ -37,7 +37,8 @@ estimators splits into terms of different budget order --- a Hoeffding
 decomposition \cite{hoeffding1948, serfling1980} stated for shadows in
 \cite{huang2020shadows} --- whose two decay regimes are known
 \cite{elben2020mixed, aasen2026limitations}. These analyses bound the
-state-dependent projection variances; we evaluate them numerically for
+state-dependent projection variances, and separate bounds on them do not
+constrain their ratio; we evaluate them in closed form for
 depolarized Haar-random pure states, locating the budget
 \(M^* = \zeta_2/(2\zeta_1)\) at which the estimator's effective error
 exponent crosses over. Over the sizes we reach (\(n = 2\) to \(9\)) this
@@ -136,10 +137,10 @@ the budget is established as well. Elben et al.~\cite{elben2020mixed}
 state both regimes in their main text and plot them, and Aasen and
 G\"arttner \cite{aasen2026limitations} track the scaling exponent
 migrating between the same two rates under detector noise. What those
-analyses do not do is evaluate the projection variances; they bound them.
-Separate upper bounds on \(\zeta_1\) and \(\zeta_2\) constrain their ratio
-not at all, so the budget at which the two terms exchange dominance does
-not follow from them.
+analyses do not do is locate where the regimes meet. Bounding
+\(\zeta_1\) and \(\zeta_2\) separately constrains their ratio not at all,
+and the exact second moment that would fix it is applied in the
+literature to worst-case sample complexity rather than to a state.
 
 \textbf{Thesis.} We evaluate the state-dependent projection variances for
 depolarized Haar-random pure states at a single noise rate, numerically,
@@ -380,8 +381,9 @@ The variance of the U-statistic is then exactly
 
 This is the standard Hoeffding decomposition for U-statistics
 \cite{hoeffding1948, serfling1980}, and we
-claim no novelty for it; what is new here is its numerical evaluation for
-the local-shadow kernel and the state-dependent \(\zeta_c\) that follow.
+claim no novelty for it; what is new here is the closed-form evaluation
+of the second-order \(\zeta_c\) and the threshold their ratio fixes
+(Section~\ref{sec:zeta-closed-form}).
 
 For \(k = 2\) this reduces to
 
@@ -392,6 +394,12 @@ exact estimator at \(k = 3\) and \(k = 4\), on noisy-pure, GHZ, and
 low-rank states, with all ratios within 3\%, and confirmed that it
 reduces to the \(k=2\) form at a ratio of \(1.000000\). The law is
 exact, not asymptotic, and it holds at every budget.
+
+Because the \(k\)-argument kernel is multilinear in the snapshots, every
+projection variance depends on the shadow ensemble only through its
+second-moment matrix; local Haar single-qubit shadows and local
+Pauli-basis shadows have identical second-moment matrices, so all results
+of this section hold verbatim for either.
 
 One subtlety is easy to get wrong and can pass unnoticed. For \(k = 2\) the second-order projection \emph{is}
 the kernel, so \(\zeta_2\) is the kernel variance. For \(k \geq 3\) this
@@ -497,31 +505,169 @@ correlation arises.
 The insufficiency persists and grows with size. Tested against a diverse
 family of 19 states at \(n = 2\), varying depolarizing rate, rank, and
 structure, the best-fit weight-only ansatz leaves a residual of up to
-12.3\%. A reading of what is missing, offered as an observation from the
-algebra rather than a theorem, is that because the snapshots are drawn
-from \(\rho\) the second moment is cubic in \(\rho\) while a weight-only
-sum of \(\langle P \rangle^2\) is quadratic in the Pauli expectations, so
-the shortfall tracks the relative orientation of the marginal Bloch
-vectors through the correlation matrix --- an invariant already nonzero
-for separable, classically correlated states. We do not prove this is the
-only missing ingredient, nor rule out a closed form built from a richer
-set of invariants; we establish only that a weight-only quadratic form is
-insufficient.
+12.3\%. A weight-only quadratic form is insufficient, and
+Section~\ref{sec:zeta-closed-form} identifies exactly what it omits. The
+weight-only form is the diagonal of an exact cubic identity already
+available in \cite{huang2020shadows}, and the residual it leaves is that
+identity's off-diagonal sum. The obstruction is a quartic dependence on
+the state that no form quadratic in the Pauli expectations can carry, and
+it is present before any question of entanglement or correlation arises.
 
 The ansatz nonetheless \emph{appears} to
 hold. Tested only within a narrow single-parameter family, Haar-pure
 states at a fixed depolarizing rate of \(q = 0.1\), it fits to 0.1\%,
 because that family spans a low-dimensional invariant subspace. A closed
-form validated on one ensemble is not a closed form. For \(n \geq 2\)
-the projection variances must be computed numerically, and the variance
-law is exact while its inputs are not analytic.
+form validated on one ensemble is not a closed form. At second order the
+projection variances follow in closed form
+(Section~\ref{sec:zeta-closed-form}); at higher moment orders they are
+estimated numerically, and the variance law is exact in either case.
+
+\subsection{The projection variances in closed form}
+\label{sec:zeta-closed-form}
+
+Section~3.4 rules out a weight-only quadratic form for \(\zeta_1\). What
+it does not rule out, and what holds, is a cubic one. The ingredient is
+already in the literature. Lemma 4 of \cite{huang2020shadows} gives the
+exact second moment of two reconstructed Pauli coefficients under local
+shadows,
+\[
+\mathbb{E}\!\left[\hat x_{P}\, \hat x_{Q}\right]
+= 3^{\,|\mathrm{supp}(P)\, \cap\, \mathrm{supp}(Q)|}\;
+\mathrm{Tr}\!\left(\rho\, P\!\ominus\!Q\right),
+\]
+when \(P\) and \(Q\) agree on every qubit where both are non-identity and
+zero otherwise, where \(\hat x_P = \mathrm{Tr}(G P)\) and \(P \ominus Q\)
+cancels the shared non-identity factors. We claim no novelty for this
+identity; what follows is its evaluation.
+
+Since \(\mathrm{Tr}(G\rho) = 2^{-n}\sum_s \langle P_s\rangle \hat x_s\),
+the first projection variance follows by contraction, and since the
+\(k\)-argument kernel of Section~3.1 is multilinear in the snapshots,
+every \(\zeta_c\) is a quadratic functional of the same second-moment
+matrix. Two consequences precede the evaluation.
+
+First, the diagonal \(s = s'\) of that contraction is exactly the
+weight-only form of Section~3.4, with \(c_w = 3^w/4^n\), so the residual
+that form leaves is exactly the off-diagonal sum. The shortfall
+identified there is not an open feature of the algebra.
+
+Second, because only second moments enter, the projection variances do
+not distinguish local Haar single-qubit shadows from local Pauli-basis
+shadows: the two ensembles have entrywise identical second-moment
+matrices, so \(\zeta_c\) agrees for every \(c\) and every \(k\). Every
+statement below holds for either.
+
+Everything in this subsection concerns \(k = 2\). The higher moment
+orders are treated numerically as before; their projections do not
+reduce the same way, and we say what is known about them at the end.
+
+\paragraph{The second projection variance is a spectral sum.}
+The two-copy kernel is diagonal in the Pauli basis, and collecting the
+compatible pairs by the string they leave behind gives, for any state,
+\[
+\zeta_2 \;=\; 7^{\,n}\sum_{P} \langle P\rangle^2 \left(\tfrac{1}{14}\right)^{\!|P|}
+\;-\; \mathrm{Tr}(\rho^2)^2 ,
+\]
+the sum running over all \(4^n\) Pauli strings with \(|P|\) the weight.
+Only the identity term is state-independent, so the base of \(\zeta_2\)
+is never below \(7\), and a counting argument over compatible pairs
+bounds it above by \(17/2\). At the maximally mixed state every other
+term vanishes and the expression returns \(7^n - 4^{-n}\), recovering
+Section~2.5. What sets the base is how the state's Pauli weight is
+distributed: a spectrum spread over all \(4^n\) strings leaves the
+identity term dominant and the base at exactly \(7\), while a spectrum
+concentrated on a stabilizer group lifts it.
+
+\paragraph{Evaluation for the noisy-pure ensemble.}
+Averaging over the ensemble of Section~2.5,
+\(\rho = (1-q)|\psi\rangle\langle\psi| + q I/2^n\) with \(|\psi\rangle\)
+Haar, requires only the second and third Haar moments of Pauli
+expectations, \(\mathbb{E}[\langle P\rangle^2] = 1/(d+1)\) and
+\(\mathbb{E}[\langle P_u\rangle\langle P_s\rangle\langle P_{s'}\rangle]
+= 2/((d+1)(d+2))\) when \(P_sP_{s'} = P_u\), together with four counts
+over compatible Pauli pairs. Writing \(d = 2^n\), \(u = 1-q\), and
+\(p_2 = \mathrm{Tr}(\rho^2) = u^2 + q(2-q)/d\),
+\[
+\zeta_1 = 4^{-n}\!\left[\,1
++ \frac{u^2(10^n-1)}{d+1}
++ \frac{2u^2(4^n-1)}{d+1}
++ \frac{2u^3\!\left(16^n - 10^n - 2\cdot 4^n + 2\right)}{(d+1)(d+2)}
+\right] - p_2^{\,2},
+\]
+\[
+\zeta_2 = 4^{-n}\!\left[\,28^n + \frac{u^2\!\left(34^n - 28^n\right)}{d+1}\right] - p_2^{\,2},
+\]
+the second being the spectral sum above evaluated on this ensemble.
+Each qubit contributes one identity of weight \(3^0\) and three Paulis of
+weight \(3^1\), so \(\sum_s 3^{|s|} = 10^n\); the compatible pairs give
+\(16^n\) with that weighting and \(34^n\) with its square, with diagonals
+\(10^n\) and \(28^n\).
+
+\paragraph{The threshold and what sets its base.}
+Write \(\beta\) for the growth base of \(\mathbb{E}[\mathrm{Tr}(G\rho)^2]\),
+which is also the base of \(\zeta_1\). Since
+\(M^* = \zeta_2/(2\zeta_1)\), its base is
+\(\mathrm{base}(\zeta_2)/\beta\) exactly, and both factors are spectral
+functionals of the state rather than universal constants. For the
+ensemble of Section~2.5 the closed forms give \(\beta = 5/4\) and
+\(\mathrm{base}(\zeta_2) = 7\), so
+\[
+M^*(n) \;\longrightarrow\; \frac{1}{2(1-q)^2}\left(\frac{28}{5}\right)^{\! n},
+\qquad \frac{28}{5} = 5.6 ,
+\]
+with base and prefactor both exact.
+
+The same two functionals can be evaluated for the other ensembles this
+paper uses, and they do not all agree:
+
+\begin{center}
+\begin{tabular}{lccc}
+\hline
+state family & \(\beta\) & \(\mathrm{base}(\zeta_2)\) & \(M^*\) base \\
+\hline
+noisy-pure (\(q=0.1\)) & \(5/4\) & \(7\)    & \(28/5 = 5.60\) \\
+Haar-pure              & \(5/4\) & \(7\)    & \(28/5 = 5.60\) \\
+low-rank (rank 2)      & \(\approx 1.21\) & \(7\) & \(\approx 5.8\) \\
+product, GHZ           & \(3/2\) & \(15/2\) & \(5.00\) \\
+\hline
+\end{tabular}
+\end{center}
+
+\noindent
+The last row is exact and instructive. For a pure product state the
+spectral sum is \(\sum_P \langle P\rangle^2 14^{-|P|} = (15/14)^n\),
+giving \(\zeta_2 = (15/2)^n - 1\), and for GHZ the stabilizer group
+splits into even-weight \(Z\) strings and weight-\(n\) strings, giving
+\(\zeta_2 = \tfrac12\left[(15/2)^n + (13/2)^n\right] - \tfrac12\).
+Purity alone does not determine the base: a Haar-random pure state gives
+\(7\) and a pure product state gives \(15/2\). What distinguishes them is
+the weight profile of the Pauli spectrum, which the kernel
+\(14^{-|P|}\) reads off. The value \(28/5\) is therefore the
+spread-spectrum case, not a universal constant, and structured
+stabilizer states sit on a different branch at \(5\).
+
+\paragraph{Higher moment orders.}
+The multilinearity argument above shows every \(\zeta_c\) depends only on
+the second-moment matrix, so closed forms exist in principle at \(k \ge 3\)
+as well. We did not obtain them: at \(k = 3\) and \(4\) the
+state-dependent contributions dominate the state-independent ones, so the
+kernel bases are not read off the maximally mixed values, and the
+required counts over compatible tuples are beyond what we derived. The
+\(k \ge 3\) coefficients used below are estimated numerically.
+
+The fitted base reported in the next subsection drifts with the fitting
+window, from \(5.14\) over \(n = 2\) to \(7\) to \(5.60\) over \(n = 4\)
+to \(9\). The closed forms reproduce that drift exactly, returning
+\(5.18\), \(5.36\) and \(5.60\) over the same windows with no sampling
+anywhere, so the drift is a finite-size property of the fit and
+\(28/5\) is what it drifts toward.
 
 \hypertarget{the-alpha-transition}{%
 \subsection{\texorpdfstring{The \(\alpha\)
 transition}{The \textbackslash alpha transition}}\label{the-alpha-transition}}
 
-Computing the projection variances numerically for noisy-pure states
-gives clean exponential scalings. Over \(n = 2\) to \(7\),
+The projection variances for noisy-pure states, estimated over this
+range, give clean exponential scalings. Over \(n = 2\) to \(7\),
 
 \[\zeta_1 \approx 0.63 \cdot (1.35)^n, \qquad \zeta_2 \approx 1.10 \cdot (6.93)^n, \qquad M^* \approx 0.87 \cdot (5.15)^n,\]
 
@@ -1176,7 +1322,10 @@ repeats among fifteen draws are an expected consequence of sampling a
 finite set rather than a flaw, and the \(1.500\) prediction is locked for
 this Pauli-basis pipeline. Because the same estimator is
 applied to the simulated and the measured data, the anchor tests the
-pipeline rather than measuring a purity. The device returned
+pipeline rather than measuring a purity. The anchor samples random Pauli
+bases while the simulation draws local Haar shadows, but the two
+ensembles share a second-moment matrix and hence carry the same predicted
+statistic (Section~\ref{sec:zeta-closed-form}). The device returned
 \(1.344\), with a 95\%
 bootstrap interval of \([1.266,\, 1.433]\) over 9000 snapshots. The gap is
 5.6 times the spread the model predicts for a single run of this anchor,
@@ -1327,14 +1476,17 @@ standard Hoeffding U-statistic identity
 \cite{hoeffding1948, serfling1980}; in the classical-shadow setting it is
 already stated as an equality by \cite{huang2020shadows}, and again by
 Elben et al.~\cite{elben2020mixed}, who read the two-regime budget
-scaling off it. Both bound \(\zeta_1\) and
-\(\zeta_2\) rather than evaluating them, and neither gives a threshold in
-\(M\); \cite{elben2020mixed} treats
-\(k = 3\) the same way, with a three-regime bound. What this work adds is
-the evaluation: the state-dependent coefficients, the resulting
-threshold \(M^* = \zeta_2/(2\zeta_1)\) --- the budget at which their two
-terms cross --- whose value and growth base follow only from those
-coefficients, and the comparison against the collective route, which that
+scaling off it. Reference \cite{elben2020mixed} bounds \(\zeta_1\) and \(\zeta_2\) rather
+than evaluating them. Reference \cite{huang2020shadows} does supply the
+exact second moment, in its Lemma 4, but applies it to worst-case
+sample-complexity bounds rather than evaluating the resulting
+coefficients for a state or an ensemble; neither gives a threshold in
+\(M\). Separate upper bounds on \(\zeta_1\) and \(\zeta_2\) constrain
+their ratio not at all, which is why the threshold does not follow from
+them. What this work adds is the evaluation of
+Section~\ref{sec:zeta-closed-form}, the resulting threshold
+\(M^* = \zeta_2/(2\zeta_1)\), the spectral functionals that fix its
+growth base, and the comparison against the collective route, which that
 work does not treat. Alternative shadow ensembles, such as the Hamiltonian-driven
 shadows of \cite{hamiltonianshadow2021}, target different observable
 classes and sample-complexity questions rather than the variance of
@@ -1385,7 +1537,7 @@ is not ours: Aasen and G\"arttner \cite{aasen2026limitations} fit a
 power-law exponent to adaptive-tomography infidelity in sliding budget
 windows and report it drifting from the ideal \(1/N\) toward
 \(1/\sqrt{N}\) as the measurement count grows. Their migration is driven
-by detector noise eroding an adaptive advantage; the one in Section 3.5
+by detector noise eroding an adaptive advantage; the one in Section 3.6
 is a property of the noiseless estimator's own variance, set by the
 ratio of the two Hoeffding terms.
 
@@ -1396,7 +1548,8 @@ protocols using an identical single-copy projection-valued measurement;
 their general bound for arbitrary \(k\)-qubit-memory protocols is
 \(\Omega(\mathrm{median}\{1/\varepsilon^2,\, 2^{n/2}/\sqrt{\varepsilon},\, 2^{n-k}/\varepsilon^2\})\).
 Our exact variance is consistent with these bounds and supplies the
-state-dependent constant they leave open.
+state-dependent constant they leave open, by evaluating the second moment
+of \cite{huang2020shadows} over the ensemble.
 
 \textbf{Collective measurement on noisy hardware.} The exponential
 single-copy versus collective separation is established in
@@ -1482,11 +1635,16 @@ priority over them.
 \hypertarget{limitations}{%
 \section{Limitations}\label{limitations}}
 
-\textbf{The variance law's inputs are numerical.} The law is exact and
-the single-qubit projection variance has a closed form. For
-\(n \geq 2\), \(\zeta_1\) has no weight-only closed form (Section 3.4)
-and the projections must be estimated numerically. A fully analytic
-\(M^*(n)\) does not follow from this work.
+\textbf{The closed forms are \(k = 2\) only, and the prefactor is
+asymptotic.} The second-order projection variances have closed forms for
+the ensembles considered here, and \(M^*(n)\) is analytic for them
+(Section~\ref{sec:zeta-closed-form}). Three limits apply. The evaluation
+uses the Haar moments of a specific ensemble, so for an arbitrary state
+the identity of \cite{huang2020shadows} must be summed over that state's
+Pauli spectrum. At \(k \ge 3\) we did not obtain closed forms and the
+coefficients are estimated numerically. And the asymptotic base and
+prefactor, though exact, are approached slowly: at the sizes reached here
+\(M^*(n)/5.6^n\) is still some fifteen percent below its limit.
 
 \textbf{The \(k=3\) validation is 6 of 7.} The single miss sits on the
 two-sigma boundary and is sensitive to the random seed. We report it
@@ -1593,9 +1751,13 @@ fidelity, which vendors do not publish, and run-to-run stability, which
 vendors do not characterize, are what stand between current devices and
 a collective-measurement advantage that the criterion places near six qubits under the noise we model.
 
-Three questions follow from this work. Whether \(\zeta_1\) admits a
-closed form under a richer ansatz than Pauli weight, which would make
-\(M^*(n)\) fully analytic. Whether the same variance law, applied to the
+Two questions follow from this work. The first of the three we opened,
+whether \(\zeta_1\) admits a closed form richer than Pauli weight, is
+settled at second order in Section~\ref{sec:zeta-closed-form}: the cubic
+identity of \cite{huang2020shadows}, evaluated over the ensemble, gives
+\(\zeta_1\) and \(\zeta_2\) in closed form and \(M^*(n)\) analytically,
+with growth base \(28/5\) for spread Pauli spectra and \(5\) for
+stabilizer-structured pure states. It remains open at \(k \ge 3\). Whether the same variance law, applied to the
 partial-transpose moments, gives an exact sample-complexity account of
 entanglement negativity estimation, which is the application that
 motivated us. And whether the drift we measured is a property of this
@@ -1868,7 +2030,11 @@ generating code; the sizes and seeds below are those actually used.
 \(\zeta_c\) that feed the theory curves are estimated from \(4\)
 independently drawn states per \((n, k)\), each from \(120{,}000\) shadow
 snapshots (\texttt{results/\allowbreak theory\_zetas.json}: \texttt{n\_states}~\(=4\),
-\texttt{n\_samples}~\(=120{,}000\)). The measured \(\alpha\) points and the
+\texttt{n\_samples}~\(=120{,}000\)). At \(k = 2\) these coefficients are
+now computed in closed form (Section~\ref{sec:zeta-closed-form}) and carry
+no sampling error; the sampled values are retained in the repository, and
+substituting them changes no crossover prediction and no \(\alpha\)
+verdict. The measured \(\alpha\) points and the
 noisy-pure crossover cells are averaged over \(48\) independently drawn
 states per size, \(8\) Monte Carlo trials each
 (\texttt{run\_budget\_sweep.py}: \texttt{N\_STATES}~\(=48\),
@@ -1929,7 +2095,7 @@ interpolation is used, and a cell whose curves do not cross inside the
 tested range is censored (returns none) and excluded from the aggregate
 rather than counted as a hit or a miss.
 
-\textbf{Fit uncertainty.} The exponential-fit residuals in Section~3.5 are
+\textbf{Fit uncertainty.} The exponential-fit residuals in Section~3.6 are
 positive at both ends of the range (\(+0.20\) at \(n = 2\), \(+0.13\) at
 \(n = 9\) in \(\log M^*\)) and negative through the middle, the signature of
 mild upward curvature; the fitted base accordingly rises with the window,
