@@ -195,7 +195,7 @@ def make_fig3():
     # "M_star" stored in theory_zetas.json is the superseded two-term zeta2/(4 zeta1)
     # (see anrl.theory.single_copy_law.crossover_budget), which is a factor 2 low.
     mstar = {(z["n"], z["k"]): z["zeta2"] / (2.0 * z["zeta1"])
-             for z in D.load("theory_zetas.json")["zetas"]
+             for z in D.zetas_raw()
              if z["k"] == 2 and z["zeta1"] > 0}
     fig, ax = plt.subplots(figsize=(3.6, 3.2))
     rows = []

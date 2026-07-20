@@ -113,3 +113,46 @@ def single_qubit_zeta1(t: float) -> float:
     numerically.
     """
     return 0.75 * t * t - 0.25 * t ** 4
+
+
+def closed_form_zetas(n: int, q: float) -> tuple[float, float]:
+    """ENSEMBLE-AVERAGED k=2 projection variances ``(zeta1, zeta2)`` for the noisy-pure ensemble.
+
+    Closed form for ``E_psi[zeta_c]`` over ``rho = (1-q)|psi><psi| + q I/2^n`` with
+    ``|psi>`` Haar-random, obtained by Haar-averaging the per-state second-moment identity
+    of Huang--Kueng--Preskill (arXiv:2002.08953, Lemma 4, eq. S52): the exact
+    ``E[hat x_P hat x_Q] = 3^{|supp(P) cap supp(Q)|} Tr(rho, P ominus Q)`` for two
+    reconstructed Pauli coefficients under local shadows.  Averaging uses the Haar moments
+    ``E[<P>^2] = 1/(d+1)`` and ``E[<P_u><P_s><P_s'>] = 2/((d+1)(d+2))`` (when
+    ``P_s P_s' = P_u``) and four weighted counts over compatible Pauli pairs
+    (``sum 3^|overlap| = 16^n`` with diagonal ``10^n``; ``sum 9^|overlap| = 34^n`` with
+    diagonal ``28^n``).  With ``d = 2^n``, ``u = 1-q``, ``p2 = u^2 + q(2-q)/d``,
+
+        zeta1 = 4^-n [ 1 + u^2(10^n-1)/(d+1) + 2u^2(4^n-1)/(d+1)
+                       + 2u^3(16^n-10^n-2*4^n+2)/((d+1)(d+2)) ] - p2^2,
+        zeta2 = 4^-n [ 28^n + u^2(34^n-28^n)/(d+1) ] - p2^2.
+
+    Consequences (verified): ``zeta2/7^n -> 1`` (so ``M*`` has base ``28/5 = 5.6`` and
+    prefactor ``1/(2(1-q)^2)`` exactly).  These are **k=2 only**; the ``k >= 3`` projection
+    variances have no closed form here (their kernels are dominated by state-dependent Haar
+    terms and require compatible-tuple counts beyond these four).
+
+    Exact rational arithmetic (``fractions.Fraction`` over Python big integers) is used so
+    there is no float overflow or precision loss at any ``n`` (the ``float`` cast is applied
+    only to the final results).
+    """
+    from fractions import Fraction
+
+    d = 2 ** n
+    uf = Fraction(q).limit_denominator(10 ** 9)
+    u = Fraction(1) - uf  # u = 1 - q, exact for the study's q values (e.g. 0.1 -> 9/10)
+    p2 = u * u + uf * (2 - uf) / Fraction(d)
+    inv4n = Fraction(1, 4 ** n)
+    z1 = inv4n * (
+        1
+        + u ** 2 * Fraction(10 ** n - 1, d + 1)
+        + 2 * u ** 2 * Fraction(4 ** n - 1, d + 1)
+        + 2 * u ** 3 * Fraction(16 ** n - 10 ** n - 2 * 4 ** n + 2, (d + 1) * (d + 2))
+    ) - p2 ** 2
+    z2 = inv4n * (28 ** n + u ** 2 * Fraction(34 ** n - 28 ** n, d + 1)) - p2 ** 2
+    return float(z1), float(z2)

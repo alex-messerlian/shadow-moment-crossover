@@ -91,3 +91,82 @@ def test_single_qubit_identity_vs_mc():
     snaps = _snapshots(rho, 1, 400_000, np.random.default_rng(3))
     mc = float((np.einsum("mij,ji->m", snaps[:, 0], rho).real ** 2).mean())
     assert mc == pytest.approx(single_qubit_second_moment(1.0), abs=5e-3)
+
+
+# ---- PASS 11: closed-form ensemble-averaged k=2 zetas ----
+import itertools as _it
+import numpy as _np
+from anrl.theory.single_copy_law import closed_form_zetas as _cfz
+from anrl.benchmark.ensembles import noisy_pure as _noisy_pure
+
+
+def _pauli_exps(rho, n):
+    """Tr(rho P_s) for all Pauli strings s, flat base-4 order (0=I,1=X,2=Y,3=Z)."""
+    Mp = _np.array([[1, 0, 0, 1], [0, 1, 1, 0], [0, 1j, -1j, 0], [1, 0, 0, -1]], complex)
+    v = rho.astype(complex).reshape((2,) * (2 * n))
+    perm = []
+    for q in range(n):
+        perm += [q, n + q]
+    v = _np.transpose(v, perm).reshape((4,) * n)
+    for q in range(n):
+        v = _np.moveaxis(v, q, 0); sh = v.shape
+        v = (Mp @ v.reshape(4, -1)).reshape(sh); v = _np.moveaxis(v, 0, q)
+    return v.real.reshape(-1)
+
+
+def _compat_pairs(n):
+    strs = list(_it.product(range(4), repeat=n)); idx = {s: i for i, s in enumerate(strs)}
+    S, SP, TRI, OV = [], [], [], []
+    for s in strs:
+        for sp in strs:
+            ov = [i for i in range(n) if s[i] != 0 and sp[i] != 0]
+            if all(s[i] == sp[i] for i in ov):
+                tri = tuple(s[i] if (s[i] != 0 and sp[i] == 0) else sp[i] if (sp[i] != 0 and s[i] == 0) else 0
+                            for i in range(n))
+                S.append(idx[s]); SP.append(idx[sp]); TRI.append(idx[tri]); OV.append(len(ov))
+    return _np.array(S), _np.array(SP), _np.array(TRI), _np.array(OV)
+
+
+def _exact_zetas_per_state(state, pairs):
+    """Sampling-free per-state (zeta1, zeta2) via HKP Lemma 4 compatible-pair sum."""
+    n = state.n; S, SP, TRI, OV = pairs; m = _pauli_exps(state.density_matrix(), n)
+    trr2 = float((m ** 2).sum() / 2 ** n)
+    z1 = float((3.0 ** OV * m[S] * m[SP] * m[TRI]).sum()) / 4 ** n - trr2 ** 2
+    z2 = float((9.0 ** OV * m[TRI] ** 2).sum()) / 4 ** n - trr2 ** 2
+    return z1, z2
+
+
+def test_closed_form_four_structural_counts():
+    for n in (2, 3, 4):
+        strs = list(_it.product("IXYZ", repeat=n))
+        def sup(s): return set(i for i, c in enumerate(s) if c != "I")
+        c16 = c10 = c34 = c28 = 0
+        for s in strs:
+            c10 += 3 ** len(sup(s)); c28 += 9 ** len(sup(s))
+            for sp in strs:
+                ov = sup(s) & sup(sp)
+                if all(s[i] == sp[i] for i in ov):
+                    c16 += 3 ** len(ov); c34 += 9 ** len(ov)
+        assert c16 == 16 ** n and c10 == 10 ** n and c34 == 34 ** n and c28 == 28 ** n
+
+
+def test_closed_form_matches_exact_evaluator_ensemble():
+    q = 0.1
+    for n in (3, 4):
+        pairs = _compat_pairs(n)
+        N = 250
+        z1s = _np.empty(N); z2s = _np.empty(N)
+        for s in range(N):
+            z1s[s], z2s[s] = _exact_zetas_per_state(_noisy_pure(n, q, _np.random.default_rng([4242, n, s])), pairs)
+        cf1, cf2 = _cfz(n, q)
+        sem1 = z1s.std(ddof=1) / _np.sqrt(N); sem2 = z2s.std(ddof=1) / _np.sqrt(N)
+        assert abs(z1s.mean() - cf1) <= 2 * sem1, (n, z1s.mean(), cf1, sem1)
+        assert abs(z2s.mean() - cf2) <= 2 * sem2, (n, z2s.mean(), cf2, sem2)
+
+
+def test_closed_form_asymptotic_limits():
+    q = 0.1
+    z1_20, z2_20 = _cfz(20, q)
+    assert abs(z2_20 / 7 ** 20 - 1.0) < 1e-3
+    mstar = z2_20 / (2 * z1_20)
+    assert abs(mstar / 5.6 ** 20 - 1.0 / (2 * (1 - q) ** 2)) < 0.02
