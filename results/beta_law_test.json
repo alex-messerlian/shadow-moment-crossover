@@ -1,0 +1,438 @@
+{
+ "meta": {
+  "commit": "397e5f1",
+  "pass": 12,
+  "seeds": {
+   "Haar-pure": "[21,n,s]",
+   "noisy-pure q=0.1": "[22,n,s]",
+   "lowrank2 rank=2": "[23,n,s]"
+  },
+  "deterministic_families": [
+   "product",
+   "GHZ",
+   "GHZ-noisy(q=0.15)"
+  ],
+  "k": 2,
+  "evaluator": "Clifford 3-design (V, trilinear) + 2-design (zeta2); rank-2 via exact 8-term trilinear expansion",
+  "V_definition": "E[Tr(G rho)^2], G=single-shot inverse-channel snapshot"
+ },
+ "description": "PASS12 generalization test of M*-base = 7/beta. beta=base(V); base(zeta2) is the growth base of raw zeta2. All numbers exact (deterministic families) or ensemble-averaged (sampled).",
+ "kernel_constants": {
+  "per_qubit_Wq2_weights": {
+   "identity": 112,
+   "X_Y_Z_each": 8
+  },
+  "zeta2_raw_identity": "4^-n*112^n=7^n (state-independent floor)",
+  "zeta2_raw_general": "sum_P m_P^2 * 7^(n-a) * 2^(-a), a=weight(P)  = 7^n * sum_P m_P^2 14^{-a}",
+  "compatible_pair_diag": "28^n -> base 7",
+  "compatible_pair_full": "34^n -> base 8.5 (ceiling)"
+ },
+ "families": {
+  "noisy-pure": {
+   "n": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "V": [
+    1.7506348365300852,
+    2.345259200209011,
+    2.990989872285668,
+    3.642161883851342,
+    4.372167956598814,
+    5.231112096779472,
+    6.2251549956210885
+   ],
+   "zeta1": [
+    1.0153285865300854,
+    1.650120137709011,
+    2.3155113566606684,
+    2.9764078799450924,
+    3.7112497681222503,
+    4.572605205910332,
+    5.567852101028804
+   ],
+   "zeta2": [
+    51.90723208188172,
+    366.4315878318978,
+    2537.44158274397,
+    17470.089373616043,
+    120891.97141993172,
+    838847.62152833,
+    5831319.783323651
+   ],
+   "zeta2_over_7n": [
+    1.059331266977178,
+    1.0683136671483902,
+    1.0568269815676676,
+    1.0394531667529032,
+    1.0275648022501824,
+    1.018583876650436,
+    1.0115387822274613
+   ],
+   "N": [
+    200,
+    200,
+    150,
+    120,
+    100,
+    60,
+    30
+   ],
+   "beta_local": 1.1900251572612253,
+   "base_zeta2_local": 6.95158409425938,
+   "Mstar_base_local": 5.7089967624787405,
+   "beta_asymptotic": 1.25,
+   "base_zeta2_asymptotic": 7.0,
+   "Mstar_base_exact": 5.6,
+   "pred_7_over_beta": 5.6,
+   "law_holds": true
+  },
+  "Haar-pure": {
+   "n": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "V": [
+    2.1999778961824337,
+    3.009262513432761,
+    3.815537390368272,
+    4.689325869325599,
+    5.592737671566572,
+    6.6576954850850765,
+    7.898274863748069
+   ],
+   "zeta1": [
+    1.1999778961824337,
+    2.009262513432761,
+    2.815537390368271,
+    3.6893258693255992,
+    4.592737671566571,
+    5.6576954850850765,
+    6.898274863748069
+   ],
+   "zeta2": [
+    52.64885060148654,
+    372.6818530212394,
+    2567.585641349627,
+    17659.09549169558,
+    121659.49432622963,
+    842642.4476894821,
+    5850521.110889726
+   ],
+   "zeta2_over_7n": [
+    1.0744663388058477,
+    1.086536014639182,
+    1.0693817748228351,
+    1.0506988452249408,
+    1.0340886393104032,
+    1.0231918038153225,
+    1.0148695698064385
+   ],
+   "N": [
+    200,
+    200,
+    150,
+    120,
+    100,
+    60,
+    30
+   ],
+   "beta_local": 1.1863376571431068,
+   "base_zeta2_local": 6.9430647921093955,
+   "Mstar_base_local": 5.694430434108182,
+   "beta_asymptotic": 1.25,
+   "base_zeta2_asymptotic": 7.0,
+   "Mstar_base_exact": 5.6,
+   "pred_7_over_beta": 5.6,
+   "law_holds": true
+  },
+  "lowrank2": {
+   "n": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "V": [
+    1.1570769025649803,
+    1.3765545882496604,
+    1.6156172209898292,
+    1.9888281373746703,
+    2.3661165157823145,
+    2.8694654712520262
+   ],
+   "zeta1": [
+    0.6935948659482366,
+    1.019302766483349,
+    1.3208715615168132,
+    1.7115047449636465,
+    2.104388027639696,
+    2.6129794353631866
+   ],
+   "zeta2": [
+    51.16267703121503,
+    359.0069972705485,
+    2485.532782750942,
+    17241.592734577214,
+    119665.9113755888,
+    833127.6209487399
+   ],
+   "zeta2_over_7n": [
+    1.0441362659431639,
+    1.0466676305263805,
+    1.0352073230949361,
+    1.0258578410529668,
+    1.0171434638253516,
+    1.0116382762633402
+   ],
+   "N": [
+    200,
+    200,
+    150,
+    120,
+    100,
+    60
+   ],
+   "beta_local": 1.2127321085467713,
+   "base_zeta2_local": 6.962113198084024,
+   "Mstar_base_local": 5.607004579844292,
+   "beta_asymptotic": null,
+   "base_zeta2_asymptotic": 7.0,
+   "Mstar_base_exact": null,
+   "pred_7_over_beta": null,
+   "law_holds": true
+  },
+  "GHZ-noisy": {
+   "n": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "V": [
+    1.5526562499999974,
+    1.8704179687499958,
+    2.744608398437492,
+    3.9828405761718613,
+    5.938908386230445,
+    8.854579879760701,
+    13.252725292205742
+   ],
+   "zeta1": [
+    0.9255902343749974,
+    1.297085058593746,
+    2.197239624023429,
+    3.4482282653808456,
+    5.410617906188941,
+    8.32943621482845,
+    12.729151509761742
+   ],
+   "zeta2": [
+    48.91480898437482,
+    346.5810420898419,
+    2453.9627874755697,
+    17427.950856439067,
+    124187.24346733121,
+    887836.5419266374,
+    6367415.557529648
+   ],
+   "zeta2_over_7n": [
+    0.9982614078443841,
+    1.010440355947061,
+    1.022058637016064,
+    1.0369459663496796,
+    1.0555741524987992,
+    1.0780694413365635,
+    1.1045334535449962
+   ],
+   "N": [
+    200,
+    200,
+    150,
+    120,
+    100,
+    60,
+    30
+   ],
+   "beta_local": 1.4967085363923447,
+   "base_zeta2_local": 7.171833166172825,
+   "Mstar_base_local": 4.692954346188455,
+   "beta_asymptotic": 1.5,
+   "base_zeta2_asymptotic": 7.5,
+   "Mstar_base_exact": 5.0,
+   "pred_7_over_beta": 4.666666666666667,
+   "law_holds": false
+  },
+  "product": {
+   "n": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "V": [
+    2.249999999999996,
+    3.374999999999991,
+    5.062499999999982,
+    7.593749999999966,
+    11.39062499999994,
+    17.085937499999893,
+    25.62890624999982
+   ],
+   "zeta1": [
+    1.249999999999996,
+    2.374999999999991,
+    4.062499999999982,
+    6.593749999999966,
+    10.39062499999994,
+    16.085937499999893,
+    24.62890624999982
+   ],
+   "zeta2": [
+    55.249999999999815,
+    420.8749999999979,
+    3163.062499999979,
+    23729.468749999804,
+    177977.51562499822,
+    1334837.8671874844,
+    10011290.503906116
+   ],
+   "zeta2_over_7n": [
+    1.1275510204081596,
+    1.2270408163265245,
+    1.3173937942523861,
+    1.4118800946034273,
+    1.5127839218777739,
+    1.620847809024525,
+    1.73662378005869
+   ],
+   "N": [
+    200,
+    200,
+    150,
+    120,
+    100,
+    60,
+    30
+   ],
+   "beta_local": 1.4999999999999987,
+   "base_zeta2_local": 7.5000048695052355,
+   "Mstar_base_local": 4.898496439749814,
+   "beta_asymptotic": 1.5,
+   "base_zeta2_asymptotic": 7.5,
+   "Mstar_base_exact": 5.0,
+   "pred_7_over_beta": 4.666666666666667,
+   "law_holds": false,
+   "closed_form": {
+    "zeta2": "7.5^n - 1",
+    "zeta1": "1.5^n - 1",
+    "Mstar_base": 5.0
+   }
+  },
+  "GHZ": {
+   "n": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "V": [
+    2.1249999999999964,
+    2.624999999999994,
+    3.9062499999999885,
+    5.7187499999999805,
+    8.570312499999964,
+    12.82031249999994,
+    19.2285156249999
+   ],
+   "zeta1": [
+    1.1249999999999964,
+    1.6249999999999938,
+    2.9062499999999885,
+    4.7187499999999805,
+    7.5703124999999645,
+    11.82031249999994,
+    18.2285156249999
+   ],
+   "zeta2": [
+    48.749999999999815,
+    347.74999999999824,
+    2474.0624999999836,
+    17666.187499999854,
+    126698.20312499873,
+    912530.3281249893,
+    6598869.316406162
+   ],
+   "zeta2_over_7n": [
+    0.9948979591836697,
+    1.0138483965014526,
+    1.030430029154512,
+    1.0511208127565808,
+    1.0769169574326916,
+    1.1080542583993662,
+    1.1446829329245125
+   ],
+   "N": [
+    200,
+    200,
+    150,
+    120,
+    100,
+    60,
+    30
+   ],
+   "beta_local": 1.499847653869591,
+   "base_zeta2_local": 7.231397262121808,
+   "Mstar_base_local": 4.689212067969698,
+   "beta_asymptotic": 1.5,
+   "base_zeta2_asymptotic": 7.5,
+   "Mstar_base_exact": 5.0,
+   "pred_7_over_beta": 4.666666666666667,
+   "law_holds": false,
+   "closed_form": {
+    "zeta2": "(7.5^n + 6.5^n)/2 + 1/2 - 1",
+    "zeta1": "~0.75*1.5^n - 1",
+    "Mstar_base": 5.0
+   }
+  }
+ },
+ "verdict": {
+  "conjecture": "M*(n) growth base = 7/beta, beta=base(V); assumes base(zeta2)=7 universally",
+  "result": "REFUTED as a universal one-parameter law; holds only when base(zeta2)=7",
+  "holds_for": {
+   "noisy-pure": "base_z2=7, beta=5/4 -> M* base 28/5=5.6 (== the paper anchor)",
+   "Haar-pure": "base_z2=7, beta=5/4 -> 5.6",
+   "lowrank2": "base_z2=7 -> M* base = 7/beta (law-form correct)"
+  },
+  "fails_for": {
+   "product": "base_z2=15/2 EXACT (closed form 7.5^n-1); M* base = 7.5/1.5 = 5.0, NOT 7/beta=14/3=4.667. Refuted at the conjecture OWN product anchor.",
+   "GHZ": "base_z2->15/2 (closed form (7.5^n+6.5^n)/2+1/2); M* base -> 5.0 != 4.667",
+   "GHZ-noisy(q=0.15)": "base_z2->15/2 asymptotically (crossover ~n=15 due to (1-q)^2/2 prefactor); M* base -> 5.0"
+  },
+  "exact_identity": "M* base = base(zeta2)/beta  (trivial: M*=zeta2/(2 zeta1), base(zeta1)=base(V)=beta)",
+  "why_no_universal_law": "base(zeta2)=7*growth_base(sum_P m_P^2 * 14^{-weight(P)}) is an INDEPENDENT spectral quantity of the state, not a function of beta. Spread spectra (Haar-pure, noisy, low-rank) give 7; concentrated stabilizer spectra (product, GHZ) give 15/2; ceiling 34/4=17/2=8.5. Both pure Haar (base 7) and pure product (base 7.5) exist, so purity alone does not fix it. Hence no f(beta) reproduces base(zeta2) across states.",
+  "conjecture_internal_flaw": "It correctly uses FULL V for beta but implicitly assumes DIAGONAL-only (7^n) for zeta2. The zeta2 off-diagonal (state Z-string weights m_P^2) lifts concentrated states to 15/2 by the same mechanism the prompt flagged for V.",
+  "paper_impact": "NONE. The paper asserts base 28/5 only for its noisy-pure q=0.1 ensemble (base_z2=7, beta=5/4); it does not claim a universal 7/beta law. No paper.tex claim is contradicted."
+ }
+}
