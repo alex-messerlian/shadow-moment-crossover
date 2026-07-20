@@ -27,10 +27,6 @@ def zeta_components() -> dict:
     return {(z["n"], z["k"]): z["components"] for z in load("theory_zetas.json")["zetas"]}
 
 
-def m_star_table() -> dict:
-    return {(z["n"], z["k"]): z["M_star"] for z in load("theory_zetas.json")["zetas"]}
-
-
 def theory_single_rmse(n: int, k: int, budget: int, comps: dict) -> float | None:
     """Parameter-free single-copy RMSE from the exact Hoeffding decomposition."""
     if (n, k) not in comps:

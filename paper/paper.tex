@@ -1010,8 +1010,10 @@ collective measurement on this hardware, it is not the entangling
 overhead.
 
 By contrast, generic (Haar-random) states at
-\(n = 4\) route heavily on this topology, requiring many more entangling
-gates once routing SWAPs are inserted. The favorable transpilation is a property of structured states
+\(n = 4\) require 46 CZ gates on this topology --- 26 intrinsic to the
+circuit plus 20 routing-attributable CZ (about seven physical SWAPs'
+worth) inserted for the coupling map --- against the GHZ ladder's 10 CZ
+with zero routing. The favorable transpilation is a property of structured states
 on a matched topology, not of the SWAP test in general. We therefore
 restrict the hardware series to GHZ ladders.
 
@@ -1530,6 +1532,10 @@ used, and the signed deviation is +3.4\%, which is within noise once
 cell correlations are accounted for. The predicted crossover
 \(n^*_{\text{pred}}\) is reported as an integer throughout, and we do not
 propagate the projection-variance estimation uncertainty onto it.
+Resampling the projection variances by their committed relative spread
+shifts the predicted crossover for \(5\) of the \(60\) noisy-pure cells
+(mean per-cell probability \(1.7\%\)), always by exactly one qubit and
+never by more.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
