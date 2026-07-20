@@ -720,5 +720,110 @@
         "ratio": 0.9871155969175224
       }
     }
+  },
+  "offdiag_limit_highN": {
+    "method": "sampling-free per-state OFF (Clifford 3-design TOTAL + exact 4^n DIAGONAL); only stochasticity is the state draw",
+    "state_seeds": "noisy_pure(n, q=0.1, numpy.random.default_rng([777, n, s])) for s in range(N); disjoint from theory_zetas [0,n,s,0]",
+    "limit_constant_2_1mq_cubed": 1.4580000000000002,
+    "off_model_formula": "2(1-q)^3 * 1/((1+2^-n)(1+2^(1-n))) * (1-(5/8)^n)",
+    "per_n": {
+      "4": {
+        "n_states": 400,
+        "off_mean": 1.1347474205986914,
+        "off_sem": 0.010864533243087728,
+        "off_model": 1.0336433823529414,
+        "ratio": 1.0978132690363682,
+        "ratio_sem": 0.010510910656977429,
+        "diag_over_1.25n_mean": 0.762516565213134,
+        "diag_over_1.25n_sem": 0.00246130555173802
+      },
+      "5": {
+        "n_states": 400,
+        "off_mean": 1.2591280648223353,
+        "off_sem": 0.00935415390290462,
+        "off_model": 1.2037515040106952,
+        "ratio": 1.046003315989334,
+        "ratio_sem": 0.007770834654609503,
+        "diag_over_1.25n_mean": 0.7853063504996116,
+        "diag_over_1.25n_sem": 0.0014695637638400152
+      },
+      "6": {
+        "n_states": 300,
+        "off_mean": 1.3329331997510219,
+        "off_sem": 0.008583675011192197,
+        "off_model": 1.3090934659090911,
+        "ratio": 1.0182108722278094,
+        "ratio_sem": 0.006556961160318161,
+        "diag_over_1.25n_mean": 0.7982103903221478,
+        "diag_over_1.25n_sem": 0.0009651309768152217
+      },
+      "7": {
+        "n_states": 80,
+        "off_mean": 1.3999542169195354,
+        "off_sem": 0.01268037541436569,
+        "off_model": 1.3713762326699463,
+        "ratio": 1.0208389088047343,
+        "ratio_sem": 0.009246459951896744,
+        "diag_over_1.25n_mean": 0.8033141122848846,
+        "diag_over_1.25n_sem": 0.0011328542930148543
+      },
+      "8": {
+        "n_states": 40,
+        "off_mean": 1.4255621836362358,
+        "off_sem": 0.009593366732715373,
+        "off_model": 1.407516009934056,
+        "ratio": 1.0128212919603132,
+        "ratio_sem": 0.006815813578678111,
+        "diag_over_1.25n_mean": 0.8062623405271898,
+        "diag_over_1.25n_sem": 0.0009518249707199902
+      }
+    },
+    "diag_target_1mq_sq": 0.81,
+    "extrapolation_L_minus_A_rn": {
+      "n4_8": {
+        "L": 1.4992152168323454,
+        "L_se": 0.034625070736004654,
+        "A": 1.8385854616502497,
+        "r": 0.6669678040039552,
+        "contains_1.458_2sig": true
+      },
+      "n5_8": {
+        "L": 1.511663049122999,
+        "L_se": 0.07217025621526565,
+        "A": 1.6047359675516386,
+        "r": 0.6914171107920237,
+        "contains_1.458_2sig": true
+      }
+    },
+    "largest_n_ratio": {
+      "n": 8,
+      "ratio": 1.0128212919603132,
+      "ratio_sem": 0.006815813578678111
+    },
+    "out_of_repo_reference_n567": {
+      "5": {
+        "off": 1.2561,
+        "off_err": 0.0107,
+        "ratio": 1.0435,
+        "diag_norm": 0.7881
+      },
+      "6": {
+        "off": 1.3487,
+        "off_err": 0.0135,
+        "ratio": 1.0302,
+        "diag_norm": 0.7992
+      },
+      "7": {
+        "off": 1.3739,
+        "off_err": 0.016,
+        "ratio": 1.0019,
+        "diag_norm": 0.8025
+      }
+    },
+    "reference_agreement_within_2sig": {
+      "5": true,
+      "6": true,
+      "7": true
+    }
   }
 }

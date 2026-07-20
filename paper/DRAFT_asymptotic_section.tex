@@ -1,212 +1,206 @@
 % =====================================================================
-% DROP-IN DRAFT — NOT YET IN paper.tex
-% Two results: (A2) an exact closed form for zeta_1, and (A1) the
-% asymptotic base of M*(n).
+% DROP-IN DRAFT v2 — supersedes asymptotic_draft.tex
+% Two results: an exact closed form for zeta_1, and the asymptotic base
+% of M*(n).
 %
-% VERIFICATION STATUS OF EVERY CLAIM BELOW
-%   [V-CC]  verified by an independent path in the repo (Clifford
-%           3-design + exact outcome enumeration), reproduces the
-%           committed zeta_1 within MC spread at every n reached
+% CHANGES FROM v1 (all from PASS 5 findings):
+%   1. \operatorname{Tr} -> \mathrm{Tr}   (paper's macro, 53 uses)
+%   2. proposition environment REMOVED. revtex4-2 here loads amsmath /
+%      amssymb / amsfonts and NOT amsthm, and the paper uses no theorem
+%      environments anywhere. Restructured as displayed prose, which
+%      matches the paper's style and requires NO preamble change.
+%   3. PLACEMENT MOVED: insert as a new 3.6, i.e. AFTER the present 3.5
+%      "The alpha transition" and BEFORE the present 3.6 "Why a changing
+%      exponent matters". Only the present 3.6 shifts to 3.7. This
+%      leaves the literal "Section~3.5" at paper.tex:1932 CORRECT and
+%      breaks no cross-reference that PASS 5 found. Logically it also
+%      reads better: 3.5 reports the fitted bases and the window drift,
+%      3.6 says what the drift converges to, 3.7 closes the section.
+%
+% VERIFICATION TAGS
+%   [V-CC]  independent path in the repo (Clifford 3-design + exact
+%           outcome enumeration), reproduces committed zeta_1 within MC
+%           spread at every n reached
 %   [V-EX]  exact identity, verified numerically
-%   [V-EN]  verified by direct 4^n enumeration over depolarized Haar
-%           states, n <= 6, outside the repo
-%   [PEND]  NOT yet checked against the committed-seed states — see the
-%           PASS 5 prompt; do not submit while any [PEND] remains
-%   [MEAS]  measured, not derived; stated as such in the text
+%   [V-HI]  verified by direct 4^n enumeration at HIGH state count
+%           (300/120/30 states at n=5/6/7), outside the repo
+%   [PEND]  awaiting the PASS 6 high-state-count rerun on committed seeds
+%   [MEAS]  measured, not derived; the text says so
 %
-% NOTATION: uses \operatorname{Tr}. Replace with the paper's macro.
-% PLACEMENT: intended as a new subsection after 3.4. Inserting it as 3.5
-%   renumbers the present 3.5 -> 3.6 and 3.6 -> 3.7. Cross-references to
-%   the alpha transition and to Fig. 1 must be re-checked.
+% NOTHING HERE GOES INTO paper.tex UNTIL EVERY [PEND] IS CLEARED.
 % =====================================================================
 
 
 % ============================ BLOCK A =================================
-% New subsection. Insert immediately after the present Sec. 3.4.
+% New subsection. Insert AFTER the present Sec. 3.5 ("The alpha
+% transition"), BEFORE the present Sec. 3.6.
 % ======================================================================
 
-\subsection{The exact projection variance, and the base it fixes}
+\subsection{What the fitted base converges to}
 \label{sec:zeta1-closed-form}
 
-The obstruction of Section~3.4 is not that \(\zeta_1\) has no closed form.
-It is that the closed form is cubic in the Pauli expectations where the
-ansatz was quadratic. We give it here, and it fixes the growth base that
-Section~3.5 fits.
+The base fitted above drifts with the fitting window, from \(5.14\) over
+\(n = 2\) to \(7\) to \(5.60\) over \(n = 4\) to \(9\). That drift is the
+finite-size approach to a constant we can derive, and deriving it
+requires the closed form for \(\zeta_1\) that Section~3.4 declined to
+supply. The obstruction there was not that no closed form exists. It was
+that the closed form is cubic in the Pauli expectations where the ansatz
+was quadratic.
 
-Write \(P_s\) for the Pauli string indexed by \(s \in \{I,X,Y,Z\}^n\), let
-\(\operatorname{supp}(s)\) be the qubits on which \(s\) is not the
-identity, and write \(\langle P_s\rangle = \operatorname{Tr}(\rho P_s)\).
+Write \(P_s\) for the Pauli string indexed by \(s \in \{I,X,Y,Z\}^n\),
+let \(\mathrm{supp}(s)\) be the qubits on which \(s\) is not the
+identity, and write \(\langle P_s \rangle = \mathrm{Tr}(\rho P_s)\).
 Call an ordered pair \((s,s')\) \emph{compatible} when \(s\) and \(s'\)
-agree on \(\operatorname{supp}(s)\cap\operatorname{supp}(s')\), and for a
-compatible pair let \(s\triangle s'\) be the string equal to \(s\) on
-\(\operatorname{supp}(s)\setminus\operatorname{supp}(s')\), equal to
-\(s'\) on \(\operatorname{supp}(s')\setminus\operatorname{supp}(s)\), and
-identity elsewhere.
-
-\begin{proposition}
-\label{prop:zeta1}
-For the local Haar single-qubit shadow of Section~2.1 and any \(n\)-qubit
-state \(\rho\),
+agree on \(\mathrm{supp}(s) \cap \mathrm{supp}(s')\), and for a
+compatible pair let \(s \triangle s'\) be the string equal to \(s\) on
+\(\mathrm{supp}(s) \setminus \mathrm{supp}(s')\), equal to \(s'\) on
+\(\mathrm{supp}(s') \setminus \mathrm{supp}(s)\), and identity
+elsewhere. Then for the local Haar shadow of Section~2.1 and any
+\(n\)-qubit state,
 \[
-\mathbb{E}\!\left[\operatorname{Tr}(G\rho)^2\right]
+\mathbb{E}\!\left[\mathrm{Tr}(G\rho)^2\right]
 = 4^{-n} \sum_{(s,s')\ \mathrm{compatible}}
-3^{\,|\operatorname{supp}(s)\cap\operatorname{supp}(s')|}\,
-\langle P_s\rangle \langle P_{s'}\rangle \langle P_{s\triangle s'}\rangle ,
+3^{\,|\mathrm{supp}(s)\, \cap\, \mathrm{supp}(s')|}\,
+\langle P_s \rangle \langle P_{s'} \rangle
+\langle P_{s \triangle s'} \rangle ,
 \]
-and \(\zeta_1 = \mathbb{E}[\operatorname{Tr}(G\rho)^2] -
-\operatorname{Tr}(\rho^2)^2\).
-\end{proposition}
-
-\noindent
-\emph{Proof sketch.} Write the single-qubit snapshot as
-\(G^{(q)} = (I + 3\,\hat n_q\!\cdot\!\vec\sigma)/2\), so that
-\(G = 2^{-n}\bigotimes_q (I + 3\,\hat n_q\!\cdot\!\vec\sigma)\) and
-\(\operatorname{Tr}(G\rho) = 2^{-n}\sum_s 3^{|s|} c_s(\hat n)
-\langle P_s\rangle\) with \(c_s = \prod_{q\in\operatorname{supp}(s)}
-(\hat n_q)_{s_q}\). Parametrise \(\hat n_q = \varepsilon_q \hat m_q\)
-with \(\hat m_q\) uniform and \(\varepsilon_q = \pm 1\) the outcome. The
-outcome probability is itself linear in the \(\varepsilon_q\), so
-squaring and summing over \(\varepsilon\) leaves exactly those triples
-\((u,s,s')\) with \(\operatorname{supp}(u) = \operatorname{supp}(s)
-\triangle \operatorname{supp}(s')\); every qubit then carries either
-zero or two factors of \(\hat m\), never one or three. Averaging
-\(\hat m_q\) over the sphere gives \(\delta/3\) on each qubit of
-\(\operatorname{supp}(s)\cup\operatorname{supp}(s')\), which forces
-agreement on the overlap and contributes
-\(3^{-(|s|+|s'|-|s\wedge s'|)}\), cancelling against \(3^{|s|+|s'|}\)
-and leaving \(3^{|s\wedge s'|}\). \(\square\)
+with \(\zeta_1 = \mathbb{E}[\mathrm{Tr}(G\rho)^2] - \mathrm{Tr}(\rho^2)^2\).
+The identity follows from expanding the snapshot as
+\(G = 2^{-n} \bigotimes_q (I + 3\,\hat n_q \!\cdot\! \vec\sigma)\) and
+averaging in two stages. The measurement outcome enters linearly through
+sign variables \(\varepsilon_q = \pm 1\), so squaring and summing over
+them retains only those triples whose supports satisfy
+\(\mathrm{supp}(u) = \mathrm{supp}(s) \triangle \mathrm{supp}(s')\);
+every qubit then carries either zero or two factors of the measurement
+axis, never one or three. Averaging the axes over the sphere contributes
+\(\delta/3\) on each qubit of \(\mathrm{supp}(s) \cup \mathrm{supp}(s')\),
+which forces agreement on the overlap and cancels against
+\(3^{|s|+|s'|}\), leaving \(3^{|s \wedge s'|}\).
 
 The identity is exact for every state, entangled or not, and reduces to
 the single-qubit law of Section~3.3: at \(n=1\) the four contributing
-pairs give \(\tfrac14(1 + 3t^2 + t^2 + t^2) = \tfrac14 + \tfrac54 t^2\).
-%% [V-EX] n=1 reduction. [V-CC] agrees to 1e-15 across the Bloch range.
+pairs give \(\tfrac{1}{4}(1 + 3t^2 + t^2 + t^2) = \tfrac14 + \tfrac54 t^2\).
+%% [V-EX] n=1 reduction exact. [V-CC] agrees to 1e-15 across the Bloch range.
 An independent evaluation, by exact single-qubit Clifford 3-design
 average and exact outcome enumeration rather than by the estimator of
 Section~3.1, reproduces the sampled \(\zeta_1\) at every system size
 within its Monte Carlo spread.
-%% [V-CC] n=2..8, deviations 0.25%, 0.03%, -0.04%, -0.21%, all inside
-%% the committed zeta1_rel_spread.
+%% [V-CC] n=2..8, deviations 0.25%, 0.03%, -0.04%, -0.21%.
 
-Two consequences follow, and they settle what Section~3.4 left open.
+Two consequences follow.
 
 \paragraph{The rejected ansatz is exactly the diagonal.}
-Restricting Proposition~\ref{prop:zeta1} to \(s = s'\) gives
-\(4^{-n}\sum_s 3^{|s|}\langle P_s\rangle^2\), which is precisely the
+Restricting the sum to \(s = s'\) gives
+\(4^{-n} \sum_s 3^{|s|} \langle P_s \rangle^2\), which is precisely the
 weight-only quadratic form of Section~3.4 with \(c_w = 3^w/4^n\). The
-residual that form leaves is therefore not an unidentified shortfall
-but exactly the off-diagonal sum. Fitting free weight coefficients to
-the diagonal recovers \(3^w/4^n\) to \(9\times10^{-16}\), and fitting
-the same form to the exact \(\zeta_1\) across the nineteen-state family
-of Section~3.4 leaves a maximum relative residual of \(0.122\),
-reproducing the figure reported there.
+residual that form leaves is therefore not an unidentified shortfall but
+exactly the off-diagonal sum. Fitting free weight coefficients to the
+diagonal recovers \(3^w/4^n\) to \(9 \times 10^{-16}\), and fitting the
+same form to the exact \(\zeta_1\) across the nineteen-state family of
+Section~3.4 leaves a maximum relative residual of \(0.122\), reproducing
+the figure reported there.
 %% [V-CC] c_w recovery 8.9e-16; ansatz residual 0.122 vs committed 0.123.
 
-\paragraph{The diagonal sets the growth base.}
-Two exact facts about the diagonal fix it. First,
-\(\sum_s 3^{|s|} = (1 + 3\cdot 3)^n = 10^n\), since each qubit
-contributes one identity of weight \(3^0\) and three Paulis of weight
-\(3^1\).
-%% [V-EX] verified at n=2,3,4: 100, 1000, 10000.
-Second, for a Haar-random pure state depolarized at rate \(q\), the
-mean squared Pauli expectation over non-identity strings is
-\((1-q)^2/(2^n+1)\) exactly.
-%% [V-EX][V-CC] measured/predicted ratio 1.0000 at every n reached.
-Together these give
-\[
-\mathrm{DIAG}(n) \;\longrightarrow\; (1-q)^2 \left(\tfrac{5}{4}\right)^{\!n},
-\]
-because \(10^n/(4^n 2^n) = (5/4)^n\).
-%% [V-CC] DIAG/(5/4)^n = 0.589, 0.794, 0.747, 0.796, 0.796, 0.809, 0.806
-%%        (n=2..8) against (1-q)^2 = 0.81.
-%% [V-EN] independent enumeration: 0.683, 0.729, 0.767, 0.784, 0.799 (n=2..6).
+\paragraph{The diagonal fixes the base.}
+Two exact facts settle the diagonal's growth. First,
+\(\sum_s 3^{|s|} = (1 + 3\cdot 3)^n = 10^n\), each qubit contributing one
+identity of weight \(3^0\) and three Paulis of weight \(3^1\). Second,
+for a Haar-random pure state depolarized at rate \(q\), the mean squared
+Pauli expectation over non-identity strings is \((1-q)^2/(2^n+1)\)
+exactly. Since \(10^n/(4^n 2^n) = (5/4)^n\), the diagonal grows as
+\((1-q)^2 (5/4)^n\).
+%% [V-EX] sum verified 100/1000/10000 at n=2,3,4; mean <P>^2 ratio 1.0000.
+%% [V-CC] DIAG/(5/4)^n = 0.589, 0.794, 0.747, 0.796, 0.796, 0.809, 0.806 (n=2..8).
+%% [V-HI] 0.788, 0.799, 0.8025 at n=5,6,7 against (1-q)^2 = 0.81.
 
 The off-diagonal sum is bounded. Its terms carry three non-identity
-Pauli expectations, whose Haar average is \(2/((d+1)(d+2))\) with
-\(d = 2^n\) because the two commuting factors multiply to the third; the
-compatible pairs carry total weight \(16^n\), of which \(10^n\) is the
-diagonal. Hence
-\[
-\mathrm{OFF}(n) \;\longrightarrow\; 2(1-q)^3 ,
-\]
-approached from below with corrections of order \(2^{-n}\) and
-\((5/8)^n\).
-%% [PEND] limit 2(1-q)^3 = 1.458 at q=0.1. NOT yet checked on the
-%%        committed-seed states. [V-EN] outside the repo: measured OFF
-%%        = 0.683, 0.924, 1.120, 1.247, 1.338 (n=2..6) against the
-%%        finite-n form, ratio closing 1.442 -> 1.022.
+Pauli expectations; the two compatible factors commute and multiply to
+the third, so the Haar third moment is \(2/((d+1)(d+2))\) with
+\(d = 2^n\), while the compatible pairs carry total weight \(16^n\) of
+which \(10^n\) is the diagonal. The off-diagonal therefore tends to
+\(2(1-q)^3\), approached from below with corrections of order \(2^{-n}\)
+and \((5/8)^n\).
+%% [V-EX] weights 16^n and 10^n exact at n=2,3,4.
+%% [V-EX] Haar third moment ratio 1.019, 0.986, 0.998 at n=2,3,4.
+%% [V-HI] measured/predicted ratio 1.044, 1.030, 1.002 at n=5,6,7
+%%        (300/120/30 states); at n=7, 1.0019 +/- 0.012.
+%% [PEND] PASS 6 rerun on committed seeds at high state count.
 
-Since \(\mathrm{OFF}\) is bounded while \(\mathrm{DIAG}\) grows
-geometrically, the diagonal dominates, and
+Since the off-diagonal is bounded while the diagonal grows
+geometrically, the diagonal dominates and
 \[
-\zeta_1(n) \;\longrightarrow\; (1-q)^2\left(\tfrac{5}{4}\right)^{\!n}
-+ 2(1-q)^3 - (1-q)^4 .
+\zeta_1(n) \;\longrightarrow\;
+(1-q)^2 \left(\tfrac{5}{4}\right)^{\! n} + 2(1-q)^3 - (1-q)^4 .
 \]
 At \(q = 0.1\) this is \(0.81\,(1.25)^n + 0.802\), which matches the
-sampled \(\zeta_1\) to \(1.2\%\) at \(n=8\) and \(0.5\%\) at \(n=9\).
-%% [PEND] depends on the OFF limit above.
+sampled \(\zeta_1\) to \(1.2\%\) at \(n = 8\) and \(0.5\%\) at \(n = 9\).
+%% [V-CC] +1.18% at n=8, -0.51% at n=9. Low n is off, as an asymptotic
+%%        form should be.
 
-The second projection variance has base \(7\) per qubit, which is the
-exact value at a maximally mixed marginal recorded in Section~2.5 and
-which Haar-typical states approach; the sampled ratio
-\(\zeta_2/7^n\) is flat at approximately \(1.0\) across the range.
-%% [MEAS] the prefactor C_2 is measured, not derived.
-Therefore
+The second projection variance has base \(7\) per qubit, the exact value
+at a maximally mixed marginal recorded in Section~2.5 and one that
+Haar-typical states approach; the sampled ratio \(\zeta_2/7^n\) is
+constant to \(1.3\%\) over \(n \ge 6\).
+%% [MEAS] C_2 = 1.018 +/- 0.014 over n>=6. Measured, not derived.
+Hence
 \[
 M^*(n) = \frac{\zeta_2}{2\zeta_1}
-\;\longrightarrow\; \frac{C_2}{2(1-q)^2}\left(\frac{28}{5}\right)^{\!n},
+\;\longrightarrow\; \frac{C_2}{2(1-q)^2}
+\left(\frac{28}{5}\right)^{\! n},
 \qquad \frac{28}{5} = 5.6 .
 \]
 
-\paragraph{What the data says about the base.}
-The window-dependence reported in Section~3.5 and Appendix~D is the
-finite-size approach to this constant, not an artifact of the fit. Three
-diagnostics agree, none of which depends on a choice of fitting window:
+The window dependence reported above is the approach to this constant,
+not an instability in the fit. Three diagnostics agree, none of which
+depends on a choice of fitting window:
 
 \begin{center}
-\begin{tabular}{lccc}
+\begin{tabular}{lcc}
 \hline
-quantity & predicted & measured & window \\
+geometric-mean ratio, \(n = 4 \ldots 9\) & predicted & measured \\
 \hline
-\(\zeta_1\) geometric-mean ratio & \(5/4 = 1.25\)  & \(1.2433\) & \(n=4\ldots 9\) \\
-\(\zeta_2\) geometric-mean ratio & \(7\)           & \(6.9732\) & \(n=4\ldots 9\) \\
-\(M^*\)     geometric-mean ratio & \(28/5 = 5.6\)  & \(5.6087\) & \(n=4\ldots 9\) \\
+\(\zeta_1(n+1)/\zeta_1(n)\) & \(5/4 = 1.25\) & \(1.2433\) \\
+\(\zeta_2(n+1)/\zeta_2(n)\) & \(7\)          & \(6.9732\) \\
+\(M^*(n+1)/M^*(n)\)         & \(28/5 = 5.6\) & \(5.6087\) \\
 \hline
 \end{tabular}
 \end{center}
 
 \noindent
-The \(M^*\) figure carries a \(95\%\) interval of \([5.457, 5.746]\),
-which contains \(5.6\); \(M^*(n)/5.6^n\) is flat over \(n \ge 4\),
-running \(0.557\) at \(n=4\) to \(0.562\) at \(n=9\). The base is
-therefore derived rather than fitted. The prefactor is not: it depends
-on \(C_2\), which we measure and do not derive, and the finite-size
-values sit below the asymptotic \(C_2/2(1-q)^2 \approx 0.62\) because
-the constant term in \(\zeta_1\) is still \(12\%\) of it at \(n=9\).
-%% Keep this caveat. It is the sentence a referee will test.
+The \(M^*\) figure carries a \(95\%\) interval of \([5.457,\, 5.746]\),
+which contains \(5.6\), and \(M^*(n)/5.6^n\) is flat over \(n \ge 4\),
+running \(0.557\) at \(n = 4\) to \(0.562\) at \(n = 9\).
+
+The base is therefore derived. The prefactor is not. It carries \(C_2\),
+which we measure rather than derive, and the finite-size values of
+\(M^*(n)/5.6^n\) sit below the asymptotic \(C_2/2(1-q)^2 \approx 0.62\)
+because the constant term in \(\zeta_1\) is still \(12\%\) of it at
+\(n = 9\). What this section establishes is the growth rate of the
+threshold, not its absolute size at any particular \(n\), for which the
+evaluated coefficients of Section~3.5 remain the operative input.
+%% Keep this paragraph. It is what a referee will test first.
 
 
 % ============================ BLOCK B =================================
-% Patch to the closing paragraph of Sec. 3.4. The present text hedges
-% the missing ingredient as "an observation from the algebra rather than
-% a theorem" and declines to rule out a closed form. Both are now
-% superseded. REPLACE that paragraph with:
+% Patch to the closing paragraph of Sec. 3.4, which currently hedges the
+% missing ingredient as "an observation from the algebra rather than a
+% theorem" and declines to rule out a closed form. REPLACE with:
 % ======================================================================
 
 A weight-only quadratic form is insufficient, and
 Section~\ref{sec:zeta1-closed-form} identifies exactly what it omits: it
 is the diagonal of an exact cubic identity, and the residual it leaves
-is the off-diagonal sum of that identity. The shortfall is therefore not
-an unresolved feature of the algebra. For \(n \ge 2\) the projection
-variances are still estimated numerically in what follows, since the
-exact form requires the full Pauli spectrum; the variance law is exact
-and its inputs, as evaluated here, are sampled.
+is that identity's off-diagonal sum. The shortfall is not an unresolved
+feature of the algebra. For \(n \ge 2\) the projection variances are
+still estimated numerically in what follows, since evaluating the exact
+form requires the full Pauli spectrum; the variance law is exact and its
+inputs, as evaluated here, are sampled.
 
 
 % ============================ BLOCK C =================================
-% Patch to the conclusion. The present text opens the three questions
-% with "Whether zeta_1 admits a closed form under a richer ansatz than
-% Pauli weight, which would make M*(n) fully analytic." REPLACE that
-% clause with:
+% Patch to the conclusion. Present text opens the three questions with
+% "Whether zeta_1 admits a closed form under a richer ansatz than Pauli
+% weight, which would make M*(n) fully analytic." REPLACE that clause:
 % ======================================================================
 
 Two questions follow from this work, the first of the three we opened
@@ -218,8 +212,8 @@ projection variance's constant and which we measure rather than derive.
 
 
 % ============================ BLOCK D =================================
-% MENTOR'S CALL — do not apply without him. These change the paper's
-% headline framing, which the project has held fixed.
+% MENTOR'S CALL. Do not apply without him. These change the paper's
+% headline framing, which the project has deliberately held fixed.
 % ======================================================================
 
 % D1. ABSTRACT. Present: "...this budget grows approximately
@@ -227,20 +221,24 @@ projection variance's constant and which we measure rather than derive.
 % empirical finite-size fit over that range, not a proven asymptotic
 % rate."
 %
-% Candidate replacement:
-%   "...this budget grows exponentially with base 28/5, which we derive
-%   from an exact closed form for the first projection variance and
-%   which the finite-size fits approach from below over the range we
-%   reach."
+% Candidate: "...this budget grows exponentially with base 28/5, which
+% follows from an exact closed form for the first projection variance
+% and which the finite-size fits approach from below over the range we
+% reach."
 %
-% Weigh against: the whole paper is framed as finite-size theory plus
-% simulation. Promoting a derived constant into the abstract changes
-% what the paper claims to be. Consider instead leaving the abstract
-% alone and letting Sec. 3.5 carry it.
+% Against: the paper is framed throughout as finite-size theory plus
+% simulation with a qualified hardware case study. Promoting a derived
+% constant into the abstract changes what the paper claims to be, and
+% the prefactor is still measured. A middle option is to leave the
+% abstract alone and let Sec. 3.6 carry it.
 
-% D2. SEC 3.5 / APPENDIX D. The sentence "This is a finite-size fit over
-% the sizes we reach ... not a measurement of an asymptotic rate" is
-% still true of the FIT and should stay. What can be added is a forward
-% reference: the window drift is the approach to the derived base of
-% Sec. \ref{sec:zeta1-closed-form}, not an instability in the fit.
-% This is the minimal honest change and costs nothing framing-wise.
+% D2. TITLE. "a finite-size crossover criterion" is now arguably
+% understated for Sec. 3, though still exactly right for Sec. 5 and 6.
+% Raise it; do not decide it here.
+
+% D3. SEC 3.5 / APPENDIX D. "This is a finite-size fit over the sizes we
+% reach ... not a measurement of an asymptotic rate" remains true OF THE
+% FIT and should stay. The minimal honest change is a forward reference:
+% the window drift is the approach to the base derived in Sec.
+% \ref{sec:zeta1-closed-form}. This costs nothing framing-wise and is
+% the one change worth making even if D1 and D2 are declined.
