@@ -408,3 +408,71 @@ Verified against the two fetched papers (PDF text extracted locally, not from me
   2(1-q)^3 - (1-q)^4, the threshold base M* -> (28/5)^n, and the single-copy/collective crossover
   and exponential-wall framing (Secs 4-6). These use the second-moment formula as an input but
   are not stated in either source.
+
+
+---
+
+# PASS 9 (2026-07-20) — PRIOR ART FOR THE CLOSED-FORM ENSEMBLE-AVERAGED ZETAS
+
+Verified against 5 fetched papers (PDF text extracted locally) + 2 web searches. The object
+at risk: a closed-form HAAR-AVERAGED local-shadow variance for zeta_1, zeta_2 of a depolarized
+Haar-random state, and the resulting analytic M*(n) with base 28/5 and prefactor 1/(2(1-q)^2).
+
+## The closed forms (verified in 9.1, exact ensemble averages)
+- zeta1 = 4^-n[ 1 + u^2(10^n-1)/(d+1) + 2u^2(4^n-1)/(d+1) + 2u^3(16^n-10^n-2*4^n+2)/((d+1)(d+2)) ] - tr2^2
+- zeta2 = 4^-n[ 28^n + u^2(34^n-28^n)/(d+1) ] - tr2^2   (u=1-q, d=2^n, tr2=u^2+q(2-q)/d)
+- Derived from HKP Lemma 4 (per-state) + Haar moments E[<P>^2]=1/(d+1),
+  E[<Pu><Ps><Ps'>]=2/((d+1)(d+2)); counts sum_compat 3^|ov|=16^n (diag 10^n),
+  sum_compat 9^|ov|=34^n (diag 28^n), all exact at n=2,3,4.
+- Reproduce the PASS-8 exact evaluator over >=250 Haar states within 2 SEM (n=3..7).
+- Asymptotics: zeta1/(5/4)^n -> (1-q)^2; zeta2/7^n -> 1 (so C_2=1 EXACTLY);
+  M*(n) -> (28/5)^n / (2(1-q)^2), i.e. base 28/5 and prefactor 1/(2(1-q)^2), both EXACT.
+
+## Term search across the 5 named sources (verbatim PDF extraction)
+10^n, 16^n, 28^n, 34^n, 5/4, 28/5, and the threshold zeta_2/(2 zeta_1): **NOT FOUND in any** of
+Elben 2007.06305, HKP 2002.08953, Hayashi 2606.00527, Gong 2410.12712, Aasen 2601.04020.
+
+## Per-source (9.2a)
+- **Elben 2007.06305** (Mixed-state entanglement from local randomized measurements, 2020-07-13,
+  ref [18]). App. D eq. D15/D16: the EXACT variance decomposition into linear+quadratic (the
+  Hoeffding/U-statistic structure) AND a variance UPPER BOUND
+  Var[p2] <= 4*2^|AB| p2 / M + 4*2^{1.5|AB|} / M^2, plus the two 1/M vs 1/sqrt(M) regimes
+  (Fig. D.1). NO Haar averaging (0 "Haar" in the paper), NO closed form, NO 28/5, NO threshold.
+  => confirms the paper's "Elben bounds rather than evaluates, no threshold" is ACCURATE for
+  Elben (unlike the PASS-8 finding that the same wording is FALSE when applied to HKP Lemma 4).
+- **HKP 2002.08953** (ref [1]). Lemma 4 = per-state 2nd-moment identity (evaluation); shadow-norm
+  bounds. No Haar-averaged closed form, no constants, no threshold.
+- **Hayashi 2606.00527**. Prop 4 (restates HKP), Thm 4 (biased). 0 "Haar"; no closed form; no
+  threshold.
+- **Gong 2410.12712** (On the sample complexity of purity and inner product estimation, ref [4]).
+  Sample-complexity LOWER BOUNDS using convex mixtures of Haar-random states as hard instances.
+  No shadow-variance closed form, no constants, no threshold.
+- **Aasen 2601.04020** (Limitations for adaptive quantum state tomography ..., ref [20]).
+  Numerically Haar-averaged tomography-error curves. No purity-shadow variance closed form, no
+  constants, no threshold.
+
+## Web screen (9.2b) -- closest hits, NOT the object
+- Hu, You et al., "Classical shadow tomography with locally scrambled quantum dynamics"
+  (arXiv:2107.04817): ensemble-averaged shadow NORM via the entanglement-feature formalism -- a
+  general framework for ensemble-averaged variances, but not the specific purity-estimator closed
+  form, the (5/4)^n rate, the 28/5 base, or the threshold.
+- arXiv:2202.03272 (Pauli-invariant unitary ensembles): ensemble-averaged shadow-variance
+  framework, same character.
+- **SCREEN, not proof:** 5 papers read verbatim + 2 web searches; a full exhaustive negative
+  would require reading the locally-scrambled appendices.
+
+## What is and is not new (9.2c)
+- **Prior art:** the variance DECOMPOSITION (Elben, HKP), the per-state 2nd-moment IDENTITY (HKP
+  Lemma 4), and the ensemble-averaged-variance FRAMEWORK (Hu-You locally-scrambled).
+- **Not found in the sources searched (plausibly new, with caveats):**
+  (i) the explicit closed-form ensemble-averaged zeta_1 -- but it is a routine Haar-average of HKP
+      Lemma 4 using standard Haar moments;
+  (ii) the closed-form zeta_2 -- same;
+  (iii) the analytic M*(n) -- follows from (i),(ii); the threshold concept zeta_2/(2 zeta_1) is the
+      paper's;
+  (iv) the base 28/5 -- follows (= 7/(5/4));
+  (v) the prefactor 1/(2(1-q)^2) -- follows from C_2=1 exactly.
+- Two novelty claims have inverted in this project; (i),(ii) are elementary given HKP Lemma 4 and
+  the Hu-You framework, so they should be framed as an explicit evaluation, not a new technique.
+  (iii)-(v) -- the threshold, base, and prefactor -- were not found in any source and are the
+  paper's genuine analytic contribution.

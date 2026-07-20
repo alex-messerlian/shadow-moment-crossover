@@ -1,0 +1,289 @@
+{
+  "meta": {
+    "commit": "5e57aaf",
+    "q": 0.1,
+    "u": 0.9,
+    "note": "ensemble-averaged (Haar) closed forms for depolarized Haar-random pure states under local shadows"
+  },
+  "closed_forms": {
+    "tr2": "u^2 + q(2-q)/d, u=1-q, d=2^n (state-independent Tr(rho^2))",
+    "zeta1": "4^-n [ 1 + u^2(10^n-1)/(d+1) + 2u^2(4^n-1)/(d+1) + 2u^3(16^n-10^n-2*4^n+2)/((d+1)(d+2)) ] - tr2^2",
+    "zeta2": "4^-n [ 28^n + u^2(34^n-28^n)/(d+1) ] - tr2^2",
+    "derivation": "HKP Lemma 4 per-state E[Tr(G rho)^2]=4^-n sum_compat 3^|ov| m_s m_s' m_{s\u0414s'}, Haar-averaged via E[<P>^2]=1/(d+1), E[<Pu><Ps><Ps'>]=2/((d+1)(d+2)); counts sum_compat 3^|ov|=16^n (diag 10^n), sum_compat 9^|ov|=34^n (diag 28^n) verified exact n=2,3,4"
+  },
+  "verify_9_1b_vs_exact_evaluator": {
+    "3": {
+      "N": 250,
+      "z1_exact_mean": 1.6510686005171555,
+      "z1_sem": 0.00478712269786269,
+      "z1_cf": 1.6542984375000005,
+      "z1_ratio": 0.9980476092404912,
+      "z2_exact_mean": 366.40277573522064,
+      "z2_sem": 0.5860773130692807,
+      "z2_cf": 366.7061109375,
+      "z2_ratio": 0.9991728111606761
+    },
+    "4": {
+      "N": 250,
+      "z1_exact_mean": 2.297364899007073,
+      "z1_sem": 0.008440570233235575,
+      "z1_cf": 2.30852791819853,
+      "z1_ratio": 0.995164442628804,
+      "z2_exact_mean": 2530.315659899622,
+      "z2_sem": 2.9805841224855625,
+      "z2_cf": 2534.644558249081,
+      "z2_ratio": 0.9982921083213145
+    },
+    "5": {
+      "N": 250,
+      "z1_exact_mean": 2.975304465123113,
+      "z1_sem": 0.008428941910873124,
+      "z1_cf": 2.982413714175301,
+      "z1_ratio": 0.9976162767028605,
+      "z2_exact_mean": 17474.448857709118,
+      "z2_sem": 11.751216822072804,
+      "z2_cf": 17482.893649405185,
+      "z2_ratio": 0.9995169683082552
+    },
+    "6": {
+      "N": 80,
+      "z1_exact_mean": 3.7017031556529387,
+      "z1_sem": 0.010407426677626789,
+      "z1_cf": 3.715021602006393,
+      "z1_ratio": 0.9964149747214764,
+      "z2_exact_mean": 120763.82954423505,
+      "z2_sem": 68.50889311822078,
+      "z2_cf": 120882.11473806153,
+      "z2_ratio": 0.9990214830863706
+    },
+    "7": {
+      "N": 80,
+      "z1_exact_mean": 4.566398481687927,
+      "z1_sem": 0.009551753939662696,
+      "z1_cf": 4.557753539045468,
+      "z1_ratio": 1.0018967551817797,
+      "z2_exact_mean": 838636.1445773961,
+      "z2_sem": 275.8161400026235,
+      "z2_cf": 838500.5165712341,
+      "z2_ratio": 1.0001617506530784
+    }
+  },
+  "verify_9_1c_vs_committed_MC": {
+    "mc_outside_own_spread_at": [
+      "z1 n=2",
+      "z2 n=2",
+      "z1 n=3",
+      "z2 n=3",
+      "z2 n=8",
+      "z1 n=9"
+    ],
+    "note": "closed form is the ensemble mean; committed MC is a 4-state mean with state-sampling noise, unrepresentative at small n"
+  },
+  "asymptotics_9_1d": {
+    "closed_form_ratios": {
+      "2": {
+        "z1": 1.0160437500000001,
+        "z2": 52.03119375,
+        "Mstar": 25.604799867131703
+      },
+      "3": {
+        "z1": 1.6542984375000005,
+        "z2": 366.7061109375,
+        "Mstar": 110.83432790146122
+      },
+      "4": {
+        "z1": 2.30852791819853,
+        "z2": 2534.644558249081,
+        "Mstar": 548.9742052214388
+      },
+      "5": {
+        "z1": 2.982413714175301,
+        "z2": 17482.893649405185,
+        "Mstar": 2930.9973942095367
+      },
+      "6": {
+        "z1": 3.715021602006393,
+        "z2": 120882.11473806153,
+        "Mstar": 16269.36902234647
+      },
+      "7": {
+        "z1": 4.557753539045468,
+        "z2": 838500.5165712341,
+        "Mstar": 91986.16263340575
+      },
+      "8": {
+        "z1": 5.565678081642589,
+        "z2": 5832513.353273619,
+        "Mstar": 523971.4970679978
+      },
+      "9": {
+        "z1": 6.798058393657449,
+        "z2": 40655601.089535326,
+        "Mstar": 2990236.2362367157
+      },
+      "10": {
+        "z1": 8.322047736929843,
+        "z2": 283807811.9762529,
+        "Mstar": 17051561.163055457
+      },
+      "11": {
+        "z1": 10.217169914653502,
+        "z2": 1983160401.7273655,
+        "Mstar": 97050377.85870184
+      },
+      "12": {
+        "z1": 12.580151159868315,
+        "z2": 13866672697.20677,
+        "Mstar": 551132992.0042043
+      },
+      "13": {
+        "z1": 15.53030594578802,
+        "z2": 96998964562.2639,
+        "Mstar": 3122892906.9672008
+      },
+      "14": {
+        "z1": 19.215833814940552,
+        "z2": 678697591160.3972,
+        "Mstar": 17659852746.871212
+      },
+      "15": {
+        "z1": 23.821424166873133,
+        "z2": 4749603421280.772,
+        "Mstar": 99691844366.83952
+      },
+      "16": {
+        "z1": 29.577604638084292,
+        "z2": 33241696840939.445,
+        "Mstar": 561940313417.6938
+      },
+      "17": {
+        "z1": 36.7723342236714,
+        "z2": 232668078982064.34,
+        "Mstar": 3163629449885.306
+      },
+      "18": {
+        "z1": 45.76544055408177,
+        "z2": 1628574327952708.0,
+        "Mstar": 17792621552808.992
+      },
+      "19": {
+        "z1": 57.006634615760575,
+        "z2": 1.1399582063080688e+16,
+        "Mstar": 99984695991236.92
+      },
+      "20": {
+        "z1": 71.05801025295271,
+        "z2": 7.979519873870325e+16,
+        "Mstar": 561479265002269.56
+      }
+    },
+    "limits": {
+      "z1_over_1.25n": 0.81,
+      "z2_over_7n": 1.0,
+      "Mstar_over_5.6n": 0.6172839506172839
+    },
+    "statement": "zeta1/(5/4)^n -> (1-q)^2=0.81; zeta2/7^n -> 1 (C_2=1); M*/5.6^n -> 1/(2(1-q)^2)=0.6173"
+  },
+  "prefactor_9_1e": {
+    "C2_limit": 1.0,
+    "C2_exact": true,
+    "Mstar_prefactor": "1/(2(1-q)^2)",
+    "Mstar_prefactor_value": 0.6172839506172839,
+    "base": "28/5=5.6",
+    "exact": true
+  },
+  "base_refits_9_1f": {
+    "closed_form": {
+      "[2,7]": {
+        "z1": 1.3378682671510522,
+        "z2": 6.931533157945185,
+        "Mstar": 5.181028153620585
+      },
+      "[2,9]": {
+        "z1": 1.2937159050966713,
+        "z2": 6.936575843431709,
+        "Mstar": 5.361745817690465
+      },
+      "[4,9]": {
+        "z1": 1.2381357216195334,
+        "z2": 6.935118112513384,
+        "Mstar": 5.60125840117266
+      }
+    },
+    "pass8_exact": {
+      "[2,7]": {
+        "z1": 1.3459,
+        "z2": 6.9221,
+        "Mstar": 5.143
+      },
+      "[2,9]": {
+        "z1": 1.2985,
+        "z2": 6.9325,
+        "Mstar": 5.3387
+      },
+      "[4,9]": {
+        "z1": 1.2402,
+        "z2": 6.9335,
+        "Mstar": 5.5907
+      }
+    },
+    "mc_fit_reference": {
+      "z1": 1.3,
+      "z2": 6.94,
+      "Mstar": 5.34
+    },
+    "window_drift_reproduced_analytically": true
+  },
+  "prior_art_9_2": {
+    "sources_searched_verbatim": {
+      "Elben_2007.06305": {
+        "title": "Mixed-state entanglement from local randomized measurements",
+        "date": "2020-07-13",
+        "has": "exact variance decomposition into linear+quadratic (Hoeffding) eq.D15/D16 AND a variance UPPER BOUND Var[p2]<=4*2^|AB| p2/M + 4*2^{1.5|AB|}/M^2 AND the two 1/M vs 1/sqrt(M) regimes",
+        "lacks": "Haar-averaged closed form; 10^n/16^n/28^n/34^n; (5/4)^n; 28/5; zeta_2/(2 zeta_1) threshold (0 'Haar' in paper)"
+      },
+      "HKP_2002.08953": {
+        "title": "Predicting Many Properties ...",
+        "has": "Lemma 4 per-state 2nd-moment identity (evaluation); shadow-norm bounds",
+        "lacks": "Haar-averaged closed form; the specific constants; the threshold"
+      },
+      "Hayashi_2606.00527": {
+        "title": "Finite-Sample Selected Covariance Spectra in Classical Shadows",
+        "has": "Prop 4 (restates HKP), Thm 4 (biased)",
+        "lacks": "Haar averaging (0 'Haar'); the closed form; the threshold"
+      },
+      "Gong_2410.12712": {
+        "title": "On the sample complexity of purity and inner product estimation",
+        "has": "sample-complexity LOWER BOUNDS using Haar-random states as hard instances",
+        "lacks": "shadow variance closed form; the constants; the threshold"
+      },
+      "Aasen_2601.04020": {
+        "title": "Limitations for adaptive quantum state tomography in the presence of detector noise",
+        "has": "numerically Haar-averaged tomography error curves",
+        "lacks": "purity-shadow variance closed form; the constants; the threshold"
+      }
+    },
+    "term_search_all_5": {
+      "10^n": "NOT FOUND",
+      "16^n": "NOT FOUND",
+      "28^n": "NOT FOUND",
+      "34^n": "NOT FOUND",
+      "5/4": "NOT FOUND",
+      "28/5": "NOT FOUND",
+      "zeta2/(2 zeta1) threshold": "NOT FOUND"
+    },
+    "web_search_closest": [
+      "Hu-You 2107.04817 locally-scrambled shadows (ensemble-averaged shadow norm via entanglement-feature formalism; general framework, not the specific purity closed form)",
+      "2202.03272 Pauli-invariant unitary ensembles (ensemble-averaged shadow variance framework)"
+    ],
+    "screen_not_proof": "5 named papers read verbatim + 2 web searches; a full exhaustive negative would require reading the locally-scrambled appendices",
+    "novelty_9_2c": {
+      "(i)_closed_form_zeta1": "not found as an explicit statement in the 5 sources or the screen; but it is a routine Haar-average of HKP Lemma 4 (prior art) using standard Haar moments",
+      "(ii)_closed_form_zeta2": "same as (i)",
+      "(iii)_analytic_Mstar_n": "not found in any source; follows from (i),(ii); the threshold concept zeta_2/(2 zeta_1) is the paper's",
+      "(iv)_base_28/5": "not found in any source; = 7/(5/4), follows from the closed forms",
+      "(v)_prefactor_1/(2(1-q)^2)": "not found in any source; follows from C_2=1 exactly",
+      "summary": "the variance DECOMPOSITION (Elben,HKP) and per-state 2nd-moment identity (HKP Lemma 4) and the ensemble-averaged-variance FRAMEWORK (Hu-You locally-scrambled) are prior art; the specific closed-form ensemble-averaged zeta_1,zeta_2 for depolarized Haar states, the analytic M*(n), base 28/5, and prefactor 1/(2(1-q)^2) were NOT FOUND in the sources searched"
+    }
+  }
+}
