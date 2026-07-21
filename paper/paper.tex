@@ -217,20 +217,15 @@ The \(k\)-th moment is estimated by the U-statistic over distinct
 
 which is exactly unbiased: \(\mathbb{E}[U_M] = \mathrm{Tr}(\rho^k)\).
 
-The tuples are formed exhaustively rather than sampled, which is optimal
-at a fixed copy budget though not mandatory in total computational cost:
-an incomplete U-statistic trades statistical variance for lower classical
-compute and memory. Forming tuples from
+The tuples are formed exhaustively rather than sampled. Forming them from
 already-collected snapshots is classical post-processing and consumes no
-additional copies of the state, so subsampling them saves nothing
-physical while inflating the variance. In our sweeps a subsampled
-estimator inflated the single-copy RMSE by a factor of about five at
-\(n = 2\), growing to more than fiftyfold at \(n = 4\), relative to the 
-exact one. That factor is larger than the effect the benchmark is even trying
-to measure, and it is also enough to reverse the benchmark's conclusion.
-Any comparison between single-copy and collective measurement must use the
-exact estimator on the single-copy side, or it is measuring an implementation
-choice rather than physics.
+additional copies of the state, so subsampling saves nothing physical while
+inflating the variance --- in our sweeps it inflated the single-copy RMSE
+by a factor of about five at \(n = 2\) and more than fiftyfold at
+\(n = 4\), enough to reverse the benchmark's conclusion. An incomplete U-statistic trades that variance for
+lower classical compute and memory, which is a different tradeoff and not
+the one at issue here. Any single-copy-versus-collective comparison must
+use the exact estimator on the single-copy side.
 
 For \(k = 2\) the full U-statistic has an exact closed form, and the two
 ways of evaluating it trade \(M\) against \(n\). The power-sum reduction
@@ -339,7 +334,8 @@ exponential in \(n\), against a target that is itself shrinking as
 The exponential is therefore a property of the estimator rather than of
 high-purity states. Its base is set by \(\zeta_2\), which barely moves
 with purity: exactly \(7\) per qubit at the maximally mixed state, and
-\(6.93\) fitted on the noisy-pure ensemble below. Purity governs
+exactly \(7\) for any spread Pauli spectrum
+(Section~\ref{sec:zeta-closed-form}). Purity governs
 \(\zeta_1\), and so \(M^*\) and the exponent, not the exponential itself.
 The ensemble still decides what the benchmark measures, but for a
 different reason than an easy estimator: at \(\rho = \mathbb{I}/2^n\) the
@@ -470,14 +466,7 @@ Compounded over \(n\) qubits, that factor is the origin of the
 exponential cost, and it is state-dependent rather than universal. The
 compounding picture is a heuristic for the factorized case: it does not
 carry over to arbitrary entangled or correlated states, which is what
-Section 3.4 shows when the weight-only ansatz fails at \(n \geq 2\). This
-is the analytic reason why the ensemble choice of Section 2.5 is not
-cosmetic: a low-purity ensemble is not a harder instance of the same
-problem but a different one, and an easier benchmark to score well on at a
-fixed absolute error, because the target itself shrinks toward the
-depolarizing floor. The estimator's own variance stays exponential there,
-as Section 2.5 shows; it is the quantity being resolved that gets smaller,
-not the noise on it.
+Section 3.4 shows when the weight-only ansatz fails at \(n \geq 2\).
 
 The identity also passes the boundary check. At \(t = 0\) it gives
 \(\zeta_1 = 0\), which is correct: for a maximally mixed qubit,
@@ -660,7 +649,7 @@ kernel bases are not read off the maximally mixed values, and the
 required counts over compatible tuples are beyond what we derived. The
 \(k \ge 3\) coefficients used below are estimated numerically.
 
-The fitted base reported in the next subsection drifts with the fitting
+The fitted base drifts with the fitting
 window, from \(5.14\) over \(n = 2\) to \(7\) to \(5.60\) over \(n = 4\)
 to \(9\). The closed forms reproduce that drift exactly, returning
 \(5.18\), \(5.36\) and \(5.60\) over the same windows with no sampling
@@ -727,14 +716,6 @@ across \(k = 2, 3, 4\) against the exact law's 19 of 20, and misses
 \(\zeta_3/\zeta_2\) exceeds \(10^4\) and the discarded terms carry the
 variance.
 
-The threshold base is also stable across independent Monte Carlo
-samplings. Derived here from \(\zeta_2/(2\zeta_1)\) on a fresh estimate
-of the projection variances, it is 5.15 to 5.35; an earlier,
-independently sampled run of the same \(\zeta_2/(2\zeta_1)\) construction
-gave 5.343. This agreement is a reproducibility check on the
-projection-variance estimate, not corroboration by a methodologically
-independent route.
-
 A log-linear regression of \(M^*(n)\) over \(n = 2\) to \(9\) returns a
 base of \(5.34\) with a 95\% confidence interval of \([5.14,\, 5.54]\) and
 a prefactor of \(0.75 \pm 0.09\) (regression standard errors, treating
@@ -742,14 +723,10 @@ each \(M^*(n)\) as fixed); \(\zeta_1\) and \(\zeta_2\) fit to bases
 \(1.30\ [1.26,\, 1.34]\) and \(6.94\ [6.90,\, 6.98]\). The \(\zeta_2\)
 base sits just below the exact per-qubit second moment \(7\) at the
 maximally mixed state (Section 3.3) and barely moves across the fitting
-windows; the base drift below is carried by \(\zeta_1\). The regression
-residuals are not flat --- positive at both ends of the range and negative
-through the middle --- so the fitted base drifts upward as the window
-moves out, from \(5.14\) over \(n = 2\) to \(7\) to \(5.60\) over
-\(n = 4\) to \(9\). This is a finite-size fit over the sizes we reach,
-with the base robust to dropping any single \(n\) (it stays within
-\([5.25,\, 5.49]\)), not a measurement of an asymptotic rate. Appendix C
-gives the residual and leave-one-out detail.
+windows; the base drift is carried by \(\zeta_1\). The residuals
+carry mild upward curvature, so the fitted base drifts with the window in
+the manner Section~\ref{sec:zeta-closed-form} anticipates; Appendix C
+gives the residual, window, and leave-one-out detail.
 
 \begin{figure}[tb]
 \centering
@@ -758,31 +735,18 @@ gives the residual and leave-one-out detail.
 \label{fig:alpha}
 \end{figure}
 
-\hypertarget{why-a-changing-exponent-matters}{%
-\subsection{Why a changing exponent
-matters}\label{why-a-changing-exponent-matters}}
-
-A fixed-exponent bound of the form \(\mathrm{RMSE} \leq C_n / \sqrt{M}\)
-is not wrong. It is a bound, and it holds. Nor is a fixed exponent what
-the tighter analyses assume: the two-term treatments keep both orders and
-exhibit the two regimes directly \cite{elben2020mixed}. What they leave
-open is where the regimes meet, since bounding \(\zeta_1\) and \(\zeta_2\)
-separately does not constrain their ratio, and that is what evaluating the coefficients supplies. The fixed-exponent summary is still worth
-addressing, because it describes the wrong
-regime for the systems people are actually running. At nine qubits, with
-the budgets accessible on current hardware, the estimator sits in the
-\(\alpha = 1\) regime, where additional shots buy error reduction faster
-than \(1/\sqrt{M}\) but from a variance that is already exponentially
-large. The improved rate does not rescue the protocol, because the
-exponential prefactor still dominates it. What the transition establishes
-is that the shape of the sample-complexity curve is not the shape a
-fixed-exponent analysis assumes, and that any extrapolation of measured
-scaling to larger systems which presumes \(\alpha = 1/2\) will be wrong
-in a predictable direction. At fixed \(n\) the linear term dominates once
-the budget grows without bound, so the asymptotic scaling remains the
-familiar square-root law: the migration reported here is a finite-budget
-effect over the window hardware actually reaches, not a change in the
-asymptotic sample complexity.
+A fixed-exponent bound \(\mathrm{RMSE} \leq C_n/\sqrt{M}\) is not wrong; it
+is a bound and it holds, and the tighter two-term treatments do not assume
+a fixed exponent either \cite{elben2020mixed}. What a fixed-exponent summary
+describes is the wrong regime for the systems being run. At nine qubits and
+the budgets accessible on current hardware the estimator sits near
+\(\alpha = 1\), where extra shots buy error reduction faster than
+\(1/\sqrt{M}\) but from a variance already exponentially large, so any
+extrapolation presuming \(\alpha = 1/2\) errs in a predictable direction.
+At fixed \(n\) the linear term dominates once the budget grows without
+bound, so the asymptotic scaling remains the familiar square-root law: the
+migration reported here is a finite-budget effect over the window hardware
+actually reaches, not a change in asymptotic sample complexity.
 
 Having characterized the single-copy cost exactly, we turn to the
 collective route, where the error has a different character entirely.
@@ -932,16 +896,12 @@ at a fixed additive precision \(\varepsilon\): the collective-test outcome is a
 bounded random variable, so estimating \(\mathrm{Tr}(\rho^k)\) to fixed
 \(\varepsilon\) costs \(O(1/\varepsilon^2)\) shots at every \(n\), and
 the collective error saturates at the bias floor rather than growing. It
-is not a claim that collective measurement is cheap for all tasks. For a
-task whose target precision must itself shrink exponentially in \(n\)
-(purity \emph{testing} of a Haar-random pure state against the maximally
-mixed state is the canonical case, where the gap to be resolved closes
-exponentially under noise), \cite{noisylearning2026} proves that
-exponentially many samples are required even with two copies, and that
-no adaptive strategy escapes this. Our floor bounds the bias of
-estimation; it does not make exponentially fine testing cheap. The
-quantitative reconciliation, including why our operating regime is
-unaffected, is in Section~7.
+is not a claim that collective measurement is cheap for all tasks: for
+a task whose target precision must itself shrink exponentially in \(n\),
+\cite{noisylearning2026} proves that exponentially many samples are
+required even with two copies. Our floor bounds the bias of estimation; it
+does not make exponentially fine testing cheap. Section~7 gives the
+quantitative reconciliation.
 
 \hypertarget{validation-on-83-cells-and-four-ensembles}{%
 \subsection{Validation on 83 cells and four
@@ -992,7 +952,7 @@ is not a curve fit to the ensemble it was built on.
 \begin{figure}[tb]
 \centering
 \includegraphics[width=0.74\linewidth]{fig2_crossover_boundary}
-\caption{Crossover validation across 83 cells. Predicted versus Monte-Carlo-observed crossover size $n^*$ over moment orders $k\in\{2,3,4\}$, three noise models, and four state ensembles (three unseen by the theory). The criterion places 82 of these 83 simulated crossovers within one qubit of the prediction and 73 of 83 exactly; the cells are simulation, not hardware; for the higher moment orders the collective side is an idealized bounded-outcome primitive that carries no gate, depth, or routing cost.}
+\caption{Crossover validation across 83 cells. Predicted versus Monte-Carlo-observed crossover size $n^*$ over moment orders $k\in\{2,3,4\}$, three noise models, and four state ensembles (three unseen by the theory). Accuracy is reported in Sec.~5.2. The cells are simulation, not hardware; for the higher moment orders the collective side is an idealized bounded-outcome primitive carrying no gate, depth, or routing cost.}
 \label{fig:boundary}
 \end{figure}
 
@@ -1392,10 +1352,8 @@ them. What this work adds is the evaluation of
 Section~\ref{sec:zeta-closed-form}, the resulting threshold
 \(M^* = \zeta_2/(2\zeta_1)\), the spectral functionals that fix its
 growth base, and the comparison against the collective route, which that
-work does not treat. Alternative shadow ensembles, such as the Hamiltonian-driven
-shadows of \cite{hamiltonianshadow2021}, target different observable
-classes and sample-complexity questions rather than the variance of
-nonlinear functionals.
+work does not treat. Alternative shadow ensembles \cite{hamiltonianshadow2021}
+target different observable classes.
 
 \textbf{U-statistics and the Hoeffding decomposition for quantum
 moments.} Straeter, Tsesmelis and Kwek \cite{straeter2026} construct
@@ -1411,20 +1369,16 @@ variances are bounded rather than evaluated for a state, and no change of
 scaling regime is considered. We do not claim novelty for the
 Hoeffding technique itself.
 
-\textbf{Crossovers in shadow sample complexity.} A crossover in shot
-cost between Pauli and Clifford shadow ensembles for multipartite
-entanglement witnesses has been reported \cite{paulicliffordxover2026}:
-ensemble-dependent variance bounds yield qualitatively distinct
-snapshot-cost scaling, with Pauli-favorable performance for local
-witnesses crossing over to Clifford-favorable performance as the witness
-becomes more global. That is a crossover in the
-choice of measurement ensemble, not between single-copy and collective
-measurement, and its mechanism is unrelated to ours. The single-copy
-versus collective comparison has, however, been made on hardware: Peng
-et al.~\cite{peng2025beyond} implement a Fredkin gate and report a
-reduction in sample complexity for a hybrid two-copy scheme against
-single-copy shadows. That comparison is empirical and at fixed settings,
-and is not accompanied by a law locating where the two routes cross.
+\textbf{Crossovers and hardware comparison.} A crossover in shot cost
+between Pauli and Clifford shadow ensembles has been reported for
+multipartite entanglement witnesses \cite{paulicliffordxover2026}; that is a
+crossover in the choice of measurement ensemble rather than between
+single-copy and collective measurement, and its mechanism is unrelated to
+ours. The single-copy versus collective comparison has been made on
+hardware: Peng et al.~\cite{peng2025beyond} implement a Fredkin gate and
+report a reduction in sample complexity for a hybrid two-copy scheme against
+single-copy shadows, empirically and at fixed settings, without a law
+locating where the two routes cross.
 
 \textbf{Statistical-to-bias-floor transitions on hardware.} A March 2026
 study of shadow tomography on an integrated photonic processor
@@ -1618,21 +1572,13 @@ the quantity being estimated. That number
 is not an accident of implementation, and this paper explains where it
 comes from.
 
-That the effective budget-scaling exponent for shadow-based moment
-estimation is not a constant, and changes character with the measurement
-budget, is established \cite{elben2020mixed, aasen2026limitations}. What
-does not follow from the bounds is where it changes: separate upper bounds
-on \(\zeta_1\) and \(\zeta_2\) constrain their ratio not at all, so the
-threshold is not located by them. We evaluate the projection variances
-exactly for depolarized Haar-random pure states at a single noise rate,
-verify the resulting variance against
-brute-force Monte Carlo of the exact estimator at three moment orders and three state ensembles,
-and confirm its prediction of the exponent out of sample with no
-fitted parameters. That evaluation fixes the threshold, and with it the
+That the effective budget-scaling exponent is not a constant is established
+\cite{elben2020mixed, aasen2026limitations}; where it changes is not,
+because separate upper bounds on \(\zeta_1\) and \(\zeta_2\) constrain their
+ratio not at all. Evaluating them fixes the threshold, and with it the
 exponent over the budget window an experiment can actually reach. The
-asymptotic scaling at fixed system size is not what moves: that remains
-the square-root law. Because the fitted threshold grows steeply with \(n\) over this range, that window is where the experiments at the sizes we reach sit. The mechanism
-is a competition between two terms in the estimator's variance whose ratio grows approximately exponentially over the tested range, and locating it is what the evaluated coefficients buy.
+asymptotic scaling at fixed system size is unchanged and remains the
+square-root law.
 
 Paired with two exact bias laws for the collective route, distinguished
 by the geometry of the noise channel rather than by its rate, the
@@ -1659,11 +1605,11 @@ mechanisms, four excluded outright and three bounded well below the deficit. A p
 bounded, characterizable bias floor cannot be fielded on a device whose
 floor moves by 0.2 between sessions.
 
-That is the actionable conclusion for hardware developers, and it is
-more specific than a call for better gates. Under the assumed median-CZ model, two-qubit gate error came out smaller than the observed deficit; the figure of merit the field advertises was not what limited this test. Readout
-fidelity, which the published specification for this backend does not give, and run-to-run stability, which
-that specification does not characterize, are what stand between current devices and
-a collective-measurement advantage that the criterion places near six qubits under the noise we model.
+That is more specific than a call for better gates. The figure of merit
+the field advertises was not what limited this test; readout fidelity and
+run-to-run stability, neither of which the published specification for
+this backend gives, are what stand between current devices and the
+advantage the criterion places near six qubits under the noise we model.
 
 Two questions follow from this work. The first of the three we opened,
 whether \(\zeta_1\) admits a closed form richer than Pauli weight, is
