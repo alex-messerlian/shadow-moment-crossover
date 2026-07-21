@@ -2151,7 +2151,14 @@ and all \(14\) replications agree on both the measured and the predicted
 within the tested range; the remaining \(40\) --- \(28\) noisy-pure and
 \(12\) held-out --- were censored because their single-copy and collective
 curves do not cross inside the swept range, and are excluded from the
-aggregate rather than scored as a hit or a miss.
+aggregate rather than scored as a hit or a miss. Treating ``no crossover in the
+swept range'' as a valid prediction and scoring all swept cells, the criterion is
+exact on \(109\) and within one qubit on \(118\), or \(88.6\%\) and \(95.9\%\);
+the censored cells are not random, concentrating at the largest budgets, where the
+crossover is pushed past the swept range, and in the Haar-pure ensemble. Among the
+censored cells the criterion agrees on no crossover in \(36\) and misses in \(4\),
+so the censoring discards mostly correct no-crossover predictions but also removes
+four misses that would lower the within-one-qubit figure to \(95.9\%\).
 Table~\ref{tab:cells} lists all \(83\). One cell misses by more than one
 qubit (noisy-pure, \(k = 4\), predicted \(4\) against measured \(2\)),
 giving \(82/83 = 98.8\%\) within one qubit and \(73/83 = 88.0\%\) exact.
