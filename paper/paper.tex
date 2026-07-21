@@ -144,8 +144,8 @@ and the exact second moment that would fix it is applied in the
 literature to worst-case sample complexity rather than to a state.
 
 \textbf{Thesis.} We evaluate the state-dependent projection variances for
-depolarized Haar-random pure states at a single noise rate, numerically,
-and feed them into the exact variance formula. That fixes
+depolarized Haar-random pure states at a single noise rate in closed
+form, and feed them into the exact variance formula. That fixes
 the crossover budget \(M^* = \zeta_2/(2\zeta_1)\), which grows
 exponentially in \(n\) with a base near five over the sizes we reach, and,
 set against two exact bias laws for the collective route, yields a
@@ -699,8 +699,9 @@ Defining \(\alpha\) as the effective exponent --- the negative slope of \(\log \
 \end{tabular}
 \end{table}
 
-The predictions are computed from projection variances estimated from
-shadow snapshots, fed into the exact variance formula. Nothing is fitted
+The predictions are computed from the projection variances --- closed-form
+at second order, estimated from shadow snapshots at higher orders --- fed
+into the exact variance formula. Nothing is fitted
 to the \(\alpha\) data (Fig.~\ref{fig:alpha}). Across every system size
 and moment order for which we have measurements, the derived law matches:
 8 of 8 within two standard errors at \(k = 2\), 6 of 7 at \(k = 3\), where
@@ -1638,7 +1639,7 @@ collective route on hardware.
 \cite{dasgupta2021stability,dasgupta2022assessing} quantify the temporal
 and spatial instability of superconducting devices over 22 months, and
 related work analyzes calibration drift across devices
-\cite{fewshot2026}. Section 6.6 confirms their conclusions in the
+\cite{fewshot2026}. Section 6.6 is consistent with their conclusions in the
 specific setting of collective-measurement protocols and claims no
 priority over them.
 
@@ -1669,8 +1670,8 @@ describes any particular device. Section 6 documents exactly where a
 real device departs from them.
 
 \textbf{The crossover was not demonstrated on hardware.} It sits at
-\(n \approx 5\) to \(8\) under realistic noise, and device
-non-stationarity dominates at those sizes on the hardware available to
+\(n \approx 5\) to \(8\) under realistic noise, and
+cross-session variation dominates at those sizes on the hardware available to
 us. Section 6 is a test of the model, not a demonstration of the
 advantage.
 
@@ -1739,7 +1740,7 @@ fitted parameters. That evaluation fixes the threshold, and with it the
 exponent over the budget window an experiment can actually reach. The
 asymptotic scaling at fixed system size is not what moves: that remains
 the square-root law. Because the fitted threshold grows steeply with \(n\) over this range, that window is where the experiments at the sizes we reach sit. The mechanism
-is a competition between two terms in the estimator's variance whose ratio grows approximately exponentially over the tested range, and locating it is what the numerically evaluated coefficients buy.
+is a competition between two terms in the estimator's variance whose ratio grows approximately exponentially over the tested range, and locating it is what the evaluated coefficients buy.
 
 Paired with two exact bias laws for the collective route, distinguished
 by the geometry of the noise channel rather than by its rate, the
