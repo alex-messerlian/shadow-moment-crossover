@@ -1115,9 +1115,9 @@ path}\label{platform-and-a-disclosure-about-the-execution-path}}
 
 All measurements were submitted to the Rigetti Cepheus-1-108Q backend
 as provisioned by the platform, a 108-qubit superconducting processor 
-built from twelve interconnected nine-qubit chiplets. Published median 
+built from twelve interconnected nine-qubit chiplets~\cite{rigetti2026cepheus}. Published median 
 fidelities at the time of the experiments were 99.1\% for the two-qubit 
-CZ gate and 99.9\% for single-qubit gates. Readout error is absent from the published specification we cite for this backend,
+CZ gate and 99.9\% for single-qubit gates. Readout error is absent from the Rigetti general-availability release we cite for this backend,
 a fact that matters (Section 6.3). These figures are the specification as published at that date; per-job backend and calibration metadata were not available through the execution path we used.
 
 Access was obtained through the Open Quantum platform operated by
@@ -1162,7 +1162,11 @@ that would have prevented this failed at execution. We therefore assume CZ error
 assumption indirectly, since reconciling it against the measured readout
 favors spec-level CZ over zero CZ. On that assumption, gate error
 accounts for roughly 0.042 of the purity deficit at \(n = 2\) against a
-total deficit of 0.29.
+total deficit of 0.29. At the lower median the vendor has since published
+for this backend (\(98.71\%\), an average infidelity \(r = 0.0129\) giving
+\(p = 0.0172\)), the modeled entangling contribution rises to about \(0.057\),
+close to a fifth of the measured deficit (\(0.20\)) rather than a seventh, and
+the conclusion that gate error cannot account for the deficit is unchanged.
 
 The resource-demand concern cited in \cite{qmladvantage2026}, that
 collective measurement demands significant qubit count, two-qubit depth,
@@ -1870,6 +1874,11 @@ Phys. Rev. Research \textbf{4}, 013054 (2022), doi:10.1103/PhysRevResearch.4.013
 Bob Wold, Omar Armbruster, and Ryan Kuhn,
 \emph{Open Quantum: Democratizing Access to Quantum Computing Resources},
 white paper, Quantum Rings Inc., Broomfield, CO (2026), \url{https://www.openquantum.com/whitepaper.pdf} (accessed July 2026; archived at \url{https://web.archive.org/web/20260212195549/https://www.openquantum.com/whitepaper.pdf}).
+
+\bibitem{rigetti2026cepheus}
+Rigetti Computing, Inc.,
+\emph{Rigetti Announces General Availability of 108-Qubit System},
+press release, 7 April 2026, filed with the U.S. Securities and Exchange Commission and hosted on EDGAR at \url{https://www.sec.gov/Archives/edgar/data/1838359/000110465926040377/tm2611278d1_ex99-1.htm} (accessed July 2026); public mirror at \url{https://www.globenewswire.com/news-release/2026/04/07/3269628/0/en/Rigetti-Announces-General-Availability-of-108-Qubit-System.html}.
 
 \bibitem{dasgupta2021stability}
 Samudra Dasgupta and Travis S. Humble,
