@@ -46,11 +46,11 @@ stale as the paper is edited.
   the co-author lines preserved in comments for a one-line revert. The two
   mutually exclusive states the paper used to carry — co-author byline *and* an
   unfilled mentor placeholder — no longer coexist.
-- **Number audit (PASS 27, `results/pass27_number_audit.json`).** 131 targets in
-  Sections 3 and 6 recomputed from committed code and data. Section 6 is clean.
-  The two Section 3 findings were fixed in PASS 28: the low-rank `M*` base
-  (5.8 → 5.60) and the previously unverifiable narrow-family fit, which now has
-  a generating script.
+- **Number audit (PASS 27).** 131 targets in Sections 3 and 6 recomputed from
+  committed code and data. Section 6 is clean. The two Section 3 findings were
+  fixed in PASS 28: the low-rank `M*` base (5.8 → 5.60) and the previously
+  unverifiable narrow-family fit, which now has a generating script. The audit
+  record itself is no longer in the repo — see the local archive below.
 - **Every result in the Section 3.5 table is reproducible.**
   `experiments/beta_law_regenerate.py` regenerates `results/beta_law_test.json`
   from the committed ensemble code and reproduces the low-rank `M*` base to
@@ -60,6 +60,12 @@ stale as the paper is edited.
 - `paper/paper.pdf` at HEAD is the exact build of `paper/paper.tex` at HEAD.
 - Figures 1, 3 and 5 are the closed-form regenerations, and their plotted-data
   CSVs match the committed PDFs.
+- **Repository cleaned of prose (PASSES 33-35).** Every write-up, provenance
+  note, derivation narrative and verification record was removed, so the repo
+  now carries only the paper, its build dependencies, and the code and data
+  needed to run the verification. Local copies of all of it live outside the
+  repository at `~/shadow-moment-crossover-notes/`, with an `INDEX.md`
+  explaining each file and how to recover it from git history.
 - **Repository cleaned of process artifacts (PASS 33).** `DRAFT_asymptotic_section.tex`
   (superseded draft), `PRIOR_ART_MAP.md` (provenance note) and `refs.bib` (dead,
   and stale at 15 entries against the paper's 22) were removed after a dependency
