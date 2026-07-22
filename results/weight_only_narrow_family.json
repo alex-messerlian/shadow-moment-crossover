@@ -1,0 +1,30 @@
+{
+ "description": "weight-only zeta1 ansatz fitted on the narrow q=0.1 Haar-pure family at n=2 (Section 3.4)",
+ "family": {
+  "kind": "noisy_pure",
+  "n": 2,
+  "q": 0.1,
+  "n_states": 12,
+  "seeds": "default_rng([1, 10, s]) for s in range(12)"
+ },
+ "n_samples_per_zeta1": 2000000,
+ "max_relative_residual": 0.0014,
+ "rms_relative_residual": 0.00056,
+ "mc_noise_floor_relative": 0.00062,
+ "residual_at_or_below_mc_noise": false,
+ "zeta1_values": [
+  1.023269,
+  1.003001,
+  1.025241,
+  1.007644,
+  1.004343,
+  1.000135,
+  1.025962,
+  1.025389,
+  1.026948,
+  1.021675,
+  1.006676,
+  1.011416
+ ],
+ "contrast_diverse_family": "partE.weight_only_n2.max_resid in results/theory_derivation.json (0.123)"
+}
