@@ -60,6 +60,12 @@ stale as the paper is edited.
 - `paper/paper.pdf` at HEAD is the exact build of `paper/paper.tex` at HEAD.
 - Figures 1, 3 and 5 are the closed-form regenerations, and their plotted-data
   CSVs match the committed PDFs.
+- **Repository cleaned of process artifacts (PASS 33).** `DRAFT_asymptotic_section.tex`
+  (superseded draft), `PRIOR_ART_MAP.md` (provenance note) and `refs.bib` (dead,
+  and stale at 15 entries against the paper's 22) were removed after a dependency
+  check confirmed neither document referenced them. Both PDFs rebuild from
+  `paper.tex`, `supplementary.tex` and `figures/` alone. The removals are in git
+  history and recoverable.
 
 ---
 
@@ -72,16 +78,13 @@ stale as the paper is edited.
       `REFEREE2_RESPONSE.md`, `REFRAME_OPTIONS.md`,
       `SECTION_3.4_REVISION.md`). They are intentionally untracked. Decide
       whether they stay local or are removed from the working tree.
-- [ ] **`paper/DRAFT_asymptotic_section.tex`** is a superseded draft (its header
-      says so; the content is now Section 3.5). Keep as a provenance record or
-      delete — if deleted, also remove the reference to it in
-      `paper/PRIOR_ART_MAP.md`.
-- [ ] **Tracked provenance `.md` files** (`paper/PRIOR_ART_MAP.md` and this
-      file). Decide whether they belong in the public repo.
-- [ ] **arXiv upload set:** `paper/paper.tex`, `paper/supplementary.tex`,
-      `paper/figures/*.pdf` (six figures), and `paper/refs.bib` if you switch
-      away from the inline `thebibliography` (22 entries, already present).
-      Primary category `quant-ph`; choose a license.
+- [ ] **This file.** `paper/SUBMISSION_CHECKLIST.md` is the last tracked
+      process artifact under `paper/`. Delete it after submission.
+- [ ] **arXiv upload set:** `paper/paper.tex`, `paper/supplementary.tex` and
+      `paper/figures/*.pdf` (six figures) — that is the whole set. Both
+      documents carry their bibliography inline as `thebibliography` (22 entries
+      in the paper, 1 in the supplement), so no `.bib` file is needed or
+      present. Primary category `quant-ph`; choose a license.
 - [ ] **Confirm the source compiles on arXiv's TeX Live.** Built here with
       `tectonic`; REVTeX 4-2, no custom `\usepackage` beyond the standard set.
 - [ ] **Final rebuild after the date and byline edits** — confirm the page count
