@@ -335,74 +335,65 @@ The variance of the U-statistic is then exactly
 
 \[\boxed{\;\mathrm{Var}(U_M) = \binom{M}{k}^{-1} \sum_{c=1}^{k} \binom{k}{c} \binom{M-k}{\,k-c\,} \zeta_c \;}\]
 
-This is the standard Hoeffding decomposition for U-statistics
-\cite{hoeffding1948, serfling1980}, and we
-claim no novelty for it; what is new here is the closed-form evaluation
+the standard Hoeffding decomposition \cite{hoeffding1948, serfling1980},
+for which we claim no novelty; what is new is the closed-form evaluation
 of the second-order \(\zeta_c\) and the threshold their ratio fixes
-(Section~\ref{sec:zeta-closed-form}).
-
-For \(k = 2\) this reduces to
+(Section~\ref{sec:zeta-closed-form}). For \(k = 2\) it reduces to
 
 \[\mathrm{Var}(U_M) = \frac{4(M-2)\,\zeta_1 + 2\,\zeta_2}{M(M-1)}, \qquad \zeta_1 = \mathrm{Var}\!\left[\mathrm{Tr}(G\rho)\right], \quad \zeta_2 = \mathrm{Var}\!\left[\mathrm{Tr}(G_i G_j)\right].\]
 
 We verified the general formula against brute-force Monte Carlo of the
 exact estimator at \(k = 3\) and \(k = 4\), on noisy-pure, GHZ, and
-low-rank states, with all ratios within 3\%, and confirmed that it
-reduces to the \(k=2\) form at a ratio of \(1.000000\). The law is
-exact, not asymptotic, and it holds at every budget.
+low-rank states, with all ratios within 3\%, and confirmed it reduces to
+the \(k=2\) form at a ratio of \(1.000000\). The law is exact, not
+asymptotic, at every budget.
 
-Because the \(k\)-argument kernel is multilinear in the snapshots, every
-projection variance depends on the shadow ensemble only through its
-second-moment matrix; local Haar single-qubit shadows and local
-Pauli-basis shadows have identical second-moment matrices, so all results
-of this section hold verbatim for either.
-
-One subtlety is easy to get wrong and can pass unnoticed. For \(k = 2\) the second-order projection \emph{is}
-the kernel, so \(\zeta_2\) is the kernel variance. For \(k \geq 3\) this
-is false: \(\zeta_2\) is the two-argument projection, and the kernel
-variance is \(\zeta_k\). Substituting one for the other is wrong by
-roughly a factor of seven and corrupts any variance estimate at higher
-moments while appearing to work at \(k=2\). The resulting approximation
-breaks down at \(k \geq 3\), for reasons that can look like physics but
-are not.
+Because the kernel is multilinear in the snapshots, every projection
+variance depends on the shadow ensemble only through its second-moment
+matrix, and local Haar single-qubit shadows and local Pauli-basis shadows
+have identical second-moment matrices, so all results of this section hold
+for either. One subtlety is easy to miss: for \(k = 2\) the second-order
+projection \emph{is} the kernel, so \(\zeta_2\) is the kernel variance,
+but for \(k \geq 3\) it is not --- \(\zeta_2\) is the two-argument
+projection and the kernel variance is \(\zeta_k\). Substituting one for
+the other is wrong by roughly a factor of seven and corrupts any
+higher-moment variance estimate while appearing to work at \(k = 2\).
 
 \hypertarget{two-terms-compete-and-their-ratio-is-a-budget-threshold}{%
 \subsection{Two terms compete, and their ratio is a budget
 threshold}\label{two-terms-compete-and-their-ratio-is-a-budget-threshold}}
 
-The exact variance contains two competing terms with different budget
-dependence. At large \(M\) the linear term dominates,
+The exact variance contains two competing terms. At large \(M\) the linear
+term dominates,
 
 \[\mathrm{Var}(U_M) \approx \frac{4\zeta_1}{M} \quad \Longrightarrow \quad \mathrm{RMSE} \propto M^{-1/2}, \qquad \alpha = \tfrac{1}{2},\]
 
-which is the familiar statistical scaling that a fixed-exponent bound
-predicts. At small \(M\) the higher-order term dominates,
+the familiar statistical scaling a fixed-exponent bound predicts; at small
+\(M\) the higher-order term dominates,
 
 \[\mathrm{Var}(U_M) \approx \frac{2\zeta_2}{M^2} \quad \Longrightarrow \quad \mathrm{RMSE} \propto M^{-1}, \qquad \alpha = 1.\]
 
-The two asymptotic terms are equal at
+and the two are equal at
 
 \[\boxed{\;M^* = \frac{\zeta_2}{2\zeta_1}\;}\]
 
-This is the balance point of the two large-\(M\) forms above; the exact
-numerator terms balance at a point differing from it by an additive
-constant, immaterial once \(M^*\) is large. Nothing that follows
-depends on the choice, because the predicted exponents are computed from
-the exact variance formula rather than from \(M^*\).
-This threshold is the object the rest of the section is about. Which
-side of \(M^*\) a given experiment sits on determines the character of
-its scaling, and the projection variances that set \(M^*\) are
-state-dependent. To see what that dependence is, we compute them exactly
-for one qubit.
+the balance point of the two large-\(M\) forms. The exact numerator terms
+balance at a point differing from this by an additive constant, immaterial
+once \(M^*\) is large, and nothing that follows depends on the choice
+because the predicted exponents are computed from the exact variance
+formula rather than from \(M^*\). Which side of \(M^*\) an experiment sits
+on determines the character of its scaling, and the projection variances
+that set \(M^*\) are state-dependent. To see that dependence we compute
+them exactly for one qubit.
 
 \hypertarget{the-single-qubit-second-moment-exactly}{%
 \subsection{The single-qubit second moment,
 exactly}\label{the-single-qubit-second-moment-exactly}}
 
-For a single qubit with density matrix \(r\) --- throughout this
-subsection we write \(r\) for a single-qubit state, reserving \(\rho\)
-for the full \(n\)-qubit state, because the identity below holds only at
-one qubit --- with Bloch length \(t\) and purity \(p = (1+t^2)/2\),
+For a single qubit with density matrix \(r\) --- we write \(r\) for a
+single-qubit state, reserving \(\rho\) for the full \(n\)-qubit state,
+since the identity holds only at one qubit --- with Bloch length \(t\) and
+purity \(p = (1+t^2)/2\),
 
 \[\boxed{\;\mathbb{E}\!\left[ \mathrm{Tr}(G r)^2 \right] = \tfrac{1}{4} + \tfrac{5}{4} t^2 = \tfrac{5}{2} p - 1\;}\]
 
@@ -410,64 +401,50 @@ and the single-qubit first projection variance follows as
 
 \[\zeta_1 = \tfrac{3}{4} t^2 - \tfrac{1}{4} t^4.\]
 
-We verified this numerically across the full Bloch range. The identity
-is exact, and two consequences follow from it.
-
+verified numerically across the full Bloch range. Two consequences follow.
 The second moment grows by a factor of six from a maximally mixed qubit,
-where it equals \(1/4\), to a pure qubit, where it equals \(3/2\).
-Compounded over \(n\) qubits, that factor is the origin of the
-exponential cost, and it is state-dependent rather than universal. The
-compounding picture is a heuristic for the factorized case: it does not
-carry over to arbitrary entangled or correlated states, which is what
-Section 3.4 shows when the weight-only ansatz fails at \(n \geq 2\).
-
-The identity also passes the boundary check. At \(t = 0\) it gives
-\(\zeta_1 = 0\), which is correct: for a maximally mixed qubit,
-\(\mathrm{Tr}(G r) = 1/2\) deterministically, with no variance to speak
-of.
+where it equals \(1/4\), to a pure qubit, where it equals \(3/2\);
+compounded over \(n\) qubits that factor is the origin of the exponential
+cost, and it is state-dependent rather than universal. The compounding
+picture is a heuristic for the factorized case and does not carry to
+arbitrary entangled or correlated states, which is what Section 3.4 shows.
+The identity also passes the boundary check: at \(t = 0\) it gives
+\(\zeta_1 = 0\), correct because \(\mathrm{Tr}(Gr) = 1/2\)
+deterministically for a maximally mixed qubit.
 
 \hypertarget{the-weight-only-quadratic-ansatz-fails}{%
 \subsection{\texorpdfstring{The weight-only quadratic ansatz fails
 already at one
 qubit}{The weight-only quadratic ansatz fails already at one qubit}}\label{the-weight-only-quadratic-ansatz-fails}}
 
-The single-qubit result invites a generalization. If the second moment
-carries a factor of \(3\) per qubit in the support of a Pauli string,
-then \(\zeta_1\) ought to decompose over Pauli strings with a
-coefficient depending only on the Pauli weight,
+The single-qubit result invites a generalization: if the second moment
+carries a factor of \(3\) per qubit in a Pauli string's support, then
+\(\zeta_1\) ought to decompose over Pauli strings with a coefficient
+depending only on the weight,
 
 \[\zeta_1 \stackrel{?}{=} \sum_P c_{|P|} \langle P \rangle^2 .\]
 
-This already fails at a single qubit, and provably so. With universal
-weight coefficients the most general such form for one qubit is
-\(c_0 \langle I \rangle^2 + c_1 (\langle X \rangle^2 + \langle Y \rangle^2 + \langle Z \rangle^2) = c_0 + c_1 t^2\),
-an affine function of \(t^2\), because the three squared Pauli
-expectations sum to the squared Bloch length \(t^2\) and carry no further
-invariant. The exact single-qubit projection variance of Section 3.3 is
-\(\zeta_1 = \tfrac{3}{4} t^2 - \tfrac{1}{4} t^4\), whose quartic term has
-coefficient \(-\tfrac{1}{4}\) whatever \(c_0\) and \(c_1\) are chosen: no
-weight-only quadratic form reproduces it. The obstruction is a quartic
-dependence on the state that a form quadratic in the Pauli expectations
-cannot carry, and it is present before any question of entanglement or
-correlation arises.
+This fails already at one qubit, provably. With universal weight
+coefficients the most general one-qubit form is
+\(c_0 + c_1 t^2\), affine in \(t^2\), because the three squared Pauli
+expectations sum to \(t^2\) and carry no further invariant. The exact
+\(\zeta_1 = \tfrac{3}{4} t^2 - \tfrac{1}{4} t^4\) of Section 3.3 has a quartic term whose
+coefficient \(-\tfrac{1}{4}\) no choice of \(c_0, c_1\) reproduces. The
+obstruction is a quartic dependence on the state that a form quadratic in
+the Pauli expectations cannot carry, present before any question of
+entanglement arises.
 
-The insufficiency persists and grows with size. Tested against a diverse
-family of 19 states at \(n = 2\), varying depolarizing rate, rank, and
-structure, the best-fit weight-only ansatz leaves a residual of up to
-12.3\%. A weight-only quadratic form is insufficient, and
-Section~\ref{sec:zeta-closed-form} identifies exactly what it omits. The
-weight-only form is the diagonal of an exact cubic identity already
-available in \cite{huang2020shadows}, and the residual it leaves is that
-identity's off-diagonal sum.
-
-The ansatz nonetheless \emph{appears} to
-hold. Tested only within a narrow single-parameter family, Haar-pure
-states at a fixed depolarizing rate of \(q = 0.1\), it fits to 0.1\%,
-because that family spans a low-dimensional invariant subspace. A closed
-form validated on one ensemble is not a closed form. At second order the
-projection variances follow in closed form
-(Section~\ref{sec:zeta-closed-form}); at higher moment orders they are
-estimated numerically, and the variance law is exact in either case.
+The insufficiency grows with size. Against a diverse family of 19 states
+at \(n = 2\), varying depolarizing rate, rank, and structure, the best-fit
+weight-only ansatz leaves a residual of up to 12.3\%. The ansatz
+nonetheless \emph{appears} to hold within a narrow single-parameter
+family, Haar-pure states at fixed \(q = 0.1\), where it fits to 0.1\%,
+because that family spans a low-dimensional invariant subspace --- a
+closed form validated on one ensemble is not a closed form. What the
+weight-only form actually is, and what it omits, is the subject of the
+next subsection: it is the diagonal of an exact cubic identity already in
+\cite{huang2020shadows}, and the residual it leaves is that identity's
+off-diagonal sum.
 
 \subsection{The projection variances in closed form}
 \label{sec:zeta-closed-form}
@@ -574,7 +551,7 @@ state family & \(\beta\) & \(\mathrm{base}(\zeta_2)\) & \(M^*\) base \\
 \hline
 noisy-pure (\(q=0.1\)) & \(5/4\) & \(7\)    & \(28/5 = 5.60\) \\
 Haar-pure              & \(5/4\) & \(7\)    & \(28/5 = 5.60\) \\
-low-rank (rank 2)      & \(\approx 1.21\) & \(7\) & \(\approx 5.60\) \\
+low-rank (rank 2)      & \(\to 5/4\) & \(7\) & \(5.60\) \\
 product, GHZ           & \(3/2\) & \(15/2\) & \(5.00\) \\
 \hline
 \end{tabular}
@@ -591,7 +568,10 @@ Purity alone does not determine the base: a Haar-random pure state gives
 the weight profile of the Pauli spectrum, which the kernel
 \(14^{-|P|}\) reads off. The value \(28/5\) is therefore the
 spread-spectrum case, not a universal constant, and structured
-stabilizer states sit on a different branch at \(5\).
+stabilizer states sit on a different branch at \(5\). The low-rank base
+\(\beta\) is \(5/4\) asymptotically, like the other spread spectra, and
+reads \(\approx 1.21\) at the finite sizes evaluated here; the \(M^*\)
+base uses the asymptotic value.
 
 \paragraph{Higher moment orders.}
 The multilinearity argument above shows every \(\zeta_c\) depends only on
@@ -613,24 +593,25 @@ anywhere, so the drift is a finite-size property of the fit and
 \subsection{\texorpdfstring{The \(\alpha\)
 transition}{The \textbackslash alpha transition}}\label{the-alpha-transition}}
 
-The projection variances for noisy-pure states, estimated over this
-range, give clean exponential scalings --- sampled-fit constants, retained
-here for the contrast drawn in Section~\ref{sec:zeta-closed-form}, which
-quotes \(5.14\) for the same window from the regression on \(M^*(n)\) and
-\(5.18\) from the closed forms. Over \(n = 2\) to \(7\),
+The projection variances for noisy-pure states, estimated over this range,
+give clean exponential scalings --- sampled-fit constants, retained for the
+contrast in Section~\ref{sec:zeta-closed-form}, which quotes \(5.14\) for
+this window from the regression on \(M^*(n)\) and \(5.18\) from the closed
+forms. Over \(n = 2\) to \(7\),
 
 \[\zeta_1 \approx 0.63 \cdot (1.35)^n, \qquad \zeta_2 \approx 1.10 \cdot (6.93)^n, \qquad M^* \approx 0.87 \cdot (5.15)^n,\]
 
-and over the wider range \(n = 2\) to \(9\),
-\(M^* \approx 0.76 \cdot (5.345)^n\). The base of \(\zeta_1\) is mildly
-curved, reading approximately \(1.35\) at small \(n\) and \(1.30\) over
-the full range, which accounts for the difference between the two fits.
-
-The kernel variance grows roughly five times faster per qubit than the
-linear variance. Their ratio, the threshold \(M^*\), therefore grows approximately exponentially in \(n\) over the range we fit (\(n = 2\) to \(9\)). This is the mechanism, and within that range its consequence is direct: at a fixed budget, increasing \(n\) pushes \(M\) below \(M^*\), the higher-order term takes over, and the effective
-exponent migrates from \(1/2\) toward \(1\), and past it for higher \(k\).
-
-Defining \(\alpha\) as the effective exponent --- the negative slope of \(\log \mathrm{RMSE}\) against \(\log M\) fitted by least squares over the budget range actually used, as in Appendix C, so it is a window-averaged rather than a pointwise quantity and the window itself shifts with \(n\):
+and over \(n = 2\) to \(9\), \(M^* \approx 0.76 \cdot (5.345)^n\); the
+\(\zeta_1\) base is mildly curved, about \(1.35\) at small \(n\) and
+\(1.30\) over the full range, which accounts for the difference. The
+kernel variance grows roughly five times faster per qubit than the linear
+variance, so their ratio \(M^*\) grows approximately exponentially over
+the range we fit (\(n = 2\) to \(9\)). The consequence is direct: at fixed budget, increasing
+\(n\) pushes \(M\) below \(M^*\), the higher-order term takes over, and the
+effective exponent \(\alpha\) --- the negative slope of
+\(\log \mathrm{RMSE}\) against \(\log M\), fitted over the budget range
+used (Appendix C), so window-averaged and shifting with \(n\) --- migrates
+from \(1/2\) toward \(1\), and past it for higher \(k\):
 
 \begin{table}[htbp]
 \centering
@@ -646,43 +627,37 @@ Defining \(\alpha\) as the effective exponent --- the negative slope of \(\log \
 \end{tabular}
 \end{table}
 
-The \(M^*(n)\) column is the exact threshold \(M^*\) evaluated at each
-\(n\) from the closed-form projection variances, not the fitted law above
-evaluated at \(n\). The predictions are computed from the projection variances --- closed-form
-at second order, estimated from shadow snapshots at higher orders --- fed
-into the exact variance formula. Nothing is fitted
-to the \(\alpha\) data (Fig.~\ref{fig:alpha}). Across every system size
-and moment order for which we have measurements, the derived law matches:
-8 of 8 within two standard errors at \(k = 2\), 6 of 7 at \(k = 3\), where
-the single miss sits on the two-sigma boundary and is sensitive to the
-random seed, and 5 of 5 at \(k = 4\).
+The \(M^*(n)\) column is the exact threshold evaluated from the
+closed-form projection variances, not the fitted law evaluated at \(n\).
+The predictions are computed from the projection variances --- closed-form
+at second order, estimated from shadow snapshots at higher --- fed into
+the exact variance formula, with nothing fitted to the \(\alpha\) data
+(Fig.~\ref{fig:alpha}): the derived law matches 8 of 8 within two standard
+errors at \(k = 2\), 6 of 7 at \(k = 3\) with the single miss on the
+two-sigma boundary and seed-sensitive, and 5 of 5 at \(k = 4\).
 
-The exact combinatorial structure is necessary, not a convenience,
-although \(k = 2\) is the wrong place to look for the evidence. There the
-large-\(M\) truncation of Section 3.2,
+The exact combinatorial structure is necessary, though \(k = 2\) is the
+wrong place to see it. There the large-\(M\) truncation of Section 3.2,
 \(\mathrm{Var} \approx 4\zeta_1/M + 2\zeta_2/M^2\), tracks the exact
-variance to within 0.05\% across the budgets used here and reproduces the
-measured \(\alpha\) at 8 of 8, indistinguishable from the exact law: at
-\(k = 2\) the second projection and the full kernel variance are the same
-quantity, so the truncation discards nothing. They separate at higher
-orders. Keeping the same two terms with their correct coefficients,
+variance to within 0.05\% across the budgets used and reproduces the
+measured \(\alpha\) at 8 of 8, because at \(k = 2\) the second projection
+and the full kernel variance coincide and the truncation discards nothing.
+They separate at higher orders: keeping the same two terms with their
+correct coefficients,
 \(k^2\zeta_1/M + \tfrac{1}{2}k^2(k-1)^2\zeta_2/M^2\), gives 15 of 20
 across \(k = 2, 3, 4\) against the exact law's 19 of 20, and misses
 \(k = 3\), \(n = 8\) by twenty-six standard errors --- by then
 \(\zeta_3/\zeta_2\) exceeds \(10^4\) and the discarded terms carry the
 variance.
 
-A log-linear regression of \(M^*(n)\) over \(n = 2\) to \(9\) returns a
-base of \(5.34\) with a 95\% confidence interval of \([5.14,\, 5.54]\) and
-a prefactor of \(0.75 \pm 0.09\) (regression standard errors, treating
-each \(M^*(n)\) as fixed); \(\zeta_1\) and \(\zeta_2\) fit to bases
-\(1.30\ [1.26,\, 1.34]\) and \(6.94\ [6.90,\, 6.98]\). The \(\zeta_2\)
-base sits just below the exact per-qubit second moment \(7\) at the
-maximally mixed state (Section 3.3) and barely moves across the fitting
-windows; the base drift is carried by \(\zeta_1\). The residuals
-carry mild upward curvature, so the fitted base drifts with the window in
-the manner Section~\ref{sec:zeta-closed-form} anticipates; Appendix C
-gives the residual, window, and leave-one-out detail.
+A log-linear regression of \(M^*(n)\) over \(n = 2\) to \(9\) returns base
+\(5.34\), 95\% CI \([5.14,\, 5.54]\), prefactor \(0.75 \pm 0.09\), and
+\(\zeta_1, \zeta_2\) fit to bases \(1.30\ [1.26, 1.34]\) and
+\(6.94\ [6.90, 6.98]\); the \(\zeta_2\) base sits just below the exact
+per-qubit \(7\) at the maximally mixed state (Section 3.3) and barely
+moves across windows, the drift carried by
+\(\zeta_1\), in the manner Section~\ref{sec:zeta-closed-form} anticipates.
+Appendix C gives the residual and leave-one-out detail.
 
 \begin{figure}[tb]
 \centering
@@ -692,17 +667,16 @@ gives the residual, window, and leave-one-out detail.
 \end{figure}
 
 A fixed-exponent bound \(\mathrm{RMSE} \leq C_n/\sqrt{M}\) is not wrong; it
-is a bound and it holds, and the tighter two-term treatments do not assume
-a fixed exponent either \cite{elben2020mixed}. What a fixed-exponent summary
-describes is the wrong regime for the systems being run. At nine qubits and
-the budgets accessible on current hardware the estimator sits near
-\(\alpha = 1\), where extra shots buy error reduction faster than
+holds, and the tighter two-term treatments do not assume a fixed exponent
+either \cite{elben2020mixed}. What it describes is the wrong regime for the
+systems being run. At nine qubits and accessible budgets the estimator
+sits near \(\alpha = 1\), where extra shots reduce error faster than
 \(1/\sqrt{M}\) but from a variance already exponentially large, so any
-extrapolation presuming \(\alpha = 1/2\) errs in a predictable direction.
-At fixed \(n\) the linear term dominates once the budget grows without
-bound, so the asymptotic scaling remains the familiar square-root law: the
-migration reported here is a finite-budget effect over the window hardware
-actually reaches, not a change in asymptotic sample complexity.
+extrapolation presuming \(\alpha = 1/2\) errs predictably. At fixed \(n\)
+the linear term dominates once the budget grows without bound, so the
+asymptotic scaling remains the square-root law: the migration reported
+here is a finite-budget effect over the window hardware reaches, not a
+change in asymptotic sample complexity.
 
 Having characterized the single-copy cost exactly, we turn to the
 collective route, where the error has a different character entirely.
@@ -1009,94 +983,82 @@ Cepheus-1-108Q}\label{hardware-a-pre-registered-test-on-rigetti-cepheus-1-108q}}
 path}\label{platform-and-a-disclosure-about-the-execution-path}}
 
 All measurements were submitted to the Rigetti Cepheus-1-108Q backend as
-provisioned by the platform, a 108-qubit superconducting processor built
-from twelve interconnected nine-qubit
-chiplets~\cite{rigetti2026cepheus}. Published median fidelities at the
-time of the experiments were 99.1\% for the two-qubit CZ gate and 99.9\%
-for single-qubit gates. Readout error is absent from that release, a fact
-that matters in Section 6.3. These figures are the specification as published at
-that date; per-job backend and calibration metadata were not available
+provisioned by the platform, a 108-qubit superconducting processor of
+twelve interconnected nine-qubit chiplets~\cite{rigetti2026cepheus}, whose
+published median fidelities at the time were 99.1\% for the two-qubit CZ
+gate and 99.9\% for single-qubit gates. Readout error is absent from that
+release, a fact that matters in Section 6.3. These are the specification
+as published at that date; per-job calibration metadata was not available
 through the execution path we used.
 
-Access was obtained through the Open Quantum platform operated by Quantum
-Rings \cite{wold2025openquantum}, on the Public Tier. That tier does not
-route jobs directly to the vendor: circuits are routed to distributed
-operators on the Quantum Compute subnet (SN48) of the Bittensor network,
-operated by qBitTensor Labs, with validators performing spot checks that
-circuits ran on the appropriate target QPU \cite{wold2025openquantum}. We
-therefore cannot independently verify the execution path of any individual
-job. This does not affect the characterizations in Sections 6.2 and 6.3,
-which are internally consistent, but it is a candidate contributor to the
-session-to-session variability of Section 6.4 that we cannot rule out, and
-we list it as such in Section 8. Jobs were submitted as OpenQASM 3 with
-physical-qubit addressing, which the platform required. Registers,
-protocol, license conditions, and the credit ledger are in the
+Access was through the Open Quantum platform operated by Quantum Rings
+\cite{wold2025openquantum}, on the Public Tier, which does not route jobs
+directly to the vendor: circuits go to distributed operators on the
+Quantum Compute subnet (SN48) of the Bittensor network, with validators
+spot-checking that they ran on the target QPU \cite{wold2025openquantum}.
+We therefore cannot
+independently verify the execution path of any individual job. This does
+not affect the characterizations in Sections 6.2 and 6.3, which are
+internally consistent, but it is a candidate contributor to the
+session-to-session variability of Section 6.4, listed as such in Section
+8. Jobs were submitted as OpenQASM 3 with physical-qubit addressing;
+registers, protocol, license conditions, and the credit ledger are in the
 supplementary material.
 
 \hypertarget{the-entangling-overhead-is-nearly-free}{%
 \subsection{The modeled entangling overhead is small for the tested circuits}\label{the-entangling-overhead-is-nearly-free}}
 
 The destructive SWAP test at \(n = 2\) transpiles onto physical qubits
-\(\{0, 1, 9, 10\}\) using four CZ gates and zero routing SWAPs; the GHZ
-ladders at \(n = 3\) and \(n = 4\) likewise map with zero routing at
-\(3n - 2\) CZ gates, and the ladders nest. CZ error on these qubits was
-not measured directly: the platform compiler resynthesized our
-characterization echo and optimized its gates away, and the verbatim box
-that would have prevented this failed at execution. We therefore assume
-CZ error at the published median of 0.9\%, an average gate infidelity
-\(r\) corresponding under the depolarizing convention
-\(\Lambda(\rho) = (1-p)\rho + p\,\mathbb{I}/d\) to a channel parameter
-\(p = \tfrac{d}{d-1} r = \tfrac{4}{3} r = 0.012\) for a two-qubit gate
-(\(d = 4\)).
+\(\{0, 1, 9, 10\}\) using four CZ gates and zero routing; the GHZ ladders
+at \(n = 3, 4\) map with zero routing at \(3n - 2\) CZ gates and nest. CZ
+error on these qubits was not measured directly --- the platform compiler
+resynthesized our characterization echo and optimized its gates away, and
+the verbatim box that would have prevented this failed at execution --- so
+we assume the published median of 0.9\%, an average infidelity \(r\)
+corresponding under \(\Lambda(\rho) = (1-p)\rho + p\,\mathbb{I}/d\) to
+\(p = \tfrac{4}{3} r = 0.012\) for a two-qubit gate (\(d = 4\)).
 
 On that assumption gate error accounts for roughly 0.042 of the purity
 deficit at \(n = 2\) against a total deficit of 0.29, about a seventh
 (roughly 14\%). At the lower median the vendor has since published for
 this backend (\(98.71\%\), \(r = 0.0129\), \(p = 0.0172\)) it rises to
-about 0.057, or close to a fifth of the measured deficit. This is
-a device-wide median rather than an edge-specific measurement, and a
-depolarizing model captures neither coherent error nor leakage, so the
-figure is a scale rather than a budget; under either median it is too
-small to account for the deficit.
+about 0.057, or close to a fifth of the measured deficit. This is a
+device-wide median, not an edge-specific measurement, and a depolarizing
+model captures neither coherent error nor leakage, so the figure is a
+scale rather than a budget; under either median it is too small to account
+for the deficit.
 
-The resource-demand concern cited in \cite{qmladvantage2026} therefore
-does not materialize for the destructive SWAP test on a square-lattice
-device. That is a property of structured states on a matched topology
-rather than of the test in general: generic states at \(n = 4\) require
-46 CZ gates on this topology, 26 intrinsic plus 20 routing-attributable,
-against the GHZ ladder's 10 with zero routing, and we restrict the
-hardware series to GHZ ladders accordingly. This is a \(k = 2\)
-statement; the ancilla-based Hadamard test required for \(k \geq 3\)
+The resource-demand concern of \cite{qmladvantage2026} therefore does not
+materialize for the destructive SWAP test on a square-lattice device --- a
+property of structured states on matched topology rather than of the test
+in general, since generic states at \(n = 4\) require 46 CZ gates here, 26
+intrinsic plus 20 routing-attributable, against the ladder's 10 with zero
+routing, which is why we restrict the hardware series to GHZ ladders. This
+is a \(k = 2\) statement; the ancilla-based Hadamard test for \(k \geq 3\)
 (Section 2.3) carries a cost we have not measured.
 
 \hypertarget{readout-is-the-wall-and-it-is-not-in-the-datasheet}{%
 \subsection{Consistent with readout and SPAM error dominating, and not in the datasheet}\label{readout-is-the-wall-and-it-is-not-in-the-datasheet}}
 
-Our locked prediction, computed from the published gate fidelities and an
-assumed 2\% readout error and committed to version control before the job
-was submitted, was a Bell-state purity of 0.8932. The device returned
+Our locked prediction, from the published gate fidelities and an assumed
+2\% readout error and committed to version control before submission, was
+a Bell-state purity of 0.8932. The device returned
 
 \[0.7184 \quad [0.6992,\, 0.7376] \;\; \text{(95\% bootstrap CI, 5000 shots)},\]
 
 against a true purity of exactly 1, overshooting by more than seventeen
 standard errors --- conditional shot noise, hence a lower bound on the
-total uncertainty (Appendix C). The estimand here is the target the
-circuit was written to prepare, so every deviation from it is charged to
-the global-depolarizing channel of Section 4.1, which has no single-copy
-reading to be relabelled into.
+total uncertainty (Appendix C). The estimand is the target the circuit was
+written to prepare, so every deviation is charged to the
+global-depolarizing channel of Section 4.1, which has no single-copy
+reading to be relabelled into. The output structure is consistent with the
+intended circuit: the four dominant outcomes are exactly the ideal support
+of the Bell SWAP test, with noise leaking about 25\% of the weight into
+the remaining twelve.
 
-The output structure is consistent with the intended circuit: the four
-dominant outcomes are exactly the ideal support of the Bell SWAP test,
-with noise leaking approximately 25\% of the weight into the remaining
-twelve. Inverting the bias law of Section 4.1 gives an effective global
+Inverting the bias law of Section 4.1 gives an effective global
 depolarizing rate \(g = 0.375\), over two and a half times the
 \(g = 0.142\) the locked prediction implied.
-
-A single measurement cannot separate gate error from readout error, so we
-characterized readout separately, using computational basis states
-prepared with X gates only and no two-qubit gates. What this isolates is
-combined state-preparation-and-measurement error rather than assignment
-error alone, so ``readout'' here should be read as SPAM:
 
 \begin{table}[htbp]
 \centering
@@ -1113,19 +1075,17 @@ qubit & \(P(1 \mid 0)\) & \(P(0 \mid 1)\) \\
 \end{tabular}
 \end{table}
 
-We write \(q_N\) for the physical qubit addressed as \texttt{\$N} in the
-platform's OpenQASM 3 syntax. The mean is approximately 6.5\% per qubit,
-roughly three times the assumed value, and asymmetric in the direction
-expected from \(T_1\) decay during readout. Feeding it back into the
-model moves the predicted purity from 0.89 to approximately 0.75, against
-the measured 0.7184. Readout on this device is also correlated:
+We write \(q_N\) for the physical qubit addressed as \texttt{\$N} in
+OpenQASM 3. The mean is about 6.5\% per qubit, roughly three times the
+assumed value and asymmetric in the direction expected from \(T_1\) decay
+during readout; feeding it back moves the predicted purity from 0.89 to
+about 0.75, against the measured 0.7184. Readout is also correlated ---
 \(q_0\)'s \(P(1|0)\) rises from 1.6\% with idle neighbors to 16.9\% with
-excited ones, and including that crosstalk closes the residual,
-predicting 0.7163 against the measured 0.7184. The correlation saturates
-with excitation weight rather than accumulating, so it must be measured
-at each weight rather than extrapolated; the weight-resolved measurements
-are in the supplementary material. The input that was wrong is precisely
-the one the specification does not publish.
+excited ones, and including that crosstalk predicts 0.7163 against the
+measured 0.7184. The correlation saturates with excitation weight rather
+than accumulating, so it must be measured at each weight; the
+weight-resolved data is in the supplementary material. The input that was
+wrong is precisely the one the specification does not publish.
 
 \hypertarget{cross-session-drift-accounts-for-the-gap}{%
 \subsection{Cross-session variation is the leading explanation for the
@@ -1133,26 +1093,25 @@ gap}\label{cross-session-drift-accounts-for-the-gap}}
 
 With readout on the GHZ ladder measured in the same session rather than
 assumed, we ran a bracketed experiment (Fig.~\ref{fig:hardware}): opening
-calibration, predictions locked and committed to version control from it,
-SWAP measurements, closing calibration. Within-session drift measured
-approximately 1\% per qubit, so the device was stable while the
-experiment ran. All three cells nonetheless fell below both prediction
-bands rather than between them, and the degradation was non-monotonic:
-\(n = 3\) came out worse than \(n = 4\), despite the \(n = 4\) register
-containing the \(n = 3\) one. Neither readout, which scales with the
-\(2n\) measured qubits, nor CZ count, which grows with \(n\), can produce
-that ordering. The band-by-band comparison is in the supplementary
-material.
+calibration, predictions locked and committed from it, SWAP measurements,
+closing calibration. Within-session drift measured about 1\% per qubit, so
+the device was stable while the experiment ran. All three cells
+nonetheless fell below both prediction bands, and the degradation was
+non-monotonic --- \(n = 3\) came out worse than \(n = 4\), despite the
+\(n = 4\) register containing the \(n = 3\) one, an ordering neither
+readout (which scales with the \(2n\) measured qubits) nor CZ count (which
+grows with \(n\)) can produce. The band-by-band comparison is in the
+supplementary material.
 
 The cross-session picture explains it. Running byte-identical circuits on
 the same physical qubits across three sessions, the \(n = 3\) register
 healed (\(0.317 \to 0.378 \to 0.587\)) while \(n = 4\) drifted down
-(\(0.431 \to 0.420 \to 0.382\)), and the ordering between them flipped.
-Within-session drift propagates through the device model to about 0.01 in
-purity; cross-session drift is approximately 0.2, roughly twenty times
-larger on that like-for-like comparison. Identifying the non-monotonicity
-as a drift artifact required running the same circuit three times over
-several days, which is not standard practice.
+(\(0.431 \to 0.420 \to 0.382\)), and their ordering flipped. Within-session
+drift propagates through the device model to about 0.01 in purity;
+cross-session drift is approximately 0.2, roughly twenty times larger on
+that like-for-like comparison. Identifying the non-monotonicity as a drift
+artifact required running the same circuit three times over several days,
+which is not standard practice.
 
 \begin{figure}[tb]
 \centering
@@ -1163,17 +1122,16 @@ several days, which is not standard practice.
 
 The single-copy route failed the same way. A fifteen-basis \(n = 2\)
 anchor, whose U-statistic our shadow pipeline predicted at
-\(1.500 \pm 0.028\) from the same device parameters, returned
-\(1.344\) with a 95\% bootstrap interval of \([1.266,\, 1.433]\) over 9000
-snapshots: 5.6 times the spread the model predicts, with disjoint
-intervals, and no simulated run of the locked model reaches the measured
-value. That statistic is not a purity, and the anchor tests this
-pipeline rather than the standard i.i.d.\ estimator, for reasons given in
-the supplementary material. We do not adjust the model to fit. Three
-signals therefore fail together in one session, and that two protocols
-with different circuits and different estimators both miss their locked
-predictions is what makes a session-dependent cause, rather than any
-protocol-specific defect, the parsimonious explanation.
+\(1.500 \pm 0.028\) from the same device parameters, returned \(1.344\)
+with a 95\% bootstrap interval \([1.266, 1.433]\) over 9000 snapshots ---
+5.6 times the predicted spread, with disjoint intervals, and no simulated
+run of the locked model reaches the measured value. That statistic is not
+a purity, and the anchor tests this pipeline rather than the standard
+i.i.d.\ estimator (supplementary material). We do not adjust the model to
+fit. Two protocols with different circuits and estimators both missing
+their locked predictions in one session is what makes a session-dependent
+cause, rather than any protocol-specific defect, the parsimonious
+explanation.
 
 \hypertarget{the-elimination-ledger}{%
 \subsection{The elimination
@@ -1233,44 +1191,42 @@ conclude}\label{what-remains-and-what-we-conclude}}
 
 What is left is a large, incoherent, session-dependent fault that appears
 and disappears on the same physical qubits running byte-identical
-circuits. We do not identify it. Localizing it would require per-edge
-interleaved randomized benchmarking across many sessions, which is a
-research program rather than a section.
+circuits. We do not identify it; localizing it would require per-edge
+interleaved randomized benchmarking across many sessions, a research
+program rather than a section.
 
 The conclusion the data support is narrower than ``we found a new error
-mechanism'' and more useful than ``the device is noisy.'' Static device
+mechanism'' and more useful than ``the device is noisy.'' Static
 characterization did not predict collective-measurement performance over
 the execution path available to us and across the sessions we ran. We
 cannot isolate the mechanism: byte-identical circuits routed through a
-decentralized network may have executed on different operators' hardware,
-on the same hardware in different calibration states, or both. The
-operational consequence is the same either way. A protocol whose entire
-advantage rests on a bounded, characterizable bias floor cannot be
-deployed against a floor that moves by 0.2 between sessions, whatever
-moves it, and per-session verification rather than published median
-device parameters is what such a protocol requires.
+decentralized network may have run on different operators' hardware, on
+the same hardware in different calibration states, or both. The operational
+consequence is the same either way --- a protocol whose advantage rests on
+a bounded, characterizable bias floor cannot be deployed against a floor
+that moves by 0.2 between sessions, whatever moves it, and per-session
+verification rather than published median parameters is what it requires.
 
 Temporal and spatial instability of superconducting processors is
-documented over 22 months of observations
-\cite{dasgupta2021stability,dasgupta2022assessing} and in
-calibration-drift analyses \cite{fewshot2026}, and we claim no priority
-over it. What we add is a demonstration, with predictions committed in
-advance and a seven-mechanism ledger, that a session-dependent fault of
-this kind is the binding constraint specifically for
+documented over 22 months \cite{dasgupta2021stability,dasgupta2022assessing}
+and in calibration-drift analyses \cite{fewshot2026}, and we claim no
+priority over it. What we add is a demonstration, with predictions
+committed in advance and a seven-mechanism ledger, that a session-dependent
+fault of this kind is the binding constraint specifically for
 collective-measurement protocols, at magnitudes that dwarf every error
 source such protocols are conventionally modeled with.
 
-One further constraint affects reproducibility rather than physics. The
-single-copy route requires many independent random measurement bases, and
-on a per-circuit-priced platform without batching each is a separately
-billable job --- one to two orders of magnitude more than the collective
-route used at the same shot count. That is why our hardware single-copy
-baseline at \(n \geq 3\) is computed from independently measured device
-parameters rather than measured directly, with the fifteen-basis
-\(n = 2\) anchor as the one point we could afford. That anchor did not
-reproduce its prediction, so the computed points are model output the
-hardware did not corroborate, and we present them as such. The credit
-accounting behind that comparison is in the supplementary material.
+One further constraint affects reproducibility rather than physics: the
+single-copy route needs many independent measurement bases, and on a
+per-circuit-priced platform without batching each is a separately billable
+job --- one to two orders of magnitude more than the collective route at
+the same shot count. That is why our hardware single-copy baseline at
+\(n \geq 3\) is computed from independently measured device parameters
+rather than measured directly, with the fifteen-basis \(n = 2\) anchor the
+one point we could afford. That anchor did not reproduce its prediction,
+so the computed points are model output the hardware did not corroborate,
+and we present them as such. The credit accounting is in the supplementary
+material.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
