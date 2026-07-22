@@ -527,7 +527,9 @@ concentrated on a stabilizer group lifts it.
 Averaging over the ensemble of Section~2.5,
 \(\rho = (1-q)|\psi\rangle\langle\psi| + q I/2^n\) with \(|\psi\rangle\)
 Haar, define the ensemble-averaged projection variances
-\(\bar\zeta_c(n,q) = \mathbb{E}_\psi[\zeta_c(\rho_\psi)]\). Their
+\(\bar\zeta_c(n,q) = \mathbb{E}_\psi[\zeta_c(\rho_\psi)]\). We write the bar
+only for these ensemble averages; \(\zeta_1\) and \(\zeta_2\) without it
+denote the statewise quantities of Section~3.1. Their
 evaluation requires only the second and third Haar moments of Pauli
 expectations, \(\mathbb{E}[\langle P\rangle^2] = 1/(d+1)\) and
 \(\mathbb{E}[\langle P_u\rangle\langle P_s\rangle\langle P_{s'}\rangle]
@@ -624,11 +626,11 @@ required counts over compatible tuples are beyond what we derived. The
 \subsection{\texorpdfstring{The \(\alpha\)
 transition}{The \textbackslash alpha transition}}\label{the-alpha-transition}}
 
-The projection variances for noisy-pure states, estimated over this range,
-give clean exponential scalings --- sampled-fit constants, retained for the
-contrast in Section~\ref{sec:zeta-closed-form}, which quotes \(5.14\) for
-this window from the regression on \(M^*(n)\) and \(5.18\) from the closed
-forms. Over \(n = 2\) to \(7\),
+Fitting the sampled projection variances over this range gives clean
+exponential scalings, retained here for the contrast with the closed forms
+of Section~\ref{sec:zeta-closed-form} (which returns \(5.18\) for the
+\(M^*\) base over this window against the regression's \(5.14\)).
+Over \(n = 2\) to \(7\),
 
 \[\zeta_1 \approx 0.63 \cdot (1.35)^n, \qquad \zeta_2 \approx 1.10 \cdot (6.93)^n, \qquad M^* \approx 0.87 \cdot (5.15)^n,\]
 
@@ -637,7 +639,7 @@ and over \(n = 2\) to \(9\), \(M^* \approx 0.76 \cdot (5.345)^n\); the
 \(1.30\) over the full range, which accounts for the difference. The
 kernel variance grows roughly five times faster per qubit than the linear
 variance, so their ratio \(M^*\) grows approximately exponentially over
-the range we fit (\(n = 2\) to \(9\)). The consequence is direct: at fixed budget, increasing
+the range we fit. The consequence is direct: at fixed budget, increasing
 \(n\) pushes \(M\) below \(M^*\), the higher-order term takes over, and the
 effective exponent \(\alpha\) --- the negative slope of
 \(\log \mathrm{RMSE}\) against \(\log M\), fitted over the budget range
