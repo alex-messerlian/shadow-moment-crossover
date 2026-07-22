@@ -65,8 +65,8 @@ simulation, and for \(k > 2\) the collective side is modelled as a bounded
 \(\pm 1\) outcome carrying none of the gates its circuit would require.
 
 We then confront the prediction with what the platform reports as a
-108-qubit superconducting processor, with predictions committed before
-submission. Both failed: a
+108-qubit superconducting processor, with predictions committed to version
+control before the corresponding hardware jobs were submitted. Both failed: a
 Bell-state purity locked at \(0.89\) measured \(0.72\), and a single-copy
 anchor locked at \(1.50\) measured \(1.34\), with disjoint intervals.
 Byte-identical circuits also varied substantially between sessions. We do
@@ -95,7 +95,7 @@ entanglement criteria and bounds on negativity, and purity enters
 error-mitigation protocols such as virtual distillation. Any experiment
 characterizing the state its device actually prepared needs these numbers.
 
-Two routes exist. The single-copy route measures one copy at a time in
+We compare two routes. The single-copy route measures one copy at a time in
 randomized local bases, building classical shadows
 \cite{huang2020shadows}, and forms an unbiased U-statistic from the
 snapshots; it uses no entangling gates. The collective route holds \(k\)
@@ -150,9 +150,11 @@ exact variance formula. That fixes the crossover budget
 against two exact bias laws for the collective route, yields a prediction
 --- with nothing fitted to the crossover data --- of the size at which a
 collective two-copy measurement attains the lower RMSE at equal copy
-budget. The same evaluation runs at \(k = 3\) and \(4\), where prior
-treatments bound the higher-moment variance, Elben et al.'s Appendix D.2
-among them, and where the two-term truncation no longer suffices. A
+budget. The same exact Hoeffding architecture runs at \(k = 3\) and \(4\)
+with independently estimated projection variances --- no closed forms are
+claimed at those orders --- where prior treatments bound the higher-moment
+variance, Elben et al.'s Appendix D.2 among them, and the two-term
+truncation no longer suffices. A
 hardware comparison of the two routes has been reported
 \cite{peng2025beyond}; what we add is the predictive law and a test of it
 locked in advance. That test failed, and what it established is the shape
@@ -291,10 +293,11 @@ qubit, so \(\zeta_2 = 7^n - 4^{-n}\), and the variance
 exponential in \(n\), against a target itself shrinking as \(2^{-n}\).
 
 The exponential is therefore a property of the estimator, not of
-high-purity states. Its base is set by \(\zeta_2\), which does not depend
-on purity at all but on how the state's Pauli weight is distributed: it is
-exactly \(7\) per qubit both at the maximally mixed state and for any
-spread Pauli spectrum, and larger for stabilizer-structured spectra
+high-purity states. Its leading exponential rate is set by
+\(\zeta_2\): purity alone does not fix it, and what does is how the
+state's Pauli weight is distributed. That rate is \(7\) per qubit at the
+maximally mixed state and for the spread-spectrum ensembles evaluated
+here, and larger for stabilizer-structured spectra
 (Section~\ref{sec:zeta-closed-form}). Purity governs \(\zeta_1\), and so
 \(M^*\) and the exponent, not the exponential itself. The ensemble
 nonetheless decides what the benchmark measures: at
@@ -449,7 +452,8 @@ next subsection: it is the diagonal of an exact cubic identity already in
 \cite{huang2020shadows}, and the residual it leaves is that identity's
 off-diagonal sum.
 
-\subsection{The projection variances in closed form}
+\subsection{\texorpdfstring{The \(k = 2\) projection variances in closed
+form}{The k = 2 projection variances in closed form}}
 \label{sec:zeta-closed-form}
 
 Section~3.4 rules out a weight-only quadratic form for \(\zeta_1\). What
@@ -473,12 +477,26 @@ the first projection variance follows by contraction, and since the
 every \(\zeta_c\) is a quadratic functional of the same second-moment
 matrix. Two consequences precede the evaluation.
 
-First, the diagonal \(s = s'\) of that contraction is exactly the
-weight-only form of Section~3.4, with \(c_w = 3^w/4^n\), so the residual
-that form leaves is exactly the off-diagonal sum. The shortfall
-identified there is not an open feature of the algebra.
+Written out, the contraction of the second-moment identity with the
+Pauli expansion of \(\rho\) is, for any state,
+\[
+\zeta_1
+= 4^{-n}\!\!\sum_{P \sim Q}
+3^{\,|\mathrm{supp}(P)\,\cap\,\mathrm{supp}(Q)|}\,
+\langle P\rangle\,\langle Q\rangle\,\langle P\ominus Q\rangle
+\;-\; \mathrm{Tr}(\rho^2)^2 ,
+\]
+where \(P \sim Q\) means \(P\) and \(Q\) agree on every qubit where both
+are non-identity, and \(P \ominus Q\) is the string left after the shared
+non-identity factors cancel. Two of the three Pauli expectations multiply
+whenever \(P \neq Q\), so the expression is cubic in the \(\langle P\rangle\),
+which is why the weight-only quadratic form of Section~3.4 cannot match
+it. Concretely \(XI\) and \(XZ\) are compatible and leave \(IZ\), while
+\(XI\) and \(YI\) are incompatible and contribute nothing. The diagonal
+\(P = Q\) is the weight-only form; the off-diagonal \(P \neq Q\) is the
+cubic remainder it drops.
 
-Second, because only second moments enter, the projection variances do
+Because only second moments enter, the projection variances do
 not distinguish local Haar single-qubit shadows from local Pauli-basis
 shadows: the two ensembles have entrywise identical second-moment
 matrices, so \(\zeta_c\) agrees for every \(c\) and every \(k\). Every
@@ -508,21 +526,23 @@ concentrated on a stabilizer group lifts it.
 \paragraph{Evaluation for the noisy-pure ensemble.}
 Averaging over the ensemble of Section~2.5,
 \(\rho = (1-q)|\psi\rangle\langle\psi| + q I/2^n\) with \(|\psi\rangle\)
-Haar, requires only the second and third Haar moments of Pauli
+Haar, define the ensemble-averaged projection variances
+\(\bar\zeta_c(n,q) = \mathbb{E}_\psi[\zeta_c(\rho_\psi)]\). Their
+evaluation requires only the second and third Haar moments of Pauli
 expectations, \(\mathbb{E}[\langle P\rangle^2] = 1/(d+1)\) and
 \(\mathbb{E}[\langle P_u\rangle\langle P_s\rangle\langle P_{s'}\rangle]
 = 2/((d+1)(d+2))\) when \(P_sP_{s'} = P_u\), together with four counts
 over compatible Pauli pairs. Writing \(d = 2^n\), \(u = 1-q\), and
 \(p_2 = \mathrm{Tr}(\rho^2) = u^2 + q(2-q)/d\),
 \[
-\zeta_1 = 4^{-n}\!\left[\,1
+\bar\zeta_1 = 4^{-n}\!\left[\,1
 + \frac{u^2(10^n-1)}{d+1}
 + \frac{2u^2(4^n-1)}{d+1}
 + \frac{2u^3\!\left(16^n - 10^n - 2\cdot 4^n + 2\right)}{(d+1)(d+2)}
 \right] - p_2^{\,2},
 \]
 \[
-\zeta_2 = 4^{-n}\!\left[\,28^n + \frac{u^2\!\left(34^n - 28^n\right)}{d+1}\right] - p_2^{\,2},
+\bar\zeta_2 = 4^{-n}\!\left[\,28^n + \frac{u^2\!\left(34^n - 28^n\right)}{d+1}\right] - p_2^{\,2},
 \]
 the second being the spectral sum above evaluated on this ensemble.
 Each qubit contributes one identity of weight \(3^0\) and three Paulis of
@@ -530,11 +550,18 @@ weight \(3^1\), so \(\sum_s 3^{|s|} = 10^n\); the compatible pairs give
 \(16^n\) with that weighting and \(34^n\) with its square, with diagonals
 \(10^n\) and \(28^n\).
 
+The threshold reported below is the ratio of these averaged variances,
+\(\bar\zeta_2/(2\bar\zeta_1)\), which is the quantity the state-aggregated
+RMSE of Section~5.2 measures; it is not the ensemble mean of the statewise
+ratio, and the two differ in general.
+
 \paragraph{The threshold and what sets its base.}
-Write \(\beta\) for the growth base of \(\mathbb{E}[\mathrm{Tr}(G\rho)^2]\),
-which is also the base of \(\zeta_1\). Since
+For a sequence \(a_n\) with \(\mathrm{base}(a) = \lim_{n\to\infty}
+a_n^{1/n}\) when the limit exists, write \(\beta = \mathrm{base}(\bar\zeta_1)\),
+which is also the base of \(\mathbb{E}[\mathrm{Tr}(G\rho)^2]\). Since
 \(M^* = \zeta_2/(2\zeta_1)\), its base is
-\(\mathrm{base}(\zeta_2)/\beta\) exactly, and both factors are spectral
+\(\mathrm{base}(\zeta_2)/\beta\) exactly, both leading coefficients being
+nonzero, and both factors are spectral
 functionals of the state rather than universal constants. For the
 ensemble of Section~2.5 the closed forms give \(\beta = 5/4\) and
 \(\mathrm{base}(\zeta_2) = 7\), so
@@ -573,8 +600,16 @@ the weight profile of the Pauli spectrum, which the kernel
 spread-spectrum case, not a universal constant, and structured
 stabilizer states sit on a different branch at \(5\). The low-rank base
 \(\beta\) is \(5/4\) asymptotically, like the other spread spectra, and
-reads \(\approx 1.21\) at the finite sizes evaluated here; the \(M^*\)
+reads \(\approx 1.21\) at the finite sizes evaluated here (this row is
+numerical, not closed form); the \(M^*\)
 base uses the asymptotic value.
+
+The fitted base drifts with the fitting
+window, from \(5.14\) over \(n = 2\) to \(7\) to \(5.60\) over \(n = 4\)
+to \(9\). The closed forms reproduce that drift exactly, returning
+\(5.18\), \(5.36\) and \(5.60\) over the same windows with no sampling
+anywhere, so the drift is a finite-size property of the fit and
+\(28/5\) is what it drifts toward.
 
 \paragraph{Higher moment orders.}
 The multilinearity argument above shows every \(\zeta_c\) depends only on
@@ -584,13 +619,6 @@ state-dependent contributions dominate the state-independent ones, so the
 kernel bases are not read off the maximally mixed values, and the
 required counts over compatible tuples are beyond what we derived. The
 \(k \ge 3\) coefficients used below are estimated numerically.
-
-The fitted base drifts with the fitting
-window, from \(5.14\) over \(n = 2\) to \(7\) to \(5.60\) over \(n = 4\)
-to \(9\). The closed forms reproduce that drift exactly, returning
-\(5.18\), \(5.36\) and \(5.60\) over the same windows with no sampling
-anywhere, so the drift is a finite-size property of the fit and
-\(28/5\) is what it drifts toward.
 
 \hypertarget{the-alpha-transition}{%
 \subsection{\texorpdfstring{The \(\alpha\)
@@ -791,8 +819,9 @@ at \(q = 0.15\) with
 An exact identity is not expected to degrade under extrapolation, and it
 does not.
 
-With the single-copy variance and the collective bias both known
-exactly, the crossover follows by setting one against the other.
+With the single-copy variance in closed form at \(k=2\) and the
+collective bias an exact identity, the crossover follows by setting one
+against the other.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -870,10 +899,11 @@ the asymmetry does shape is the dependence of \(n^*\) on the noise rate,
 which is a property of the collective side by construction.
 
 These cells demonstrate consistency with the derived identities; the
-out-of-ensemble transfer is the evidence that the law generalizes. What
-transfers is the structure of the formula, since the projection variances
-are re-estimated for each ensemble, so this is not zero-shot prediction
-from universal constants. Three of the four ensembles --- Haar-pure,
+additional ensembles test whether the plug-in variance architecture stays
+accurate when its projection-variance inputs are re-estimated outside the
+derivation ensemble. What transfers is the structure of the formula, not
+the noisy-pure coefficients, which are re-estimated for each ensemble, so
+this is not zero-shot prediction from universal constants. Three of the four ensembles --- Haar-pure,
 low-rank, and GHZ-noisy --- were never used in deriving the law. GHZ
 states are maximally non-Haar-typical, and we included them because an
 ensemble-tuned theory ought to fail on them; the theory's accuracy there
@@ -961,10 +991,10 @@ argument uses.
 This speaks to the resource-cost concern behind the choice in
 \cite{qmladvantage2026} to keep its measure-first protocol single-copy.
 The entangling overhead that motivates such caution is real, and it is not
-the binding constraint. The binding constraint is that single-copy
-estimation of nonlinear functionals by the local-randomized-measurement
-shadow U-statistic we study does not survive to the sizes they are
-entering --- a statement about this protocol, not about every single-copy
+the binding constraint. The binding constraint is that at the tested budgets
+the local-randomized-measurement shadow U-statistic we study becomes
+statistically unusable for moment estimation at comparable system sizes
+--- a statement about this protocol, not about every single-copy
 strategy. Whether the collective route survives on a real device is the
 question we take up next.
 
@@ -1215,9 +1245,12 @@ documented over 22 months \cite{dasgupta2021stability,dasgupta2022assessing}
 and in calibration-drift analyses \cite{fewshot2026}, and we claim no
 priority over it. What we add is a demonstration, with predictions
 committed in advance and a seven-mechanism ledger, that a session-dependent
-fault of this kind is the binding constraint specifically for
-collective-measurement protocols, at magnitudes that dwarf every error
-source such protocols are conventionally modeled with.
+in this case study session-dependent variation dominated the modeled
+collective-measurement error budget --- at magnitudes that dwarf every
+error source such protocols are conventionally modeled with --- and
+prevented a stable hardware test of the predicted advantage. The
+single-copy anchor failed in the same session, so the variation is not
+specific to the collective route.
 
 One further constraint affects reproducibility rather than physics: the
 single-copy route needs many independent measurement bases, and on a
@@ -1460,8 +1493,9 @@ square-root law.
 
 Paired with two exact bias laws for the collective route, distinguished by
 the geometry of the noise channel rather than by its rate, the variance
-law predicts without free parameters the size at which collective
-measurement attains the lower RMSE at equal copy budget. It places 82 of
+law predicts, with no parameter fitted to the crossover outcomes, the
+size at which collective measurement attains the lower RMSE at equal copy
+budget. It places 82 of
 the 83 simulated crossovers within one qubit.
 
 The practical guidance follows. For estimating purity of noisy-pure states
@@ -1492,8 +1526,9 @@ every modeled error source, and could not be attributed to any of seven
 candidate mechanisms, four excluded outright and three bounded well below
 the deficit. That is more specific than a call for better gates: readout
 fidelity and run-to-run stability, neither of which the published
-specification for this backend gives, are what stand between current
-devices and the advantage the criterion places near six qubits.
+specification for this backend gives, are what stood between this backend
+and execution path and the advantage the criterion places near six
+qubits.
 
 Two questions follow. Whether the same variance law, applied to the
 partial-transpose moments, gives an exact sample-complexity account of
@@ -1696,6 +1731,21 @@ as an \(M \times M\) contraction, which costs \(O(M^2 n + M n d^2)\) and
 forms no \(d^4\) tensor. Both routes agree, and the complete \(k=4\)
 estimator matches brute-force enumeration over all distinct 4-tuples to
 \(\lesssim 10^{-13}\).
+
+\paragraph{The two-copy spectral sum.}
+The \(k=2\) kernel \(\mathrm{Tr}(G_1 G_2)^2\) is diagonal in the Pauli
+basis with per-qubit weights \(\{I : 112,\; X,Y,Z : 8\}\), so its
+expectation over a state with Pauli expansion
+\(\rho = 2^{-n}\sum_P \langle P\rangle P\) is
+\(7^{n} \sum_P \langle P\rangle^2 (1/14)^{|P|}\): each qubit multiplies
+the identity slot by \(112/16 = 7\) and every non-identity slot by
+\(8/16 = 1/2 = 7\cdot(1/14)\). Subtracting \(\mathrm{Tr}(\rho^2)^2\) for
+the disconnected part gives the spectral identity of
+Section~\ref{sec:zeta-closed-form}. At the maximally mixed state only the
+identity term survives, returning \(7^n - 4^{-n}\); on the noisy-pure
+ensemble the weighted counts \(28^n\) and \(34^n\) of the main text
+follow. This is verified against exact enumeration to machine precision by
+\texttt{experiments/beta\_law\_regenerate.py}.
 
 \hypertarget{appendix-b.-the-destructive-swap-test}{%
 \section{The destructive SWAP
