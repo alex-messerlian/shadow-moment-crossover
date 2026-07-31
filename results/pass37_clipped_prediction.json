@@ -1,0 +1,869 @@
+{
+ "description": "PASS 37.4: predicted crossover with the criterion re-derived for a clipped estimator (both sides clipped), noisy-pure cells",
+ "rows": [
+  {
+   "source": "budget_scaling",
+   "k": 2,
+   "noise_model": "amplitude_damping",
+   "rate": 0.05,
+   "budget": 2000,
+   "predicted_raw": 6,
+   "predicted_clipped": 7
+  },
+  {
+   "source": "budget_scaling",
+   "k": 2,
+   "noise_model": "amplitude_damping",
+   "rate": 0.05,
+   "budget": 8000,
+   "predicted_raw": 8,
+   "predicted_clipped": 8
+  },
+  {
+   "source": "budget_scaling",
+   "k": 2,
+   "noise_model": "amplitude_damping",
+   "rate": 0.05,
+   "budget": 32000,
+   "predicted_raw": null,
+   "predicted_clipped": null
+  },
+  {
+   "source": "budget_scaling",
+   "k": 2,
+   "noise_model": "amplitude_damping",
+   "rate": 0.05,
+   "budget": 128000,
+   "predicted_raw": null,
+   "predicted_clipped": null
+  },
+  {
+   "source": "budget_scaling",
+   "k": 2,
+   "noise_model": "amplitude_damping",
+   "rate": 0.1,
+   "budget": 2000,
+   "predicted_raw": 7,
+   "predicted_clipped": 8
+  },
+  {
+   "source": "budget_scaling",
+   "k": 2,
+   "noise_model": "amplitude_damping",
+   "rate": 0.1,
+   "budget": 8000,
+   "predicted_raw": 9,
+   "predicted_clipped": null
+  },
+  {
+   "source": "budget_scaling",
+   "k": 2,
+   "noise_model": "amplitude_damping",
+   "rate": 0.1,
+   "budget": 32000,
+   "predicted_raw": null,
+   "predicted_clipped": null
+  },
+  {
+   "source": "budget_scaling",
+   "k": 2,
+   "noise_model": "amplitude_damping",
+   "rate": 0.1,
+   "budget": 128000,
+   "predicted_raw": null,
+   "predicted_clipped": null
+  },
+  {
+   "source": "budget_scaling",
+   "k": 2,
+   "noise_model": "dephasing",
+   "rate": 0.05,
+   "budget": 2000,
+   "predicted_raw": 6,
+   "predicted_clipped": 6
+  },
+  {
+   "source": "budget_scaling",
+   "k": 2,
+   "noise_model": "dephasing",
+   "rate": 0.05,
+   "budget": 8000,
+   "predicted_raw": 8,
+   "predicted_clipped": 8
+  },
+  {
+   "source": "budget_scaling",
+   "k": 2,
+   "noise_model": "dephasing",
+   "rate": 0.05,
+   "budget": 32000,
+   "predicted_raw": null,
+   "predicted_clipped": null
+  },
+  {
+   "source": "budget_scaling",
+   "k": 2,
+   "noise_model": "dephasing",
+   "rate": 0.05,
+   "budget": 128000,
+   "predicted_raw": null,
+   "predicted_clipped": null
+  },
+  {
+   "source": "budget_scaling",
+   "k": 2,
+   "noise_model": "dephasing",
+   "rate": 0.1,
+   "budget": 2000,
+   "predicted_raw": 7,
+   "predicted_clipped": 8
+  },
+  {
+   "source": "budget_scaling",
+   "k": 2,
+   "noise_model": "dephasing",
+   "rate": 0.1,
+   "budget": 8000,
+   "predicted_raw": 9,
+   "predicted_clipped": null
+  },
+  {
+   "source": "budget_scaling",
+   "k": 2,
+   "noise_model": "dephasing",
+   "rate": 0.1,
+   "budget": 32000,
+   "predicted_raw": null,
+   "predicted_clipped": null
+  },
+  {
+   "source": "budget_scaling",
+   "k": 2,
+   "noise_model": "dephasing",
+   "rate": 0.1,
+   "budget": 128000,
+   "predicted_raw": null,
+   "predicted_clipped": null
+  },
+  {
+   "source": "budget_scaling",
+   "k": 2,
+   "noise_model": "depolarizing",
+   "rate": 0.05,
+   "budget": 2000,
+   "predicted_raw": 2,
+   "predicted_clipped": 2
+  },
+  {
+   "source": "budget_scaling",
+   "k": 2,
+   "noise_model": "depolarizing",
+   "rate": 0.05,
+   "budget": 8000,
+   "predicted_raw": 5,
+   "predicted_clipped": 5
+  },
+  {
+   "source": "budget_scaling",
+   "k": 2,
+   "noise_model": "depolarizing",
+   "rate": 0.05,
+   "budget": 32000,
+   "predicted_raw": 7,
+   "predicted_clipped": 7
+  },
+  {
+   "source": "budget_scaling",
+   "k": 2,
+   "noise_model": "depolarizing",
+   "rate": 0.05,
+   "budget": 128000,
+   "predicted_raw": null,
+   "predicted_clipped": null
+  },
+  {
+   "source": "budget_scaling",
+   "k": 2,
+   "noise_model": "depolarizing",
+   "rate": 0.1,
+   "budget": 2000,
+   "predicted_raw": 5,
+   "predicted_clipped": 5
+  },
+  {
+   "source": "budget_scaling",
+   "k": 2,
+   "noise_model": "depolarizing",
+   "rate": 0.1,
+   "budget": 8000,
+   "predicted_raw": 7,
+   "predicted_clipped": 7
+  },
+  {
+   "source": "budget_scaling",
+   "k": 2,
+   "noise_model": "depolarizing",
+   "rate": 0.1,
+   "budget": 32000,
+   "predicted_raw": 8,
+   "predicted_clipped": 8
+  },
+  {
+   "source": "budget_scaling",
+   "k": 2,
+   "noise_model": "depolarizing",
+   "rate": 0.1,
+   "budget": 128000,
+   "predicted_raw": null,
+   "predicted_clipped": null
+  },
+  {
+   "source": "budget_scaling",
+   "k": 3,
+   "noise_model": "amplitude_damping",
+   "rate": 0.05,
+   "budget": 2000,
+   "predicted_raw": 7,
+   "predicted_clipped": 8
+  },
+  {
+   "source": "budget_scaling",
+   "k": 3,
+   "noise_model": "amplitude_damping",
+   "rate": 0.05,
+   "budget": 8000,
+   "predicted_raw": null,
+   "predicted_clipped": null
+  },
+  {
+   "source": "budget_scaling",
+   "k": 3,
+   "noise_model": "amplitude_damping",
+   "rate": 0.05,
+   "budget": 32000,
+   "predicted_raw": null,
+   "predicted_clipped": null
+  },
+  {
+   "source": "budget_scaling",
+   "k": 3,
+   "noise_model": "amplitude_damping",
+   "rate": 0.1,
+   "budget": 2000,
+   "predicted_raw": 8,
+   "predicted_clipped": null
+  },
+  {
+   "source": "budget_scaling",
+   "k": 3,
+   "noise_model": "amplitude_damping",
+   "rate": 0.1,
+   "budget": 8000,
+   "predicted_raw": null,
+   "predicted_clipped": null
+  },
+  {
+   "source": "budget_scaling",
+   "k": 3,
+   "noise_model": "amplitude_damping",
+   "rate": 0.1,
+   "budget": 32000,
+   "predicted_raw": null,
+   "predicted_clipped": null
+  },
+  {
+   "source": "budget_scaling",
+   "k": 3,
+   "noise_model": "dephasing",
+   "rate": 0.05,
+   "budget": 2000,
+   "predicted_raw": 7,
+   "predicted_clipped": 8
+  },
+  {
+   "source": "budget_scaling",
+   "k": 3,
+   "noise_model": "dephasing",
+   "rate": 0.05,
+   "budget": 8000,
+   "predicted_raw": null,
+   "predicted_clipped": null
+  },
+  {
+   "source": "budget_scaling",
+   "k": 3,
+   "noise_model": "dephasing",
+   "rate": 0.05,
+   "budget": 32000,
+   "predicted_raw": null,
+   "predicted_clipped": null
+  },
+  {
+   "source": "budget_scaling",
+   "k": 3,
+   "noise_model": "dephasing",
+   "rate": 0.1,
+   "budget": 2000,
+   "predicted_raw": 8,
+   "predicted_clipped": null
+  },
+  {
+   "source": "budget_scaling",
+   "k": 3,
+   "noise_model": "dephasing",
+   "rate": 0.1,
+   "budget": 8000,
+   "predicted_raw": null,
+   "predicted_clipped": null
+  },
+  {
+   "source": "budget_scaling",
+   "k": 3,
+   "noise_model": "dephasing",
+   "rate": 0.1,
+   "budget": 32000,
+   "predicted_raw": null,
+   "predicted_clipped": null
+  },
+  {
+   "source": "budget_scaling",
+   "k": 3,
+   "noise_model": "depolarizing",
+   "rate": 0.05,
+   "budget": 2000,
+   "predicted_raw": 2,
+   "predicted_clipped": 2
+  },
+  {
+   "source": "budget_scaling",
+   "k": 3,
+   "noise_model": "depolarizing",
+   "rate": 0.05,
+   "budget": 8000,
+   "predicted_raw": 4,
+   "predicted_clipped": 4
+  },
+  {
+   "source": "budget_scaling",
+   "k": 3,
+   "noise_model": "depolarizing",
+   "rate": 0.05,
+   "budget": 32000,
+   "predicted_raw": 8,
+   "predicted_clipped": 8
+  },
+  {
+   "source": "budget_scaling",
+   "k": 3,
+   "noise_model": "depolarizing",
+   "rate": 0.1,
+   "budget": 2000,
+   "predicted_raw": 4,
+   "predicted_clipped": 4
+  },
+  {
+   "source": "budget_scaling",
+   "k": 3,
+   "noise_model": "depolarizing",
+   "rate": 0.1,
+   "budget": 8000,
+   "predicted_raw": 7,
+   "predicted_clipped": 7
+  },
+  {
+   "source": "budget_scaling",
+   "k": 3,
+   "noise_model": "depolarizing",
+   "rate": 0.1,
+   "budget": 32000,
+   "predicted_raw": null,
+   "predicted_clipped": null
+  },
+  {
+   "source": "budget_scaling",
+   "k": 4,
+   "noise_model": "amplitude_damping",
+   "rate": 0.05,
+   "budget": 500,
+   "predicted_raw": 4,
+   "predicted_clipped": 6
+  },
+  {
+   "source": "budget_scaling",
+   "k": 4,
+   "noise_model": "amplitude_damping",
+   "rate": 0.05,
+   "budget": 2000,
+   "predicted_raw": null,
+   "predicted_clipped": null
+  },
+  {
+   "source": "budget_scaling",
+   "k": 4,
+   "noise_model": "amplitude_damping",
+   "rate": 0.05,
+   "budget": 8000,
+   "predicted_raw": null,
+   "predicted_clipped": null
+  },
+  {
+   "source": "budget_scaling",
+   "k": 4,
+   "noise_model": "amplitude_damping",
+   "rate": 0.1,
+   "budget": 500,
+   "predicted_raw": 6,
+   "predicted_clipped": null
+  },
+  {
+   "source": "budget_scaling",
+   "k": 4,
+   "noise_model": "amplitude_damping",
+   "rate": 0.1,
+   "budget": 2000,
+   "predicted_raw": null,
+   "predicted_clipped": null
+  },
+  {
+   "source": "budget_scaling",
+   "k": 4,
+   "noise_model": "amplitude_damping",
+   "rate": 0.1,
+   "budget": 8000,
+   "predicted_raw": null,
+   "predicted_clipped": null
+  },
+  {
+   "source": "budget_scaling",
+   "k": 4,
+   "noise_model": "dephasing",
+   "rate": 0.05,
+   "budget": 500,
+   "predicted_raw": 2,
+   "predicted_clipped": 6
+  },
+  {
+   "source": "budget_scaling",
+   "k": 4,
+   "noise_model": "dephasing",
+   "rate": 0.05,
+   "budget": 2000,
+   "predicted_raw": null,
+   "predicted_clipped": null
+  },
+  {
+   "source": "budget_scaling",
+   "k": 4,
+   "noise_model": "dephasing",
+   "rate": 0.05,
+   "budget": 8000,
+   "predicted_raw": null,
+   "predicted_clipped": null
+  },
+  {
+   "source": "budget_scaling",
+   "k": 4,
+   "noise_model": "dephasing",
+   "rate": 0.1,
+   "budget": 500,
+   "predicted_raw": 6,
+   "predicted_clipped": null
+  },
+  {
+   "source": "budget_scaling",
+   "k": 4,
+   "noise_model": "dephasing",
+   "rate": 0.1,
+   "budget": 2000,
+   "predicted_raw": null,
+   "predicted_clipped": null
+  },
+  {
+   "source": "budget_scaling",
+   "k": 4,
+   "noise_model": "dephasing",
+   "rate": 0.1,
+   "budget": 8000,
+   "predicted_raw": null,
+   "predicted_clipped": null
+  },
+  {
+   "source": "budget_scaling",
+   "k": 4,
+   "noise_model": "depolarizing",
+   "rate": 0.05,
+   "budget": 500,
+   "predicted_raw": 2,
+   "predicted_clipped": 2
+  },
+  {
+   "source": "budget_scaling",
+   "k": 4,
+   "noise_model": "depolarizing",
+   "rate": 0.05,
+   "budget": 2000,
+   "predicted_raw": 2,
+   "predicted_clipped": 2
+  },
+  {
+   "source": "budget_scaling",
+   "k": 4,
+   "noise_model": "depolarizing",
+   "rate": 0.05,
+   "budget": 8000,
+   "predicted_raw": 2,
+   "predicted_clipped": 2
+  },
+  {
+   "source": "budget_scaling",
+   "k": 4,
+   "noise_model": "depolarizing",
+   "rate": 0.1,
+   "budget": 500,
+   "predicted_raw": 2,
+   "predicted_clipped": 2
+  },
+  {
+   "source": "budget_scaling",
+   "k": 4,
+   "noise_model": "depolarizing",
+   "rate": 0.1,
+   "budget": 2000,
+   "predicted_raw": 2,
+   "predicted_clipped": 2
+  },
+  {
+   "source": "budget_scaling",
+   "k": 4,
+   "noise_model": "depolarizing",
+   "rate": 0.1,
+   "budget": 8000,
+   "predicted_raw": 6,
+   "predicted_clipped": 6
+  },
+  {
+   "source": "moment_sweep_corrected",
+   "k": 2,
+   "noise_model": "amplitude_damping",
+   "rate": 0.0,
+   "budget": 2000,
+   "predicted_raw": 2,
+   "predicted_clipped": 2
+  },
+  {
+   "source": "moment_sweep_corrected",
+   "k": 2,
+   "noise_model": "amplitude_damping",
+   "rate": 0.02,
+   "budget": 2000,
+   "predicted_raw": 2,
+   "predicted_clipped": 2
+  },
+  {
+   "source": "moment_sweep_corrected",
+   "k": 2,
+   "noise_model": "amplitude_damping",
+   "rate": 0.05,
+   "budget": 2000,
+   "predicted_raw": 6,
+   "predicted_clipped": 7
+  },
+  {
+   "source": "moment_sweep_corrected",
+   "k": 2,
+   "noise_model": "amplitude_damping",
+   "rate": 0.1,
+   "budget": 2000,
+   "predicted_raw": 7,
+   "predicted_clipped": 8
+  },
+  {
+   "source": "moment_sweep_corrected",
+   "k": 2,
+   "noise_model": "dephasing",
+   "rate": 0.0,
+   "budget": 2000,
+   "predicted_raw": 2,
+   "predicted_clipped": 2
+  },
+  {
+   "source": "moment_sweep_corrected",
+   "k": 2,
+   "noise_model": "dephasing",
+   "rate": 0.02,
+   "budget": 2000,
+   "predicted_raw": 2,
+   "predicted_clipped": 2
+  },
+  {
+   "source": "moment_sweep_corrected",
+   "k": 2,
+   "noise_model": "dephasing",
+   "rate": 0.05,
+   "budget": 2000,
+   "predicted_raw": 6,
+   "predicted_clipped": 6
+  },
+  {
+   "source": "moment_sweep_corrected",
+   "k": 2,
+   "noise_model": "dephasing",
+   "rate": 0.1,
+   "budget": 2000,
+   "predicted_raw": 7,
+   "predicted_clipped": 8
+  },
+  {
+   "source": "moment_sweep_corrected",
+   "k": 2,
+   "noise_model": "depolarizing",
+   "rate": 0.0,
+   "budget": 2000,
+   "predicted_raw": 2,
+   "predicted_clipped": 2
+  },
+  {
+   "source": "moment_sweep_corrected",
+   "k": 2,
+   "noise_model": "depolarizing",
+   "rate": 0.02,
+   "budget": 2000,
+   "predicted_raw": 2,
+   "predicted_clipped": 2
+  },
+  {
+   "source": "moment_sweep_corrected",
+   "k": 2,
+   "noise_model": "depolarizing",
+   "rate": 0.05,
+   "budget": 2000,
+   "predicted_raw": 2,
+   "predicted_clipped": 2
+  },
+  {
+   "source": "moment_sweep_corrected",
+   "k": 2,
+   "noise_model": "depolarizing",
+   "rate": 0.1,
+   "budget": 2000,
+   "predicted_raw": 5,
+   "predicted_clipped": 5
+  },
+  {
+   "source": "moment_sweep_corrected",
+   "k": 3,
+   "noise_model": "amplitude_damping",
+   "rate": 0.0,
+   "budget": 2000,
+   "predicted_raw": 2,
+   "predicted_clipped": 2
+  },
+  {
+   "source": "moment_sweep_corrected",
+   "k": 3,
+   "noise_model": "amplitude_damping",
+   "rate": 0.02,
+   "budget": 2000,
+   "predicted_raw": 2,
+   "predicted_clipped": 2
+  },
+  {
+   "source": "moment_sweep_corrected",
+   "k": 3,
+   "noise_model": "amplitude_damping",
+   "rate": 0.05,
+   "budget": 2000,
+   "predicted_raw": 7,
+   "predicted_clipped": 8
+  },
+  {
+   "source": "moment_sweep_corrected",
+   "k": 3,
+   "noise_model": "amplitude_damping",
+   "rate": 0.1,
+   "budget": 2000,
+   "predicted_raw": 8,
+   "predicted_clipped": null
+  },
+  {
+   "source": "moment_sweep_corrected",
+   "k": 3,
+   "noise_model": "dephasing",
+   "rate": 0.0,
+   "budget": 2000,
+   "predicted_raw": 2,
+   "predicted_clipped": 2
+  },
+  {
+   "source": "moment_sweep_corrected",
+   "k": 3,
+   "noise_model": "dephasing",
+   "rate": 0.02,
+   "budget": 2000,
+   "predicted_raw": 2,
+   "predicted_clipped": 2
+  },
+  {
+   "source": "moment_sweep_corrected",
+   "k": 3,
+   "noise_model": "dephasing",
+   "rate": 0.05,
+   "budget": 2000,
+   "predicted_raw": 7,
+   "predicted_clipped": 8
+  },
+  {
+   "source": "moment_sweep_corrected",
+   "k": 3,
+   "noise_model": "dephasing",
+   "rate": 0.1,
+   "budget": 2000,
+   "predicted_raw": 8,
+   "predicted_clipped": null
+  },
+  {
+   "source": "moment_sweep_corrected",
+   "k": 3,
+   "noise_model": "depolarizing",
+   "rate": 0.0,
+   "budget": 2000,
+   "predicted_raw": 2,
+   "predicted_clipped": 2
+  },
+  {
+   "source": "moment_sweep_corrected",
+   "k": 3,
+   "noise_model": "depolarizing",
+   "rate": 0.02,
+   "budget": 2000,
+   "predicted_raw": 2,
+   "predicted_clipped": 2
+  },
+  {
+   "source": "moment_sweep_corrected",
+   "k": 3,
+   "noise_model": "depolarizing",
+   "rate": 0.05,
+   "budget": 2000,
+   "predicted_raw": 2,
+   "predicted_clipped": 2
+  },
+  {
+   "source": "moment_sweep_corrected",
+   "k": 3,
+   "noise_model": "depolarizing",
+   "rate": 0.1,
+   "budget": 2000,
+   "predicted_raw": 4,
+   "predicted_clipped": 4
+  },
+  {
+   "source": "moment_sweep_corrected",
+   "k": 4,
+   "noise_model": "amplitude_damping",
+   "rate": 0.0,
+   "budget": 2000,
+   "predicted_raw": 2,
+   "predicted_clipped": 2
+  },
+  {
+   "source": "moment_sweep_corrected",
+   "k": 4,
+   "noise_model": "amplitude_damping",
+   "rate": 0.02,
+   "budget": 2000,
+   "predicted_raw": 2,
+   "predicted_clipped": 2
+  },
+  {
+   "source": "moment_sweep_corrected",
+   "k": 4,
+   "noise_model": "amplitude_damping",
+   "rate": 0.05,
+   "budget": 2000,
+   "predicted_raw": 8,
+   "predicted_clipped": 8
+  },
+  {
+   "source": "moment_sweep_corrected",
+   "k": 4,
+   "noise_model": "amplitude_damping",
+   "rate": 0.1,
+   "budget": 2000,
+   "predicted_raw": 8,
+   "predicted_clipped": null
+  },
+  {
+   "source": "moment_sweep_corrected",
+   "k": 4,
+   "noise_model": "dephasing",
+   "rate": 0.0,
+   "budget": 2000,
+   "predicted_raw": 2,
+   "predicted_clipped": 2
+  },
+  {
+   "source": "moment_sweep_corrected",
+   "k": 4,
+   "noise_model": "dephasing",
+   "rate": 0.02,
+   "budget": 2000,
+   "predicted_raw": 2,
+   "predicted_clipped": 2
+  },
+  {
+   "source": "moment_sweep_corrected",
+   "k": 4,
+   "noise_model": "dephasing",
+   "rate": 0.05,
+   "budget": 2000,
+   "predicted_raw": 8,
+   "predicted_clipped": 8
+  },
+  {
+   "source": "moment_sweep_corrected",
+   "k": 4,
+   "noise_model": "dephasing",
+   "rate": 0.1,
+   "budget": 2000,
+   "predicted_raw": 8,
+   "predicted_clipped": null
+  },
+  {
+   "source": "moment_sweep_corrected",
+   "k": 4,
+   "noise_model": "depolarizing",
+   "rate": 0.0,
+   "budget": 2000,
+   "predicted_raw": 2,
+   "predicted_clipped": 2
+  },
+  {
+   "source": "moment_sweep_corrected",
+   "k": 4,
+   "noise_model": "depolarizing",
+   "rate": 0.02,
+   "budget": 2000,
+   "predicted_raw": 2,
+   "predicted_clipped": 2
+  },
+  {
+   "source": "moment_sweep_corrected",
+   "k": 4,
+   "noise_model": "depolarizing",
+   "rate": 0.05,
+   "budget": 2000,
+   "predicted_raw": 2,
+   "predicted_clipped": 2
+  },
+  {
+   "source": "moment_sweep_corrected",
+   "k": 4,
+   "noise_model": "depolarizing",
+   "rate": 0.1,
+   "budget": 2000,
+   "predicted_raw": 2,
+   "predicted_clipped": 2
+  }
+ ]
+}

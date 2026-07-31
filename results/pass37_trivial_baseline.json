@@ -1,0 +1,183 @@
+{
+ "description": "PASS 37.3: single-copy (raw/clipped) and collective against data-free constant guesses",
+ "baselines": {
+  "midpoint": "c = (2^-n + 1)/2, uses only the physical range; minimax optimal; the honest data-free competitor",
+  "ensemble_mean": "c = mean true purity; NOT a fair competitor (knowing it is knowing the answer); shows ensemble concentration",
+  "oracle": "c = the true value; RMSE 0 by construction; degenerate"
+ },
+ "single_copy_stops_beating_midpoint_at_n": 7,
+ "collective_stops_beating_midpoint_at_n": 10,
+ "rows": [
+  {
+   "n": 2,
+   "true_purity_mean": 0.8574999999999999,
+   "true_purity_std": 2.9504581591051765e-16,
+   "physical_range": [
+    0.25,
+    1.0
+   ],
+   "single_raw": 0.04348925943177573,
+   "single_clipped": 0.04327524002445975,
+   "single_shrunk": 0.04368216854081426,
+   "collective": 0.06623197868099666,
+   "const_midpoint": 0.625,
+   "rmse_const_midpoint": 0.2325,
+   "rmse_const_ensemble_mean": 2.9504581591051765e-16,
+   "rmse_const_oracle": 0.0,
+   "clipped_beats_midpoint": true,
+   "collective_beats_midpoint": true
+  },
+  {
+   "n": 3,
+   "true_purity_mean": 0.8337499999999999,
+   "true_purity_std": 2.271891778003035e-16,
+   "physical_range": [
+    0.125,
+    1.0
+   ],
+   "single_raw": 0.06088374703157374,
+   "single_clipped": 0.06054613925773552,
+   "single_shrunk": 0.06109706722120508,
+   "collective": 0.1026753479825285,
+   "const_midpoint": 0.5625,
+   "rmse_const_midpoint": 0.27124999999999994,
+   "rmse_const_ensemble_mean": 2.271891778003035e-16,
+   "rmse_const_oracle": 0.0,
+   "clipped_beats_midpoint": true,
+   "collective_beats_midpoint": true
+  },
+  {
+   "n": 4,
+   "true_purity_mean": 0.821875,
+   "true_purity_std": 2.7289062128071225e-16,
+   "physical_range": [
+    0.0625,
+    1.0
+   ],
+   "single_raw": 0.0720144009347245,
+   "single_clipped": 0.07096591783320573,
+   "single_shrunk": 0.07201609240539898,
+   "collective": 0.13749589009009208,
+   "const_midpoint": 0.53125,
+   "rmse_const_midpoint": 0.29062499999999997,
+   "rmse_const_ensemble_mean": 2.7289062128071225e-16,
+   "rmse_const_oracle": 0.0,
+   "clipped_beats_midpoint": true,
+   "collective_beats_midpoint": true
+  },
+  {
+   "n": 5,
+   "true_purity_mean": 0.8159375000000001,
+   "true_purity_std": 2.8486110356367634e-16,
+   "physical_range": [
+    0.03125,
+    1.0
+   ],
+   "single_raw": 0.12984881615972044,
+   "single_clipped": 0.11451228203708887,
+   "single_shrunk": 0.12193281818040949,
+   "collective": 0.1783234092351591,
+   "const_midpoint": 0.515625,
+   "rmse_const_midpoint": 0.30031250000000004,
+   "rmse_const_ensemble_mean": 2.8486110356367634e-16,
+   "rmse_const_oracle": 0.0,
+   "clipped_beats_midpoint": true,
+   "collective_beats_midpoint": true
+  },
+  {
+   "n": 6,
+   "true_purity_mean": 0.81296875,
+   "true_purity_std": 2.5739461938222585e-16,
+   "physical_range": [
+    0.015625,
+    1.0
+   ],
+   "single_raw": 0.27034216805914485,
+   "single_clipped": 0.22665553338317335,
+   "single_shrunk": 0.2842088320908629,
+   "collective": 0.2069166503578494,
+   "const_midpoint": 0.5078125,
+   "rmse_const_midpoint": 0.30515625,
+   "rmse_const_ensemble_mean": 2.5739461938222585e-16,
+   "rmse_const_oracle": 0.0,
+   "clipped_beats_midpoint": true,
+   "collective_beats_midpoint": true
+  },
+  {
+   "n": 7,
+   "true_purity_mean": 0.8114843750000001,
+   "true_purity_std": 3.2169338768213358e-16,
+   "physical_range": [
+    0.0078125,
+    1.0
+   ],
+   "single_raw": 0.6520881097767899,
+   "single_clipped": 0.3995766339956724,
+   "single_shrunk": 0.49777607186226985,
+   "collective": 0.23897489104806047,
+   "const_midpoint": 0.50390625,
+   "rmse_const_midpoint": 0.3075781250000002,
+   "rmse_const_ensemble_mean": 3.2169338768213358e-16,
+   "rmse_const_oracle": 0.0,
+   "clipped_beats_midpoint": false,
+   "collective_beats_midpoint": true
+  },
+  {
+   "n": 8,
+   "true_purity_mean": 0.8107421874999998,
+   "true_purity_std": 3.6436351468429636e-16,
+   "physical_range": [
+    0.00390625,
+    1.0
+   ],
+   "single_raw": 1.6248500997281026,
+   "single_clipped": 0.5001588300072288,
+   "single_shrunk": 0.6164812226228089,
+   "collective": 0.26726979153522973,
+   "const_midpoint": 0.501953125,
+   "rmse_const_midpoint": 0.30878906250000004,
+   "rmse_const_ensemble_mean": 3.6436351468429636e-16,
+   "rmse_const_oracle": 0.0,
+   "clipped_beats_midpoint": false,
+   "collective_beats_midpoint": true
+  },
+  {
+   "n": 9,
+   "true_purity_mean": 0.81037109375,
+   "true_purity_std": 2.6670397937170325e-16,
+   "physical_range": [
+    0.001953125,
+    1.0
+   ],
+   "single_raw": 4.463867528664378,
+   "single_clipped": 0.5692323922315171,
+   "single_shrunk": 0.7195914591509658,
+   "collective": 0.29525431748651104,
+   "const_midpoint": 0.5009765625,
+   "rmse_const_midpoint": 0.30939453125000005,
+   "rmse_const_ensemble_mean": 2.6670397937170325e-16,
+   "rmse_const_oracle": 0.0,
+   "clipped_beats_midpoint": false,
+   "collective_beats_midpoint": true
+  },
+  {
+   "n": 10,
+   "true_purity_mean": 0.8101855468750001,
+   "true_purity_std": 3.862581688782748e-16,
+   "physical_range": [
+    0.0009765625,
+    1.0
+   ],
+   "single_raw": 11.976360543390635,
+   "single_clipped": 0.5816963126807442,
+   "single_shrunk": 0.7750353423671369,
+   "collective": 0.32030843694664884,
+   "const_midpoint": 0.50048828125,
+   "rmse_const_midpoint": 0.30969726562499994,
+   "rmse_const_ensemble_mean": 3.862581688782748e-16,
+   "rmse_const_oracle": 0.0,
+   "clipped_beats_midpoint": false,
+   "collective_beats_midpoint": false
+  }
+ ]
+}
