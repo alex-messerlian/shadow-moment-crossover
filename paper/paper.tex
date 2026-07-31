@@ -39,45 +39,37 @@ the moments \(\mathrm{Tr}(\rho^k)\), from randomized single-copy
 measurements. The finite-sample variance of the resulting U-statistic
 estimators splits into terms of different budget order --- a Hoeffding
 decomposition \cite{hoeffding1948, serfling1980} stated for shadows in
-\cite{huang2020shadows} --- whose two decay regimes are known
-\cite{elben2020mixed, aasen2026limitations}. Those analyses bound the
-state-dependent projection variances, and separate bounds on them do not
-constrain their ratio. We evaluate them in closed form for depolarized
+\cite{huang2020shadows} --- with two known decay regimes
+\cite{elben2020mixed, aasen2026limitations} whose state-dependent
+projection variances those analyses bound rather than evaluate, leaving
+their ratio unconstrained. We evaluate them in closed form for depolarized
 Haar-random pure states, locating the budget \(M^* = \zeta_2/(2\zeta_1)\)
-at which the effective error exponent crosses over. It grows
-exponentially, with asymptotic base \(28/5\) following from the
-ensemble-averaged projection variances and approached from below by the
-finite-size fits over the sizes we reach (\(n = 2\) to \(9\)).
+at which the effective error exponent crosses over. It grows exponentially
+with asymptotic base \(28/5\), fixed by the ensemble-averaged projection
+variances and approached from below by our finite-size fits
+(\(n = 2\) to \(9\)).
 
-That evaluation turns the regime structure into a plug-in criterion, with
-nothing fitted to the crossover data, for when a collective two-copy
-measurement attains a lower RMSE at equal copy budget than single-copy
-shadows. Across the \(83\)
-simulated cells that resolve a crossover, spanning four state ensembles
-with three held out from the derivation, it predicts the crossover size to
-within one qubit in \(82\), and in \(95.9\%\) of all \(123\) swept cells
-once non-crossing cells are scored as predictions; simulating readout on
-both routes leaves those sizes a conservative upper bound. Re-derived for
-the range-projected estimator an experiment would actually use, the
-criterion is more accurate still: within one qubit in all \(72\) cells that
-then resolve, and \(96.7\%\) of the \(123\). Projection also bounds the
-single-copy error, and the practical consequence survives it --- at ten
-qubits the projected single-copy estimate is less accurate than a constant
-fixed at the midpoint of the interval the purity is known a priori to
-occupy, a comparison the collective route passes. The cells are
-simulation, and for \(k > 2\) the collective side is modelled as a bounded
-\(\pm 1\) outcome carrying none of the gates its circuit would require.
+That turns the regime structure into a plug-in criterion, with nothing
+fitted to the crossover data, for when a collective two-copy measurement
+attains the lower RMSE at equal copy budget. For the range-projected
+estimator an experiment would use, it places all \(72\) resolving cells
+within one qubit and predicts \(96.7\%\) of the \(123\) swept, over four
+ensembles, three held out from the derivation; Section 5.2 gives the
+unbiased estimator's figures. The practical consequence survives
+projection: at ten qubits the projected estimate is less accurate than a
+constant fixed at the midpoint of the interval purity is known a priori to
+occupy. The cells are simulation, and for \(k > 2\) the collective side is
+a bounded \(\pm 1\) outcome carrying none of the gates its circuit would
+require.
 
-We then confront the prediction with what the platform reports as a
-108-qubit superconducting processor, with predictions committed to version
-control before the corresponding hardware jobs were submitted. Both failed: a
-Bell-state purity locked at \(0.89\) measured \(0.72\), and a single-copy
-anchor locked at \(1.50\) measured \(1.34\), with disjoint intervals.
-Byte-identical circuits also varied substantially between sessions. We do
-not demonstrate the crossover on hardware, and the failure is informative:
-static, single-session characterization did not predict
-collective-measurement performance on the platform and execution path we
-tested.
+We then test the prediction on what the platform reports as a 108-qubit
+superconducting processor, with the predictions committed to version
+control beforehand. Both failed: a Bell-state purity locked at \(0.89\)
+measured \(0.72\), a single-copy anchor locked at \(1.50\) measured
+\(1.34\), intervals disjoint. We do not demonstrate the crossover on
+hardware; the informative part is that static, single-session
+characterization did not predict collective-measurement performance on the
+platform and execution path we tested.
 \end{abstract}
 
 \maketitle
@@ -843,8 +835,11 @@ against the other.
 \hypertarget{the-law}{%
 \subsection{The law}\label{the-law}}
 
-The single-copy error grows exponentially in \(n\) and falls with the
-budget. The collective error is a bias floor plus a finite-shot variance:
+The single-copy error of the unbiased estimator grows exponentially in
+\(n\) and falls with the budget;
+Section~\ref{physical-constraints-and-the-choice-of-estimator} takes up the
+range-projected alternative, for which it instead saturates. The collective
+error is a bias floor plus a finite-shot variance:
 the floor is bounded above by \(1 - d^{1-k}\) with \(d = 2^n\), hence by
 unity, and is independent of the budget, while the shot term vanishes as
 the budget grows. The crossover size \(n^*\) is where the single-copy
@@ -1546,6 +1541,14 @@ shifts the predicted crossover for \(5\) of the \(60\) noisy-pure cells
 (mean per-cell probability \(1.7\%\)), always by exactly one qubit and
 never by more.
 
+\textbf{One constrained estimator is analysed.}
+Section~\ref{physical-constraints-and-the-choice-of-estimator} treats
+Euclidean projection onto \([d^{1-k}, 1]\), the constraint that follows
+from the range alone and needs no tuning; other constrained estimators,
+such as shrinkage toward the depolarizing floor, trade bias against
+variance differently. The crossover sizes we report for the projected
+estimator are specific to that choice.
+
 \textbf{The readout sensitivity check is a simulation.} It uses a single
 readout model, the measured per-qubit rates of Section 6.3 and a uniform
 6.5\% comparator, with independent and time-invariant readout and no
@@ -1868,11 +1871,11 @@ no sampling error; the sampled values are retained in the repository, and
 substituting them changes no crossover prediction and no \(\alpha\)
 verdict. The measured \(\alpha\) points and the
 noisy-pure crossover cells are averaged over \(48\) independently drawn
-states per size. The trial count differs between the two noisy-pure sweeps:
-the \(60\) cells of \texttt{budget\_scaling.json} use \(8\) Monte Carlo
-trials per state (\texttt{run\_budget\_sweep.py}: \texttt{N\_STATES}~\(=48\),
-\texttt{N\_TRIALS}~\(=8\)), while the \(36\) cells of
-\texttt{moment\_\allowbreak sweep\_\allowbreak corrected.json} use \(10\). The held-out stress ensembles use \(4\) states
+states per size, with \(8\) Monte Carlo trials each in the \(60\) cells of
+\texttt{budget\_scaling.json} (\texttt{run\_budget\_sweep.py}:
+\texttt{N\_STATES}~\(=48\), \texttt{N\_TRIALS}~\(=8\)) and \(10\) in the
+\(36\) cells of
+\texttt{moment\_\allowbreak sweep\_\allowbreak corrected.json}. The held-out stress ensembles use \(4\) states
 for the variance estimate and \(24\) for the measurement on the random
 families (Haar-pure, low-rank), and a single fixed state with \(36\) trials
 for the deterministic GHZ-noisy family
@@ -1883,30 +1886,25 @@ Section~4.3.
 
 \textbf{The estimand is degenerate on three of the four ensembles.} For
 \(\rho = (1-q)\lvert\psi\rangle\langle\psi\rvert + q I/d\) the spectrum is
-\((1-q) + q/d\) once and \(q/d\) with multiplicity \(d - 1\), independent of
-\(\lvert\psi\rangle\), so
-\(\mathrm{Tr}(\rho^k) = \bigl((1-q) + q/d\bigr)^k + (d-1)(q/d)^k\) is a
-function of \((n, q, k)\) alone. The same holds trivially for Haar-pure
-states, whose moments are all \(1\), and for the single fixed GHZ-noisy
-state. Measured over \(48\) states at \(n = 4\), the per-state standard
-deviation of \(\mathrm{Tr}(\rho^k)\) is at machine precision on all three
---- at most \(7.1 \times 10^{-16}\) on noisy-pure,
-\(1.2 \times 10^{-15}\) on Haar-pure, and \(1.1 \times 10^{-16}\) on
-GHZ-noisy, over \(k = 2, 3, 4\). Only the rank-2 Ginibre family has a
-genuinely varying estimand, with relative spread \(5.0\%\), \(12.9\%\), and
-\(21.9\%\) at \(k = 2, 3, 4\).
+\((1-q) + q/d\) once and \(q/d\) with multiplicity \(d - 1\) whatever
+\(\lvert\psi\rangle\) is, so
+\(\mathrm{Tr}(\rho^k) = \bigl((1-q) + q/d\bigr)^k + (d-1)(q/d)^k\) depends
+on \((n, q, k)\) alone; the same holds trivially for Haar-pure states,
+whose moments are all \(1\), and for the single fixed GHZ-noisy state. Over \(48\) states at \(n = 4\) the
+per-state standard deviation of \(\mathrm{Tr}(\rho^k)\) is at machine
+precision on all three --- at most \(7.1 \times 10^{-16}\) (noisy-pure),
+\(1.2 \times 10^{-15}\) (Haar-pure), \(1.1 \times 10^{-16}\) (GHZ-noisy),
+over \(k = 2, 3, 4\) --- while only the rank-2 Ginibre family varies, at
+\(5.0\%\), \(12.9\%\), and \(21.9\%\) relative spread.
 
-Where this paper says a quantity is averaged over \(48\) states, the average
-is therefore over estimator \emph{difficulty} at a fixed estimand, not over
-distinct estimation problems; that is the weaker of the two readings and it
-is the one we mean. The difficulty does vary: the per-state projection
-variance \(\zeta_2\) has relative spread \(1.6\%\) at \(n = 4\) on
-noisy-pure, because it is a weighted sum over the state's Pauli spectrum
-(Section~\ref{sec:zeta-closed-form}) rather than a function of the spectrum
-of \(\rho\). The estimator is never given \(q\) or the ensemble, so the
-degeneracy is not available to it. What the degeneracy does mean is that
-these three ensembles do not test robustness to a varying target, and the
-rank-2 family is the only one that does.
+Averaging over \(48\) states therefore averages estimator
+\emph{difficulty} at a fixed estimand, not distinct estimation problems;
+that weaker reading is the one we mean. The difficulty does
+vary: the per-state \(\zeta_2\) has relative spread \(1.6\%\) at
+\(n = 4\) on noisy-pure, being a weighted sum over the state's Pauli
+spectrum (Section~\ref{sec:zeta-closed-form}) rather than a function of
+\(\rho\)'s spectrum. The estimator is never given \(q\) or the ensemble. What the degeneracy costs is robustness testing against a varying
+target, which only the rank-2 family supplies.
 
 \textbf{Train/test separation.} The prediction and the measurement it is
 compared against do not share snapshots. The \(\zeta_c\) are estimated from
@@ -1951,31 +1949,38 @@ procedure.
 \textbf{Crossover definition.} The crossover \(n^*\) is an integer drawn
 from the swept sizes; no interpolation is used, and a cell whose curves do
 not cross inside the tested range is censored (returns none) and excluded
-from the aggregate rather than counted as a hit or a miss. Three distinct
-rules produce the numbers reported here, and they are not interchangeable.
-\emph{Rule 1} (\texttt{theory/crossover.py}, \texttt{predict\_crossover})
-compares the two theory curves and returns the smallest size from which the
-single-copy RMSE exceeds the collective RMSE and stays above it for the
-remainder of the swept range; it produces every \emph{predicted} \(n^*\).
-\emph{Rule 2} (\texttt{benchmark/hardened.py}, \texttt{crossover\_table})
-compares the two \emph{measured} curves with a state-level paired
-\(z\)-test and returns the first size at which the collective route wins at
-\(|z| > 2\), without requiring the win to be sustained; it produces the
-measured \(n^*\) of the \(68\) noisy-pure cells. \emph{Rule 3}
-(\texttt{run\_stress\_test.py}, part 4) compares the measured single-copy
-RMSE against the theory collective floor and requires the crossing to be
-sustained; it produces the measured \(n^*\) of the held-out cells, \(15\) of
-which enter the \(83\).
+from the aggregate rather than counted as a hit or a miss. Three rules
+produce the numbers reported here, and they are not interchangeable:
+
+\begin{center}\footnotesize
+\begin{tabular}{@{}l@{\ \ }p{0.28\columnwidth}p{0.24\columnwidth}p{0.32\columnwidth}@{}}
+\hline
+ & compares & verdict & produces \\
+\hline
+1 & theory against theory & sustained & every \emph{predicted} \(n^*\) \\[3pt]
+2 & measured against measured & state-level paired \(z\)-test, first win at
+    \(|z| > 2\), sustained or not
+  & the measured \(n^*\) of the \(68\) noisy-pure cells \\[3pt]
+3 & measured single-copy RMSE against the theory collective floor & sustained
+  & the measured \(n^*\) of the held-out cells, \(15\) of which enter the
+    \(83\) \\
+\hline
+\end{tabular}
+\end{center}
+
+Rule 1 is \texttt{predict\_crossover} (\texttt{theory/crossover.py}), rule 2
+\texttt{crossover\_table} (\texttt{benchmark/hardened.py}), rule 3 part 4 of
+\texttt{run\_stress\_test.py}.
 
 The rules agree on \(88\) of the \(96\) noisy-pure cells swept. In seven of
-the eight disagreements the paired test is the more conservative of the
-two: it declines a call that the sustained-RMSE rule takes, on a margin
-statistically indistinguishable from zero (\(|z|\) between \(0.02\) and
-\(1.47\); single-copy RMSE at most \(1.06\) times collective), and takes the
-crossover one qubit later where the margin is decisive (\(|z|\) between
-\(3.7\) and \(12.0\)). The eighth cell is already flagged
-\texttt{ambiguous} by the pipeline: the collective route wins at \(n = 2\)
-but the two are tied at \(n = 5\), so no sustained crossing exists.
+the eight disagreements the paired test is the more conservative,
+declining a call the sustained rule takes on a margin indistinguishable
+from zero (\(|z|\) between \(0.02\) and \(1.47\); single-copy RMSE at most
+\(1.06\) times collective) and taking the crossover one qubit later, where
+\(|z|\) runs \(3.7\) to \(12.0\). The eighth is flagged
+\texttt{ambiguous} by the pipeline: the collective route wins at
+\(n = 2\) but the two tie at \(n = 5\), so no sustained crossing
+exists.
 
 \textbf{Fit uncertainty.} The exponential-fit residuals in Section~3.6 are
 positive at both ends of the range (\(+0.20\) at \(n = 2\), \(+0.13\) at
