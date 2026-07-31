@@ -1370,6 +1370,13 @@ Section~\ref{sec:zeta-closed-form}, the resulting threshold, the spectral
 functionals fixing its growth base, and the comparison against the
 collective route. Alternative shadow ensembles
 \cite{hamiltonianshadow2021} target different observable classes.
+Deliberately biased shadow estimators have been studied directly:
+\cite{cai2025biased} rescales the estimator to trade bias against variance
+and argues the trade is always worth making in the finite-sample regime.
+The projection of
+Section~\ref{physical-constraints-and-the-choice-of-estimator} is the
+parameter-free member of that family, biased only by the physical range and
+requiring nothing to be tuned.
 
 \textbf{U-statistics and the Hoeffding decomposition for quantum
 moments.} Straeter, Tsesmelis and Kwek \cite{straeter2026} construct
@@ -1381,7 +1388,16 @@ neighbor to Section 3; the differences are the platform, the target
 (entanglement detection rather than moment estimation and the
 collective-measurement trade-off), and the result, since their projection
 variances are bounded rather than evaluated for a state and no change of
-scaling regime is considered. We claim no novelty for the Hoeffding
+scaling regime is considered. Two further analyses treat the shadow
+U-statistic itself. Jnane et al.~\cite{jnane2024mitigated} write the exact
+Lee variance for U-statistics of shadow snapshots, then bound the
+projection terms by a quasiprobability norm and keep only the leading
+\(1/N\) --- the step that hides the second regime. Pelecanos et
+al.~\cite{pelecanos2025spectrum} study the same estimator for
+\(\mathrm{Tr}(\sigma^k)\) under the uniform POVM and prove an explicit
+variance bound for it; that bound is an inequality in \(d\) for a
+worst-case state rather than an evaluation for an ensemble, and locates no
+threshold. We claim no novelty for the Hoeffding
 technique itself.
 
 \textbf{Crossovers and hardware comparison.} A crossover in shot cost
@@ -1392,7 +1408,15 @@ and collective measurement. The single-copy versus collective comparison
 has been made on hardware: Peng et al.~\cite{peng2025beyond} implement a
 Fredkin gate and report reduced sample complexity for a hybrid two-copy
 scheme against single-copy shadows, empirically and at fixed settings,
-without a law locating where the routes cross.
+without a law locating where the routes cross. Zhou and
+Liu \cite{zhou2024hybrid} interpolate between the routes instead of
+choosing, applying randomized measurements to a few coherently prepared
+copies; the measurement counts they report order the protocols without
+locating a size at which the ordering changes. A parallel line lowers the
+cost of the collective route itself \cite{shin2025resource, shi2025moments,
+yao2026sample}, through Newton--Girard recursions, qubit reuse, or coherent
+evaluation of the functional; these improve the side our criterion compares
+against rather than moving where it crosses.
 
 \textbf{Statistical-to-bias-floor transitions on hardware.} A March 2026
 study of shadow tomography on an integrated photonic processor
@@ -1416,7 +1440,11 @@ al.~\cite{gong2024purity} improve the lower bound for purity estimation to
 using an identical single-copy projection-valued measurement. Our exact
 variance is consistent with these bounds and supplies the state-dependent
 constant they leave open, by evaluating the second moment of
-\cite{huang2020shadows} over the ensemble.
+\cite{huang2020shadows} over the ensemble. Du et al.~\cite{du2026optimal}
+observe that single-copy purity estimation already saturates an
+\(\Omega(\sqrt{d})\) bound and give a protocol matching it for
+\(\mathrm{Tr}(O\rho^2)\); like the above, these are asymptotic statements
+in \(d\) and silent about the finite-budget coefficient.
 
 \textbf{Collective measurement on noisy hardware.} The exponential
 single-copy versus collective separation is established in
@@ -1760,6 +1788,46 @@ Phys. Rev. A \textbf{114}, 012414 (2026), doi:10.1103/3q13-xpc8, arXiv:2601.0402
 Zhenyuan Huang, Kun Wang, and Ping Xu,
 \emph{Worst-case sample complexity bounds for distributed inner product estimation with local randomized measurements},
 arXiv:2605.14256 (May 2026).
+
+\bibitem{jnane2024mitigated}
+Hamza Jnane, Jonathan Steinberg, Zhenyu Cai, H. Chau Nguyen, and B\'alint Koczor,
+\emph{Quantum error mitigated classical shadows},
+PRX Quantum \textbf{5}, 010324 (2024), doi:10.1103/PRXQuantum.5.010324, arXiv:2305.04956.
+
+\bibitem{pelecanos2025spectrum}
+Angelos Pelecanos, Xinyu Tan, Ewin Tang, and John Wright,
+\emph{Beating full state tomography for unentangled spectrum estimation},
+arXiv:2504.02785 (3 April 2025).
+
+\bibitem{zhou2024hybrid}
+You Zhou and Zhenhuan Liu,
+\emph{A hybrid framework for estimating nonlinear functions of quantum states},
+npj Quantum Inf. \textbf{10}, 62 (2024), doi:10.1038/s41534-024-00846-5, arXiv:2208.08416.
+
+\bibitem{cai2025biased}
+Zhenyu Cai, Adrian Chapman, Hamza Jnane, and B\'alint Koczor,
+\emph{Biased estimator channels for classical shadows},
+Phys. Rev. A \textbf{111}, L030402 (2025), doi:10.1103/PhysRevA.111.L030402, arXiv:2402.09511.
+
+\bibitem{du2026optimal}
+Zhenyu Du, Yifan Tang, Andreas Elben, Ingo Roth, Jens Eisert, and Zhenhuan Liu,
+\emph{Optimal randomized measurements for a family of nonlinear quantum properties},
+PRX Quantum (2026), doi:10.1103/4rkx-xkwy, arXiv:2505.09206.
+
+\bibitem{shin2025resource}
+Myeongjin Shin, Junseo Lee, Seungwoo Lee, and Kabgyun Jeong,
+\emph{Resource-efficient algorithm for estimating the trace of quantum state powers},
+Quantum \textbf{9}, 1832 (2025), doi:10.22331/q-2025-08-27-1832, arXiv:2408.00314.
+
+\bibitem{shi2025moments}
+Xiao Shi, Jiyu Jiang, Xian Wu, Jingu Xie, Hongshun Yao, and Xin Wang,
+\emph{Near-optimal simultaneous estimation of quantum state moments},
+arXiv:2509.24842 (29 September 2025).
+
+\bibitem{yao2026sample}
+Hongshun Yao, Yingjian Liu, Tengxiang Lin, and Xin Wang,
+\emph{Sample-efficient estimation of nonlinear quantum state functions},
+Commun. Phys. (2026), doi:10.1038/s42005-026-02710-8, arXiv:2412.01696.
 
 \end{thebibliography}
 
