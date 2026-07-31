@@ -1354,7 +1354,9 @@ origin. These are worst-case, state-independent bounds. For local
 randomized measurements, Huang, Wang and Xu \cite{huang2026worstcase} give
 worst-case bounds whose exponential base depends on the measurement
 ensemble, for the related task of distributed inner-product estimation;
-these remain envelopes rather than evaluated coefficients or a threshold.
+these remain envelopes rather than evaluated coefficients or a threshold,
+as do the companion bounds for structured circuits below a 4-design
+\cite{zheng2026structured}.
 The exact finite-\(M\) decomposition is the standard Hoeffding identity
 \cite{hoeffding1948, serfling1980}, already stated as an equality for
 shadows by \cite{huang2020shadows} and again by Elben et
@@ -1371,12 +1373,15 @@ functionals fixing its growth base, and the comparison against the
 collective route. Alternative shadow ensembles
 \cite{hamiltonianshadow2021} target different observable classes.
 Deliberately biased shadow estimators have been studied directly:
-\cite{cai2025biased} rescales the estimator to trade bias against variance
-and argues the trade is always worth making in the finite-sample regime.
-The projection of
-Section~\ref{physical-constraints-and-the-choice-of-estimator} is the
-parameter-free member of that family, biased only by the physical range and
-requiring nothing to be tuned.
+\cite{cai2025biased} rescales the estimator by a tuned factor, shrinking it
+toward zero, and argues the trade is always worth making in the
+finite-sample regime. The projection of
+Section~\ref{physical-constraints-and-the-choice-of-estimator} accepts bias
+for the same reason but by a different mechanism: it has no free parameter
+and no shrinkage target, and moves an estimate only when that estimate is
+infeasible. That an estimator reporting values on the boundary of the
+feasible set can itself be improved by hedging inward is known from
+tomography \cite{ferrie2018inadmissible}.
 
 \textbf{U-statistics and the Hoeffding decomposition for quantum
 moments.} Straeter, Tsesmelis and Kwek \cite{straeter2026} construct
@@ -1444,7 +1449,20 @@ constant they leave open, by evaluating the second moment of
 observe that single-copy purity estimation already saturates an
 \(\Omega(\sqrt{d})\) bound and give a protocol matching it for
 \(\mathrm{Tr}(O\rho^2)\); like the above, these are asymptotic statements
-in \(d\) and silent about the finite-budget coefficient.
+in \(d\) and silent about the finite-budget coefficient. Ye, Liu and
+Deng \cite{ye2025replica} sharpen the picture into a hierarchy: estimating
+\(\mathrm{Tr}(\rho^{k+1}O)\) needs \(\Omega(\sqrt{d}/(k\varepsilon^{1/(1+k)}))\)
+samples under any \(k\)-replica protocol while \(k+1\) replicas need a
+constant, which at \(k = 1\) and \(O = \mathbb{1}\) says that one further
+copy removes the exponential cost of purity estimation; \cite{zeng2026exact}
+locates the exact replica count for higher moments. Both are worst-case over
+states and asymptotic in \(d\): they establish that the separation exists,
+not the size at which a given experiment meets it. Two concurrent results
+bound the \(k\)-dependence instead, at
+\(\Omega(k\lVert O\rVert^2/\varepsilon^2)\) samples for
+\(\mathrm{Tr}(O\rho^k)\) \cite{chen2025simultaneous, zhang2025measuring},
+dimension-independent and so orthogonal to the growth in \(n\) at issue
+here.
 
 \textbf{Collective measurement on noisy hardware.} The exponential
 single-copy versus collective separation is established in
@@ -1823,6 +1841,36 @@ Quantum \textbf{9}, 1832 (2025), doi:10.22331/q-2025-08-27-1832, arXiv:2408.0031
 Xiao Shi, Jiyu Jiang, Xian Wu, Jingu Xie, Hongshun Yao, and Xin Wang,
 \emph{Near-optimal simultaneous estimation of quantum state moments},
 arXiv:2509.24842 (29 September 2025).
+
+\bibitem{ye2025replica}
+Qi Ye, Zhenhuan Liu, and Dong-Ling Deng,
+\emph{Exponential advantage from one more replica in estimating nonlinear properties of quantum states},
+arXiv:2509.24000 (28 September 2025).
+
+\bibitem{zeng2026exact}
+Shuai Zeng,
+\emph{The exact replica threshold for nonlinear moments of quantum states},
+arXiv:2604.22627 (April 2026).
+
+\bibitem{chen2025simultaneous}
+Kean Chen, Qisheng Wang, Zhan Yu, and Zhicheng Zhang,
+\emph{Simultaneous estimation of nonlinear functionals of a quantum state},
+arXiv:2505.16715 (22 May 2025).
+
+\bibitem{zhang2025measuring}
+Yukun Zhang, Yusen Wu, You Zhou, and Xiao Yuan,
+\emph{Measuring less to learn more: quadratic speedup in learning nonlinear properties of quantum density matrices},
+arXiv:2509.01571 (3 September 2025).
+
+\bibitem{ferrie2018inadmissible}
+Christopher Ferrie and Robin Blume-Kohout,
+\emph{Maximum likelihood quantum state tomography is inadmissible},
+arXiv:1808.01072 (2018).
+
+\bibitem{zheng2026structured}
+Congcong Zheng, Kun Wang, Xutao Yu, Ping Xu, and Zaichen Zhang,
+\emph{Distributed quantum inner product estimation with structured random circuits},
+arXiv:2506.19574 (February 2026).
 
 \bibitem{yao2026sample}
 Hongshun Yao, Yingjian Liu, Tengxiang Lin, and Xin Wang,
