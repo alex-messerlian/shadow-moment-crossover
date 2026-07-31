@@ -1,0 +1,640 @@
+{
+ "description": "PASS 38: exact noisy-pure clipping re-run, reconciled against the PASS-37 analytic path, with the final figures for the revision",
+ "validation_raw_reproduces_committed": "96/96",
+ "exact_vs_analytic_disagreements": [
+  {
+   "estimator": "raw",
+   "cell": [
+    "budget_scaling",
+    3,
+    "amplitude_damping",
+    0.05,
+    2000
+   ],
+   "analytic": 7,
+   "exact": 8
+  },
+  {
+   "estimator": "raw",
+   "cell": [
+    "budget_scaling",
+    3,
+    "dephasing",
+    0.05,
+    2000
+   ],
+   "analytic": 7,
+   "exact": 8
+  },
+  {
+   "estimator": "raw",
+   "cell": [
+    "budget_scaling",
+    3,
+    "depolarizing",
+    0.1,
+    2000
+   ],
+   "analytic": 3,
+   "exact": 4
+  },
+  {
+   "estimator": "raw",
+   "cell": [
+    "budget_scaling",
+    3,
+    "depolarizing",
+    0.1,
+    8000
+   ],
+   "analytic": 7,
+   "exact": 8
+  },
+  {
+   "estimator": "raw",
+   "cell": [
+    "budget_scaling",
+    4,
+    "depolarizing",
+    0.05,
+    8000
+   ],
+   "analytic": 2,
+   "exact": 3
+  },
+  {
+   "estimator": "raw",
+   "cell": [
+    "budget_scaling",
+    4,
+    "depolarizing",
+    0.1,
+    2000
+   ],
+   "analytic": 2,
+   "exact": 3
+  },
+  {
+   "estimator": "raw",
+   "cell": [
+    "moment_sweep_corrected",
+    3,
+    "depolarizing",
+    0.1,
+    2000
+   ],
+   "analytic": 3,
+   "exact": 4
+  },
+  {
+   "estimator": "raw",
+   "cell": [
+    "moment_sweep_corrected",
+    4,
+    "dephasing",
+    0.02,
+    2000
+   ],
+   "analytic": 6,
+   "exact": 2
+  },
+  {
+   "estimator": "clipped",
+   "cell": [
+    "budget_scaling",
+    2,
+    "amplitude_damping",
+    0.05,
+    2000
+   ],
+   "analytic": 6,
+   "exact": 7
+  },
+  {
+   "estimator": "clipped",
+   "cell": [
+    "budget_scaling",
+    2,
+    "dephasing",
+    0.05,
+    2000
+   ],
+   "analytic": 6,
+   "exact": 7
+  },
+  {
+   "estimator": "clipped",
+   "cell": [
+    "budget_scaling",
+    3,
+    "depolarizing",
+    0.1,
+    2000
+   ],
+   "analytic": 3,
+   "exact": 4
+  },
+  {
+   "estimator": "clipped",
+   "cell": [
+    "budget_scaling",
+    3,
+    "depolarizing",
+    0.1,
+    8000
+   ],
+   "analytic": 7,
+   "exact": 8
+  },
+  {
+   "estimator": "clipped",
+   "cell": [
+    "budget_scaling",
+    4,
+    "dephasing",
+    0.05,
+    500
+   ],
+   "analytic": 2,
+   "exact": 6
+  },
+  {
+   "estimator": "clipped",
+   "cell": [
+    "budget_scaling",
+    4,
+    "depolarizing",
+    0.05,
+    8000
+   ],
+   "analytic": 2,
+   "exact": 3
+  },
+  {
+   "estimator": "clipped",
+   "cell": [
+    "budget_scaling",
+    4,
+    "depolarizing",
+    0.1,
+    2000
+   ],
+   "analytic": 2,
+   "exact": 3
+  },
+  {
+   "estimator": "clipped",
+   "cell": [
+    "moment_sweep_corrected",
+    2,
+    "amplitude_damping",
+    0.05,
+    2000
+   ],
+   "analytic": 6,
+   "exact": 7
+  },
+  {
+   "estimator": "clipped",
+   "cell": [
+    "moment_sweep_corrected",
+    2,
+    "dephasing",
+    0.05,
+    2000
+   ],
+   "analytic": 6,
+   "exact": 7
+  },
+  {
+   "estimator": "clipped",
+   "cell": [
+    "moment_sweep_corrected",
+    4,
+    "amplitude_damping",
+    0.02,
+    2000
+   ],
+   "analytic": 6,
+   "exact": 2
+  },
+  {
+   "estimator": "clipped",
+   "cell": [
+    "moment_sweep_corrected",
+    4,
+    "dephasing",
+    0.02,
+    2000
+   ],
+   "analytic": 6,
+   "exact": 2
+  },
+  {
+   "estimator": "shrunk",
+   "cell": [
+    "budget_scaling",
+    3,
+    "amplitude_damping",
+    0.05,
+    2000
+   ],
+   "analytic": 7,
+   "exact": 8
+  },
+  {
+   "estimator": "shrunk",
+   "cell": [
+    "budget_scaling",
+    3,
+    "amplitude_damping",
+    0.1,
+    2000
+   ],
+   "analytic": 8,
+   "exact": null
+  },
+  {
+   "estimator": "shrunk",
+   "cell": [
+    "budget_scaling",
+    3,
+    "dephasing",
+    0.05,
+    2000
+   ],
+   "analytic": 7,
+   "exact": 8
+  },
+  {
+   "estimator": "shrunk",
+   "cell": [
+    "budget_scaling",
+    3,
+    "dephasing",
+    0.1,
+    2000
+   ],
+   "analytic": 8,
+   "exact": null
+  },
+  {
+   "estimator": "shrunk",
+   "cell": [
+    "budget_scaling",
+    3,
+    "depolarizing",
+    0.1,
+    2000
+   ],
+   "analytic": 3,
+   "exact": 4
+  },
+  {
+   "estimator": "shrunk",
+   "cell": [
+    "budget_scaling",
+    3,
+    "depolarizing",
+    0.1,
+    8000
+   ],
+   "analytic": 7,
+   "exact": 8
+  },
+  {
+   "estimator": "shrunk",
+   "cell": [
+    "budget_scaling",
+    4,
+    "depolarizing",
+    0.05,
+    8000
+   ],
+   "analytic": 2,
+   "exact": 3
+  },
+  {
+   "estimator": "shrunk",
+   "cell": [
+    "budget_scaling",
+    4,
+    "depolarizing",
+    0.1,
+    2000
+   ],
+   "analytic": 2,
+   "exact": 3
+  },
+  {
+   "estimator": "shrunk",
+   "cell": [
+    "budget_scaling",
+    4,
+    "depolarizing",
+    0.1,
+    8000
+   ],
+   "analytic": 6,
+   "exact": null
+  },
+  {
+   "estimator": "shrunk",
+   "cell": [
+    "moment_sweep_corrected",
+    3,
+    "amplitude_damping",
+    0.05,
+    2000
+   ],
+   "analytic": 7,
+   "exact": 8
+  },
+  {
+   "estimator": "shrunk",
+   "cell": [
+    "moment_sweep_corrected",
+    3,
+    "amplitude_damping",
+    0.1,
+    2000
+   ],
+   "analytic": 8,
+   "exact": null
+  },
+  {
+   "estimator": "shrunk",
+   "cell": [
+    "moment_sweep_corrected",
+    3,
+    "dephasing",
+    0.05,
+    2000
+   ],
+   "analytic": 7,
+   "exact": 8
+  },
+  {
+   "estimator": "shrunk",
+   "cell": [
+    "moment_sweep_corrected",
+    3,
+    "dephasing",
+    0.1,
+    2000
+   ],
+   "analytic": 8,
+   "exact": null
+  },
+  {
+   "estimator": "shrunk",
+   "cell": [
+    "moment_sweep_corrected",
+    3,
+    "depolarizing",
+    0.1,
+    2000
+   ],
+   "analytic": 3,
+   "exact": 4
+  },
+  {
+   "estimator": "shrunk",
+   "cell": [
+    "moment_sweep_corrected",
+    4,
+    "depolarizing",
+    0.1,
+    2000
+   ],
+   "analytic": 2,
+   "exact": 3
+  }
+ ],
+ "n_noisy_pure_cells": 96,
+ "resolved_by_estimator": {
+  "raw": 68,
+  "clipped": 58,
+  "shrunk": 60
+ },
+ "accuracy": {
+  "published (raw / raw)": {
+   "resolved": 83,
+   "within_one": 82,
+   "exact": 73,
+   "within_one_pct": 0.9879518072289156,
+   "exact_pct": 0.8795180722891566,
+   "all_cells_within_one": 118,
+   "all_cells_pct": 0.959349593495935
+  },
+  "CLIPPED meas, raw criterion": {
+   "resolved": 72,
+   "within_one": 70,
+   "exact": 51,
+   "within_one_pct": 0.9722222222222222,
+   "exact_pct": 0.7083333333333334,
+   "all_cells_within_one": 107,
+   "all_cells_pct": 0.8699186991869918
+  },
+  "CLIPPED meas, CLIPPED criterion": {
+   "resolved": 72,
+   "within_one": 72,
+   "exact": 63,
+   "within_one_pct": 1.0,
+   "exact_pct": 0.875,
+   "all_cells_within_one": 119,
+   "all_cells_pct": 0.967479674796748
+  },
+  "SHRUNK meas, raw criterion": {
+   "resolved": 75,
+   "within_one": 74,
+   "exact": 64,
+   "within_one_pct": 0.9866666666666667,
+   "exact_pct": 0.8533333333333334,
+   "all_cells_within_one": 110,
+   "all_cells_pct": 0.8943089430894309
+  }
+ },
+ "headline_crossover": {
+  "raw": 6,
+  "clipped": 7,
+  "shrunk": 6
+ },
+ "trivial_baseline_rows": [
+  {
+   "n": 2,
+   "true_purity_mean": 0.8574999999999999,
+   "true_purity_std": 2.9504581591051765e-16,
+   "physical_range": [
+    0.25,
+    1.0
+   ],
+   "single_raw": 0.04348925943177573,
+   "single_clipped": 0.04327524002445975,
+   "single_shrunk": 0.04368216854081426,
+   "collective": 0.06623197868099666,
+   "const_midpoint": 0.625,
+   "rmse_const_midpoint": 0.2325,
+   "rmse_const_ensemble_mean": 2.9504581591051765e-16,
+   "rmse_const_oracle": 0.0,
+   "clipped_beats_midpoint": true,
+   "collective_beats_midpoint": true
+  },
+  {
+   "n": 3,
+   "true_purity_mean": 0.8337499999999999,
+   "true_purity_std": 2.271891778003035e-16,
+   "physical_range": [
+    0.125,
+    1.0
+   ],
+   "single_raw": 0.06088374703157374,
+   "single_clipped": 0.06054613925773552,
+   "single_shrunk": 0.06109706722120508,
+   "collective": 0.1026753479825285,
+   "const_midpoint": 0.5625,
+   "rmse_const_midpoint": 0.27124999999999994,
+   "rmse_const_ensemble_mean": 2.271891778003035e-16,
+   "rmse_const_oracle": 0.0,
+   "clipped_beats_midpoint": true,
+   "collective_beats_midpoint": true
+  },
+  {
+   "n": 4,
+   "true_purity_mean": 0.821875,
+   "true_purity_std": 2.7289062128071225e-16,
+   "physical_range": [
+    0.0625,
+    1.0
+   ],
+   "single_raw": 0.0720144009347245,
+   "single_clipped": 0.07096591783320573,
+   "single_shrunk": 0.07201609240539898,
+   "collective": 0.13749589009009208,
+   "const_midpoint": 0.53125,
+   "rmse_const_midpoint": 0.29062499999999997,
+   "rmse_const_ensemble_mean": 2.7289062128071225e-16,
+   "rmse_const_oracle": 0.0,
+   "clipped_beats_midpoint": true,
+   "collective_beats_midpoint": true
+  },
+  {
+   "n": 5,
+   "true_purity_mean": 0.8159375000000001,
+   "true_purity_std": 2.8486110356367634e-16,
+   "physical_range": [
+    0.03125,
+    1.0
+   ],
+   "single_raw": 0.12984881615972044,
+   "single_clipped": 0.11451228203708887,
+   "single_shrunk": 0.12193281818040949,
+   "collective": 0.1783234092351591,
+   "const_midpoint": 0.515625,
+   "rmse_const_midpoint": 0.30031250000000004,
+   "rmse_const_ensemble_mean": 2.8486110356367634e-16,
+   "rmse_const_oracle": 0.0,
+   "clipped_beats_midpoint": true,
+   "collective_beats_midpoint": true
+  },
+  {
+   "n": 6,
+   "true_purity_mean": 0.81296875,
+   "true_purity_std": 2.5739461938222585e-16,
+   "physical_range": [
+    0.015625,
+    1.0
+   ],
+   "single_raw": 0.27034216805914485,
+   "single_clipped": 0.22665553338317335,
+   "single_shrunk": 0.2842088320908629,
+   "collective": 0.2069166503578494,
+   "const_midpoint": 0.5078125,
+   "rmse_const_midpoint": 0.30515625,
+   "rmse_const_ensemble_mean": 2.5739461938222585e-16,
+   "rmse_const_oracle": 0.0,
+   "clipped_beats_midpoint": true,
+   "collective_beats_midpoint": true
+  },
+  {
+   "n": 7,
+   "true_purity_mean": 0.8114843750000001,
+   "true_purity_std": 3.2169338768213358e-16,
+   "physical_range": [
+    0.0078125,
+    1.0
+   ],
+   "single_raw": 0.6520881097767899,
+   "single_clipped": 0.3995766339956724,
+   "single_shrunk": 0.49777607186226985,
+   "collective": 0.23897489104806047,
+   "const_midpoint": 0.50390625,
+   "rmse_const_midpoint": 0.3075781250000002,
+   "rmse_const_ensemble_mean": 3.2169338768213358e-16,
+   "rmse_const_oracle": 0.0,
+   "clipped_beats_midpoint": false,
+   "collective_beats_midpoint": true
+  },
+  {
+   "n": 8,
+   "true_purity_mean": 0.8107421874999998,
+   "true_purity_std": 3.6436351468429636e-16,
+   "physical_range": [
+    0.00390625,
+    1.0
+   ],
+   "single_raw": 1.6248500997281026,
+   "single_clipped": 0.5001588300072288,
+   "single_shrunk": 0.6164812226228089,
+   "collective": 0.26726979153522973,
+   "const_midpoint": 0.501953125,
+   "rmse_const_midpoint": 0.30878906250000004,
+   "rmse_const_ensemble_mean": 3.6436351468429636e-16,
+   "rmse_const_oracle": 0.0,
+   "clipped_beats_midpoint": false,
+   "collective_beats_midpoint": true
+  },
+  {
+   "n": 9,
+   "true_purity_mean": 0.81037109375,
+   "true_purity_std": 2.6670397937170325e-16,
+   "physical_range": [
+    0.001953125,
+    1.0
+   ],
+   "single_raw": 4.463867528664378,
+   "single_clipped": 0.5692323922315171,
+   "single_shrunk": 0.7195914591509658,
+   "collective": 0.29525431748651104,
+   "const_midpoint": 0.5009765625,
+   "rmse_const_midpoint": 0.30939453125000005,
+   "rmse_const_ensemble_mean": 2.6670397937170325e-16,
+   "rmse_const_oracle": 0.0,
+   "clipped_beats_midpoint": false,
+   "collective_beats_midpoint": true
+  },
+  {
+   "n": 10,
+   "true_purity_mean": 0.8101855468750001,
+   "true_purity_std": 3.862581688782748e-16,
+   "physical_range": [
+    0.0009765625,
+    1.0
+   ],
+   "single_raw": 11.976360543390635,
+   "single_clipped": 0.5816963126807442,
+   "single_shrunk": 0.7750353423671369,
+   "collective": 0.32030843694664884,
+   "const_midpoint": 0.50048828125,
+   "rmse_const_midpoint": 0.30969726562499994,
+   "rmse_const_ensemble_mean": 3.862581688782748e-16,
+   "rmse_const_oracle": 0.0,
+   "clipped_beats_midpoint": false,
+   "collective_beats_midpoint": false
+  }
+ ],
+ "crossings": {
+  "single_clipped_loses_to_constant_at_n": 7,
+  "collective_loses_to_constant_at_n": 10
+ }
+}

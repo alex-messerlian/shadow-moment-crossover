@@ -1,0 +1,5010 @@
+{
+ "description": "PASS 37.2 (noisy-pure): the 96 noisy-pure crossover cells under RAW / CLIPPED / SHRUNK via the committed paired-test pipeline",
+ "validation_raw_reproduces_committed": "96/96",
+ "crossover_tables": {
+  "raw": {
+   "budget": [
+    {
+     "k": 2,
+     "budget": 2000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.05,
+     "crossover_n": 6,
+     "crossover_z": 5.707049060009032,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective",
+      "9": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 2000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.1,
+     "crossover_n": 7,
+     "crossover_z": 8.749280558115142,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "collective",
+      "8": "collective",
+      "9": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 2000,
+     "noise_model": "dephasing",
+     "rate": 0.05,
+     "crossover_n": 6,
+     "crossover_z": 5.96839559421952,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective",
+      "9": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 2000,
+     "noise_model": "dephasing",
+     "rate": 0.1,
+     "crossover_n": 7,
+     "crossover_z": 8.606436682836488,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "collective",
+      "8": "collective",
+      "9": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 2000,
+     "noise_model": "depolarizing",
+     "rate": 0.05,
+     "crossover_n": 2,
+     "crossover_z": 4.4436335769937,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective",
+      "9": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 2000,
+     "noise_model": "depolarizing",
+     "rate": 0.1,
+     "crossover_n": 5,
+     "crossover_z": 6.103112149936206,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "tie",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective",
+      "9": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 8000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.05,
+     "crossover_n": 8,
+     "crossover_z": 10.033695436077467,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "collective",
+      "9": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 8000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.1,
+     "crossover_n": 9,
+     "crossover_z": 12.853541345443602,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "tie",
+      "9": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 8000,
+     "noise_model": "dephasing",
+     "rate": 0.05,
+     "crossover_n": 8,
+     "crossover_z": 10.078922385480935,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "collective",
+      "9": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 8000,
+     "noise_model": "dephasing",
+     "rate": 0.1,
+     "crossover_n": 9,
+     "crossover_z": 12.823688971158564,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "tie",
+      "9": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 8000,
+     "noise_model": "depolarizing",
+     "rate": 0.05,
+     "crossover_n": 5,
+     "crossover_z": 2.233914750632514,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective",
+      "9": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 8000,
+     "noise_model": "depolarizing",
+     "rate": 0.1,
+     "crossover_n": 7,
+     "crossover_z": 9.910037026480449,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "tie",
+      "7": "collective",
+      "8": "collective",
+      "9": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 32000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.05,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy",
+      "9": "tie"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 32000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy",
+      "9": "single-copy"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 32000,
+     "noise_model": "dephasing",
+     "rate": 0.05,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy",
+      "9": "tie"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 32000,
+     "noise_model": "dephasing",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy",
+      "9": "single-copy"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 32000,
+     "noise_model": "depolarizing",
+     "rate": 0.05,
+     "crossover_n": 7,
+     "crossover_z": 4.6301625599431935,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "collective",
+      "8": "collective",
+      "9": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 32000,
+     "noise_model": "depolarizing",
+     "rate": 0.1,
+     "crossover_n": 8,
+     "crossover_z": 7.6029464955859085,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "collective",
+      "9": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 128000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.05,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 128000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 128000,
+     "noise_model": "dephasing",
+     "rate": 0.05,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 128000,
+     "noise_model": "dephasing",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 128000,
+     "noise_model": "depolarizing",
+     "rate": 0.05,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 128000,
+     "noise_model": "depolarizing",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 2000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.05,
+     "crossover_n": 8,
+     "crossover_z": 11.991039611330716,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "tie",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 2000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.1,
+     "crossover_n": 8,
+     "crossover_z": 10.123937279249883,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 2000,
+     "noise_model": "dephasing",
+     "rate": 0.05,
+     "crossover_n": 8,
+     "crossover_z": 12.00904352670405,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "tie",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 2000,
+     "noise_model": "dephasing",
+     "rate": 0.1,
+     "crossover_n": 8,
+     "crossover_z": 10.140865045825215,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 2000,
+     "noise_model": "depolarizing",
+     "rate": 0.05,
+     "crossover_n": 2,
+     "crossover_z": 8.177911184163797,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 2000,
+     "noise_model": "depolarizing",
+     "rate": 0.1,
+     "crossover_n": 4,
+     "crossover_z": 4.937088394134819,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "tie",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 8000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.05,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 8000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 8000,
+     "noise_model": "dephasing",
+     "rate": 0.05,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 8000,
+     "noise_model": "dephasing",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 8000,
+     "noise_model": "depolarizing",
+     "rate": 0.05,
+     "crossover_n": 4,
+     "crossover_z": 2.9281332228940866,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "tie",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 8000,
+     "noise_model": "depolarizing",
+     "rate": 0.1,
+     "crossover_n": 8,
+     "crossover_z": 9.299021437385052,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "tie",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 32000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.05,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 32000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 32000,
+     "noise_model": "dephasing",
+     "rate": 0.05,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 32000,
+     "noise_model": "dephasing",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 32000,
+     "noise_model": "depolarizing",
+     "rate": 0.05,
+     "crossover_n": 8,
+     "crossover_z": 2.8710111843760964,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 32000,
+     "noise_model": "depolarizing",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 500,
+     "noise_model": "amplitude_damping",
+     "rate": 0.05,
+     "crossover_n": 2,
+     "crossover_z": 2.267138282543411,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 500,
+     "noise_model": "amplitude_damping",
+     "rate": 0.1,
+     "crossover_n": 6,
+     "crossover_z": 6.059709803831233,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 500,
+     "noise_model": "dephasing",
+     "rate": 0.05,
+     "crossover_n": 2,
+     "crossover_z": 2.4054729038814364,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "tie",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 500,
+     "noise_model": "dephasing",
+     "rate": 0.1,
+     "crossover_n": 6,
+     "crossover_z": 5.692775291627477,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 500,
+     "noise_model": "depolarizing",
+     "rate": 0.05,
+     "crossover_n": 2,
+     "crossover_z": 9.475105046293955,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 500,
+     "noise_model": "depolarizing",
+     "rate": 0.1,
+     "crossover_n": 2,
+     "crossover_z": 6.145550220097849,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 2000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.05,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 2000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 2000,
+     "noise_model": "dephasing",
+     "rate": 0.05,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 2000,
+     "noise_model": "dephasing",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 2000,
+     "noise_model": "depolarizing",
+     "rate": 0.05,
+     "crossover_n": 2,
+     "crossover_z": 10.019614734909057,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 2000,
+     "noise_model": "depolarizing",
+     "rate": 0.1,
+     "crossover_n": 3,
+     "crossover_z": 4.667206151563078,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "tie",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 8000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.05,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 8000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 8000,
+     "noise_model": "dephasing",
+     "rate": 0.05,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 8000,
+     "noise_model": "dephasing",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 8000,
+     "noise_model": "depolarizing",
+     "rate": 0.05,
+     "crossover_n": 3,
+     "crossover_z": 3.682436147153508,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "tie",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 8000,
+     "noise_model": "depolarizing",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "tie",
+      "6": "tie"
+     }
+    }
+   ],
+   "moment": [
+    {
+     "k": 2,
+     "noise_model": "amplitude_damping",
+     "rate": 0.0,
+     "crossover_n": 2,
+     "crossover_z": 14.549664615486815,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "noise_model": "amplitude_damping",
+     "rate": 0.02,
+     "crossover_n": 2,
+     "crossover_z": 5.146009491917251,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "noise_model": "amplitude_damping",
+     "rate": 0.05,
+     "crossover_n": 6,
+     "crossover_z": 4.63196479797001,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "noise_model": "amplitude_damping",
+     "rate": 0.1,
+     "crossover_n": 7,
+     "crossover_z": 9.976919679001844,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "noise_model": "dephasing",
+     "rate": 0.0,
+     "crossover_n": 2,
+     "crossover_z": 14.537289883345705,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "noise_model": "dephasing",
+     "rate": 0.02,
+     "crossover_n": 2,
+     "crossover_z": 5.974816038303946,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "noise_model": "dephasing",
+     "rate": 0.05,
+     "crossover_n": 6,
+     "crossover_z": 4.956536036445115,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "noise_model": "dephasing",
+     "rate": 0.1,
+     "crossover_n": 7,
+     "crossover_z": 9.990057717745163,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "noise_model": "depolarizing",
+     "rate": 0.0,
+     "crossover_n": 2,
+     "crossover_z": 14.199499880557324,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "noise_model": "depolarizing",
+     "rate": 0.02,
+     "crossover_n": 2,
+     "crossover_z": 12.625021725462991,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "noise_model": "depolarizing",
+     "rate": 0.05,
+     "crossover_n": 2,
+     "crossover_z": 6.194060835614013,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "noise_model": "depolarizing",
+     "rate": 0.1,
+     "crossover_n": 5,
+     "crossover_z": 8.1213207035138,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "tie",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "noise_model": "amplitude_damping",
+     "rate": 0.0,
+     "crossover_n": 2,
+     "crossover_z": 12.895715108500902,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "noise_model": "amplitude_damping",
+     "rate": 0.02,
+     "crossover_n": 2,
+     "crossover_z": 5.131780710234667,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "tie",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "noise_model": "amplitude_damping",
+     "rate": 0.05,
+     "crossover_n": 8,
+     "crossover_z": 15.88829660452362,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "tie",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "noise_model": "amplitude_damping",
+     "rate": 0.1,
+     "crossover_n": 8,
+     "crossover_z": 13.410170331964633,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "noise_model": "dephasing",
+     "rate": 0.0,
+     "crossover_n": 2,
+     "crossover_z": 13.056322669635474,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "noise_model": "dephasing",
+     "rate": 0.02,
+     "crossover_n": 2,
+     "crossover_z": 7.331346071794077,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "noise_model": "dephasing",
+     "rate": 0.05,
+     "crossover_n": 8,
+     "crossover_z": 15.953524920843304,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "tie",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "noise_model": "dephasing",
+     "rate": 0.1,
+     "crossover_n": 8,
+     "crossover_z": 13.500646560926576,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "noise_model": "depolarizing",
+     "rate": 0.0,
+     "crossover_n": 2,
+     "crossover_z": 13.106053234013393,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "noise_model": "depolarizing",
+     "rate": 0.02,
+     "crossover_n": 2,
+     "crossover_z": 11.926059534029179,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "noise_model": "depolarizing",
+     "rate": 0.05,
+     "crossover_n": 2,
+     "crossover_z": 7.461553676867361,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "noise_model": "depolarizing",
+     "rate": 0.1,
+     "crossover_n": 4,
+     "crossover_z": 4.301383547149767,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "tie",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "noise_model": "amplitude_damping",
+     "rate": 0.0,
+     "crossover_n": 2,
+     "crossover_z": 16.683819705166933,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "noise_model": "amplitude_damping",
+     "rate": 0.02,
+     "crossover_n": 2,
+     "crossover_z": 7.368159044787294,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "tie",
+      "6": "tie",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "noise_model": "amplitude_damping",
+     "rate": 0.05,
+     "crossover_n": 8,
+     "crossover_z": 17.12797924495062,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "noise_model": "amplitude_damping",
+     "rate": 0.1,
+     "crossover_n": 8,
+     "crossover_z": 15.457827878627178,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "noise_model": "dephasing",
+     "rate": 0.0,
+     "crossover_n": 2,
+     "crossover_z": 15.905391760537904,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "noise_model": "dephasing",
+     "rate": 0.02,
+     "crossover_n": 2,
+     "crossover_z": 8.40756817853745,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "tie",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "noise_model": "dephasing",
+     "rate": 0.05,
+     "crossover_n": 8,
+     "crossover_z": 17.145551398950573,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "noise_model": "dephasing",
+     "rate": 0.1,
+     "crossover_n": 8,
+     "crossover_z": 15.523343107153245,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "noise_model": "depolarizing",
+     "rate": 0.0,
+     "crossover_n": 2,
+     "crossover_z": 15.21146382725456,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "noise_model": "depolarizing",
+     "rate": 0.02,
+     "crossover_n": 2,
+     "crossover_z": 15.940145572076336,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "noise_model": "depolarizing",
+     "rate": 0.05,
+     "crossover_n": 2,
+     "crossover_z": 11.017689321804555,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "noise_model": "depolarizing",
+     "rate": 0.1,
+     "crossover_n": 3,
+     "crossover_z": 6.215154088339615,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "tie",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    }
+   ]
+  },
+  "clipped": {
+   "budget": [
+    {
+     "k": 2,
+     "budget": 2000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.05,
+     "crossover_n": 7,
+     "crossover_z": 7.130869415891675,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "tie",
+      "7": "collective",
+      "8": "collective",
+      "9": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 2000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.1,
+     "crossover_n": 8,
+     "crossover_z": 4.240010006015248,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "tie",
+      "8": "collective",
+      "9": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 2000,
+     "noise_model": "dephasing",
+     "rate": 0.05,
+     "crossover_n": 7,
+     "crossover_z": 7.252920891318823,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "tie",
+      "7": "collective",
+      "8": "collective",
+      "9": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 2000,
+     "noise_model": "dephasing",
+     "rate": 0.1,
+     "crossover_n": 8,
+     "crossover_z": 4.5783113605017505,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "tie",
+      "8": "collective",
+      "9": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 2000,
+     "noise_model": "depolarizing",
+     "rate": 0.05,
+     "crossover_n": 2,
+     "crossover_z": 4.4436335769937,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective",
+      "9": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 2000,
+     "noise_model": "depolarizing",
+     "rate": 0.1,
+     "crossover_n": 5,
+     "crossover_z": 6.088889725311378,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "tie",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective",
+      "9": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 8000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.05,
+     "crossover_n": 8,
+     "crossover_z": 3.0291301787736855,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "collective",
+      "9": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 8000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy",
+      "9": "tie"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 8000,
+     "noise_model": "dephasing",
+     "rate": 0.05,
+     "crossover_n": 8,
+     "crossover_z": 3.053811640560978,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "collective",
+      "9": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 8000,
+     "noise_model": "dephasing",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy",
+      "9": "tie"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 8000,
+     "noise_model": "depolarizing",
+     "rate": 0.05,
+     "crossover_n": 5,
+     "crossover_z": 2.233914750632514,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective",
+      "9": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 8000,
+     "noise_model": "depolarizing",
+     "rate": 0.1,
+     "crossover_n": 7,
+     "crossover_z": 9.40083334319092,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "tie",
+      "7": "collective",
+      "8": "collective",
+      "9": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 32000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.05,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy",
+      "9": "single-copy"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 32000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy",
+      "9": "single-copy"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 32000,
+     "noise_model": "dephasing",
+     "rate": 0.05,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy",
+      "9": "single-copy"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 32000,
+     "noise_model": "dephasing",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy",
+      "9": "single-copy"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 32000,
+     "noise_model": "depolarizing",
+     "rate": 0.05,
+     "crossover_n": 7,
+     "crossover_z": 4.6301625599431935,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "collective",
+      "8": "collective",
+      "9": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 32000,
+     "noise_model": "depolarizing",
+     "rate": 0.1,
+     "crossover_n": 8,
+     "crossover_z": 7.531015802824859,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "collective",
+      "9": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 128000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.05,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 128000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 128000,
+     "noise_model": "dephasing",
+     "rate": 0.05,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 128000,
+     "noise_model": "dephasing",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 128000,
+     "noise_model": "depolarizing",
+     "rate": 0.05,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 128000,
+     "noise_model": "depolarizing",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 2000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.05,
+     "crossover_n": 8,
+     "crossover_z": 9.653230689757404,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 2000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 2000,
+     "noise_model": "dephasing",
+     "rate": 0.05,
+     "crossover_n": 8,
+     "crossover_z": 9.714240690446104,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 2000,
+     "noise_model": "dephasing",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 2000,
+     "noise_model": "depolarizing",
+     "rate": 0.05,
+     "crossover_n": 2,
+     "crossover_z": 8.189787444825935,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 2000,
+     "noise_model": "depolarizing",
+     "rate": 0.1,
+     "crossover_n": 4,
+     "crossover_z": 4.937088394134819,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "tie",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 8000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.05,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 8000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 8000,
+     "noise_model": "dephasing",
+     "rate": 0.05,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 8000,
+     "noise_model": "dephasing",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 8000,
+     "noise_model": "depolarizing",
+     "rate": 0.05,
+     "crossover_n": 4,
+     "crossover_z": 2.9281332228940866,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "tie",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 8000,
+     "noise_model": "depolarizing",
+     "rate": 0.1,
+     "crossover_n": 8,
+     "crossover_z": 9.810212897425917,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "tie",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 32000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.05,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 32000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 32000,
+     "noise_model": "dephasing",
+     "rate": 0.05,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 32000,
+     "noise_model": "dephasing",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 32000,
+     "noise_model": "depolarizing",
+     "rate": 0.05,
+     "crossover_n": 8,
+     "crossover_z": 2.8710111843760964,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 32000,
+     "noise_model": "depolarizing",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 500,
+     "noise_model": "amplitude_damping",
+     "rate": 0.05,
+     "crossover_n": 6,
+     "crossover_z": 6.711947577988007,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "tie",
+      "3": "tie",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 500,
+     "noise_model": "amplitude_damping",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 500,
+     "noise_model": "dephasing",
+     "rate": 0.05,
+     "crossover_n": 6,
+     "crossover_z": 6.6478411693581,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "tie",
+      "3": "tie",
+      "4": "tie",
+      "5": "tie",
+      "6": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 500,
+     "noise_model": "dephasing",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 500,
+     "noise_model": "depolarizing",
+     "rate": 0.05,
+     "crossover_n": 2,
+     "crossover_z": 11.255465677154408,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 500,
+     "noise_model": "depolarizing",
+     "rate": 0.1,
+     "crossover_n": 2,
+     "crossover_z": 5.826555150457628,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 2000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.05,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 2000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 2000,
+     "noise_model": "dephasing",
+     "rate": 0.05,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 2000,
+     "noise_model": "dephasing",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 2000,
+     "noise_model": "depolarizing",
+     "rate": 0.05,
+     "crossover_n": 2,
+     "crossover_z": 10.019614734909057,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 2000,
+     "noise_model": "depolarizing",
+     "rate": 0.1,
+     "crossover_n": 3,
+     "crossover_z": 4.687683100931637,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "tie",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 8000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.05,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 8000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 8000,
+     "noise_model": "dephasing",
+     "rate": 0.05,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 8000,
+     "noise_model": "dephasing",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 8000,
+     "noise_model": "depolarizing",
+     "rate": 0.05,
+     "crossover_n": 3,
+     "crossover_z": 3.682436147153508,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "tie",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 8000,
+     "noise_model": "depolarizing",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "tie",
+      "6": "tie"
+     }
+    }
+   ],
+   "moment": [
+    {
+     "k": 2,
+     "noise_model": "amplitude_damping",
+     "rate": 0.0,
+     "crossover_n": 2,
+     "crossover_z": 14.549664615486815,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "noise_model": "amplitude_damping",
+     "rate": 0.02,
+     "crossover_n": 2,
+     "crossover_z": 5.146009491917251,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "noise_model": "amplitude_damping",
+     "rate": 0.05,
+     "crossover_n": 7,
+     "crossover_z": 9.77877677620522,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "tie",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "noise_model": "amplitude_damping",
+     "rate": 0.1,
+     "crossover_n": 8,
+     "crossover_z": 3.9535485615245047,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "tie",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "noise_model": "dephasing",
+     "rate": 0.0,
+     "crossover_n": 2,
+     "crossover_z": 14.537289883345705,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "noise_model": "dephasing",
+     "rate": 0.02,
+     "crossover_n": 2,
+     "crossover_z": 5.974816038303946,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "noise_model": "dephasing",
+     "rate": 0.05,
+     "crossover_n": 7,
+     "crossover_z": 9.696082452656967,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "tie",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "noise_model": "dephasing",
+     "rate": 0.1,
+     "crossover_n": 8,
+     "crossover_z": 4.144549844450287,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "tie",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "noise_model": "depolarizing",
+     "rate": 0.0,
+     "crossover_n": 2,
+     "crossover_z": 14.199499880557324,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "noise_model": "depolarizing",
+     "rate": 0.02,
+     "crossover_n": 2,
+     "crossover_z": 12.625021725462991,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "noise_model": "depolarizing",
+     "rate": 0.05,
+     "crossover_n": 2,
+     "crossover_z": 6.194060835614013,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "noise_model": "depolarizing",
+     "rate": 0.1,
+     "crossover_n": 5,
+     "crossover_z": 9.061069100314679,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "noise_model": "amplitude_damping",
+     "rate": 0.0,
+     "crossover_n": 2,
+     "crossover_z": 13.201079272833374,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "noise_model": "amplitude_damping",
+     "rate": 0.02,
+     "crossover_n": 2,
+     "crossover_z": 5.15839184740108,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "tie",
+      "5": "tie",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "noise_model": "amplitude_damping",
+     "rate": 0.05,
+     "crossover_n": 8,
+     "crossover_z": 10.3411288018738,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "noise_model": "amplitude_damping",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy"
+     }
+    },
+    {
+     "k": 3,
+     "noise_model": "dephasing",
+     "rate": 0.0,
+     "crossover_n": 2,
+     "crossover_z": 13.3609059996475,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "noise_model": "dephasing",
+     "rate": 0.02,
+     "crossover_n": 2,
+     "crossover_z": 7.427216658874608,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "noise_model": "dephasing",
+     "rate": 0.05,
+     "crossover_n": 8,
+     "crossover_z": 10.054200113204708,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "noise_model": "dephasing",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy"
+     }
+    },
+    {
+     "k": 3,
+     "noise_model": "depolarizing",
+     "rate": 0.0,
+     "crossover_n": 2,
+     "crossover_z": 13.439533528852115,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "noise_model": "depolarizing",
+     "rate": 0.02,
+     "crossover_n": 2,
+     "crossover_z": 12.177976213945282,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "noise_model": "depolarizing",
+     "rate": 0.05,
+     "crossover_n": 2,
+     "crossover_z": 7.58294465101601,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "noise_model": "depolarizing",
+     "rate": 0.1,
+     "crossover_n": 4,
+     "crossover_z": 4.394300554224934,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "tie",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "noise_model": "amplitude_damping",
+     "rate": 0.0,
+     "crossover_n": 2,
+     "crossover_z": 16.683819705166933,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "noise_model": "amplitude_damping",
+     "rate": 0.02,
+     "crossover_n": 2,
+     "crossover_z": 7.368159044787294,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "tie",
+      "6": "tie",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "noise_model": "amplitude_damping",
+     "rate": 0.05,
+     "crossover_n": 8,
+     "crossover_z": 10.05611141429299,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "noise_model": "amplitude_damping",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy"
+     }
+    },
+    {
+     "k": 4,
+     "noise_model": "dephasing",
+     "rate": 0.0,
+     "crossover_n": 2,
+     "crossover_z": 15.905391760537904,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "noise_model": "dephasing",
+     "rate": 0.02,
+     "crossover_n": 2,
+     "crossover_z": 8.40756817853745,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "tie",
+      "6": "tie",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "noise_model": "dephasing",
+     "rate": 0.05,
+     "crossover_n": 8,
+     "crossover_z": 10.497232808574628,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "noise_model": "dephasing",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy"
+     }
+    },
+    {
+     "k": 4,
+     "noise_model": "depolarizing",
+     "rate": 0.0,
+     "crossover_n": 2,
+     "crossover_z": 15.21146382725456,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "noise_model": "depolarizing",
+     "rate": 0.02,
+     "crossover_n": 2,
+     "crossover_z": 15.940145572076336,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "noise_model": "depolarizing",
+     "rate": 0.05,
+     "crossover_n": 2,
+     "crossover_z": 11.017689321804555,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "noise_model": "depolarizing",
+     "rate": 0.1,
+     "crossover_n": 3,
+     "crossover_z": 6.240578734282475,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "tie",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    }
+   ]
+  },
+  "shrunk": {
+   "budget": [
+    {
+     "k": 2,
+     "budget": 2000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.05,
+     "crossover_n": 6,
+     "crossover_z": 6.005842802168059,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective",
+      "9": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 2000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.1,
+     "crossover_n": 7,
+     "crossover_z": 4.723216676125923,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "collective",
+      "8": "collective",
+      "9": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 2000,
+     "noise_model": "dephasing",
+     "rate": 0.05,
+     "crossover_n": 6,
+     "crossover_z": 6.277615881188173,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective",
+      "9": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 2000,
+     "noise_model": "dephasing",
+     "rate": 0.1,
+     "crossover_n": 7,
+     "crossover_z": 4.672584353893862,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "collective",
+      "8": "collective",
+      "9": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 2000,
+     "noise_model": "depolarizing",
+     "rate": 0.05,
+     "crossover_n": 2,
+     "crossover_z": 4.578568397711096,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective",
+      "9": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 2000,
+     "noise_model": "depolarizing",
+     "rate": 0.1,
+     "crossover_n": 5,
+     "crossover_z": 6.697381462518151,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "tie",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective",
+      "9": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 8000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.05,
+     "crossover_n": 8,
+     "crossover_z": 7.722710919087975,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "collective",
+      "9": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 8000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.1,
+     "crossover_n": 9,
+     "crossover_z": 7.636789802424512,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy",
+      "9": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 8000,
+     "noise_model": "dephasing",
+     "rate": 0.05,
+     "crossover_n": 8,
+     "crossover_z": 7.738619141096349,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "collective",
+      "9": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 8000,
+     "noise_model": "dephasing",
+     "rate": 0.1,
+     "crossover_n": 9,
+     "crossover_z": 7.735343753923284,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy",
+      "9": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 8000,
+     "noise_model": "depolarizing",
+     "rate": 0.05,
+     "crossover_n": 5,
+     "crossover_z": 2.413807944159334,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective",
+      "9": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 8000,
+     "noise_model": "depolarizing",
+     "rate": 0.1,
+     "crossover_n": 7,
+     "crossover_z": 9.247172566087997,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "tie",
+      "7": "collective",
+      "8": "collective",
+      "9": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 32000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.05,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy",
+      "9": "tie"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 32000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy",
+      "9": "single-copy"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 32000,
+     "noise_model": "dephasing",
+     "rate": 0.05,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy",
+      "9": "tie"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 32000,
+     "noise_model": "dephasing",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy",
+      "9": "single-copy"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 32000,
+     "noise_model": "depolarizing",
+     "rate": 0.05,
+     "crossover_n": 7,
+     "crossover_z": 4.834998717466534,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "collective",
+      "8": "collective",
+      "9": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 32000,
+     "noise_model": "depolarizing",
+     "rate": 0.1,
+     "crossover_n": 8,
+     "crossover_z": 7.49918924039975,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "collective",
+      "9": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 128000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.05,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 128000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 128000,
+     "noise_model": "dephasing",
+     "rate": 0.05,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 128000,
+     "noise_model": "dephasing",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 128000,
+     "noise_model": "depolarizing",
+     "rate": 0.05,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy"
+     }
+    },
+    {
+     "k": 2,
+     "budget": 128000,
+     "noise_model": "depolarizing",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 2000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.05,
+     "crossover_n": 8,
+     "crossover_z": 13.408713911250524,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "tie",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 2000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "tie"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 2000,
+     "noise_model": "dephasing",
+     "rate": 0.05,
+     "crossover_n": 8,
+     "crossover_z": 13.648169186312051,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "tie",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 2000,
+     "noise_model": "dephasing",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "tie"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 2000,
+     "noise_model": "depolarizing",
+     "rate": 0.05,
+     "crossover_n": 2,
+     "crossover_z": 8.531165117154076,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 2000,
+     "noise_model": "depolarizing",
+     "rate": 0.1,
+     "crossover_n": 4,
+     "crossover_z": 5.662200790040251,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "tie",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 8000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.05,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 8000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 8000,
+     "noise_model": "dephasing",
+     "rate": 0.05,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 8000,
+     "noise_model": "dephasing",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 8000,
+     "noise_model": "depolarizing",
+     "rate": 0.05,
+     "crossover_n": 4,
+     "crossover_z": 3.0881270084499706,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "tie",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 8000,
+     "noise_model": "depolarizing",
+     "rate": 0.1,
+     "crossover_n": 8,
+     "crossover_z": 10.056093625860074,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "tie",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 32000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.05,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 32000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 32000,
+     "noise_model": "dephasing",
+     "rate": 0.05,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 32000,
+     "noise_model": "dephasing",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 32000,
+     "noise_model": "depolarizing",
+     "rate": 0.05,
+     "crossover_n": 8,
+     "crossover_z": 3.0758174078457627,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "budget": 32000,
+     "noise_model": "depolarizing",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 500,
+     "noise_model": "amplitude_damping",
+     "rate": 0.05,
+     "crossover_n": 2,
+     "crossover_z": 2.7009642703781265,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 500,
+     "noise_model": "amplitude_damping",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 500,
+     "noise_model": "dephasing",
+     "rate": 0.05,
+     "crossover_n": 2,
+     "crossover_z": 2.9436092711961446,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 500,
+     "noise_model": "dephasing",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 500,
+     "noise_model": "depolarizing",
+     "rate": 0.05,
+     "crossover_n": 2,
+     "crossover_z": 11.623887922979085,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 500,
+     "noise_model": "depolarizing",
+     "rate": 0.1,
+     "crossover_n": 2,
+     "crossover_z": 7.086957918804182,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 2000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.05,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 2000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 2000,
+     "noise_model": "dephasing",
+     "rate": 0.05,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 2000,
+     "noise_model": "dephasing",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 2000,
+     "noise_model": "depolarizing",
+     "rate": 0.05,
+     "crossover_n": 2,
+     "crossover_z": 10.823311309827325,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 2000,
+     "noise_model": "depolarizing",
+     "rate": 0.1,
+     "crossover_n": 3,
+     "crossover_z": 5.513981127455328,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "tie",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 8000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.05,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 8000,
+     "noise_model": "amplitude_damping",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 8000,
+     "noise_model": "dephasing",
+     "rate": 0.05,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 8000,
+     "noise_model": "dephasing",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 8000,
+     "noise_model": "depolarizing",
+     "rate": 0.05,
+     "crossover_n": 3,
+     "crossover_z": 4.087388438184388,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "tie",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "budget": 8000,
+     "noise_model": "depolarizing",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "tie",
+      "6": "tie"
+     }
+    }
+   ],
+   "moment": [
+    {
+     "k": 2,
+     "noise_model": "amplitude_damping",
+     "rate": 0.0,
+     "crossover_n": 2,
+     "crossover_z": 14.7784851704926,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "noise_model": "amplitude_damping",
+     "rate": 0.02,
+     "crossover_n": 2,
+     "crossover_z": 5.398639884223352,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "noise_model": "amplitude_damping",
+     "rate": 0.05,
+     "crossover_n": 6,
+     "crossover_z": 4.12571421284972,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "noise_model": "amplitude_damping",
+     "rate": 0.1,
+     "crossover_n": 7,
+     "crossover_z": 6.654717498707582,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "noise_model": "dephasing",
+     "rate": 0.0,
+     "crossover_n": 2,
+     "crossover_z": 14.757739552414275,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "noise_model": "dephasing",
+     "rate": 0.02,
+     "crossover_n": 2,
+     "crossover_z": 6.164687943598548,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "noise_model": "dephasing",
+     "rate": 0.05,
+     "crossover_n": 6,
+     "crossover_z": 4.550367839668148,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "noise_model": "dephasing",
+     "rate": 0.1,
+     "crossover_n": 7,
+     "crossover_z": 6.501962279910049,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "noise_model": "depolarizing",
+     "rate": 0.0,
+     "crossover_n": 2,
+     "crossover_z": 14.43563812467803,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "noise_model": "depolarizing",
+     "rate": 0.02,
+     "crossover_n": 2,
+     "crossover_z": 12.899385566942504,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "noise_model": "depolarizing",
+     "rate": 0.05,
+     "crossover_n": 2,
+     "crossover_z": 6.453083574982668,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 2,
+     "noise_model": "depolarizing",
+     "rate": 0.1,
+     "crossover_n": 5,
+     "crossover_z": 9.98993656885455,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "tie",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "noise_model": "amplitude_damping",
+     "rate": 0.0,
+     "crossover_n": 2,
+     "crossover_z": 13.441210543247555,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "noise_model": "amplitude_damping",
+     "rate": 0.02,
+     "crossover_n": 2,
+     "crossover_z": 5.530483793139666,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "tie",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "noise_model": "amplitude_damping",
+     "rate": 0.05,
+     "crossover_n": 8,
+     "crossover_z": 16.310789181567106,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "tie",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "noise_model": "amplitude_damping",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "tie"
+     }
+    },
+    {
+     "k": 3,
+     "noise_model": "dephasing",
+     "rate": 0.0,
+     "crossover_n": 2,
+     "crossover_z": 13.610737071059123,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "noise_model": "dephasing",
+     "rate": 0.02,
+     "crossover_n": 2,
+     "crossover_z": 7.827399459183556,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "noise_model": "dephasing",
+     "rate": 0.05,
+     "crossover_n": 8,
+     "crossover_z": 15.622969094261652,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "tie",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "noise_model": "dephasing",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "tie"
+     }
+    },
+    {
+     "k": 3,
+     "noise_model": "depolarizing",
+     "rate": 0.0,
+     "crossover_n": 2,
+     "crossover_z": 13.744275186756191,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "noise_model": "depolarizing",
+     "rate": 0.02,
+     "crossover_n": 2,
+     "crossover_z": 12.465505550982467,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "noise_model": "depolarizing",
+     "rate": 0.05,
+     "crossover_n": 2,
+     "crossover_z": 7.949859692102905,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 3,
+     "noise_model": "depolarizing",
+     "rate": 0.1,
+     "crossover_n": 4,
+     "crossover_z": 5.040539719449164,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "tie",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "noise_model": "amplitude_damping",
+     "rate": 0.0,
+     "crossover_n": 2,
+     "crossover_z": 17.953767704931415,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "noise_model": "amplitude_damping",
+     "rate": 0.02,
+     "crossover_n": 2,
+     "crossover_z": 8.188147399913175,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "tie",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "noise_model": "amplitude_damping",
+     "rate": 0.05,
+     "crossover_n": 8,
+     "crossover_z": 13.863494018625923,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "noise_model": "amplitude_damping",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy"
+     }
+    },
+    {
+     "k": 4,
+     "noise_model": "dephasing",
+     "rate": 0.0,
+     "crossover_n": 2,
+     "crossover_z": 16.905281404732005,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "noise_model": "dephasing",
+     "rate": 0.02,
+     "crossover_n": 2,
+     "crossover_z": 9.287521005049205,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "tie",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "noise_model": "dephasing",
+     "rate": 0.05,
+     "crossover_n": 8,
+     "crossover_z": 14.459201270305979,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "noise_model": "dephasing",
+     "rate": 0.1,
+     "crossover_n": null,
+     "crossover_z": null,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "single-copy",
+      "3": "single-copy",
+      "4": "single-copy",
+      "5": "single-copy",
+      "6": "single-copy",
+      "7": "single-copy",
+      "8": "single-copy"
+     }
+    },
+    {
+     "k": 4,
+     "noise_model": "depolarizing",
+     "rate": 0.0,
+     "crossover_n": 2,
+     "crossover_z": 16.245577085009785,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "noise_model": "depolarizing",
+     "rate": 0.02,
+     "crossover_n": 2,
+     "crossover_z": 17.122987386622075,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "noise_model": "depolarizing",
+     "rate": 0.05,
+     "crossover_n": 2,
+     "crossover_z": 12.223421505844334,
+     "ambiguous": false,
+     "winners_by_n": {
+      "2": "collective",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    },
+    {
+     "k": 4,
+     "noise_model": "depolarizing",
+     "rate": 0.1,
+     "crossover_n": 3,
+     "crossover_z": 7.080085987138284,
+     "ambiguous": true,
+     "winners_by_n": {
+      "2": "tie",
+      "3": "collective",
+      "4": "collective",
+      "5": "collective",
+      "6": "collective",
+      "7": "collective",
+      "8": "collective"
+     }
+    }
+   ]
+  }
+ }
+}

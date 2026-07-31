@@ -1,0 +1,198 @@
+{
+ "description": "PASS 38.4: is the estimand random within each benchmark ensemble?",
+ "analytic_form": "Tr(rho^k) = ((1-q) + q/d)^k + (d-1)(q/d)^k for the noisy-pure ensemble; independent of |psi>, so a function of (n,q,k) alone",
+ "noisy_pure_checks": [
+  {
+   "n": 2,
+   "k": 2,
+   "analytic": 0.8575,
+   "measured_mean": 0.8574999999999999,
+   "measured_std": 3.6821932062951477e-16,
+   "max_abs_dev_from_analytic": 6.661338147750939e-16
+  },
+  {
+   "n": 2,
+   "k": 3,
+   "analytic": 0.7915000000000001,
+   "measured_mean": 0.7915,
+   "measured_std": 4.611102534756203e-16,
+   "max_abs_dev_from_analytic": 7.771561172376096e-16
+  },
+  {
+   "n": 2,
+   "k": 4,
+   "analytic": 0.7320953125000002,
+   "measured_mean": 0.7320953124999999,
+   "measured_std": 5.804389243823509e-16,
+   "max_abs_dev_from_analytic": 9.992007221626409e-16
+  },
+  {
+   "n": 3,
+   "k": 2,
+   "analytic": 0.83375,
+   "measured_mean": 0.8337500000000001,
+   "measured_std": 4.710277376051325e-16,
+   "max_abs_dev_from_analytic": 7.771561172376096e-16
+  },
+  {
+   "n": 3,
+   "k": 3,
+   "analytic": 0.7598125,
+   "measured_mean": 0.7598125000000002,
+   "measured_std": 6.599370864641318e-16,
+   "max_abs_dev_from_analytic": 1.1102230246251565e-15
+  },
+  {
+   "n": 3,
+   "k": 4,
+   "analytic": 0.6933166015625,
+   "measured_mean": 0.6933166015625001,
+   "measured_std": 7.65168414856311e-16,
+   "max_abs_dev_from_analytic": 1.3322676295501878e-15
+  },
+  {
+   "n": 4,
+   "k": 2,
+   "analytic": 0.821875,
+   "measured_mean": 0.821875,
+   "measured_std": 3.3460533085070733e-16,
+   "max_abs_dev_from_analytic": 7.771561172376096e-16
+  },
+  {
+   "n": 4,
+   "k": 3,
+   "analytic": 0.744296875,
+   "measured_mean": 0.7442968749999999,
+   "measured_std": 4.59995112173319e-16,
+   "max_abs_dev_from_analytic": 1.1102230246251565e-15
+  },
+  {
+   "n": 4,
+   "k": 4,
+   "analytic": 0.6745157470703125,
+   "measured_mean": 0.6745157470703126,
+   "measured_std": 5.295426327528139e-16,
+   "max_abs_dev_from_analytic": 1.3322676295501878e-15
+  },
+  {
+   "n": 5,
+   "k": 2,
+   "analytic": 0.8159375000000001,
+   "measured_mean": 0.8159375,
+   "measured_std": 5.391539912426197e-16,
+   "max_abs_dev_from_analytic": 9.992007221626409e-16
+  },
+  {
+   "n": 5,
+   "k": 3,
+   "analytic": 0.7366210937500002,
+   "measured_mean": 0.7366210937500003,
+   "measured_std": 7.440703336019502e-16,
+   "max_abs_dev_from_analytic": 1.3322676295501878e-15
+  },
+  {
+   "n": 5,
+   "k": 4,
+   "analytic": 0.6652600738525393,
+   "measured_mean": 0.6652600738525393,
+   "measured_std": 8.88756472751686e-16,
+   "max_abs_dev_from_analytic": 1.6653345369377348e-15
+  },
+  {
+   "n": 6,
+   "k": 2,
+   "analytic": 0.8129687500000001,
+   "measured_mean": 0.81296875,
+   "measured_std": 6.645900495138383e-16,
+   "max_abs_dev_from_analytic": 1.6653345369377348e-15
+  },
+  {
+   "n": 6,
+   "k": 3,
+   "analytic": 0.7328037109375001,
+   "measured_mean": 0.7328037109375001,
+   "measured_std": 8.881784197001252e-16,
+   "max_abs_dev_from_analytic": 1.9984014443252818e-15
+  },
+  {
+   "n": 6,
+   "k": 4,
+   "analytic": 0.6606681293487551,
+   "measured_mean": 0.6606681293487547,
+   "measured_std": 1.09625739919858e-15,
+   "max_abs_dev_from_analytic": 2.6645352591003757e-15
+  }
+ ],
+ "max_abs_dev_from_analytic": 2.6645352591003757e-15,
+ "per_ensemble_spread_n4": {
+  "noisy_pure|2": {
+   "mean": 0.821875,
+   "std": 4.2276033262255756e-16,
+   "rel_std": 5.143851955863818e-16
+  },
+  "noisy_pure|3": {
+   "mean": 0.744296875,
+   "std": 5.640599496620651e-16,
+   "rel_std": 7.578426950429761e-16
+  },
+  "noisy_pure|4": {
+   "mean": 0.6745157470703124,
+   "std": 7.141332153553285e-16,
+   "rel_std": 1.0587346825586955e-15
+  },
+  "haar_pure|2": {
+   "mean": 1.0,
+   "std": 5.970137645324976e-16,
+   "rel_std": 5.970137645324976e-16
+  },
+  "haar_pure|3": {
+   "mean": 1.0,
+   "std": 8.955206467987463e-16,
+   "rel_std": 8.955206467987463e-16
+  },
+  "haar_pure|4": {
+   "mean": 1.0,
+   "std": 1.1940275290649952e-15,
+   "rel_std": 1.1940275290649952e-15
+  },
+  "low_rank|2": {
+   "mean": 0.5437282284898078,
+   "std": 0.027147732076828145,
+   "rel_std": 0.04992886271921236
+  },
+  "low_rank|3": {
+   "mean": 0.31559234273471193,
+   "std": 0.0407215981152422,
+   "rel_std": 0.12903227550572394
+  },
+  "low_rank|4": {
+   "mean": 0.19191692139659797,
+   "std": 0.042078767368105924,
+   "rel_std": 0.21925511863099237
+  },
+  "ghz_noisy|2": {
+   "mean": 0.7398437499999996,
+   "std": 1.1102230246251565e-16,
+   "rel_std": 1.5006182381417118e-16
+  },
+  "ghz_noisy|3": {
+   "mean": 0.6346826171874995,
+   "std": 0.0,
+   "rel_std": 0.0
+  },
+  "ghz_noisy|4": {
+   "mean": 0.5454198684692377,
+   "std": 0.0,
+   "rel_std": 0.0
+  }
+ },
+ "estimator_difficulty_varies": {
+  "n": 4,
+  "ensemble": "noisy_pure",
+  "spectral_sum_mean": 1.0496895916098872,
+  "spectral_sum_std": 0.01681525958065254,
+  "zeta2_per_state_mean": 2519.629230939714,
+  "zeta2_per_state_std": 40.37343825314672,
+  "zeta2_closed_form_ensemble": 2534.644558249081
+ }
+}
