@@ -30,15 +30,22 @@ derivation (500k-1M snapshots, cross-checked for convergence):
 
     zeta1 ~ 0.63 * 1.35^n   (n=2..7);  zeta2 ~ 1.10 * 6.93^n;  M* ~ 0.87 * 5.15^n
 
-so M*'s base is ``zeta2_base / zeta1_base ~ 5.1-5.3`` — the base is independent of the
-2-vs-4 prefactor above.  ``zeta1`` and ``zeta2`` have NO simple weight-only closed form
-for n >= 2.  The reason is NOT entanglement: because the snapshots are drawn from rho,
-the second moment is cubic in rho while a weight-only sum of <P>^2 is quadratic in the
-Pauli expectations, and the missing dependence is on the relative orientation of the
-marginal Bloch vectors through the correlation matrix — an invariant already nonzero for
-separable, classically correlated states (see Section 3.4 of the paper).  They must
-therefore be estimated numerically (see :func:`~anrl.theory.variance.estimate_zetas`).
-The only closed form is the single qubit: :func:`single_qubit_zeta1`.
+so the base of these FINITE-SIZE fits is ``zeta2_base / zeta1_base ~ 5.1-5.3``,
+independent of the 2-vs-4 prefactor above.  That is a fit over the sizes reached, not the
+asymptotic rate: the ensemble-averaged closed forms below give M* an exact asymptotic base
+of ``28/5 = 5.6``, which the fits approach from below.
+
+``zeta1`` and ``zeta2`` have NO simple weight-only closed form for n >= 2.  The reason is
+NOT entanglement: because the snapshots are drawn from rho, the second moment is cubic in
+rho while a weight-only sum of <P>^2 is quadratic in the Pauli expectations, and the
+missing dependence is on the relative orientation of the marginal Bloch vectors through
+the correlation matrix — an invariant already nonzero for separable, classically
+correlated states (see Section 3.4 of the paper).  A weight-only ansatz therefore fails,
+but the quantities themselves are NOT beyond closed form: at k = 2 the ensemble-averaged
+``zeta1`` and ``zeta2`` are exact rational functions of ``(n, q)``, implemented here as
+:func:`closed_form_zetas` by Haar-averaging the Huang--Kueng--Preskill second-moment
+identity.  For k >= 3, and for a single arbitrary state, they are estimated numerically
+(see :func:`~anrl.theory.variance.estimate_zetas`).
 """
 
 from __future__ import annotations

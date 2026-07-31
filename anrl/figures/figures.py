@@ -350,13 +350,14 @@ def make_fig5():
     ax.legend(loc="upper left", fontsize=6.6, handletextpad=0.4)
     fig.tight_layout()
     caption = (
-        "Figure 5. The exponential wall. Single-copy purity RMSE versus system size n out to n=10 "
-        "(log scale; measured points with 68% CIs, theory line), with the true quantity Tr(rho^2) "
+        "Figure 5. Single-copy error growth against a bounded collective error. Single-copy purity "
+        "RMSE for the UNBIASED U-statistic versus system size n out to n=10 (log scale; measured "
+        "points with 68% CIs, theory line), with the true quantity Tr(rho^2) "
         f"~= {true_val:.2f} marked (black). Single-copy error grows exponentially and by n=10 reaches "
-        f"~{n10:.0f} -- about {n10 / true_val:.0f}x the quantity being estimated, so the estimate is "
-        "meaningless -- while the collective error (green) stays bounded. The reader should conclude "
-        "that single-copy shadow estimation of purity hits a hard exponential wall that the collective "
-        "route does not.")
+        f"~{n10:.0f}, while the collective error (green) stays bounded. Projecting the single-copy "
+        "estimate into the physical range caps it well below that (anrl.benchmark.constrained), but "
+        "does not restore its usefulness: past a certain size the projected estimator is beaten by a "
+        "constant fixed at the midpoint of that range, which uses no data at all.")
     header = ["n", "series", "rmse", "ci_lo", "ci_hi"]
     return fig, header, rows, caption
 

@@ -1,10 +1,11 @@
 """PASS 37.3: both routes against a data-free constant, the replacement headline.
 
-The paper opens with "an error fifteen times the quantity being estimated".  That
-number belongs to the unconstrained U-statistic; a clipped estimator cannot exceed
-the width of the physical range (PASS 36).  The claim that survives is stronger and
-metric-independent: past a certain size the single-copy estimator is beaten by a
-rule that never looks at the data.
+The paper opened, at the time this was written, with "an error fifteen times the
+quantity being estimated".  That number belongs to the unconstrained U-statistic; a
+clipped estimator cannot exceed the width of the physical range (PASS 36).  The claim
+that survives is stronger and metric-independent: past a certain size the single-copy
+estimator is beaten by a rule that never looks at the data.  It is what the paper now
+opens with.
 
 Three constants are scored, and they are not equally legitimate:
 

@@ -1,55 +1,42 @@
-# Budget-scaling transition in shadow-based moment estimation
+# shadow-moment-crossover
 
 Code, data, and analysis for the paper:
 
-> **Budget-scaling transition in shadow-based moment estimation and the crossover to collective measurement**
+> **A finite-size crossover criterion for shadow-based moment estimation, with a hardware case study**
 > Alexander Messerlian (Independent Researcher) and Ziwei Gu (Harvard John A. Paulson School of Engineering and Applied Sciences).
-> Compiled manuscript: [`paper/paper.pdf`](paper/paper.pdf) · LaTeX source: [`paper/paper.tex`](paper/paper.tex)
+> Compiled manuscript: [`paper/paper.pdf`](paper/paper.pdf) · LaTeX source: [`paper/paper.tex`](paper/paper.tex) · Supplement: [`paper/supplementary.pdf`](paper/supplementary.pdf)
 
-## What the paper is
+## What this repository is
 
-Nonlinear functionals of a quantum state — the purity $\mathrm{Tr}(\rho^2)$ and the
-higher moments $\mathrm{Tr}(\rho^k)$ — can be estimated two ways: from **single-copy**
-randomized (classical-shadow) measurements, at a cost that grows exponentially with
-system size, or from **collective** measurements on $k$ copies, at $O(1)$ variance but
-at the price of entangling gates and the noise they carry. The paper works out both
-sides of that ledger exactly.
+Everything the paper's numbers depend on: the estimators and theory as an
+installable package, one runnable script per result, the saved outputs those
+scripts produce, and the raw hardware measurement counts. Nothing in the paper
+is computed anywhere else.
 
-The main results:
+The paper itself asks when a collective two-copy measurement beats single-copy
+classical shadows at estimating $\mathrm{Tr}(\rho^k)$ at equal copy budget, derives
+a criterion for the crossover size, validates it in simulation, and reports a
+committed-in-advance hardware test that failed. Read the PDF for the argument;
+this file only explains how to run things.
 
-- An **exact, state-dependent variance law** for the $k$-th-moment U-statistic estimator
-  under local random-unitary classical shadows, derived via the Hoeffding decomposition and
-  verified against brute-force Monte Carlo for $k = 2, 3, 4$.
-- A **budget-scaling exponent transition**: the *effective* exponent $\alpha$ in
-  $\mathrm{RMSE} \propto M^{-\alpha}$, over the budget $M$ in use, is not the constant $1/2$ —
-  it migrates continuously toward $1$, and past it for higher moment orders, as $M$ falls below
-  a threshold $M^*$ that diverges exponentially in $n$ — fitting $\approx 5.3^n$ for purity on the
-  noisy-pure ensemble over the sizes tested, a fitted base for that ensemble rather than a
-  universal constant. The asymptotic scaling at fixed $n$ remains the familiar square-root law;
-  the migration is a finite-budget effect.
-- Two **exact, parameter-free collective bias laws** (global-depolarizing and per-qubit-channel).
-- A **crossover law** with no parameter fitted to the crossover data it predicts, for the system
-  size at which collective measurement becomes cheaper, validated across 83 simulated cells and
-  four state ensembles. Those cells are Monte Carlo plus analytic evaluation — not hardware.
-- A **pre-registered hardware test** on a 108-qubit superconducting processor. Neither the
-  collective nor the single-copy prediction is borne out, and the paper reports both failures and
-  their diagnosis (readout error and cross-session drift dominate; the entangling overhead does
-  not).
+## Layout
 
-## What the code does
-
-Everything is in the `anrl` package:
-
-| module | contents |
+| path | contents |
 |---|---|
-| `anrl/theory/` | the exact variance law, the Hoeffding/Lee U-statistic decomposition, the two bias laws, the crossover, and the analytic threshold $M^*$ |
-| `anrl/benchmark/` | Monte-Carlo estimators (single-copy shadows, collective SWAP test), noise channels, moment operators |
-| `anrl/physics/` | state ensembles (Haar-pure, noisy-pure, low-rank, GHZ) and Pauli machinery |
+| `anrl/theory/` | the exact U-statistic variance law, the Hoeffding projection variances and their $k=2$ closed forms, the two collective bias laws, the threshold $M^*$, and the crossover predictor |
+| `anrl/benchmark/` | Monte-Carlo estimators (single-copy shadows, collective SWAP test), the state ensembles, noise channels, moment operators, readout models, and the range-constrained estimators in `constrained.py` |
+| `anrl/physics/` | states, Pauli machinery, measurement, entanglement witnesses |
 | `anrl/figures/` | the publication figure builders (Okabe–Ito palette; PDF/PNG/CSV export) |
 | `anrl/hardware/` | Open Quantum / Rigetti Cepheus backend, circuit builders, the destructive-SWAP protocol |
+| `experiments/` | one runnable script per result |
+| `results/` | the saved outputs, including the raw hardware counts |
+| `tests/` | the test suite (259 tests) |
 
-`experiments/` holds one runnable script per result; `results/` holds the saved outputs;
-`tests/` is the test suite.
+`anrl/benchmark/constrained.py` is worth pointing out: $\mathrm{Tr}(\rho^k)$ lies in
+$[2^{n(1-k)}, 1]$, so an estimate outside that range can be projected back into it,
+which weakly reduces squared error pointwise. The paper reports its accuracy figures
+for both the unbiased estimator and this range-projected one, and that module is where
+the projection lives.
 
 ## Setup
 
@@ -80,10 +67,20 @@ None of these touch hardware or cost anything. Each reads/writes `results/*.json
 .venv/bin/python experiments/theory_single_copy_verify.py   # exact variance law vs brute force (k=2,3,4)
 .venv/bin/python experiments/run_budget_sweep.py            # the alpha transition (RMSE vs budget)
 .venv/bin/python experiments/run_scaling.py                 # zeta_1, zeta_2, M* vs system size
-.venv/bin/python experiments/run_crossover_theory.py        # crossover law across 83 cells
+.venv/bin/python experiments/run_crossover_theory.py        # the crossover criterion across the swept cells
 .venv/bin/python experiments/general_k_variance.py          # generalization to k=3, k=4
 .venv/bin/python experiments/run_stress_test.py             # out-of-ensemble validation (Haar/low-rank/GHZ)
 .venv/bin/python experiments/cgk_mechanism.py               # reconciliation with Cotler-Gong-Kannan (ref [6])
+```
+
+The range-constrained re-analysis, which the paper reports alongside the unbiased
+figures, is a second group:
+
+```bash
+PYTHONPATH=. .venv/bin/python -m experiments.run_clipping_audit    # how far out of range the raw estimates fall
+PYTHONPATH=. .venv/bin/python -m experiments.run_trivial_baseline  # both routes against a data-free constant
+PYTHONPATH=. .venv/bin/python -m experiments.run_estimand_spread   # per-state spread of the estimand, by ensemble
+PYTHONPATH=. .venv/bin/python -m experiments.build_pass38_final    # the reconciled accuracy table
 ```
 
 ## Reproduce the figures
@@ -102,16 +99,20 @@ the six figures as a vector PDF, a 300-dpi PNG, and a CSV of the exact plotted d
 .venv/bin/python -m pytest -q
 ```
 
+259 tests, all passing at HEAD.
+
 ## Building the paper
 
-The paper source is [`paper/paper.tex`](paper/paper.tex). Build it with:
+The paper source is [`paper/paper.tex`](paper/paper.tex); the supplement is
+[`paper/supplementary.tex`](paper/supplementary.tex). Build either with:
 
 ```bash
 tectonic paper/paper.tex
 ```
 
-or with two `pdflatex` passes (the second resolves cross-references). The bibliography is
-embedded in the `.tex`, so there is no separate BibTeX step.
+or with two `pdflatex` passes (the second resolves cross-references). Each document
+carries its bibliography inline, so there is no separate BibTeX step and no `.bib` file
+in the repository.
 
 ## Hardware runs cost real money
 
@@ -138,13 +139,14 @@ Cepheus-1-108Q). **Each job is billed in platform credits — running them costs
 tree); the load-bearing files were force-added, so what a reader sees is exactly what the
 paper's numbers depend on:
 
-- **Raw hardware counts** — every submitted circuit (`results/hardware/*.qasm`) and its raw
-  shot counts (`results/hardware/*_counts.json`), plus per-campaign analysis JSONs and
-  reports. These are **irreplaceable** (they cost real credits to obtain) and were committed
-  verbatim *before* any analysis; every locked prediction was committed *before* the
-  corresponding job was submitted.
+- **Raw hardware counts** — every submitted circuit (`results/hardware/*.qasm`, 69 files)
+  and its raw shot counts (`results/hardware/*_counts.json`, 96 files), plus the
+  per-campaign analysis JSONs. These are **irreplaceable** (they cost real credits to
+  obtain) and were committed verbatim *before* any analysis; every locked prediction was
+  committed *before* the corresponding job was submitted.
 - **Theory / analysis outputs** — the variance-law, budget-scaling, crossover, general-$k$,
-  stress-test, and CGK-reconciliation JSONs.
+  stress-test, range-constrained, and CGK-reconciliation JSONs (39 files at the top level
+  of `results/`).
 - **Figure data** — `results/figures/*.csv` (the exact plotted values). The rendered
   `*.pdf`/`*.png` regenerate from these with `make_figures.py`.
 

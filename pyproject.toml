@@ -5,10 +5,10 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "shadow-moment-crossover"
 version = "0.0.0"
-description = "Exact variance law and the crossover to collective measurement for shadow-based estimation of quantum state moments."
+description = "A finite-size crossover criterion for shadow-based moment estimation: exact variance and bias laws, the crossover to collective measurement, and a hardware case study."
 readme = "README.md"
 requires-python = ">=3.11"
-authors = [{ name = "amesserlian" }]
+authors = [{ name = "Alexander Messerlian" }, { name = "Ziwei Gu" }]
 
 # Abstract runtime dependencies (lower bounds). For a reproducible, mutually
 # compatible environment, install the exact pins instead:
