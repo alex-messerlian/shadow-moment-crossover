@@ -42,27 +42,26 @@ decomposition \cite{hoeffding1948, serfling1980} stated for shadows in
 \cite{huang2020shadows} --- with two known decay regimes
 \cite{elben2020mixed, aasen2026limitations} whose state-dependent
 projection variances those analyses bound rather than evaluate, leaving
-their ratio unconstrained. We evaluate them in closed form for depolarized
-Haar-random pure states, locating the budget \(M^* = \zeta_2/(2\zeta_1)\)
-at which the effective error exponent crosses over. It grows exponentially
-with asymptotic base \(28/5\), fixed by the ensemble-averaged projection
-variances and approached from below by our finite-size fits
-(\(n = 2\) to \(9\)).
+their ratio unconstrained.
 
-That turns the regime structure into a plug-in criterion, with nothing
-fitted to the crossover data, for when a collective two-copy measurement
-attains the lower RMSE at equal copy budget. For the range-projected
-estimator an experiment would use, it places all \(72\) resolving cells
-within one qubit and predicts \(96.7\%\) of the \(123\) swept, over four
-ensembles, three held out from the derivation; Section 5.2 gives the
-unbiased estimator's figures. The practical consequence survives
-projection: at ten qubits the projected estimate is less accurate than a
-constant fixed at the midpoint of the interval purity is known a priori to
-occupy. The cells are simulation, and for \(k > 2\) the collective side is
-a bounded \(\pm 1\) outcome carrying none of the gates its circuit would
-require.
+We evaluate them in closed form for depolarized Haar-random pure states;
+everything below follows from their ratio. That ratio is the budget
+\(M^* = \bar\zeta_2/(2\bar\zeta_1)\) at which the effective error exponent
+crosses over, with asymptotic base \(28/5\) approached from below by our
+finite-size fits over \(n = 2\) to \(9\). With two exact bias laws for the
+collective route it becomes a plug-in criterion, nothing fitted to the
+crossover data, for when two-copy measurement attains the lower RMSE at
+equal budget. For the range-projected estimator an experiment would use, it
+places all \(72\) resolving cells within one qubit --- \(58\) plus
+\(14\), under two scoring rules (Appendix~C) --- and predicts
+\(96.7\%\) of the \(123\) swept over four ensembles, three held out;
+Section 5.2 gives the unbiased figures. The practical consequence follows
+too: at ten qubits the projected estimate is beaten by a constant fixed at
+the midpoint of the interval purity is known a priori to occupy. The cells are simulation, and for \(k > 2\)
+the collective side is a bounded \(\pm 1\) outcome carrying none of the
+gates its circuit would require.
 
-We then test the prediction on what the platform reports as a 108-qubit
+We then test the criterion on what the platform reports as a 108-qubit
 superconducting processor, with the predictions committed to version
 control beforehand. Both failed: a Bell-state purity locked at \(0.89\)
 measured \(0.72\), a single-copy anchor locked at \(1.50\) measured
@@ -552,7 +551,7 @@ the second being the spectral sum above evaluated on this ensemble.
 Each qubit contributes one identity of weight \(3^0\) and three Paulis of
 weight \(3^1\), so \(\sum_s 3^{|s|} = 10^n\); the compatible pairs give
 \(16^n\) with that weighting and \(34^n\) with its square, with diagonals
-\(10^n\) and \(28^n\).
+\(10^n\) and \(28^n\); Appendix~A assembles the four blocks.
 
 The threshold reported below is the ratio of these averaged variances,
 \(\bar\zeta_2/(2\bar\zeta_1)\), which is the quantity the state-aggregated
@@ -883,6 +882,16 @@ estimator of Section~\ref{physical-constraints-and-the-choice-of-estimator},
 remain within one qubit, 63 of them exactly. Both are reported throughout:
 they describe two different estimators, and neither supersedes the other.
 
+Neither aggregate is homogeneous, and the split matters for reading it. The
+83 are 68 noisy-pure cells whose measured \(n^*\) comes from the paired
+state-level \(z\)-test against measured collective data, plus 15 held-out
+cells whose measured \(n^*\) comes from the measured single-copy RMSE
+against the theory collective floor; for the range-projected estimator the
+72 are 58 and 14 of the same two kinds. Appendix~C states the three rules
+and which produced which figures. The two subsets are therefore scored by
+different rules, and the aggregate should be read as their union rather
+than as one homogeneous sample.
+
 The comparison is asymmetric between the routes in two respects, both
 deliberate. The first is evidential: the single-copy side of each cell is
 a forward simulation of the estimator, fresh snapshots reduced by the
@@ -932,7 +941,7 @@ of magnitude rather than a breakdown.
 \begin{figure}[tb]
 \centering
 \includegraphics[width=0.74\linewidth]{fig2_crossover_boundary}
-\caption{Crossover validation across 83 cells. Predicted versus Monte-Carlo-observed crossover size $n^*$ over moment orders $k\in\{2,3,4\}$, three noise models, and four state ensembles (three unseen by the theory). Accuracy for the unbiased estimator (83 resolving cells) and for the range-projected estimator (72) is reported in Secs.~5.2 and~5.3. The cells are simulation, not hardware; for the higher moment orders the collective side is an idealized bounded-outcome primitive carrying no gate, depth, or routing cost.}
+\caption{Crossover validation across 83 cells. Predicted versus Monte-Carlo-observed crossover size $n^*$ over moment orders $k\in\{2,3,4\}$, three noise models, and four state ensembles (three unseen by the theory). Accuracy for the unbiased estimator (83 resolving cells, as 68 noisy-pure plus 15 held-out) and for the range-projected estimator (72, as 58 plus 14) is reported in Secs.~5.2 and~5.3; the two subsets are scored by different rules (Appendix~C). The cells are simulation, not hardware; for the higher moment orders the collective side is an idealized bounded-outcome primitive carrying no gate, depth, or routing cost.}
 \label{fig:boundary}
 \end{figure}
 
@@ -1628,7 +1637,9 @@ law predicts, with no parameter fitted to the crossover outcomes, the
 size at which collective measurement attains the lower RMSE at equal copy
 budget. It places 82 of
 the 83 simulated crossovers within one qubit for the unbiased estimator,
-and all 72 that still resolve one for the range-projected estimator.
+and all 72 that still resolve one for the range-projected estimator --- 68
+plus 15, and 58 plus 14, under the two measured-crossover rules of
+Appendix~C.
 
 The practical guidance follows. For estimating purity of noisy-pure states
 under per-qubit amplitude-damping or dephasing noise at the rates and
@@ -1949,6 +1960,43 @@ identity term survives, returning \(7^n - 4^{-n}\); on the noisy-pure
 ensemble the weighted counts \(28^n\) and \(34^n\) of the main text
 follow. This is verified against exact enumeration to machine precision by
 \texttt{experiments/beta\_law\_regenerate.py}.
+
+\paragraph{The first projection variance.}
+The same second-moment identity fixes \(\bar\zeta_1\), with the counting run
+over pairs of strings rather than over single strings. Writing a snapshot in
+the Pauli basis as \(G = 2^{-n}\sum_P \hat{x}_P P\), the first-order
+projection is
+\(\mathbb{E}_{G'}[\mathrm{Tr}(GG')] = \mathrm{Tr}(G\rho)
+= 2^{-n}\sum_P \hat{x}_P \langle P\rangle\), so
+\[\zeta_1 = 4^{-n}\sum_{P,Q}\langle P\rangle\langle Q\rangle\,
+\mathbb{E}[\hat{x}_P\hat{x}_Q] \;-\; \mathrm{Tr}(\rho^2)^2 .\]
+Under local shadows a qubit measured in one basis says nothing about another,
+so \(\mathbb{E}[\hat{x}_P\hat{x}_Q]\) vanishes unless \(P\) and \(Q\) are
+\emph{compatible}: on every qubit either \(P_i = Q_i\) or one of the two is
+the identity. For a compatible pair the second-moment identity gives
+\(\mathbb{E}[\hat{x}_P\hat{x}_Q] = 3^{a}\langle P\triangle Q\rangle\), where
+\(a = \#\{i : P_i = Q_i \neq I\}\) counts the shared support and
+\(P\triangle Q\) is the string supported where exactly one of the two is
+non-identity.
+
+Haar-averaging then splits the pair sum into four blocks, according to how
+many of \(P\), \(Q\) and \(P\triangle Q\) are the identity. Both identity
+contributes \(1\). The diagonal \(P = Q \neq I\) contributes
+\(3^{|P|}\langle P\rangle^2\), and \(\sum_P 3^{|P|} = 10^n\) because each
+qubit offers \(1 + 3\cdot 3\); the second Haar moment sends each
+\(\langle P\rangle^2\) to \(u^2/(d+1)\). The two strips with one argument the
+identity contribute \(\langle Q\rangle^2\) apiece over the \(4^n - 1\)
+non-identity strings. Only the last block, \(P \neq Q\) with both
+non-identity, needs the third moment: there \(P\), \(Q\) and
+\(P\triangle Q\) are all non-identity and satisfy
+\(PQ \propto P\triangle Q\). Its weight is the compatible-pair total
+\(\sum 3^{a} = 16^n\), each qubit offering \(1 + 3 + 3 + 3\cdot 3\), less the
+three blocks already counted. Assembling the four blocks gives the closed
+form of Section~\ref{sec:zeta-closed-form}. Direct enumeration of all
+\(16^n\) pairs reproduces the four counts, and the assembled
+\(\bar\zeta_1\) and \(\bar\zeta_2\) agree with
+\texttt{closed\_form\_zetas} exactly in rational arithmetic for \(n = 2\)
+to \(5\).
 
 \hypertarget{appendix-b.-the-destructive-swap-test}{%
 \section{The destructive SWAP
