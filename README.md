@@ -155,4 +155,7 @@ files (credit quotes, status).
 
 ## License
 
-[MIT](LICENSE) for the code; the committed measurement data may be reused under the same terms.
+[MIT](LICENSE) for the code in `anrl/`, `experiments/` and `tests/`; the committed
+measurement data in `results/` may be reused under the same terms. The manuscript
+in `paper/` is not MIT-licensed — it is © 2026 Alexander Messerlian and Ziwei Gu,
+all rights reserved pending publication.
