@@ -26,7 +26,7 @@ this file only explains how to run things.
 | `anrl/theory/` | the exact U-statistic variance law, the Hoeffding projection variances and their $k=2$ closed forms, the two collective bias laws, the threshold $M^*$, and the crossover predictor |
 | `anrl/benchmark/` | Monte-Carlo estimators (single-copy shadows, collective SWAP test), the state ensembles, noise channels, moment operators, readout models, and the range-constrained estimators in `constrained.py` |
 | `anrl/physics/` | states, Pauli machinery, measurement, entanglement witnesses |
-| `anrl/figures/` | the publication figure builders (Okabe–Ito palette; PDF/PNG/CSV export) |
+| `anrl/figures/` | the publication figure builders (Okabe-Ito palette; PDF/PNG/CSV export) |
 | `anrl/hardware/` | Open Quantum / Rigetti Cepheus backend, circuit builders, the destructive-SWAP protocol |
 | `experiments/` | one runnable script per result |
 | `results/` | the saved outputs, including the raw hardware counts |
@@ -118,7 +118,7 @@ in the repository.
 
 The hardware experiments in `anrl/hardware/` and the `experiments/run_*` / `experiments/*_analysis.py`
 scripts submit circuits to the [Open Quantum](https://www.openquantum.com) platform (Rigetti
-Cepheus-1-108Q). **Each job is billed in platform credits — running them costs money.**
+Cepheus-1-108Q). **Each job is billed in platform credits, and running them costs money.**
 
 - Credentials are read from a **gitignored** `.env` file (never commit it):
 
@@ -131,7 +131,7 @@ Cepheus-1-108Q). **Each job is billed in platform credits — running them costs
   measurement count is already committed under `results/hardware/`, and every
   `*_analysis.py` script recomputes the paper's hardware numbers from those committed counts
   offline and for free. They do need `qiskit` and `qiskit-aer` installed (they import
-  `anrl.hardware`), which `requirements.txt` provides — but no credentials and no credits.
+  `anrl.hardware`), which `requirements.txt` provides, but no credentials and no credits.
 
 ## Data availability
 
@@ -139,15 +139,15 @@ Cepheus-1-108Q). **Each job is billed in platform credits — running them costs
 tree); the load-bearing files were force-added, so what a reader sees is exactly what the
 paper's numbers depend on:
 
-- **Raw hardware counts** — every submitted circuit (`results/hardware/*.qasm`, 69 files)
+- **Raw hardware counts**: every submitted circuit (`results/hardware/*.qasm`, 69 files)
   and its raw shot counts (`results/hardware/*_counts.json`, 96 files), plus the
   per-campaign analysis JSONs. These are **irreplaceable** (they cost real credits to
   obtain) and were committed verbatim *before* any analysis; every locked prediction was
   committed *before* the corresponding job was submitted.
-- **Theory / analysis outputs** — the variance-law, budget-scaling, crossover, general-$k$,
+- **Theory / analysis outputs**: the variance-law, budget-scaling, crossover, general-$k$,
   stress-test, range-constrained, and CGK-reconciliation JSONs (39 files at the top level
   of `results/`).
-- **Figure data** — `results/figures/*.csv` (the exact plotted values). The rendered
+- **Figure data**: `results/figures/*.csv` (the exact plotted values). The rendered
   `*.pdf`/`*.png` regenerate from these with `make_figures.py`.
 
 Not tracked (regenerable or unrelated to the paper): a few ephemeral hardware working
@@ -157,5 +157,5 @@ files (credit quotes, status).
 
 [MIT](LICENSE) for the code in `anrl/`, `experiments/` and `tests/`; the committed
 measurement data in `results/` may be reused under the same terms. The manuscript
-in `paper/` is not MIT-licensed — it is © 2026 Alexander Messerlian and Ziwei Gu,
+in `paper/` is not MIT-licensed; it is © 2026 Alexander Messerlian and Ziwei Gu,
 all rights reserved pending publication.

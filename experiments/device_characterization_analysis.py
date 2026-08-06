@@ -114,30 +114,30 @@ def reconcile(R: np.ndarray) -> list[dict]:
 
 
 def render(rates, corr, gate, recon) -> str:
-    L = ["# Cepheus device characterization — results\n"]
+    L = ["# Cepheus device characterization, results\n"]
     L.append("Two jobs on physical qubits {0,1,9,10}: readout (Job A, 4x2000 shots) and a "
              "CZ-echo (Job B, 4000 shots). Post-processing only.\n")
-    L.append("## Job A — readout error per qubit (Wilson 95% CI)\n")
+    L.append("## Job A, readout error per qubit (Wilson 95% CI)\n")
     L.append("| qubit | P(1\\|0) | 95% CI | P(0\\|1) | 95% CI |")
-    L.append("|---|---|---|---|---|")
+    L.append("|, |, |, |, |, |")
     for c in range(4):
         r = rates[LAB[c]]
         L.append(f"| {LAB[c]} | {r['p10']:.4f} | [{r['ci10'][0]:.4f},{r['ci10'][1]:.4f}] | "
                  f"{r['p01']:.4f} | [{r['ci01'][0]:.4f},{r['ci01'][1]:.4f}] |")
     mean_ro = np.mean([(rates[LAB[c]]['p10'] + rates[LAB[c]]['p01']) / 2 for c in range(4)])
     L.append(f"\nMean symmetric readout error **{mean_ro:.4f} ({mean_ro*100:.1f}%)** vs the **2% assumed** "
-             f"in the prediction — ~{mean_ro/0.02:.1f}x higher. Readout is asymmetric (P(0|1)>P(1|0), T1 "
+             f"in the prediction, ~{mean_ro/0.02:.1f}x higher. Readout is asymmetric (P(0|1)>P(1|0), T1 "
              f"decay during readout).\n")
     L.append("## Correlated (context-dependent) readout\n")
     L.append("| qubit | P(1\\|0) neighbors idle | neighbors excited | delta |")
-    L.append("|---|---|---|---|")
+    L.append("|, |, |, |, |")
     for c in range(4):
         cc = corr[LAB[c]]
         L.append(f"| {LAB[c]} | {cc['p10_idle']:.4f} | {cc['p10_excited']:.4f} | {cc['delta']:+.4f} |")
     L.append(f"\n**$0 shows strong measurement crosstalk**: its false-1 rate jumps "
              f"{corr['$0']['p10_idle']:.3f} -> {corr['$0']['p10_excited']:.3f} when neighbors are excited. "
              f"The independent-qubit confusion matrix averages over this and under-captures it.\n")
-    L.append("## Job B — CZ error (given measured readout)\n")
+    L.append("## Job B, CZ error (given measured readout)\n")
     L.append(f"* CZ-echo survival P(0000) = {gate['survival_B']:.4f}; pure-readout reference (A_0000) = "
              f"{gate['survival_A0000']:.4f}. The 8 CZ add only {gate['cz_excess']:+.4f}.")
     L.append(f"* Readout-corrected survival = {gate['survival_ro_corrected']:.4f} (gate error "
@@ -148,19 +148,19 @@ def render(rates, corr, gate, recon) -> str:
              "verbatim box or a non-cancellable interleaved echo (single-qubit gates between the CZ pairs).\n")
     L.append("## Reconciliation with the Bell run (measured purity 0.7184)\n")
     L.append("| inputs | predicted Bell purity | residual |")
-    L.append("|---|---|---|")
+    L.append("|, |, |, |")
     for r in recon:
         L.append(f"| measured readout + {r['cz']} | {r['predicted_purity']:.4f} | {r['residual']:+.4f} |")
-    L.append(f"\nMeasured readout alone drops the predicted purity from 0.94 to ~0.75-0.77 — it explains the "
+    L.append(f"\nMeasured readout alone drops the predicted purity from 0.94 to ~0.75-0.77; it explains the "
              f"**bulk** of the Bell failure. A residual of ~0.03-0.05 remains (device slightly noisier than the "
              f"aggregate parameters predict), consistent with the correlated readout crosstalk on $0 that the "
              f"independent-qubit model omits. No exotic error source is required; the model is essentially "
              f"correct and only the inputs (readout ~3x higher, and correlated) were wrong.\n")
     L.append("## Vs Rigetti published medians\n")
     L.append(f"* Readout: measured ~{mean_ro*100:.1f}% (per-qubit {min(rates[LAB[c]]['p10'] for c in range(4))*100:.1f}"
-             f"-{max(rates[LAB[c]]['p01'] for c in range(4))*100:.1f}%) — not in the datasheet; we had assumed 2%.")
+             f"-{max(rates[LAB[c]]['p01'] for c in range(4))*100:.1f}%); not in the datasheet; we had assumed 2%.")
     L.append(f"* CZ: at or below the {SPEC_CZ_AVG*100:.1f}% median (Job B shows no excess; inconclusive on the exact value).")
-    L.append("* **Conclusion: the degeneracy is broken — the Bell failure was READOUT, not gates.** Our qubits' "
+    L.append("* **Conclusion: the degeneracy is broken; the Bell failure was READOUT, not gates.** Our qubits' "
              "CZ is fine; their readout is ~3x worse than assumed and strongly correlated on $0.")
     return "\n".join(L)
 

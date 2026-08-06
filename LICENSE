@@ -3,8 +3,8 @@ Scope
 The MIT licence below covers the software in `anrl/`, `experiments/` and
 `tests/`, and the measurement data and derived results in `results/`.
 
-It does NOT cover the manuscript. The contents of `paper/` -- `paper.tex`,
-`supplementary.tex`, the compiled PDFs and the figures -- are
+It does NOT cover the manuscript. The contents of `paper/` (`paper.tex`,
+`supplementary.tex`, the compiled PDFs and the figures) are
 Copyright (c) 2026 Alexander Messerlian and Ziwei Gu, all rights reserved,
 pending publication.
 

@@ -53,7 +53,7 @@ def make_collective_estimator(p_gate: float, gate_count_fn: Callable[[int], int]
 
 
 def make_shadow_moment_estimator(k: int, n_tuples: int | None = None) -> Estimator:
-    """Single-copy shadow estimator of ``Tr(rho^k)`` — ``copies_per_use = 1``."""
+    """Single-copy shadow estimator of ``Tr(rho^k)``, ``copies_per_use = 1``."""
 
     def estimator(rho: np.ndarray, n_uses: int, rng: np.random.Generator) -> float:
         return shadow_moment_estimate(rho, k, n_uses, rng, n_tuples=n_tuples)
@@ -64,7 +64,7 @@ def make_shadow_moment_estimator(k: int, n_tuples: int | None = None) -> Estimat
 
 
 def make_collective_moment_estimator(k: int, noise_model: str, rate: float) -> Estimator:
-    """k-copy cyclic-test estimator of ``Tr(rho^k)`` — ``copies_per_use = k``.
+    """k-copy cyclic-test estimator of ``Tr(rho^k)``, ``copies_per_use = k``.
 
     The noisy signal is computed per state from ``noise_model`` and ``rate``
     (closed form for depolarizing; explicit Kraus channel otherwise).
@@ -91,11 +91,11 @@ def evaluate_estimator(
     """Evaluate ``estimator`` over ``states`` at a fixed copy ``budget``.
 
     Returns a dict with:
-        ``mean``   — mean absolute error ``|estimate - true purity|``.
-        ``sem``    — standard error of that mean.
-        ``errors`` — ``(len(states),)`` per-state absolute errors.
-        ``rmse``   — root-mean-square error (derived from ``errors``).
-        ``n_uses`` — measurements performed (``budget // copies_per_use``).
+        ``mean``, mean absolute error ``|estimate - true purity|``.
+        ``sem``, standard error of that mean.
+        ``errors``, ``(len(states),)`` per-state absolute errors.
+        ``rmse``, root-mean-square error (derived from ``errors``).
+        ``n_uses``, measurements performed (``budget // copies_per_use``).
     """
     if copies_per_use is None:
         copies_per_use = getattr(estimator, "copies_per_use", 1)

@@ -33,7 +33,7 @@ from anrl.benchmark.sweep_hardened import _collective_signal
 
 
 # ---------------------------------------------------------------------------
-# 1 — efficient exact estimators == brute-force-verified reference (all k)
+# 1, efficient exact estimators == brute-force-verified reference (all k)
 # ---------------------------------------------------------------------------
 def test_exact_moment_ustatistic_matches_reference() -> None:
     rng = np.random.default_rng(0)
@@ -78,7 +78,7 @@ def test_exact_moment_ustatistic_rejects_too_few_snapshots() -> None:
 
 
 # ---------------------------------------------------------------------------
-# 2 — efficient collective signal == reference channel signal (all k)
+# 2, efficient collective signal == reference channel signal (all k)
 # ---------------------------------------------------------------------------
 def test_collective_signal_matches_reference() -> None:
     rng = np.random.default_rng(3)
@@ -93,7 +93,7 @@ def test_collective_signal_matches_reference() -> None:
 
 
 # ---------------------------------------------------------------------------
-# 3 — noisy-pure true moments stay O(1) (do NOT collapse toward zero)
+# 3, noisy-pure true moments stay O(1) (do NOT collapse toward zero)
 # ---------------------------------------------------------------------------
 def test_noisy_pure_moments_stay_order_one() -> None:
     rng = np.random.default_rng(4)
@@ -107,7 +107,7 @@ def test_noisy_pure_moments_stay_order_one() -> None:
 
 
 # ---------------------------------------------------------------------------
-# 4 — per-state error function: deterministic, shaped, budget-guarded
+# 4, per-state error function: deterministic, shaped, budget-guarded
 # ---------------------------------------------------------------------------
 def test_moment_state_errors_deterministic_and_shaped() -> None:
     kw = dict(
@@ -164,7 +164,7 @@ def test_moment_state_errors_skips_infeasible() -> None:
 
 
 # ---------------------------------------------------------------------------
-# 5 — the sweep runs end to end (reproducibly) and saves error bars + z-scores
+# 5; the sweep runs end to end (reproducibly) and saves error bars + z-scores
 # ---------------------------------------------------------------------------
 def test_run_moment_sweep_end_to_end(tmp_path) -> None:
     kw = dict(

@@ -148,7 +148,7 @@ def main() -> None:
         d2 = np.array([c["delta"] for c in cells]); dx = np.array([c["delta_exact"] for c in cells])
         print(f"    k={k} (n={len(cells)}): two_term {np.mean(np.abs(d2)<=1):.0%}  exact {np.mean(np.abs(dx)<=1):.0%}")
 
-    # sample table (k=2 g=0.05 — the headline P3 cells; both models)
+    # sample table (k=2 g=0.05; the headline P3 cells; both models)
     print("\n  Sample: k=2, g=0.05 across budgets (n*: two_term / exact vs measured):")
     print(f"    {'noise':>18} {'budget':>7} {'2term':>5} {'exact':>5} {'meas':>5} {'z':>6} {'flag':>7}")
     for c in sorted(comp, key=lambda c: (c["noise_model"], c["budget"])):

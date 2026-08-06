@@ -3,7 +3,7 @@
 Per-physical-qubit asymmetric readout was measured on {0,1,9,10}
 (device-characterization phase).  The dominant non-ideality is CORRELATED readout on
 $0: its false-1 rate P(1|0) rises with the number of *other* measured qubits that are
-truly excited (crosstalk during simultaneous readout) — from 1.6% (all others idle)
+truly excited (crosstalk during simultaneous readout), from 1.6% (all others idle)
 to 16.9% (two others excited).  We model each qubit's P(1|0) as linear in that count
 ``w`` (the number of OTHER measured qubits in |1>):
 
@@ -12,13 +12,13 @@ to 16.9% (two others excited).  We model each qubit's P(1|0) as linear in that c
 
 P(0|1) is treated as context-independent (no correlation was measured for it).  Qubits
 beyond the four characterized ones (needed for the n=3,4 SWAP tests) have no readout
-data, so they take the MEAN measured rates with no correlation — an explicit
+data, so they take the MEAN measured rates with no correlation, an explicit
 assumption, flagged wherever it is used.
 
 The joint 2^m x 2^m confusion matrix is NOT a tensor product (a qubit's flip
 probability depends on the whole true bitstring via ``w``), but it factorizes *within a
 column* (the context ``w`` is fixed by the true outcome), so it is built column by
-column in ``O(4^m)`` — feasible for the m = 2n <= 8 qubits we need.
+column in ``O(4^m)``, feasible for the m = 2n <= 8 qubits we need.
 """
 
 from __future__ import annotations
@@ -27,7 +27,7 @@ import numpy as np
 
 # physical qubit -> (p10_idle, p10_excited_at_w2, p01)   [measured, device-characterization]
 MEASURED_READOUT = {
-    0: (0.0165, 0.1685, 0.0892),   # $0 — strong P(1|0) correlation
+    0: (0.0165, 0.1685, 0.0892),   # $0, strong P(1|0) correlation
     1: (0.0055, 0.0080, 0.0780),   # $1
     9: (0.0615, 0.0730, 0.0978),   # $9
     10: (0.0295, 0.0340, 0.0595),  # $10
@@ -54,7 +54,7 @@ def correlated_confusion(phys_qubits: list[int], correlated: bool = True) -> np.
 
     Index convention: bit ``c`` of an index is clbit ``c`` = ``phys_qubits[c]`` (LSB =
     clbit 0), matching Qiskit ``probabilities()``.  With ``correlated=False`` every
-    qubit uses its aggregate p10 (mean of idle/excited) — the independent-qubit model,
+    qubit uses its aggregate p10 (mean of idle/excited); the independent-qubit model,
     kept for the with/without-correlation comparison.
     """
     m = len(phys_qubits)

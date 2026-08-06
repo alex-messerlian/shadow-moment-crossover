@@ -85,7 +85,7 @@ class MixedEnsemble:
 
     ``rho = sum_i w_i |v_i><v_i|`` with the ``|v_i>`` an orthonormal eigenbasis.
     On hardware: for each shot, sample component ``i`` with probability ``w_i`` and
-    run its pure prep circuit — NO mid-circuit measurement, no ancilla.  For the
+    run its pure prep circuit; NO mid-circuit measurement, no ancilla.  For the
     two-copy SWAP test the two copies sample independently, so the measured
     observable averages to ``Tr(rho^2)``.  ``rho`` is the exact recorded matrix.
     """

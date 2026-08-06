@@ -42,7 +42,7 @@ REPO = Path(__file__).resolve().parent.parent
 
 
 # ---------------------------------------------------------------------------
-# Part 1 — bias laws match brute force
+# Part 1, bias laws match brute force
 # ---------------------------------------------------------------------------
 def test_bias_laws_match_brute_force() -> None:
     rng = np.random.default_rng(0)
@@ -80,7 +80,7 @@ def test_noisy_pure_moment_closed_form() -> None:
 
 
 # ---------------------------------------------------------------------------
-# Part 2 — Hoeffding zetas: stability, closed-form zeta1, M* behaviour
+# Part 2, Hoeffding zetas: stability, closed-form zeta1, M* behaviour
 # ---------------------------------------------------------------------------
 def _zeta1_dense(state, k: int, snaps: np.ndarray) -> float:
     """Reference zeta1 = Var_x Tr(G_x rho^{k-1}) built densely (no closed form)."""
@@ -181,7 +181,7 @@ def test_variance_and_alpha_formulas() -> None:
 
 
 # ---------------------------------------------------------------------------
-# Part 3 — crossover predictor runs over the saved results
+# Part 3, crossover predictor runs over the saved results
 # ---------------------------------------------------------------------------
 def test_predict_crossover_sustained() -> None:
     # A tiny synthetic zetas dict: single RMSE grows, collective floor saturates.

@@ -12,10 +12,10 @@ The independent statistical unit is the *state* (states are drawn iid from the
 ensemble).  For each state ``s`` we form the per-state mean squared error of
 each estimator over ``n_trials`` independent measurement realizations:
 
-* single-copy MSE ``u(s)`` — ``n_trials`` fresh factored-shadow draws, each
+* single-copy MSE ``u(s)``, ``n_trials`` fresh factored-shadow draws, each
   reduced by the exact copy-fair U-statistic.  Noise-independent, so ``u(s)`` is
   reused against every ``(noise_model, rate)`` collective cell.
-* collective MSE ``c(s)`` — the deterministic noisy SWAP signal plus
+* collective MSE ``c(s)``; the deterministic noisy SWAP signal plus
   ``n_trials`` fresh binomial shot draws.
 
 The paired difference ``delta(s) = u(s) - c(s)`` has mean over states
@@ -23,7 +23,7 @@ The paired difference ``delta(s) = u(s) - c(s)`` has mean over states
 The 48 ``delta(s)`` are iid draws, so ``z = mean_delta / SE`` is a valid
 statistic.  (Note: because noise is modelled *only* on the collective route and
 every noisy-pure state has the same true purity, ``u(s)`` and ``c(s)`` are
-essentially independent — ``corr ~= 0`` — so pairing gives no variance reduction
+essentially independent, ``corr ~= 0``; so pairing gives no variance reduction
 over an unpaired two-sample test; it is used only as a simple, valid framing,
 not for added power.)  The winner is:
 
@@ -43,8 +43,8 @@ so the headline crossovers are robust; but boundaries resting on a marginal
 read as sharply resolved.
 
 Parallelism: each ``(ensemble, n, state_idx)`` unit is computed by
-:func:`state_errors` — a pure function seeded deterministically from
-``(seed, ensemble_id, n, state_idx)`` — so results are identical regardless of
+:func:`state_errors`, a pure function seeded deterministically from
+``(seed, ensemble_id, n, state_idx)``; so results are identical regardless of
 worker count or scheduling.  The units are fanned out over processes.
 """
 
@@ -73,7 +73,7 @@ _WINNER_ORDER = {"single-copy": 0, "tie": 1, "collective": 2}
 _BOOTSTRAP_RESAMPLES = 2000
 
 # Deterministic integer id per noise model, and a stable integer key per rate, so
-# collective substreams are seeded by VALUE (not loop position) — a cell's draws
+# collective substreams are seeded by VALUE (not loop position), a cell's draws
 # then depend only on its (noise_model, rate), not on how the grid is sliced.
 _NOISE_ID = {"depolarizing": 0, "amplitude_damping": 1, "dephasing": 2}
 
@@ -100,7 +100,7 @@ def state_errors(
     randomness draws from its OWN seeded substream (state construction,
     single-copy shadows, and every ``(noise_model, rate)`` collective cell), so a
     cell's draws are independent of loop ordering and of which other noise models
-    are swept — the numbers do not depend on how the grid is sliced.  Returns the
+    are swept; the numbers do not depend on how the grid is sliced.  Returns the
     ``n_trials`` single-copy squared errors (noise-independent) and, per
     ``(noise_model, rate)``, the ``n_trials`` collective squared errors.
     """
@@ -139,7 +139,7 @@ def _bootstrap_rmse_ci(
 ) -> tuple[float | None, float | None]:
     """68% bootstrap interval for ``RMSE = sqrt(mean_s MSE(s))``, resampling states.
 
-    Returns ``(None, None)`` for an empty sample (JSON-portable — no NaN token).
+    Returns ``(None, None)`` for an empty sample (JSON-portable; no NaN token).
     """
     k = per_state_mse.shape[0]
     if k == 0:
@@ -284,7 +284,7 @@ def crossover_table(
     * any ``tie`` sits strictly below ``crossover_n`` (an unresolved cell below
       the boundary);
     * the crossover cell itself clears ``Z_CRIT`` only marginally
-      (``|paired_z| < marginal_z``) — too weak to survive multiplicity across the
+      (``|paired_z| < marginal_z``), too weak to survive multiplicity across the
       full grid.
 
     ``crossover_z`` records the boundary cell's ``paired_z`` (``None`` if the

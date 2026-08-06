@@ -1,18 +1,18 @@
 """Analytic theory of the single-copy vs collective crossover.
 
-* :mod:`~anrl.theory.bias` — Part 1: the exact, parameter-free collective bias
+* :mod:`~anrl.theory.bias`, Part 1: the exact, parameter-free collective bias
   laws (global depolarizing; per-qubit channel).
-* :mod:`~anrl.theory.variance` — Part 2: the single-copy variance law (Hoeffding
+* :mod:`~anrl.theory.variance`, Part 2: the single-copy variance law (Hoeffding
   decomposition, the budget threshold ``M*``, the effective exponent).
-* :mod:`~anrl.theory.single_copy_law` — Part 2 (derived + independently verified):
+* :mod:`~anrl.theory.single_copy_law`, Part 2 (derived + independently verified):
   the exact k=2 Hoeffding variance ``[4(M-2)zeta1 + 2 zeta2]/[M(M-1)]``, the
   corrected crossover ``M* = zeta2/(2 zeta1)``, the alpha predictor, and the
   single-qubit closed form.
-* :mod:`~anrl.theory.crossover` — Part 3: the crossover predictor and the
+* :mod:`~anrl.theory.crossover`, Part 3: the crossover predictor and the
   comparison against the measured sweeps in ``results/``.
-* :mod:`~anrl.theory.clipping` — closed-form RMSE of a Gaussian purity estimate
+* :mod:`~anrl.theory.clipping`, closed-form RMSE of a Gaussian purity estimate
   clipped to a physical range [a, b], for pipelines that clip (anrl's own does not).
-* :mod:`~anrl.theory.general_k` — state-agnostic Hoeffding components zeta_1..zeta_k
+* :mod:`~anrl.theory.general_k`, state-agnostic Hoeffding components zeta_1..zeta_k
   for the moment U-statistic (k=2,3,4), verified so the k=2 variance theorem extends
   across the moment family.
 """

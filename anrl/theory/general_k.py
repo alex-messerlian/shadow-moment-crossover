@@ -7,7 +7,7 @@ h = Re Tr(G_1 ... G_k).  Its EXACT variance is the Lee / Hoeffding formula
     Var(U_M) = C(M,k)^{-1} sum_{c=1..k} C(k,c) C(M-k, k-c) zeta_c ,
 
 with the c-th Hoeffding component zeta_c = Var[h_c(G_1..G_c)] and h_c the c-th order
-projection — the kernel's conditional expectation given c fixed arguments, averaged over
+projection; the kernel's conditional expectation given c fixed arguments, averaged over
 the remaining k-c.  Since E[G]=rho and the trace is multilinear, the inner expectation is
 EXACT (insert rho at each free slot):
 
@@ -15,7 +15,7 @@ EXACT (insert rho at each free slot):
                     dense G's and (k-c) copies of rho )
 
 so only the outer c-tuple average is Monte Carlo.  IMPORTANT (the k>=3 trap): zeta_2 is the
-TWO-argument projection, NOT the kernel variance — the kernel variance is zeta_k.  This
+TWO-argument projection, NOT the kernel variance; the kernel variance is zeta_k.  This
 routine computes each projection correctly by the ordering-average above, for ANY dense rho
 (including low-rank, where the noisy-pure closed forms in :mod:`anrl.theory.variance` do not
 apply).  Verified at k=3 and k=4 against the brute-force variance of the exact estimator

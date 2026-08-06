@@ -7,15 +7,15 @@ back into effective rates.  This module supplies the model.
 
 Three knobs, applied to the transpiled native circuit (basis ``cz, rx, rz``):
 
-* ``p2`` — two-qubit depolarizing parameter on every ``cz`` gate;
-* ``p1`` — single-qubit depolarizing parameter on every ``rx`` gate;
-* ``p_ro`` — symmetric readout (bit-flip) error on every measurement.
+* ``p2``, two-qubit depolarizing parameter on every ``cz`` gate;
+* ``p1``, single-qubit depolarizing parameter on every ``rx`` gate;
+* ``p_ro``, symmetric readout (bit-flip) error on every measurement.
 
 Modeling choices (documented, not silent):
 
 * **``rz`` is virtual.**  On Rigetti's superconducting transmons ``rz`` is a
   frame change implemented in software (zero duration, no physical pulse), so it
-  is noiseless.  We therefore attach single-qubit depolarizing to ``rx`` only —
+  is noiseless.  We therefore attach single-qubit depolarizing to ``rx`` only; 
   the sole physical single-qubit gate.  Putting ``p1`` on the 16 ``rz`` gates of
   the transpiled Bell SWAP test would fabricate ~1.6% of spurious error.  The
   ``include_rz_error`` flag exists only to demonstrate that effect in a test.
@@ -51,7 +51,7 @@ from qiskit_aer.noise import NoiseModel, ReadoutError, depolarizing_error
 # use avg_gate_error_to_depol_param() for the datasheet-faithful reading instead.
 REF_P2 = 0.009  # published median CZ average gate error, 1 - 0.991, used as the depolarizing input
 REF_P1 = 0.001  # published median 1q average gate error, 1 - 0.999, used as the depolarizing input
-REF_P_RO = 0.02  # assumed per-qubit readout error — see justification in docs/report
+REF_P_RO = 0.02  # assumed per-qubit readout error; see justification in docs/report
 
 CEPHEUS_BASIS_GATES = ["cz", "rx", "rz"]
 

@@ -2,7 +2,7 @@
 
 Estimators and an evaluation harness for comparing single-copy classical shadows
 against the noisy 2-copy SWAP test when estimating ``Tr(rho^2)`` under gate
-noise.  Estimators and harness only — no multi-task sweep, plots, or RL.
+noise.  Estimators and harness only; no multi-task sweep, plots, or RL.
 
 Built on the Phase 1-2 physics core (states, Pauli machinery, purity).
 """

@@ -48,7 +48,7 @@ def _clean_log_ticks(ax, which: str = "both") -> None:
 
 
 # ===========================================================================
-# Figure 1 — the crossover map (small multiples: 3 noise x 2 rate, k=2)
+# Figure 1; the crossover map (small multiples: 3 noise x 2 rate, k=2)
 # ===========================================================================
 def make_fig1():
     bs = D.load("budget_scaling.json")
@@ -120,7 +120,7 @@ def make_fig1():
 
 
 # ===========================================================================
-# Figure 2 — the crossover boundary (predicted vs measured n*)
+# Figure 2; the crossover boundary (predicted vs measured n*)
 # ===========================================================================
 def make_fig2():
     ct = D.load("crossover_theory.json")["comparison"]
@@ -178,7 +178,7 @@ def make_fig2():
 
 
 # ===========================================================================
-# Figure 3 — the alpha transition (the single-copy mechanism)
+# Figure 3; the alpha transition (the single-copy mechanism)
 # ===========================================================================
 def _mstar_crosses(mstar: dict, k: int, target: float) -> float:
     """Interpolate (log-linear in n) the n at which ``M*(n, k) == target``."""
@@ -250,7 +250,7 @@ def make_fig3():
 
 
 # ===========================================================================
-# Figure 4 — out-of-ensemble validation (the stress test)
+# Figure 4, out-of-ensemble validation (the stress test)
 # ===========================================================================
 def make_fig4():
     p2 = D.load("stress_test.json")["part2"]
@@ -292,7 +292,7 @@ def make_fig4():
 
 
 # ===========================================================================
-# Figure 5 — the exponential wall
+# Figure 5; the exponential wall
 # ===========================================================================
 def make_fig5():
     sh = D.load("scaling_hardened.json")["rows"]
@@ -376,7 +376,7 @@ def make_fig6():
     fig, (axa, axb) = plt.subplots(1, 2, figsize=(7.0, 3.1))
     rows = []
 
-    # --- panel (a): measured vs opening/closing prediction bands ---
+    #, panel (a): measured vs opening/closing prediction bands, 
     c_open, c_close = OKABE_ITO["sky"], OKABE_ITO["orange"]
     ns = [c["n"] for c in ss]
     for c in ss:
@@ -402,7 +402,7 @@ def make_fig6():
     axa.legend(loc="upper right", fontsize=6.6, handletextpad=0.4)
     axa.set_title("(a) same session: measured below both bands", fontsize=8)
 
-    # --- panel (b): cross-session drift, byte-identical circuits ---
+    #, panel (b): cross-session drift, byte-identical circuits, 
     def pur(f, n):
         c = {k.replace(" ", ""): int(v) for k, v in json.loads((HW / f).read_text()).items()}
         return purity_from_counts(c, n)

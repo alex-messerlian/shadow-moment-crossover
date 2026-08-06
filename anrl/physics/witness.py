@@ -20,9 +20,9 @@ sum over the negative subspace is computed here as ``tr(R P^{T_A})``.
 
 This module provides:
 
-* :func:`witness_weights`             — the exact weights ``w_P(rho)``.
-* :func:`estimate_negativity_witness` — the linear functional ``sum_P w_P <P>``.
-* :func:`negativity_witness_estimator`— the realizable estimator: build the
+* :func:`witness_weights`; the exact weights ``w_P(rho)``.
+* :func:`estimate_negativity_witness`; the linear functional ``sum_P w_P <P>``.
+* :func:`negativity_witness_estimator`; the realizable estimator: build the
   witness from the reconstructed state, then evaluate it on the measured Pauli
   expectations.
 
@@ -67,7 +67,7 @@ def witness_weights(
     ``w_P = -(1/2^n) * sum_{lambda_i < 0} <v_i| P^{T_A} |v_i>`` where
     ``(lambda_i, v_i)`` are the eigenpairs of the partial transpose
     ``rho^{T_A}``.  Returns a dict keyed by Pauli term (an ``n``-tuple over
-    ``I/X/Y/Z``) — the same keying used by
+    ``I/X/Y/Z``); the same keying used by
     :func:`~anrl.physics.measurement.estimate_pauli_expectations` and
     :func:`~anrl.physics.measurement.reconstruct`.
 

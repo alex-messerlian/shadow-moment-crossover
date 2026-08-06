@@ -8,7 +8,7 @@ measured purity (copy-fair U-statistic) and its statistical error at a shot budg
 Exact-then-sample.  There are only ``3^n`` basis combinations at ``n`` qubits, so
 we solve each once (density matrix under gate noise) and apply readout confusion,
 giving the exact noisy outcome distribution per basis.  Snapshots are then drawn
-from those distributions in pure NumPy — many independent ``M``-shot experiments,
+from those distributions in pure NumPy, many independent ``M``-shot experiments,
 whose spread is the statistical error at budget ``M``.  No 60k-circuit Aer run.
 """
 

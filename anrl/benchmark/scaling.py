@@ -3,9 +3,9 @@
 Measures the copy-fair single-copy shadow purity RMSE and the collective (2-copy
 SWAP) RMSE as a function of ``n`` for two ensembles (:func:`noisy_pure`,
 :func:`random_mixed`) under three noise channels, and locates the crossover in
-``n`` — the size at which collective starts beating single-copy.
+``n``; the size at which collective starts beating single-copy.
 
-Noise is modelled on the *collective* (2-copy) route only — the single-copy
+Noise is modelled on the *collective* (2-copy) route only; the single-copy
 shadow estimator is the ideal/noiseless statistical baseline, reflecting that a
 joint 2-copy measurement is harder to implement noiselessly than local
 single-qubit tomography.  So ``single_rmse`` is a function of ``(ensemble, n)``
@@ -13,7 +13,7 @@ only; the ``(noise_model, rate)`` axis degrades ``collective_rmse`` alone.
 
 Copy budget: single-copy consumes exactly ``budget`` snapshots (forming all
 pairs is free classical post-processing); collective consumes ``2 * (budget //
-2)`` copies (two per SWAP-test measurement) — equal for even ``budget``, off by
+2)`` copies (two per SWAP-test measurement), equal for even ``budget``, off by
 one copy for odd ``budget``.
 
 Efficiency: shadow snapshots are drawn from the *factored* state (``U G`` only,

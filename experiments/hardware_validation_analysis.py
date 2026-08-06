@@ -6,7 +6,7 @@ bootstrap CI, compares it to the locked prediction READ FROM
 ``experiments/cepheus_locked_predictions.json`` (never hardcoded), and inverts the
 measurement into effective device error rates via the calibration machinery.
 
-This is pure post-processing of data we already paid for — it submits nothing and
+This is pure post-processing of data we already paid for; it submits nothing and
 spends no credits.  Run:  ``python -m experiments.hardware_validation_analysis``
 """
 
@@ -122,7 +122,7 @@ def analyze() -> dict:
 def render(a: dict) -> str:
     mu, ci = a["measured_purity"], a["bootstrap_ci95"]
     dev = a["deviation_from_prediction"]
-    L = ["# Cepheus hardware validation — result\n"]
+    L = ["# Cepheus hardware validation, result\n"]
     L.append(f"Single job on Rigetti Cepheus-1-108Q (Public Compute, Standard queue), "
              f"{a['n_shots']} shots, physical qubits {{0,1,9,10}}, 4 CZ, no routing SWAPs.\n")
     L.append("## Measured purity vs locked prediction\n")
@@ -131,7 +131,7 @@ def render(a: dict) -> str:
     L.append(f"* Locked prediction: **{a['locked_prediction']:.6f}** (Qiskit gate-level sim at "
              f"p2=0.009, p1=0.001, p_ro=0.02), read from `{a['locked_prediction_source']}`; "
              f"true Bell purity is exactly 1.0.")
-    L.append(f"* **Deviation: {dev:+.4f}** ({a['deviation_sigma']:.2f} sigma) — measured is "
+    L.append(f"* **Deviation: {dev:+.4f}** ({a['deviation_sigma']:.2f} sigma), measured is "
              f"{'HIGHER' if dev > 0 else 'LOWER'} than predicted.")
     band = a['locked_readout_sensitivity_band']
     L.append(f"* Inside the lock's own readout-sensitivity envelope [{band[0]:.4f}, {band[1]:.4f}] "
@@ -146,7 +146,7 @@ def render(a: dict) -> str:
              f"(the prediction implied g ~ 0.10-0.14).")
     L.append(f"* Consistent (p_ro, p2) level set for the measured purity:")
     L.append("\n  | assumed readout p_ro | implied CZ depol p2 | implied CZ avg err |")
-    L.append("  |---|---|---|")
+    L.append("  |, |, |, |")
     for pr, p2, avg in a["consistent_p_ro_p2"]:
         L.append(f"  | {pr:.3f} | {p2:.4f} | {avg:.4f} |")
     L.append(f"\n* At the assumed 2% readout, implied CZ avg error is "

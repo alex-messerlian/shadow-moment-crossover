@@ -1,8 +1,8 @@
 """Loaders for the saved results JSON and the (cheap, deterministic) theory curves.
 
 Figures read measured numbers straight from ``results/*.json`` (no experiment is
-re-run).  Theory curves are recomputed from :mod:`anrl.theory` — parameter-free
-and deterministic — using the Hoeffding components already saved in
+re-run).  Theory curves are recomputed from :mod:`anrl.theory`, parameter-free
+and deterministic, using the Hoeffding components already saved in
 ``theory_zetas.json`` (so even the components are not re-estimated).
 """
 

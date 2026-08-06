@@ -20,7 +20,7 @@ from typing import Iterable
 
 import numpy as np
 
-# Single-qubit Pauli matrices (immutable module-level references — copy before
+# Single-qubit Pauli matrices (immutable module-level references, copy before
 # mutating).  Kept read-only-by-convention; callers receive fresh arrays from
 # the builder functions below.
 I2: np.ndarray = np.array([[1, 0], [0, 1]], dtype=np.complex128)
@@ -52,7 +52,7 @@ def pauli_string(labels: Iterable[str]) -> np.ndarray:
     """Build the n-qubit Pauli-string matrix for a sequence of labels.
 
     ``labels`` may be a string such as ``"XIZ"`` or any iterable of single-qubit
-    labels.  The result is ``kron(P_0, P_1, ..., P_{n-1})`` — a
+    labels.  The result is ``kron(P_0, P_1, ..., P_{n-1})``, a
     ``2**n x 2**n`` complex matrix.  The empty string yields the ``1x1``
     scalar identity ``[[1]]``.
     """

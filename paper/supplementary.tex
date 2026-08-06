@@ -192,15 +192,15 @@ pipeline rather than the standard estimator. The device returned
 bootstrap interval of \([1.266,\, 1.433]\) over 9000 snapshots. The gap is
 5.6 times the spread the model predicts for a single run of this anchor,
 and 3.7 times the wider spread the data themselves show; the intervals are
-disjoint on either accounting --- both spreads are conditional shot noise,
-hence lower bounds on the total uncertainty (Appendix C) --- and no
+disjoint on either accounting, both spreads are conditional shot noise,
+hence lower bounds on the total uncertainty (Appendix C), and no
 simulated run of the locked model
 reaches the measured value. We do not
 adjust the model to fit. Three signals therefore fail together in this
 session: the collective purities at \(n = 3, 4\) fall below their bands,
 their ordering is non-monotonic, and the single-copy pipeline does not
 reproduce its own anchor. One common cause accounts for all three, and
-it is the one this section has been describing: the device parameters were characterized in earlier sessions, and the effective execution channel changed between sessions --- byte-identical QASM does not guarantee an identical pulse schedule, and the decentralized route cannot be verified per job.
+it is the one this section has been describing: the device parameters were characterized in earlier sessions, and the effective execution channel changed between sessions: byte-identical QASM does not guarantee an identical pulse schedule, and the decentralized route cannot be verified per job.
 That two protocols with different circuits and different estimators both
 miss their locked predictions in the same session is what makes drift,
 rather than any protocol-specific defect, the parsimonious explanation.
@@ -213,7 +213,7 @@ route requires many independent random measurement bases. On a
 per-circuit-priced cloud platform without circuit batching, each basis
 is a separately billable job. An unbiased shadow purity estimate at the
 precision needed for this comparison requires on the order of a few hundred
-independent random measurement bases, each a separately billable job -- one to
+independent random measurement bases, each a separately billable job, one to
 two orders of magnitude more than the roughly 3 credits per cell the collective
 route used at the same shot count.
 
@@ -234,7 +234,10 @@ corroborate, and we present them as such.
 \footnotesize
 \setlength{\tabcolsep}{5pt}
 \begin{longtable}{@{}llllrrrc@{}}
-\caption{All \(83\) resolved crossover cells. ``mult'' is the copy budget as
+\caption{All \(83\) crossover cells that resolve for the unbiased
+U-statistic, the estimator the variance law of the main text describes; the
+corresponding figure for the range-projected estimator is \(72\), and the
+main text reports the two side by side. ``mult'' is the copy budget as
 a multiple of the \(2000\) baseline. A cell counts as within one qubit
 (\(\checkmark\)) when \(|\,n^*_{\text{pred}} - n^*_{\text{meas}}\,| \le 1\).}
 \label{tab:cells}\\

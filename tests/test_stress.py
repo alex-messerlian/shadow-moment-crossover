@@ -23,7 +23,7 @@ from anrl.theory.variance import exact_single_copy_rmse
 
 
 # ---------------------------------------------------------------------------
-# 1 — new ensembles produce states with the expected purity
+# 1, new ensembles produce states with the expected purity
 # ---------------------------------------------------------------------------
 def test_haar_pure_purity_is_one() -> None:
     rng = np.random.default_rng(0)
@@ -56,7 +56,7 @@ def test_ghz_is_deterministic() -> None:
 
 
 # ---------------------------------------------------------------------------
-# 2 — bias laws stay exact at extreme noise g = 0.3 on all three ensembles
+# 2, bias laws stay exact at extreme noise g = 0.3 on all three ensembles
 # ---------------------------------------------------------------------------
 def test_bias_laws_exact_at_extreme_noise() -> None:
     rng = np.random.default_rng(2)
@@ -78,7 +78,7 @@ def test_bias_laws_exact_at_extreme_noise() -> None:
 
 
 # ---------------------------------------------------------------------------
-# 3 — state-agnostic estimator: unbiased sampler, variance matches MC
+# 3, state-agnostic estimator: unbiased sampler, variance matches MC
 # ---------------------------------------------------------------------------
 def test_general_sampler_unbiased() -> None:
     rng = np.random.default_rng(3)

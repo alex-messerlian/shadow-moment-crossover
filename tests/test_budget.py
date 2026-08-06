@@ -32,7 +32,7 @@ from anrl.benchmark.scaling import snapshots_factored
 
 
 # ---------------------------------------------------------------------------
-# 1 — M-linear estimators equal the reference exact estimators
+# 1, M-linear estimators equal the reference exact estimators
 # ---------------------------------------------------------------------------
 def test_moment_ustat_linear_matches_reference() -> None:
     rng = np.random.default_rng(0)
@@ -53,7 +53,7 @@ def test_moment_ustat_linear_rejects_too_few_snapshots() -> None:
 
 
 # ---------------------------------------------------------------------------
-# 2 — the batched sampler is an unbiased shadow
+# 2; the batched sampler is an unbiased shadow
 # ---------------------------------------------------------------------------
 def test_sample_batched_unbiased() -> None:
     rng = np.random.default_rng(2)
@@ -73,14 +73,14 @@ def test_sample_batched_probabilities_match_dense() -> None:
     state = noisy_pure(2, 0.15, rng)
     snaps = sample_batched(state, 4000, rng)
     # Mean of the local shadow reproduces rho (E[snapshot tensor] = rho): compare
-    # the mean purity U-statistic to Tr(rho^2) (already covered) — here assert the
+    # the mean purity U-statistic to Tr(rho^2) (already covered), here assert the
     # snapshots are valid Hermitian shadows (3 P - I has trace 3*1 - 2 = 1).
     traces = np.einsum("mnii->mn", snaps).real
     assert np.allclose(traces, 1.0, atol=1e-9)  # each 2x2 shadow has unit trace
 
 
 # ---------------------------------------------------------------------------
-# 3 — P1 mechanism: single-copy RMSE ~ 1/sqrt(M) (alpha ~ 0.5)
+# 3, P1 mechanism: single-copy RMSE ~ 1/sqrt(M) (alpha ~ 0.5)
 # ---------------------------------------------------------------------------
 def test_fit_budget_exponent_recovers_half() -> None:
     # Synthetic RMSE = C / sqrt(M) must fit to alpha = 0.5 exactly.
@@ -133,7 +133,7 @@ def test_single_copy_rmse_scales_as_inverse_sqrt_M() -> None:
 
 
 # ---------------------------------------------------------------------------
-# 4 — P2 mechanism: collective error plateaus at a budget-independent bias floor
+# 4, P2 mechanism: collective error plateaus at a budget-independent bias floor
 # ---------------------------------------------------------------------------
 def test_predicted_bias_floor_formula() -> None:
     # [1 - (1-g)^(k n)] * Tr(rho^k).
@@ -163,7 +163,7 @@ def test_collective_error_plateaus_at_bias_floor() -> None:
 
 
 # ---------------------------------------------------------------------------
-# 5 — budgets_for feasibility plan
+# 5, budgets_for feasibility plan
 # ---------------------------------------------------------------------------
 def test_budgets_for_plan() -> None:
     assert budgets_for(2, 2) == (2000, 8000, 32000, 128000)  # k=2 small n: up to 64x
@@ -173,7 +173,7 @@ def test_budgets_for_plan() -> None:
 
 
 # ---------------------------------------------------------------------------
-# 6 — the sweep runs end to end (reproducibly) and saves error bars
+# 6; the sweep runs end to end (reproducibly) and saves error bars
 # ---------------------------------------------------------------------------
 def test_run_budget_sweep_end_to_end(tmp_path) -> None:
     kw = dict(

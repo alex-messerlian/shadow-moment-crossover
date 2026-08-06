@@ -1,4 +1,4 @@
-"""Open Quantum backend access for Rigetti Cepheus — auth, metadata, coupling map.
+"""Open Quantum backend access for Rigetti Cepheus, auth, metadata, coupling map.
 
 Credentials are read from the gitignored ``.env`` (never committed).  Listing
 backends and fetching capabilities is FREE (no credits); this module never submits
@@ -61,7 +61,7 @@ def fetch_cepheus_metadata(save: bool = True) -> dict:
 
     Records qubit count, native gates, coupling map, and limits.  The device does
     NOT expose error rates / readout / T1 / T2 (``constraint_data.noise`` is empty),
-    so ``error_rates`` is ``None`` with an explanatory note — we do not fabricate them.
+    so ``error_rates`` is ``None`` with an explanatory note; we do not fabricate them.
     """
     from openquantum_sdk import backends
 

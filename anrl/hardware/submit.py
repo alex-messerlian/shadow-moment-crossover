@@ -50,7 +50,7 @@ def prepare_and_quote(sched, org: str, qasm: bytes, shots: int, name: str) -> di
     prep_resp = sched.prepare_job(prep)
     result = sched._wait_for_preparation(prep_resp.id, timeout=300, interval=5, verbose=False)
     if result.status != "Completed":
-        raise RuntimeError(f"preparation not completed: {result.status} — {result.message}")
+        raise RuntimeError(f"preparation not completed: {result.status}, {result.message}")
     cost = next((p.price + q.price_increase for p in result.quote if p.execution_plan_id == PUBLIC
                  for q in p.queue_priorities if q.queue_priority_id == STANDARD), None)
     if cost is None:

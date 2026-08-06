@@ -69,7 +69,7 @@ def full_purity_ustatistic(snaps: np.ndarray) -> float:
     ``Tr(G_i^q G_j^q) = phi_i^q . phi_j^q``), form the ``M x M`` pairwise-trace
     matrix ``P[i,j] = prod_q (Phi_q Phi_q^T)[i,j]`` and return
     ``(sum P - trace P) / (M(M-1))``.  This is ``O(M^2 * n)`` time and ``O(M^2)``
-    memory — it stays computable at large ``n`` (unlike an ``O(4^n)`` dense
+    memory; it stays computable at large ``n`` (unlike an ``O(4^n)`` dense
     feature vector).
     """
     m, n = snaps.shape[0], snaps.shape[1]
@@ -108,7 +108,7 @@ def shadow_purity_estimate(
     variance).  Therefore:
 
     * ``n_pairs is None`` (default): the exact full pairwise U-statistic over all
-      ``M(M-1)/2`` pairs — the correct, copy-optimal estimator
+      ``M(M-1)/2`` pairs; the correct, copy-optimal estimator
       (:func:`full_purity_ustatistic`).
     * ``n_pairs`` given: a random subsample of that many pairs.  Subsampling only
       inflates the variance (it saves no copies), so it is NOT copy-fair; it is

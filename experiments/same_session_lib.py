@@ -2,7 +2,7 @@
 
 Block A/C readout characterization = the validated 7 basis states on the 8 GHZ-ladder
 qubits {0,1,2,3,9,10,11,12}.  Parses their counts into per-qubit P(1|0)(w) / P(0|1)
-tables (saturating, from the measured points — no cross-session blending, unlike the
+tables (saturating, from the measured points; no cross-session blending, unlike the
 readout-extension phase), builds the joint correlated confusion, and predicts the
 collective SWAP purity band for n=2,3,4.
 """

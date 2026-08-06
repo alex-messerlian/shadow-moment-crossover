@@ -45,7 +45,7 @@ def main() -> None:
 
         if rec.get("job_id"):
             # Submitted on a prior run but not yet downloaded (e.g. network drop while
-            # polling). Resume polling — NEVER resubmit. Cost already counted in `running`.
+            # polling). Resume polling, NEVER resubmit. Cost already counted in `running`.
             print(f"[{name}] resuming poll of already-submitted {rec['job_id'][:8]} (no resubmit)")
             job = poll_job(sched, rec["job_id"], timeout=600, interval=15)
         else:
@@ -64,7 +64,7 @@ def main() -> None:
                    "status": job.status, "submitted_at": job.submitted_at, "bal_before": bal_before}
             progress[name] = rec
             PROGRESS.write_text(json.dumps(progress, indent=2))
-            print(f"[{name}] submitted {job.id} — polling...")
+            print(f"[{name}] submitted {job.id}, polling...")
             job = poll_job(sched, job.id, timeout=600, interval=15)
 
         if job.status != "Completed":

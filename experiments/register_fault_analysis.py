@@ -2,8 +2,8 @@
 
 Discriminator:
   * measured vs locked prediction for n3_std, n4, n3_alt (with bootstrap CIs);
-  * DECOUPLING — does n3_std match its band while n4 falls below, same session?
-  * LOCALIZATION — is n3_alt ({1,2,3,10,11,12}, includes suspect {3,12}) anomalous?
+  * DECOUPLING, does n3_std match its band while n4 falls below, same session?
+  * LOCALIZATION, is n3_alt ({1,2,3,10,11,12}, includes suspect {3,12}) anomalous?
   * within-session drift from opening (A) vs closing (C) readout;
   * verdict A (global state) / B (register-specific fault) / neither.
 
@@ -113,12 +113,12 @@ def main():
         verdict = "B, LOCALIZED to {3,12}: n3_std matches, n4 below, and n3_alt (with {3,12}) is anomalous at n=3."
     elif decoupling_strict and not localized:
         verdict = ("B (register-specific) but NOT the pair {3,12}: n3_std matches, n4 below, yet n3_alt "
-                   "(with {3,12}) is as healthy as n3_std — n=4-geometry-specific.")
+                   "(with {3,12}) is as healthy as n3_std, n=4-geometry-specific.")
     elif n3["inside_band"] and n4["inside_band"]:
         verdict = "A (global state): n3_std and n4 both match same-session predictions; no decoupling."
     elif all_below:
         verdict = ("NEITHER clean. All three cells fell below their (clean-readout) predictions this session, "
-                   "so the readout calibration OVER-predicted purity for every cell — the deficit is not "
+                   "so the readout calibration OVER-predicted purity for every cell; the deficit is not "
                    "captured by readout. A REJECTED (deficit does not track the clean readout). The RAW "
                    f"comparison shows n=4 sits {raw['gap_n3std_minus_n4']:+.3f} below n=3 (significant: "
                    f"{raw['n4_below_n3std_sig']}) this session, but the n4-vs-n3 ORDERING FLIPPED across the "

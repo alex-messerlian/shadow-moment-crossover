@@ -7,11 +7,11 @@ saves the machine-readable results to results/benchmark_sweep.json, and prints
 the three questions that matter with their numbers, under BOTH single-copy
 estimator conventions:
 
-* subsampled — the O(M) = n_snapshots//k tuple convention (variance-inflating).
-* fair — the copy-fair estimator (forming tuples costs no copies): the EXACT
+* subsampled; the O(M) = n_snapshots//k tuple convention (variance-inflating).
+* fair; the copy-fair estimator (forming tuples costs no copies): the EXACT
   full U-statistic for k=2, k=3 AND k=4 (the k=4 exact U-statistic is a Mobius
   inversion over the 15 set partitions of the 4 cyclic slots, verified against
-  brute force — no subsampling artifact remains at any k here).
+  brute force; no subsampling artifact remains at any k here).
 """
 
 from __future__ import annotations
@@ -64,23 +64,23 @@ def main() -> None:
 
     for convention, wkey, fkey in (
         ("SUBSAMPLED O(M) single-copy (variance-inflating convention)", "winner_subsampled", "factor_subsampled"),
-        ("FAIR single-copy (exact full U-statistic for k=2,3,4 — no subsampling artifact)", "winner_fair", "factor_fair"),
+        ("FAIR single-copy (exact full U-statistic for k=2,3,4; no subsampling artifact)", "winner_fair", "factor_fair"),
     ):
         print(f"\n================ {convention} ================")
-        # Q1 — every task k?
+        # Q1, every task k?
         print("Q1. Collective vs single-copy per moment order k:")
         for k in KS:
             cells = [r for r in rows if r["k"] == k]
             wins = sum(r[wkey] == "collective" for r in cells)
             factors = [r[fkey] for r in cells]
             print(f"  k={k}: collective wins {wins}/{len(cells)}; factor {min(factors):.2f}x .. {max(factors):.0f}x")
-        # Q2 — every noise model?
+        # Q2, every noise model?
         print("Q2. Collective vs single-copy per noise model:")
         for noise in NOISE_MODELS:
             cells = [r for r in rows if r["noise_model"] == noise]
             wins = sum(r[wkey] == "collective" for r in cells)
             print(f"  {noise:18s}: collective wins {wins}/{len(cells)}")
-        # Q3 — crossovers?
+        # Q3, crossovers?
         crossovers = [r for r in rows if r[wkey] == "single-copy"]
         print(f"Q3. Crossovers (single-copy wins): {len(crossovers)}")
         for r in crossovers:
@@ -88,7 +88,7 @@ def main() -> None:
                   f"single_fair={r['single_rmse_fair']:.4f} single_sub={r['single_rmse_subsampled']:.4f} "
                   f"collective={r['collective_rmse']:.4f}")
         if not crossovers:
-            print("  None — collective wins every cell.")
+            print("  None, collective wins every cell.")
 
 
 if __name__ == "__main__":

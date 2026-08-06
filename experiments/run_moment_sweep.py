@@ -73,7 +73,7 @@ def main() -> None:
     print(f"Sweep done in {wall:.1f}s -> {OUT.relative_to(REPO)} "
           f"({len(rows)} rows, {len(table)} crossover keys); skipped {len(skipped)} infeasible (n,k)\n")
 
-    # --- Q1: true Tr(rho^k) stays O(1) ---
+    #, Q1: true Tr(rho^k) stays O(1), 
     print("Q1. Mean true Tr(rho^k) by (n, k)  [must stay O(1), not collapse to 0]:")
     print(f"    {'n':>2} " + " ".join(f"{'k='+str(k):>10}" for k in KS))
     for n in SIZES:
@@ -81,7 +81,7 @@ def main() -> None:
         vals = " ".join(f"{cells[k]['mean_true_moment']:10.4f}" if cells[k] else f"{'--':>10}" for k in KS)
         print(f"    {n:>2} {vals}")
 
-    # --- Q2: single-copy RMSE growth per qubit, per k ---
+    #, Q2: single-copy RMSE growth per qubit, per k, 
     print("\nQ2. Single-copy FAIR RMSE vs n and growth factor per qubit, per k:")
     for k in KS:
         seen = {}
@@ -96,7 +96,7 @@ def main() -> None:
             tail = _fit_factor(tail_ns, [seen[n] for n in tail_ns]) if len(tail_ns) >= 2 else float("nan")
             print(f"        growth/qubit: full range {full:.2f}x; n>=5 tail {tail:.2f}x")
 
-    # --- Q3: crossover table ---
+    #, Q3: crossover table, 
     print("\n" + "=" * 78)
     print("Q3. CROSSOVER IN n (paired test; C=collective s=single-copy .=tie):")
     symbol = {"collective": "C", "single-copy": "s", "tie": "."}

@@ -1,10 +1,10 @@
 """Bracketed same-session GHZ-ladder experiment (REAL credits, ceiling 32).
 
 Submission order IS the experiment, back to back:
-  Block A  — opening readout characterization (7 states x 2500 shots, ~7 cr)
+  Block A, opening readout characterization (7 states x 2500 shots, ~7 cr)
   -> LOCK predictions from Block A's fresh parameters (before any Block B result exists)
-  Block B  — collective SWAP on GHZ n=2,3,4 (10k shots, ~9 cr)
-  Block C  — closing readout characterization (identical to A, ~7 cr)
+  Block B, collective SWAP on GHZ n=2,3,4 (10k shots, ~9 cr)
+  Block C, closing readout characterization (identical to A, ~7 cr)
 
 Reuses the validated readout circuits (ro_*.qasm) and SWAP circuits (hg_coll_n*.qasm).
 Granular flow per job: prepare+quote (FREE) -> hard gate on running total (<=32) ->
@@ -59,7 +59,7 @@ def run_block(jobs, progress, sched, mgmt, org, running):
                    "submitted_at": job.submitted_at, "bal_before": bal_before}
             progress[name] = rec
             PROGRESS.write_text(json.dumps(progress, indent=2))
-            print(f"[{name}] submitted {job.id} — polling...")
+            print(f"[{name}] submitted {job.id}, polling...")
             job = poll_job(sched, job.id, timeout=21600, interval=30)
         if job.status != "Completed":
             rec["status"] = job.status
@@ -119,7 +119,7 @@ def main():
     if not LOCKED.exists():
         lock_from_block_a()
     else:
-        print("[lock] locked_same_session.json already exists — not recomputing")
+        print("[lock] locked_same_session.json already exists; not recomputing")
     # BLOCK B
     running, ok = run_block(BLOCK_B, progress, sched, mgmt, org, running)
     if not ok:

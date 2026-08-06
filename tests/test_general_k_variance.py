@@ -55,7 +55,7 @@ def test_mc_components_match_noisy_pure_closed_form_k3():
 
 
 def test_zeta1_is_first_projection():
-    """zeta_1 = Var[Re Tr(G rho^{k-1})] — the first-order projection, not the kernel var."""
+    """zeta_1 = Var[Re Tr(G rho^{k-1})]; the first-order projection, not the kernel var."""
     st = noisy_pure(2, 0.1, np.random.default_rng(5))
     rho = st.density_matrix()
     rng = np.random.default_rng(6)

@@ -12,7 +12,7 @@ Tests the theory (anrl/theory, developed on noisy_pure) on three NEW ensembles
 
 The theory's shipped closed forms assume the noisy_pure spectrum, so the
 state-agnostic estimators (anrl/theory/general.py: dense-rho Hoeffding components)
-are used — this tests the THEORY, not its noisy_pure shortcut.
+are used; this tests the THEORY, not its noisy_pure shortcut.
 """
 
 from __future__ import annotations

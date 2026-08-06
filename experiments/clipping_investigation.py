@@ -1,7 +1,7 @@
 """Investigate whether estimator CLIPPING explains the ~7% out-of-ensemble RMSE gap.
 
 Steps (all local, no credits):
-  1. Audit: does the anrl single-copy pipeline clip? (answer: NO — raw U-statistic.)
+  1. Audit: does the anrl single-copy pipeline clip? (answer: NO, raw U-statistic.)
   2. Gap direction/magnitude from results/stress_test.json (signed, not just |.|).
   3. Clipping-correction test: apply clipped_rmse to the prediction, re-score the gap.
   4. Diagnosis of the residual (kurtosis / Gaussianity, measured-RMSE finite-trial noise,
@@ -140,17 +140,17 @@ def main():
     if "--recompute" in sys.argv:
         result["step4_diagnosis_recomputed"] = recompute_diagnosis()
     OUT.write_text(json.dumps(result, indent=2))
-    print("STEP 1 — pipeline clips single-copy estimate?", result["step1_audit"]["clips_estimate"])
+    print("STEP 1, pipeline clips single-copy estimate?", result["step1_audit"]["clips_estimate"])
     g = result["step1_gap"]
-    print(f"STEP 1 — gap: median |rel| {g['median_abs_rel']:.1%}, median SIGNED {g['median_signed_rel']:+.1%} "
+    print(f"STEP 1, gap: median |rel| {g['median_abs_rel']:.1%}, median SIGNED {g['median_signed_rel']:+.1%} "
           f"({g['over_predict_cells']}/{g['n_cells']} over) -> {g['direction']}")
     c = result["step3_clipping_correction"]
-    print(f"STEP 3 — clipping-corrected median |rel| {c['median_abs_rel_clipping_corrected']:.1%} "
+    print(f"STEP 3, clipping-corrected median |rel| {c['median_abs_rel_clipping_corrected']:.1%} "
           f"vs raw {c['median_abs_rel_raw']:.1%} -> {c['verdict']}")
     cov = result["step4_ci_coverage"]
-    print(f"STEP 4 — CI coverage {cov['prediction_in_68pct_CI']} ({cov['coverage']:.0%}); "
+    print(f"STEP 4, CI coverage {cov['prediction_in_68pct_CI']} ({cov['coverage']:.0%}); "
           f"CI halfwidth/meas {cov['median_CI_halfwidth_over_measured']:.1%}")
-    print(f"STEP 4 — {DIAGNOSIS_RECORDED['conclusion']}")
+    print(f"STEP 4, {DIAGNOSIS_RECORDED['conclusion']}")
     print(f"saved -> {OUT.relative_to(REPO)}")
 
 

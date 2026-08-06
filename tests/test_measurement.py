@@ -26,7 +26,7 @@ from anrl.physics import (
 
 
 # ---------------------------------------------------------------------------
-# Group 7 — single-copy tomography recovers the true negativity within 0.02
+# Group 7, single-copy tomography recovers the true negativity within 0.02
 # ---------------------------------------------------------------------------
 def test_single_copy_tomography_recovers_negativity() -> None:
     rng = np.random.default_rng(2026_07_11)

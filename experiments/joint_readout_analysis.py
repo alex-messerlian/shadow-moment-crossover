@@ -52,7 +52,7 @@ def pair_confusion(states: dict, ci: int, cj: int) -> np.ndarray:
     """4x4 R[read_idx, prep_idx], prep 00/01/10/11 from s0/copyB/copyA/all; read_idx=2a+b.
 
     If a prep state is unavailable (n=4 has no copyB), that column is filled with the
-    INDEPENDENT product of per-qubit marginals — so the missing prep is approximated as
+    INDEPENDENT product of per-qubit marginals; so the missing prep is approximated as
     uncorrelated (flagged in the report).
     """
     prep_state = {0: "s0", 1: "copyB", 2: "copyA", 3: "all"}  # (a,b): a=clbit ci (copyA), b=clbit cj (copyB)

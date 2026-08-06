@@ -3,7 +3,7 @@
 Transpiles the actual circuit onto the real Cepheus coupling map (so routing SWAPs
 show up in the CZ budget), compactifies it to only the active qubits for a
 density-matrix noise simulation, and applies the measured correlated-readout model.
-Zero credits — pure local simulation.
+Zero credits, pure local simulation.
 """
 
 from __future__ import annotations

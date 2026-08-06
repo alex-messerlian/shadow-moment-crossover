@@ -1,10 +1,10 @@
-"""The calibration curve — measured purity vs noise, and its inversion.
+"""The calibration curve, measured purity vs noise, and its inversion.
 
 The destructive SWAP test on a state of true purity ``Tr(rho^2)`` returns a
 *biased* purity under noise.  Here we compute that biased value exactly for the
 parameterized Cepheus model, sweep it into a calibration surface over
 ``(p2, p_ro)``, and invert it: given a purity actually measured on hardware,
-recover the effective error rates consistent with it — extracting the device's
+recover the effective error rates consistent with it, extracting the device's
 noise from our own data instead of trusting the datasheet.
 
 Exactness and speed.  We never rely on shot sampling for the *prediction*:
@@ -36,7 +36,7 @@ from .state_prep import PreparedState
 from .swap_test import destructive_swap_test, swap_sign
 
 # The real Cepheus square {0,1,9,10} relabeled to logical 0..3 (edges form the
-# 4-cycle the n=2 two-copy SWAP test needs; zero routing overhead — prior phase).
+# 4-cycle the n=2 two-copy SWAP test needs; zero routing overhead, prior phase).
 CEPHEUS_SQUARE = CouplingMap(couplinglist=[(0, 1), (0, 2), (1, 3), (2, 3)])
 
 _DM_SIM = AerSimulator(method="density_matrix")

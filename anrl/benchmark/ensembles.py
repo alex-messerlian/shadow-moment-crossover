@@ -3,12 +3,12 @@
 Both ensembles are depolarized low/high-rank states written in a *factored* form
 ``rho = (1 - q) * P + q * I / 2^n`` where ``P = G G^dag`` is a trace-1 component
 (``G`` is ``2^n x R``).  Keeping ``G`` factored (rather than the dense ``2^n x
-2^n`` matrix) lets shadow sampling scale to large ``n`` — the sampling only needs
+2^n`` matrix) lets shadow sampling scale to large ``n``; the sampling only needs
 ``U G`` (``O(R n 2^n)``), never a ``2^n x 2^n`` rotation.
 
-* ``noisy_pure(n, q, rng)``  — ``|psi>`` Haar-random pure (``R = 1``); a NISQ-like
+* ``noisy_pure(n, q, rng)``, ``|psi>`` Haar-random pure (``R = 1``); a NISQ-like
   noisy pure state whose purity stays O(1).
-* ``random_mixed(n, q, rng)`` — Ginibre high-rank component; the old highly-mixed
+* ``random_mixed(n, q, rng)``, Ginibre high-rank component; the old highly-mixed
   ensemble whose purity collapses toward ``2^{-n}``.
 """
 
@@ -51,7 +51,7 @@ class NoisyState:
         return (1.0 - self.q) ** 2 * tr_p2 + 2.0 * (1.0 - self.q) * self.q / d + self.q ** 2 / d
 
     def density_matrix(self) -> np.ndarray:
-        """Dense ``rho`` (``2^n x 2^n``) — for the collective channel signal."""
+        """Dense ``rho`` (``2^n x 2^n``), for the collective channel signal."""
         d = self.dim
         p = self.components @ self.components.conj().T
         return (1.0 - self.q) * p + self.q * np.eye(d, dtype=np.complex128) / d
@@ -72,7 +72,7 @@ def noisy_pure(n: int, q: float, rng: np.random.Generator) -> NoisyState:
 def haar_pure(n: int, rng: np.random.Generator) -> NoisyState:
     """Haar-random pure state (``q = 0``), purity exactly ``1.0``.
 
-    The maximal-shadow-variance case — a stress test for the single-copy variance
+    The maximal-shadow-variance case, a stress test for the single-copy variance
     model (shadow variance grows with state purity).
     """
     dim = 2 ** n
@@ -99,7 +99,7 @@ def low_rank(n: int, rank: int = 2, rng: np.random.Generator | None = None) -> N
 def ghz_noisy(n: int, q: float = 0.15, rng: np.random.Generator | None = None) -> NoisyState:
     """Depolarized GHZ state ``(1-q)|GHZ><GHZ| + q I/2^n``, ``|GHZ> = (|0..0>+|1..1>)/sqrt2``.
 
-    Highly structured and NOT Haar-typical — where an ensemble-specific variance
+    Highly structured and NOT Haar-typical, where an ensemble-specific variance
     model should break.  ``rng`` is accepted for a uniform ensemble signature but
     the state is deterministic (GHZ is fixed).
     """

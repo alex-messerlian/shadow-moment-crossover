@@ -33,7 +33,7 @@ def _noisy_pure_purity_formula(q: float, n: int) -> float:
 
 
 # ---------------------------------------------------------------------------
-# 1 — noisy_pure purity matches the closed form and stays O(1) as n grows
+# 1, noisy_pure purity matches the closed form and stays O(1) as n grows
 # ---------------------------------------------------------------------------
 def test_noisy_pure_purity_matches_formula() -> None:
     rng = np.random.default_rng(0)
@@ -50,7 +50,7 @@ def test_noisy_pure_purity_matches_formula() -> None:
 
 
 # ---------------------------------------------------------------------------
-# 2 — both ensembles' analytic purity() equals the dense Tr(rho^2)
+# 2, both ensembles' analytic purity() equals the dense Tr(rho^2)
 # ---------------------------------------------------------------------------
 def test_purity_matches_dense_trace() -> None:
     rng = np.random.default_rng(2)
@@ -65,7 +65,7 @@ def test_purity_matches_dense_trace() -> None:
 
 
 # ---------------------------------------------------------------------------
-# 3 — random_mixed (full rank) collapses toward 2^-n; noisy_pure does not
+# 3, random_mixed (full rank) collapses toward 2^-n; noisy_pure does not
 # ---------------------------------------------------------------------------
 def test_random_mixed_purity_collapses() -> None:
     rng = np.random.default_rng(3)
@@ -81,7 +81,7 @@ def test_random_mixed_purity_collapses() -> None:
 
 
 # ---------------------------------------------------------------------------
-# 4 — factored sampler + O(M^2 n) U-statistic == dense sampler + brute U-stat
+# 4, factored sampler + O(M^2 n) U-statistic == dense sampler + brute U-stat
 # ---------------------------------------------------------------------------
 def _brute_force_ustatistic(snaps: np.ndarray) -> float:
     """Reference: full pairwise U-statistic via explicit per-qubit trace products."""
@@ -122,7 +122,7 @@ def test_factored_sampler_unbiased() -> None:
 
 
 # ---------------------------------------------------------------------------
-# 5 — collective channel signal matches the reference channel construction
+# 5, collective channel signal matches the reference channel construction
 # ---------------------------------------------------------------------------
 def test_collective_signal_matches_reference() -> None:
     rng = np.random.default_rng(6)
@@ -141,7 +141,7 @@ def test_collective_signal_matches_reference() -> None:
 
 
 # ---------------------------------------------------------------------------
-# 6 — the scaling grid runs end to end and saves a results file
+# 6; the scaling grid runs end to end and saves a results file
 # ---------------------------------------------------------------------------
 def test_scaling_runs_and_saves(tmp_path) -> None:
     rows = run_scaling(
@@ -195,7 +195,7 @@ def test_scaling_runs_and_saves(tmp_path) -> None:
 
 
 # ---------------------------------------------------------------------------
-# 7 — boundary validation: fail fast on unphysical / unsupported inputs
+# 7, boundary validation: fail fast on unphysical / unsupported inputs
 # ---------------------------------------------------------------------------
 def test_input_validation() -> None:
     rng = np.random.default_rng(7)

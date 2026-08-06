@@ -1,9 +1,9 @@
-"""The destructive (Bell-basis) SWAP test — the collective route.
+"""The destructive (Bell-basis) SWAP test; the collective route.
 
 Two independent copies of an ``n``-qubit state sit on qubits ``0..n-1`` (copy A)
 and ``n..2n-1`` (copy B).  For each pair ``(i, i+n)`` we apply ``CNOT(i -> i+n)``
 then ``H(i)`` and measure all ``2n`` qubits.  This uses exactly ``n`` two-qubit
-gates (shallow, NISQ-friendly) — unlike the ancilla Fredkin SWAP test.
+gates (shallow, NISQ-friendly), unlike the ancilla Fredkin SWAP test.
 
 Sign rule (VERIFIED against the exact simulator to ~1e-16, pure and mixed):
 

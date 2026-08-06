@@ -1,4 +1,4 @@
-"""Part 2 — the single-copy variance law (Hoeffding decomposition).
+"""Part 2; the single-copy variance law (Hoeffding decomposition).
 
 The single-copy estimator of ``Tr(rho^k)`` is a ``k``-th order U-statistic.  Its
 variance splits into a linear term and a higher-order term,
@@ -18,9 +18,9 @@ effective exponent interpolates as ``alpha_eff = 0.5 w + 1.0 (1-w)`` with
 
 Estimation (Monte Carlo from simulated shadow snapshots, noisy-pure ensemble):
 
-* ``zeta2`` — the sample variance of the (real) kernel
+* ``zeta2``; the sample variance of the (real) kernel
   ``Re Tr(G_1 ... G_k) = Re prod_q Tr(g_1^q ... g_k^q)`` over independent k-tuples.
-* ``zeta1`` — the sample variance of the first-order projection
+* ``zeta1``; the sample variance of the first-order projection
   ``h1(x) = Tr(G_x rho^{k-1})``.  By cyclicity and ``E[G] = rho`` this is
   independent of where ``x`` sits, and for ``rho = lambda1 |psi><psi| + lambda0
   (I - |psi><psi|)`` (noisy pure) it reduces to
@@ -199,7 +199,7 @@ def estimate_hoeffding_components(
     (first projection) and ``zeta_k`` (full kernel variance) have direct
     estimators; ``1 < c < k`` use the closed-form projection
     (:func:`_projection_variance`).  These feed the EXACT U-statistic variance
-    ``Var(U_M) = C(M,k)^{-1} sum_c C(k,c) C(M-k,k-c) zeta_c`` — the correct model
+    ``Var(U_M) = C(M,k)^{-1} sum_c C(k,c) C(M-k,k-c) zeta_c``; the correct model
     the two-term approximation (:func:`single_copy_variance`) collapses.
     """
     comps = [0.0] * k
@@ -244,7 +244,7 @@ def truncated_variance(components: list[float], k: int, m: float) -> float:
 
     Keeping only the first two orders of the Hoeffding sum gives
     ``k^2 zeta_1 / M + [k^2 (k-1)^2 / 2] zeta_2 / M^2``, where ``zeta_2`` is the
-    SECOND PROJECTION variance ``components[1]`` — not ``zeta_k``, the full kernel
+    SECOND PROJECTION variance ``components[1]``; not ``zeta_k``, the full kernel
     variance.  The two coincide at ``k = 2`` (hence ``2 zeta_2 / M^2`` there) and
     diverge sharply above it: ``zeta_3 / zeta_2`` already exceeds ``1e4`` at
     ``k = 3, n = 6``, which is why this truncation reproduces the measured alpha at

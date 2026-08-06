@@ -2,14 +2,14 @@
 
 These compute the *same* exact full U-statistics as
 :mod:`anrl.benchmark.moments` (``full_purity_ustatistic``,
-``full_moment_ustatistic_k3``, ``full_moment_ustatistic_k4`` — all verified
+``full_moment_ustatistic_k3``, ``full_moment_ustatistic_k4``; all verified
 against brute-force enumeration), but scale to large ``n`` so the moment sweep
 can reach ``n = 8``.  Verified identical to those functions to ``~1e-13``.
 
 Key fact: a local-shadow snapshot is a tensor product ``G_i = ox_q g_i^q``, so
 ``G_i^p = ox_q (g_i^q)^p``.  The power-sum matrices ``P_p = sum_i G_i^p`` are
 therefore built by Kron-accumulating the per-qubit ``p``-th powers in
-``O(M 2^{2n})`` — never forming an ``(M, 2^n, 2^n)`` array or squaring a
+``O(M 2^{2n})``, never forming an ``(M, 2^n, 2^n)`` array or squaring a
 ``2^n x 2^n`` matrix (which is what makes the reference k=3/k=4 implementations
 blow up at ``n >= 6-7``).  The k=4 "opposite-slot" terms use an ``O(M^2 n)``
 per-qubit ``M x M`` contraction (``TrXalt``) and an ``O(M n 2^{2n})`` chunked

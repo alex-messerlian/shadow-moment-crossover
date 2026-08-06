@@ -18,7 +18,7 @@ from anrl.benchmark.hardened import _aggregate_cell
 
 
 # ---------------------------------------------------------------------------
-# 1 — state_errors is deterministic and correctly shaped
+# 1, state_errors is deterministic and correctly shaped
 # ---------------------------------------------------------------------------
 def test_state_errors_deterministic_and_shaped() -> None:
     kw = dict(
@@ -42,7 +42,7 @@ def test_state_errors_deterministic_and_shaped() -> None:
 
 
 # ---------------------------------------------------------------------------
-# 2 — paired-cell aggregation classifies clear wins and ties
+# 2, paired-cell aggregation classifies clear wins and ties
 # ---------------------------------------------------------------------------
 def test_aggregate_cell_classification() -> None:
     rng = np.random.default_rng(0)
@@ -77,7 +77,7 @@ def test_aggregate_cell_classification() -> None:
 
 
 # ---------------------------------------------------------------------------
-# 3 — crossover table locates the boundary and flags ambiguity
+# 3, crossover table locates the boundary and flags ambiguity
 # ---------------------------------------------------------------------------
 def test_crossover_table_flags() -> None:
     def row(ensemble, n, nm, rate, winner, z=10.0):
@@ -116,7 +116,7 @@ def test_crossover_table_flags() -> None:
 
 
 # ---------------------------------------------------------------------------
-# 4 — the hardened grid runs end to end (multiprocessing) and saves error bars
+# 4; the hardened grid runs end to end (multiprocessing) and saves error bars
 # ---------------------------------------------------------------------------
 def test_hardened_runs_and_saves(tmp_path) -> None:
     rows = run_hardened(

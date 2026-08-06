@@ -2,7 +2,7 @@
 
 Eight physical qubits {0,1,2,3,9,10,11,12} (n=3 set {0,1,2,9,10,11} nests inside).
 Seven X-only basis states spanning excitation weights 0,2,4,4,6,6,8 so every qubit is
-sampled prepared-0 and prepared-1 at several excited-neighbor counts w — measuring the
+sampled prepared-0 and prepared-1 at several excited-neighbor counts w, measuring the
 weight-correlation directly instead of extrapolating the $0 result.  3000 shots each.
 
 Granular flow per circuit: prepare+quote (FREE) -> hard gate on running total (<=8) ->
@@ -55,7 +55,7 @@ def main() -> None:
                    "status": job.status, "submitted_at": job.submitted_at, "bal_before": bal_before}
             progress[name] = rec
             PROGRESS.write_text(json.dumps(progress, indent=2))
-            print(f"[{name}] submitted {job.id} — polling...")
+            print(f"[{name}] submitted {job.id}, polling...")
             job = poll_job(sched, job.id, timeout=21600, interval=30)
 
         if job.status != "Completed":

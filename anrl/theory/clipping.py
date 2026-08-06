@@ -16,7 +16,7 @@ beta = (b-mu)/sigma, phi/Phi the standard normal pdf/cdf:
 using int_alpha^beta z^2 phi(z) dz = (Phi(beta)-Phi(alpha)) + alpha phi(alpha) - beta phi(beta).
 ``clipped_rmse`` returns sqrt of this. NOTE: the anrl pipeline does NOT clip its
 single-copy estimator (it reports the raw U-statistic), so this is a model of what a
-CLIPPING pipeline would report — not a default correction applied to anrl's own RMSE.
+CLIPPING pipeline would report; not a default correction applied to anrl's own RMSE.
 """
 
 from __future__ import annotations

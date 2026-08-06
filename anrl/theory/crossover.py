@@ -1,4 +1,4 @@
-"""Part 3 — the crossover, re-solved with the corrected laws.
+"""Part 3; the crossover, re-solved with the corrected laws.
 
 The crossover ``n*`` is the smallest system size where the single-copy RMSE rises
 above the collective error.  We predict both sides analytically and locate the

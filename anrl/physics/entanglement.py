@@ -8,11 +8,11 @@ subsystem dimensions are omitted, a balanced qubit split is used: for an
 
 Key objects
 -----------
-* ``partial_transpose`` — transpose only subsystem ``A``.
-* ``negativity``        — sum of |negative eigenvalues| of the partial transpose.
-* ``pt_moment``         — ``tr((rho^{T_A})^k)`` (the k-th PT spectral moment).
-* ``purity``            — ``tr(rho^2)``.
-* ``negativity_from_moments`` — reconstruct the negativity from PT moments alone
+* ``partial_transpose``, transpose only subsystem ``A``.
+* ``negativity``, sum of |negative eigenvalues| of the partial transpose.
+* ``pt_moment``, ``tr((rho^{T_A})^k)`` (the k-th PT spectral moment).
+* ``purity``, ``tr(rho^2)``.
+* ``negativity_from_moments``, reconstruct the negativity from PT moments alone
   (power sums) via Newton's identities and the characteristic polynomial.
 """
 
@@ -57,8 +57,8 @@ def partial_transpose(rho: np.ndarray, dA: int | None = None, dB: int | None = N
 
     Uses the reshape convention specified for this project: view ``rho`` as a
     ``(dA, dB, dA, dB)`` tensor with axes ``(a, b, a', b')``, transpose axes to
-    ``(2, 1, 0, 3)`` — i.e. swap the two ``A`` indices ``a <-> a'`` while leaving
-    the ``B`` indices fixed — then reshape back to ``(dA*dB, dA*dB)``.
+    ``(2, 1, 0, 3)``, i.e. swap the two ``A`` indices ``a <-> a'`` while leaving
+    the ``B`` indices fixed, then reshape back to ``(dA*dB, dA*dB)``.
 
     For a Hermitian ``rho`` the result is Hermitian.
     """

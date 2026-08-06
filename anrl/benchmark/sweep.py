@@ -7,18 +7,18 @@ over a shared set of random noisy states.
 
 The gate noise lives on the *collective measurement apparatus* (the k-copy
 register), not on the state, so the single-copy shadow RMSE is
-**noise-independent** for a given ``(n, k)`` — only the collective estimator is
+**noise-independent** for a given ``(n, k)``, only the collective estimator is
 degraded by noise.
 
 Two single-copy estimators are reported from the SAME snapshots (same copy
 budget), differing only in classical post-processing:
 
-* ``subsampled`` — the ``n_snapshots // k`` U-statistic tuple convention (the
+* ``subsampled``; the ``n_snapshots // k`` U-statistic tuple convention (the
   existing O(M) convention; variance-inflating).
-* ``fair`` — the copy-fair estimator (forming tuples costs no copies): the EXACT
+* ``fair``; the copy-fair estimator (forming tuples costs no copies): the EXACT
   full U-statistic for k=2, k=3 AND k=4 (the k=4 exact U-statistic is the Mobius
   inversion over the 15 set partitions of the 4 cyclic slots, verified against
-  brute force — so no subsampling artifact remains at any k here).  The gap
+  brute force; so no subsampling artifact remains at any k here).  The gap
   between the two conventions is pure post-processing, not measurement.
 """
 

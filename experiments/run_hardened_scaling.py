@@ -82,7 +82,7 @@ def main() -> None:
     print(f"Grid done in {wall:.1f}s -> {OUT.relative_to(REPO)} "
           f"({len(rows)} rows, {len(table)} crossover keys)\n")
 
-    # --- Part 3: single-copy RMSE growth vs n, with error bars ---
+    #, Part 3: single-copy RMSE growth vs n, with error bars, 
     print("Single-copy FAIR purity RMSE vs n  [noise-independent per (ensemble, n)]:")
     for ensemble in ("noisy_pure", "random_mixed"):
         seen: dict[int, dict] = {}
@@ -107,7 +107,7 @@ def main() -> None:
             if sum(n >= 5 for n in ns) >= 2 else float("nan")
         print(f"    -> growth/qubit: full range {full:.2f}x; n>=5 tail {tail:.2f}x")
 
-    # --- Part 2: crossover table with error bars ---
+    #, Part 2: crossover table with error bars, 
     print("\n" + "=" * 78)
     print("CROSSOVER IN n (paired state-level test; C=collective s=single-copy .=tie):")
     for ensemble in ("noisy_pure", "random_mixed"):
@@ -126,7 +126,7 @@ def main() -> None:
             print(f"    {entry['noise_model']:>18} {entry['rate']:>5} "
                   f"{str(cx):>11} {flag:>10} {zstr:>8}   {marks}")
 
-    # --- Part 2 detail: paired difference at the crossover-relevant cells ---
+    #, Part 2 detail: paired difference at the crossover-relevant cells, 
     print("\nPaired MSE difference (single - collective) +- SE at noisy_pure cells "
           "near each boundary [z>2 => collective wins]:")
     for entry in table:

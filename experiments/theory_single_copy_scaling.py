@@ -99,7 +99,7 @@ def main():
     mode = sys.argv[1] if len(sys.argv) > 1 else "full"
     if mode == "conv":
         for n in (3, 5, 7):
-            print(f"--- convergence n={n} ---")
+            print(f", convergence n={n}, ")
             for N in (100_000, 300_000, 1_000_000, 3_000_000):
                 z1, z2 = zeta1_zeta2_state(noisy_pure(n, Q, np.random.default_rng([0, n, 0])),
                                            N, np.random.default_rng([0, n, 0, 7]))
@@ -110,7 +110,7 @@ def main():
     fits27 = {k: fit_scaling({n: out[n] for n in range(2, 8)}, k) for k in ("zeta1", "zeta2", "M_star_2z1")}
     fits29 = {k: fit_scaling(out, k) for k in ("zeta1", "zeta2", "M_star_2z1")}
     for lbl, f in (("n2-7", fits27), ("n2-9", fits29)):
-        print(f"--- fits {lbl} ---")
+        print(f", fits {lbl}, ")
         for k, v in f.items():
             print(f"  {k}: {v['prefactor']:.3f}±{v['prefactor_se']:.3f} * ({v['base']:.3f}±{v['base_se']:.3f})^n")
     OUT.write_text(json.dumps({"q": Q, "per_n": {str(k): v for k, v in out.items()},

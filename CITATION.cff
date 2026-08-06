@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: >-
+  If you use this software or the measurement data in it, please cite the
+  paper it accompanies, and this repository.
+title: >-
+  A finite-size crossover criterion for shadow-based moment estimation,
+  with a hardware case study
+abstract: >-
+  Code, data, and analysis accompanying a study of when a collective
+  two-copy measurement attains a lower RMSE than single-copy classical
+  shadows at equal copy budget, together with a committed-in-advance
+  hardware test.
+authors:
+  - family-names: Messerlian
+    given-names: Alexander
+    affiliation: Independent Researcher
+  - family-names: Gu
+    given-names: Ziwei
+    affiliation: >-
+      Harvard John A. Paulson School of Engineering and Applied Sciences
+repository-code: https://github.com/alex-messerlian/shadow-moment-crossover
+license: MIT
+license-url: https://github.com/alex-messerlian/shadow-moment-crossover/blob/main/LICENSE
+date-released: 2026-08-06
+keywords:
+  - classical shadows
+  - randomized measurements
+  - quantum state moments
+  - sample complexity
+  - collective measurement

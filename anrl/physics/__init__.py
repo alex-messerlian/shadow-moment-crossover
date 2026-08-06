@@ -6,10 +6,10 @@ modules. This package is pure quantum-state math and measurement.
 
 Submodules
 ----------
-* :mod:`~anrl.physics.pauli`        — Pauli operators and n-qubit Pauli strings.
-* :mod:`~anrl.physics.states`       — reference states and noise channels.
-* :mod:`~anrl.physics.entanglement` — partial transpose, negativity, PT moments.
-* :mod:`~anrl.physics.measurement`  — local-Pauli sampling and reconstruction.
+* :mod:`~anrl.physics.pauli`, Pauli operators and n-qubit Pauli strings.
+* :mod:`~anrl.physics.states`, reference states and noise channels.
+* :mod:`~anrl.physics.entanglement`, partial transpose, negativity, PT moments.
+* :mod:`~anrl.physics.measurement`, local-Pauli sampling and reconstruction.
 """
 
 from __future__ import annotations

@@ -1,7 +1,7 @@
 """Realistic single-qubit noise channels for the collective-measurement test.
 
 Amplitude damping and dephasing are applied as *explicit Kraus operators on
-every qubit* of the k-copy register — no closed-form signal formula (they are
+every qubit* of the k-copy register; no closed-form signal formula (they are
 not depolarizing).  Depolarizing is kept as the global-channel closed form from
 :mod:`anrl.benchmark.moments`.
 
@@ -11,7 +11,7 @@ qubit of ``rho^{(x)k}`` factorizes across the disjoint copies,
 ``N^{(x)kn}(rho^{(x)k}) = (N^{(x)n}(rho))^{(x)k} = sigma^{(x)k}``, so the noisy
 cyclic-test signal is exactly ``Tr(C_k sigma^{(x)k}) = Tr(sigma^k)`` where
 ``sigma = N^{(x)n}(rho)`` is the single-copy noisy state.  This is not the
-depolarizing formula — it genuinely applies the Kraus channel — it just uses the
+depolarizing formula; it genuinely applies the Kraus channel; it just uses the
 tensor structure so we never build the ``2^(kn)``-dim k-copy operator.
 """
 
@@ -69,7 +69,7 @@ def channel_collective_signal(
 ) -> float:
     """Noisy k-copy cyclic-test signal for a per-qubit channel (factorized).
 
-    Equals ``Tr(sigma^k)`` with ``sigma = N^{(x)n}(rho)`` — exactly the explicit
+    Equals ``Tr(sigma^k)`` with ``sigma = N^{(x)n}(rho)``, exactly the explicit
     construction :func:`explicit_channel_collective_signal`, but without forming
     the k-copy operator (used for the sweep at all sizes).
     """
@@ -83,7 +83,7 @@ def explicit_channel_collective_signal(
     """Explicit noisy signal: build ``rho^{(x)k}``, apply the channel to all
     ``k*n`` qubits, and measure the cyclic operator ``Tr(C_k @ noisy)``.
 
-    Ground-truth validation for :func:`channel_collective_signal` — feasible only
+    Ground-truth validation for :func:`channel_collective_signal`, feasible only
     for small ``(n, k)`` (the k-copy operator is ``2^(kn)``-dimensional).
     """
     big = kron_power(np.asarray(rho, dtype=np.complex128), k)

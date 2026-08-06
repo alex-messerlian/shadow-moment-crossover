@@ -4,7 +4,7 @@ Fixes the two defects of the original :mod:`anrl.benchmark.sweep`:
 
 1. **Ensemble.**  The old sweep used random Ginibre states depolarized at
    ``q in [0, 0.5]``, whose purity collapses toward ``2^-n`` so ``Tr(rho^k)`` for
-   ``k = 3, 4`` sits near zero — single-copy then "wins" by estimating almost
+   ``k = 3, 4`` sits near zero, single-copy then "wins" by estimating almost
    nothing.  This sweep uses :func:`~anrl.benchmark.ensembles.noisy_pure`
    (``(1-q)|psi><psi| + q I/2^n``, Haar ``|psi>``), the realistic NISQ model,
    whose ``Tr(rho^k)`` stays ``O(1)``.

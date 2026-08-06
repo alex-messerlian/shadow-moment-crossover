@@ -107,12 +107,12 @@ def analyze() -> dict:
 def render(a: dict) -> str:
     ncz, surv, se = a["ncz"], a["survival"], a["se"]
     exp = a["expected_if_executed"]
-    L = ["# Cepheus CZ characterization — depth sweep (result)\n"]
+    L = ["# Cepheus CZ characterization, depth sweep (result)\n"]
     L.append("Non-cancellable X-twirl identity echo on physical {0,1,9,10}, 3000 shots/depth. "
              "Submitted CZ counts verified 0/8/16/24/32/48; all quoted+billed 1 credit (6 total).\n")
     L.append("## Survival vs CZ depth\n")
     L.append("| CZ | survival | SE | if CZ=0 | if CZ=0.1% | if CZ=spec 0.9% |")
-    L.append("|---|---|---|---|---|---|")
+    L.append("|, |, |, |, |, |, |")
     for i, c in enumerate(ncz):
         c = int(c)
         L.append(f"| {c} | {surv[i]:.4f} | {se[i]:.4f} | {exp['cz0'][c]:.4f} | "
@@ -121,12 +121,12 @@ def render(a: dict) -> str:
     L.append(f"* survival = A·B^nCZ: **A (intercept) = {a['fit_intercept_A']:.4f} ± {a['fit_intercept_se']:.4f}**, "
              f"B = {a['fit_B']:.5f} ± {a['fit_B_se']:.5f}.")
     L.append(f"* Per-CZ decay (1−B) = {a['per_cz_decay']:+.5f}, 95% CI "
-             f"[{a['per_cz_decay_95ci'][0]:+.5f}, {a['per_cz_decay_95ci'][1]:+.5f}] — **consistent with zero.**")
+             f"[{a['per_cz_decay_95ci'][0]:+.5f}, {a['per_cz_decay_95ci'][1]:+.5f}], **consistent with zero.**")
     L.append(f"* Intercept {a['fit_intercept_A']:.4f} **agrees** with the independently measured readout "
-             f"floor {a['readout_floor']} ({a['intercept_agrees_floor']}) — the one clean consistency check.\n")
-    L.append("## Interpretation — the echo was collapsed by the compiler (CZ NOT measured)\n")
+             f"floor {a['readout_floor']} ({a['intercept_agrees_floor']}); the one clean consistency check.\n")
+    L.append("## Interpretation; the echo was collapsed by the compiler (CZ NOT measured)\n")
     L.append("The survival is FLAT at the readout floor across a 6x range of nominal CZ depth. Two readings:")
-    L.append("1. The per-CZ error is <0.02% (95%) — i.e. ~45x better than the 0.9% published median. Implausible "
+    L.append("1. The per-CZ error is <0.02% (95%), i.e. ~45x better than the 0.9% published median. Implausible "
              "for superconducting hardware.")
     L.append("2. The compiler resynthesized the identity echo and removed its gates, so every depth actually ran "
              "as ~(|+> prep, H unprep, readout) = the flat floor.")
@@ -145,7 +145,7 @@ def render(a: dict) -> str:
     L.append(f"Because the echo collapsed, a 'both-parameters-measured' reconciliation isn't available. The best "
              f"indirect CZ estimate remains the Bell run itself: measured readout + CZ~spec(0.9%) predicts Bell "
              f"purity ~0.749 vs the measured {BELL_MEASURED} (residual ~0.03, attributed to the correlated readout "
-             f"crosstalk on $0). The tension — echo shows no CZ, Bell wants ~spec CZ — is resolved by the collapse: "
+             f"crosstalk on $0). The tension, echo shows no CZ, Bell wants ~spec CZ, is resolved by the collapse: "
              f"the Bell SWAP is NOT an identity circuit, so its CZ execute and contribute error, whereas the identity "
              f"echo's CZ are optimized away.\n")
     L.append("## Recommended next step (not run here)\n")

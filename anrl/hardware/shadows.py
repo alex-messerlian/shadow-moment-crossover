@@ -1,12 +1,12 @@
-"""The single-copy route — local classical shadows as hardware circuits.
+"""The single-copy route, local classical shadows as hardware circuits.
 
 For each shot we pick a random single-qubit Pauli basis per qubit (X, Y, or Z),
 apply the corresponding pre-measurement rotation, and measure.  The local shadow
 snapshot for a qubit measured in basis ``P`` with outcome ``b`` is the standard
 ``3 R^dag |b><b| R - I`` (``R`` = the rotation applied before measurement), whose
 per-qubit expectation inverts the measurement channel so ``E[snapshot] = rho``.
-Purity is then the EXACT copy-fair U-statistic already in ``anrl`` — the same
-estimator used throughout the study — so the two routes are compared like-for-like
+Purity is then the EXACT copy-fair U-statistic already in ``anrl``; the same
+estimator used throughout the study; so the two routes are compared like-for-like
 at the same shot budget.
 """
 

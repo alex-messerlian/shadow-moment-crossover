@@ -2,7 +2,7 @@
 
 Uses ONLY measured device parameters: the per-qubit asymmetric + correlated readout
 model (device-characterization phase) and CZ error at the published median 0.9% with a
-0.5%-1.5% uncertainty band (identity echoes could not pin it — cz-characterization).
+0.5%-1.5% uncertainty band (identity echoes could not pin it, cz-characterization).
 
 Step 1 gates the whole thing: the measured-parameter model must reproduce the measured
 Bell purity 0.7184 at n=2 before predicting anything new.  Step 2 locks n in {2,3,4} x
@@ -109,11 +109,11 @@ def build_grid(g_ref: float | None = None):
 def paper_route_comparison(copy_budget: int = 20000) -> dict:
     """The route 'winner' in the PAPER'S copy-fair RMSE framework (anrl/theory).
 
-    Loads the saved Hoeffding components (results/theory_zetas.json, q=0.1 — the
+    Loads the saved Hoeffding components (results/theory_zetas.json, q=0.1; the
     characterized-noise regime), computes single-copy vs collective RMSE per n at a
     common COPY budget (collective spends k=2 copies per cyclic shot), and the
     sustained crossover.  This is the metric behind 'the predicted crossover' the task
-    references — distinct from the raw equal-shots statistical error reported per cell.
+    references, distinct from the raw equal-shots statistical error reported per cell.
     """
     raw = json.loads((HW.parent / "theory_zetas.json").read_text())
     q = raw["meta"].get("q", 0.1)
@@ -139,18 +139,18 @@ def budget() -> dict:
 
 
 def render(step1, cells, g_ref, bud, paper) -> str:
-    L = ["# Locked grid predictions — Cepheus (measured parameters, ZERO credits)\n"]
+    L = ["# Locked grid predictions, Cepheus (measured parameters, ZERO credits)\n"]
     L.append(f"Parameters: measured correlated readout ($0 P(1|0) 1.6%->16.9% with neighbor "
              f"excitation, others per-qubit measured); CZ error 0.9% median, band 0.5%-1.5%; p1=0.001.\n")
-    L.append("## Step 1 — gate: reproduce the measured Bell purity 0.7184\n")
+    L.append("## Step 1, gate: reproduce the measured Bell purity 0.7184\n")
     b = step1["band"]["mid"]
     L.append(f"* Correlated readout + spec CZ: **{b['correlated']:.4f}** (residual {step1['residual_corr_mid']:+.4f}).")
     L.append(f"* Independent readout (old model): {b['independent']:.4f} (residual {step1['residual_ind_mid']:+.4f}).")
-    L.append(f"* The correlated-readout model **closes the ~0.03 residual to +0.002** — within the Bell "
+    L.append(f"* The correlated-readout model **closes the ~0.03 residual to +0.002**, within the Bell "
              f"measurement's own CI [0.699, 0.738]. The model reproduces the data; the gate is passed.\n")
-    L.append("## Step 2 — locked grid (measured purity band from CZ 0.5%-1.5%)\n")
+    L.append("## Step 2, locked grid (measured purity band from CZ 0.5%-1.5%)\n")
     L.append("| n | state | CZ(dev) | SWAP purity lo/mid/hi | SWAP SE@10k | shadow purity | shadow SE@10k | raw-SE ratio | gate pen | readout pen |")
-    L.append("|---|---|---|---|---|---|---|---|---|---|")
+    L.append("|, |, |, |, |, |, |, |, |, |, |")
     for c in cells:
         pb = c["swap"]["purity_band"]
         L.append(f"| {c['n']} | {c['state']} | {c['swap']['cz_device']}"
@@ -160,14 +160,14 @@ def render(step1, cells, g_ref, bud, paper) -> str:
                  f"| {c['se_ratio_shadow_over_swap']}x "
                  f"| {c['swap']['gate_penalty']:.3f} | {c['swap']['readout_penalty']:.3f} |")
     L.append("")
-    L.append("### Route comparison — two metrics (both reported)\n")
-    L.append("**(a) Which route wins — the paper's copy-fair RMSE (the 'predicted crossover').** Using the saved "
+    L.append("### Route comparison, two metrics (both reported)\n")
+    L.append("**(a) Which route wins; the paper's copy-fair RMSE (the 'predicted crossover').** Using the saved "
              f"theory components (results/theory_zetas.json, q={paper['q']}, a common copy budget of "
-             f"{paper['copy_budget']:,}), the SINGLE-COPY route wins at every n we test — consistent with the "
+             f"{paper['copy_budget']:,}), the SINGLE-COPY route wins at every n we test, consistent with the "
              f"expectation and the paper's theory. The sustained crossover is **n* = {paper['crossover_n_star']}**, "
              f"so n=2,3,4 are below it. The single-copy advantage NARROWS with n as the theory says:")
     L.append("\n| n | single RMSE | collective RMSE | winner | gap (coll/single) |")
-    L.append("|---|---|---|---|---|")
+    L.append("|, |, |, |, |, |")
     for r in paper["per_n"]:
         if r["n"] <= 5:
             L.append(f"| {r['n']} | {r['single_rmse']:.4f} | {r['collective_rmse']:.4f} | {r['winner']} | {r['gap_ratio_coll_over_single']}x |")
@@ -190,7 +190,7 @@ def render(step1, cells, g_ref, bud, paper) -> str:
     L.append("## Analytic bias law vs gate-level simulation\n")
     L.append(f"Single global-depolarizing g calibrated at n=2 GHZ (g_ref={g_ref:.3f}). Discrepancy = bias law - sim:\n")
     L.append("| n | state | sim purity | bias law (single g) | discrepancy | effective g (this cell) |")
-    L.append("|---|---|---|---|---|---|")
+    L.append("|, |, |, |, |, |, |")
     for c in cells:
         L.append(f"| {c['n']} | {c['state']} | {c['swap']['purity_mid']:.3f} | {c['analytic']['bias_law_singleg']:.3f} "
                  f"| {c['analytic']['bias_law_discrepancy']:+.3f} | {c['analytic']['effective_g_full']:.3f} |")
@@ -198,10 +198,10 @@ def render(step1, cells, g_ref, bud, paper) -> str:
     L.append("The analytic law agrees at n=2 GHZ by calibration (disc ~0) but **DIVERGES** elsewhere: it already "
              "misses Haar at n=2 (state-dependent readout), and the discrepancy grows with n (up to ~0.17 at n=4 GHZ). "
              "The effective g is NOT constant across cells (it ranges widely), so a single global-depolarizing g does "
-             "not describe the device — readout scales with 2n and is state-dependent + correlated, which the "
+             "not describe the device, readout scales with 2n and is state-dependent + correlated, which the "
              "depolarizing law cannot capture. Unlike the old single-point 0.0011 agreement, the law does NOT track "
              "the gate-level simulation across the grid.\n")
-    L.append("## Step 3 — budget\n")
+    L.append("## Step 3, budget\n")
     L.append(f"* {bud['cells']} cells x {bud['shots_per_cell']:,} shots = {bud['total_shots']:,} shots = "
              f"**{bud['credits']} credits** on Rigetti Public Compute (26/100k). Available: {bud['available_credits']} "
              f"(11 spark + 40 full). Within budget.\n")
@@ -212,11 +212,11 @@ def render(step1, cells, g_ref, bud, paper) -> str:
              "at CZ=1.5% also lands in the Bell CI). The correlated model is the physically-justified correction "
              "because the $0 correlation was measured independently and it closes the residual at the median CZ; the "
              "Bell closure is robust to the linear-interpolation form (the Bell true-outcome distribution puts weight "
-             "on neighbor-excitation w in {0,2} — the two measured endpoints — so it does not rely on assumed linearity).")
+             "on neighbor-excitation w in {0,2}; the two measured endpoints; so it does not rely on assumed linearity).")
     L.append("* **n=3,4 readout is partly assumed**: only {0,1,9,10} have measured readout; the extra ladder qubits "
              "take the mean measured rates with no correlation, and the $0 correlation model is extrapolated to w>=3. "
              "These are the main untested assumptions in the larger cells.\n")
-    L.append("ZERO credits spent — local simulation only. No grid predictions were locked to an assumed CZ split; "
+    L.append("ZERO credits spent, local simulation only. No grid predictions were locked to an assumed CZ split; "
              "the CZ uncertainty is carried as an explicit band.")
     return "\n".join(L)
 

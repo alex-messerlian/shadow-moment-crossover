@@ -6,9 +6,9 @@ stress-test ensembles (Haar-pure is a special case; GHZ shares the structure;
 low-rank does NOT) we estimate the exact Hoeffding components from DENSE ``rho``
 powers, so the theory is tested rather than its noisy-pure shortcut.
 
-* :func:`sample_batched_general` — vectorized local shadows from any
+* :func:`sample_batched_general`, vectorized local shadows from any
   ``rho = (1-q) G G^dag + q I/2^n`` (rank ``>= 1``).
-* :func:`estimate_hoeffding_components_general` — the exact Hoeffding components
+* :func:`estimate_hoeffding_components_general`; the exact Hoeffding components
   ``[zeta_1, ..., zeta_k]`` for ``k in {2, 3}`` using ``zeta_c = Var(E[h|X_1..X_c])
   = Var(Re Tr(G_1..G_c rho^{k-c}))`` with dense ``rho^{k-c}``.
 """
@@ -61,7 +61,7 @@ def sample_batched_general(
     return snaps
 
 
-_TR_CHUNK = 2048  # bound the (chunk, d, d) transient (~130 MB at d=64) — chunked over tuples
+_TR_CHUNK = 2048  # bound the (chunk, d, d) transient (~130 MB at d=64), chunked over tuples
 
 
 def _tr_G_word_rho(word: np.ndarray, rho_power: np.ndarray, n: int) -> np.ndarray:

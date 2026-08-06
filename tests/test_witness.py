@@ -2,10 +2,10 @@
 
 Each test pins an exact property:
 
-1. Defining identity  — sum_P w_P(rho) tr(rho P) == negativity(rho) (1e-9).
-2. High-shot recovery — the realizable estimator recovers the true negativity.
-3. Variational lower bound (Finding C) — a wrong witness direction underestimates.
-4. Efficiency benchmark (Finding B) — at n=4 and a fixed modest shot budget the
+1. Defining identity, sum_P w_P(rho) tr(rho P) == negativity(rho) (1e-9).
+2. High-shot recovery; the realizable estimator recovers the true negativity.
+3. Variational lower bound (Finding C), a wrong witness direction underestimates.
+4. Efficiency benchmark (Finding B), at n=4 and a fixed modest shot budget the
    witness estimator (true witness, uniform measurement) beats full
    reconstruction on mean negativity error.
 """
@@ -42,7 +42,7 @@ def _exact_expectations(rho: np.ndarray, n: int) -> dict[tuple[str, ...], float]
 
 
 # ---------------------------------------------------------------------------
-# Property 1 — defining identity: sum_P w_P(rho) <P> == negativity(rho)
+# Property 1, defining identity: sum_P w_P(rho) <P> == negativity(rho)
 # ---------------------------------------------------------------------------
 def test_witness_defining_identity() -> None:
     rng = np.random.default_rng(0xC0FFEE)
@@ -65,7 +65,7 @@ def test_witness_defining_identity() -> None:
 
 
 # ---------------------------------------------------------------------------
-# Property 2 — high-shot recovery of the realizable estimator
+# Property 2, high-shot recovery of the realizable estimator
 # ---------------------------------------------------------------------------
 def test_high_shot_witness_recovery() -> None:
     rng = np.random.default_rng(2026)
@@ -78,7 +78,7 @@ def test_high_shot_witness_recovery() -> None:
 
 
 # ---------------------------------------------------------------------------
-# Property 3 — variational lower bound (Finding C): a mismatched witness
+# Property 3, variational lower bound (Finding C): a mismatched witness
 # direction underestimates the true negativity.
 # ---------------------------------------------------------------------------
 def test_variational_lower_bound() -> None:
@@ -110,7 +110,7 @@ def test_variational_lower_bound() -> None:
 
 
 # ---------------------------------------------------------------------------
-# Property 4 — efficiency benchmark (Finding B) at n=4: the witness estimator
+# Property 4, efficiency benchmark (Finding B) at n=4: the witness estimator
 # (true witness, uniform measurement) has meaningfully lower mean negativity
 # error than full reconstruction at the same modest shot budget.
 # ---------------------------------------------------------------------------

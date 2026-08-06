@@ -17,7 +17,7 @@ across pure/noisy/GHZ states and M = 4..16); it is exactly ``exact_ustatistic_va
 at k=2.  Two consequences that CORRECT the earlier two-term shortcut
 ``k^2 zeta1/M + zeta2/M^2``:
 
-* the large-M expansion of (*) is ``4 zeta1/M + (2 zeta2 - 4 zeta1)/M^2 + ...`` — the
+* the large-M expansion of (*) is ``4 zeta1/M + (2 zeta2 - 4 zeta1)/M^2 + ...``; the
   second-order coefficient is ``2 zeta2`` (asymptotically), not ``zeta2``;
 * hence the budget crossover (where the linear and higher-order terms balance) is
 
@@ -39,7 +39,7 @@ of ``28/5 = 5.6``, which the fits approach from below.
 NOT entanglement: because the snapshots are drawn from rho, the second moment is cubic in
 rho while a weight-only sum of <P>^2 is quadratic in the Pauli expectations, and the
 missing dependence is on the relative orientation of the marginal Bloch vectors through
-the correlation matrix — an invariant already nonzero for separable, classically
+the correlation matrix, an invariant already nonzero for separable, classically
 correlated states (see Section 3.4 of the paper).  A weight-only ansatz therefore fails,
 but the quantities themselves are NOT beyond closed form: at k = 2 the ensemble-averaged
 ``zeta1`` and ``zeta2`` are exact rational functions of ``(n, q)``, implemented here as
@@ -53,7 +53,7 @@ from __future__ import annotations
 import numpy as np
 
 # Converged reference scalings from this derivation (noisy-pure, q=0.1). MC values,
-# NOT closed forms — recorded so the law is reproducible, not to be taken on faith.
+# NOT closed forms, recorded so the law is reproducible, not to be taken on faith.
 REFERENCE_SCALINGS_Q0_1 = {
     "n_range_2_7": {"zeta1": (0.63, 1.346), "zeta2": (1.10, 6.928), "M_star": (0.87, 5.147)},
     "n_range_2_9": {"zeta1": (0.72, 1.299), "zeta2": (1.09, 6.941), "M_star": (0.76, 5.345)},
@@ -62,7 +62,7 @@ REFERENCE_SCALINGS_Q0_1 = {
 
 
 def hoeffding_variance(m: int, zeta1: float, zeta2: float) -> float:
-    """EXACT k=2 U-statistic variance ``[4(M-2)zeta1 + 2 zeta2] / [M(M-1)]`` — eq. (*).
+    """EXACT k=2 U-statistic variance ``[4(M-2)zeta1 + 2 zeta2] / [M(M-1)]``, eq. (*).
 
     Valid for ``M >= 2``.  Equal to :func:`~anrl.theory.variance.exact_ustatistic_variance`
     with ``k = 2`` and ``components = [zeta1, zeta2]``.
@@ -78,7 +78,7 @@ def hoeffding_rmse(m: int, zeta1: float, zeta2: float) -> float:
 
 
 def crossover_budget(zeta1: float, zeta2: float) -> float:
-    """Budget threshold ``M* = zeta2 / (2 zeta1)`` — eq. (**), the EXACT-formula crossover.
+    """Budget threshold ``M* = zeta2 / (2 zeta1)``, eq. (**), the EXACT-formula crossover.
 
     Below ``M*`` the ``zeta2`` (kernel-variance) term dominates and RMSE ~ 1/M
     (alpha -> 1); above it the ``zeta1`` term dominates and RMSE ~ 1/sqrt(M)
@@ -113,7 +113,7 @@ def single_qubit_zeta1(t: float) -> float:
 
     (``p = (1+t^2)/2``, so ``p^2 = (1 + 2 t^2 + t^4)/4`` and the identity collapses.)
     This is the ONLY n for which ``zeta1`` has a simple closed form; for n >= 2 the
-    weight-only Pauli ansatz ``zeta1 = sum_P c_{|P|} <P>^2`` fails — not because of
+    weight-only Pauli ansatz ``zeta1 = sum_P c_{|P|} <P>^2`` fails; not because of
     entanglement, but because the ansatz is quadratic in the Pauli expectations while the
     second moment is cubic in rho, and it misses the correlation-matrix invariant that is
     already nonzero for separable states (Section 3.4).  ``zeta1`` must be computed

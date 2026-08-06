@@ -10,12 +10,12 @@ because ``CZ·CZ = I`` and ``T·T = I``.  Each CZ's twirl is therefore locally
 self-correcting: the ideal circuit unitary is unchanged, so the SWAP-test
 outcome distribution is bit-for-bit identical to the untwirled circuit and NO
 measurement-frame correction is needed.  Meanwhile the coherent error channel on
-each CZ is independently Pauli-twirled toward a stochastic channel — the whole
+each CZ is independently Pauli-twirled toward a stochastic channel; the whole
 point of the experiment.
 
 Everything here is verified numerically (``verify_twirl``): the correcting Pauli,
 the native gate decompositions, and the full-circuit logical equivalence.
-Zero credits — pure construction + local simulation.
+Zero credits, pure construction + local simulation.
 """
 
 from __future__ import annotations
@@ -229,7 +229,7 @@ def ideal_distribution(instrs: list, n: int) -> tuple[np.ndarray, float]:
 
 def insert_x_before_cz(instrs: list, phys_q: int, cz_pair: tuple) -> list:
     """Positive control: insert one uncorrected rx(pi) on ``phys_q`` immediately before
-    the first CZ acting on ``cz_pair``.  Logically NON-trivial — its outcome distribution
+    the first CZ acting on ``cz_pair``.  Logically NON-trivial; its outcome distribution
     differs from the untwirled circuit, so matching it on hardware proves that single-qubit
     gates inserted around a mid-circuit CZ actually execute (are not stripped/resynthesized
     away)."""
@@ -248,7 +248,7 @@ def verify_twirl(twirled_instrs: list, untw_instrs: list, n: int, tol: float = 1
     """Assert the twirled circuit is logically identical to the untwirled one on GHZ.
 
     Checks (1) the two noiseless outcome distributions are bit-for-bit identical and
-    (2) both give the SWAP-test purity 1.0 (GHZ is pure) — so the same swap_sign
+    (2) both give the SWAP-test purity 1.0 (GHZ is pure); so the same swap_sign
     analysis applies to the twirled counts with NO frame correction.
     """
     qc_t, _ = _compact_circuit(twirled_instrs, n)

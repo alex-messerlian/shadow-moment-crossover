@@ -35,7 +35,7 @@ def _noisy_states(n: int, k: int, seed: int) -> list[np.ndarray]:
 
 
 # ---------------------------------------------------------------------------
-# 1 — purity reference values
+# 1, purity reference values
 # ---------------------------------------------------------------------------
 def test_purity_reference_values() -> None:
     for n in (2, 3):
@@ -44,7 +44,7 @@ def test_purity_reference_values() -> None:
 
 
 # ---------------------------------------------------------------------------
-# 2 — the noise model is correct (signal formula, tested directly)
+# 2; the noise model is correct (signal formula, tested directly)
 # ---------------------------------------------------------------------------
 def test_signal_formula_direct() -> None:
     for n in (2, 3, 4):
@@ -92,7 +92,7 @@ def test_signal_formula_matches_explicit_swap_construction() -> None:
 
 
 # ---------------------------------------------------------------------------
-# 3 — both estimators are approximately unbiased at their target
+# 3, both estimators are approximately unbiased at their target
 # ---------------------------------------------------------------------------
 def test_shadow_unbiased_high_snapshots() -> None:
     rng = np.random.default_rng(0)
@@ -113,7 +113,7 @@ def test_collective_unbiased_zero_noise() -> None:
 
 
 # ---------------------------------------------------------------------------
-# 4 — harness accounts for copy cost and pairs by state
+# 4, harness accounts for copy cost and pairs by state
 # ---------------------------------------------------------------------------
 def test_evaluate_estimator_copy_accounting_and_pairing() -> None:
     states = _noisy_states(2, 6, seed=5)
@@ -131,7 +131,7 @@ def test_evaluate_estimator_copy_accounting_and_pairing() -> None:
 
 
 # ---------------------------------------------------------------------------
-# 5 — the copy-fair single-copy estimator does NOT blow up with n; the apparent
+# 5; the copy-fair single-copy estimator does NOT blow up with n; the apparent
 #     exponential growth was a subsampling artifact.
 # ---------------------------------------------------------------------------
 def test_fair_single_copy_no_exponential_blowup() -> None:
@@ -158,14 +158,14 @@ def test_fair_single_copy_no_exponential_blowup() -> None:
 
     # The apparent "exponential growth" is a SUBSAMPLING artifact: under M//2 the
     # RMSE grows sharply (>=3x) and blows up at n=4, while the fair estimator does
-    # not — same copies, only the (free) post-processing differs.
+    # not, same copies, only the (free) post-processing differs.
     assert subsampled[4] >= 3.0 * subsampled[2]
     assert subsampled[4] > 0.8
     assert fair[4] < 0.15  # ...vs the subsampled >0.8
 
 
 # ---------------------------------------------------------------------------
-# 6 — under the copy-fair estimator the collective advantage is noise-dependent:
+# 6, under the copy-fair estimator the collective advantage is noise-dependent:
 #     a genuine crossover at low n under gate noise.
 # ---------------------------------------------------------------------------
 def test_fair_estimator_reveals_purity_crossover() -> None:
@@ -187,7 +187,7 @@ def test_fair_estimator_reveals_purity_crossover() -> None:
         )["rmse"]
 
     # At zero gate noise the collective (unbiased) estimate wins; but at p_gate=0.1
-    # its noise bias pushes it above the copy-optimal single-copy estimate — a
+    # its noise bias pushes it above the copy-optimal single-copy estimate, a
     # genuine crossover the old O(M) "collective wins" result hid.
     assert collective(0.0) < fair                # collective wins with no noise
     assert fair < collective(0.1)                # single-copy wins under gate noise (crossover)

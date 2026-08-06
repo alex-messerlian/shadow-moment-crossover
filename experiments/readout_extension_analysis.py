@@ -84,7 +84,7 @@ def p10_table(q: int, byw: dict) -> dict:
     tbl = {}
     if q in MEASURED_READOUT:
         idle, exc, _ = MEASURED_READOUT[q]
-        tbl[0] = idle; tbl[2] = exc            # device-char w0, w2 (validated by the Bell run) — kept
+        tbl[0] = idle; tbl[2] = exc            # device-char w0, w2 (validated by the Bell run), kept
         for w, d in byw.items():
             if w not in (0, 2):                # add only the NEW high-w points (saturation)
                 tbl[w] = d["p10"]
@@ -112,7 +112,7 @@ def build_confusion_v2(phys_qubits, model):
     """Joint confusion using the MEASURED saturating P(1|0)(w) table per qubit.
 
     ``model[q] = {'tbl': {w: p10}, 'p01': p01}``.  Qubits not measured fall back to mean
-    rates with no correlation (grid assumption) — flagged where it applies (Haar n=4).
+    rates with no correlation (grid assumption), flagged where it applies (Haar n=4).
     """
     from anrl.hardware.readout_model import _MEAN_P01, _MEAN_P10
 
@@ -139,10 +139,10 @@ def main() -> None:
     counts = load_counts()
     rates = per_qubit_rates(counts)
 
-    # --- assemble v2 model: measured saturating P(1|0)(w) table + measured p01 ---
+    #, assemble v2 model: measured saturating P(1|0)(w) table + measured p01, 
     v2 = {q: {"tbl": p10_table(q, rates[q]["p10_by_w"]), "p01": rates[q]["p01"]} for q in PHYS}
 
-    # --- how far off was the grid's LINEAR w-extrapolation? (measured vs v1 at high w) ---
+    #, how far off was the grid's LINEAR w-extrapolation? (measured vs v1 at high w), 
     from anrl.hardware.readout_model import _MEAN_P10
 
     def grid_p10(q, w):
@@ -159,7 +159,7 @@ def main() -> None:
                          "error": round(grid_p10(q, w) - d["p10"], 4)})
         extrap_error[q] = rows
 
-    # --- re-lock n=3,4 GHZ + Haar with v2 readout ---
+    #, re-lock n=3,4 GHZ + Haar with v2 readout, 
     def relock(prep):
         n = prep.n
         q, phys_order = swap_gate_noisy_probs(prep, CZ_MID, P1)
@@ -178,13 +178,13 @@ def main() -> None:
                              "old_purity": old, "new_purity": round(new, 4),
                              "delta": round(new - old, 4)})
 
-    # --- n=2 regression check (Bell) under the updated {0,1,9,10} rates ---
+    #, n=2 regression check (Bell) under the updated {0,1,9,10} rates, 
     signs2 = np.array([swap_sign(format(b, "04b"), 2) for b in range(16)])
     qb = gate_noisy_probs(bell_state(), CZ_MID, P1)
     bell_v1 = float(signs2 @ (correlated_confusion([0, 1, 9, 10], True) @ qb))
     bell_v2 = float(signs2 @ (build_confusion_v2([0, 1, 9, 10], v2) @ qb))
 
-    # --- build the v2 grid: copy v1, re-lock the n=3,4 SWAP cells with measured readout ---
+    #, build the v2 grid: copy v1, re-lock the n=3,4 SWAP cells with measured readout, 
     cz_band = {"lo": avg_gate_error_to_depol_param(0.005, 2), "mid": CZ_MID,
                "hi": avg_gate_error_to_depol_param(0.015, 2)}
     v2_grid = json.loads(json.dumps(v1))  # deep copy

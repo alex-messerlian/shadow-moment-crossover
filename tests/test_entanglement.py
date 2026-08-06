@@ -25,7 +25,7 @@ from anrl.physics import (
 
 
 # ---------------------------------------------------------------------------
-# Group 1 — reference negativity values (Bell entangled, maximally mixed sep.)
+# Group 1, reference negativity values (Bell entangled, maximally mixed sep.)
 # ---------------------------------------------------------------------------
 def test_negativity_reference_values() -> None:
     # |Phi+> is maximally entangled: negativity = 1/2.
@@ -35,7 +35,7 @@ def test_negativity_reference_values() -> None:
 
 
 # ---------------------------------------------------------------------------
-# Group 2 — the second PT moment equals the purity
+# Group 2; the second PT moment equals the purity
 # ---------------------------------------------------------------------------
 def test_pt_moment_two_equals_purity() -> None:
     rng = np.random.default_rng(20260711)
@@ -47,7 +47,7 @@ def test_pt_moment_two_equals_purity() -> None:
 
 
 # ---------------------------------------------------------------------------
-# Group 3 — Werner threshold at p = 1/3
+# Group 3, Werner threshold at p = 1/3
 # ---------------------------------------------------------------------------
 def test_werner_threshold() -> None:
     assert negativity(werner(0.30)) == pytest.approx(0.0, abs=1e-9)
@@ -61,7 +61,7 @@ def test_werner_threshold() -> None:
 
 
 # ---------------------------------------------------------------------------
-# Group 4 — four PT moments reconstruct the exact two-qubit negativity
+# Group 4, four PT moments reconstruct the exact two-qubit negativity
 # ---------------------------------------------------------------------------
 def test_negativity_from_four_moments() -> None:
     rng = np.random.default_rng(11072026)
@@ -77,7 +77,7 @@ def test_negativity_from_four_moments() -> None:
 
 
 # ---------------------------------------------------------------------------
-# Group 5 — GHZ negativity is 1/2 for the balanced bipartition
+# Group 5, GHZ negativity is 1/2 for the balanced bipartition
 # ---------------------------------------------------------------------------
 def test_ghz_negativity_balanced_bipartition() -> None:
     assert negativity(ghz(3)) == pytest.approx(0.5, abs=1e-9)  # dA=4, dB=2
@@ -97,7 +97,7 @@ def test_default_bipartition_is_first_ceil_half() -> None:
 
 
 # ---------------------------------------------------------------------------
-# Group 6 — depolarized Bell state: N(q) = max(0, 0.5 - 0.75 q)
+# Group 6, depolarized Bell state: N(q) = max(0, 0.5 - 0.75 q)
 # ---------------------------------------------------------------------------
 def test_depolarized_bell_negativity() -> None:
     bell = bell_phi_plus()

@@ -56,7 +56,7 @@ def main() -> None:
             job = poll_job(sched, rec["job_id"], timeout=21600, interval=30)
         else:
             if submitted_this_run >= max_new:
-                print(f"[{name}] MAX_JOBS={max_new} reached this run — stopping (resumable).")
+                print(f"[{name}] MAX_JOBS={max_new} reached this run, stopping (resumable).")
                 break
             shots = manifest[name]["shots"]
             bal_before = balance(mgmt, org)
@@ -73,7 +73,7 @@ def main() -> None:
                    "status": job.status, "submitted_at": job.submitted_at, "bal_before": bal_before}
             progress[name] = rec
             PROGRESS.write_text(json.dumps(progress, indent=2))
-            print(f"[{name}] submitted {job.id} — polling...")
+            print(f"[{name}] submitted {job.id}, polling...")
             job = poll_job(sched, job.id, timeout=21600, interval=30)
         if job.status != "Completed":
             rec["status"] = job.status

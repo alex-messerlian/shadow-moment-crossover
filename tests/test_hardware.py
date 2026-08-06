@@ -34,7 +34,7 @@ from anrl.hardware.swap_test import _swap_test_body, swap_sign
 
 
 # --------------------------------------------------------------------------- #
-# Destructive SWAP test — exact recovery of Tr(rho^2)                          #
+# Destructive SWAP test, exact recovery of Tr(rho^2)                          #
 # --------------------------------------------------------------------------- #
 @pytest.mark.parametrize("prep", [bell_state(), haar_pure(2, 0), haar_pure(2, 7), haar_pure(3, 1)])
 def test_swap_test_recovers_pure_purity_exactly(prep):

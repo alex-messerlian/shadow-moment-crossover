@@ -12,7 +12,7 @@ Generalizes the purity (k=2) benchmark to the moments Tr(rho^k), k = 2, 3, 4.
 * Under *global depolarizing* at rate ``p`` on the k-copy register the signal is
   ``(1 - p) * Tr(rho^k) + p * d^(1-k)``  (the maximally-mixed contribution is
   ``p * Tr(C_k) / d^k = p * d / d^k = p * d^(1-k)``).
-* Single-copy route: the k-th order classical-shadow U-statistic — the mean of
+* Single-copy route: the k-th order classical-shadow U-statistic; the mean of
   ``Tr(snap_{i1} @ ... @ snap_{ik})`` over distinct index k-tuples, unbiased for
   ``Tr(rho^k)``.
 """
@@ -34,7 +34,7 @@ _HIGH_K_FAIR_TUPLES = 200_000
 # 2^{2n} x 2^{2n} "X" tensor (opposite-slot coincidences), so it is O(16^n) =
 # O(2^{4n}) = O(d^4) memory (the X tensor) and O(16^n) time for the two X
 # contractions (plus O(M 8^n) for the batched g@g matmuls).  The X tensor alone
-# is ~1 MB at n=4, ~17 MB at n=5, ~268 MB at n=6 (the cap) — it grows 16x per
+# is ~1 MB at n=4, ~17 MB at n=5, ~268 MB at n=6 (the cap); it grows 16x per
 # qubit, so fail fast beyond the cap rather than silently thrashing.  (The moment
 # sweep runs at n <= 4, where the X tensor is ~1 MB.)
 _K4_EXACT_MAX_N = 6
@@ -133,10 +133,10 @@ def shadow_moment_estimate(
     Copy accounting: forming tuples is classical post-processing (zero copy
     cost), so the copy-fair estimator uses as many tuples as possible.
 
-    * ``n_tuples is None`` (default): the copy-fair estimator — the EXACT full
+    * ``n_tuples is None`` (default): the copy-fair estimator; the EXACT full
       U-statistic for k=2, k=3 and k=4, and a large random subsample
       (``_HIGH_K_FAIR_TUPLES``) for k>=5 (no closed form implemented there).
-    * ``n_tuples`` given: a random subsample of that many tuples — variance
+    * ``n_tuples`` given: a random subsample of that many tuples, variance
       inflating (saves no copies), kept only for comparison / the old
       ``n_snapshots // k`` convention.
     """
@@ -250,7 +250,7 @@ def moment_ustatistic_from_snapshots(
     """k-th order shadow U-statistic of ``Tr(rho^k)`` from pre-drawn snapshots.
 
     ``snaps`` has shape ``(M, n, 2, 2)``.  Forming the ``n_tuples`` index k-tuples
-    is pure classical post-processing — it consumes **no copies** — so the copy
+    is pure classical post-processing; it consumes **no copies**; so the copy
     budget is ``M`` regardless of ``n_tuples``.  More tuples only lower the
     variance (toward the full U-statistic minimum).
     """

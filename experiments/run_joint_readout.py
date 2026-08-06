@@ -51,7 +51,7 @@ def main():
                    "submitted_at": job.submitted_at, "bal_before": bal_before}
             progress[name] = rec
             PROGRESS.write_text(json.dumps(progress, indent=2))
-            print(f"[{name}] submitted {job.id} — polling...")
+            print(f"[{name}] submitted {job.id}, polling...")
             job = poll_job(sched, job.id, timeout=21600, interval=30)
         if job.status != "Completed":
             rec["status"] = job.status

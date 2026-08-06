@@ -69,7 +69,7 @@ def main() -> None:
             job_id=job.id, cost=quo["cost"], shots=shots, status=job.status,
             submitted_at=job.submitted_at)
         _save(progress)
-        print(f"[{name}] submitted job {job.id} — polling...")
+        print(f"[{name}] submitted job {job.id}, polling...")
 
         job = poll_job(sched, job.id, timeout=540, interval=15)
         if job.status != "Completed":

@@ -1,4 +1,4 @@
-"""Part 1 — the exact, parameter-free collective bias laws.
+"""Part 1; the exact, parameter-free collective bias laws.
 
 The k-copy cyclic-permutation ("collective") test on a noise-damaged register
 returns a *biased* estimate of ``Tr(rho^k)``.  The bias has an exact closed form,
@@ -81,7 +81,7 @@ def brute_force_collective_value(rho: np.ndarray, k: int, noise_model: str, g: f
     """Ground-truth ``Tr(C_k . noisy_kcopy)`` from an explicit ``2^{nk}``-dim construction.
 
     Builds the full ``k``-copy state, damages it, and traces against the explicit
-    cyclic-permutation operator ``C_k`` — WITHOUT assuming either bias law.
+    cyclic-permutation operator ``C_k``, WITHOUT assuming either bias law.
     Depolarizing: mix ``rho^{ox k}`` with ``I/D`` at rate ``g``.  Per-qubit: apply
     the Kraus channel to all ``k n`` physical qubits of ``rho^{ox k}``.  Feasible
     only for small ``(n, k)`` (the register is ``2^{nk}``-dimensional).

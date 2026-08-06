@@ -4,10 +4,10 @@ Tests the crossover law across copy budgets ``M``, which requires the exact
 single-copy U-statistic at large ``M`` (up to 64x the 2000 baseline).  Two
 enabling pieces:
 
-* :func:`sample_batched` — a vectorized local-shadow sampler for the
+* :func:`sample_batched`, a vectorized local-shadow sampler for the
   :class:`~anrl.benchmark.ensembles.noisy_pure` ensemble (no Python loop over the
   ``M`` snapshots), so ``M ~ 10^5`` is cheap.
-* :func:`moment_ustat_linear` — the EXACT single-copy moment U-statistic computed
+* :func:`moment_ustat_linear`; the EXACT single-copy moment U-statistic computed
   in ``O(M 2^{2n})`` (LINEAR in ``M``, no ``M x M`` pair matrix).  The key move:
   the power-sum matrix ``S = sum_i G_i = sum_i ox_q g_i^q`` is built by splitting
   the qubits in half, ``S = sum_i A_i ox B_i``, and evaluating ``sum_i A_i ox
@@ -44,7 +44,7 @@ def sample_batched(
     Draws all ``M`` Haar single-qubit rotations at once (batched QR), rotates the
     pure component ``|psi>`` to get outcome probabilities ``p(b) = (1-q)|U psi|^2_b
     + q/2^n``, samples one outcome per snapshot by inverse-CDF, and forms the
-    per-qubit shadow ``3 U_q^dag |b_q><b_q| U_q - I`` — all without a Python loop
+    per-qubit shadow ``3 U_q^dag |b_q><b_q| U_q - I``; all without a Python loop
     over snapshots.  Reproduces the distribution of
     :func:`~anrl.benchmark.scaling.snapshots_factored` (unbiased shadow).
     """

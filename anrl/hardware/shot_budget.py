@@ -3,7 +3,7 @@
 The destructive SWAP test returns, per shot, a sign value ``s in {+1, -1}`` with
 ``E[s]`` equal to the measured purity ``mu``.  Since ``s`` is bounded,
 ``Var[s] = 1 - mu^2`` exactly, so the standard error of the purity estimate over
-``N`` shots is ``sqrt((1 - mu^2) / N)`` — no simulation needed for the collective
+``N`` shots is ``sqrt((1 - mu^2) / N)``; no simulation needed for the collective
 route's error bars.  We size ``N`` so that this SE sits well below the collective
 bias we are trying to resolve.
 
@@ -43,6 +43,6 @@ def credits_to_shots(credits: float) -> int:
 
 
 def shots_for_bias_resolution(measured: float, bias: float, sigma: float = 5.0) -> int:
-    """Shots so the SWAP-test SE is ``bias / sigma`` — i.e. resolve the bias at ``sigma``-σ."""
+    """Shots so the SWAP-test SE is ``bias / sigma``, i.e. resolve the bias at ``sigma``-σ."""
     target_se = bias / sigma
     return swap_shots_for_se(measured, target_se)

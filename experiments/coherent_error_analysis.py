@@ -5,7 +5,7 @@ Deliverables:
     execute?  P(counts on posctrl-ideal support) vs P(untwirled-ideal support).  These
     supports are disjoint (TVD 1.0), so this is a clean binary test that mid-circuit
     gates around a CZ are not stripped/resynthesized away.
-  * Untwirled baseline (same session) vs historical 0.378/0.420 — drift control.
+  * Untwirled baseline (same session) vs historical 0.378/0.420, drift control.
   * Twirled randomized-compiling estimate = mean purity over twirls, with a CI and the
     per-twirl scatter decomposed into physical scatter vs shot noise (high physical
     scatter is itself a coherent-error signature).
@@ -61,9 +61,9 @@ def positive_control(manifest: dict, n: int = 3) -> dict | None:
     return {"shots": tot, "P_on_posctrl_support": round(p_pc, 4),
             "P_on_untwirled_support": round(p_un, 4),
             "gates_around_cz_execute": bool(executed),
-            "verdict": ("EXECUTED — mid-circuit gates around CZ run (twirl survives)"
+            "verdict": ("EXECUTED, mid-circuit gates around CZ run (twirl survives)"
                         if executed else
-                        "STRIPPED — inserted gate removed; twirl likely collapsed")}
+                        "STRIPPED, inserted gate removed; twirl likely collapsed")}
 
 
 def analyze_n(n: int, manifest: dict) -> dict:
@@ -151,7 +151,7 @@ def main() -> None:
 
     # non-monotonicity: compare BOTH this-session untwirled and twirled at n3 vs n4.
     # (Historical was n3<n4; the honest question is what happened this session and whether
-    # twirling — not drift — is responsible for any change.)
+    # twirling; not drift, is responsible for any change.)
     t3 = result["n3"]["twirled"]; t4 = result["n4"]["twirled"]
     u3 = result["n3"]["untwirled_same_session"]; u4 = result["n4"]["untwirled_same_session"]
     if t3 and t4 and u3 and u4:

@@ -9,9 +9,9 @@ single-copy) per noise model and rate.  Saves the full grid to
 results/scaling_crossover.json and prints the four report questions with numbers.
 
 Ensembles
-    noisy_pure   — (1-q)|psi><psi| + q I/2^n, |psi> Haar; purity stays O(1)
+    noisy_pure, (1-q)|psi><psi| + q I/2^n, |psi> Haar; purity stays O(1)
                    (the realistic NISQ regime).  Swept for all n.
-    random_mixed — full-rank Ginibre depolarized at q; purity collapses toward
+    random_mixed, full-rank Ginibre depolarized at q; purity collapses toward
                    2^-n (the old highly-mixed ensemble).  Capped at n<=6 (dense
                    O(2^{2n}) sampling / channel cost).
 
@@ -85,7 +85,7 @@ def main() -> None:
     save_scaling(rows, OUT, metadata)
     print(f"Grid done in {wall:.1f}s -> {OUT.relative_to(REPO)} ({len(rows)} rows)\n")
 
-    # --- single-copy RMSE vs n (noise-independent) + growth factor per qubit ---
+    #, single-copy RMSE vs n (noise-independent) + growth factor per qubit, 
     print("Single-copy FAIR purity RMSE vs n  [noise-independent per (ensemble, n)]:")
     for ensemble in ("noisy_pure", "random_mixed"):
         seen: dict[int, tuple[float, float]] = {}
@@ -104,7 +104,7 @@ def main() -> None:
         growth = _fit_growth_per_qubit(ns, [seen[n][0] for n in ns])
         print(f"    -> geometric growth factor per qubit (log-linear fit): {growth:.2f}x")
 
-    # --- Q3: crossover in n per (noise model, rate) ---
+    #, Q3: crossover in n per (noise model, rate), 
     print("\n" + "=" * 72)
     print("CROSSOVER IN n (smallest n where collective beats single-copy):")
     for ensemble in ("noisy_pure", "random_mixed"):

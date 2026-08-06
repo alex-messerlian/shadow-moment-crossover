@@ -5,7 +5,7 @@ hardware job:
 
 * the device noise model and its reference rates (with the readout assumption
   stated and its sensitivity mapped);
-* the calibration surface — measured Bell purity vs ``(p2, p_ro)`` — and its
+* the calibration surface, measured Bell purity vs ``(p2, p_ro)``; and its
   inversion;
 * the locked measured-purity predictions for four states x two routes, from the
   full Qiskit noise simulation AND the analytic global-depolarizing bias law,
@@ -171,7 +171,7 @@ def shot_budget(per_state: list[dict]) -> dict:
 def render_report(pred, sens, budget, calib) -> str:
     L = []
     A = L.append
-    A("# Cepheus purity experiment — locked predictions (ZERO credits)\n")
+    A("# Cepheus purity experiment, locked predictions (ZERO credits)\n")
     A(f"Noise model (Qiskit Aer depolarizing parameters): p2(CZ)={P2}, p1(rx)={P1}, "
       f"p_ro(readout)={P_RO}. rz is virtual (noiseless).")
     A(f"CZ avg gate error at p2={P2} is {depol_param_to_avg_gate_error(P2,2):.5f} "
@@ -181,7 +181,7 @@ def render_report(pred, sens, budget, calib) -> str:
 
     A("## Locked measured-purity predictions (p_ro = %.3f)\n" % P_RO)
     A("| state | true | SWAP (Qiskit) | SWAP (bias law) | discrep | own g (full) | own g (gate-only) | shadow mean | shadow SE@20k |")
-    A("|---|---|---|---|---|---|---|---|---|")
+    A("|, |, |, |, |, |, |, |, |, |")
     for s in pred["per_state"]:
         A(f"| {s['state']} | {s['true_purity']:.3f} | {s['swap_measured_qiskit']:.4f} | "
           f"{s['swap_biaslaw_g_bell']:.4f} | {s['swap_discrepancy']:+.4f} | {s['swap_own_g_full']:.4f} | "
@@ -195,14 +195,14 @@ def render_report(pred, sens, budget, calib) -> str:
 
     A("## Readout sensitivity (readout dominates the collective bias)\n")
     A("| p_ro | Bell measured |")
-    A("|---|---|")
+    A("|, |, |")
     for r in sens:
         A(f"| {r['p_ro']:.3f} | {r['bell_measured']:.4f} |")
     A("")
 
     A("## Shot budget\n")
     A("| state | collective bias | shots for 5σ | SWAP SE @20k | bias significance @20k |")
-    A("|---|---|---|---|---|")
+    A("|, |, |, |, |, |")
     for r in budget["per_state"]:
         A(f"| {r['state']} | {r['collective_bias']:.4f} | {r['shots_for_5sigma']} | "
           f"{r['swap_se_at_recommended']:.4f} | {r['swap_bias_sigma_at_recommended']}σ |")
@@ -216,7 +216,7 @@ def render_report(pred, sens, budget, calib) -> str:
       f"{calib['inversion_demo']['consistent_p_ro_p2']}\n")
     A("Caveats (stated for honesty):")
     A("* The collective route resolves every bias at >=4.6σ at 20k shots; the single-copy")
-    A("  (shadow) route has ~2-4x larger error bars at the SAME shot budget — that gap is")
+    A("  (shadow) route has ~2-4x larger error bars at the SAME shot budget; that gap is")
     A("  itself the n=2 collective advantage. Its shadow SE is a 1/sqrt(M) extrapolation")
     A("  from M=2000, which is a CONSERVATIVE upper bound (the U-statistic SE falls slightly")
     A("  faster than 1/sqrt(M) at small M), so the shadow route is if anything a touch better.")
@@ -224,7 +224,7 @@ def render_report(pred, sens, budget, calib) -> str:
     A("  shot consumes 1 copy (n=2 qubits). Open Quantum bills per shot, so equal-shots is")
     A("  the fair credit comparison; at equal COPIES the shadow route would get sqrt(2) more")
     A("  shots, still short of the collective route at n=2.\n")
-    A("No hardware job submitted — ZERO quantum credits spent.")
+    A("No hardware job submitted, ZERO quantum credits spent.")
     return "\n".join(L)
 
 

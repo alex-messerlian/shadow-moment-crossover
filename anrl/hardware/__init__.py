@@ -1,10 +1,10 @@
 """Real-hardware purity experiment circuits for Rigetti Cepheus (Open Quantum).
 
-* :mod:`~anrl.hardware.backend` — auth, device metadata, coupling map (listing is
+* :mod:`~anrl.hardware.backend`, auth, device metadata, coupling map (listing is
   free; no job is ever submitted here).
-* :mod:`~anrl.hardware.state_prep` — reproducible state prep with exact recorded rho.
-* :mod:`~anrl.hardware.swap_test` — the destructive (Bell-basis) SWAP test (collective).
-* :mod:`~anrl.hardware.shadows` — local Pauli classical shadows (single-copy).
+* :mod:`~anrl.hardware.state_prep`, reproducible state prep with exact recorded rho.
+* :mod:`~anrl.hardware.swap_test`; the destructive (Bell-basis) SWAP test (collective).
+* :mod:`~anrl.hardware.shadows`, local Pauli classical shadows (single-copy).
 """
 
 from __future__ import annotations

@@ -33,7 +33,7 @@ from anrl.benchmark.shadows import _snapshots
 
 
 # ---------------------------------------------------------------------------
-# 1 — cyclic permutation identity Tr(C_k rho^{(x)k}) == Tr(rho^k)
+# 1, cyclic permutation identity Tr(C_k rho^{(x)k}) == Tr(rho^k)
 # ---------------------------------------------------------------------------
 def test_cyclic_permutation_identity() -> None:
     rng = np.random.default_rng(0)
@@ -48,7 +48,7 @@ def test_cyclic_permutation_identity() -> None:
 
 
 # ---------------------------------------------------------------------------
-# 2 — depolarizing signal formula matches an explicit construction
+# 2, depolarizing signal formula matches an explicit construction
 # ---------------------------------------------------------------------------
 def test_depolarizing_signal_matches_explicit() -> None:
     rng = np.random.default_rng(1)
@@ -67,7 +67,7 @@ def test_depolarizing_signal_matches_explicit() -> None:
 
 
 # ---------------------------------------------------------------------------
-# 3 — Kraus channels reproduce the independently computed anchor values
+# 3, Kraus channels reproduce the independently computed anchor values
 # ---------------------------------------------------------------------------
 def test_kraus_channels_reproduce_anchor() -> None:
     # rank-3 random state depolarized at q=0.25 with purity 0.373313 (seed 11).
@@ -91,7 +91,7 @@ def test_kraus_channels_reproduce_anchor() -> None:
 
 
 # ---------------------------------------------------------------------------
-# 4 — shadow moment estimators are unbiased for k = 2, 3, 4
+# 4, shadow moment estimators are unbiased for k = 2, 3, 4
 # ---------------------------------------------------------------------------
 def test_shadow_moment_estimators_unbiased() -> None:
     # The k-th order U-statistic is unbiased for Tr(rho^k) by construction; verify
@@ -111,7 +111,7 @@ def test_shadow_moment_estimators_unbiased() -> None:
 
 
 # ---------------------------------------------------------------------------
-# 4b — the EXACT k=4 full U-statistic matches brute-force enumeration (1e-9)
+# 4b; the EXACT k=4 full U-statistic matches brute-force enumeration (1e-9)
 # ---------------------------------------------------------------------------
 def _brute_force_k4(snaps: np.ndarray) -> float:
     """Reference: mean of Tr(G_a G_b G_c G_d) over ALL distinct ordered 4-tuples."""
@@ -165,7 +165,7 @@ def test_exact_k4_unbiased() -> None:
 
 
 # ---------------------------------------------------------------------------
-# 5 — the sweep runs end to end and produces a results file
+# 5; the sweep runs end to end and produces a results file
 # ---------------------------------------------------------------------------
 def test_sweep_runs_and_saves(tmp_path) -> None:
     rows = run_sweep(

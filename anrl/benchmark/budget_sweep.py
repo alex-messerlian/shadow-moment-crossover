@@ -15,8 +15,8 @@ Feasibility of the EXACT single-copy U-statistic sets the reachable budgets per
 ``(n, k)`` (:func:`budgets_for`): k=2,3 are M-linear
 (:func:`~anrl.benchmark.budget.moment_ustat_linear`) so reach large ``M``; k=4's
 reference estimator is ``O(M^2)`` so is capped at small budgets.  Within a trial
-the budgets are NESTED — one ``M_max`` sample is drawn and the U-statistic is read
-off each prefix — so the budget axis is nearly free and its points are paired.
+the budgets are NESTED; one ``M_max`` sample is drawn and the U-statistic is read
+off each prefix; so the budget axis is nearly free and its points are paired.
 
 Statistics reuse the hardened harness: bootstrap 68% RMSE intervals, a paired
 state-level MSE test (``|z|>2`` winner else 'tie', boundaries at ``|z|<3`` flagged
@@ -245,7 +245,7 @@ def fit_budget_exponent(budgets: list[int], rmses: list[float]) -> tuple[float, 
     The law predicts ``alpha = 0.5``.  OLS on log-log; the returned stderr is the
     residual-scatter estimate, which ASSUMES independent budget points.  When the
     budgets are nested (share one M_max draw, as in this sweep) that assumption is
-    violated and this stderr is optimistic — prefer
+    violated and this stderr is optimistic; prefer
     :func:`fit_budget_exponent_bootstrap`, which resamples the iid state unit.
     """
     x = np.log(np.asarray(budgets, dtype=np.float64))
@@ -275,7 +275,7 @@ def fit_budget_exponent_bootstrap(
     ``RMSE(M) = sqrt(mean_states MSE)``.  The standard error resamples the iid
     state unit CONSISTENTLY across budgets (each resampled state carries its whole
     correlated budget vector), so the nested-sample cross-budget correlation is
-    respected — unlike the residual stderr, which ignores it and is optimistic.
+    respected, unlike the residual stderr, which ignores it and is optimistic.
     """
     n_states = mse_by_budget.shape[1]
     rmse = np.sqrt(np.clip(mse_by_budget.mean(axis=1), 1e-24, None))

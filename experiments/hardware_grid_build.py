@@ -2,7 +2,7 @@
 
 Collective route: destructive SWAP test on GHZ at n=2,3,4 (physical ladder qubits, zero
 routing).  Single-copy anchor: a FIXED, pre-registered set of 15 random local-Pauli bases
-x 600 shots on the copy-A qubits {0,1} at n=2 — simulated with the measured device
+x 600 shots on the copy-A qubits {0,1} at n=2, simulated with the measured device
 parameters to lock the prediction BEFORE running (the exact same 15 bases run on hardware).
 
 Writes the QASM circuits to results/hardware/ and the locked predictions to
@@ -95,7 +95,7 @@ def lock_anchor_prediction(bases):
     """Simulate the EXACT 15 bases x 600 shots with measured params -> locked prediction.
 
     Uses the biased full U-statistic (same estimator hardware will use), so the prediction
-    is directly comparable to the hardware result — this validates the pipeline, not purity.
+    is directly comparable to the hardware result; this validates the pipeline, not purity.
     """
     R = correlated_confusion([0, 1], correlated=True)         # measured readout on {0,1}
     results = {}
@@ -144,7 +144,7 @@ def main() -> None:
     (HW / "hg_locked.json").write_text(json.dumps(locked, indent=2))
 
     print("=== LOCKED PREDICTIONS (printed before any submission) ===\n")
-    print("Collective (SWAP) — v2 measured-parameter predictions:")
+    print("Collective (SWAP), v2 measured-parameter predictions:")
     print(f"  {'n':>2} {'CZ':>3} | {'purity band lo/mid/hi':>22} | {'gate pen':>8} {'readout pen':>11}")
     for n in (2, 3, 4):
         c = locked["collective"][n]; b = c["v2_swap_band"]

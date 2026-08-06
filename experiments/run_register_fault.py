@@ -46,7 +46,7 @@ def _byte_identity_gate():
         f = f"results/hardware/hg_coll_n{n}.qasm"
         committed = subprocess.run(["git", "show", f"HEAD:{f}"], capture_output=True, text=True).stdout
         if committed != (HW / f"hg_coll_n{n}.qasm").read_text() or not committed:
-            raise SystemExit(f"BYTE-IDENTITY FAILED for hg_coll_n{n}.qasm — aborting")
+            raise SystemExit(f"BYTE-IDENTITY FAILED for hg_coll_n{n}.qasm, aborting")
     print("[gate] byte-identity vs committed hg_coll_n3/n4: OK")
 
 
@@ -72,7 +72,7 @@ def run_block(jobs, progress, sched, mgmt, org, running):
                    "submitted_at": job.submitted_at, "bal_before": bal_before}
             progress[name] = rec
             PROGRESS.write_text(json.dumps(progress, indent=2))
-            print(f"[{name}] submitted {job.id} — polling...")
+            print(f"[{name}] submitted {job.id}, polling...")
             job = poll_job(sched, job.id, timeout=21600, interval=30)
         if job.status != "Completed":
             rec["status"] = job.status
@@ -126,7 +126,7 @@ def main():
     if not LOCKED.exists():
         lock_from_block_a()
     else:
-        print("[lock] rf_locked.json exists — not recomputing")
+        print("[lock] rf_locked.json exists; not recomputing")
     _byte_identity_gate()  # hard gate before SWAP
     running, ok = run_block(BLOCK_B, progress, sched, mgmt, org, running)
     if not ok:

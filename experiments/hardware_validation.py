@@ -43,7 +43,7 @@ def _n2q(circ) -> int:
 
 
 def validate_swap_test(sim: AerSimulator) -> None:
-    print("== Destructive SWAP test — recover Tr(rho^2) ==")
+    print("== Destructive SWAP test, recover Tr(rho^2) ==")
     print("  (shot-based Aer for pure states; exact rho(x)rho for mixed)")
     for prep in (bell_state(), haar_pure(2, 0), haar_pure(2, 7)):
         qc = transpile(destructive_swap_test(prep), sim, optimization_level=1)
@@ -56,7 +56,7 @@ def validate_swap_test(sim: AerSimulator) -> None:
 
 
 def validate_shadows(sim: AerSimulator) -> None:
-    print("\n== Single-copy Pauli shadows — recover Tr(rho^2) (copy-fair U-statistic) ==")
+    print("\n== Single-copy Pauli shadows, recover Tr(rho^2) (copy-fair U-statistic) ==")
     for prep in (bell_state(), haar_pure(2, 0)):
         circs, bases = pauli_shadow_circuits(prep, SHADOW_SHOTS, seed=2)
         circs = transpile(circs, sim, optimization_level=1)
@@ -91,7 +91,7 @@ def main() -> None:
     validate_swap_test(sim)
     validate_shadows(sim)
     validate_transpilation(sim)
-    print("\nNo hardware job submitted — ZERO quantum credits spent.")
+    print("\nNo hardware job submitted, ZERO quantum credits spent.")
 
 
 if __name__ == "__main__":
