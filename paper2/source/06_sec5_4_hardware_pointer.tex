@@ -1,0 +1,21 @@
+% EXTRACTED FOR PAPER TWO (the hardware case study) -- PASS 48.1
+% source     : paper/paper.tex
+% blob       : 13590dbfe8119022ae95ff7a374910e30146ab8c
+% lines      : 1075-1083 (1-indexed, inclusive)
+% section    : Section 5.4
+% prose words: 83
+%
+% The 'entangling overhead is real but not the binding constraint' paragraph and its forward reference to the hardware section. The claim itself survives in paper one on the transpilation counts; the forward reference does not.
+%
+% This is a VERBATIM COPY. The original is unmodified and still frozen.
+% Regenerate with: experiments/pass48_extract_paper2.py
+
+This speaks to the resource-cost concern behind the choice in
+\cite{qmladvantage2026} to keep its measure-first protocol single-copy.
+The entangling overhead that motivates such caution is real, and it is not
+the binding constraint. The binding constraint is that at the tested budgets
+the local-randomized-measurement shadow U-statistic we study becomes
+statistically unusable for moment estimation at comparable system sizes,
+a statement about this protocol, not about every single-copy
+strategy. Whether the collective route survives on a real device is the
+question we take up next.

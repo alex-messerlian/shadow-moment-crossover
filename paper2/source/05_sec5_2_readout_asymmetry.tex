@@ -1,0 +1,31 @@
+% EXTRACTED FOR PAPER TWO (the hardware case study) -- PASS 48.1
+% source     : paper/paper.tex
+% blob       : 13590dbfe8119022ae95ff7a374910e30146ab8c
+% lines      : 902-920 (1-indexed, inclusive)
+% section    : Section 5.2
+% prose words: 214
+%
+% The noise-model asymmetry paragraph, including the measured per-qubit readout rates fed back through both routes and the resulting conservative-upper-bound statement. Paper one loses the measured rates and must either cite a rate or drop the quantitative claim.
+%
+% This is a VERBATIM COPY. The original is unmodified and still frozen.
+% Regenerate with: experiments/pass48_extract_paper2.py
+
+The second is the noise model, and it is the stronger assumption. The
+channel of Section 4 degrades the collective route only; the single-copy
+route is the ideal, noiseless statistical baseline, on the reading that a
+joint \(k\)-copy measurement is the harder thing to implement cleanly.
+Real shadow readout is not noiseless, and Section 6.3 finds readout to be
+the dominant error on the device we tested, so this understates the
+single-copy cost, in the direction that costs us, and we have measured
+by how much. Simulating readout on both routes at the per-qubit rates
+measured in Section 6.3, and correcting the collective parity for readout
+exactly through its outcome-dependent per-pair contraction rather than a
+blanket factor, moves the crossover to smaller \(n\) in every resolved
+cell: by one to two qubits when both routes calibrate readout out, and
+further when both leave it uncorrected. The sizes reported here are
+therefore a conservative upper bound under this noise model. Under
+uncorrected readout the single-copy U-statistic acquires a bias that does
+not shrink with the copy budget, unlike its noiseless variance, so both
+routes then carry error floors and the comparison changes character. What
+the asymmetry does shape is the dependence of \(n^*\) on the noise rate,
+which is a property of the collective side by construction.

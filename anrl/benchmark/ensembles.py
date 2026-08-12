@@ -109,6 +109,35 @@ def ghz_noisy(n: int, q: float = 0.15, rng: np.random.Generator | None = None) -
     return NoisyState(ghz.reshape(dim, 1), float(q), n)
 
 
+def variable_q(n: int, rng: np.random.Generator, low: float = 0.05, high: float = 0.45) -> NoisyState:
+    """Noisy pure state with the depolarizing weight drawn PER STATE, ``q ~ U[low, high]``.
+
+    :func:`noisy_pure` fixes ``q``, which fixes the estimand exactly: ``Tr(rho^k)`` is a
+    function of ``(n, q, k)`` alone and does not depend on ``|psi>``, so every state in that
+    family has the same moment and very nearly the same projection variances (statewise ``M*``
+    spread 2.7-3.7%).  Drawing ``q`` per state makes both the estimand and the threshold
+    random at no extra sampling cost, which is what lets a per-state claim be tested at all.
+
+    ``q`` is drawn before ``|psi>`` so the state is reproducible from the generator alone.
+    """
+    if not 0.0 <= low <= high <= 1.0:
+        raise ValueError(f"need 0 <= low <= high <= 1, got ({low}, {high})")
+    return noisy_pure(n, float(rng.uniform(low, high)), rng)
+
+
+def variable_rank(n: int, rng: np.random.Generator, max_rank: int = 8) -> NoisyState:
+    """Ginibre state with the rank drawn per state, ``r ~ U{1, ..., min(max_rank, 2^n)}``.
+
+    Varies the whole eigenspectrum, and so purity, ``zeta_1``, ``zeta_2`` and ``M*`` together:
+    the statewise ``M*`` spans roughly a factor of ten at ``n = 3..5``, against 1.1-1.2 for
+    :func:`noisy_pure` and exactly 1 for :func:`ghz_noisy`.  Sampling cost is that of
+    :func:`low_rank` at the drawn rank, so this is as cheap as the committed rank-2 family.
+    """
+    if max_rank < 1:
+        raise ValueError(f"max_rank must be >= 1, got {max_rank}")
+    return low_rank(n, int(rng.integers(1, min(max_rank, 2 ** n) + 1)), rng)
+
+
 def random_mixed(n: int, q: float, rng: np.random.Generator, rank: int | None = None) -> NoisyState:
     """Old ensemble: Ginibre high-rank component depolarized at rate ``q``.
 

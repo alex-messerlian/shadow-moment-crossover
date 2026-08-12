@@ -1,0 +1,92 @@
+{
+ "description": "PASS 48.1 support: paper one's compilation facts, recomputed offline",
+ "config": {
+  "optimization_level": 1,
+  "seed_transpiler": 7,
+  "basis_gates": [
+   "cz",
+   "rx",
+   "rz"
+  ],
+  "n2_layout": [
+   0,
+   1,
+   9,
+   10
+  ],
+  "ladder_layouts": {
+   "3": [
+    0,
+    1,
+    2,
+    9,
+    10,
+    11
+   ],
+   "4": [
+    0,
+    1,
+    2,
+    3,
+    9,
+    10,
+    11,
+    12
+   ]
+  }
+ },
+ "coupling_map": {
+  "n_qubits": 108,
+  "n_directed_edges": 193,
+  "source": "anrl/hardware/cepheus_metadata.json (committed)"
+ },
+ "credentials_present": {
+  "OPENQUANTUM_CLIENT_ID": false,
+  "OPENQUANTUM_CLIENT_SECRET": false
+ },
+ "checks": [
+  {
+   "claim": "n=2 destructive SWAP on physical {0,1,9,10} uses four CZ and zero routing",
+   "paper_section": "6.2 / 5.4",
+   "paper_value": 4,
+   "recomputed_mapped": 4,
+   "recomputed_all_to_all": 4,
+   "routing_attributable": 0,
+   "reproduces": true
+  },
+  {
+   "claim": "n=3 GHZ ladder maps with zero routing at 3n-2 CZ",
+   "paper_section": "6.2",
+   "paper_value": 7,
+   "recomputed_mapped": 7,
+   "recomputed_all_to_all": 7,
+   "routing_attributable": 0,
+   "reproduces": true
+  },
+  {
+   "claim": "n=4 GHZ ladder maps with zero routing at 3n-2 CZ",
+   "paper_section": "6.2",
+   "paper_value": 10,
+   "recomputed_mapped": 10,
+   "recomputed_all_to_all": 10,
+   "routing_attributable": 0,
+   "reproduces": true
+  },
+  {
+   "claim": "generic n=4 states need 46 CZ on this topology (26 intrinsic + 20 routing)",
+   "paper_section": "6.2",
+   "paper_value": 46,
+   "recomputed_mapped": null,
+   "recomputed_all_to_all": null,
+   "routing_attributable": null,
+   "reproduces": null,
+   "note": "NOT reproduced here. This figure depends on the state-preparation synthesis used by the hardware build scripts; an ad-hoc prepare_state with optimization_level=1 gives a different count (50 in a spot check). It is a genuine hardware-pipeline number and should travel with paper two unless paper one re-derives it from a stated synthesis."
+  }
+ ],
+ "summary": {
+  "reproduce": 3,
+  "fail": 0,
+  "not_checked": 1
+ },
+ "wall_seconds": 0.02613091468811035
+}

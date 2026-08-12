@@ -1,0 +1,39 @@
+% EXTRACTED FOR PAPER TWO (the hardware case study) -- PASS 48.1
+% source     : paper/paper.tex
+% blob       : 13590dbfe8119022ae95ff7a374910e30146ab8c
+% lines      : 1554-1580 (1-indexed, inclusive)
+% section    : Section 8
+% prose words: 224
+%
+% Four Limitations items: the channel abstraction (which points at Section 6), the crossover not demonstrated on hardware, the computed-not-measured single-copy baseline, and the unverifiable Public Tier execution path.
+%
+% This is a VERBATIM COPY. The original is unmodified and still frozen.
+% Regenerate with: experiments/pass48_extract_paper2.py
+
+\textbf{The noise model is a channel abstraction.} Global depolarizing
+and independent per-qubit channels are idealizations. The bias laws are
+exact given the channel, and they say nothing about whether the channel
+describes any particular device. Section 6 documents exactly where a
+real device departs from them.
+
+\textbf{The crossover was not demonstrated on hardware.} It sits at
+\(n \approx 5\) to \(8\) under realistic noise, and
+cross-session variation dominates at those sizes on the hardware available to
+us. Section 6 is a test of the model, not a demonstration of the
+advantage.
+
+\textbf{The hardware single-copy baseline at \(n \geq 3\) is computed,
+not measured}, for the economic reason given in Section 6.6. The one
+point we could afford to measure, the \(n = 2\) anchor, missed its
+prediction by 5.6 predicted standard deviations (Section 6.4). The computed points are
+therefore model output on a device that our own anchor shows the model
+does not currently track, and nothing in Section 6 should be read as a
+hardware measurement of the single-copy route.
+
+\textbf{The execution path on the Public Tier is not independently
+verifiable by us.} Jobs were routed through a decentralized network with
+validator spot-checking rather than direct vendor access (Section 6.1).
+We cannot exclude this as a contributor to the session-to-session
+variability of Section 6.4. It does not affect the readout and gate
+characterizations, which are internally consistent, but a replication
+with direct vendor access would be worth running.
