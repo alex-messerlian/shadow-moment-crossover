@@ -1,0 +1,52 @@
+\hypertarget{conclusion}{%
+\section{Conclusion}\label{conclusion}}
+
+The exponential cost of estimating \(\mathrm{Tr}(\rho^k)\) from local classical shadows is a
+property of the estimator, and its rate is a property of the state. Both statements are made
+precise by evaluating the two projection variances the Hoeffding decomposition already isolates:
+\(\zeta_2\) is a Pauli sum whose kernel \(14^{-|P|}\) confines the per-qubit base to
+\([7, 17/2]\), \(\zeta_1\) is a cubic contraction of the same second-moment identity, and the
+budget threshold their ratio defines has base \(\mathrm{base}(\zeta_2)/\mathrm{base}(\zeta_1)\)
+exactly, under a nonzero-leading-coefficient condition that the maximally mixed state violates.
+Neither bound on \(\zeta_2\) is attained, and the finite-size ratio \(\zeta_2^{1/n}\) can sit
+below \(7\); it is the limit that the bound governs.
+
+Two consequences are worth separating from the machinery. Purity does not determine the rate: a
+Haar-random pure state and a pure product state, both of purity one, sit on branches at \(28/5\)
+and at exactly \(5\), and for every pure product state the threshold is available in closed form
+at every \(n\). And the popular value \(28/5\) is the spread-spectrum case rather than a constant,
+which is the sort of thing that is easy to over-generalize from one ensemble.
+
+Because these are functionals of a state rather than of a family, they can be checked statewise,
+and we did: across a family whose thresholds span a decade the law orders individual states with
+rank correlation \(0.87\) and a slope of \(0.97\). The negative control matters as much as the
+result. On the fixed-estimand families that the crossover literature, including our own earlier
+sweeps, has used, the statewise spread is smaller than the achievable measurement noise, so no
+such claim could have been established there --- a family-average law would have scored the same.
+
+The threshold is also reachable from data. Unbiased estimators built from four disjoint blocks of
+a pilot budget recover \(M^*\) without forming the Pauli spectrum, to ten percent from a pilot
+that grows about twofold per qubit against the threshold's roughly fivefold, so the overhead
+becomes relatively cheaper with size and falls below the threshold near seven qubits. What is
+missing is a performance guarantee, which needs a concentration bound for a difference of degree-2
+and degree-4 statistics and is a separate problem.
+
+Paired with two exact bias laws for the collective route, distinguished by the geometry of the
+noise channel rather than by its rate, the variance law predicts, with no parameter fitted to the
+crossover outcomes, the size at which collective measurement attains the lower RMSE at equal copy
+budget. It places every resolving cell within one qubit across five state families, two of which
+were built for this paper because the other three cannot test a statewise claim. For estimating
+purity of noisy-pure states under per-qubit amplitude-damping or dephasing noise at the rates and
+budgets tested here, single-copy classical shadows stop being the lower-RMSE route beyond roughly
+six to seven qubits; the higher moments hold out to about eight for the idealized bounded-outcome
+test, whose \(k \ge 3\) realization costs about an order of magnitude more two-qubit gates
+(Section~\ref{sec:compilation}), and under global depolarizing noise the crossover falls earlier
+still.
+
+Three questions follow. Whether the higher-order projection variances admit the same treatment,
+which would extend the exact account past \(k = 2\) and is the obstacle to a performance
+guarantee. Whether the same variance law, applied to the partial-transpose moments, gives an exact
+sample-complexity account of entanglement negativity estimation, which is the application that
+motivated us. And whether the branch structure --- base \(7\) for spread spectra, \(15/2\) for
+stabilizer-structured ones --- has a classification behind it, since the two values we can prove
+exactly are the two extremes of the families we happened to examine.

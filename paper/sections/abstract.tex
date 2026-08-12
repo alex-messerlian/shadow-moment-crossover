@@ -1,0 +1,26 @@
+\begin{abstract}
+Classical shadows estimate moments \(\mathrm{Tr}(\rho^k)\) from randomized single-copy
+measurements. The finite-sample variance of the resulting U-statistic splits into projection terms
+of different budget order --- a Hoeffding decomposition \cite{hoeffding1948, serfling1980} stated
+for shadows in \cite{huang2020shadows}, with two known decay regimes
+\cite{elben2020mixed, aasen2026limitations} --- and the state-dependent variances fixing their
+ratio have been bounded rather than evaluated. We evaluate them exactly for an arbitrary state.
+The exponential rate of the cost is then not a constant of the protocol but a spectral functional
+of the state: \(\zeta_2\) is a Pauli sum with kernel \(14^{-|P|}\), giving
+\(7^n - 1 \le \zeta_2 \le (17/2)^n\) for every state and confining the per-qubit base to
+\([7, 17/2]\) in the limit, while \(\zeta_1\) is a cubic contraction of the same second-moment
+identity. Their ratio is the budget \(M^* = \zeta_2/(2\zeta_1)\) at which the effective error
+exponent crosses over, with
+\(\mathrm{base}(M^*) = \mathrm{base}(\zeta_2)/\mathrm{base}(\zeta_1)\) exactly. The branches
+differ: \(28/5\) for spread spectra, and exactly \(5\) for every pure product state, where
+\(\zeta_1 = (3/2)^n - 1\) and \(\zeta_2 = (15/2)^n - 1\) at any orientation --- so purity alone
+fixes neither factor. The law holds statewise, not merely on average: across a family whose
+thresholds span a decade, predicted and measured per-state error agree with rank correlation
+\(0.87\) and slope \(0.97\), against \(0.26\) on a fixed-estimand control too narrow to resolve
+an ordering. The threshold is also estimable from the snapshots alone, by unbiased four-block
+estimators whose cost grows more slowly in \(n\) than \(M^*\) and falls below it near seven
+qubits. Fed into two exact bias laws for collective measurement it becomes a plug-in criterion,
+nothing fitted to the crossover data, for when two-copy measurement attains the lower RMSE at
+equal copy budget, placing every resolving cell within one qubit across five state families.
+Results are simulation to ten qubits; at \(k \ge 3\) the projection variances are numerical.
+\end{abstract}

@@ -1,0 +1,165 @@
+{
+ "description": "PASS 49.2 gate: every deletion range is covered by a paper2/source fragment",
+ "ranges": [
+  {
+   "label": "abstract hardware paragraph",
+   "source": "paper.tex",
+   "first_line": 64,
+   "last_line": 71,
+   "fragment": "01_abstract_hardware_paragraph.tex",
+   "n_lines": 8,
+   "n_nonblank": 8,
+   "covered": true,
+   "missing_lines": []
+  },
+  {
+   "label": "intro hardware sentences",
+   "source": "paper.tex",
+   "first_line": 158,
+   "last_line": 164,
+   "fragment": "02_intro_hardware_sentences.tex",
+   "n_lines": 7,
+   "n_nonblank": 7,
+   "covered": true,
+   "missing_lines": []
+  },
+  {
+   "label": "sec2.3 hardware pointer",
+   "source": "paper.tex",
+   "first_line": 245,
+   "last_line": 246,
+   "fragment": "03_sec2_3_hardware_pointers.tex",
+   "n_lines": 2,
+   "n_nonblank": 2,
+   "covered": true,
+   "missing_lines": []
+  },
+  {
+   "label": "sec5.2 readout asymmetry (partial: rewritten, not removed)",
+   "source": "paper.tex",
+   "first_line": 906,
+   "last_line": 915,
+   "fragment": "05_sec5_2_readout_asymmetry.tex",
+   "n_lines": 10,
+   "n_nonblank": 10,
+   "covered": true,
+   "missing_lines": []
+  },
+  {
+   "label": "sec5.4 hardware pointer",
+   "source": "paper.tex",
+   "first_line": 1082,
+   "last_line": 1083,
+   "fragment": "06_sec5_4_hardware_pointer.tex",
+   "n_lines": 2,
+   "n_nonblank": 2,
+   "covered": true,
+   "missing_lines": []
+  },
+  {
+   "label": "SECTION 6 ENTIRE",
+   "source": "paper.tex",
+   "first_line": 1094,
+   "last_line": 1350,
+   "fragment": "07_section6_full.tex",
+   "n_lines": 257,
+   "n_nonblank": 229,
+   "covered": true,
+   "missing_lines": []
+  },
+  {
+   "label": "sec7 hardware comparison",
+   "source": "paper.tex",
+   "first_line": 1417,
+   "last_line": 1434,
+   "fragment": "08_sec7_hardware_comparison.tex",
+   "n_lines": 18,
+   "n_nonblank": 17,
+   "covered": true,
+   "missing_lines": []
+  },
+  {
+   "label": "sec7 bias floor on hardware",
+   "source": "paper.tex",
+   "first_line": 1435,
+   "last_line": 1450,
+   "fragment": "09_sec7_bias_floor_on_hardware.tex",
+   "n_lines": 16,
+   "n_nonblank": 15,
+   "covered": true,
+   "missing_lines": []
+  },
+  {
+   "label": "sec7 NISQ stability",
+   "source": "paper.tex",
+   "first_line": 1526,
+   "last_line": 1536,
+   "fragment": "10_sec7_nisq_stability.tex",
+   "n_lines": 11,
+   "n_nonblank": 9,
+   "covered": true,
+   "missing_lines": []
+  },
+  {
+   "label": "sec8 hardware limitations (4 items)",
+   "source": "paper.tex",
+   "first_line": 1554,
+   "last_line": 1580,
+   "fragment": "11_sec8_hardware_limitations.tex",
+   "n_lines": 27,
+   "n_nonblank": 24,
+   "covered": true,
+   "missing_lines": []
+  },
+  {
+   "label": "sec8 readout simulation item",
+   "source": "paper.tex",
+   "first_line": 1607,
+   "last_line": 1612,
+   "fragment": "12_sec8_readout_simulation.tex",
+   "n_lines": 6,
+   "n_nonblank": 6,
+   "covered": true,
+   "missing_lines": []
+  },
+  {
+   "label": "sec9 hardware conclusion",
+   "source": "paper.tex",
+   "first_line": 1664,
+   "last_line": 1676,
+   "fragment": "13_sec9_hardware_conclusion.tex",
+   "n_lines": 13,
+   "n_nonblank": 13,
+   "covered": true,
+   "missing_lines": []
+  },
+  {
+   "label": "acknowledgements platform paragraph",
+   "source": "paper.tex",
+   "first_line": 1690,
+   "last_line": 1695,
+   "fragment": "14_acknowledgements_platform.tex",
+   "n_lines": 6,
+   "n_nonblank": 6,
+   "covered": true,
+   "missing_lines": []
+  },
+  {
+   "label": "supplementary S1-S6",
+   "source": "supplementary.tex",
+   "first_line": 52,
+   "last_line": 230,
+   "fragment": "15_supplementary_S1_S6.tex",
+   "n_lines": 179,
+   "n_nonblank": 154,
+   "covered": true,
+   "missing_lines": []
+  }
+ ],
+ "all_covered": true,
+ "failures": [],
+ "unreferenced_fragments": [
+  "04_sec2_3_kge3_gate_ratios.tex"
+ ],
+ "paper2_dirty": ""
+}

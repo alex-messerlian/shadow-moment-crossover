@@ -1,0 +1,125 @@
+\hypertarget{estimating-the-threshold-from-a-pilot-budget}{%
+\section{\texorpdfstring{Estimating the threshold from a pilot budget}{Estimating the threshold from a pilot budget}}\label{sec:pilot}}
+
+The threshold is exact but its inputs are the state, and an experimenter has snapshots. This
+section closes that gap: \(M^*\) can be estimated from the snapshots themselves, without ever
+forming the Pauli spectrum whose high-weight part Section~\ref{sec:evaluation-cost} shows is both
+necessary to \(\zeta_1\) and badly estimated by shadows. The route around that is to estimate the
+two variances \emph{as variances} rather than through their spectral representations.
+
+\hypertarget{four-blocks-and-two-unbiased-estimates}{%
+\subsection{Four blocks and two unbiased estimates}\label{four-blocks-and-two-unbiased-estimates}}
+
+Split a pilot of \(M\) snapshots into four disjoint blocks \(A, B, C, D\) and write
+\(K_{ij} = \mathrm{Tr}(G_i G_j) = \prod_q \mathrm{Tr}(G_i^q G_j^q)\). Then
+
+\begin{itemize}
+\tightlist
+\item \(\zeta_2 = \mathrm{Var}[K_{ij}]\) is estimated by the sample variance of \(K\) over the
+disjoint pairs \((A_i, B_i)\). Each pair is independent, so this is unbiased directly.
+\item \(\mathbb{E}[\mathrm{Tr}(G\rho)^2]\) is estimated by
+\(\mathrm{mean}_{i \in A}\, \bar K_{iB}\,\bar K_{iC}\) with
+\(\bar K_{iB} = \mathrm{mean}_{j\in B} K_{ij}\). Because \(B\) and \(C\) are disjoint from each
+other and from \(A\), the two inner means are independent unbiased estimates of
+\(\mathrm{Tr}(G_i\rho)\), so their product is unbiased for \(\mathrm{Tr}(G_i\rho)^2\).
+\item \(\mathrm{Tr}(\rho^2)^2\) is estimated by \(\bar K_{AB}\,\bar K_{CD}\) over the four
+disjoint blocks, unbiased because the factors are independent and each is unbiased for
+\(\mathrm{Tr}(\rho^2)\).
+\item \(\zeta_1\) is the difference of the previous two.
+\end{itemize}
+
+Nothing here is a plug-in approximation; each piece is exactly unbiased, which is what lets a
+small pilot be believed. Every block mean the construction needs is a mean of the
+\(4^n\)-dimensional vector \(x_i = \bigotimes_q a_i^q\) of per-qubit Pauli coefficients, since
+\(\mathrm{Tr}(G_iG_j) = 2^n \langle x_i, x_j\rangle\) for Hermitian factors, so the whole
+computation is \(O(M 4^n)\) with no pairwise matrix ever formed.
+
+The structure also says which factor will be hard. \(\zeta_1\) is a difference of two estimates
+sharing the scale \(\mathrm{Tr}(\rho^2)^2\), each carrying noise of order \(\zeta_2/M\); since
+\(\zeta_2\) grows as \(7^n\) while \(\zeta_1\) grows as \(\beta^n\) with \(\beta = 5/4\), the
+difference is taken between quantities whose common part dominates. That is what the measurements
+show: at \(n = 8\) and a pilot of \(32{,}000\) the relative error of \(\hat\zeta_2\) is
+\(12.7\%\) while that of \(\hat\zeta_1\) is \(205\%\), and \(\hat\zeta_1\) comes out non-positive
+in \(17\) of \(48\) draws, in which case the ratio is undefined rather than large and we report it
+as such.
+
+\hypertarget{how-much-pilot-it-takes}{%
+\subsection{How much pilot it takes}\label{how-much-pilot-it-takes}}
+
+Table~\ref{tab:pilot} gives the median relative error of \(\widehat{M^*}\) against the exact
+statewise \(M^*\) for the same state, on the noisy-pure family. The error falls close to
+\(M^{-1/2}\), as an unbiased variance estimate should, and the budget needed for a given accuracy
+grows with \(n\) --- but much more slowly than the threshold it is locating.
+
+\begin{table}[htbp]
+\centering
+\setlength{\tabcolsep}{9pt}
+\begin{tabular}{@{}rrrrr@{}}
+\toprule
+\(n\) & \(M^*\) & \(10\%\) budget & ratio & error at that budget \
+\midrule
+\(2\) & \(26\)        & \(8{,}000\)   & \(307\)   & \(5.5\%\) \
+\(3\) & \(110\)       & \(8{,}000\)   & \(72.6\)  & \(6.5\%\) \
+\(4\) & \(541\)       & \(8{,}000\)   & \(14.8\)  & \(8.8\%\) \
+\(5\) & \(2{,}884\)   & \(32{,}000\)  & \(11.1\)  & \(5.8\%\) \
+\(6\) & \(16{,}519\)  & \(32{,}000\)  & \(1.94\)  & \(9.0\%\) \
+\(7\) & \(91{,}741\)  & \(128{,}000\) & \(1.40\)  & \(8.4\%\) \
+\(8\) & \(520{,}955\) & \(256{,}000\) & \(0.49\)  & \(8.4\%\) \
+\bottomrule
+\end{tabular}
+\caption{Pilot cost against the threshold it locates, noisy-pure ensemble. The \(10\%\) budget is the smallest \emph{swept} budget whose median relative error on \(\widehat{M^*}\) fell below \(10\%\), so it is an upper bound set by the granularity of the grid and not an interpolation; the last column gives the error actually achieved there. Full error-versus-budget curves are in Fig.~\ref{fig:pilotratio}. The ratio crosses unity between \(n = 7\) and \(n = 8\).}
+\label{tab:pilot}
+\end{table}
+
+The comparison that matters is against \(M^*\) itself, since a pilot larger than the threshold it
+locates would be self-defeating. Measured, the ratio of the \(10\%\) budget to \(M^*\) falls from
+\(\approx\!300\) at \(n = 2\) through \(1.94\) at \(n = 6\) and \(1.40\) at \(n = 7\) to
+\(0.49\) at \(n = 8\): the pilot budget grows about twofold per qubit against the threshold's
+roughly fivefold, so the overhead becomes relatively cheaper as \(n\) grows, and it crosses unity
+between \(n = 7\) and \(n = 8\). Interpolating log-linearly between those two bracketing measured
+points puts the crossing at \(n \approx 7.3\) (Fig.~\ref{fig:pilotratio}). We state this as
+measured rather than extrapolated because an earlier fit over \(n \le 6\) alone put it near
+\(n = 7\) while understating the required budget by a factor of \(1.85\) at both \(n = 7\) and
+\(n = 8\); the crossing survives that correction only because \(M^*\) grows faster than the
+pilot does.
+
+The tail of that convergence needs a caveat, because it is where an unbiased estimator can still
+mislead. Over the last octave at \(n = 8\) the median absolute deviation falls only from
+\(8.4\%\) to \(7.3\%\), flatter than the \(M^{-1/2}\) an unbiased variance estimate should show,
+and at the trial counts we can afford the fitted exponent cannot be separated from \(-1/2\) --- so
+we do not claim it has been. What can be separated is the mechanism, and it is not an error floor.
+\(\widehat{M^*}\) is a \emph{ratio} of two unbiased estimates, so at finite \(M\) it carries a
+ratio bias, and at small \(M\) a selection effect as well, from conditioning on
+\(\hat\zeta_1 > 0\). A floor would appear as a median offset that stops shrinking; a ratio bias
+appears as one that keeps shrinking while dragging the deviation with it. Measured, the median of
+\(\widehat{M^*}\) relative to \(M^*\) runs \(0.590,\, 0.876,\, 0.976,\, 1.015,\, 1.026\) across
+the five budgets: it converges on unity, crossing it near \(2 \times 10^5\), and the residual
+\(7.3\%\) at the largest budget is roughly \(2.6\%\) of surviving median offset on top of a spread
+component that is still falling. The practical consequence is a mild one, and we state it as a
+limitation rather than discover it later: at the largest sizes a pilot near the \(10\%\) threshold
+tends to \emph{under}-estimate \(M^*\), which errs toward believing an experiment is above the
+threshold when it is below.
+
+The varying-estimand family is harder in absolute terms, and we report it separately rather than
+pooled, because pooling would hide the reason. On variable-rank the \(10\%\) budget is
+\(8{,}000\) at \(n = 2\), \(32{,}000\) at \(n = 4\), \(128{,}000\) at \(n = 6\), and more than
+\(256{,}000\) at \(n = 7\), where the error is still \(19.7\%\) at that budget. But its thresholds
+are correspondingly larger --- \(M^* = 503{,}444\) at \(n = 7\) against \(91{,}741\) for
+noisy-pure --- so the two move together: rank-deficient states have smaller \(\zeta_1\), which
+raises \(M^*\) and makes \(\zeta_1\) harder to estimate at once. The ratio, not the budget, is the
+quantity that transfers.
+
+\begin{figure}[tb]
+\centering
+\includegraphics[width=0.9\linewidth]{fig8_pilot_convergence}\hfill
+\includegraphics[width=0.9\linewidth]{fig9_pilot_over_mstar}
+\caption{Estimating the threshold from data. \emph{Left:} median relative error of $\widehat{M^*}$ against the exact statewise $M^*$ versus pilot budget, noisy-pure, one curve per size; the dashed line marks $10\%$ accuracy. \emph{Right:} the $10\%$ budget relative to $M^*$ itself. Circles are the smallest swept budget that achieved $10\%$, so they are upper bounds set by the grid, which is why the first three coincide; squares are a log-log fit through the usable range. The star marks where the measured ratio crosses unity, interpolated between the two measured sizes that bracket it. Below the dashed line the pilot costs less than the threshold it locates.}
+\label{fig:pilotratio}
+\end{figure}
+
+What this does not provide is a performance guarantee. The estimators are unbiased and their
+convergence is measured, but bounding the probability that a pilot puts an experiment on the wrong
+side of \(M^*\) needs a concentration bound for \(\hat\zeta_1\), which is a difference of degree-2
+and degree-4 statistics in snapshots whose kernel variance grows as \(7^n\); the fourth moment
+that a Bernstein-type argument would need is itself a higher-order projection variance we do not
+have in closed form. We state the convergence we measured and leave the guarantee open.

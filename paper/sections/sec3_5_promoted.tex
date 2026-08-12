@@ -1,0 +1,87 @@
+\paragraph{Two bounds, and what they do and do not attain.}
+The spectral sum is a sum of non-negative terms whose \(P = \mathbb{I}\) term is
+\(7^n\) exactly, and \(\mathrm{Tr}(\rho^2)^2 \le 1\); termwise
+\(\langle P\rangle^2 \le 1\) and \(\sum_P 14^{-|P|} = (1 + 3/14)^n = (17/14)^n\).
+Hence, for \emph{every} \(n\)-qubit state,
+\[
+\boxed{\;7^n - 1 \;\le\; \zeta_2(\rho) \;\le\; \left(\tfrac{17}{2}\right)^{\! n}\;}
+\]
+with no condition beyond positivity and unit trace. Both are one-line consequences of the
+identity, and both are loose in a way worth stating. The lower bound is not attained: the
+infimum over states is \(7^n - 4^{-n}\), reached only at \(\rho = \mathbb{I}/2^n\), so the
+stated form is slack by \(1 - 4^{-n}\); across a zoo of \(70\) state-size pairs the closest
+approach is the maximally mixed state at \(n = 5\), with \(\zeta_2/7^n = 0.999999942\). The
+upper bound is not attained and not approached: saturating it would require
+\(\langle P\rangle^2 = 1\) for all \(4^n\) strings at once, and projected gradient ascent over
+pure states reaches only \(76.5\%\) of \((17/2)^n\), its maximiser at \(n = 2\) being the pure
+product state. We report it as the ceiling a counting argument gives, not as a value states
+approach.
+
+What follows from the lower bound is a statement about the \emph{limit}, and the distinction
+is not pedantic. Since \(\zeta_2 \ge 7^n - 1\), any state family for which
+\(\mathrm{base}(\zeta_2)\) exists has \(\mathrm{base}(\zeta_2) \ge 7\). The finite-\(n\) ratio
+\(\zeta_2^{1/n}\) is \emph{not} bounded below by \(7\): the subtracted \(\mathrm{Tr}(\rho^2)^2\)
+is \(O(1)\) against \(7^n\), and twelve of those \(70\) records fall below, as low as
+\(6.982\), all of them at \(n = 2\). The per-qubit base is a limit, and only the limit obeys
+the bound.
+
+\paragraph{The threshold's base factorizes.}
+For a sequence \(a_n\) write \(\mathrm{base}(a) = \lim_{n\to\infty} a_n^{1/n}\) when the limit
+exists, and \(\beta = \mathrm{base}(\bar\zeta_1)\). Then
+\[
+\boxed{\;\mathrm{base}(M^*) \;=\; \frac{\mathrm{base}(\zeta_2)}{\beta}\;}
+\]
+whenever both limits exist \emph{and} both leading coefficients are nonzero. The second
+condition does real work rather than decorating the first: at \(\rho = \mathbb{I}/2^n\) we have
+\(\zeta_1 = 0\) exactly, \(M^*\) is infinite, and \(\mathrm{base}(M^*)\) is undefined, while
+\(\mathrm{base}(\zeta_2) = 7\) is perfectly well behaved. Where the conditions hold the identity
+is exact, and we have checked it on eight families whose bases genuinely differ --- noisy-pure,
+Haar-pure, pure product, GHZ, a linear graph state, two product families and rank-2 Ginibre ---
+recovering \(\mathrm{base}(M^*)\) from the ratio to within \(8 \times 10^{-16}\).
+
+Both factors are spectral functionals of the state rather than universal constants, and that is
+the substance of the result: the exponential cost of shadow moment estimation has a rate the
+state chooses, through how its Pauli weight is distributed, within a window the identity fixes.
+
+\paragraph{The branches, and one family that is exact throughout.}
+The same two functionals evaluated on the families this paper uses do not agree:
+
+\begin{center}
+\begin{tabular}{lcccl}
+\hline
+state family & \(\beta\) & \(\mathrm{base}(\zeta_2)\) & \(M^*\) base & status \\
+\hline
+noisy-pure (\(q=0.1\)) & \(5/4\) & \(7\)    & \(28/5 = 5.60\) & exact, Haar-averaged \\
+Haar-pure              & \(5/4\) & \(7\)    & \(28/5 = 5.60\) & exact, the \(q = 0\) case \\
+low-rank (rank 2)      & \(\to 5/4\) & \(7\) & \(5.60\)        & numerical; see below \\
+pure product, GHZ      & \(3/2\) & \(15/2\) & \(5\)           & exact at every \(n\) \\
+\hline
+\end{tabular}
+\end{center}
+
+\noindent
+The last row is exact in a stronger sense than the spectral sum alone gives. For a single pure
+qubit \(\sum_{P} \langle P\rangle^2 14^{-|P|} = 1 + t^2/14 = 15/14\) whatever the Bloch
+direction, and \(\mathbb{E}[\mathrm{Tr}(Gr)^2] = 3/2\) likewise; both factorize over qubits for
+a product state. So for \emph{every} pure product state, at any orientation,
+\[
+\zeta_1 = \left(\tfrac{3}{2}\right)^{\! n} \!- 1, \qquad
+\zeta_2 = \left(\tfrac{15}{2}\right)^{\! n} \!- 1, \qquad
+M^* = \frac{(15/2)^n - 1}{2\left[(3/2)^n - 1\right]},
+\]
+verified against the general evaluator on random orientations to \(10^{-14}\) and \(10^{-11}\)
+respectively. The whole family therefore has an exact \(M^*(n)\) with base exactly \(5\), and
+the GHZ state, whose stabilizer group splits into even-weight \(Z\) strings and weight-\(n\)
+strings, gives \(\zeta_2 = \tfrac12[(15/2)^n + (13/2)^n] - \tfrac12\) and the same base.
+
+Purity does not determine either factor. A Haar-random pure state and a pure product state both
+have \(\mathrm{Tr}(\rho^2) = 1\) and sit on different branches, at \(28/5\) and at \(5\). What
+separates them is the weight profile the kernel \(14^{-|P|}\) reads off, which is why \(28/5\)
+is the spread-spectrum value and not a constant of the protocol. The low-rank row is the one
+numerical entry: \(\beta \to 5/4\) asymptotically like the other spread spectra but reads
+\(\approx 1.21\) at the sizes evaluated here, and its \(M^*\) base uses the asymptotic value.
+
+Every base quoted from a finite window in this paper is a fit, not a limit, and we label it so.
+The drift is real and one-sided: for pure product states, where \(\beta = 3/2\) exactly, a
+log-linear fit of \(\zeta_1\) returns \(1.666\) over \(n = 3\) to \(5\) and \(1.540\) over
+\(n = 6\) to \(8\), approaching \(3/2\) from above.
