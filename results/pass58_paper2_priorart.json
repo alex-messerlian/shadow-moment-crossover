@@ -1,0 +1,1121 @@
+{
+ "n_papers": 111,
+ "by_overlap": {
+  "PARTIAL": 38,
+  "ADJACENT": 64,
+  "NO_OVERLAP": 3,
+  "DIRECT": 6
+ },
+ "papers": [
+  {
+   "title": "Preregistered Test of Quantum Resonance Theory's Bell-State Fidelity Prediction on Superconducting Quantum Hardware",
+   "authors": "Amber Anson (sole contributor)",
+   "venue_year": "OSF Registries, OSF Preregistration schema, registered 3 July 2026, public",
+   "identifier": "https://osf.io/yg923 (OSF registration; a 10.17605/OSF.IO/... DOI is likely but I did NOT verify one)",
+   "what_it_establishes": "The only genuinely prospective, publicly time-stamped pre-registration of a quantum-hardware prediction that I could find anywhere. It states a point prediction from Quantum Resonance Theory (Anson 2024, Zenodo) that a weak stroboscopic phase drive (R0 = 1e-3 rad, 10 MHz, with 1/5/20/50 MHz off-resonance comparators) raises Bell-state fidelity by ~5%, against standard QM predicting no gain; fixes the design (IBM Quantum least-busy open-access backend, 30 circuits x 8000 shots = 240,000 shots, parity-based fidelity, bootstrap 95% CI with 4000 resamples); and fixes the decision rule in advance (H1 requires G >= +2.5% with CI excluding zero and the 10 MHz effect exceeding all off-resonance points; falsification if the CI upper bound < +2.5%). The registration explicitly states that data does not yet exist and that the only prior execution was a non-evidential simulator pipeline check.",
+   "overlap": "DIRECT",
+   "overlap_reason": "Direct overlap on the methodological lens only: prediction committed publicly and datably before measurement, pre-specified falsification criterion, superconducting hardware, commitment to publish regardless of outcome. Scientifically disjoint from the material (fringe-theory drive test versus shadow/SWAP estimator calibration). IMPORTANT CAVEAT: I could NOT verify that any outcome was ever reported. The OSF project page is a JavaScript app that did not render for me; the registration has zero child components; no arXiv paper reporting the result exists (arXiv search for 'Quantum Resonance Theory' in quant-ph returns two unrelated 2008/2017 papers). Two web-search summaries asserted the prediction 'was falsified as specified', but the OSF API description I did read is the PLAN and states data does not yet exist, so those summaries most likely paraphrased the conditional falsification rule. Treat the outcome as unverified.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Understanding Side-Channel Vulnerabilities in Superconducting Qubit Readout Architectures",
+   "authors": "Satvik Maurya, Chaithanya Naik Mude, Benjamin Lienhard, Swamit Tannu",
+   "venue_year": "IEEE International Conference on Quantum Computing and Engineering (QCE), pp. 1177-1183, 2024",
+   "identifier": "arXiv:2405.08962 / DOI 10.1109/QCE60285.2024.00138",
+   "what_it_establishes": "Defines and measures exactly the material's crosstalk quantity: P_flip(A) = Pr(A_meas=1 | A_prep=0, V), i.e. the 0->1 readout error of a qubit conditioned on the full bitstring V of the other qubits sharing the feedline. Sweeps ALL 2^4 (and 2^5) neighbour bitstrings, so the excitation-weight axis is present in their raw data. Measured P_flip runs ~0.02-0.08 for most attacker placements and reaches ~0.3 for one configuration, against a baseline excitation rate shown as a dashed line. Data is a 5-qubit frequency-multiplexed transmon device (readout-trace dataset from Lienhard et al.), NOT a cloud vendor machine. Verified from full text: they present per-bitstring bar charts and feed them to an SVM state classifier; they never analyse how P_flip scales with the NUMBER of excited neighbours, and the words 'saturate', 'Hamming', and 'number of excited' do not appear.",
+   "overlap": "DIRECT",
+   "overlap_reason": "Same measured quantity as the material's P(1|0)-vs-neighbour-excitation result, on the same physical mechanism (shared Purcell-filtered feedline), with comparable magnitudes. The material's saturation-with-weight claim is the one thing this paper's data could have shown but does not report. Must be cited; the paper should state explicitly what it adds beyond Maurya et al.",
+   "verified": "FULL_TEXT"
+  },
+  {
+   "title": "I Know What You Are Reading: Evaluating Readout Crosstalk in Cloud-based Quantum Computers",
+   "authors": "Yizhuo Tan, Jakub Szefer",
+   "venue_year": "Proceedings of the 2025 Quantum Security and Privacy Workshop (QSec '25), Taipei, October 2025",
+   "identifier": "DOI 10.1145/3733825.3765280",
+   "what_it_establishes": "The closest platform match. Measures readout crosstalk on Rigetti Ankaa-3 accessed through a public cloud path (qBraid), using circuits containing only X gates and measurements. Protocol: hold a spectator qubit in |0>, set subsets of neighbouring target qubits to |0> or |1>, and record how often the spectator reads 1. Their worked example: spectator measured 1 in 40/1000 shots with targets in |0> versus 310/1000 with targets in |1> -- i.e. 4% -> 31%, the same order as the material's 1.6% -> 16.9%. Six subset patterns x 2 measurement sets per spectator, over spectators 8, 9, 15, 16; a Random Forest Regressor attributes the effect to individual target qubits and reconstructs the likely shared-feedline map. Verified from full text: they also state they could not find Rigetti documentation showing which qubits share readout feed lines.",
+   "overlap": "DIRECT",
+   "overlap_reason": "Same vendor lineage (Rigetti, prior generation), same cloud-access framing, same conditional-readout-error measurement, same magnitude class. This is the paper a referee will reach for first. It also pre-empts a weaker version of the 'vendor does not publish it' theme, though only for feedline topology, not readout error rates. They vary how many targets are excited but analyse it as feature attribution, never as a weight-dependence curve.",
+   "verified": "FULL_TEXT"
+  },
+  {
+   "title": "Categorizing Readout Error Correlations on Near Term Quantum Computers",
+   "authors": "Benjamin Nachman, Michael R. Geller",
+   "venue_year": "arXiv:2104.04607, 2021 (Quantum Sci. Technol.)",
+   "identifier": "arXiv:2104.04607",
+   "verified": "FULL_TEXT",
+   "what_it_establishes": "THE CLOSEST PRIOR ART TO THE MATERIAL'S CROSSTALK RESULT, and it is not currently cited. Defines exactly the quantity the material measures. Their 'A-type correlator' is A_ij = <E_1^i>_{|0...0>} - <E_1^i>_{X_j|0...0>}: the change in qubit i's readout error when spectator qubit j is excited by an X gate. That is, term for term, the material's 'P(1|0) on one qubit rises from 1.6% with idle neighbours to 16.9% with excited ones,' restricted to a single excited neighbour. They also define C-type measurement-operator covariances. Deployed on IBMQ Melbourne (15 qubits) and IBMQ Manhattan (65 qubits). FINDINGS THAT CUT AGAINST OUR MATERIAL BEING FIRST ON THE CONCEPT: correlations exist and are measurable. FINDINGS THAT CUT IN OUR FAVOUR ON MAGNITUDE AND STRUCTURE: they conclude the correlations are SMALL relative to single-qubit readout error (Melbourne typically below 1%, Manhattan reaching several percent against per-qubit errors of 1-10%), and they report the surprising geometry that on Melbourne 'there is nearly no correlation between the size of the A_ij and qubit-qubit distance,' while Manhattan's long-range correlations are 'consistent with statistical noise.' DECISIVE GAP: they excite spectators ONE AT A TIME. They do not vary the number or weight of excited spectators, and there is no analysis of accumulation versus saturation. They also make no claims about three-or-more-qubit correlations and do not study temporal dynamics.",
+   "overlap": "DIRECT",
+   "overlap_reason": "DIRECT on the observable, and the material must cite it or a referee will. Any claim of the form 'we discovered that readout error depends on neighbouring excitations' is already established here for single spectators on IBM hardware. Three things survive as the material's own. (1) MAGNITUDE AND PLATFORM: Nachman and Geller's headline is that this effect is small compared to single-qubit readout error; the material reports a ~10x swing (1.6% -> 16.9%) that is LARGER than the single-qubit rate, on Rigetti rather than IBM, i.e. a quantitative reversal of their reassuring conclusion on different hardware. (2) THE WEIGHT LAW: saturation with excitation weight rather than accumulation is genuinely absent from this paper and, as far as I could find, from the literature (an arXiv abstract search for readout + crosstalk + Hamming weight returned zero results). The operational corollary the material draws, that the correction must therefore be measured at each weight rather than extrapolated from single-spectator data, is a direct and non-obvious critique of exactly this paper's measurement design. (3) CONSEQUENCE: they characterize; the material shows the effect propagating into a specific failed physical estimate and then closing it. Recommend citing as the definitional precedent while foregrounding the weight-resolved result as the delta."
+  },
+  {
+   "title": "Efficient reconstruction, benchmarking and validation of cross-talk models in readout noise in near-term quantum devices",
+   "authors": "Jan Tuziemski, Filip B. Maciejewski, Joanna Majsak, Oskar Slowik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Piotr Podziemski, Michal Oszmaniec",
+   "venue_year": "arXiv Nov 2023; Open Systems & Information Dynamics (World Scientific), 2025",
+   "identifier": "arXiv:2311.10661 / DOI 10.1142/S1230161225500192",
+   "what_it_establishes": "Quantum Detector Overlapping Tomography (QDOT), with sample complexity logarithmic in qubit number. Its 'correlated clusters and neighbours' model is Lambda_{x|y} = prod_chi Lambda^{y_N_chi}_{x_C_chi | y_C_chi}: the noise matrix acting on cluster C_chi depends explicitly on the pre-measurement state y_N_chi of its neighbourhood N_chi. Applied to 79-qubit Rigetti Aspen-M-3 and 127-qubit IBM Cusco; correlation coefficients plotted above a 3% threshold for IBM and a 7% threshold for Rigetti; ~20% improvement in model-based mitigation for MAX-2-SAT energy estimation. Verified from full text: the model conditions on the full neighbour BIT PATTERN, and the words 'saturat', 'Hamming', and 'excited' do not appear anywhere in the paper.",
+   "overlap": "DIRECT",
+   "overlap_reason": "State-conditioned readout noise on a Rigetti device at scale -- the most general published formalism covering the material's effect. Weight-saturation is representable in their model but is never measured or discussed, which is what leaves the material's finding open. The 7% Rigetti correlation threshold is a useful magnitude anchor for the material's numbers.",
+   "verified": "FULL_TEXT"
+  },
+  {
+   "title": "Amazon Braket launches Rigetti Cepheus-1-108Q superconducting device (vendor documentation, not a paper)",
+   "authors": "AWS Quantum Technologies Blog",
+   "venue_year": "AWS blog post, 2026",
+   "identifier": "https://aws.amazon.com/blogs/quantum-computing/amazon-braket-launches-rigetti-cepheus-1-108q-superconducting-device/",
+   "what_it_establishes": "Quotes 108 qubits across twelve 9-qubit chiplets in a 3x4 array and 99.1% median CZ fidelity, and states that Amazon Braket provides up-to-date calibration data for all qubits and qubit pairs on Cepheus-1-108Q, including single-qubit gate fidelities, two-qubit gate fidelities, AND readout errors, accessible via the console or the Braket Python SDK.",
+   "overlap": "DIRECT",
+   "overlap_reason": "Not prior art but a direct factual hazard to the material's central framing. The claim 'readout error is absent from that specification' is falsifiable in one click for this exact device via a different access path. The claim must be narrowed to the Open Quantum / Quantum Rings Public Tier route actually used -- where per-job calibration metadata was unavailable -- and must distinguish per-qubit readout error (published by Braket) from CORRELATED, neighbour-conditioned readout error (published by no vendor I found).",
+   "verified": "FULL_TEXT"
+  },
+  {
+   "title": "Raw-Curve Quantum Fingerprints: A Mahalanobis Authentication Framework with Drift Early Warning and Adversarial Detection",
+   "authors": "Geyuyan Ma, Xiangdong Meng, Yangyang Fei, Zhiqiang Fan, Hanshi Zhao, Chenhui Wang, Haoran Yang, Weilong Wang, Zheng Shan",
+   "venue_year": "arXiv preprint, 10 June 2026",
+   "identifier": "arXiv:2606.11644",
+   "what_it_establishes": "Opens with the exact premise of the material: 'Quantum cloud platforms are poised to deliver powerful computing capabilities, but users have no direct means to verify which physical device executes their workload. This lack of transparency enables hardware substitution attacks, where a malicious adversary could redirect a job to a substituted or inferior processor.' Builds device fingerprints from raw measurement statistics (no curve fitting), 100% benign authentication on three superconducting processors over a three-week chronological split, plus drift early-warning and adversarial-perturbation detection. Establishes that (a) the unverifiable-execution-path problem is a named, published problem, and (b) it is solvable well enough that fingerprinting works across weeks of drift.",
+   "overlap": "PARTIAL",
+   "overlap_reason": "Shares the material's core premise verbatim in spirit (user cannot confirm which device ran the job) and works over multi-week drift on superconducting hardware. Diverges completely in purpose: this is an adversarial security countermeasure paper that PROPOSES a fix, whereas the material REPORTS the unverifiability as an accepted methodological limitation of a physics measurement and does not attempt device authentication. Also does not address decentralized/mediated (non-vendor) routing. Does NOT preempt the pre-registration methodology or the specification-gap diagnosis.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "A Graph-Based Forensic Framework for Inferring Hardware Noise of Cloud Quantum Backend",
+   "authors": "Subrata Das, Archisman Ghosh, Swaroop Ghosh",
+   "venue_year": "arXiv preprint, 16 December 2025",
+   "identifier": "arXiv:2512.14541",
+   "what_it_establishes": "States that circuit execution 'depends on internal allocation and routing policies that are not observable to the user,' that 'users cannot verify whether their circuits were executed on the hardware for which they were charged,' and that a provider may redirect jobs to more error-prone regions 'while still presenting stale or averaged calibration data.' Uses a Graph Neural Network to reconstruct a per-qubit and per-link error map WITHOUT calibration data from the target backend, so users can compare inferred error rates against published specifications; reported mismatch ~22% single-qubit, ~18% link.",
+   "overlap": "PARTIAL",
+   "overlap_reason": "This is the closest published statement of two of the material's three framing problems at once: the unobservable execution path AND the gap between provider-published specification and actual device behaviour. Critically, it also anticipates the remedy of user-side inference when per-job calibration metadata is unavailable \u2014 exactly the situation the material reports. Does NOT overlap on: pre-registration, readout error specifically as the missing specification input, correlated readout saturating with excitation weight, cross-session purity drift, or the non-monotonicity.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Works on My QPU: Reproducibility in Quantum Computing Research",
+   "authors": "Dominik K\u00f6ster, Maja Franz, Benjamin Zec, Nicole Hoess, Ralf Ramsauer, Wolfgang Mauerer",
+   "venue_year": "arXiv preprint, 9 July 2026 (v1); 3 August 2026 (v2)",
+   "identifier": "arXiv:2607.08348",
+   "what_it_establishes": "The current state-of-the-art reproducibility audit of the field: 127 papers manually assessed against a five-question framework (RQ1 code availability, RQ2 environment specification, RQ3 build/run documentation, RQ4 HARDWARE SPECIFICATION, RQ5 executability), plus automated screening of ~5,000 papers. Only 24.4% provide code; 64.5% of those fail to execute in a clean environment; ~1/3 lack machine-readable environment specs. On hardware specifically it establishes that among papers using real QPUs with code, only three specify the target hardware in sufficient detail; that hardware execution 'cannot be replicated by a reproduction package per se'; that 'access to quantum devices is often limited or changes over time'; and recommends shipping raw measurement data plus calibration snapshots so partial reproduction survives loss of the original device.",
+   "overlap": "PARTIAL",
+   "overlap_reason": "Establishes the field-level reproducibility deficit the material's contribution would sit inside, and names calibration-snapshot provisioning and hardware specification as reproducibility requirements \u2014 directly relevant to the material's finding that per-job calibration metadata was unavailable. But it is a bibliometric meta-study of published artifacts, not a hardware measurement: it does not itself run circuits, does not quantify cross-session drift, and does not address mediated or decentralized execution paths. It gives the material a citation anchor and a normative framework, not competition.",
+   "verified": "FULL_TEXT"
+  },
+  {
+   "title": "Claim against Measurement: Statistical Artefacts in Quantum Error Mitigation Benchmarks",
+   "authors": "Dominik K\u00f6ster, Wolfgang Mauerer",
+   "venue_year": "arXiv preprint, May 2026 (v1), revised July 2026 (v2)",
+   "identifier": "arXiv:2605.29872",
+   "what_it_establishes": "Systematic review of 81 QEM papers plus a 72-hour longitudinal hardware study on IQM Euro-Q-Exa (LRZ Garching), with secondary validation on ibm_brussels. Design: a fixed Trotter circuit (6 CZ) measured every 30 min, 147 time points, n_reps=30 per point, split into two 12-hour day sessions and one 48-hour weekend session. Reports variance attributable to time of measurement (eta^2) of 0.35 (day 1, 12 h), 0.20 (day 2, 12 h) and 0.55 (weekend, 48 h), with lag-1 autocorrelation 0.55 / 0.21 / 0.83 respectively; effective independent observations collapse from a nominal 30 to as few as 1.8. Concludes that the same ZNE configuration can show an effect size more than 3x larger purely depending on when it ran, and proposes longitudinal drift assessment as a minimum reporting standard.",
+   "overlap": "PARTIAL (DIRECT on the \"drift dominates statistical error, and grows with the observation window\" claim)",
+   "overlap_reason": "This is the single strongest competitor for the material's stability contribution. It already establishes, quantitatively and on superconducting hardware, that (a) reported statistical error bars understate real uncertainty because drift violates independence, and (b) variance attributable to time grows sharply when the window extends from 12 h to 48 h \u2014 structurally the same statement as \"cross-session drift ~20x within-session drift\". Differences that leave room: their observable is a ZNE-mitigated expectation value, not state purity; they report an eta^2 variance fraction per window rather than an explicit within-session vs cross-session ratio on byte-identical circuits pinned to the same physical qubits; no register-size non-monotonicity; and no pre-registration. Any claim of novelty for the drift result must cite and differentiate from this paper.",
+   "verified": "FULL_TEXT"
+  },
+  {
+   "title": "Characterizing the Reproducibility of Noisy Quantum Circuits",
+   "authors": "Samudra Dasgupta, Travis S. Humble",
+   "venue_year": "Entropy 24(2), 244, MDPI, 2022 (arXiv 1 April 2022)",
+   "identifier": "arXiv:2204.01529 / doi:10.3390/e24020244",
+   "what_it_establishes": "Directly assesses reproducibility of a noisy quantum circuit via Hellinger distance between computational results, and shows that DEVICE CHARACTERIZATION offers an analytic bound on the observed variability. Validated on an ensemble of single-qubit test circuits on a superconducting transmon processor 'with well-characterized readout and gate error rates.' Concludes that a composite device parameter defines an upper bound on observed Hellinger distance across circuits.",
+   "overlap": "PARTIAL",
+   "overlap_reason": "Load-bearing and possibly NOT yet cited \u2014 the material cites dasgupta2021stability and dasgupta2022assessing, and this Entropy 2022 paper is a distinct third work in the same programme. It matters because it argues the OPPOSITE polarity to the material: published device characterization is claimed to bound reproducibility. The material's central negative result is that the published characterization did NOT bound the outcome, precisely because the binding input (readout error) was absent from the specification. Note their validation explicitly assumed WELL-CHARACTERIZED readout error, which is the assumption the material breaks. This should be cited and contrasted, not merely listed.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Routing Anonymity and Identifiability of Noisy Quantum Hardware",
+   "authors": "Ben Priestley, Mina Doosti",
+   "venue_year": "arXiv preprint, 6 July 2026",
+   "identifier": "arXiv:2607.05281",
+   "what_it_establishes": "Formalizes a 'backend-identifiability game' as a security notion for quantum cloud routing: providers may wish to hide implementation details, scheduling choices, or which physical device was used, but noisy finite-shot outputs carry backend-specific fingerprints in the classical output distribution. Experiments on Amazon Braket across Rigetti Ankaa-3 and IQM Garnet (superconducting) and IonQ Aria-1 (ion trap): 87\u201390% classification between superconducting backends, 96\u2013100% across platforms. Identifiability survives natural post-processing.",
+   "overlap": "PARTIAL",
+   "overlap_reason": "Establishes that hiding the execution path is a recognized provider behaviour with a formal name, and \u2014 importantly for the material \u2014 that shot-level outputs from RIGETTI superconducting hardware on an aggregator (Braket) carry enough signal to identify the backend. That means the material's 'execution path cannot be independently verified' is a statement about the ABSENCE OF AN ATTEMPT, not a proven impossibility; a referee may ask why the material did not fingerprint. Overlap is on the premise and platform only, not on pre-registration, purity, drift magnitude, or the specification gap.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Detecting Fraudulent Services on Quantum Cloud Platforms via Dynamic Fingerprinting",
+   "authors": "Jindi Wu, Tianjie Hu, Qun Li",
+   "venue_year": "ICCAD 2024 (arXiv 20 August 2024)",
+   "identifier": "arXiv:2408.11203",
+   "what_it_establishes": "Targets 'machine substitution' and 'profile fabrication' attacks \u2014 a cloud provider misrepresenting which quantum device executed user code, potentially swapping in a simulator or inferior hardware. Method uses a single dynamic probing circuit capturing device-specific error patterns; the user compares a device-side fingerprint against a user-side fingerprint generated by a linear-complexity algorithm. Validated on seven IBM Quantum devices.",
+   "overlap": "PARTIAL",
+   "overlap_reason": "Names 'profile fabrication' \u2014 a provider publishing a device profile that does not match the executing hardware \u2014 which is structurally the same failure the material encountered (published specification did not describe the device that ran the job), though the material attributes it to an incomplete spec rather than fraud. Earliest of the substitution-detection cluster, so it establishes the priority date for the problem statement. No overlap on methodology (pre-registration), on physical findings, or on decentralized routing.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Entropy Density Benchmarking of Near-Term Quantum Circuits",
+   "authors": "Marine Demarty, James Mills, Kenza Hammam, Raul Garcia-Patron",
+   "venue_year": "arXiv preprint, submitted 23 Dec 2024, revised 15 Jan 2026",
+   "identifier": "arXiv:2412.18007",
+   "what_it_establishes": "Estimates purity and Renyi-2 entropy density of VQA circuit outputs as a function of circuit depth on Rigetti's Aspen-M-3 QPU using the Pauli version of classical shadows (K=1000 snapshots per setting, M=50 settings). Compares hardware purity/entropy against numerical simulation of the same circuits under a local depolarising noise model whose parameters were deduced from Aspen-M-3 calibration data. Builds heuristic entropy-accumulation models to bound circuit-size thresholds for quantum advantage.",
+   "overlap": "PARTIAL",
+   "overlap_reason": "This is the closest published analogue in my lens: purity estimation from randomized/shadow measurements on Rigetti superconducting hardware, with an explicit predicted-vs-measured comparison driven by a calibration-derived noise model. The material differs on four axes: (i) predictions were pre-registered to version control before submission rather than compared post hoc; (ii) the estimator is a two-copy destructive SWAP test, not single-copy Pauli shadows; (iii) the noise model here is local depolarising from vendor calibration, whereas the material's central result is that the calibration-derived model fails and the missing input is unpublished readout error plus correlated readout crosstalk; (iv) no cross-session drift analysis. Verified from the abstract page and corroborating search snippets of the methods; I did not read the full text.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Quantum advantage in learning from experiments",
+   "authors": "Hsin-Yuan Huang, Michael Broughton, Jordan Cotler, Sitan Chen, Jerry Li, Masoud Mohseni, Hartmut Neven, Ryan Babbush, Richard Kueng, John Preskill, Jarrod R. McClean",
+   "venue_year": "Science 376, 1182 (2022); arXiv Dec 2021",
+   "identifier": "arXiv:2112.00778 / DOI 10.1126/science.abn7293",
+   "what_it_establishes": "The canonical hardware demonstration that entangled two-copy (Bell-basis) measurements beat single-copy measurements exponentially in sample complexity for learning tasks including property prediction, quantum principal component analysis, and learning physical dynamics. Proof-of-principle experiments on up to 40 superconducting qubits and ~1300 gates on Google Sycamore, with the advantage surviving noisy quantum memory and processor.",
+   "overlap": "PARTIAL",
+   "overlap_reason": "Establishes the single-copy vs collective (two-copy) hardware comparison that the material sits inside, on superconducting hardware, and is unavoidable prior art for any collective-measurement claim. But it is an advantage demonstration: it shows the separation survives noise, not that a two-copy purity prediction misses by 17 standard errors. It does not pre-register predictions, does not close an error budget against measured readout and crosstalk, and does not study cross-session reproducibility. Abstract verified; the 46-page supplement (which would contain any error budget) was not read.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Approaching optimal entangling collective measurements on quantum computing platforms",
+   "authors": "Lorcan O. Conlon, Tobias Vogl, Christian D. Marciniak, Ivan Pogorelov, Simon K. Yung, Falk Eilenberger, Dominic W. Berry, Fabiana S. Santana, Rainer Blatt, Thomas Monz, Ping Koy Lam, Syed M. Assad",
+   "venue_year": "Nature Physics 19, 351-357 (2023); arXiv May 2022",
+   "identifier": "arXiv:2205.15358 / DOI 10.1038/s41567-022-01875-7",
+   "what_it_establishes": "Experimentally implements theoretically optimal single-copy AND two-copy collective measurements for simultaneously estimating two non-commuting qubit rotations, across superconducting, trapped-ion and photonic platforms. Reports that the metrological gain from collective measurement persists under significant decoherence, and that error mitigation was needed to reach the Nagaoka bounds.",
+   "overlap": "PARTIAL",
+   "overlap_reason": "A direct hardware demonstration of two-copy collective measurement on superconducting devices, explicitly benchmarked single-copy vs two-copy, and it reports that raw hardware falls short of the theoretical bound until mitigation is applied - structurally the same shape as the material's 0.8932-predicted / 0.7184-measured gap. It differs in target quantity (non-commuting rotation estimation, not purity), it is not pre-registered, and it attributes the shortfall to generic decoherence rather than isolating an unpublished readout channel. Search snippets reported IBM Q System One, cloud IBM Q, and Rigetti Aspen-9 as the superconducting platforms; I verified title/authors/venue/abstract on arXiv but could NOT confirm the specific device list or the error budget from the abstract page.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Transition from statistical to hardware-limited scaling in photonic quantum state reconstruction",
+   "authors": "Attila Baumann, Zsolt Kis, Janos Koltai, Gabor Vattay",
+   "venue_year": "Phys. Rev. A (2026), DOI 10.1103/3gsc-krrq; arXiv Mar 2026, rev Jun 2026",
+   "identifier": "arXiv:2603.12235",
+   "what_it_establishes": "Experimentally characterizes a hardware-induced systematic error floor in shadow tomography on integrated photonic processors. Reconstruction error initially follows the statistical O(M^-1/2) scaling, then abruptly saturates at a floor set by spectral distortions of the realized unitary ensemble - a sharp transition into a bias-dominated regime that cannot be beaten by collecting more samples. Decouples static coherent spectral distortion from dynamic decoherence.",
+   "overlap": "PARTIAL",
+   "overlap_reason": "This is the published precedent for the material's bias-floor concept: a randomized-measurement estimator on real hardware whose accuracy stops improving with shots because a systematic hardware bias dominates. It is the paper most likely to be raised against a novelty claim framed around 'budget-independent bias floor'. Distinctions: photonic integrated processor not superconducting; the floor is attributed to unitary-ensemble spectral distortion rather than to unpublished readout error and excitation-dependent readout crosstalk; no two-copy/SWAP estimator; no pre-registration; no cross-session analysis. Abstract verified only.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Development and Demonstration of an Efficient Readout Error Mitigation Technique for use in NISQ Algorithms",
+   "authors": "Andrew Arrasmith, Andrew Patterson, Alice Boughton, Marco Paini",
+   "venue_year": "arXiv preprint, 30 Mar 2023 (v2)",
+   "identifier": "arXiv:2303.17741",
+   "what_it_establishes": "Readout-error mitigation built on approximate state estimation and classical shadows, demonstrated on Rigetti hardware. Random measurements symmetrise readout error so mitigation needs O(1) calibration samples with qubit count; the abstract explicitly claims the approach can suppress the effect of CORRELATED readout errors. Reports collecting and processing 10^6 samples in under 1.5 minutes.",
+   "overlap": "PARTIAL",
+   "overlap_reason": "Directly prior on the material's central causal claim - that correlated readout error is the load-bearing term in a randomized-measurement error budget on Rigetti hardware - and it is by Rigetti-affiliated authors. However it MITIGATES correlated readout rather than characterizing its structure: I found no evidence it measures how P(1|0) scales with the number of excited neighbours, nor that the dependence saturates with excitation weight. It also does not do purity, two-copy measurement, pre-registration, or session variation. Abstract verified; the specific Rigetti device and measured readout rates were not obtainable from the abstract page.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Demonstration of robust and efficient quantum property learning with shallow shadows",
+   "authors": "Hong-Ye Hu et al. (10 authors)",
+   "venue_year": "Nature Communications 16, 2943 (2025); arXiv 27 Feb 2024",
+   "identifier": "arXiv:2402.17911 / DOI 10.1038/s41467-025-58461-7",
+   "what_it_establishes": "Robust shallow-shadow protocol demonstrated on a superconducting quantum processor (search snippets indicate 18 qubits on a 127-qubit device), recovering expectation values, fidelity and entanglement entropy. Uses Bayesian inference to learn and mitigate an experimentally relevant noise model. States explicitly that noise accumulates with each added circuit layer and biases the estimate, and that mitigation trades bias for estimator variance; error-mitigated shadow predictions and fiducial measurements agree within their stated uncertainties.",
+   "overlap": "PARTIAL",
+   "overlap_reason": "A superconducting hardware demonstration of randomized-measurement property learning that names bias, bias-variance trade-off, and residual systematic error as the central experimental concerns - the same vocabulary as the material. But its headline is that after mitigation NO significant unmitigated systematic bias remains, which is close to the opposite of the material's finding of a persistent bias floor. No two-copy estimator, no purity-via-SWAP, no pre-registration, no cross-session drift. Abstract verified; qubit count came from a search snippet, not from the paper.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Practical Tests and Witnesses of Fermionic non-Gaussianity",
+   "authors": "Tobias Haug, Xhek Turkeshi, Piotr Sierant",
+   "venue_year": "arXiv preprint, 25 May 2026 (v3 31 Jul 2026)",
+   "identifier": "arXiv:2605.26218",
+   "what_it_establishes": "Introduces fermionic antiflatness and two measurement protocols for it: a two-copy Bell measurement and a single-copy scheme using commuting Majorana bilinears. Run on the IQM quantum processor, finding that noise can both reduce and enhance the measured non-Gaussianity. Includes a purity-corrected witness for mixed states, claimed robust under strong noise.",
+   "overlap": "PARTIAL",
+   "overlap_reason": "A recent hardware paper that implements BOTH a two-copy collective protocol and a single-copy alternative for the same quantity, with purity correction - the same protocol dichotomy the material studies, on superconducting hardware, in 2026. Different target quantity (fermionic non-Gaussianity, not Bell-state purity), no pre-registration, and the abstract discloses no readout-error rates, crosstalk, drift, or session-variation data. Abstract verified only; I could not confirm whether both protocols were actually run on IQM or only one.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Noisy Quantum Learning Theory",
+   "authors": "Jordan Cotler, Weiyuan Gong, Anand Kannan",
+   "venue_year": "arXiv preprint, 11 Dec 2025 (rev 14 Jan 2026)",
+   "identifier": "arXiv:2512.10929",
+   "what_it_establishes": "Theoretical framework (introduces a complexity class NBQP) for learning from noisy quantum systems. Key result for this lens: the exponential two-copy advantage for PURITY TESTING collapses under local depolarizing noise. Also treats Pauli shadow tomography under noise and Heisenberg-limited metrology. A setting motivated by AdS/CFT restores the advantage via noise-resilient structure.",
+   "overlap": "PARTIAL",
+   "overlap_reason": "This is the theoretical statement of the material's empirical result: the two-copy advantage for purity specifically does not survive realistic device noise. Any reviewer will ask how the material's hardware finding relates to this theorem. Crucial distinction to make explicit: this is pure theory under an idealized local depolarizing model, whereas the material's collapse is driven by an entirely different and non-depolarizing mechanism - unpublished readout error, excitation-correlated readout crosstalk, and cross-session drift - none of which this paper models. Abstract verified only.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Stability of noisy quantum computing devices",
+   "authors": "Samudra Dasgupta, Travis S. Humble",
+   "venue_year": "arXiv:2105.09472 [quant-ph], 20 May 2021",
+   "identifier": "arXiv:2105.09472",
+   "verified": "FULL_TEXT",
+   "what_it_establishes": "CITED WORK #1. Characterizes four device metrics via Hellinger distance across temporal and spatial scales: initialization fidelity F_I = 1 - e_R (i.e. one minus readout error), CNOT gate fidelity from randomized benchmarking, duty cycle tau = T2/T_gate, and 'addressability' F_A = 1 - normalized mutual information between register elements at measurement. DATA SOURCE IS SPLIT AND THIS MATTERS: the 22-month series (March 2019 - December 2020, 673 daily calibration records, 445 with gate duration) is IBM's OWN PUBLISHED CALIBRATION DATA for the 5-qubit ibmq_yorktown, not circuits the authors ran. Their own executions are confined to a SINGLE DAY on the 27-qubit ibmq_toronto (11 December 2020, six windows 08:00-23:30, 5,750,784 register observations), using fiducial separable and Bell states. Temporal stability H(t) = d_H(F_X(t-tau), F_X(t)) on sliding 1- and 3-month windows; spatial stability H(i,j) between register pairs. Addressability on toronto ranges 0.8875 (pair 23,21) to 0.9989 (pair 11,13). Verbatim from the abstract: 'Our observations collected over 22 months reveal large fluctuations in each metric that underscore the limited scales on which current NISQ devices may be considered reliable.' EXPLICIT NON-CLAIMS: no tolerance threshold is defined ('Whether this later behavior is sufficiently stable depends on the given application'); Bell-state addressability was 'limited to only nearest-neighbor register pairs'; the addressability metric is acknowledged to be state-dependent; no calibration cadence or acceptance criterion is proposed; no error-mitigation technique is evaluated.",
+   "overlap": "PARTIAL",
+   "overlap_reason": "Shares the thesis that superconducting device parameters fluctuate on scales that break reproducibility, and it does look at readout error and at pairwise measurement correlations. But the overlap stops at three boundaries the material crosses. (1) PROVENANCE OF THE NUMBERS: their long series is VENDOR-PUBLISHED calibration data; the material's central finding is that the vendor number is the one that is wrong and unpublished (~6.5% measured vs 2% assumed, ~3x), which by construction cannot be found in a study whose long-baseline input is the vendor's own record. (2) TIMESCALE STRUCTURE: their own-execution data is one day, so they cannot separate within-session from cross-session variation; the material's headline is that ratio (~1% per qubit within-session propagating to ~0.01 in purity, versus ~0.2 in purity across sessions on byte-identical circuits and the same physical qubits, roughly twenty times larger). (3) OBSERVABLE: they characterize device metrics, not an application-level derived quantity against a locked prediction. The material adds: an independently measured readout rate, a within-vs-cross-session ratio on identical circuits, and a pre-registered prediction that the fluctuation broke."
+  },
+  {
+   "title": "Measuring NISQ Gate-Based Qubit Stability Using a 1+1 Field Theory and Cycle Benchmarking (journal version appears as \"Measuring qubit stability in a gate-based NISQ hardware processor\", Quantum Inf. Process., DOI 10.1007/s11128-023-03826-4 \u2014 I could NOT verify the arXiv/journal equivalence directly, Springer blocked fetch)",
+   "authors": "Kubra Yeter-Aydeniz, Zachary Parks, Aadithya Nair, Erik Gustafson, Alexander F. Kemper, Raphael C. Pooser, Yannick Meurice, Patrick Dreher",
+   "venue_year": "arXiv preprint, Jan 2022 (quant-ph); journal version Quantum Information Processing, 2023",
+   "identifier": "arXiv:2201.02899",
+   "what_it_establishes": "Runs a transverse-field Ising / 1+1 field-theory application repeatedly on ibmq_boeblingen (20-qubit superconducting transmon) at the same time each day on different days, and at different times within the same day. Verbatim from the body: \"We observed both inter-day and intra-day calibration drifts on the ibmq_boeblingen processor\"; results at different times \"should have similar results that fall within each graph's error bars... Figure 5 and Figure 10 clearly show that this is not the case\"; and \"The processor is substantially drifting from day to day despite both the daily IBM RB re-calibrations and even intra-day (morning and night) IBM re-calibrations.\" Their Table 1 also shows qubit 6 readout error rising 2.54% -> 9.19% and T1 dropping 67.1 -> 24.1 us over five days.",
+   "overlap": "PARTIAL (DIRECT on the qualitative cross-session claim)",
+   "overlap_reason": "This is the closest superconducting-platform precedent for the claim that identical circuits on the same physical qubits do not reproduce within error bars across sessions, and it explicitly separates inter-day from intra-day drift. It does NOT give a numerical ratio between the two (no analogue of 0.2 vs 0.01 in purity), does not use a purity/SWAP-test or shadow observable, and is on IBM hardware with published per-job calibration. Their readout error excursion to 9.19% also means \"measured readout far exceeds the assumed/spec value\" is not itself a novel observation.",
+   "verified": "FULL_TEXT"
+  },
+  {
+   "title": "Assessing the stability of noisy quantum computation",
+   "authors": "Samudra Dasgupta, Travis S. Humble",
+   "venue_year": "arXiv Aug 2022; SPIE Quantum Communications and Quantum Imaging XX proceedings, 2022",
+   "identifier": "arXiv:2208.07219",
+   "what_it_establishes": "Frames computational accuracy, result reproducibility, device reliability and program stability as distinct, operationally defined concepts, and derives bounds on program output stability in terms of device reliability.",
+   "overlap": "PARTIAL",
+   "overlap_reason": "Already cited in the material (dasgupta2022assessing). Supplies the vocabulary and the formal reliability-to-stability link that the material's drift section will inevitably be read against, but contains no measurement of a purity-like quantity across sessions.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Impact of unreliable devices on stability of quantum computations",
+   "authors": "Samudra Dasgupta, Travis S. Humble",
+   "venue_year": "arXiv preprint, July 2023 (quant-ph)",
+   "identifier": "arXiv:2307.06833",
+   "what_it_establishes": "Quantitatively bounds the reliability of circuit outcomes in terms of the Hellinger distance between noise distributions at different times, yielding thresholds on how frequently hardware must be recalibrated to guarantee statistical reproducibility. Validated with synthetic and experimental noise data from a superconducting device.",
+   "overlap": "PARTIAL",
+   "overlap_reason": "Gives a formal recalibration-interval criterion \u2014 i.e. it already answers \"how far apart can two runs be before results stop being comparable\", which is the theoretical shape of the material's 0.2 vs 0.01 finding. Overlap is with the interpretation, not with the specific measurement.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Anchor: Reducing Temporal and Spatial Output Performance Variability on Quantum Computers",
+   "authors": "Yuqian Huo, Daniel Leeds, Jason Ludmir, Nicholas S. DiBrita, Tirthak Patel",
+   "venue_year": "Proceedings of ACM SIGMETRICS 2026; arXiv Oct 2025",
+   "identifier": "arXiv:2510.06172",
+   "what_it_establishes": "Documents that identical programs give inconsistent outputs across days and across machines, then mitigates it with a linear-programming qubit-mapping method. Simulation on five 27-qubit IBM machines (Cairo, Hanoi, Algiers, Mumbai, Kolkata); hardware validation on five 127-qubit IBM machines (Sherbrooke, Kyiv, Brisbane, Brussels, Strasbourg) over a two-day window, with training data collected over about a week specifically to cover temporally varying noise. Reports total-variation-distance standard deviations of 5.9% (Anchor) vs 8.8% (OptiMap) vs 17.8% (random mapping), and a 73% average reduction in variability; on IBM Hanoi over five days baseline TVD often exceeds 20% while Anchor stays around 12-15%.",
+   "overlap": "PARTIAL",
+   "overlap_reason": "Quantifies day-to-day output variability of byte-identical programs on superconducting hardware and reports its magnitude, which is the closest published numeric analogue to the material's cross-session purity spread. But it treats variability as a thing to engineer away rather than characterize; it uses TVD of bitstring distributions, not purity; it does not decompose within-session vs across-session; and it is a systems/mapping paper, not a physics characterization.",
+   "verified": "FULL_TEXT"
+  },
+  {
+   "title": "A Preparation Nonstationarity Loophole in Superconducting-Qubit Bell Tests",
+   "authors": "Prosanta Pal, Shubhanshu Karoliya, Gargee Sharma, Ramakrishna Podila",
+   "venue_year": "arXiv preprint, Jan 2026 (quant-ph)",
+   "identifier": "arXiv:2601.08290",
+   "what_it_establishes": "Shows that the standard assumption that repeated circuit executions sample a single stationary preparation ensemble is violated on IBM superconducting processors, so temporal drift produces context-dependent effective ensembles and a relaxed Bell bound |S| <= 2 + 6*delta_ens. Introduces an operational drift witness (delta_op) from bin-resolved outcome statistics for fixed measurement channels, which persists after readout mitigation.",
+   "overlap": "PARTIAL",
+   "overlap_reason": "Closest in spirit to the material's central narrative: drift on a superconducting device invalidates a conclusion drawn from repeated identical two-qubit entangled-state executions, and the drift survives readout mitigation. Their drift is resolved between runs within sessions rather than across sessions, they use CHSH rather than purity, and they do not compare the two timescales against each other.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Decision Kernels for Quantum Error Mitigation: Why Accuracy Gains Need Not Improve Downstream Decisions",
+   "authors": "Vicenzo Scavino",
+   "venue_year": "arXiv preprint, quant-ph, 3 July 2026",
+   "identifier": "arXiv:2607.02888",
+   "what_it_establishes": "Quotient-space theory of finite-shot quantum error mitigation for downstream decisions, validated with Qiskit Aer simulations plus, per Section 12, 'a pre-registered hardware micro-cell stress test'. It reports a pre-specified criterion NOT being met and declines the corresponding claim: the hardware test supports the covariance prediction 'while its stricter decision-direction criterion is not met, so no device-level claim is made'. I read the full text for pre-registration language: the term appears essentially once, the specific device is not identified in what I could read, and no locking mechanism (registry, git commit, hash, timestamp) is described.",
+   "overlap": "PARTIAL",
+   "overlap_reason": "Establishes that 'pre-registered' hardware stress tests with pre-specified criteria, including openly reporting a criterion that fails, already appear in 2026 quant-ph. But the pre-registration is thin (asserted, not documented), the hardware role is a small robustness probe rather than the study's spine, and there is no prediction-versus-measurement miss diagnosed to a vendor specification gap.",
+   "verified": "FULL_TEXT"
+  },
+  {
+   "title": "Schedule-dependent basin occupation and instance-specific effective scales in cycled reverse annealing on programmable quantum annealers",
+   "authors": "Luis Lozano",
+   "venue_year": "arXiv preprint, quant-ph; v1 17 May 2026, v3 12 Aug 2026",
+   "identifier": "arXiv:2605.17604",
+   "what_it_establishes": "The closest published analogue. A commercial-quantum-hardware study (D-Wave Advantage2 and Advantage_system6.4) run under 'a locked analysis plan with a prior-knowledge disclosure', which reports openly that 'a pre-registered linear predictor of schedule sensitivity fails on held-out instances' (no model passed either held-out criterion; best r = -0.61, R^2 = -3.0), and that an earlier pilot's two-pause enhancement claim is contradicted (Fisher p=0.0013). The v3 comment records a substantive correction withdrawing v2's central claims after calibration, units, estimator and gauge-frame errors were found, with all analyses regenerated under the locked plan and raw QPU records unchanged. It also reports that the vendor solver 'did not expose a calibration epoch', so per-job calibration metadata was unavailable. VERIFIED AT FULL TEXT, and the full text contains the decisive distinction: the plan was locked AFTER a diagnostic reanalysis of the same archived data, and the author says so explicitly ('the plan was locked after a diagnostic reanalysis of the same archived data, so approximate values of several statistics it would recompute were already known'). Bias control therefore rested on calibrated permutation/bootstrap thresholds, mechanical decision rules, all-cells reporting with FDR control, and an archived prior-knowledge disclosure - not on prospective commitment.",
+   "overlap": "PARTIAL",
+   "overlap_reason": "Shares the core methodological move (locked plan on commercial quantum hardware, pre-registered predictor reported as failing, vendor calibration metadata unavailable, honest retraction) but differs on the one axis the material claims: this plan was locked retrospectively over archived data, not before measurement. Different platform class (annealer, not gate-model superconducting), different physics (basin occupation, not purity/shadow estimation), and no spec-versus-reality readout finding. This is the paper a referee will find first and the material must cite and distinguish on prospectivity.",
+   "verified": "FULL_TEXT"
+  },
+  {
+   "title": "Modeling and mitigation of cross-talk effects in readout noise with applications to the Quantum Approximate Optimization Algorithm",
+   "authors": "Filip B. Maciejewski, Flavio Baccari, Zoltan Zimboras, Michal Oszmaniec",
+   "venue_year": "Quantum 5, 464 (2021)",
+   "identifier": "arXiv:2101.02331 / DOI 10.22331/q-2021-06-01-464",
+   "what_it_establishes": "Diagonal Detector Overlapping Tomography reconstructs k-local measurement cross-talk on N qubits using O(k 2^k log N) circuits built from random X/identity patterns -- i.e. the neighbours are set to random bit patterns, so multi-excitation configurations are sampled. Error reduction factors >22 (IBM 15q) and >5.5 (Rigetti Aspen 23q). Reports that correlations in the measurement noise do NOT follow the physical layout of the device.",
+   "overlap": "PARTIAL",
+   "overlap_reason": "Establishes the correlated-readout-noise modelling framework and the random-multi-excitation calibration circuits, but reports no weight-dependence or saturation and no conditional P(1|0) figures. The 'correlations do not follow device layout' result is a caution for the material's neighbour-based framing.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Mitigating measurement errors in multi-qubit experiments",
+   "authors": "Sergey Bravyi, Sarah Sheldon, Abhinav Kandala, David C. McKay, Jay M. Gambetta",
+   "venue_year": "Physical Review A 103, 042605 (2021)",
+   "identifier": "arXiv:2006.14044 / DOI 10.1103/PhysRevA.103.042605",
+   "what_it_establishes": "The continuous-time Markov process (CTMP) correlated readout model A = e^G, with a generator G built from single- and two-qubit error terms (2n^2 rates). Measured correlated two-qubit rates of a few percent for some pairs on a 12-qubit graph state and <1% for all pairs in a 20-qubit random Clifford experiment on ibmq_johannesburg; mean readout error (3.44 +/- 1.72)e-2; noise strength gamma ~ 0.05n. Tensor-product mitigation systematically over-estimates weight-3 to weight-6 stabilizers where CTMP agrees better.",
+   "overlap": "PARTIAL",
+   "overlap_reason": "This is the model the material's saturation claim should be argued AGAINST. A generator made of pairwise terms makes the effective error rate grow with the number of excited qubits (gamma ~ 0.05n), i.e. it predicts accumulation. An observed saturation is therefore a substantive contradiction of the field-standard correlated model, not merely a new datum -- worth framing that way explicitly.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Mitigating Measurement Errors in Quantum Computers by Exploiting State-Dependent Bias",
+   "authors": "Swamit S. Tannu, Moinuddin K. Qureshi",
+   "venue_year": "MICRO-52: 52nd Annual IEEE/ACM International Symposium on Microarchitecture, 2019",
+   "identifier": "DOI 10.1145/3352460.3358265",
+   "what_it_establishes": "Establishes that readout error on superconducting devices is asymmetric -- |1> is substantially more error-prone than |0> because of relaxation during readout -- and exploits this by flipping qubits to measure in the stronger state. The associated line of work reports a strong correlation between readout error and the Hamming weight of the measured state on IBMQ machines.",
+   "overlap": "PARTIAL",
+   "overlap_reason": "Directly pre-empts the material's asymmetry finding ('asymmetric in the direction T1 decay during readout predicts') -- that is established, not new. It also stakes out Hamming-weight dependence of readout error as known, which narrows the material's saturation claim to the SHAPE of the weight curve rather than its existence. I verified the state-dependent-bias mechanism from the ACM record; I did NOT read the full text and could not verify the Hamming-weight figure inside this specific paper, so cite that sub-claim cautiously.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Measurement Crosstalk Errors in Cloud-Based Quantum Computing",
+   "authors": "Seungchan Seo, Joonwoo Bae",
+   "venue_year": "IEEE Internet Computing 26(1), 26-33, Jan.-Feb. 2022",
+   "identifier": "arXiv:2112.00984 / DOI 10.1109/MIC.2021.3133437",
+   "what_it_establishes": "Uses quantum detector tomography to quantify measurement crosstalk on cloud services from IBM and Rigetti (IBMQ Yorktown and Rigetti Aspen-8), and identifies entanglement in the reconstructed three-qubit detector as a signature of crosstalk that single-qubit correction cannot remove.",
+   "overlap": "PARTIAL",
+   "overlap_reason": "Same 'characterise readout crosstalk on the cloud device you were actually given' posture as the material, on both vendors, four years earlier. I could not extract numeric magnitudes or any weight-dependence from the landing page, so the strength of the overlap on the material's specific numbers is unverified.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Mitigation of correlated readout errors without randomized measurements",
+   "authors": "Adrian Skasberg Aasen, Andras Di Giovanni, Hannes Rotzinger, Alexey V. Ustinov, Martin Gaerttner",
+   "venue_year": "Physical Review A 112, 022601 (2025)",
+   "identifier": "arXiv:2503.24276 / DOI 10.1103/PhysRevA.112.022601",
+   "what_it_establishes": "Mitigation protocol using only single-qubit Pauli measurements and overlapping detector tomography, covering a broad class of correlated readout noise models and scaling to large registers; assessed in simulation up to 100 qubits using readout errors taken from superconducting-qubit experiments.",
+   "overlap": "PARTIAL",
+   "overlap_reason": "Current state of the art for correlated readout mitigation; establishes that correlated readout error is a live, actively modelled problem in 2025. No conditional-on-neighbour-excitation data and no weight dependence reported in what I could verify.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Benchmarking the quality of multiplexed qubit readout beyond assignment fidelity",
+   "authors": "Andras Di Giovanni, Adrian Skasberg Aasen, Juergen Lisenfeld, Martin Gaerttner, Hannes Rotzinger, Alexey V. Ustinov",
+   "venue_year": "Physical Review Applied 24, 044043 (2025)",
+   "identifier": "arXiv:2502.08589 / DOI 10.1103/PhysRevApplied.24.044043",
+   "what_it_establishes": "Argues assignment fidelity is an inadequate single-number summary of multiplexed readout quality, uses detector tomography for full multiqubit readout characterisation, and proposes readout correlation coefficients and infidelity convergence as optimisation/validation tools.",
+   "overlap": "PARTIAL",
+   "overlap_reason": "Supports the material's broader thesis that a single published readout number is insufficient, and supplies correlation coefficients as an established metric. I could not verify from the abstract page whether they measure any dependence on the number of simultaneously excited qubits.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Assessing the Stability of Noisy Quantum Computation",
+   "authors": "Samudra Dasgupta, Travis S. Humble",
+   "venue_year": "Proc. SPIE 12238, Quantum Communications and Quantum Imaging XX (2022); arXiv:2208.07219, 11 Aug 2022",
+   "identifier": "arXiv:2208.07219 / doi:10.1117/12.2631809",
+   "verified": "FULL_TEXT",
+   "what_it_establishes": "CITED WORK #2. This is the DEFINITIONAL paper, not a measurement paper. It separates four concepts that the field conflates: accuracy ('how close the experimentally realized output of a quantum program matches the known, correct output'), reproducibility ('how close an instance of a program is to a previously executed instance on the same or potentially different device'), reliability (deviation of device parameters such as gate fidelities from expectation), and stability ('quantifies whether the program behavior stays bounded in the presence of fluctuations due to noise'). Formalizes epsilon-accuracy as d_H <= epsilon and epsilon-reproducibility as Pr(d <= epsilon) >= 1 - delta. Derives operational bounds: for a single-qubit depolarizing channel, e <= 3*epsilon/4; an output-stability bound d_H <= sqrt(1 - sqrt(2*phi^2 - 1)); and a calibration-interval bound delta_t_stable under linear channel drift lambda(t) = lambda_0 - eta*delta_t. Empirical illustration is thin and deliberately so: a 4-qubit Bernstein-Vazirani circuit on ibmq_mumbai (27 qubits) compared between 17 June 2022 and 31 July 2022, plus initialization-fidelity maps on ibmq_washington (127 qubits) for Jan-Feb 2022 versus 31 May 2022, fitted with beta distributions. STATED LIMITATIONS: accuracy 'requires a priori knowledge of the noiseless reference distribution q, and this may be an impractical requirement'; and the framework's own premise, that 'the assumption that a NISQ noise channel is stationary does not hold up to experimental scrutiny. However, noise characterizations are assumed to be constant in current research when applying error mitigation.' Correlated readout error is not treated; register-size scaling is not examined beyond the one 4-qubit example.",
+   "overlap": "PARTIAL",
+   "overlap_reason": "This supplies the material's VOCABULARY, not its result. Everything the material reports is expressible in these terms: the SWAP-test miss is an accuracy failure with a KNOWN reference (purity 1), sidestepping the paper's own stated limitation about needing the noiseless distribution; the cross-session 0.2 purity swing is a reproducibility failure across instances on the same device; the missing readout spec is a reliability failure. What the material adds is the causal decomposition these authors leave open. They bound stability as a FUNCTION of device parameters assumed to be known and published; the material's finding is that the governing parameter was neither known nor published, and that supplying it (readout 0.89 -> 0.75, plus crosstalk -> 0.7163 against 0.7184 measured) closes a 17-standard-error gap to within one part in three hundred. That is an identification result, not a bound. Their depolarizing-channel assumption is also directly contradicted by the material's asymmetric, T1-directional, excitation-correlated readout channel."
+  },
+  {
+   "title": "Modeling and mitigation of cross-talk effects in readout noise with applications to the Quantum Approximate Optimization Algorithm",
+   "authors": "Filip B. Maciejewski, Flavio Baccari, Zolt\u00e1n Zimbor\u00e1s, Micha\u0142 Oszmaniec",
+   "venue_year": "Quantum 5, 464 (1 June 2021)",
+   "identifier": "doi:10.22331/q-2021-06-01-464",
+   "verified": "ABSTRACT_ONLY",
+   "what_it_establishes": "A k-local correlated measurement-noise model characterized by Diagonal Detector Overlapping Tomography, with mitigation at the level of marginal distributions. Tested on a 15-qubit IBM device and a 23-qubit Rigetti device. Reports the structurally important negative result that correlations in measurement noise do NOT track the physical layout of the device. Mitigation improves errors by a factor >22 (IBM) and >5.5 (Rigetti). I could not verify from the abstract-level material whether state-conditional dependence or excitation-weight scaling is analyzed; the fetched summary indicates it is not, but I did not read the body.",
+   "overlap": "PARTIAL",
+   "overlap_reason": "Establishes correlated readout noise as a modelled, mitigable phenomenon on BOTH IBM and Rigetti superconducting hardware, which pre-empts any framing of correlated readout as unrecognized. It does not, on the evidence I verified, resolve the dependence on the excitation weight of neighbours or report saturation, and its purpose is mitigation rather than the audit of a published specification. The material's contribution against it is the weight-resolved structure and the demonstrated propagation into a pre-registered physical estimate."
+  },
+  {
+   "title": "Efficient reconstruction, benchmarking and validation of cross-talk models in readout noise in near-term quantum devices",
+   "authors": "Jan Tuziemski, Filip B. Maciejewski, Joanna Majsak, Oskar S\u0142owik, Marcin Kotowski, Katarzyna Kowalczyk-Murynka, Piotr Podziemski, Micha\u0142 Oszmaniec",
+   "venue_year": "arXiv:2311.10661, 17 November 2023",
+   "identifier": "arXiv:2311.10661",
+   "verified": "ABSTRACT_ONLY",
+   "what_it_establishes": "Efficient reconstruction of k-local cross-talk models in readout noise with logarithmic sample complexity, plus benchmarking and validation procedures. Applied to a 79-qubit Rigetti device and a 127-qubit IBM device, giving roughly 20% improvement in mitigation performance for correlated-clusters-and-neighbours models on MAX-2-SAT energy estimation. The abstract does not address weight dependence or saturation.",
+   "overlap": "PARTIAL",
+   "overlap_reason": "The most directly comparable readout-crosstalk characterization on RIGETTI hardware at scale, so it constrains any novelty claim about correlated readout on Rigetti specifically. Its target is scalable model reconstruction for mitigation; the material's target is the audit gap between the published specification and the measured device, and the weight law. I verified only the abstract, so I cannot rule out that a weight-resolved analysis appears in the body; this should be checked in full text before the material claims the weight structure is unprecedented."
+  },
+  {
+   "title": "Measurement Crosstalk Errors in Cloud-Based Quantum Computing",
+   "authors": "Seungchan Seo, Joonwoo Bae",
+   "venue_year": "IEEE Internet Computing 26(1), 26-33, Jan-Feb 2022; arXiv:2112.00984",
+   "identifier": "arXiv:2112.00984",
+   "verified": "ABSTRACT_ONLY",
+   "what_it_establishes": "Uses quantum detector tomography over cloud services to verify and characterize measurement readout errors on IBMQ and Rigetti platforms, documenting measurement crosstalk affecting multiple qubits simultaneously and noting entanglement as a crosstalk source in three-qubit measurements. Specific magnitudes and any state- or weight-dependence are not given in the abstract.",
+   "overlap": "PARTIAL",
+   "overlap_reason": "Same setting as the material, cloud-accessed superconducting hardware including Rigetti, same object, measurement crosstalk, and same posture of independent verification rather than trusting the platform. It is the closest precedent for 'we tomographed the detector ourselves rather than believing the cloud.' It does not compare against a published vendor specification, does not resolve excitation weight, and does not carry the result through to a pre-registered physical prediction."
+  },
+  {
+   "title": "Impact of unreliable devices on stability of quantum computations",
+   "authors": "Samudra Dasgupta, Travis S. Humble",
+   "venue_year": "arXiv:2307.06833 (2023); ACM Transactions on Quantum Computing, doi:10.1145/3682071",
+   "identifier": "arXiv:2307.06833 / doi:10.1145/3682071",
+   "verified": "FULL_TEXT",
+   "what_it_establishes": "The most developed entry in the Dasgupta-Humble line and NOT currently cited by the material. Uses the 127-qubit ibmq_washington over January 2022 to April 2023 (16 months of daily noise measurements aggregated monthly), with a 5-qubit Bernstein-Vazirani benchmark and simulated 8- and 12-qubit variants. Derives an upper bound linking device reliability to outcome stability, s_max = 2c*sqrt(1 - (1 - H_normalized^2)^(2d)). Treats SPAM explicitly via Kraus operators for qubit-specific measurement fidelity and identifies SPAM AS THE LARGEST ERROR SOURCE. Notably, it uses Gaussian copulas specifically to preserve correlation information between noise parameters, since standard approaches fail to capture those dependencies in high dimensions. Finds fluctuation across minutes and days that 'significantly surpasses the maximum allowable threshold.' Limitations conceded: requires well-characterized device noise data as INPUT, a single device platform, and that 'achieving a 100% complete characterization of noise is difficult.'",
+   "overlap": "PARTIAL",
+   "overlap_reason": "Should be added to the material's bibliography; it is the strongest version of the cited authors' argument and it already reaches the conclusion that SPAM dominates, which anticipates part of the material's readout finding. But its stated dependency is the material's target: the method 'requires well-characterized device noise data as input,' and the material's result is that on this platform that input did not exist, was not published, and was wrong by 3x when measured. The material also supplies what this paper simulates rather than measures, namely register-size dependence at n=3 and n=4 on real hardware, and finds it non-monotonic in a way no noise-parameter bound of this form anticipates."
+  },
+  {
+   "title": "Characterizing the Reproducibility of Noisy Quantum Circuits",
+   "authors": "Samudra Dasgupta, Travis S. Humble",
+   "venue_year": "Entropy 24(2), 244 (2022); arXiv:2204.01529",
+   "identifier": "doi:10.3390/e24020244 / arXiv:2204.01529",
+   "verified": "ABSTRACT_ONLY",
+   "what_it_establishes": "Bounds circuit reproducibility by device characterization metrics, measuring reproducibility as the Hellinger distance between computational results. Validated with single-qubit test circuits on a superconducting transmon processor with well-characterized readout and gate error rates, and with numerical simulation of Bernstein-Vazirani. Shows the minimum sample size for reproducibility is a nonlinear function of confidence level and accuracy threshold.",
+   "overlap": "PARTIAL",
+   "overlap_reason": "Completes the Dasgupta-Humble trilogy the material half-cites and should be added for scholarly completeness. Its premise, a processor 'with well-characterized readout and gate error rates,' is exactly the condition the material shows fails in the wild. The material's cross-session result is a measured counterexample to the implicit assumption that characterization transfers between sessions."
+  },
+  {
+   "title": "Preparation nonstationarity in superconducting-qubit Bell tests (arXiv title: A Preparation Nonstationarity Loophole in Superconducting-Qubit Bell Tests)",
+   "authors": "Prosanta Pal, Shubhanshu Karoliya, Gargee Sharma, Ramakrishna Podila",
+   "venue_year": "Phys. Rev. A (2026), doi:10.1103/ydtx-yy5y; arXiv:2601.08290, 13 January 2026",
+   "identifier": "arXiv:2601.08290 / doi:10.1103/ydtx-yy5y",
+   "verified": "FULL_TEXT",
+   "what_it_establishes": "Shows that the standard assumption that repeated circuit executions sample a single stationary preparation ensemble is violated on contemporary superconducting hardware, with consequences for interpreting Bell violations. Introduces an ensemble-divergence framework in which slow temporal drift induces context-dependent effective ensembles even with measurement independence and locality preserved, yielding a relaxed Bell bound and a bin-resolved operational witness. Devices: ibm_fez (qubits 0,1) and ibm_torino (qubits 40,41). Timescale is SHORT: roughly 96 seconds of wall-clock per qubit pair across six temporal bins, with about 48 s separating readout-matrix calibrations. Observed drift delta_op approximately 0.06-0.09 (ibm_torino) and 0.062 (ibm_fez), p<0.05. Crucially, the drift PERSISTS AFTER full two-qubit readout mitigation, ruling out measurement artefacts. Scope is deliberately narrow: 'Our objective is not to survey or characterize this effect across all qubit pairs, but to establish its existence as a distinct mechanism.'",
+   "overlap": "PARTIAL",
+   "overlap_reason": "Strong methodological ally and a partial competitor on the drift axis, published seven months before the material's date. It establishes, on a two-qubit entangled-state observable, that drift is real and is NOT a readout artefact, which is a useful independent constraint on the material's own mechanism-elimination exercise. But its horizon is 96 seconds, entirely within a single session; it explicitly does not compare across sessions or days. The material's distinguishing measurement, cross-session drift on byte-identical circuits on the same physical qubits at roughly twenty times the within-session magnitude, lies wholly outside this paper's temporal reach, and the material's readout finding is the complement of theirs: they exclude readout as the cause of their effect, the material identifies readout as the cause of its prediction gap while a separate cross-session effect remains unexplained by it."
+  },
+  {
+   "title": "Forensics of Error Rates of Quantum Hardware",
+   "authors": "Rupshali Roy, Swaroop Ghosh",
+   "venue_year": "arXiv:2505.11706, 16 May 2025",
+   "identifier": "arXiv:2505.11706",
+   "verified": "FULL_TEXT",
+   "what_it_establishes": "Motivated explicitly by the rise of third-party cloud providers offering quantum hardware as a service, where 'the actual execution of the program is not clearly visible to the customer' and published device information 'may not be accurate and/or correspond to the actual hardware allocated.' Infers relative backend error rates from the transpiler's own behaviour, ranking qubit links by transpiler selection frequency across many circuits, then compares those ranks against IBM's published ECR two-qubit error data. Predicts bin ranks within two levels for roughly 80-83.5% of qubit edges on the 127-qubit IBM Brisbane and Sherbrooke. Restricted to GATE errors: readout error is not treated.",
+   "overlap": "PARTIAL",
+   "overlap_reason": "The closest published articulation of the material's provenance problem: a user on a brokered platform cannot see or verify what actually ran, and the vendor's published numbers may not describe the allocated hardware. Any reviewer sceptical of the material's Bittensor-routed execution path should be pointed here, since it establishes that the concern is a recognized research problem rather than special pleading. It differs in remedy and in target: it infers GATE error ranks from transpiler telemetry on a conventional IBM cloud, whereas the material measures READOUT directly on a decentralized-broker path and finds the specification silent on that parameter. Complementary, not overlapping."
+  },
+  {
+   "title": "Experimental shadow tomography beyond single-copy measurements",
+   "authors": "Xu-Jie Peng, Qing Liu, Lu Liu, Ting Zhang, You Zhou, He Lu",
+   "venue_year": "Phys. Rev. Applied 23, 014075 (2025)",
+   "identifier": "doi:10.1103/PhysRevApplied.23.014075",
+   "verified": "ABSTRACT_ONLY",
+   "what_it_establishes": "Already known to the material (cited as peng2025beyond). Experimental implementation of shadow tomography using measurements beyond the single-copy setting, i.e. the experimental realization of the collective-measurement route the material's SWAP-test anchor also probes.",
+   "overlap": "PARTIAL",
+   "overlap_reason": "The existing experimental precedent for collective-measurement shadow protocols on hardware, so it bounds any claim of first experimental realization. It does not pre-register, does not audit vendor specifications, and does not report cross-session drift or a readout-traced prediction failure."
+  },
+  {
+   "title": "Trustworthy Computing using Untrusted Cloud-Based Quantum Hardware",
+   "authors": "Suryansh Upadhyay, Swaroop Ghosh",
+   "venue_year": "arXiv preprint, 2 May 2023 (v1); 14 November 2024 (v2); related journal version in Frontiers in Computer Science 2024",
+   "identifier": "arXiv:2305.01826",
+   "what_it_establishes": "Models a future ecosystem in which untrusted, less-trusted, or unreliable vendors offer QPUs at varied price/performance points, and users are drawn to the cheaper and more available but less trusted hardware. Models adversarial tampering with results and proposes splitting shots across hardware options, plus a run-adaptive split heuristic exploiting temporal quality variation to identify untrustworthy hardware at runtime.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Anticipates the economic structure the material actually operated inside \u2014 a free/cheap tier routed through operators with unverified quality \u2014 and is the canonical citation for 'cheap tier implies weaker trust.' But its concern is deliberate result tampering, not specification incompleteness or drift, and it uses simulation of adversarial behaviour rather than a measured hardware campaign. It does not address whether a legitimate but opaque path degrades a scientific measurement.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Measuring Control-Plane Openness in Near-Term Quantum Computing: A Rubric, Its Validation, and an Application to Thirteen Vendor Stacks",
+   "authors": "Rylan Malarchick",
+   "venue_year": "arXiv preprint, 13 May 2026",
+   "identifier": "arXiv:2605.15233",
+   "what_it_establishes": "Proposes a six-axis operational rubric for 'control-plane openness' \u2014 the layer between gate-level circuit specification and physical control electronics \u2014 defined so the same evidence yields the same grade across vendors. Applied to thirteen commercial vendors across superconducting, trapped-ion, neutral-atom and photonic modalities as of 1 May 2026. Includes a reproducibility audit of pre-2025 IBM Qiskit Pulse experiments ported to Rigetti Quil-T as a demonstration of one of the harms detected.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "The only work found that systematically GRADES vendors on what they expose to users, and it includes Rigetti and touches reproducibility harms from closed control planes. Useful as the citation for 'vendor disclosure varies and is measurable.' But it scores pulse-level and control-electronics access, not the contents of published performance specifications (whether readout error is listed), and not per-job calibration metadata or execution-path verifiability. I could not retrieve the per-vendor scores.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Reproducible Builds for Quantum Computing",
+   "authors": "Iy\u00e1n M\u00e9ndez Veiga, Esther H\u00e4nggi",
+   "venue_year": "arXiv preprint, 2 October 2025",
+   "identifier": "arXiv:2510.02251",
+   "what_it_establishes": "Generalizes the reproducible-builds definition to the quantum setting under two threat models: confidentiality of user data during circuit preparation and submission, and INTEGRITY OF QUANTUM COMPUTATION RESULTS. Shows three examples of hiding classical information in transpiled circuits and two cases where minimal circuit modifications produce incorrect results.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Establishes that the submission pipeline between user source and executed circuit is itself an attack surface and an integrity risk \u2014 relevant because the material's circuits traversed an extra mediation layer (aggregator plus distributed operators) before execution. Shows a circuit can be minimally altered en route with material effect on results. However it is a threat-model and toolchain paper with no hardware campaign, no drift analysis, and no engagement with vendor specification completeness.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Rethinking Reproducibility in the Classical (HPC)-Quantum Era: Toward Workflow-Centered Science",
+   "authors": "Anna Vrtiak, Duuk Baten, Ariana Torres-Knoop",
+   "venue_year": "arXiv preprint, 5 March 2026",
+   "identifier": "arXiv:2603.04924",
+   "what_it_establishes": "Position paper arguing that scientific knowledge now depends on computational processes where hardware and software layers influence outcomes, and that quantum computing at low technological maturity amplifies existing reproducibility challenges while creating new ones through probabilistic outputs, hardware-specific noise, and tight software-hardware coupling. Proposes meta-workflows documenting both process abstractions and implementation contexts.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Conceptual framing only. Names 'infrastructure blends with the results,' which is a fair one-line description of the material's central problem, and is a reasonable citation for why quantum cloud results resist reproduction. It contains no measurement, no device access, and per my fetch does not discuss calibration metadata availability or device verification.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "1-2-3 Reproducibility for Quantum Software Experiments",
+   "authors": "Wolfgang Mauerer, Stefanie Scherzinger",
+   "venue_year": "Q-SANER @ SANER 2022 (arXiv 28 January 2022)",
+   "identifier": "arXiv:2201.12031",
+   "what_it_establishes": "Proposes a meta-generation mechanism producing DOI-safe, long-term, dependency-free reproduction packages from project artifacts alone. Explicitly designed so that traceability survives 'even when the quantum processor itself is no longer accessible' \u2014 i.e. it concedes that re-execution on the original device state is not achievable and substitutes artifact-level traceability.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "The canonical prior statement that a quantum hardware result cannot be re-run into existence and must instead be made traceable through frozen artifacts. This is the accepted-practice baseline against which the material's version-controlled pre-registration is an increment \u2014 the difference being that pre-registration freezes the PREDICTION before the run, whereas 1-2-3 freezes the ARTIFACTS after it. Worth citing precisely to make that distinction explicit.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Three Months in the Life of Cloud Quantum Computing",
+   "authors": "Darrell Teegarden, Allison Casey, F. Gino Serpa, Patrick Becker, Asmita Brahme, Saanvi Kataria, Paul Lopata",
+   "venue_year": "arXiv preprint, 15 January 2026 (ARLIS, University of Maryland)",
+   "identifier": "arXiv:2601.09943",
+   "what_it_establishes": "A three-month observational log of using cloud quantum programming environments: connection metrics to services, algorithm execution, effect of varying qubit count, comparison to simulation, execution times, and cost. Deliberately runs a single algorithm with out-of-the-box settings across machines, cloud platforms and time, presenting 'insights only available from these carefully curated data.' Explicitly disclaims new algorithms or per-machine optimization.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "The closest existing example of the GENRE the material belongs to \u2014 a longitudinal, honest, user's-eye account of what cloud quantum access actually delivers, including comparison to simulation across time. That makes it the natural venue-and-tone precedent. But per its abstract and my fetch it does not analyse drift as such, does not test vendor specification accuracy, does not pre-register, and does not address execution-path verification. Its scope is metadata and cost, not a physics prediction that missed.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Quantum Fidelity-per-Cost: A Metric for Evaluation of Quantum Computing Systems",
+   "authors": "Siddarth Shinde, Jakub Szefer",
+   "venue_year": "arXiv preprint, 30 July 2026",
+   "identifier": "arXiv:2607.28572",
+   "what_it_establishes": "A cross-provider measurement study of circuit execution fidelity over 14 cloud QPU access-path entries (12 distinct physical QPUs) across four access paths: AWS, IBM Quantum Runtime, IQM Resonance, and OQC. Reported dataset: 247 Bell-state executions at shot counts from 20 to 1000, with per-run counts and derived TVD and KL divergence. Proposes a cost-aware QFC score; finds cost-aware ranking differs from fidelity-only ranking and that billing model, not hardware, governs how the score scales with shot count.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Notable because it uses BELL STATES on cloud QPUs across multiple ACCESS PATHS \u2014 the same primitive and the same access-path concept as the material \u2014 and distinguishes 14 access-path entries from 12 physical QPUs, implicitly recognizing that path and device are not the same thing. But it measures output-distribution distance for a purchasing metric, not purity via SWAP test, has no predicted-versus-measured pre-registered comparison, and per my fetch does not discuss reproducibility, cross-session variation, or execution-path verification.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Building Trust in the Quantum Cloud with Physical Unclonable Functions",
+   "authors": "Behnam Tonekaboni, Pranav Gokhale, Kaitlin N. Smith",
+   "venue_year": "arXiv preprint, 13 November 2023 (v1); last revised 9 September 2025 (v2)",
+   "identifier": "arXiv:2311.07094",
+   "what_it_establishes": "An authentication protocol using intrinsic quantum device properties to construct Quantum Physical Unclonable Functions (Q-PUFs), prototyped on IBM quantum devices with real and simulated data, with stated extensions to neutral-atom platforms. Positioned around securing access to quantum hardware and certifying communication with genuine quantum processors.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Part of the device-authentication cluster establishing that hardware identity can be certified from intrinsic device physics \u2014 relevant only as further evidence that the material's unverifiable-path limitation has known partial remedies. HONESTY FLAG: my fetch returned the abstract truncated at ~125 characters, and the page did not confirm the aggregator-rerouting threat model that a secondary search snippet attributed to this line of work. Treat the threat-model attribution as unconfirmed.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Quantum Computer Fingerprinting using Error Syndromes",
+   "authors": "Vincent Mutolo, Devon Campbell, Quinn Manning, Henri Witold Dubourg, Ruibin Lyu, Simha Sethumadhavan, Daniel Rubenstein, Salvatore Stolfo",
+   "venue_year": "arXiv preprint, 19 June 2025 (v1); 25 September 2025 (v2)",
+   "identifier": "arXiv:2506.16614",
+   "what_it_establishes": "Repurposes quantum error correction syndrome measurements as free metadata to verify hardware identity and authenticate computations without additional quantum operations. Validated across multiple codes, states and compilation strategies on several generations of IBM machines; classifiers reach 99% accuracy distinguishing five backends with only 500 shots.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Reinforces that backend identity is cheaply recoverable from data users already hold. Only 500 shots are needed for 99% discrimination \u2014 comparable in scale to the material's 5000-shot and 9000-snapshot budgets \u2014 which is a concrete, quantitative reason a referee could ask whether the material's path could have been checked. No overlap on reproducibility methodology, drift, specification completeness, or the physics results.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Toward Live Noise Fingerprinting in Quantum Software Engineering",
+   "authors": "Avner Bensoussan, Elena Chachkarova, Karine Even-Mendoza, Sophie Fortz, Vasileios Klimis, Mohammad Reza Mousavi",
+   "venue_year": "arXiv preprint, v3 dated 10 July 2026 (arXiv ID indicates December 2025 original)",
+   "identifier": "arXiv:2512.18667",
+   "what_it_establishes": "Introduces SimShadow, a classical-shadow-tomography-based pipeline for continuously updatable noise fingerprinting, motivated by the claim that 'simplified or outdated noise assumptions can lead to incorrect assessments of program correctness.' Reports systematic cross-platform discrepancies between Qiskit and Cirq under MATCHED noise configurations (large Frobenius distances) over 69 benchmark programs, with larger fingerprint differences correlating with output-distribution divergence.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Directly asserts the material's causal thesis in the abstract \u2014 outdated or simplified noise assumptions produce wrong correctness assessments \u2014 and uses classical shadows, matching the material's shadow anchor. Two decisive differences: its discrepancies are between two SIMULATORS, not between a simulator prediction and hardware, and its fix is a live fingerprint rather than a diagnosis of a missing vendor specification input. Cite as the statement of the principle; the material supplies the hardware instance.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "I Know What You Are Reading: Evaluating Readout Crosstalk in Cloud-based Quantum Computers",
+   "authors": "Yizhuo Tan et al. (full author list not retrieved)",
+   "venue_year": "Proceedings of the 2025 Quantum Security and Privacy Workshop (ACM), 2025",
+   "identifier": "doi:10.1145/3733825.3765280",
+   "what_it_establishes": "Evaluates readout crosstalk in commercial cloud quantum computers, attributing it to frequency-multiplexed readout where multiple resonators share a feed line. Reconstructs the likely shared-feedline architecture (which resonators share a line) and shows crosstalk-induced readout errors can let an adversary infer co-located victim qubit states \u2014 framing readout crosstalk as both a reliability and a security issue.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "The nearest published work to the material's correlated-readout finding on CLOUD hardware specifically, and it independently establishes that readout crosstalk depends on neighbouring qubit state \u2014 the mechanism behind P(1|0) rising from 1.6% to 16.9%. It does not, as far as I can tell, report saturation with excitation weight, nor tie crosstalk back to a failed pre-registered prediction. HONESTY FLAG: I confirmed title, venue and DOI from three independent sources (ACM DL, INSPIRE, author page) but did NOT retrieve the abstract or body; the content summary above is from search snippets only.",
+   "verified": "UNVERIFIED"
+  },
+  {
+   "title": "QC-MM: A Metadata and Schema Model for Traceable Quantum-Circuit Experiments",
+   "authors": "Not retrieved",
+   "venue_year": "Applied Sciences 16(13), 6346, MDPI, 2026",
+   "identifier": "doi:10.3390/app16136346",
+   "what_it_establishes": "A metadata and schema model for the experimental record of a quantum-circuit run, covering the logical circuit description, the transpilation trace, the CALIBRATION SNAPSHOT, the execution context, and post-run evidence needed to interpret probabilistic outcomes. Associated with the position that a result lacking a calibration snapshot identifier, hardware revision and SDK version cannot be placed against any other run.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Directly relevant as the normative standard the material's dataset FAILS to meet through no fault of the authors \u2014 per-job calibration metadata was not available from the platform. That reframes the material's metadata gap from a weakness into a documented instance of a provider not meeting an emerging community standard, which is a stronger position. HONESTY FLAG: the MDPI page returned HTTP 403; title, DOI, venue and the content summary come from search snippets only. Verify before citing.",
+   "verified": "UNVERIFIED"
+  },
+  {
+   "title": "Reliability of IBM's Public Quantum Computers",
+   "authors": "Not retrieved",
+   "venue_year": "International Journal of Interactive Multimedia and Artificial Intelligence, 2023 (doi 10.9781/ijimai.2023.04.005)",
+   "identifier": "doi:10.9781/ijimai.2023.04.005",
+   "what_it_establishes": "Monitors the reliability of IBM's public-access quantum computer network on a DAILY basis using a computationally demanding search algorithm, comparing results across machines with different qubit topologies, and applies 50 days of noise-mitigation filtering (reported up to 33% improvement on the 5-qubit Yorktown machine in one day).",
+   "overlap": "ADJACENT",
+   "overlap_reason": "An early precedent for repeated, day-over-day execution of fixed circuits on public cloud hardware to characterize reliability \u2014 the observational design the material extends to cross-session purity drift. Differs in platform (IBM public tier, direct vendor access), in metric (algorithmic success rate, not purity), and in that it has no pre-registration and no execution-path opacity. HONESTY FLAG: I did not retrieve the abstract or author list; content from search snippets only.",
+   "verified": "UNVERIFIED"
+  },
+  {
+   "title": "Stability of classical shadows under gate-dependent noise",
+   "authors": "Raphael Brieger, Markus Heinrich, Ingo Roth, Martin Kliesch",
+   "venue_year": "Phys. Rev. Lett. 134, 090801 (2025); arXiv Oct 2023",
+   "identifier": "arXiv:2310.19947 / DOI 10.1103/PhysRevLett.134.090801",
+   "what_it_establishes": "Proves that classical shadow estimates are stable for some observables but acquire a worst-case bias scaling EXPONENTIALLY in system size for 'magic' observables in the presence of miscalibration errors. Notes that robust-shadow mitigation can itself introduce a large bias when noise is gate-dependent.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Same failure mode in kind - a randomized-measurement estimator carrying a systematic, sample-independent bias traceable to miscalibration - and it is the standard theoretical citation for 'the calibration you assumed is not the calibration you got'. But it is theory with no hardware, does not treat purity, does not involve two-copy measurement, and says nothing about session variation. Abstract verified only.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Shadow tomography with noisy readouts",
+   "authors": "Hai-Chau Nguyen",
+   "venue_year": "arXiv preprint, 26 Oct 2023",
+   "identifier": "arXiv:2310.17328",
+   "what_it_establishes": "Shows classical shadows are intrinsically sensitive to readout noise and develops an X-twirling mitigation. States that the complicated structure of readout noise due to CROSSTALK appears detrimental to the scalability of readout mitigation for shadows.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Anticipates in general terms that readout crosstalk, not readout error alone, is the hard part of debiasing randomized measurements - the qualitative statement the material makes quantitative on hardware. No hardware experiment, no purity or two-copy protocol, no measured crosstalk numbers, no session analysis. Abstract verified only.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Mitigation of correlated readout errors without randomized measurements",
+   "authors": "Adrian Skasberg Aasen, Andras Di Giovanni, Hannes Rotzinger, Alexey V. Ustinov, Martin Gaerttner",
+   "venue_year": "arXiv preprint, 31 Mar 2025 (rev 11 Aug 2025)",
+   "identifier": "arXiv:2503.24276",
+   "what_it_establishes": "A readout error-mitigation protocol using only single-qubit Pauli measurements that captures a broad class of correlated noise models; validated in simulations up to 100 qubits using readout error data obtained from superconducting-qubit experiments.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Establishes that correlated readout error is a recognized, actively modelled problem for superconducting devices, so the material cannot claim to have discovered correlated readout as a phenomenon. It is however a mitigation method validated largely in simulation; I found no evidence it reports the excitation-weight dependence of P(1|0) or a saturation with excitation weight, which is the material's specific structural claim. Abstract verified only.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Light-Cone Scaling of In-Circuit Noise in Randomized Measurements",
+   "authors": "Pan Yu, Yan He, Yadong Wu",
+   "venue_year": "arXiv preprint, 20 Jul 2026",
+   "identifier": "arXiv:2607.17740",
+   "what_it_establishes": "Develops a microscopic description of how gate and readout errors BIAS reconstructed observables in randomized measurements for locally scrambled shallow circuits, showing a noise event contributes only when it overlaps the Heisenberg evolution of the measured Pauli operator; verified for two-qubit random Clifford and locally scrambled iSWAP circuits under two-qubit Pauli noise.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "A 2026 theory-plus-numerics account of exactly which noise events bias a randomized-measurement estimate - relevant to how the material attributes its residual. It does not treat purity or Renyi-2 per the abstract, is not a device demonstration on a named QPU, has no readout crosstalk characterization, and no session variation. The 'experimental validation on actual quantum hardware' claim came from a summarizer and I could NOT confirm it from the abstract - treat as numerics unless checked.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Shallow randomized measurement in noisy quantum devices",
+   "authors": "Gyungmin Cho, Dohun Kim",
+   "venue_year": "arXiv preprint, 22 Apr 2025 (rev 6 Jul 2026)",
+   "identifier": "arXiv:2504.15698",
+   "what_it_establishes": "Theoretical framework based on Clifford ensembles for when shallow-depth randomized measurements are robust to experimental error versus single-qubit random measurements, validated on IBM quantum hardware in experiments with up to 40 qubits.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "A hardware-validated comparison of randomized-measurement strategies under device noise - the same class of question as 'which estimator wins on this device' - but the comparison axis is shallow-circuit depth, not single-copy versus two-copy, and the abstract discloses no bias floor, no purity target, no readout crosstalk budget, and no pre-registration. Abstract verified only.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Probing Entanglement and Symmetries in Random States Using a Superconducting Quantum Processor",
+   "authors": "Jia-Nan Yang, Lata Kh Joshi, Filiberto Ares, Yihang Han, Pengfei Zhang, Pasquale Calabrese",
+   "venue_year": "arXiv preprint, 29 Jan 2026",
+   "identifier": "arXiv:2601.22224",
+   "what_it_establishes": "Measures Renyi-2 entanglement entropy across subsystem sizes (recovering the Page curve), entanglement asymmetry, and moments of partially transposed reduced density matrices, on a superconducting quantum processor for random states from ergodic Floquet models. Reports excellent agreement with Haar-random ensemble predictions.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "A very recent superconducting hardware demonstration of second-moment / Renyi-2 estimation via randomized measurements - the same measurement primitive family. Its headline is AGREEMENT with prediction, the opposite outcome from the material, which sharpens rather than threatens the material's contribution. The abstract page gave no device name, no error budget, no readout or crosstalk numbers, and no session-to-session discussion; I could not verify those from the full text.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "The randomized measurement toolbox",
+   "authors": "Andreas Elben, Steven T. Flammia, Hsin-Yuan Huang, Richard Kueng, John Preskill, Benoit Vermersch, Peter Zoller",
+   "venue_year": "Nature Reviews Physics 5, 9-24 (2023); arXiv Mar 2022",
+   "identifier": "arXiv:2203.11374",
+   "what_it_establishes": "The standard review of randomized-measurement protocols, including purity and Renyi entropy estimation, and their implementations across trapped-ion, superconducting and cold-atom platforms.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Definitional prior art for the measurement primitives, not for any of the material's claims. It is the reference against which 'what error budgets does the field report' should be framed: the review presents sample-complexity budgets, not device-specific systematic-error budgets. Existence and scope verified from search results; abstract not individually fetched in this session.",
+   "verified": "UNVERIFIED"
+  },
+  {
+   "title": "Experimental SWAP test of infinite dimensional quantum states",
+   "authors": "Chi-Huan Nguyen, Ko-Wei Tseng, Gleb Maslennikov, H. C. J. Gan, Dzmitry Matsukevich",
+   "venue_year": "arXiv preprint, 18 Mar 2021",
+   "identifier": "arXiv:2103.10219",
+   "what_it_establishes": "Experimental SWAP test using trapped ytterbium ions to measure state overlap and the purity of various quantum states.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "A genuine hardware SWAP test for purity, establishing that hardware SWAP-test purity measurement is not itself new. Different platform (trapped ion, continuous-variable motional states), non-destructive ancilla-based variant rather than the destructive two-copy SWAP test, and no error budget of the kind the material builds. Retrieved via the arXiv API listing with title, authors, id and date; abstract summary from the API result only.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Generalized collective quantum tomography: algorithm design, optimization, and validation",
+   "authors": "Xiao et al. (full author list not verified)",
+   "venue_year": "arXiv preprint, 29 Oct 2025",
+   "identifier": "arXiv:2510.25466",
+   "what_it_establishes": "Per the arXiv API listing: algorithms for collective tomography using two-copy collective measurements, which provide purity information, with claimed experimental validation.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Two-copy collective measurement yielding purity, potentially on hardware, in the material's immediate protocol neighbourhood. HONESTY FLAG: retrieved only from an arXiv API listing; I did NOT fetch the abstract page, did not verify the full author list, and did not verify the hardware claim or platform. Should be checked before the paper is written.",
+   "verified": "UNVERIFIED"
+  },
+  {
+   "title": "Adaptive Negativity Estimation via Collective Measurements",
+   "authors": "Zeman, Travnicek, Cernoch, Soubusta, Lemr (full names not verified)",
+   "venue_year": "arXiv preprint, 26 Mar 2026",
+   "identifier": "arXiv:2603.25560",
+   "what_it_establishes": "Per the arXiv API listing: uses collective measurements on two copies, combined with machine learning, for adaptive entanglement quantification.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "A 2026 two-copy collective-measurement experiment, likely photonic given the author group, estimating an entanglement monotone rather than purity. Relevant to the collective-measurement hardware lineage but not to the readout/session findings. HONESTY FLAG: arXiv API listing only; abstract not fetched, platform and hardware status not verified.",
+   "verified": "UNVERIFIED"
+  },
+  {
+   "title": "Empirical Falsification of Pairwise-Only Explanations for an Engineered Parity Benchmark on a 133-Qubit Superconducting Processor",
+   "authors": "Petr Sramek",
+   "venue_year": "arXiv preprint, 20 Mar 2026",
+   "identifier": "arXiv:2603.20542",
+   "what_it_establishes": "Runs a parity-structured benchmark protocol on IBM's 133-qubit ibm_torino and uses Moebius decomposition of subset mutual informations to falsify the hypothesis that the observed correlations can be explained by pairwise interactions alone (observed triplet term 0.565 bits versus a pairwise-only prediction of ~6.6e-6 bits).",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Methodologically the nearest thing I found to the material's 'seven candidate mechanisms bounded or excluded' and to its higher-than-pairwise readout-correlation structure: a single-author hardware study whose contribution is the empirical exclusion of a class of explanations on a named superconducting device. Different observable, no purity, no collective measurement, no pre-registration, no session analysis. Abstract verified only.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Quantum Error Management in Practice: A Cross-Stack Benchmark",
+   "authors": "Sierra-Sosa et al. (full author list not verified)",
+   "venue_year": "arXiv:2608.05202, 5 August 2026",
+   "identifier": "arXiv:2608.05202",
+   "verified": "FULL_TEXT",
+   "what_it_establishes": "Benchmarks IBM Quantum built-in options, Q-CTRL Performance Management and Qedma QESEM on a single device, the 156-qubit ibm_pittsburgh (Heron r3). Sampler track covers Bernstein-Vazirani, quantum phase estimation, GHZ preparation and randomized mirror circuits at 10-100 qubits; Estimator track covers a transverse-field Ising model at 25, 50 and 75 qubits. Readout handling goes beyond vendor defaults through custom measurement twirling and TREX configurations. Cross-session drift is addressed procedurally via a seeded submit-and-collect workflow with JSON manifests recording job identifiers. No pre-registration. Conceded limitation: a single execution per configuration.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Published nine days before the material's date and the most current statement of benchmarking practice, so it defines the bar the material's reporting hygiene will be judged against. Its 'single execution per configuration' limitation is exactly the weakness the material's repeated byte-identical cross-session runs remedy, which is a clean way for the material to state its contribution. No overlap on readout specification auditing, excitation-weight crosstalk, purity estimation, or brokered access."
+  },
+  {
+   "title": "Detecting and tracking drift in quantum information processors",
+   "authors": "Timothy Proctor, Melissa Revelle, Erik Nielsen, Kenneth Rudinger, Daniel Lobser, Peter Maunz, Robin Blume-Kohout, Kevin Young",
+   "venue_year": "Nature Communications 11, 5396 (2020); arXiv July 2019",
+   "identifier": "arXiv:1907.13608 / DOI 10.1038/s41467-020-19074-4",
+   "what_it_establishes": "A fast, statistically principled spectral-analysis method for detecting and quantifying time dependence in any quantum-processor time-series data, applied to randomized benchmarking, gate set tomography and Ramsey spectroscopy. Demonstrated on simulation and trapped-ion experiments, including localizing the source of instability and suppressing it with drift control.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "The canonical statistical machinery for exactly the question the material asks (is the variation over time larger than shot noise?). It is method rather than measurement, and the experimental demonstration is trapped-ion, not superconducting. A referee will likely ask why this framework was not used to test the within- vs cross-session comparison.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Fluctuations of Energy-Relaxation Times in Superconducting Qubits",
+   "authors": "P. V. Klimov, J. Kelly, Z. Chen, and co-authors (Google/UCSB Martinis group; full list not individually verified beyond the first authors)",
+   "venue_year": "Physical Review Letters 121, 090502 (2018); arXiv Sept 2018",
+   "identifier": "arXiv:1809.01043 / DOI 10.1103/PhysRevLett.121.090502",
+   "what_it_establishes": "Direct evidence that individual two-level-system defects, wandering in frequency and time, are responsible for the largest fluctuations in superconducting qubit energy-relaxation times \u2014 the microscopic origin of the recalibration requirement.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Establishes the physical mechanism behind session-to-session drift. It is device-parameter physics, not circuit-outcome reproducibility, and offers no application-level metric. Relevant as the mechanism citation if the material attributes the ~0.2 cross-session purity swing to TLS reconfiguration.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Decoherence benchmarking of superconducting qubits",
+   "authors": "Jonathan J. Burnett, Andreas Bengtsson, Marco Scigliuzzo, David Niepce, Marina Kudra, Per Delsing, Jonas Bylander",
+   "venue_year": "npj Quantum Information 5, 54 (2019); arXiv Jan 2019",
+   "identifier": "arXiv:1901.04417 / DOI 10.1038/s41534-019-0168-5",
+   "what_it_establishes": "Repeats decoherence measurements over time to characterize the temporal stability of energy relaxation, dephasing and qubit transition frequency (mean T1 = 49 us, T2* = 95 us, both fluctuating), attributing fluctuation to near-resonant TLS instability and frequency stability to capacitance noise. Explicitly notes that benchmarks are usually not repeated in time and that quantifying stability alongside mean lifetime is uncommon.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Prior art for the general proposition that a superconducting device's performance must be reported with a stability figure, not just a mean. Single-lab device physics; no circuit-level or cross-session application metric.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Dynamics of superconducting qubit relaxation times",
+   "authors": "M. Carroll, S. Rosenblatt, P. Jurcevic, I. Lauer, A. Kandala",
+   "venue_year": "npj Quantum Information 8, 132 (2022); arXiv May 2021",
+   "identifier": "arXiv:2105.15201 / DOI 10.1038/s41534-022-00643-y",
+   "what_it_establishes": "Probes spectral and temporal T1 dynamics in single-junction transmons using AC-Stark-shifted repeated T1 measurements; across 10 qubits finds strong correlation between the mean T1 averaged over about nine months and a single frequency-averaged snapshot. Highlights that autocorrelation in T1 time series makes single-time measurements unrepresentative.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Directly relevant to why a device specification quoted at one time fails to predict performance at another, and to autocorrelation in drift time series. Device-parameter level only.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Multi-qubit time-varying quantum channels for NISQ-era superconducting quantum processors",
+   "authors": "Josu Etxezarreta Martinez, Patricio Fuentes, Antonio deMarti iOlius, Javier Garcia-Fr\u00edas, Javier Rodr\u00edguez Fonollosa, Pedro M. Crespo",
+   "venue_year": "Physical Review Research 5, 033055 (2023); arXiv July 2022",
+   "identifier": "arXiv:2207.06838 / DOI 10.1103/PhysRevResearch.5.033055",
+   "what_it_establishes": "Proposes fast time-varying quantum channel models in which T1/T2 fluctuations are local to each qubit rather than block-correlated, supported by correlation analysis of T1 and T2 time series from five IBM processors (quito, belem, lima, santiago, bogota). Companion work (npj Quantum Information 7, 115 (2021), Etxezarreta Martinez et al.) reports T1/T2 time variation up to ~50% of the mean.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Supplies the magnitude scale for parameter-level temporal variation (up to ~50% of mean) and the statement that fluctuations are qubit-local, which bears on the material's per-qubit ~1% within-session drift figure. No circuit-outcome or session-comparison analysis.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Error mitigation with stabilized noise in superconducting quantum processors",
+   "authors": "Youngseok Kim, Luke C. G. Govia, Andrew Dane, Ewout van den Berg, David M. Zajac, Bradley Mitchell, Yinyu Liu, Karthik Balakrishnan, George Keefe, Adam Stabile, Emily Pritchett, Jiri Stehlik, Abhinav Kandala",
+   "venue_year": "Nature Communications 16, 8439 (2025); arXiv July 2024",
+   "identifier": "arXiv:2407.02467 / DOI 10.1038/s41467-025-62820-9",
+   "what_it_establishes": "Experimentally stabilizes noise on a six-transmon chain by biasing electrodes to modulate qubit-TLS interactions, showing that noise-model fluctuations over unpredictable timescales degrade error-mitigation accuracy and that suppressing them restores reliable mitigation.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Establishes, from the hardware-vendor side, that noise instability is the limiting factor for any prediction built on a noise model \u2014 the same logic as the material's \"feeding measured readout back moves the prediction 0.89 -> 0.75\". Requires hardware-level control the material's Public-Tier access does not have.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Improving probabilistic error cancellation in the presence of non-stationary noise",
+   "authors": "Samudra Dasgupta, Travis S. Humble",
+   "venue_year": "arXiv Apr 2024 (revised July 2024)",
+   "identifier": "arXiv:2404.13269",
+   "what_it_establishes": "Shows PEC accuracy and stability degrade under non-stationary noise on ibmq_kolkata (5-qubit Bernstein-Vazirani), and that adaptive Bayesian re-estimation of the noise model recovers 42% accuracy and 60% stability improvement.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Prior art for the specific claim that a model-based correction fails when the model input drifts, and is repaired by re-measuring the input \u2014 the same structure as the material's readout/crosstalk feedback loop. Different correction technique, different observable.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Adaptive mitigation of time-varying quantum noise",
+   "authors": "Samudra Dasgupta, Arshag Danageozian, Travis S. Humble",
+   "venue_year": "IEEE QCE 2023; arXiv Aug 2023",
+   "identifier": "arXiv:2308.14756",
+   "what_it_establishes": "Bayesian/Dirichlet adaptive algorithm for tracking stochastic Pauli channels, reporting a 4.5x improvement in probabilistic error cancellation under time-varying conditions.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Same family as the above; establishes that time-varying noise is a first-class obstacle requiring in-line re-estimation. No stability measurement of the kind the material reports.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Computational Performance Bounds Prediction in Quantum Computing with Unstable Noise",
+   "authors": "Jinyang Li, Samudra Dasgupta, Yuhong Song, Lei Yang, Travis Humble, Weiwen Jiang",
+   "venue_year": "arXiv preprint, July 2025",
+   "identifier": "arXiv:2507.17043",
+   "what_it_establishes": "QuBound decomposes historical device performance traces to identify noise sources and uses an LSTM to predict performance bounds that track noise evolution over time, motivated by the observation that noise fluctuates over time on the same device.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Treats \"the same device gives different answers at different times\" as the premise of a prediction problem. Relevant to framing but does not measure within- vs cross-session variation, and no device details were verifiable from the abstract.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Optimization of Quantum Error Correcting Code under Temporal Variation of Qubit Quality",
+   "authors": "Subrata Das, Swaroop Ghosh",
+   "venue_year": "arXiv preprint, May 2025",
+   "identifier": "arXiv:2505.06165",
+   "what_it_establishes": "Analyzes 12 days of public calibration data from ibm_kyiv (127 qubits), plus ibm_brisbane and ibm_sherbrooke, showing Pauli-X and CNOT error rates fluctuate significantly over time and across qubits, and that fixed-distance QEC either underperforms or over-provisions depending on \"the selected qubit and the error rate of the day\".",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Documents day-scale variation in vendor-published error rates, which supports the material's premise that a static specification is the wrong input. Uses vendor calibration data rather than executed circuits, and no purity or session structure.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Millisecond-Scale Calibration and Benchmarking of Superconducting Qubits",
+   "authors": "Malthe A. Marciniak, Rune T. Birke, Johann B. Severin, Fabrizio Berritta, Daniel Kj\u00e6r, Filip Nilsson, Smitha N. Themadath, Sangeeth Kallatt, James L. Webb, Kristoffer Bentsen, Tonny Madsen, Zhenhai Sun, Svend Kr\u00f8jer, Christopher W. Warren, Jacob Hastrup, Morten Kjaergaard",
+   "venue_year": "arXiv preprint, Feb 2026 (quant-ph)",
+   "identifier": "arXiv:2602.11912",
+   "what_it_establishes": "Argues superconducting qubit parameters drift on sub-second timescales and demonstrates an on-FPGA workflow giving T1 estimation in 10 ms, readout optimization in 100 ms, pulse-amplitude optimization in 1 ms, and Clifford RB in 107 ms; a 6-hour closed loop performs more than 74,000 consecutive recalibrations and retains better gate error than the initial calibration.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Sets the current state of the art for how fast drift acts (sub-second), which is a useful contrast for the material's within-session ~1% figure. Single flux-tunable transmon in a dedicated lab, not a cloud multi-qubit register, and no cross-session application-level metric.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Perspective: Reproducible Coherence Characterization of Superconducting Quantum Devices",
+   "authors": "Corey Rae H. McRae, Gregory M. Stiehl, Haozhi Wang, Sheng-Xiang Lin, Shane A. Caldwell, David P. Pappas, Josh Mutus, Joshua Combes",
+   "venue_year": "Applied Physics Letters 119, 100501 (2021); arXiv June 2021",
+   "identifier": "arXiv:2106.09864 / DOI 10.1063/5.0060370",
+   "what_it_establishes": "Argues that coherence metrics as currently reported cannot be validly compared across measurements, devices and laboratories, and proposes best practices and order-of-magnitude expectations for variation of qubit and resonator performance metrics.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Community-standards precedent for the material's implicit argument that published specifications are insufficient for prediction. Concerns cross-lab comparability of coherence metrics rather than cross-session reproducibility of a circuit result.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Not All Qubits Are Created Equal: A Case for Variability-Aware Policies for NISQ-Era Quantum Computers",
+   "authors": "Swamit S. Tannu, Moinuddin K. Qureshi",
+   "venue_year": "ASPLOS 2019",
+   "identifier": "DOI 10.1145/3297858.3304007 (arXiv:1805.10224)",
+   "what_it_establishes": "Quantifies variation in qubit and link error rates from IBM-Q20 characterization data and proposes variation-aware qubit movement and allocation, improving reliability up to 1.9x on IBM-Q5.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Foundational for spatial (qubit-to-qubit) variation and the practice of reading vendor calibration reports as a time series; the material's register non-monotonicity touches the spatial half of this. Predominantly spatial, not a session-to-session stability study.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Quantum Computing in the Cloud: Analyzing job and machine characteristics",
+   "authors": "Gokul Subramanian Ravi, Kaitlin N. Smith, Pranav Gokhale, Frederic T. Chong",
+   "venue_year": "IEEE International Symposium on Workload Characterization (IISWC) 2021, pp. 39-50",
+   "identifier": "IISWC 2021 (NSF PAR record 10313645); no arXiv id confirmed",
+   "what_it_establishes": "Characterizes cloud quantum computing job and machine behaviour, including resource consumption and execution characteristics relevant to job/resource management.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Listed because it is the standard citation for empirical characterization of cloud quantum access, which is the delivery model the material is stress-testing. I could NOT verify whether it contains temporal-variation analysis of device properties \u2014 I only saw the venue record and a one-line abstract snippet. Do not cite it for a drift claim without reading it.",
+   "verified": "UNVERIFIED"
+  },
+  {
+   "title": "Stability studies on subtractively-fabricated CMOS-compatible superconducting transmon qubits",
+   "authors": "Not verified (arXiv listing not fetched in full; a D. Zahn appears among the authors per an arXiv author-search hit)",
+   "venue_year": "arXiv preprint, Dec 2025",
+   "identifier": "arXiv:2512.18037",
+   "what_it_establishes": "Tracks two representative transmons across 10 cooldown cycles spanning more than one year, and monitors T1/T2* over a 95-hour single cooldown, attributing fluctuations primarily to TLS-qubit interaction. A search snippet reported ~3.4% average variation over 400 days, which I could not confirm against the paper text.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Longest-baseline stability characterization I found for superconducting transmons, relevant as the fabrication-side counterpoint to the material's session-scale swings. Author list and the 3.4%/400-day figure are unverified \u2014 do not cite either without checking the paper.",
+   "verified": "UNVERIFIED"
+  },
+  {
+   "title": "Certified Finite-Shot Operating Windows for Virtual Distillation and Symmetry Verification",
+   "authors": "Vicenzo Scavino Alfaro",
+   "venue_year": "arXiv preprint, quant-ph; v1 13 June 2026, v2 21 June 2026",
+   "identifier": "arXiv:2606.15464",
+   "what_it_establishes": "Finite-shot comparison of virtual distillation and symmetry verification with a 'pre-specified analysis' reporting 300/300 sign agreement, tested against archived IBM hardware runs, and transparently reporting that 'the single strict all-instance criterion not met is reported with its calibration analysis'.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Same emerging practice family as the material (pre-specified criteria, all-instance reporting, explicit reporting of the one criterion that fails), but the analysis is pre-specified rather than pre-registered before data existed, hardware is archived rather than prospectively submitted, and the subject is error-mitigation operating windows, not device-specification adequacy.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Microstructural Topology as a Prescriptor for Quantum Coherence: Towards A Unified Framework for Decoherence in Superconducting Qubits",
+   "authors": "Vinayak P. Dravid, Akshay A. Murthy, Peter Lim, Gabriel T. dos Santos, Ramandeep Mandia, James M. Rondinelli, Mark C. Hersam, Roberto dos Reis",
+   "venue_year": "arXiv preprint, quant-ph; v1 5 Apr 2026, v2 12 Apr 2026",
+   "identifier": "arXiv:2604.03951",
+   "what_it_establishes": "A separable framework for transmon decoherence in which 'Falsifiability is operationalized through a pre-committed 2x2 experimental protocol in which the variables must satisfy independent ratio checks within propagated uncertainty', plus a Minimum-Dataset Specification standardizing cross-laboratory reporting. Part I is conceptual and mathematical only; coordinated experimental validation is explicitly reserved for Part II.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Shows pre-commitment language entering mainstream superconducting-qubit physics from a well-known materials group, which is useful precedent for the material's framing. But no hardware was run, no prediction was measured, and no outcome is reported, so it cannot pre-empt a completed pre-registered measurement study.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Validation of an Analysability Model in Hybrid Quantum Software",
+   "authors": "Ana D\u00edaz-Mu\u00f1oz, Jos\u00e9 A. Cruz-Lemus, Mois\u00e9s Rodr\u00edguez, Mario Piattini, Maria Teresa Baldassarre",
+   "venue_year": "arXiv preprint, cs.SE, 2 August 2024",
+   "identifier": "arXiv:2408.01105",
+   "what_it_establishes": "An explicit 'registered report proposal' in a quantum context: a controlled experiment with human subjects across Italian and Spanish institutions to validate an analysability quality model for hybrid quantum-classical software.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "The only registered report I found touching quantum computing at all, and it arrives via software engineering, where registered reports are an established format - not via physics. It concerns human comprehension of code, not quantum hardware measurement. Useful as evidence that the format reaches quantum research only through its computer-science border.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Blind Analysis in Nuclear and Particle Physics",
+   "authors": "Joshua R. Klein, Aaron Roodman",
+   "venue_year": "Annual Review of Nuclear and Particle Science 55, 141-163 (2005)",
+   "identifier": "10.1146/annurev.nucl.55.090704.151521",
+   "what_it_establishes": "The canonical statement of physics's own answer to experimenter bias. Blind analysis prevents experimenters from knowing the answer until the analysis is complete; the review argues there is at least circumstantial evidence that bias has affected past measurements, and that as experiments grow costlier and harder to reproduce, the risk grows. Catalogues the practical blinding schemes in use.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Establishes the norms baseline the material must position against. Blinding and pre-registration are different instruments: blinding hides the answer so analysis choices cannot be tuned toward it; pre-registration fixes the claim so it cannot be revised after the answer is seen. The material does the latter. Physics has a strong institutional tradition of the former in particle, nuclear and dark-matter physics, and essentially none of either in quantum computing.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Blind Analysis in Particle Physics",
+   "authors": "Aaron Roodman",
+   "venue_year": "arXiv preprint, physics.data-an, 17 December 2003 (PhyStat2003 proceedings)",
+   "identifier": "arXiv:physics/0312102",
+   "what_it_establishes": "Reviews the blind-analysis technique, its historical development, the danger of experimenter bias, three distinct types of blind analysis, and BABAR's implementation.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Supporting norms citation alongside Klein and Roodman; documents that the discipline's bias-control vocabulary is 'blinding', not 'pre-registration'.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Blind analysis in Physics experiments: Is this trip necessary?",
+   "authors": "Robert Golub",
+   "venue_year": "arXiv preprint, physics.data-an, 22 November 2023",
+   "identifier": "arXiv:2311.13542",
+   "what_it_establishes": "An explicitly dissenting note: building on Klein and Roodman, it presents an alternate conclusion about the value of blind analysis in physics experiments. I verified the title, author, date and the one-sentence abstract; I did NOT read the full argument, so I can characterise the position only as skeptical.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Relevant because it shows the norms question is contested inside physics, not settled. A referee sympathetic to this view will ask the material to justify why pre-commitment was worth the cost; the material's answer (a >17 SE miss that would otherwise have been quietly re-derived) is a strong empirical reply and should be framed as one.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Blinding multi-probe cosmological experiments",
+   "authors": "J. Muir, G. M. Bernstein, D. Huterer, et al. (Dark Energy Survey Collaboration)",
+   "venue_year": "Monthly Notices of the Royal Astronomical Society; arXiv v1 13 Nov 2019, revised 4 May 2020",
+   "identifier": "arXiv:1911.05929",
+   "what_it_establishes": "Method for concealing inferred cosmological parameters until all analysis decisions are final, by shifting summary statistics while preserving internal-consistency checks; demonstrated on simulated DES clustering and lensing data. Motivated explicitly by preventing scientists from biasing analysis toward theoretically expected results, especially when new results are scrutinized for consistency with previous ones.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Second pillar of the physics norms baseline: cosmology institutionalized blinding, and did so precisely because results get judged against prior expectations. Establishes that when a physics subfield decides analyst bias is a live threat, it reaches for blinding rather than pre-registration - which is what makes the material's choice a methodological argument that needs making.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "A blinding solution for inference from astronomical data",
+   "authors": "Elena Sellentin",
+   "venue_year": "Monthly Notices of the Royal Astronomical Society (2020); arXiv 18 October 2019",
+   "identifier": "10.1093/mnras/staa043",
+   "what_it_establishes": "A joint blinding/deblinding strategy allowing up to three blinding stages - data, theory computation, and covariance matrix - applied to KiDS-450 weak lensing. Shows covariance blinding is especially effective, and that undetected covariance errors can bias conclusions in ways that mimic real tension.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Norms citation. Its substantive point is also thematically close to the material: an error in an unmodelled part of the uncertainty budget can masquerade as a physical discrepancy - the material's readout-specification gap is the hardware analogue.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "The preregistration revolution",
+   "authors": "Brian A. Nosek, Charles R. Ebersole, Alexander C. DeHaven, David T. Mellor",
+   "venue_year": "Proceedings of the National Academy of Sciences USA 115(11), 2600-2606 (2018)",
+   "identifier": "10.1073/pnas.1708274114",
+   "what_it_establishes": "The standard reference defining pre-registration, its purpose (separating confirmatory from exploratory inference, blocking HARKing and undisclosed analytic flexibility), and the case for adoption across the sciences.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Definitional citation the material needs, since its audience will not know the term as a term of art. No quantum or physical-science content.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "The preregistration revolution needs to distinguish between predictions and analyses",
+   "authors": "Alison Ledgerwood",
+   "venue_year": "Proceedings of the National Academy of Sciences USA (2018), letter",
+   "identifier": "10.1073/pnas.1812592115",
+   "what_it_establishes": "Argues that pre-registering a prediction and pre-registering an analysis plan are different acts with different epistemic force; Nosek et al. replied under the title 'Predictions without analysis plans are inert'.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Directly germane to how the material should describe itself. The material locked numeric point predictions (0.8932 purity, 1.500 anchor) to version control. Referees who know this literature will ask whether the analysis pipeline was locked too, or only the numbers. The material should state which, because this exchange is the standard place that question comes from.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Preregistration for Experiments with AI Agents",
+   "authors": "Michelle Vaccaro",
+   "venue_year": "arXiv preprint, cs.CY, May 2026",
+   "identifier": "arXiv:2606.11217",
+   "what_it_establishes": "A position paper cataloguing researcher degrees of freedom specific to a new computational experimental field and proposing a field-specific pre-registration template.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "No quantum content. Included as the structural precedent for what a 'pre-registration for quantum hardware experiments' contribution looks like as a paper: enumerate the degrees of freedom the platform creates, then propose the template. If the material wants a methodological contribution rather than only a physics result, this is the model, and it shows the slot is filled in AI and empty in quantum.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Wire-Level Interrupt-to-Decision Latency of On-Sensor MLC versus Host Inference on the NVIDIA Jetson Orin Nano: A Pre-Registered Measurement Study",
+   "authors": "Swami, Sonawane (full given names not verified)",
+   "venue_year": "arXiv preprint, eess.SY, 30 May 2026",
+   "identifier": "arXiv:2606.00524",
+   "what_it_establishes": "A hardware measurement study carried out under an explicit pre-registration, with the pre-registration recorded as a README commit (commit 9c738a8, 2026-04-16) and a separate pilot-and-verdict commit two days later.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Not quantum, and not physics. Included for one specific reason: it is direct precedent for the exact mechanism the material uses - a git commit as the pre-registration timestamp for a hardware measurement study - so the material cannot claim that mechanism as novel, only its application to quantum hardware. Verified from search-result text quoting the commit hash and dates, not from the PDF itself.",
+   "verified": "UNVERIFIED"
+  },
+  {
+   "title": "Scalable mitigation of measurement errors on quantum computers",
+   "authors": "Paul D. Nation, Hwajung Kang, Neereja Sundaresan, Jay M. Gambetta",
+   "venue_year": "PRX Quantum 2, 040326 (2021)",
+   "identifier": "arXiv:2108.12518 / DOI 10.1103/PRXQuantum.2.040326",
+   "what_it_establishes": "The M3 matrix-free mitigation method, working in the subspace of observed bitstrings and accommodating both uncorrelated and correlated errors; a correlated-M3 variant is reported to agree with the full assignment matrix, and Hamming-distance truncation is used to approximate the mitigation.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Standard tooling context, and its Hamming-distance truncation is the closest existing use of an excitation-weight-like structure in readout mitigation. It is a mitigation method, not a characterisation of the physical weight dependence, so it does not scoop the saturation claim.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Crosstalk In Contemporary Quantum Devices",
+   "authors": "Spiro Gicev, Ben Harper, Haiyue Kang, Muhammad Usman, Martin Sevior",
+   "venue_year": "arXiv review, v2 dated 11 August 2026",
+   "identifier": "arXiv:2605.26528",
+   "what_it_establishes": "A 2026 cross-platform review of crosstalk covering physical origins, mitigation and security implications. Its readout-crosstalk section notes that the state of adjacent qubits can affect a readout result in frequency-multiplexed superconducting systems, and focuses on machine-learning discrimination as the mitigation route.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Most valuable as NEGATIVE evidence for the novelty argument: the field's most recent survey, three months old, does not report saturation of readout crosstalk with excitation weight and does not raise vendor omission of readout error. Verified by fetching the HTML of v2 and asking directly about both points.",
+   "verified": "FULL_TEXT"
+  },
+  {
+   "title": "Measurement-induced state transitions in multi-qubit transmon processors",
+   "authors": "Baptiste Hoyau, Alexander McDonald, Boris M. Varbanov, Manuel H. Munoz-Arias, Alexandre Blais",
+   "venue_year": "arXiv preprint, 3 June 2026",
+   "identifier": "arXiv:2606.05010",
+   "what_it_establishes": "Theory/characterisation of measurement-induced state transitions (MIST) when a transmon couples to other circuit elements. Reports that a spectator qubit can be affected by the measurement-induced transition of the qubit being read out, and conversely that the presence of a spectator LOWERS the MIST threshold of the read-out qubit.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Supplies a candidate physical mechanism for excitation-dependent readout error that is not simple resonator-tone leakage, and the reciprocal spectator effect is the kind of nonlinearity that could produce saturation. Relevant to the material's 'seven candidate mechanisms bounded or excluded' section; two transmons plus a coupler, not a device-scale study.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Transmon qubit readout fidelity at the threshold for quantum error correction without a quantum-limited amplifier",
+   "authors": "Liangyu Chen, Hang-Xi Li, Yong Lu, Christopher W. Warren, Christian J. Krizan, Sandoko Kosen, Marcus Rommel, Shahnawaz Ahmed, Amr Osman, Janka Biznarova, Anita Fadavi Roudsari, Benjamin Lienhard, Marco Caputo, Kestutis Grigoras, Leif Groenberg, Joonas Govenius, Anton Frisk Kockum, Per Delsing, Jonas Bylander, Giovanna Tancredi",
+   "venue_year": "npj Quantum Information 9, 26 (2023)",
+   "identifier": "arXiv:2208.05879 / DOI 10.1038/s41534-023-00689-6",
+   "what_it_establishes": "Reports 99.5% two-state and 96.9% three-state assignment fidelity, and is the standard reference for readout physics in transmons -- relaxation during readout as the dominant error, and fidelity loss when readout drive amplitude excites higher levels.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Background for the material's asymmetry-in-the-T1-direction observation. IMPORTANT CAVEAT: search snippets circulating numbers of 97.3% (global ground state) versus 91.3% (global excited state) across 16 basis states could NOT be traced to this paper -- the abstract page does not contain them. Do not cite those figures to this reference without reading the full text.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Tensor network characterization and mitigation of readout errors",
+   "authors": "Yuchen Guo, Shuo Yang",
+   "venue_year": "arXiv preprint, 24 June 2026 (v2)",
+   "identifier": "arXiv:2606.25974",
+   "what_it_establishes": "Uses a matrix-product-operator model of the assignment map, reported in the listing metadata as capturing correlated readout errors that uncorrelated models miss.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Most recent correlated-readout characterisation work; included for completeness of the 2026 landscape. I only saw it through an arXiv API listing summary -- I did not read the abstract page or the paper, so nothing here should be cited without independent checking.",
+   "verified": "UNVERIFIED"
+  },
+  {
+   "title": "Evaluating Calibration-Based Digital Twins for IBM Quantum Hardware Simulation",
+   "authors": "Edgars Bautra, Maksims Dimitrijevs, Abuzer Yakaryilmaz",
+   "venue_year": "arXiv preprint, 15 March 2026",
+   "identifier": "arXiv:2603.14607",
+   "what_it_establishes": "Builds noise models ('digital twins') from vendor-published calibration CSVs, including per-qubit readout assignment error, and compares them against real execution on ibm_brisbane and ibm_sherbrooke. Readout error enters only as independent per-qubit ReadoutError instances.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "The nearest published instance of the material's 'prediction from published spec vs measured hardware' comparison. It does NOT decompose the residual gap by error source, does not identify readout as dominant, and does not consider correlated readout error -- so the material's reconciliation (0.89 -> 0.75 -> 0.7163 vs 0.7184 measured) is not pre-empted.",
+   "verified": "ABSTRACT_ONLY"
+  },
+  {
+   "title": "Few-Shot Cross-Device Transfer for Quantum Noise Modeling on Real Hardware",
+   "authors": "Sahil Al Farib, Sheikh Redwanul Islam, Azizur Rahman Anik",
+   "venue_year": "arXiv:2604.24397, 27 April 2026; 9 pages, 8 figures, 8 tables; submitted to IEEE QCE 2026",
+   "identifier": "arXiv:2604.24397",
+   "verified": "FULL_TEXT",
+   "what_it_establishes": "CITED WORK #3 (the 2026 few-shot paper). Trains a residual neural network to map noisy circuit output distributions to ideal ones on a source device and transfers it to a target device with few samples. Devices: ibm_fez (source) -> ibm_marrakesh (target). Dataset: 85 circuits per device, 170 paired samples total; 2-5 qubits, depth 2-8; four families (40 random, 15 Bell, 15 GHZ, 15 QFT); 8,192 shots per circuit. Results: zero-shot transfer KL divergence 1.6706; with 20 fine-tuning samples 1.1924, a 28.6% improvement, recovering 34.9% of the gap to in-domain performance. CX gate error is identified as the dominant cross-device mismatch, readout error second. CRITICALLY FOR OUR PURPOSES, its inputs and its stated limitations run the opposite way from the material: device features are pulled from IBM Quantum's CALIBRATION API at execution time rather than measured independently, features are mean-aggregated rather than per-qubit, and the authors state plainly that they 'do not control for temporal drift between backend executions' while noting that 'IBM Quantum calibration data drifts substantially over hours to days.' No predictions were pre-registered; the study is post-hoc. Five limitations are conceded: small dataset (170 samples, two devices), shallow circuits, mean-aggregated features, no drift modeling, and a simple architecture without classical baselines.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Same era, same platform family, opposite methodology and opposite conclusion structure. It treats vendor calibration as the trusted feature vector and learns a correction on top; the material treats vendor calibration as the untested hypothesis and finds it off by 3x in the one parameter the spec omits. It explicitly declines to control temporal drift, which is precisely the axis on which the material's largest effect lives (cross-session 0.2 in purity). It is a useful FOIL rather than a competitor: it demonstrates that the 2026 state of practice both depends on vendor readout numbers and knows it has not validated them. The material would add the missing validation, and would supply the drift control the paper lists as future work. There is no claim collision."
+  },
+  {
+   "title": "Mitigating measurement errors in multi-qubit experiments",
+   "authors": "Sergey Bravyi, Sarah Sheldon, Abhinav Kandala, David C. McKay, Jay M. Gambetta",
+   "venue_year": "Phys. Rev. A 103, 042605 (2021); arXiv:2006.14044",
+   "identifier": "arXiv:2006.14044 / doi:10.1103/PhysRevA.103.042605",
+   "verified": "ABSTRACT_ONLY",
+   "what_it_establishes": "Two measurement-error mitigation schemes by classical post-processing, based on a tensor-product noise model and on a correlated Continuous Time Markov Process (CTMP) model, with error rates extractable from calibration data by a simple formula. The CTMP model explicitly targets crosstalk arising from qubit-qubit coupling and spectral overlap of readout resonators. Demonstrated for measurements of up to 20 qubits.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "The canonical correlated-readout mitigation reference and the standard baseline any reviewer will expect. It establishes that correlated readout is modelled and correctable in principle, which means the material should not claim novelty for the existence of correlated readout. It is a mitigation method paper on IBM hardware, not a measurement of how the correlation scales with the number of excited neighbours, and not an audit of vendor disclosure."
+  },
+  {
+   "title": "Detecting and tracking drift in quantum information processors",
+   "authors": "Timothy Proctor, Melissa Revelle, Erik Nielsen, et al.",
+   "venue_year": "Nature Communications 11, 5396 (2020); arXiv:1907.13608",
+   "identifier": "arXiv:1907.13608 / doi:10.1038/s41467-020-19074-4",
+   "verified": "ABSTRACT_ONLY",
+   "what_it_establishes": "A fast, statistically sound spectral-analysis technique for resolving time dependence in quantum processor data, applicable to time-series from any quantum processor experiment. Demonstrates that the widely used characterization tools assume static error modes and rates, which causes unheralded failures, misidentified error modes and wasted experimental effort. Validated on simulations and trapped-ion experiments, and shown to resolve time dependence within randomized benchmarking, gate set tomography and Ramsey spectroscopy.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "The foundational reference establishing that quantum-processor errors are non-stationary and that standard characterization silently assumes otherwise, so it forecloses any claim that instability itself is a new observation. It is a methods paper on detecting drift in time-series, mostly on trapped ions, and it says nothing about vendor specification completeness, readout crosstalk versus excitation weight, or register-size non-monotonicity. Cite as background, not as competition."
+  },
+  {
+   "title": "Computational references are not experiments: pre-registered validation of machine-learned sodium-cathode voltages",
+   "authors": "Krishna Teja Vepa",
+   "venue_year": "arXiv:2606.23725, 19 June 2026 (rev. 29 June 2026); cond-mat.mtrl-sci, cs.LG",
+   "identifier": "arXiv:2606.23725",
+   "verified": "ABSTRACT_ONLY",
+   "what_it_establishes": "Not a quantum paper, included as the clearest methodological precedent for the material's protocol. Commits verdict thresholds, failure modes and primary metrics to version control BEFORE analysis, then tests machine-learned cathode voltages against experimental literature values (n=6 after documented exclusion). Finds MAE 0.67 V, a conservative 95% bound of 1.09 V, strongly voltage-dependent residuals (r = -0.94), and that the computational reference database itself carries roughly 0.54 V of systematic error, dominating accuracy more than the model does. Outcome: the screening approach was retired and a follow-up calibration audit pre-registered.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Structurally the same argument in a different science: predictions frozen in version control before the data existed, a documented miss, and the miss traced to a systematic error in the REFERENCE rather than in the model. That is precisely the shape of the material's finding, where the wrong input is the parameter the specification does not publish. Useful as a citation for the pre-registration protocol and for the 'the reference is the problem' framing. Zero subject-matter overlap; it cannot contest any physics claim."
+  },
+  {
+   "title": "JigSaw: Boosting Fidelity of NISQ Programs via Measurement Subsetting",
+   "authors": "Poulami Das, Swamit Tannu, Moinuddin Qureshi",
+   "venue_year": "arXiv:2109.05314 (2021); MICRO-54",
+   "identifier": "arXiv:2109.05314",
+   "verified": "ABSTRACT_ONLY",
+   "what_it_establishes": "Shows that measuring a SUBSET of qubits yields lower measurement error than measuring all qubits, because it reduces measurement crosstalk, and exploits the more accurate local distributions to improve the full-register result. Related reported evidence in this line: measurement error rates rise by up to 2% when five qubits are measured simultaneously versus a single qubit in isolation.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Bears directly on the material's non-monotonicity finding as a COMPETING MECHANISM that must be addressed, and it happens to push the opposite way: measurement crosstalk grows with the number of qubits measured, so it predicts the smaller n=3 register should do BETTER, not worse. That makes it evidence FOR the material's claim that the observed ordering flip (n=3 worse than n=4 despite the n=4 register containing the n=3 one) is not explained by measurement crosstalk. It should be cited in the mechanism-elimination section rather than as prior art on the phenomenon."
+  },
+  {
+   "title": "Isolating Recurring Execution-Dependent Abnormal Patterns on NISQ Quantum Devices",
+   "authors": "Zhenyu Qi et al. (full author list not verified)",
+   "venue_year": "arXiv:2604.17519, 19 April 2026 (rev. 8 July 2026)",
+   "identifier": "arXiv:2604.17519",
+   "verified": "ABSTRACT_ONLY",
+   "what_it_establishes": "A delta-debugging framework showing that 'semantically equivalent circuits with identical compiler-visible costs can still produce unexpected hardware noise.' Identifies 25 recurring abnormal gate patterns, short ordered gate sequences on specific qubit neighbourhoods that induce excess error beyond current noise models. Three IBM Heron r2 backends across 30 qubit layouts (ibm_fez, ibm_marrakesh named), validated ACROSS CALIBRATION WINDOWS so that patterns are recurring rather than one-off. Compares real-device error against calibration-based error from the standard noise model, focusing on the discrepancy. Reports 24% and 45% noise reduction on the two backends.",
+   "overlap": "ADJACENT",
+   "overlap_reason": "Same core move as the material at the methodological level: take the discrepancy between the calibration-based model prediction and the real device as the object of study, and show the standard noise model omits something structural. Its omission is gate-sequence-and-layout dependent excess error on IBM Heron; the material's is readout magnitude, excitation-weight-dependent readout correlation, and cross-session non-stationarity on Rigetti via a broker. Its cross-calibration-window validation is a good precedent for the material's cross-session protocol."
+  },
+  {
+   "title": "Verified delegated quantum computation requires techniques beyond cut-and-choose",
+   "authors": "Not verified \u2014 I did not retrieve the author list",
+   "venue_year": "arXiv preprint, March 2026",
+   "identifier": "arXiv:2603.09368",
+   "what_it_establishes": "Concerns delegated quantum computation, in which a client with limited quantum capability outsources computation to an untrusted quantum server while preserving correctness and privacy, and argues that verification requires techniques beyond cut-and-choose. Represents the cryptographic verification tradition (blind and verifiable delegated quantum computing).",
+   "overlap": "NO_OVERLAP",
+   "overlap_reason": "Included to close the lens rather than because it competes. The cryptographic verification literature (this, plus verifiable blind quantum computing generally) proves what a client CAN certify about an untrusted server in principle, under protocol assumptions the material's setup does not satisfy \u2014 the material submitted plain OpenQASM through a commercial aggregator with no verification protocol. Different problem, different assumptions, no result in contention. Worth one sentence in Related Work only to say why this tradition does not apply.",
+   "verified": "UNVERIFIED"
+  },
+  {
+   "title": "Optimal Quantum Purity Amplification",
+   "authors": "Zhaoyi Li, Honghao Fu, Takuya Isogawa, Caio Silva, Isaac Chuang",
+   "venue_year": "arXiv preprint, 26 Sep 2024 (v4 25 Dec 2025)",
+   "identifier": "arXiv:2409.18167",
+   "what_it_establishes": "Per the arXiv API listing: an optimal quantum purity amplification protocol with experimental validation on superconducting quantum processors, aimed at NISQ noise.",
+   "overlap": "NO_OVERLAP",
+   "overlap_reason": "Concerns increasing the purity of a state (a mitigation/distillation primitive), not estimating purity and not comparing measurement strategies. Included only to record that it surfaced in the purity-on-superconducting-hardware sweep and was ruled out. arXiv API listing only; abstract not fetched.",
+   "verified": "UNVERIFIED"
+  },
+  {
+   "title": "Rigetti Announces General Availability of 108-Qubit System (Cepheus-1-108Q specification)",
+   "authors": "Rigetti Computing, Inc. (corporate press release, filed with the SEC and mirrored by Quantum Computing Report)",
+   "venue_year": "Press release, 7 April 2026",
+   "identifier": "https://investors.rigetti.com/news-releases/news-release-details/rigetti-announces-general-availability-108-qubit-system (mirror: quantumcomputingreport.com/rigetti-releases-108-qubit-cepheus-1-108q-system-via-cloud-platforms/)",
+   "verified": "FULL_TEXT",
+   "what_it_establishes": "NOT prior art but the load-bearing source for the material's central claim, and I verified it independently. The published specification gives: 108 qubits as twelve interconnected 9-qubit chiplets; 99.1% median two-qubit gate fidelity; 99.9% median single-qubit fidelity; ~60 ns gate speed; a 99.9%-at-28-ns CZ prototype benchmark; a stated target of 99.5% median two-qubit fidelity later in 2026; availability via Rigetti QCS and Amazon Braket. NO READOUT OR MEASUREMENT FIDELITY FIGURE APPEARS ANYWHERE. The only readout-adjacent statement is qualitative: upgraded control electronics 'intended to provide a higher signal-to-noise ratio for qubit readout,' with no number attached. I confirmed this omission on the Quantum Computing Report page listing every quoted specification; the investor-relations page itself timed out on fetch, so the confirmation rests on the mirror plus the search-result summaries of the release, which agree on every figure.",
+   "overlap": "NO_OVERLAP",
+   "overlap_reason": "Source document rather than competing work. Recorded here because the material's thesis, that 'the input that was wrong is exactly the one the specification does not publish,' depends on this omission being real, and it is: the published Cepheus-1-108Q specification quantifies one- and two-qubit gate fidelity and gate speed and is silent on readout. This also resolves a separate provenance issue for the authors, since these device specifications trace to the Rigetti press release and not to the Open Quantum whitepaper."
+  }
+ ]
+}
