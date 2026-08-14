@@ -2760,5 +2760,28 @@
    "overlap_reason": "Information-theoretic capacity analysis under time-varying decoherence. Shares only the premise that device parameters drift. No readout, no purity, no hardware experiment, no reproducibility or provenance content. Documented as part of the backward hop; not prior art for the material.",
    "verified": "ABSTRACT_ONLY"
   }
- ]
+ ],
+ "venue_agent_status": "FAILED: stalled on all 6 attempts, no progress for 180s each",
+ "venue_assessed_directly": {
+  "method": "fetched by CC after the agent failed; each field marked with what was actually read",
+  "PRX Quantum": {
+   "bar": "requires 'exceptional advance / exceptional connection / exceptional capabilities / exceptional insight'",
+   "apc": "$3,450 (APS gold OA; waivers for lower-income countries)",
+   "verified": "search summary of journals.aps.org/prxquantum/about (direct fetch 403)",
+   "verdict": "effectively closed to a narrow characterization note carrying 11 DIRECT priors"
+  },
+  "Quantum": {
+   "bar": "'The main editorial criteria are correctness, significance, and clarity'",
+   "apc": "EUR 600 from Jan 2025, reduced fee or full waiver available",
+   "scope": "'publishes high quality research, both theoretical and experimental'",
+   "verified": "quantum-journal.org/about fetched; fee from quantum-journal.org/updated-publication-charges",
+   "note": "published the closest prior art (Quantum 5, 464 (2021)) -- right community, but the editors have already published the paper that buries most of the claim",
+   "not_verified": "no explicit negative/null-results policy found on either page"
+  },
+  "npj Quantum Information": {
+   "verified": "APC page exists; figure not read",
+   "verdict": "not assessed"
+  },
+  "pra_desk_reject_bearing": "PRA declined paper one at the desk with 'no other appropriate APS journal'. PRX Quantum IS an APS journal and its stated bar is HIGHER than PRA's, so that note is directly discouraging rather than neutral for a PRX Quantum submission."
+ }
 }
