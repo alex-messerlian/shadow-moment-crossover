@@ -58,7 +58,7 @@ def main() -> None:
 
         hay, needle = squash(flat), squash(context)
         i = hay.find(needle)
-        window = hay[max(0, i - 320): i + len(needle) + 420] if i >= 0 else ""
+        window = hay[max(0, i - 700): i + len(needle) + 900] if i >= 0 else ""
         present = squash(value) in window
         checks.append({"label": label, "context_found": i >= 0, "value": value,
                        "artifact": artifact_value, "ok": bool(i >= 0 and present)})

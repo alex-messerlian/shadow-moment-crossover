@@ -30,7 +30,12 @@ REPO = Path(__file__).resolve().parent.parent
 OUT = REPO / "results" / "pass52_conservation.json"
 
 # Tokens whose disappearance is authorised by the pass brief, with the reason.
-PERMITTED_LOSS: dict[str, str] = {}
+PERMITTED_LOSS: dict[str, str] = {
+    # arXiv:2604.22627 (zeng2026exact) was withdrawn by its author on 11 August 2026 -- the abs
+    # page reads "withdrawn by Shuai Zeng" and "No PDF available" -- so the citation and its
+    # supporting clause were removed in PASS 55.  Nothing else in the paper rests on it.
+    "2604.22627": "cited preprint withdrawn by its author, 11 August 2026",
+}
 
 NUM = re.compile(r"(?<![\w.\\])(\d+(?:[.,]\d+)*)(?![\w])")
 # "of" / "out of" only.  Accepting a bare "/" made this match exponents -- M^{-1/2} scored as

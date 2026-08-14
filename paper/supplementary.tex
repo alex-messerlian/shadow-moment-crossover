@@ -1,4 +1,10 @@
-\documentclass[aps,prx,preprint,superscriptaddress,nofootinbib]{revtex4-2}
+% See paper.tex for why the \pdfoutput assignment and the class's check are engine-conditional.
+\ifdefined\XeTeXversion\else\pdfoutput=1\fi
+\ifdefined\XeTeXversion
+  \documentclass[a4paper,superscriptaddress,nofootinbib,onecolumn,nopdfoutputerror]{quantumarticle}
+\else
+  \documentclass[a4paper,superscriptaddress,nofootinbib,onecolumn]{quantumarticle}
+\fi
 
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{graphicx}
@@ -6,8 +12,6 @@
 \usepackage{longtable,booktabs,array}
 \usepackage{calc}
 \providecommand{\real}[1]{#1}
-\usepackage{xcolor}
-\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
 
 % Arabic section and subsection numbering, matching the textual
 % "Section N" / "Section N.M" references used throughout the prose.
@@ -29,7 +33,7 @@
 
 \begin{document}
 
-\title{Supplementary material for: Two spectral functionals set\\ the exponential cost of shadow moment estimation}
+\title{Supplementary material for: Two spectral functionals setthe exponential cost of shadow moment estimation}
 
 \author{Alexander Messerlian}
 \affiliation{Independent Researcher}

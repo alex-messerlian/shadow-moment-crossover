@@ -52,7 +52,7 @@ def main() -> None:
     report: dict = {"pages": n_pages}
 
     # ---- (d) section word counts
-    MARKS = [("abstract", "Classical shadows"), ("1 Introduction", "1. INTRODUCTION"),
+    MARKS = [("abstract", "Classical shadows"), ("1 Introduction", "1 Introduction"),
              ("2 Setting", "2. SETTING AND ESTIMATORS"),
              ("3 Projection variances", "3. THE PROJECTION VARIANCES"),
              ("4 Statewise", "4. STATEWISE VALIDATION"),
@@ -79,7 +79,11 @@ def main() -> None:
 
     # ---- (b) every number in the abstract, found in the body
     a0 = one.find("Classical shadows")
+    # quantumarticle sets headings as "1 Introduction"; REVTeX set "1. INTRODUCTION".
     a1 = one.find("1. INTRODUCTION")
+    if a1 < 0:
+        m = re.search(r"\b1\s+Introduction\b", one)
+        a1 = m.start() if m else len(one)
     abstract = one[a0:a1]
     body = one[a1:]
     nums = sorted(set(re.findall(r"(?<![\w.])(\d+(?:[.,]\d+)*(?:%)?)(?![\w])", abstract)))

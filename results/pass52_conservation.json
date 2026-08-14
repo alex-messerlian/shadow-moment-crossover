@@ -1,10 +1,17 @@
 {
- "lost": [],
+ "lost": [
+  {
+   "token": "2604.22627",
+   "was": 1,
+   "permitted": true,
+   "reason": "cited preprint withdrawn by its author, 11 August 2026"
+  }
+ ],
  "thinned": [
   {
    "token": "2",
-   "was": 266,
-   "now": 263,
+   "was": 263,
+   "now": 262,
    "surviving_sections": [
     "Introduction",
     "Setting and estimators",
@@ -22,31 +29,88 @@
    ]
   },
   {
-   "token": "0",
-   "was": 21,
-   "now": 20,
+   "token": "3",
+   "was": 82,
+   "now": 80,
    "surviving_sections": [
+    "Setting and estimators",
     "The projection variances",
     "Statewise validation",
+    "Estimating the threshold from a pilot budget",
     "The collective route: two exact bias",
     "The crossover",
     "Related work",
-    "The destructive SWAP",
+    "Limitations",
+    "Conclusion",
+    "Acknowledgements",
+    "Exact evaluations of the fourth-moment U-sta",
     "Reproducibility and statistics"
    ]
   },
   {
-   "token": "5.14",
-   "was": 3,
+   "token": "2025",
+   "was": 9,
+   "now": 6,
+   "surviving_sections": [
+    "Methods, data, and code"
+   ]
+  },
+  {
+   "token": "22",
+   "was": 2,
    "now": 1,
    "surviving_sections": [
-    "The projection variances"
+    "Related work"
+   ]
+  },
+  {
+   "token": "29",
+   "was": 2,
+   "now": 1,
+   "surviving_sections": [
+    "Methods, data, and code"
    ]
   }
  ],
  "gained": [
   {
-   "token": "5.3",
+   "token": "108",
+   "n": 1
+  },
+  {
+   "token": "6979",
+   "n": 1
+  },
+  {
+   "token": "3313",
+   "n": 1
+  },
+  {
+   "token": "3363",
+   "n": 1
+  },
+  {
+   "token": "10.1137",
+   "n": 1
+  },
+  {
+   "token": "1.9781611978971.120",
+   "n": 1
+  },
+  {
+   "token": "136",
+   "n": 1
+  },
+  {
+   "token": "130602",
+   "n": 1
+  },
+  {
+   "token": "94",
+   "n": 1
+  },
+  {
+   "token": "01247",
    "n": 1
   }
  ],
@@ -61,31 +125,21 @@
   },
   {
    "section": "Setting and estimators",
-   "before": 83,
-   "after": 86,
-   "tokens_reduced": {
-    "2": 3,
-    "0": 1
-   },
-   "relocated_to": {
-    "2": [
-     "The projection variances",
-     "Exact evaluations of the fourth-moment U-sta"
-    ]
-   }
+   "before": 86,
+   "after": 87,
+   "tokens_reduced": {},
+   "relocated_to": {}
   },
   {
    "section": "The projection variances",
-   "before": 446,
+   "before": 448,
    "after": 448,
-   "tokens_reduced": {
-    "5.14": 2
-   },
+   "tokens_reduced": {},
    "relocated_to": {}
   },
   {
    "section": "Statewise validation",
-   "before": 86,
+   "before": 89,
    "after": 89,
    "tokens_reduced": {},
    "relocated_to": {}
@@ -94,39 +148,22 @@
    "section": "Estimating the threshold from a pilot budget",
    "before": 127,
    "after": 127,
-   "tokens_reduced": {
-    "2": 2,
-    "1": 1
-   },
-   "relocated_to": {
-    "2": [
-     "The projection variances",
-     "Exact evaluations of the fourth-moment U-sta"
-    ],
-    "1": [
-     "Setting and estimators"
-    ]
-   }
+   "tokens_reduced": {},
+   "relocated_to": {}
   },
   {
    "section": "The collective route: two exact bias",
-   "before": 41,
+   "before": 42,
    "after": 42,
    "tokens_reduced": {},
    "relocated_to": {}
   },
   {
    "section": "The crossover",
-   "before": 148,
+   "before": 150,
    "after": 150,
-   "tokens_reduced": {
-    "7": 1
-   },
-   "relocated_to": {
-    "7": [
-     "The collective route: two exact bias"
-    ]
-   }
+   "tokens_reduced": {},
+   "relocated_to": {}
   },
   {
    "section": "Related work",
@@ -139,19 +176,12 @@
    "section": "Limitations",
    "before": 23,
    "after": 23,
-   "tokens_reduced": {
-    "2": 1
-   },
-   "relocated_to": {
-    "2": [
-     "The projection variances",
-     "Exact evaluations of the fourth-moment U-sta"
-    ]
-   }
+   "tokens_reduced": {},
+   "relocated_to": {}
   },
   {
    "section": "Conclusion",
-   "before": 20,
+   "before": 21,
    "after": 21,
    "tokens_reduced": {},
    "relocated_to": {}
@@ -166,13 +196,19 @@
   {
    "section": "Methods, data, and code",
    "before": 138,
-   "after": 138,
-   "tokens_reduced": {},
+   "after": 148,
+   "tokens_reduced": {
+    "29": 1,
+    "2025": 3,
+    "3": 2,
+    "2604.22627": 1,
+    "22": 1
+   },
    "relocated_to": {}
   },
   {
    "section": "Exact evaluations of the fourth-moment U-sta",
-   "before": 81,
+   "before": 82,
    "after": 82,
    "tokens_reduced": {},
    "relocated_to": {}
@@ -186,7 +222,7 @@
   },
   {
    "section": "Reproducibility and statistics",
-   "before": 128,
+   "before": 129,
    "after": 129,
    "tokens_reduced": {},
    "relocated_to": {}
