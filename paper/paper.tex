@@ -809,8 +809,8 @@ asymptotic scaling remains the square-root law: the migration reported
 here is a finite-budget effect over the window hardware reaches, not a
 change in asymptotic sample complexity.
 
-Having characterized the single-copy cost exactly, we turn to the
-collective route, where the error has a different character entirely.
+Having characterized the single-copy cost exactly, we turn to what it predicts
+for an individual state.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -1270,9 +1270,10 @@ low-rank, and GHZ-noisy) were never used in deriving the law
 states are maximally non-Haar-typical, and we included them because an
 ensemble-tuned theory ought to fail on them; the theory's accuracy there
 is within a factor of about 1.7 of its accuracy elsewhere, the same order
-of magnitude rather than a breakdown. Three of the four have a degenerate
-estimand and the fourth varies too little to resolve an ordering, which is
-what makes all four unsuitable for the statewise test of
+of magnitude rather than a breakdown. On the statewise question these four
+part differently: the estimand is degenerate on three of them and the fourth,
+low-rank, varies too little to resolve an ordering, which is what makes all
+four unsuitable for the statewise test of
 Section~\ref{sec:statewise}; the extension of this sweep to two
 varying-estimand families, and the checks tying it back to the counts
 reported here, are in Section~\ref{the-crossover-sweep-on-the-new-families}.
@@ -1612,7 +1613,7 @@ reason.
 \textbf{The statewise claim rests on families built to test it.} A cell of
 states can separate a statewise law from a family-average law only where
 the predicted spread across the cell exceeds the measurement noise, and on
-the three fixed-estimand families the sweeps use it does not
+none of the four families the sweeps use does it
 (Section~\ref{sec:statewise}). The ordering result therefore comes from two
 families we constructed for the purpose, and it is a claim about those
 families' range of spectra rather than a demonstration that the law orders
@@ -1690,7 +1691,7 @@ which is the sort of thing that is easy to over-generalize from one ensemble.
 Because these are functionals of a state rather than of a family, they can be checked statewise,
 and we did: across a family whose thresholds span a decade the law orders individual states with
 rank correlation \(0.87\) and a slope of \(0.97\). The negative control matters as much as the
-result. On the fixed-estimand families that the crossover literature, including our own earlier
+result. On the families that the crossover literature, including our own earlier
 sweeps, has used, the statewise spread is smaller than the achievable measurement noise, so no
 such claim could have been established there --- a family-average law would have scored the same.
 
@@ -1725,8 +1726,6 @@ exactly are the two extremes of the families we happened to examine.
 
 \hypertarget{acknowledgements}{%
 \section*{Acknowledgements}\label{acknowledgements}}
-
-[Mentor acknowledgement.]
 
 \textbf{Use of AI tools.} An AI coding assistant (Anthropic Claude, accessed through the Claude
 Code command-line interface, 2026 releases) was used throughout the computational work described
