@@ -1,0 +1,143 @@
+{
+ "run_in_headings": [
+  {
+   "heading": "The second projection variance is a spectral sum",
+   "rendered": true,
+   "preceding_chars": " at the end.",
+   "lettered": false
+  },
+  {
+   "heading": "Evaluation for the noisy-pure ensemble",
+   "rendered": true,
+   "preceding_chars": " lifts it. 7",
+   "lettered": false
+  },
+  {
+   "heading": "The threshold for this ensemble",
+   "rendered": true,
+   "preceding_chars": " in general.",
+   "lettered": false
+  },
+  {
+   "heading": "Two bounds, and what they do and do not attain",
+   "rendered": true,
+   "preceding_chars": "ifts toward.",
+   "lettered": false
+  },
+  {
+   "heading": "The threshold's base factorizes",
+   "rendered": true,
+   "preceding_chars": "cisely under",
+   "lettered": false
+  },
+  {
+   "heading": "The branches, and one family that is exact throughout",
+   "rendered": true,
+   "preceding_chars": "ntity fixes.",
+   "lettered": false
+  },
+  {
+   "heading": "Higher moment orders",
+   "rendered": true,
+   "preceding_chars": " from above.",
+   "lettered": false
+  },
+  {
+   "heading": "The two-copy spectral sum",
+   "rendered": true,
+   "preceding_chars": "s to \u227210\u221213.",
+   "lettered": false
+  },
+  {
+   "heading": "The first projection variance",
+   "rendered": true,
+   "preceding_chars": "generate.py.",
+   "lettered": false
+  }
+ ],
+ "positional_references": {
+  "item (x)": [],
+  "lettered blocks": [],
+  "the table above/below": [],
+  "the display above/below": [],
+  "rows above/below": [
+   "rows below"
+  ],
+  "the paragraph above/below": [],
+  "the figure above/below": [],
+  "as shown above": [],
+  "the equation above/below": []
+ },
+ "list_envs": [
+  "itemize"
+ ],
+ "float_drift": [
+  {
+   "label": "fig:alpha",
+   "number": "2",
+   "lands_page": 12,
+   "first_call_page": 11,
+   "drift": 1
+  },
+  {
+   "label": "fig:boundary",
+   "number": "6",
+   "lands_page": 20,
+   "first_call_page": 18,
+   "drift": 2
+  },
+  {
+   "label": "fig:crossmap",
+   "number": "5",
+   "lands_page": 19,
+   "first_call_page": 18,
+   "drift": 1
+  },
+  {
+   "label": "fig:ooe",
+   "number": "7",
+   "lands_page": 21,
+   "first_call_page": 18,
+   "drift": 3
+  },
+  {
+   "label": "fig:pilotratio",
+   "number": "4",
+   "lands_page": 16,
+   "first_call_page": 15,
+   "drift": 1
+  },
+  {
+   "label": "fig:statewise",
+   "number": "3",
+   "lands_page": 13,
+   "first_call_page": null,
+   "drift": 0
+  },
+  {
+   "label": "fig:wall",
+   "number": "8",
+   "lands_page": 22,
+   "first_call_page": 21,
+   "drift": 1
+  },
+  {
+   "label": "fig:weights",
+   "number": "1",
+   "lands_page": 10,
+   "first_call_page": null,
+   "drift": 0
+  },
+  {
+   "label": "tab:pilot",
+   "number": "1",
+   "lands_page": 15,
+   "first_call_page": 14,
+   "drift": 1
+  }
+ ],
+ "footnotes": 0,
+ "bibitems": 28,
+ "rendered_entry_markers": 28,
+ "inline_named_citations": 12
+}

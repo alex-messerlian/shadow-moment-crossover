@@ -2,10 +2,10 @@
  "pages": 31,
  "word_counts": {
   "abstract": 326,
-  "1 Introduction": 13577,
+  "1 Introduction": 13626,
   "References": 2814
  },
- "body_words": 13903,
+ "body_words": 13952,
  "abstract_numbers": [
   {
    "value": "0.26",
@@ -27,7 +27,7 @@
   },
   {
    "value": "1",
-   "occurrences_in_body": 818,
+   "occurrences_in_body": 820,
    "abstract_context": "The finite-sample variance of the resulting U-statistic splits into projection terms of different budget order \u2014 a Hoeff",
    "ok": true
   },
@@ -87,13 +87,13 @@
   },
   {
    "value": "5",
-   "occurrences_in_body": 284,
+   "occurrences_in_body": 286,
    "abstract_context": "The branches differ: 28/5 for spread spectra, and exactly 5 for every pure product state, where \u03b61 = (3/2)n \u22121 and \u03b62 = ",
    "ok": true
   },
   {
    "value": "7",
-   "occurrences_in_body": 220,
+   "occurrences_in_body": 222,
    "abstract_context": "The exponential rate of the cost is then not a constant of the pro- tocol but a spectral functional of the state: \u03b62 is ",
    "ok": true
   }

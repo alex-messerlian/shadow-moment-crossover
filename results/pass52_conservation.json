@@ -1,21 +1,7 @@
 {
  "lost": [],
- "thinned": [
-  {
-   "token": "1.20",
-   "was": 2,
-   "now": 1,
-   "surviving_sections": [
-    "Statewise validation"
-   ]
-  }
- ],
- "gained": [
-  {
-   "token": "47",
-   "n": 1
-  }
- ],
+ "thinned": [],
+ "gained": [],
  "fraction_pairs_lost": [],
  "per_section": [
   {
@@ -27,7 +13,7 @@
   },
   {
    "section": "Setting and estimators",
-   "before": 87,
+   "before": 88,
    "after": 88,
    "tokens_reduced": {},
    "relocated_to": {}
@@ -41,11 +27,9 @@
   },
   {
    "section": "Statewise validation",
-   "before": 89,
+   "before": 91,
    "after": 91,
-   "tokens_reduced": {
-    "1.20": 1
-   },
+   "tokens_reduced": {},
    "relocated_to": {}
   },
   {
@@ -58,14 +42,14 @@
   {
    "section": "The collective route: two exact bias",
    "before": 42,
-   "after": 42,
+   "after": 43,
    "tokens_reduced": {},
    "relocated_to": {}
   },
   {
    "section": "The crossover",
    "before": 150,
-   "after": 150,
+   "after": 156,
    "tokens_reduced": {},
    "relocated_to": {}
   },
@@ -120,7 +104,7 @@
   },
   {
    "section": "Reproducibility and statistics",
-   "before": 129,
+   "before": 149,
    "after": 149,
    "tokens_reduced": {},
    "relocated_to": {}

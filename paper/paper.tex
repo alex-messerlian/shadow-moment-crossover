@@ -466,7 +466,8 @@ The insufficiency grows with size. Against a diverse family of 19 states
 at \(n = 2\), varying depolarizing rate, rank, and structure, the best-fit
 weight-only ansatz leaves a residual of up to 12.3\%. The ansatz
 nonetheless \emph{appears} to hold within a narrow single-parameter
-family, Haar-pure states at fixed \(q = 0.1\), where it fits to 0.1\%,
+family, noisy-pure states at fixed \(q = 0.1\) --- the derivation ensemble itself --- where it
+fits to 0.1\%,
 because that family spans a low-dimensional invariant subspace: a
 closed form validated on one ensemble is not a closed form. What the
 weight-only form actually is, and what it omits, is the subject of the
@@ -1169,8 +1170,9 @@ rate \(g\) in the standard form: amplitude damping as
 \(K_0 = \mathrm{diag}(1, \sqrt{1-g})\) and
 \(K_1 = \sqrt{g}\,\lvert 0 \rangle \langle 1 \rvert\); dephasing as
 \(K_0 = \sqrt{1 - g/2}\,\mathbb{I}\) and \(K_1 = \sqrt{g/2}\,Z\); and
-global depolarizing in the closed form of Section 6.1. Each is applied to
-every qubit of every copy. They continue to hold at three times the rates the crossover sweeps of
+global depolarizing in the closed form of Section 6.1. The first two are applied to every qubit
+of every copy; the third acts on the whole \(kn\)-qubit register, which is how Section 6.1
+defines it. They continue to hold at three times the rates the crossover sweeps of
 Section~\ref{validation-on-83-cells-and-four-ensembles} use, and on state ensembles they had never
 been tested against: Haar-pure (\(q = 0\)); low-rank,
 \(\rho = GG^\dagger\) with \(G\) a \(2^n \times 2\) complex Ginibre
@@ -1333,7 +1335,9 @@ size within one qubit in all 72 cells that resolve a crossover (100.0\%),
 exactly in 63 of those 72 (87.5\%), and correctly on 119 of the 123 swept
 cells (96.7\%) once non-crossing cells are scored as predictions, against
 82 of 83, 73 of 83, and 118 of 123 for the unbiased estimator. The criterion
-is more accurate under projection, not less. Bounding both errors compresses
+is more accurate under projection on two of the three measures and marginally less on the
+third: within one qubit rises from 98.8\% to 100.0\% and the all-cells rate from 95.9\% to
+96.7\%, while exact placement slips from 88.0\% to 87.5\%. Bounding both errors compresses
 the predicted and measured curves onto the same scale, so cells that
 straddled the boundary in the unbounded comparison stop straddling it.
 
