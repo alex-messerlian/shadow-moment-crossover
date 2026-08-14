@@ -956,7 +956,8 @@ computation is \(O(M 4^n)\) with no pairwise matrix ever formed.
 
 The structure also says which factor will be hard. \(\zeta_1\) is a difference of two estimates
 sharing the scale \(\mathrm{Tr}(\rho^2)^2\), each carrying noise of order \(\zeta_2/M\); since
-\(\zeta_2\) grows as \(7^n\) while \(\zeta_1\) grows as \(\beta^n\) with \(\beta = 5/4\), the
+\(\bar\zeta_2\) grows as \(7^n\) while \(\bar\zeta_1\) grows as \(\beta^n\) with
+\(\beta = 5/4\) on the ensemble of Section~2.5, the
 difference is taken between quantities whose common part dominates. That is what the measurements
 show: at \(n = 8\) and a pilot of \(32{,}000\) the relative error of \(\hat\zeta_2\) is
 \(12.7\%\) while that of \(\hat\zeta_1\) is \(205\%\), and \(\hat\zeta_1\) comes out non-positive
@@ -1040,14 +1041,14 @@ quantity that transfers.
 \centering
 \includegraphics[width=0.48\linewidth]{fig8_pilot_convergence}\hfill
 \includegraphics[width=0.48\linewidth]{fig9_pilot_over_mstar}
-\caption{Estimating the threshold from data. \emph{Left:} median relative error of $\widehat{M^*}$ against the exact statewise $M^*$ versus pilot budget, noisy-pure, one curve per size; the dashed line marks $10\%$ accuracy. \emph{Right:} the $10\%$ budget relative to $M^*$ itself. Circles are the smallest swept budget that achieved $10\%$, so they are upper bounds set by the grid, which is why the first three coincide; squares are a log-log fit through the usable range. The star marks where the measured ratio crosses unity, interpolated between the two measured sizes that bracket it. Below the dashed line the pilot costs less than the threshold it locates.}
+\caption{Estimating the threshold from data. \emph{Left:} median relative error of $\widehat{M^*}$ against the exact statewise $M^*$ versus pilot budget, noisy-pure, one curve per size; the dashed line marks $10\%$ accuracy. \emph{Right:} the $10\%$ budget relative to $M^*$ itself. Circles are the smallest swept budget that achieved $10\%$, so they are upper bounds set by the grid; the first three sit at the same raw budget of $8{,}000$ snapshots, which is why the ratio falls so steeply across them. Squares are a log-log fit through the usable range. The star marks where the measured ratio crosses unity, interpolated between the two measured sizes that bracket it. Below the dashed line the pilot costs less than the threshold it locates.}
 \label{fig:pilotratio}
 \end{figure}
 
 What this does not provide is a performance guarantee. The estimators are unbiased and their
 convergence is measured, but bounding the probability that a pilot puts an experiment on the wrong
-side of \(M^*\) needs a concentration bound for \(\hat\zeta_1\), which is a difference of degree-2
-and degree-4 statistics in snapshots whose kernel variance grows as \(7^n\); the fourth moment
+side of \(M^*\) needs a concentration bound for \(\hat\zeta_1\), which is a difference of degree-3 and degree-4 statistics in snapshots whose kernel variance
+grows as \(7^n\); the fourth moment
 that a Bernstein-type argument would need is itself a higher-order projection variance we do not
 have in closed form. We state the convergence we measured and leave the guarantee open.
 
@@ -1587,7 +1588,7 @@ visible.
 of Section~\ref{sec:pilot} are exactly unbiased and their convergence is
 measured, but we do not bound the probability that a pilot places an
 experiment on the wrong side of \(M^*\). Doing so needs a concentration
-bound for a difference of degree-2 and degree-4 snapshot statistics whose
+bound for a difference of degree-3 and degree-4 snapshot statistics whose
 kernel variance grows as \(7^n\), and the fourth moment it would require is
 a higher-order projection variance we do not have in closed form. The
 reported budgets are also upper bounds set by the granularity of the swept
@@ -1662,8 +1663,8 @@ The threshold is also reachable from data. Unbiased estimators built from four d
 a pilot budget recover \(M^*\) without forming the Pauli spectrum, to ten percent from a pilot
 that grows about twofold per qubit against the threshold's roughly fivefold, so the overhead
 becomes relatively cheaper with size and falls below the threshold by eight qubits. What is
-missing is a performance guarantee, which needs a concentration bound for a difference of degree-2
-and degree-4 statistics and is a separate problem.
+missing is a performance guarantee, which needs a concentration bound for a difference of degree-3 and degree-4 statistics and is a
+separate problem.
 
 Paired with two exact bias laws for the collective route, distinguished by the geometry of the
 noise channel rather than by its rate, the variance law predicts, with no parameter fitted to the

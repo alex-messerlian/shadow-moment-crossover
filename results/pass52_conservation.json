@@ -2,6 +2,26 @@
  "lost": [],
  "thinned": [
   {
+   "token": "2",
+   "was": 266,
+   "now": 263,
+   "surviving_sections": [
+    "Introduction",
+    "Setting and estimators",
+    "The projection variances",
+    "Statewise validation",
+    "Estimating the threshold from a pilot budget",
+    "The collective route: two exact bias",
+    "The crossover",
+    "Related work",
+    "Limitations",
+    "Conclusion",
+    "Exact evaluations of the fourth-moment U-sta",
+    "The destructive SWAP",
+    "Reproducibility and statistics"
+   ]
+  },
+  {
    "token": "0",
    "was": 21,
    "now": 20,
@@ -50,7 +70,6 @@
    "relocated_to": {
     "2": [
      "The projection variances",
-     "Conclusion",
      "Exact evaluations of the fourth-moment U-sta"
     ]
    }
@@ -74,15 +93,14 @@
   {
    "section": "Estimating the threshold from a pilot budget",
    "before": 127,
-   "after": 125,
+   "after": 127,
    "tokens_reduced": {
-    "2": 1,
+    "2": 2,
     "1": 1
    },
    "relocated_to": {
     "2": [
      "The projection variances",
-     "Conclusion",
      "Exact evaluations of the fourth-moment U-sta"
     ],
     "1": [
@@ -121,8 +139,15 @@
    "section": "Limitations",
    "before": 23,
    "after": 23,
-   "tokens_reduced": {},
-   "relocated_to": {}
+   "tokens_reduced": {
+    "2": 1
+   },
+   "relocated_to": {
+    "2": [
+     "The projection variances",
+     "Exact evaluations of the fourth-moment U-sta"
+    ]
+   }
   },
   {
    "section": "Conclusion",

@@ -6,7 +6,7 @@
   "2 Setting": 1426,
   "3 Projection variances": 3381,
   "4 Statewise": 983,
-  "5 Pilot": 1203,
+  "5 Pilot": 1222,
   "6 Collective": 716,
   "7 Crossover": 2131,
   "8 Related work": 1162,
@@ -19,7 +19,7 @@
   "Appendix B": 121,
   "Appendix C": 1238
  },
- "body_words": 13358,
+ "body_words": 13377,
  "abstract_numbers": [
   {
    "value": "0.26",
@@ -83,7 +83,7 @@
   },
   {
    "value": "2",
-   "occurrences_in_body": 758,
+   "occurrences_in_body": 756,
    "abstract_context": "The finite-sample variance of the resulting U-statistic splits into projection terms of different budget order \u2014 a Hoeff",
    "ok": true
   },
@@ -95,13 +95,13 @@
   },
   {
    "value": "3",
-   "occurrences_in_body": 332,
+   "occurrences_in_body": 335,
    "abstract_context": "The finite-sample variance of the resulting U-statistic splits into projection terms of different budget order \u2014 a Hoeff",
    "ok": true
   },
   {
    "value": "5",
-   "occurrences_in_body": 286,
+   "occurrences_in_body": 287,
    "abstract_context": "The branches differ: 28/5 for spread spectra, and exactly 5 for every pure product state, where \u03b61 = (3/2)n \u22121 and \u03b62 = ",
    "ok": true
   },
