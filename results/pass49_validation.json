@@ -1,11 +1,11 @@
 {
  "balance_paper": {
   "braces": [
-   1101,
-   1101
+   1105,
+   1105
   ],
   "unbalanced_envs": {},
-  "n_environments": 33
+  "n_environments": 34
  },
  "balance_supp": {
   "braces": [
@@ -17,9 +17,9 @@
  },
  "refs_paper.tex": {
   "n_labels": 50,
-  "n_refs": 19,
+  "n_refs": 20,
   "dangling": [],
-  "unused_labels": 31
+  "unused_labels": 30
  },
  "refs_supplementary.tex": {
   "n_labels": 2,
@@ -54,11 +54,11 @@
   "front matter": 326,
   "Introductionlabelintroduction": 902,
   "Setting and estimatorslabelsetting-and-estimat": 1458,
-  "The projection varianceslabelthe-single-copy-v": 3323,
-  "Statewise validationlabelsec:statewise": 914,
+  "The projection varianceslabelthe-single-copy-v": 3324,
+  "Statewise validationlabelsec:statewise": 931,
   "Estimating the threshold from a pilot budgetla": 1237,
   "The collective route: two exact bias": 708,
-  "The crossoverlabelthe-crossover": 2214,
+  "The crossoverlabelthe-crossover": 2217,
   "Related worklabelrelated-work": 1177,
   "Limitationslabellimitations": 634,
   "Conclusionlabelconclusion": 600,
@@ -66,9 +66,9 @@
   "Methods, data, and codelabelsec:methods": 855,
   "The exact fourth-moment": 685,
   "The destructive SWAP": 118,
-  "Reproducibility and statisticslabelappendix-c.": 1251
+  "Reproducibility and statisticslabelappendix-c.": 1253
  },
- "body_words": 16240,
+ "body_words": 16263,
  "numeric_diff": {
   "n_tokens_before": 1191,
   "n_tokens_after": 1357,

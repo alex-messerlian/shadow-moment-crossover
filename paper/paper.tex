@@ -574,8 +574,9 @@ For the ensemble of Section~2.5 the closed forms give
 M^*(n) \;\longrightarrow\; \frac{1}{2(1-q)^2}\left(\frac{28}{5}\right)^{\! n},
 \qquad \frac{28}{5} = 5.6 ,
 \]
-with base and prefactor both exact. The paragraphs below state the general
-structure this is one instance of, and the other branches it does not cover.
+with base and prefactor both exact. The three paragraphs below state the
+general structure this is one instance of, and the other branches it does not
+cover.
 
 The fitted base drifts with the fitting window, from \(5.14\) over
 \(n = 2\) to \(7\), through \(5.34\) over \(n = 2\) to \(9\), to \(5.60\)
@@ -583,15 +584,6 @@ over \(n = 4\) to \(9\). The closed forms reproduce that drift exactly,
 returning \(5.18\), \(5.36\) and \(5.60\) over the same three windows with
 no sampling anywhere, so the drift is a finite-size property of the fit and
 \(28/5\) is what it drifts toward.
-
-\paragraph{Higher moment orders.}
-The multilinearity argument above shows every \(\zeta_c\) depends only on
-the second-moment matrix, so closed forms exist in principle at \(k \ge 3\)
-as well. We did not obtain them: at \(k = 3\) and \(4\) the
-state-dependent contributions dominate the state-independent ones, so the
-kernel bases are not read off the maximally mixed values, and the
-required counts over compatible tuples are beyond what we derived. The
-\(k \ge 3\) coefficients used below are estimated numerically.
 
 \paragraph{Two bounds, and what they do and do not attain.}
 The spectral sum is a sum of non-negative terms whose \(P = \mathbb{I}\) term is
@@ -681,6 +673,15 @@ Every base quoted from a finite window in this paper is a fit, not a limit, and 
 The drift is real and one-sided: for pure product states, where \(\beta = 3/2\) exactly, a
 log-linear fit of \(\zeta_1\) returns \(1.666\) over \(n = 3\) to \(5\) and \(1.540\) over
 \(n = 6\) to \(8\), approaching \(3/2\) from above.
+\paragraph{Higher moment orders.}
+The multilinearity argument above shows every \(\zeta_c\) depends only on
+the second-moment matrix, so closed forms exist in principle at \(k \ge 3\)
+as well. We did not obtain them: at \(k = 3\) and \(4\) the
+state-dependent contributions dominate the state-independent ones, so the
+kernel bases are not read off the maximally mixed values, and the
+required counts over compatible tuples are beyond what we derived. The
+\(k \ge 3\) coefficients used below are estimated numerically.
+
 \hypertarget{evaluating-them-for-a-given-state}{%
 \subsection{Evaluating them for a given state}\label{sec:evaluation-cost}}
 
@@ -828,7 +829,9 @@ A cell of states can discriminate a statewise law from a family-average law only
 predictions actually differ across the states in it, by more than the noise on the measurement
 they are compared against. Write \(s\) for the relative spread of the predicted RMSE across a
 cell and \(\eta\) for the relative noise on each measured RMSE; the cell is informative only when
-\(s/\eta > 1\). On the four ensembles the crossover sweeps use, it is not:
+\(s/\eta > 1\). On the three families the crossover sweeps hold out, it is not; the
+fourth, noisy-pure, is the derivation family and is quantified as the control in
+Section~\ref{the-law-orders-individual-states}:
 
 \begin{center}
 \begin{tabular}{lccccc}
@@ -1262,7 +1265,8 @@ accurate when its projection-variance inputs are re-estimated outside the
 derivation ensemble. What transfers is the structure of the formula, not
 the noisy-pure coefficients, which are re-estimated for each ensemble, so
 this is not zero-shot prediction from universal constants. Three of the four ensembles (Haar-pure,
-low-rank, and GHZ-noisy) were never used in deriving the law. GHZ
+low-rank, and GHZ-noisy) were never used in deriving the law
+(Fig.~\ref{fig:ooe}). GHZ
 states are maximally non-Haar-typical, and we included them because an
 ensemble-tuned theory ought to fail on them; the theory's accuracy there
 is within a factor of about 1.7 of its accuracy elsewhere, the same order
@@ -2145,9 +2149,13 @@ produce the numbers reported here, and they are not interchangeable:
 \end{tabular}
 \end{center}
 
-Rule 1 is \texttt{predict\_crossover} (\texttt{theory/crossover.py}), rule 2
-\texttt{crossover\_table} (\texttt{benchmark/hardened.py}), rule 3 part 4 of
-\texttt{run\_stress\_test.py}.
+\begin{sloppypar}
+\noindent Rule 1 is \texttt{predict\_\allowbreak crossover}
+(\texttt{theory/\allowbreak crossover.py}), rule 2
+\texttt{crossover\_\allowbreak table}
+(\texttt{benchmark/\allowbreak hardened.py}), rule 3 part 4 of
+\texttt{run\_\allowbreak stress\_\allowbreak test.py}.
+\end{sloppypar}
 
 The rules agree on \(88\) of the \(96\) noisy-pure cells swept. In seven of
 the eight disagreements the paired test is the more conservative,
