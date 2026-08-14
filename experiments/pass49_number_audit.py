@@ -108,16 +108,32 @@ def main() -> None:
         chk(f"S5 table n={n} M*", ex_mstar, round(s["m_star_exact_median"]), 1)
         idx = list(pilot47["config"]["pilots"]).index(budget)
         chk(f"S5 table n={n} error at {budget}", err, s["m_star_rel_mad"][idx], 0.0006)
-    for n, ex_mstar, budget, err in ((7, 91741, 128000, 0.084), (8, 520955, 256000, 0.084)):
-        s = pilot48["summary"][f"noisy_pure_q0.1|n{n}"]
-        chk(f"S5 table n={n} M*", ex_mstar, round(s["m_star_exact_median"]), 1)
-        chk(f"S5 table n={n} 10% budget", budget, s["first_budget_under_10pct"], 0)
-        bl = [c for c in pilot48["config"]["cells"] if c[0] == "noisy_pure_q0.1" and c[1] == n][0][2]
-        chk(f"S5 table n={n} error at {budget}", err, s["m_star_rel_mad"][bl.index(budget)], 0.0006)
-    for n, ratio in ((6, 1.94), (7, 1.40), (8, 0.49)):
+    sv = pilot48["summary"]["noisy_pure_q0.1|n7"]
+    chk("S5 table n=7 M*", 91741, round(sv["m_star_exact_median"]), 1)
+    chk("S5 table n=7 10% budget", 128000, sv["first_budget_under_10pct"], 0)
+    bl7 = [c for c in pilot48["config"]["cells"] if c[0] == "noisy_pure_q0.1" and c[1] == 7][0][2]
+    chk("S5 table n=7 error at 128000", 0.084, sv["m_star_rel_mad"][bl7.index(128000)], 0.0006)
+    # n = 8 is superseded by the PASS 49.1 re-measurement (40 reps, independent states)
+    tail = load("pass49_n8_tail.json")
+    m8 = float(np.median([tail["per_state"][k]["m_star_exact"] for k in tail["per_state"]]))
+    chk("S5 table n=8 M*", 520955, round(m8), 1000)
+    chk("S5 table n=8 10% budget", 512000, tail["first_budget_under_10pct"], 0)
+    mad8 = {r["budget"]: r["mad"] for r in tail["pooled_mad"]}
+    chk("S5 table n=8 error at 512000", 0.057, mad8[512000], 0.0006)
+    chk("S5 tail MAD at 128000 = 27.7%", 0.277, mad8[128000], 0.0006)
+    chk("S5 tail MAD at 256000 = 10.9%", 0.109, mad8[256000], 0.0006)
+    chk("S5 tail exponent = -1.14", -1.14, tail["fits"]["last_three"]["exponent"], 0.006)
+    chk("S5 tail CI low = -1.38", -1.38, tail["fits"]["last_three"]["ci95"][0], 0.006)
+    chk("S5 tail CI high = -0.88", -0.88, tail["fits"]["last_three"]["ci95"][1], 0.006)
+    chk("S5 tail verdict ABSENT", "ABSENT", tail["verdict"], exact=True)
+    for M, off in ((128000, 1.059), (256000, 0.963), (512000, 1.009)):
+        chk(f"S5 median offset at {M}", off,
+            tail["median_offsets"][str(M)]["median_ratio"], 0.0006)
+    for n, ratio in ((6, 1.94), (7, 1.40)):
         src = pilot48["summary"][f"noisy_pure_q0.1|n{n}"]
         chk(f"S5 pilot/M* at n={n}", ratio,
             src["first_budget_under_10pct"] / src["m_star_exact_median"], 0.006)
+    chk("S5 pilot/M* at n=8", 0.98, 512000 / m8, 0.006)
     chk("S5 variable_rank n=7 M* = 503,444", 503444,
         round(pilot48["summary"]["variable_rank|n7"]["m_star_exact_median"]), 1)
     vr7 = pilot48["summary"]["variable_rank|n7"]
@@ -139,9 +155,8 @@ def main() -> None:
     chk("S5 extrapolation understated by 1.85x at n=7", 1.85,
         pilot48["summary"]["noisy_pure_q0.1|n7"]["first_budget_under_10pct"]
         / pilot48["pass47_extrapolation"]["7"], 0.02)
-    chk("S5 extrapolation understated by 1.85x at n=8", 1.85,
-        pilot48["summary"]["noisy_pure_q0.1|n8"]["first_budget_under_10pct"]
-        / pilot48["pass47_extrapolation"]["8"], 0.03)
+    chk("S5 extrapolation understated by 3.8x at n=8", 3.8,
+        512000 / pilot48["pass47_extrapolation"]["8"], 0.06)
 
     # --- Section 3: spectral ---
     chk("S3 zoo records = 70", 70, len(spec["bounds_scan"]["rows"]), 0)

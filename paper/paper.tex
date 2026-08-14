@@ -53,7 +53,7 @@ fixes neither factor. The law holds statewise, not merely on average: across a f
 thresholds span a decade, predicted and measured per-state error agree with rank correlation
 \(0.87\) and slope \(0.97\), against \(0.26\) on a fixed-estimand control too narrow to resolve
 an ordering. The threshold is also estimable from the snapshots alone, by unbiased four-block
-estimators whose cost grows more slowly in \(n\) than \(M^*\) and falls below it near seven
+estimators whose cost grows more slowly in \(n\) than \(M^*\) and falls below it by eight
 qubits. Fed into two exact bias laws for collective measurement it becomes a plug-in criterion,
 nothing fitted to the crossover data, for when two-copy measurement attains the lower RMSE at
 equal copy budget, placing every resolving cell within one qubit across five state families.
@@ -1014,15 +1014,15 @@ grows with \(n\) --- but much more slowly than the threshold it is locating.
 \setlength{\tabcolsep}{9pt}
 \begin{tabular}{@{}rrrrr@{}}
 \toprule
-\(n\) & \(M^*\) & \(10\%\) budget & ratio & error at that budget \
+\(n\) & \(M^*\) & \(10\%\) budget & ratio & error at that budget \\
 \midrule
-\(2\) & \(26\)        & \(8{,}000\)   & \(307\)   & \(5.5\%\) \
-\(3\) & \(110\)       & \(8{,}000\)   & \(72.6\)  & \(6.5\%\) \
-\(4\) & \(541\)       & \(8{,}000\)   & \(14.8\)  & \(8.8\%\) \
-\(5\) & \(2{,}884\)   & \(32{,}000\)  & \(11.1\)  & \(5.8\%\) \
-\(6\) & \(16{,}519\)  & \(32{,}000\)  & \(1.94\)  & \(9.0\%\) \
-\(7\) & \(91{,}741\)  & \(128{,}000\) & \(1.40\)  & \(8.4\%\) \
-\(8\) & \(520{,}955\) & \(256{,}000\) & \(0.49\)  & \(8.4\%\) \
+\(2\) & \(26\)        & \(8{,}000\)   & \(307\)   & \(5.5\%\) \\
+\(3\) & \(110\)       & \(8{,}000\)   & \(72.6\)  & \(6.5\%\) \\
+\(4\) & \(541\)       & \(8{,}000\)   & \(14.8\)  & \(8.8\%\) \\
+\(5\) & \(2{,}884\)   & \(32{,}000\)  & \(11.1\)  & \(5.8\%\) \\
+\(6\) & \(16{,}519\)  & \(32{,}000\)  & \(1.94\)  & \(9.0\%\) \\
+\(7\) & \(91{,}741\)  & \(128{,}000\) & \(1.40\)  & \(8.4\%\) \\
+\(8\) & \(520{,}955\) & \(512{,}000\) & \(0.98\)  & \(5.7\%\) \\
 \bottomrule
 \end{tabular}
 \caption{Pilot cost against the threshold it locates, noisy-pure ensemble. The \(10\%\) budget is the smallest \emph{swept} budget whose median relative error on \(\widehat{M^*}\) fell below \(10\%\), so it is an upper bound set by the granularity of the grid and not an interpolation; the last column gives the error actually achieved there. Full error-versus-budget curves are in Fig.~\ref{fig:pilotratio}. The ratio crosses unity between \(n = 7\) and \(n = 8\).}
@@ -1032,31 +1032,37 @@ grows with \(n\) --- but much more slowly than the threshold it is locating.
 The comparison that matters is against \(M^*\) itself, since a pilot larger than the threshold it
 locates would be self-defeating. Measured, the ratio of the \(10\%\) budget to \(M^*\) falls from
 \(\approx\!300\) at \(n = 2\) through \(1.94\) at \(n = 6\) and \(1.40\) at \(n = 7\) to
-\(0.49\) at \(n = 8\): the pilot budget grows about twofold per qubit against the threshold's
+\(0.98\) at \(n = 8\): the pilot budget grows about twofold per qubit against the threshold's
 roughly fivefold, so the overhead becomes relatively cheaper as \(n\) grows, and it crosses unity
 between \(n = 7\) and \(n = 8\). Interpolating log-linearly between those two bracketing measured
-points puts the crossing at \(n \approx 7.3\) (Fig.~\ref{fig:pilotratio}). We state this as
+points puts the crossing at \(n \approx 7.9\) (Fig.~\ref{fig:pilotratio}). We state this as
 measured rather than extrapolated because an earlier fit over \(n \le 6\) alone put it near
-\(n = 7\) while understating the required budget by a factor of \(1.85\) at both \(n = 7\) and
-\(n = 8\); the crossing survives that correction only because \(M^*\) grows faster than the
-pilot does.
+\(n = 7\) while understating the required budget by a factor of \(1.85\) at \(n = 7\) and
+\(3.8\) at \(n = 8\); the crossing survives that correction only because \(M^*\) grows
+faster than the pilot does.
 
-The tail of that convergence needs a caveat, because it is where an unbiased estimator can still
-mislead. Over the last octave at \(n = 8\) the median absolute deviation falls only from
-\(8.4\%\) to \(7.3\%\), flatter than the \(M^{-1/2}\) an unbiased variance estimate should show,
-and at the trial counts we can afford the fitted exponent cannot be separated from \(-1/2\) --- so
-we do not claim it has been. What can be separated is the mechanism, and it is not an error floor.
-\(\widehat{M^*}\) is a \emph{ratio} of two unbiased estimates, so at finite \(M\) it carries a
-ratio bias, and at small \(M\) a selection effect as well, from conditioning on
-\(\hat\zeta_1 > 0\). A floor would appear as a median offset that stops shrinking; a ratio bias
-appears as one that keeps shrinking while dragging the deviation with it. Measured, the median of
-\(\widehat{M^*}\) relative to \(M^*\) runs \(0.590,\, 0.876,\, 0.976,\, 1.015,\, 1.026\) across
-the five budgets: it converges on unity, crossing it near \(2 \times 10^5\), and the residual
-\(7.3\%\) at the largest budget is roughly \(2.6\%\) of surviving median offset on top of a spread
-component that is still falling. The practical consequence is a mild one, and we state it as a
-limitation rather than discover it later: at the largest sizes a pilot near the \(10\%\) threshold
-tends to \emph{under}-estimate \(M^*\), which errs toward believing an experiment is above the
-threshold when it is below.
+The tail of that convergence was worth a second look, because it is where an unbiased estimator
+can still mislead. At sixteen repetitions the last octave at \(n = 8\) appeared to flatten,
+falling only from \(8.4\%\) to \(7.3\%\), which is what an error floor would look like. It is not
+one. Re-running the three largest budgets on independent states at forty repetitions --- \(120\)
+pooled draws each --- gives \(27.7\%\), \(10.9\%\) and \(5.7\%\), a fitted exponent of \(-1.14\)
+with a \(95\%\) confidence interval of \([-1.38, -0.88]\). That is at least as steep as the
+\(M^{-1/2}\) an unbiased variance estimate should show, and it excludes the flattening: the
+earlier appearance was an artifact of the repetition count. The median of \(\widehat{M^*}\)
+relative to \(M^*\) over the same three budgets is \(1.059\), \(0.963\) and \(1.009\), scattering
+about unity rather than settling at an offset, which is the other signature a floor would leave
+and does not.
+
+The higher-precision run does move one number, and we report the conservative reading. Its median
+deviation at \(256{,}000\) is \(10.9\%\) rather than the \(8.4\%\) the sixteen-repetition run
+gave, so that budget now sits just above the \(10\%\) line and the bracket at \(n = 8\) becomes
+\(512{,}000\). Two independent determinations straddle the threshold there, which is precisely
+the grid-granularity fragility Table~\ref{tab:pilot} is caveated for; taking the larger moves the
+ratio at \(n = 8\) from \(0.49\) to \(0.98\) and the crossing from \(n \approx 7.3\) to
+\(n \approx 7.9\). Table~\ref{tab:pilot} and Fig.~\ref{fig:pilotratio} use the larger value. The
+qualitative claim is unchanged --- the pilot cost falls below the threshold it locates by eight
+qubits --- and we prefer the version that claims less. A bracket read off a doubling grid is a
+coarse instrument near the threshold, and should be read as one.
 
 The varying-estimand family is harder in absolute terms, and we report it separately rather than
 pooled, because pooling would hide the reason. On variable-rank the \(10\%\) budget is
@@ -1721,7 +1727,7 @@ such claim could have been established there --- a family-average law would have
 The threshold is also reachable from data. Unbiased estimators built from four disjoint blocks of
 a pilot budget recover \(M^*\) without forming the Pauli spectrum, to ten percent from a pilot
 that grows about twofold per qubit against the threshold's roughly fivefold, so the overhead
-becomes relatively cheaper with size and falls below the threshold near seven qubits. What is
+becomes relatively cheaper with size and falls below the threshold by eight qubits. What is
 missing is a performance guarantee, which needs a concentration bound for a difference of degree-2
 and degree-4 statistics and is a separate problem.
 

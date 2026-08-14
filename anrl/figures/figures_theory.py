@@ -135,6 +135,18 @@ def _pilot_series() -> dict:
             out[n] = {"budgets": budgets, "mad": list(s["m_star_rel_mad"]),
                       "m_star": s["m_star_exact_median"],
                       "source": "pass48" if n >= 7 else "pass48 (gate replay)"}
+    # PASS 49.1 re-measured the three largest budgets at n = 8 on independent states at 40 reps
+    # (120 pooled draws vs 48).  It is the higher-precision determination and it moves the 10%
+    # bracket from 256k to 512k, so it supersedes the n = 8 row.
+    p49 = R / "pass49_n8_tail.json"
+    if p49.exists():
+        d49 = json.loads(p49.read_text())
+        rows49 = d49["pooled_mad"]
+        out[8] = {"budgets": [r["budget"] for r in rows49],
+                  "mad": [r["mad"] for r in rows49],
+                  "m_star": float(np.median([d49["per_state"][s]["m_star_exact"]
+                                             for s in d49["per_state"]])),
+                  "source": "pass49 (40 reps)"}
     return dict(sorted(out.items()))
 
 
@@ -165,7 +177,9 @@ def make_fig8():
         "versus pilot budget, on the noisy-pure ensemble. The estimator uses only the snapshots: "
         "$\\zeta_2$ from the sample variance of $\\mathrm{Tr}(G_iG_j)$ over disjoint pairs and "
         "$\\zeta_1$ from a four-block construction, both unbiased. Error falls close to "
-        "$M^{-1/2}$; the dashed line marks $10\\%$ accuracy.")
+        "$M^{-1/2}$; the dashed line marks $10\\%$ accuracy. The $n=8$ curve is a separate "
+        "40-repetition re-measurement on independent states, covering the three largest "
+        "budgets only; it is not spliced with the lower-repetition run.")
     return fig, ["n", "pilot_budget", "m_star_rel_error_pct", "m_star_exact", "source"], rows, caption
 
 

@@ -1,6 +1,6 @@
 {
  "description": "PASS 49.6 numeric audit of the new prose",
- "n_checks": 98,
+ "n_checks": 107,
  "n_failed": 0,
  "checks": [
   {
@@ -390,19 +390,73 @@
   {
    "claim": "S5 table n=8 M*",
    "stated": 520955,
-   "artifact": 520955,
+   "artifact": 520935,
    "ok": true
   },
   {
    "claim": "S5 table n=8 10% budget",
-   "stated": 256000,
-   "artifact": 256000,
+   "stated": 512000,
+   "artifact": 512000,
    "ok": true
   },
   {
-   "claim": "S5 table n=8 error at 256000",
-   "stated": 0.084,
-   "artifact": 0.08381598277316102,
+   "claim": "S5 table n=8 error at 512000",
+   "stated": 0.057,
+   "artifact": 0.05689494090092412,
+   "ok": true
+  },
+  {
+   "claim": "S5 tail MAD at 128000 = 27.7%",
+   "stated": 0.277,
+   "artifact": 0.2770329109732447,
+   "ok": true
+  },
+  {
+   "claim": "S5 tail MAD at 256000 = 10.9%",
+   "stated": 0.109,
+   "artifact": 0.109325597162632,
+   "ok": true
+  },
+  {
+   "claim": "S5 tail exponent = -1.14",
+   "stated": -1.14,
+   "artifact": -1.1418425484755645,
+   "ok": true
+  },
+  {
+   "claim": "S5 tail CI low = -1.38",
+   "stated": -1.38,
+   "artifact": -1.3835050674366185,
+   "ok": true
+  },
+  {
+   "claim": "S5 tail CI high = -0.88",
+   "stated": -0.88,
+   "artifact": -0.8780288781240757,
+   "ok": true
+  },
+  {
+   "claim": "S5 tail verdict ABSENT",
+   "stated": "ABSENT",
+   "artifact": "ABSENT",
+   "ok": true
+  },
+  {
+   "claim": "S5 median offset at 128000",
+   "stated": 1.059,
+   "artifact": 1.0585658674651974,
+   "ok": true
+  },
+  {
+   "claim": "S5 median offset at 256000",
+   "stated": 0.963,
+   "artifact": 0.9626910031798006,
+   "ok": true
+  },
+  {
+   "claim": "S5 median offset at 512000",
+   "stated": 1.009,
+   "artifact": 1.0089025595905279,
    "ok": true
   },
   {
@@ -419,8 +473,8 @@
   },
   {
    "claim": "S5 pilot/M* at n=8",
-   "stated": 0.49,
-   "artifact": 0.4914051779716942,
+   "stated": 0.98,
+   "artifact": 0.9828480925523944,
    "ok": true
   },
   {
@@ -478,9 +532,9 @@
    "ok": true
   },
   {
-   "claim": "S5 extrapolation understated by 1.85x at n=8",
-   "stated": 1.85,
-   "artifact": 1.8755727808878766,
+   "claim": "S5 extrapolation understated by 3.8x at n=8",
+   "stated": 3.8,
+   "artifact": 3.751145561775753,
    "ok": true
   },
   {

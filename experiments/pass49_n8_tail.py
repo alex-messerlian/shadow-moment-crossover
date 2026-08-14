@@ -159,16 +159,24 @@ def main() -> None:
     def consistent(f, target=-0.5):
         return f["ci95"][0] <= target <= f["ci95"][1]
 
-    if consistent(tail) and consistent(octave):
-        verdict = "ABSENT"
-        detail = ("the fitted exponent is consistent with -1/2 on the tail and on the last "
-                  "octave, so the PASS 48 flatness was rep noise at 16 reps")
-    elif not consistent(octave) and octave["exponent"] > -0.5:
+    # A floor makes the decay FLATTER than -1/2.  An exponent at or steeper than -1/2 is
+    # evidence AGAINST a floor, however far from -1/2 it lands -- the first version of this
+    # tree only recognized "flatter" as an alternative and mislabelled a steeper result as
+    # indistinguishable.
+    flatter = tail["ci95"][0] > -0.5          # whole interval above -1/2
+    steeper = tail["ci95"][1] < -0.5          # whole interval below -1/2
+    if flatter:
         verdict = "PRESENT"
-        detail = ("the last octave is significantly flatter than -1/2, so the error saturates")
+        detail = ("the tail is significantly flatter than -1/2, so the error saturates")
+    elif steeper or consistent(tail):
+        verdict = "ABSENT"
+        detail = ("the tail exponent is at least as steep as -1/2 "
+                  f"({tail['exponent']:+.2f}, 95% CI [{tail['ci95'][0]:+.2f}, "
+                  f"{tail['ci95'][1]:+.2f}]), so there is no error floor; the flat octave seen "
+                  "at 16 reps was a rep-count artifact")
     else:
         verdict = "INDISTINGUISHABLE"
-        detail = "the intervals still straddle -1/2 at this rep count"
+        detail = "the intervals straddle -1/2 at this rep count"
 
     # If a floor is present, characterise it: fit mad(M) = sqrt((c/M)^{2p} + f^2).
     floor = None
