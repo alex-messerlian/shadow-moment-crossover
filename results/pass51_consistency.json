@@ -1,14 +1,14 @@
 {
  "pages": 52,
  "word_counts": {
-  "abstract": 278,
+  "abstract": 284,
   "1 Introduction": 891,
-  "2 Setting": 1424,
-  "3 Projection variances": 3379,
-  "4 Statewise": 976,
-  "5 Pilot": 1212,
+  "2 Setting": 1426,
+  "3 Projection variances": 3381,
+  "4 Statewise": 983,
+  "5 Pilot": 1203,
   "6 Collective": 716,
-  "7 Crossover": 2129,
+  "7 Crossover": 2131,
   "8 Related work": 1162,
   "9 Limitations": 590,
   "10 Conclusion": 591,
@@ -19,7 +19,7 @@
   "Appendix B": 121,
   "Appendix C": 1238
  },
- "body_words": 13348,
+ "body_words": 13358,
  "abstract_numbers": [
   {
    "value": "0.26",
@@ -41,7 +41,7 @@
   },
   {
    "value": "1",
-   "occurrences_in_body": 784,
+   "occurrences_in_body": 783,
    "abstract_context": "The finite-sample variance of the resulting U-statistic splits into projection terms of different budget order \u2014 a Hoeff",
    "ok": true
   },
@@ -83,7 +83,7 @@
   },
   {
    "value": "2",
-   "occurrences_in_body": 757,
+   "occurrences_in_body": 758,
    "abstract_context": "The finite-sample variance of the resulting U-statistic splits into projection terms of different budget order \u2014 a Hoeff",
    "ok": true
   },
@@ -95,7 +95,7 @@
   },
   {
    "value": "3",
-   "occurrences_in_body": 330,
+   "occurrences_in_body": 332,
    "abstract_context": "The finite-sample variance of the resulting U-statistic splits into projection terms of different budget order \u2014 a Hoeff",
    "ok": true
   },
@@ -130,7 +130,7 @@
    "n_statements": 2,
    "statements": [
     "The ordering is recovered, not just the scale: the rank correlation between predicted and measured RMSE within a cell averages \u03c1 = +0.87 with a minimum of +0.49, and regressing measured on p",
-    "There the exact law predicts per-state RMSE to a median 21 10\u22122 10\u22121 predicted RMSE (exact statewise law) 10\u22122 10\u22121 measured RMSE (forward simulation) Spearman \u03c1 = +0.87 slope = 0.97 spread/"
+    "Two weaker statewise checks run over a wider grid, six families and n = 2 to 6 at three 21 10\u22122 10\u22121 predicted RMSE (exact statewise law) 10\u22122 10\u22121 measured RMSE (forward simulation) Spearma"
    ]
   },
   {
@@ -146,7 +146,7 @@
    "statements": [
     "Interpolating log-linearly between those two bracketing measured points puts the crossing just below n = 8, at n \u22487.95 (Fig.",
     "Two independent determinations straddle the threshold there, which is precisely the grid-granularity fragility Table I is caveated for; taking the larger moves the ratio at n = 8 from 0.49 t",
-    "A bracket read off a doubling grid is a coarse instrument near the threshold, and should be read as 25 103 104 105 pilot budget M (snapshots) 101 102 relative error of \u0302M * (%) 10% n = 2 n ="
+    "4 25 103 104 105 pilot budget M (snapshots) 101 102 relative error of \u0302M * (%) 10% n = 2 n = 3 n = 4 n = 5 n = 6 n = 7 n = 8 2 3 4 5 6 7 8 system size n (qubits) 100 101 102 pilot budget for"
    ]
   },
   {
@@ -171,7 +171,7 @@
     "Measured on one core, \u03b61 takes 2.3 s at n = 9, 23.5 s at n = 10 and 242 s at n = 11, so n = 10 is the largest size evaluable in under a minute; \u03b62 is milliseconds throughout.",
     "On the three families the crossover sweeps hold out, it is not; the fourth, noisy-pure, is the derivation family and is quantified as the control in Section 4.2: state family estimand M \u2217max",
     "Over all five families the criterion resolves 27 crossovers and places 26 exactly and all 27 within one qubit for the unbiased estimator, and 26 resolving with 21 exact and all 26 within one",
-    "And whether the branch structure \u2014 base 7 for spread spectra, 15/2 for stabilizer-structured ones \u2014 has a classification behind it, since the two values we can prove exactly are the two extr",
+    "Whether the same variance law, applied to the partial-transpose moments, gives an exact sample-complexity account of entanglement negativity estimation, 42 which is the application that moti",
     "[15] Zhenyuan Huang, Kun Wang, and Ping Xu, Worst-case sample complexity bounds for dis- tributed inner product estimation with local randomized measurements, arXiv:2605.14256 (May 2026)."
    ]
   }

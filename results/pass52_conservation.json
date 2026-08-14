@@ -42,7 +42,7 @@
   {
    "section": "Setting and estimators",
    "before": 83,
-   "after": 85,
+   "after": 86,
    "tokens_reduced": {
     "2": 3,
     "0": 1
@@ -67,16 +67,28 @@
   {
    "section": "Statewise validation",
    "before": 86,
-   "after": 88,
+   "after": 89,
    "tokens_reduced": {},
    "relocated_to": {}
   },
   {
    "section": "Estimating the threshold from a pilot budget",
    "before": 127,
-   "after": 127,
-   "tokens_reduced": {},
-   "relocated_to": {}
+   "after": 125,
+   "tokens_reduced": {
+    "2": 1,
+    "1": 1
+   },
+   "relocated_to": {
+    "2": [
+     "The projection variances",
+     "Conclusion",
+     "Exact evaluations of the fourth-moment U-sta"
+    ],
+    "1": [
+     "Setting and estimators"
+    ]
+   }
   },
   {
    "section": "The collective route: two exact bias",
@@ -88,7 +100,7 @@
   {
    "section": "The crossover",
    "before": 148,
-   "after": 149,
+   "after": 150,
    "tokens_reduced": {
     "7": 1
    },

@@ -56,7 +56,8 @@ an ordering. The threshold is also estimable from the snapshots alone, by unbias
 estimators whose cost grows more slowly in \(n\) than \(M^*\) and falls below it by eight
 qubits. Fed into two exact bias laws for collective measurement it becomes a plug-in criterion,
 nothing fitted to the crossover data, for when two-copy measurement attains the lower RMSE at
-equal copy budget, placing every resolving cell within one qubit across five state families.
+equal copy budget, placing every resolving cell within one qubit across the five state families
+of the \(k = 2\) held-out sweep.
 Results are simulation to ten qubits; at \(k \ge 3\) the projection variances are numerical.
 \end{abstract}
 
@@ -316,8 +317,8 @@ For \(k \ge 3\) the relevant circuit is instead the ancilla-based Hadamard test 
 Section~2.3, and it is not comparable: transpiled to the same map, the controlled cyclic shift on
 \(kn\) qubits uses about ten times the two-qubit gate count of the \(k = 2\) destructive test at
 \(k = 3\) and about sixteen at \(k = 4\), and needs an ancilla and routing the destructive test
-does not. Every \(k \ge 3\) result in this paper is a simulation of an idealized bounded-outcome
-primitive that carries none of that cost, and the crossover sizes Section 7 reports for \(k \ge 3\) should be read as an upper bound on
+does not. Every \(k \ge 3\) result in this paper is a simulation of the idealized bounded-outcome test
+of Section~2.3, which carries none of that cost, and the crossover sizes Section 7 reports for \(k \ge 3\) should be read as an upper bound on
 what the collective route buys.
 
 These are gate counts, not error budgets. What they establish is that the entangling overhead is
@@ -717,10 +718,10 @@ because the estimator there never forms the spectrum at all.
 \subsection{\texorpdfstring{The \(\alpha\)
 transition}{The \textbackslash alpha transition}}\label{the-alpha-transition}}
 
-Fitting the sampled projection variances over \(n = 2\) to \(7\) gives clean exponential
+Fitting the sampled projection variances over the windows below gives clean exponential
 scalings, retained here for the contrast with the closed forms of
-Section~\ref{sec:zeta-closed-form}, which return \(5.18\) for the \(M^*\) base over that
-window against the regression's \(5.15\). Over that window,
+Section~\ref{sec:zeta-closed-form}, which return \(5.18\) for the \(M^*\) base over
+\(n = 2\) to \(7\) against the regression's \(5.15\). Over that window,
 
 \[\zeta_1 \approx 0.63 \cdot (1.35)^n, \qquad \zeta_2 \approx 1.10 \cdot (6.93)^n, \qquad M^* \approx 0.87 \cdot (5.15)^n,\]
 
@@ -784,7 +785,8 @@ Appendix C gives the residual and leave-one-out detail.
 \begin{figure}[tb]
 \centering
 \includegraphics[width=0.74\linewidth]{fig3_alpha_transition}
-\caption{The effective budget-scaling exponent transition, the paper's central phenomenon. Measured budget-scaling exponent $\alpha$ (RMSE $\propto M^{-\alpha}$, fitted over budgets $2000$--$128000$; markers with bootstrap standard errors) versus system size $n$ for moment orders $k=2,3,4$, with the derived-law prediction (lines). \emph{The prediction curves have no parameters fitted to the plotted points, computed from projection variances fed into the exact variance formula of Sec.~3.1.} As $n$ grows at fixed budget and $M$ falls below the threshold $M^*$, $\alpha$ migrates continuously from $1/2$ toward $1$, and past it for the higher moment orders.}
+\caption{The effective budget-scaling exponent transition, the paper's central phenomenon. Measured budget-scaling exponent $\alpha$ (RMSE $\propto M^{-\alpha}$, fitted over budgets $2000$--$128000$; markers with bootstrap standard errors) versus system size $n$ for moment orders $k=2,3,4$, with the derived-law prediction (lines). \emph{The prediction curves are computed from projection variances fed into the exact variance
+formula of Sec.~3.1, with no parameter fitted to the plotted points.} As $n$ grows at fixed budget and $M$ falls below the threshold $M^*$, $\alpha$ migrates continuously from $1/2$ toward $1$, and past it for the higher moment orders.}
 \label{fig:alpha}
 \end{figure}
 
@@ -859,8 +861,8 @@ is what makes a statewise test possible at all.
 \subsection{The law orders individual states}\label{the-law-orders-individual-states}}
 
 On variable-rank at \(n = 3, 4, 5\), two budgets, \(14\) states per cell and \(300\)
-forward-simulation trials per state --- so \(\eta \approx 4.1\%\) against a predicted spread of \(21.9\%\), a
-spread-to-noise ratio of \(5.3\) rather than the \(4.58\) tabulated above, because this run
+forward-simulation trials per state --- so \(\eta \approx 4.1\%\) against a predicted spread of \(21.9\%\), a spread-to-noise ratio of \(5.3\) rather than the \(4.58\) tabulated above at \(n = 4\)
+alone, because this run pools three sizes and
 buys more trials per state --- the exact statewise law reproduces each state's RMSE with a median relative
 deviation of \(2.7\%\), and \(82\) of \(84\) state-budget pairs agree within two standard errors.
 The ordering is recovered, not just the scale: the rank correlation between predicted and measured
@@ -965,9 +967,8 @@ as such.
 \subsection{How much pilot it takes}\label{how-much-pilot-it-takes}}
 
 Table~\ref{tab:pilot} gives the median relative error of \(\widehat{M^*}\) against the exact
-statewise \(M^*\) for the same state, on the noisy-pure family. The error falls at least as fast as \(M^{-1/2}\), the rate an unbiased variance estimate
-should show, and the budget needed for a given accuracy
-grows with \(n\) --- but much more slowly than the threshold it is locating.
+statewise \(M^*\) for the same state, on the noisy-pure family. The error falls steeply with the pilot budget, and the budget needed for a given accuracy grows
+with \(n\) --- but much more slowly than the threshold it is locating.
 
 \begin{table}[htbp]
 \centering
@@ -1266,7 +1267,7 @@ varying-estimand families and ties it back to the counts here.
 \begin{figure}[tb]
 \centering
 \includegraphics[width=0.74\linewidth]{fig2_crossover_boundary}
-\caption{Crossover validation across 83 cells. Predicted versus Monte-Carlo-observed crossover size $n^*$ over moment orders $k\in\{2,3,4\}$, three noise models, and four state ensembles (three unseen by the theory). Accuracy for the unbiased estimator (83 resolving cells, as 68 noisy-pure plus 15 held-out) and for the range-projected estimator (72, as 58 plus 14) is reported in Secs.~7.2 and~7.3; the two subsets are scored by different rules (Appendix~C). The cells are simulation, not hardware; for the higher moment orders the collective side is an idealized bounded-outcome primitive carrying no gate, depth, or routing cost.}
+\caption{Crossover validation across 83 cells. Predicted versus Monte-Carlo-observed crossover size $n^*$ over moment orders $k\in\{2,3,4\}$, three noise models, and four state ensembles (three unseen by the theory). Accuracy for the unbiased estimator (83 resolving cells, as 68 noisy-pure plus 15 held-out) and for the range-projected estimator (72, as 58 plus 14) is reported in Secs.~7.2 and~7.3; the two subsets are scored by different rules (Appendix~C). The cells are simulation, not hardware; for the higher moment orders the collective side is the idealized bounded-outcome test of Sec.~2.3, carrying no gate, depth, or routing cost.}
 \label{fig:boundary}
 \end{figure}
 

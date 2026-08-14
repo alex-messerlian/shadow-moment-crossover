@@ -33,7 +33,9 @@ OUT = REPO / "results" / "pass52_conservation.json"
 PERMITTED_LOSS: dict[str, str] = {}
 
 NUM = re.compile(r"(?<![\w.\\])(\d+(?:[.,]\d+)*)(?![\w])")
-FRACTION = re.compile(r"\\?\(?(\d[\d,{}\\]*)\\?\)?\s*(?:of|/|out of)\s*\\?\(?(\d[\d,{}\\]*)\\?\)?")
+# "of" / "out of" only.  Accepting a bare "/" made this match exponents -- M^{-1/2} scored as
+# the pair "1 of 2" -- so a rewording that dropped one exponent raised a spurious STOP.
+FRACTION = re.compile(r"\\?\(?(\d[\d,{}\\]*)\\?\)?\s*(?:of|out of)\s+(?:the\s+)?\\?\(?(\d[\d,{}\\]*)\\?\)?")
 
 
 def clean(s: str) -> str:
