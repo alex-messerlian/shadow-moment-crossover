@@ -1,16 +1,16 @@
 {
  "pages": 31,
  "word_counts": {
-  "abstract": 322,
-  "1 Introduction": 13570,
+  "abstract": 326,
+  "1 Introduction": 13577,
   "References": 2814
  },
- "body_words": 13892,
+ "body_words": 13903,
  "abstract_numbers": [
   {
    "value": "0.26",
    "occurrences_in_body": 2,
-   "abstract_context": "97, against 0.26 on a fixed-estimand control too narrow to resolve an order- ing.",
+   "abstract_context": "97, against 0.26 on a fixed-estimand control too narrow to resolve an ordering.",
    "ok": true
   },
   {
@@ -64,7 +64,7 @@
   {
    "value": "17",
    "occurrences_in_body": 13,
-   "abstract_context": "The exponential rate of the cost is then not a constant of the protocol but a spectral functional of the state: \u03b62 is a ",
+   "abstract_context": "The exponential rate of the cost is then not a constant of the pro- tocol but a spectral functional of the state: \u03b62 is ",
    "ok": true
   },
   {
@@ -94,7 +94,7 @@
   {
    "value": "7",
    "occurrences_in_body": 220,
-   "abstract_context": "The exponential rate of the cost is then not a constant of the protocol but a spectral functional of the state: \u03b62 is a ",
+   "abstract_context": "The exponential rate of the cost is then not a constant of the pro- tocol but a spectral functional of the state: \u03b62 is ",
    "ok": true
   }
  ],

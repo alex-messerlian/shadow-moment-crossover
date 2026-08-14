@@ -71,9 +71,9 @@ nothing fitted to the crossover data, for when two-copy measurement attains the 
 equal copy budget, placing every resolving cell within one qubit across the five state families
 of the \(k = 2\) held-out sweep.
 Results are simulation to ten qubits; at \(k \ge 3\) the projection variances are numerical.
-The budget threshold \(M^*\) is a finite-budget effect over the sizes and budgets near-term
-experiments occupy: past it the error returns to the \(M^{-1/2}\) law, and we claim no improvement
-to that asymptotic scaling.
+The exponent migration this describes is a finite-budget effect over the sizes and budgets
+near-term experiments occupy: once the budget passes \(M^*\) the error returns to the
+\(M^{-1/2}\) law, and we claim no improvement to that asymptotic scaling.
 \end{abstract}
 
 
@@ -537,7 +537,8 @@ compatible pairs by the string they leave behind gives, for any state,
 the sum running over all \(4^n\) Pauli strings with \(|P|\) the weight, the
 kernel following from the per-qubit weights of \(\mathrm{Tr}(G_1 G_2)^2\)
 counted in Appendix~A. Only the identity term is state-independent, so the per-qubit growth rate of \(\zeta_2\) ---
-its base, defined precisely in item (e) below --- is never below \(7\), and a counting argument
+its base, defined precisely under \emph{The threshold's base factorizes} below --- is never
+below \(7\), and a counting argument
 over compatible pairs bounds it above by \(17/2\). At the maximally mixed state every other
 term vanishes and the expression returns \(7^n - 4^{-n}\), recovering
 Section~2.5. What sets the base is how the state's Pauli weight is
@@ -587,8 +588,8 @@ For the ensemble of Section~2.5 the closed forms give
 M^*(n) \;\longrightarrow\; \frac{1}{2(1-q)^2}\left(\frac{28}{5}\right)^{\! n},
 \qquad \frac{28}{5} = 5.6 ,
 \]
-with base and prefactor both exact. The lettered blocks below state the general structure this
-is one instance of, and the other branches it does not cover.
+with base and prefactor both exact. The blocks below state the general structure this is one instance of, and the other branches it
+does not cover.
 
 The fitted base drifts with the fitting window, from \(5.15\) over \(n = 2\) to \(7\), through \(5.34\) over \(n = 2\) to \(9\), to \(5.60\)
 over \(n = 4\) to \(9\). The closed forms reproduce that drift exactly,
@@ -906,11 +907,12 @@ fixed-estimand families, could not have established this.
 \label{fig:statewise}
 \end{figure}
 
-Three weaker statewise checks run over a wider grid, six families and \(n = 2\) to \(6\) at
-three budgets with \(24\) trials each. There the exact law predicts per-state RMSE to a median
+Two weaker statewise checks run over a wider grid, six families and \(n = 2\) to \(6\) at three
+budgets with \(24\) trials each: there the exact law predicts per-state RMSE to a median
 \(9.4\%\), consistent with the \(14\%\) trial noise of that run, with \(562\) of \(615\)
 state-budget points inside two standard errors, and the per-state budget-scaling exponent within
-two standard errors in \(194\) of \(205\) cases. Carrying one seed across sizes to form state
+two standard errors in \(194\) of \(205\) cases. A third check changes the unit. Carrying one seed
+across sizes to form state
 \emph{sequences}, since a single state lives at one size and cannot cross over by itself, the
 crossover criterion of Section~\ref{the-law} places the crossover exactly in \(82\) of the
 \(123\) sequence-channel cells this construction yields --- a different population from the
