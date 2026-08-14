@@ -1,6 +1,6 @@
 {
  "description": "PASS 49.6 numeric audit of the new prose",
- "n_checks": 107,
+ "n_checks": 109,
  "n_failed": 0,
  "checks": [
   {
@@ -389,7 +389,7 @@
   },
   {
    "claim": "S5 table n=8 M*",
-   "stated": 520955,
+   "stated": 520935,
    "artifact": 520935,
    "ok": true
   },
@@ -442,21 +442,35 @@
    "ok": true
   },
   {
-   "claim": "S5 median offset at 128000",
-   "stated": 1.059,
-   "artifact": 1.0585658674651974,
+   "claim": "S5 pooled median offset at 128000",
+   "stated": 0.992,
+   "artifact": 0.9917602702966788,
    "ok": true
   },
   {
-   "claim": "S5 median offset at 256000",
-   "stated": 0.963,
-   "artifact": 0.9626910031798006,
+   "claim": "S5 pooled median offset at 256000",
+   "stated": 0.972,
+   "artifact": 0.9715922912831563,
    "ok": true
   },
   {
-   "claim": "S5 median offset at 512000",
-   "stated": 1.009,
-   "artifact": 1.0089025595905279,
+   "claim": "S5 pooled median offset at 512000",
+   "stated": 1.004,
+   "artifact": 1.0040033707986935,
+   "ok": true
+  },
+  {
+   "claim": "S5 usable draws per budget",
+   "stated": [
+    119,
+    120,
+    120
+   ],
+   "artifact": [
+    119,
+    120,
+    120
+   ],
    "ok": true
   },
   {
@@ -571,6 +585,12 @@
    "claim": "S3 records with zeta2^(1/n) < 7 = 12",
    "stated": 12,
    "artifact": 12,
+   "ok": true
+  },
+  {
+   "claim": "S3 seven of the twelve sub-7 records are at n=2",
+   "stated": 7,
+   "artifact": 7,
    "ok": true
   },
   {

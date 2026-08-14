@@ -64,7 +64,7 @@ grows with \(n\) --- but much more slowly than the threshold it is locating.
 \(5\) & \(2{,}884\)   & \(32{,}000\)  & \(11.1\)  & \(5.8\%\) \\
 \(6\) & \(16{,}519\)  & \(32{,}000\)  & \(1.94\)  & \(9.0\%\) \\
 \(7\) & \(91{,}741\)  & \(128{,}000\) & \(1.40\)  & \(8.4\%\) \\
-\(8\) & \(520{,}955\) & \(512{,}000\) & \(0.98\)  & \(5.7\%\) \\
+\(8\) & \(520{,}935\) & \(512{,}000\) & \(0.98\)  & \(5.7\%\) \\
 \bottomrule
 \end{tabular}
 \caption{Pilot cost against the threshold it locates, noisy-pure ensemble. The \(10\%\) budget is the smallest \emph{swept} budget whose median relative error on \(\widehat{M^*}\) fell below \(10\%\), so it is an upper bound set by the granularity of the grid and not an interpolation; the last column gives the error actually achieved there. Full error-versus-budget curves are in Fig.~\ref{fig:pilotratio}. The ratio crosses unity between \(n = 7\) and \(n = 8\).}
@@ -87,14 +87,15 @@ faster than the pilot does.
 The tail of that convergence was worth a second look, because it is where an unbiased estimator
 can still mislead. At sixteen repetitions the last octave at \(n = 8\) appeared to flatten,
 falling only from \(8.4\%\) to \(7.3\%\), which is what an error floor would look like. It is not
-one. Re-running the three largest budgets on independent states at forty repetitions --- \(120\)
-pooled draws each --- gives \(27.7\%\), \(10.9\%\) and \(5.7\%\), a fitted exponent of \(-1.14\)
+one. Re-running the three largest budgets on independent states at three states by forty
+repetitions --- \(119\) to \(120\) usable draws each --- gives \(27.7\%\), \(10.9\%\) and
+\(5.7\%\), a fitted exponent of \(-1.14\)
 with a \(95\%\) confidence interval of \([-1.38, -0.88]\). That is at least as steep as the
 \(M^{-1/2}\) an unbiased variance estimate should show, and it excludes the flattening: the
-earlier appearance was an artifact of the repetition count. The median of \(\widehat{M^*}\)
-relative to \(M^*\) over the same three budgets is \(1.059\), \(0.963\) and \(1.009\), scattering
-about unity rather than settling at an offset, which is the other signature a floor would leave
-and does not.
+earlier appearance was an artifact of the repetition count. Pooling the same draws, the
+median of \(\widehat{M^*}\) relative to \(M^*\) is \(0.992\), \(0.972\) and \(1.004\) across the
+three budgets, scattering about unity rather than settling at an offset, which is the other
+signature a floor would leave and does not.
 
 The higher-precision run does move one number, and we report the conservative reading. Its median
 deviation at \(256{,}000\) is \(10.9\%\) rather than the \(8.4\%\) the sixteen-repetition run
@@ -118,8 +119,8 @@ quantity that transfers.
 
 \begin{figure}[tb]
 \centering
-\includegraphics[width=0.9\linewidth]{fig8_pilot_convergence}\hfill
-\includegraphics[width=0.9\linewidth]{fig9_pilot_over_mstar}
+\includegraphics[width=0.48\linewidth]{fig8_pilot_convergence}\hfill
+\includegraphics[width=0.48\linewidth]{fig9_pilot_over_mstar}
 \caption{Estimating the threshold from data. \emph{Left:} median relative error of $\widehat{M^*}$ against the exact statewise $M^*$ versus pilot budget, noisy-pure, one curve per size; the dashed line marks $10\%$ accuracy. \emph{Right:} the $10\%$ budget relative to $M^*$ itself. Circles are the smallest swept budget that achieved $10\%$, so they are upper bounds set by the grid, which is why the first three coincide; squares are a log-log fit through the usable range. The star marks where the measured ratio crosses unity, interpolated between the two measured sizes that bracket it. Below the dashed line the pilot costs less than the threshold it locates.}
 \label{fig:pilotratio}
 \end{figure}

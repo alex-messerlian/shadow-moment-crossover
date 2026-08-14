@@ -222,9 +222,9 @@ parity rule
 where \(a_i, b_i\) are the outcomes on the two copies of qubit \(i\). The
 circuit uses exactly \(n\) two-qubit gates, requires no ancilla, and has
 depth two after state preparation; we verified the sign rule against exact
-simulation to \(10^{-16}\) (Appendix B). That gate count is what makes the
-measurement overhead of the collective route two two-qubit gates, a compilation
-fact we return to in Section 2.6.
+simulation to \(10^{-16}\) (Appendix B). That gate count is what keeps the
+collective route's measurement overhead linear in \(n\), with no ancilla and no
+routing on a matched topology, a compilation fact we return to in Section 2.6.
 
 This construction is specific to \(k = 2\), where \(C_2\) is Hermitian
 with eigenvalues \(\pm 1\) so its expectation is directly a two-valued
@@ -566,60 +566,22 @@ The threshold reported below is the ratio of these averaged variances,
 RMSE of Section~7.2 measures; it is not the ensemble mean of the statewise
 ratio, and the two differ in general.
 
-\paragraph{The threshold and what sets its base.}
-For a sequence \(a_n\) with \(\mathrm{base}(a) = \lim_{n\to\infty}
-a_n^{1/n}\) when the limit exists, write \(\beta = \mathrm{base}(\bar\zeta_1)\),
-which is also the base of \(\mathbb{E}[\mathrm{Tr}(G\rho)^2]\). Since
-\(M^* = \zeta_2/(2\zeta_1)\), its base is
-\(\mathrm{base}(\zeta_2)/\beta\) exactly, both leading coefficients being
-nonzero, and both factors are spectral
-functionals of the state rather than universal constants. For the
-ensemble of Section~2.5 the closed forms give \(\beta = 5/4\) and
+\paragraph{The threshold for this ensemble.}
+For the ensemble of Section~2.5 the closed forms give
+\(\beta \equiv \mathrm{base}(\bar\zeta_1) = 5/4\) and
 \(\mathrm{base}(\zeta_2) = 7\), so
 \[
 M^*(n) \;\longrightarrow\; \frac{1}{2(1-q)^2}\left(\frac{28}{5}\right)^{\! n},
 \qquad \frac{28}{5} = 5.6 ,
 \]
-with base and prefactor both exact.
+with base and prefactor both exact. The paragraphs below state the general
+structure this is one instance of, and the other branches it does not cover.
 
-The same two functionals can be evaluated for the other ensembles this
-paper uses, and they do not all agree:
-
-\begin{center}
-\begin{tabular}{lccc}
-\hline
-state family & \(\beta\) & \(\mathrm{base}(\zeta_2)\) & \(M^*\) base \\
-\hline
-noisy-pure (\(q=0.1\)) & \(5/4\) & \(7\)    & \(28/5 = 5.60\) \\
-Haar-pure              & \(5/4\) & \(7\)    & \(28/5 = 5.60\) \\
-low-rank (rank 2)      & \(\to 5/4\) & \(7\) & \(5.60\) \\
-product, GHZ           & \(3/2\) & \(15/2\) & \(5.00\) \\
-\hline
-\end{tabular}
-\end{center}
-
-\noindent
-The last row is exact and instructive. For a pure product state the
-spectral sum is \(\sum_P \langle P\rangle^2 14^{-|P|} = (15/14)^n\),
-giving \(\zeta_2 = (15/2)^n - 1\), and for GHZ the stabilizer group
-splits into even-weight \(Z\) strings and weight-\(n\) strings, giving
-\(\zeta_2 = \tfrac12\left[(15/2)^n + (13/2)^n\right] - \tfrac12\).
-Purity alone does not determine the base: a Haar-random pure state gives
-\(7\) and a pure product state gives \(15/2\). What distinguishes them is
-the weight profile of the Pauli spectrum, which the kernel
-\(14^{-|P|}\) reads off. The value \(28/5\) is therefore the
-spread-spectrum case, not a universal constant, and structured
-stabilizer states sit on a different branch at \(5\). The low-rank base
-\(\beta\) is \(5/4\) asymptotically, like the other spread spectra, and
-reads \(\approx 1.21\) at the finite sizes evaluated here (this row is
-numerical, not closed form); the \(M^*\)
-base uses the asymptotic value.
-
-The fitted base drifts with the fitting
-window, from \(5.14\) over \(n = 2\) to \(7\) to \(5.60\) over \(n = 4\)
-to \(9\). The closed forms reproduce that drift exactly, returning
-\(5.18\), \(5.36\) and \(5.60\) over the same windows with no sampling
-anywhere, so the drift is a finite-size property of the fit and
+The fitted base drifts with the fitting window, from \(5.14\) over
+\(n = 2\) to \(7\), through \(5.34\) over \(n = 2\) to \(9\), to \(5.60\)
+over \(n = 4\) to \(9\). The closed forms reproduce that drift exactly,
+returning \(5.18\), \(5.36\) and \(5.60\) over the same three windows with
+no sampling anywhere, so the drift is a finite-size property of the fit and
 \(28/5\) is what it drifts toward.
 
 \paragraph{Higher moment orders.}
@@ -655,8 +617,9 @@ is not pedantic. Since \(\zeta_2 \ge 7^n - 1\), any state family for which
 \(\mathrm{base}(\zeta_2)\) exists has \(\mathrm{base}(\zeta_2) \ge 7\). The finite-\(n\) ratio
 \(\zeta_2^{1/n}\) is \emph{not} bounded below by \(7\): the subtracted \(\mathrm{Tr}(\rho^2)^2\)
 is \(O(1)\) against \(7^n\), and twelve of those \(70\) records fall below, as low as
-\(6.982\), all of them at \(n = 2\). The per-qubit base is a limit, and only the limit obeys
-the bound.
+\(6.982\). Seven of the twelve are at \(n = 2\), where the subtraction bites hardest; the
+remainder are the maximally mixed and near-mixed states, which sit just under \(7\) at every
+size. The per-qubit base is a limit, and only the limit obeys the bound.
 
 \paragraph{The threshold's base factorizes.}
 For a sequence \(a_n\) write \(\mathrm{base}(a) = \lim_{n\to\infty} a_n^{1/n}\) when the limit
@@ -781,8 +744,7 @@ effective exponent \(\alpha\), the negative slope of
 used (Appendix C), so window-averaged and shifting with \(n\), migrates
 from \(1/2\) toward \(1\), and past it for higher \(k\):
 
-\begin{table}[htbp]
-\centering
+\begin{center}
 \setlength{\tabcolsep}{10pt}
 \begin{tabular}{@{}llll@{}}
 \toprule
@@ -793,7 +755,7 @@ from \(1/2\) toward \(1\), and past it for higher \(k\):
 9 & \(\approx 3.0 \times 10^{6}\) & 0.998 & \(1.006 \pm 0.023\) \\
 \bottomrule
 \end{tabular}
-\end{table}
+\end{center}
 
 The \(M^*(n)\) column is the exact threshold evaluated from the
 closed-form projection variances, not the fitted law evaluated at \(n\).
@@ -822,7 +784,7 @@ A log-linear regression of \(M^*(n)\) over \(n = 2\) to \(9\) returns base
 \(5.34\), 95\% CI \([5.14,\, 5.54]\), prefactor \(0.75 \pm 0.09\), and
 \(\zeta_1, \zeta_2\) fit to bases \(1.30\ [1.26, 1.34]\) and
 \(6.94\ [6.90, 6.98]\); the \(\zeta_2\) base sits just below the exact
-per-qubit \(7\) at the maximally mixed state (Section 3.3) and barely
+per-qubit \(7\) at the maximally mixed state (Section 2.5) and barely
 moves across windows, the drift carried by
 \(\zeta_1\), in the manner Section~\ref{sec:zeta-closed-form} anticipates.
 Appendix C gives the residual and leave-one-out detail.
@@ -1022,7 +984,7 @@ grows with \(n\) --- but much more slowly than the threshold it is locating.
 \(5\) & \(2{,}884\)   & \(32{,}000\)  & \(11.1\)  & \(5.8\%\) \\
 \(6\) & \(16{,}519\)  & \(32{,}000\)  & \(1.94\)  & \(9.0\%\) \\
 \(7\) & \(91{,}741\)  & \(128{,}000\) & \(1.40\)  & \(8.4\%\) \\
-\(8\) & \(520{,}955\) & \(512{,}000\) & \(0.98\)  & \(5.7\%\) \\
+\(8\) & \(520{,}935\) & \(512{,}000\) & \(0.98\)  & \(5.7\%\) \\
 \bottomrule
 \end{tabular}
 \caption{Pilot cost against the threshold it locates, noisy-pure ensemble. The \(10\%\) budget is the smallest \emph{swept} budget whose median relative error on \(\widehat{M^*}\) fell below \(10\%\), so it is an upper bound set by the granularity of the grid and not an interpolation; the last column gives the error actually achieved there. Full error-versus-budget curves are in Fig.~\ref{fig:pilotratio}. The ratio crosses unity between \(n = 7\) and \(n = 8\).}
@@ -1045,14 +1007,15 @@ faster than the pilot does.
 The tail of that convergence was worth a second look, because it is where an unbiased estimator
 can still mislead. At sixteen repetitions the last octave at \(n = 8\) appeared to flatten,
 falling only from \(8.4\%\) to \(7.3\%\), which is what an error floor would look like. It is not
-one. Re-running the three largest budgets on independent states at forty repetitions --- \(120\)
-pooled draws each --- gives \(27.7\%\), \(10.9\%\) and \(5.7\%\), a fitted exponent of \(-1.14\)
+one. Re-running the three largest budgets on independent states at three states by forty
+repetitions --- \(119\) to \(120\) usable draws each --- gives \(27.7\%\), \(10.9\%\) and
+\(5.7\%\), a fitted exponent of \(-1.14\)
 with a \(95\%\) confidence interval of \([-1.38, -0.88]\). That is at least as steep as the
 \(M^{-1/2}\) an unbiased variance estimate should show, and it excludes the flattening: the
-earlier appearance was an artifact of the repetition count. The median of \(\widehat{M^*}\)
-relative to \(M^*\) over the same three budgets is \(1.059\), \(0.963\) and \(1.009\), scattering
-about unity rather than settling at an offset, which is the other signature a floor would leave
-and does not.
+earlier appearance was an artifact of the repetition count. Pooling the same draws, the
+median of \(\widehat{M^*}\) relative to \(M^*\) is \(0.992\), \(0.972\) and \(1.004\) across the
+three budgets, scattering about unity rather than settling at an offset, which is the other
+signature a floor would leave and does not.
 
 The higher-precision run does move one number, and we report the conservative reading. Its median
 deviation at \(256{,}000\) is \(10.9\%\) rather than the \(8.4\%\) the sixteen-repetition run
@@ -1076,8 +1039,8 @@ quantity that transfers.
 
 \begin{figure}[tb]
 \centering
-\includegraphics[width=0.9\linewidth]{fig8_pilot_convergence}\hfill
-\includegraphics[width=0.9\linewidth]{fig9_pilot_over_mstar}
+\includegraphics[width=0.48\linewidth]{fig8_pilot_convergence}\hfill
+\includegraphics[width=0.48\linewidth]{fig9_pilot_over_mstar}
 \caption{Estimating the threshold from data. \emph{Left:} median relative error of $\widehat{M^*}$ against the exact statewise $M^*$ versus pilot budget, noisy-pure, one curve per size; the dashed line marks $10\%$ accuracy. \emph{Right:} the $10\%$ budget relative to $M^*$ itself. Circles are the smallest swept budget that achieved $10\%$, so they are upper bounds set by the grid, which is why the first three coincide; squares are a log-log fit through the usable range. The star marks where the measured ratio crosses unity, interpolated between the two measured sizes that bracket it. Below the dashed line the pilot costs less than the threshold it locates.}
 \label{fig:pilotratio}
 \end{figure}
@@ -1281,7 +1244,8 @@ Real shadow readout is not noiseless, so this understates the single-copy
 cost, in the direction that costs us. Simulating readout on both routes,
 and correcting the collective parity for readout exactly through its
 outcome-dependent per-pair contraction rather than a blanket factor, moves
-the crossover to smaller \(n\) in every resolved cell. The magnitude of
+the crossover to smaller \(n\) in nine of the ten cells that resolve under
+both models and leaves the tenth unchanged. The magnitude of
 that shift depends on device-specific per-qubit rates and is quantified in a
 companion study of the hardware case; the direction is what matters here,
 and the sizes reported below are therefore a conservative upper bound under
@@ -1302,8 +1266,9 @@ low-rank, and GHZ-noisy) were never used in deriving the law. GHZ
 states are maximally non-Haar-typical, and we included them because an
 ensemble-tuned theory ought to fail on them; the theory's accuracy there
 is within a factor of about 1.7 of its accuracy elsewhere, the same order
-of magnitude rather than a breakdown. All four have a fixed estimand, which
-is what makes them unsuitable for the statewise test of
+of magnitude rather than a breakdown. Three of the four have a degenerate
+estimand and the fourth varies too little to resolve an ordering, which is
+what makes all four unsuitable for the statewise test of
 Section~\ref{sec:statewise}; the extension of this sweep to two
 varying-estimand families, and the checks tying it back to the counts
 reported here, are in Section~\ref{the-crossover-sweep-on-the-new-families}.
@@ -1761,7 +1726,7 @@ exactly are the two extremes of the families we happened to examine.
 
 \textbf{Use of AI tools.} An AI coding assistant (Anthropic Claude, accessed through the Claude
 Code command-line interface, 2026 releases) was used throughout the computational work described
-in Section~\ref{sec:methods}: implementing and refactoring the evaluators and estimators, writing
+in the Methods section: implementing and refactoring the evaluators and estimators, writing
 the test suite and the numerical audits, generating figures, and copy-editing the manuscript. It
 was also used adversarially, to attempt to falsify the claims of Section~3 --- the searches for a
 state violating the \(\zeta_2\) bounds and the gradient ascent toward the upper bound in
@@ -1791,7 +1756,7 @@ brute-force computations, the closed forms against their Haar averages, the esti
 their exact targets, and the chunked implementations against their unchunked values.
 
 Simulations used Python 3.12 with NumPy 2.5, SciPy 1.18 and Matplotlib 3.11; the transpiled gate
-counts of Section~\ref{sec:compilation} used Qiskit 2.5 against a coupling map carried as
+counts of Section~2.6 used Qiskit 2.5 against a coupling map carried as
 committed package data, so they reproduce offline with no credentials. Sizes reported as feasible
 were timed on a single core.
 
@@ -2146,16 +2111,7 @@ not a fully held-out state set either.
 \textbf{Bootstrap resampling units.} The \(\alpha\) standard errors resample
 the state as the independent unit (\(2000\) resamples, each carrying its
 whole correlated budget vector; \texttt{fit\_\allowbreak budget\_\allowbreak exponent\_\allowbreak bootstrap}),
-which is the honest unit because the nested budgets share a draw. The
-hardware confidence intervals resample differently and less
-cleanly: the single-copy anchor resamples the \(9000\) snapshots
-(\(300\) resamples, ``within the fixed \(15\) bases''), and the
-collective and Bell-SWAP intervals resample per-shot \(\pm 1\) values
-(\(4000\) and \(5000\) resamples). Shots within one circuit and one
-calibration are not independent draws of the estimator, so these hardware
-intervals capture shot noise conditional on the realized circuit and
-calibration, not the full run-to-run variability; they should be read as
-lower bounds on the true uncertainty.
+which is the honest unit because the nested budgets share a draw.
 
 \textbf{The \(\alpha\) regression.} Both the measured and the theory
 \(\alpha\) are the negative ordinary-least-squares slope of

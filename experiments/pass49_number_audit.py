@@ -116,7 +116,7 @@ def main() -> None:
     # n = 8 is superseded by the PASS 49.1 re-measurement (40 reps, independent states)
     tail = load("pass49_n8_tail.json")
     m8 = float(np.median([tail["per_state"][k]["m_star_exact"] for k in tail["per_state"]]))
-    chk("S5 table n=8 M*", 520955, round(m8), 1000)
+    chk("S5 table n=8 M*", 520935, round(m8), 1)
     chk("S5 table n=8 10% budget", 512000, tail["first_budget_under_10pct"], 0)
     mad8 = {r["budget"]: r["mad"] for r in tail["pooled_mad"]}
     chk("S5 table n=8 error at 512000", 0.057, mad8[512000], 0.0006)
@@ -126,9 +126,17 @@ def main() -> None:
     chk("S5 tail CI low = -1.38", -1.38, tail["fits"]["last_three"]["ci95"][0], 0.006)
     chk("S5 tail CI high = -0.88", -0.88, tail["fits"]["last_three"]["ci95"][1], 0.006)
     chk("S5 tail verdict ABSENT", "ABSENT", tail["verdict"], exact=True)
-    for M, off in ((128000, 1.059), (256000, 0.963), (512000, 1.009)):
-        chk(f"S5 median offset at {M}", off,
-            tail["median_offsets"][str(M)]["median_ratio"], 0.0006)
+    # The manuscript now quotes POOLED medians, matching the pooling used for the MAD.
+    for M, off in ((128000, 0.992), (256000, 0.972), (512000, 1.004)):
+        pooled = []
+        for k in tail["per_state"]:
+            u = tail["per_state"][k]
+            v = [x / u["m_star_exact"] for x in u["per_budget"][str(M)]["m_star_samples"]
+                 if x is not None]
+            pooled.extend(v)
+        chk(f"S5 pooled median offset at {M}", off, float(np.median(pooled)), 0.0006)
+    chk("S5 usable draws per budget", [119, 120, 120],
+        [r["n_samples"] for r in tail["pooled_mad"]], exact=True)
     for n, ratio in ((6, 1.94), (7, 1.40)):
         src = pilot48["summary"][f"noisy_pure_q0.1|n{n}"]
         chk(f"S5 pilot/M* at n={n}", ratio,
@@ -168,6 +176,9 @@ def main() -> None:
     chk("S3 base identity to 8e-16", 8e-16, spec["base_relation"]["worst_deviation_from_1"], 3e-16)
     a4 = [a for a in spec["break_attempts"]["attempts"] if a["attempt"].startswith("A4")][0]
     chk("S3 records with zeta2^(1/n) < 7 = 12", 12, len(a4["outside"]), 0)
+    from collections import Counter
+    chk("S3 seven of the twelve sub-7 records are at n=2", 7,
+        Counter(r["n"] for r in a4["outside"])[2], 0)
     chk("S3 lowest zeta2^(1/n) = 6.982", 6.982, a4["min"], 0.001)
     a6 = [a for a in spec["break_attempts"]["attempts"] if a["attempt"].startswith("A6")][0]
     chk("S3 product base(zeta1) fit n=3-5 -> 1.666", 1.666,

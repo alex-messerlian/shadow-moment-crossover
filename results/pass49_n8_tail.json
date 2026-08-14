@@ -1,5 +1,5 @@
 {
- "description": "PASS 49.1: is the n=8 pilot tail an error floor? Re-run at 60 reps.",
+ "description": "PASS 49.1: is the n=8 pilot tail an error floor? Re-run of the three largest budgets at 40 reps x 3 independent states. A 60-rep full-grid re-run was started and abandoned for cost (~8 h under worker contention); this is the retargeted design, and the exponent test it supports is reported with its own uncertainty.",
  "config": {
   "seed": 49,
   "n": 8,
