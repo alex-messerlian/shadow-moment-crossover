@@ -190,12 +190,10 @@ is linear in \(M\) but builds dense \(2^n \times 2^n\) matrices at
 \(O(M 4^n)\); we instead use
 the per-qubit factorization
 \(\mathrm{Tr}(G_i G_j) = \prod_q \mathrm{Tr}(G_i^q G_j^q)\), forming an
-\(M \times M\) pairwise-trace matrix in \(O(M^2 n)\) time. For \(k = 4\)
-no complete power-sum reduction exists, because the snapshots do not
-commute; Appendix A gives an exact construction by M\"obius inversion over
-the 15 set partitions of the four cyclic slots, with the alternating
-partition evaluated by tensor contraction, matching brute-force
-enumeration to \(\lesssim 10^{-13}\).
+\(M \times M\) pairwise-trace matrix in \(O(M^2 n)\) time. At \(k = 4\) no
+complete power-sum reduction exists, because the snapshots do not commute;
+Appendix~A gives an exact construction over the 15 set partitions of the four
+cyclic slots, matching brute-force enumeration to \(\lesssim 10^{-13}\).
 
 \hypertarget{the-collective-route}{%
 \subsection{The collective route}\label{the-collective-route}}
@@ -307,31 +305,29 @@ the comparison vacuous.
 \hypertarget{what-the-collective-circuit-costs-to-compile}{%
 \subsection{What the collective circuit costs to compile}\label{sec:compilation}}
 
-The collective route's overhead is often quoted as the reason not to use it, so it is worth
-separating what is a compilation fact from what is a device measurement. The counts below are the
-former: they are what a transpiler returns for a stated circuit against a published coupling map,
-and they need no device access to reproduce.
+The collective route's overhead is often quoted as the reason not to use it. The counts below
+separate what is a compilation fact from what is a device measurement: they are what a transpiler
+returns for a stated circuit against a published coupling map, and they need no device access to
+reproduce.
 
-For \(k = 2\) the destructive test adds \(n\) two-qubit gates and depth two on top of state
-preparation, with no ancilla. Transpiled onto a published square-lattice map with a native
-\(\{\mathrm{CZ}, R_x, R_z\}\) basis, the \(n = 2\) Bell instance uses four CZ gates --- two to
+Transpiling the \(k = 2\) destructive test of Section~2.3 onto a published square-lattice map
+with a native \(\{\mathrm{CZ}, R_x, R_z\}\) basis, the \(n = 2\) Bell instance uses four CZ
+gates --- two to
 prepare each copy and two for the pairing --- with zero routing overhead, and the GHZ ladders at
 \(n = 3, 4\) map with zero routing at \(3n - 2\) CZ gates and nest inside one another. Structured
 states on a matched topology are therefore cheap to pair; generic states are not, and how much
 they cost depends on the state-preparation synthesis, so we make no claim there.
 
-For \(k \ge 3\) the ancilla-based Hadamard test is the relevant circuit and it is not comparable.
-Transpiled to the same map, the controlled cyclic shift on \(kn\) qubits uses about ten times the
-two-qubit gate count of the \(k = 2\) destructive test at \(k = 3\) and about sixteen times at
-\(k = 4\), and needs an ancilla and routing the destructive test does not. Every \(k \ge 3\) result
-in this paper is a simulation of an idealized bounded-outcome primitive that carries none of that
-cost, and the reader should read those sizes as an upper bound on what the collective route buys.
+For \(k \ge 3\) the relevant circuit is instead the ancilla-based Hadamard test, whose transpiled cost against the same map Section~2.3 gives and which is not
+comparable. Every \(k \ge 3\) result in this paper is a simulation of an idealized bounded-outcome
+primitive that carries none of that cost, and the reader should read those sizes as an upper bound
+on what the collective route buys.
 
 These are gate counts, not error budgets. What they establish is that the entangling overhead is
 not the binding constraint for the structured \(k = 2\) circuits we study; what binds instead is
-the statistical failure of the single-copy estimator, which Section~\ref{where-single-copy-estimation-stops-being-useful}
-quantifies. A companion study takes up how the collective route behaves on a real device, where
-neither gate counts nor an idealized primitive are the whole story.
+the statistical failure of the single-copy estimator, which
+Section~\ref{where-single-copy-estimation-stops-being-useful} quantifies. A companion study takes
+up the real-device case, where neither gate counts nor an idealized primitive are the whole story.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -1187,24 +1183,19 @@ error rises above the collective error,
 \[\underbrace{\sqrt{\mathrm{Var}(U_M)}}_{\text{exponential in } n,\ \text{falls with } M} \;=\; \underbrace{\sqrt{\text{bias}(g, k, n)^2 + \frac{1 - \mu^2}{N}}}_{\text{bounded floor}\;+\;\text{shot noise}}\]
 
 Here \(\mu\) is the noisy collective signal the cyclic test returns and
-\(N = \lfloor M/k \rfloor\) is the number of \(k\)-copy measurements a
-copy budget of \(M\) allows. The shot term is the variance of the bounded
-cyclic-test outcome and falls away as the budget grows, leaving the bias
-floor as the large-budget limit. Every quantity on both sides comes from
-Sections 3 and 6; nothing is fitted to the data being predicted, and the
-laws take the state's projection variances and the noise channel as
-inputs.
+\(N = \lfloor M/k \rfloor\) the number of \(k\)-copy measurements a copy
+budget of \(M\) allows; the shot term is the variance of that bounded outcome,
+leaving the bias floor as the large-budget limit. Both sides come from
+Sections 3 and 6, evaluated on the state's projection variances and the noise
+channel, with nothing fitted to the data being predicted.
 
-The bounded-floor claim is a statement about bias in \emph{estimation} at
-fixed additive precision \(\varepsilon\): the collective-test outcome is a
-bounded random variable, so estimating \(\mathrm{Tr}(\rho^k)\) to fixed
-\(\varepsilon\) costs \(O(1/\varepsilon^2)\) shots at every \(n\), and the
-collective error saturates at the floor rather than growing. It is not a
-claim that collective measurement is cheap for all tasks: for a task whose
-target precision must itself shrink exponentially in \(n\),
-\cite{noisylearning2026} proves that exponentially many samples are
-required even with two copies. Section~8 gives the quantitative
-reconciliation.
+The bounded-floor claim is about \emph{estimation} at fixed additive
+precision \(\varepsilon\), where the bounded collective outcome costs
+\(O(1/\varepsilon^2)\) shots at every \(n\) and the error saturates at the
+floor rather than growing. It is not a claim that collective measurement is
+cheap for all tasks: where the target precision must itself shrink exponentially
+in \(n\), exponentially many samples are required even with two copies
+\cite{noisylearning2026}, and Section~8 gives the quantitative reconciliation.
 
 \hypertarget{validation-on-83-cells-and-four-ensembles}{%
 \subsection{Validation on 83 cells and four
@@ -1228,55 +1219,43 @@ state-level \(z\)-test against measured collective data, plus 15 held-out
 cells whose measured \(n^*\) comes from the measured single-copy RMSE
 against the theory collective floor; for the range-projected estimator the
 72 are 58 and 14 of the same two kinds. Appendix~C states the three rules
-and which produced which figures. The two subsets are therefore scored by
-different rules, and the aggregate should be read as their union rather
-than as one homogeneous sample.
+and which produced which figures, and defines the censoring and rescoring
+conventions the counts here and in Section~\ref{sec:statewise} both use.
 
-The comparison is asymmetric between the routes in two respects, both
-deliberate. The first is evidential: the single-copy side of each cell is
-a forward simulation of the estimator, fresh snapshots reduced by the
-U-statistic, so the variance law is tested against data it did not
-generate, while the collective side is the exact bias law evaluated
-analytically plus its shot noise.
+The comparison is asymmetric in two deliberate respects. Evidentially, the
+single-copy side of each cell is a forward simulation --- fresh snapshots reduced
+by the U-statistic, so the variance law is tested against data it did not
+generate --- while the collective side is the exact bias law evaluated
+analytically plus its shot noise. In the noise model, the stronger assumption,
+the channel of Section 6 degrades the collective route only, the single-copy
+route being the ideal noiseless baseline, on the reading that a joint
+\(k\)-copy measurement is the harder thing to implement cleanly. Real shadow
+readout is not noiseless, so this understates the single-copy cost, in the
+direction that costs us: simulating readout on both routes, with the collective
+parity corrected exactly through its outcome-dependent per-pair contraction
+rather than a blanket factor, moves the crossover to smaller \(n\) in nine of
+the ten cells that resolve under both models and leaves the tenth unchanged. The
+magnitude depends on device-specific per-qubit rates and is quantified in a
+companion study of the hardware case, but the direction is what matters here, so
+the sizes reported below are a conservative upper bound. Under uncorrected
+readout the single-copy U-statistic acquires a bias that does not shrink with the
+copy budget, so both routes then carry error floors and the comparison changes
+character; the noise-rate dependence of \(n^*\) is by construction a property of
+the collective side.
 
-The second is the noise model, and it is the stronger assumption. The
-channel of Section 6 degrades the collective route only; the single-copy
-route is the ideal, noiseless statistical baseline, on the reading that a
-joint \(k\)-copy measurement is the harder thing to implement cleanly.
-Real shadow readout is not noiseless, so this understates the single-copy
-cost, in the direction that costs us. Simulating readout on both routes,
-and correcting the collective parity for readout exactly through its
-outcome-dependent per-pair contraction rather than a blanket factor, moves
-the crossover to smaller \(n\) in nine of the ten cells that resolve under
-both models and leaves the tenth unchanged. The magnitude of
-that shift depends on device-specific per-qubit rates and is quantified in a
-companion study of the hardware case; the direction is what matters here,
-and the sizes reported below are therefore a conservative upper bound under
-this noise model. Under
-uncorrected readout the single-copy U-statistic acquires a bias that does
-not shrink with the copy budget, unlike its noiseless variance, so both
-routes then carry error floors and the comparison changes character. What
-the asymmetry does shape is the dependence of \(n^*\) on the noise rate,
-which is a property of the collective side by construction.
-
-These cells demonstrate consistency with the derived identities; the
-additional ensembles test whether the plug-in variance architecture stays
+These cells demonstrate consistency with the derived identities: three of the
+four ensembles (Haar-pure, low-rank, GHZ-noisy) were never used in deriving the
+law (Fig.~\ref{fig:ooe}), so they test whether the plug-in architecture stays
 accurate when its projection-variance inputs are re-estimated outside the
-derivation ensemble. What transfers is the structure of the formula, not
-the noisy-pure coefficients, which are re-estimated for each ensemble, so
-this is not zero-shot prediction from universal constants. Three of the four ensembles (Haar-pure,
-low-rank, and GHZ-noisy) were never used in deriving the law
-(Fig.~\ref{fig:ooe}). GHZ
-states are maximally non-Haar-typical, and we included them because an
-ensemble-tuned theory ought to fail on them; the theory's accuracy there
-is within a factor of about 1.7 of its accuracy elsewhere, the same order
-of magnitude rather than a breakdown. On the statewise question these four
-part differently: the estimand is degenerate on three of them and the fourth,
-low-rank, varies too little to resolve an ordering, which is what makes all
-four unsuitable for the statewise test of
-Section~\ref{sec:statewise}; the extension of this sweep to two
-varying-estimand families, and the checks tying it back to the counts
-reported here, are in Section~\ref{the-crossover-sweep-on-the-new-families}.
+derivation ensemble. What transfers is the structure of the formula, not the
+noisy-pure coefficients, so this is not zero-shot prediction from universal
+constants. GHZ states are maximally non-Haar-typical and were included because an
+ensemble-tuned theory ought to fail on them; the theory's accuracy there is
+within a factor of about 1.7 of its accuracy elsewhere, the same order of
+magnitude rather than a breakdown. None of the four can carry a statewise test,
+for the reason Section~\ref{what-a-statewise-test-requires} sets out, and
+Section~\ref{the-crossover-sweep-on-the-new-families} extends the sweep to two
+varying-estimand families and ties it back to the counts here.
 
 \begin{figure}[tb]
 \centering
@@ -1319,11 +1298,10 @@ The effect is not marginal. On the headline configuration at \(n = 10\),
 97.9\% of raw estimates fall outside the physical range, and projection cuts
 the RMSE from 11.98 to 0.58, a factor of 20.6.
 
-Section 3 is untouched by this. It gives the variance of the unbiased
-U-statistic, and that remains accurate: the closed-form Hoeffding prediction
-is 11.92 at \(n = 10\) against 11.976 measured. What changes is which
-estimator an experimenter would actually use, and the criterion has to be
-re-derived for that one.
+Section 3 is untouched: it gives the variance of the unbiased U-statistic, and
+that remains accurate --- the closed-form Hoeffding prediction is 11.92 at
+\(n = 10\) against 11.976 measured. What changes is which estimator an
+experimenter would use, and the criterion has to be re-derived for it.
 
 Doing so and re-running the full sweep, the criterion predicts the crossover
 size within one qubit in all 72 cells that resolve a crossover (100.0\%),
@@ -1341,48 +1319,39 @@ a crossover survives it never moves earlier: 60 of the 72 are unchanged, 10
 move one qubit later, and 2 move four. Haar-pure keeps both its cells, each
 one qubit later; low-rank keeps all seven, unmoved.
 
-Projection makes the single-copy estimator biased, so the comparison in
-Section~\ref{the-law} is no longer an unbiased variance against a bias floor
-but a comparison of two error floors. That is the same change of character
-the readout simulation in
-Section~\ref{validation-on-83-cells-and-four-ensembles} already imposes on
-both routes, and as there it does not reverse the ordering the criterion
-predicts.
+Projection makes the single-copy estimator biased, so
+Section~\ref{the-law}'s comparison becomes one of two error floors --- the same
+change of character the readout simulation of
+Section~\ref{validation-on-83-cells-and-four-ensembles} imposes on both routes,
+and as there it does not reverse the predicted ordering.
 
 \hypertarget{three-qualitative-predictions-and-the-one-we-got-wrong}{%
 \subsection{Three qualitative predictions, and the one we got
 wrong}\label{three-qualitative-predictions-and-the-one-we-got-wrong}}
 
 Two of the three we predicted correctly in advance; the third we got
-backwards, and the law corrected us.
+backwards, and the law corrected us. Higher noise moves the crossover later on
+the channels and rates we swept, a larger bias floor taking longer to climb over;
+a larger budget moves it later too, the single-copy error falling with budget
+while the floor does not. The collective RMSE plateaus exactly at the predicted
+floor while the single-copy RMSE keeps falling, a direct test of the
+bias-versus-variance distinction the whole crossover rests on.
 
-Higher noise moves the crossover later on the channels and rates we swept:
-a larger bias floor takes longer for the exponentially growing single-copy
-error to climb over. A larger budget moves it later too, because the
-single-copy error falls with budget while the bias floor does not; the
-collective RMSE plateaus exactly at the predicted floor as the budget
-grows while the single-copy RMSE keeps falling, a direct test of the
-bias-versus-variance distinction on which the whole crossover rests.
-
-Higher \(k\) also moves the crossover later on the families we tested, and
-this is counterintuitive: a naive variance argument says higher moments
-compound the single-copy variance faster and should cross earlier. The law
-explains the reversal. \(\mathrm{Tr}(\rho^k)\) shrinks with \(k\), so the
-absolute bias floor the single-copy error must climb over is lower, and
-single-copy holds out to larger \(n\). We report this as an observation
-about the ensembles and channels swept here rather than a general rule:
-\(\lvert \mathrm{Tr}(\sigma^k) - \mathrm{Tr}(\rho^k) \rvert\) need not
-fall monotonically with \(k\) for an arbitrary spectrum and channel. No
-universal effective attenuation rate fits the measured biases either,
-because the bias is not a rate: it is however much the channel deforms
-that particular state's spectrum, and two states of identical purity can
-be deformed by different amounts. Purity (\(k=2\)) crosses at
-\(n \approx 6\) to \(7\) under realistic noise, while \(k = 3\) and
-\(k = 4\) hold out to \(n \approx 8\), sizes for the idealized
-bounded-outcome test of Section 2.3, whose realization costs about an
-order of magnitude more two-qubit gates than the \(k = 2\) test, plus an
-ancilla and routing. The signal-against-a-fixed-floor argument dominates
-the variance-compounding argument.
+Higher \(k\) also moves the crossover later on the families we tested, against
+the naive argument that higher moments compound the single-copy variance and
+should cross earlier. \(\mathrm{Tr}(\rho^k)\) shrinks with \(k\), so the
+absolute bias floor is lower and single-copy holds out to larger \(n\): the
+signal-against-a-fixed-floor argument dominates the variance-compounding one.
+This is an observation about the ensembles and channels swept here, not a general
+rule --- \(\lvert \mathrm{Tr}(\sigma^k) - \mathrm{Tr}(\rho^k) \rvert\)
+need not fall monotonically with \(k\) for an arbitrary spectrum and channel,
+and no universal attenuation rate fits the measured biases, the bias being not a
+rate but however much the channel deforms that particular state's spectrum, so
+two states of identical purity can be deformed by different amounts. Purity
+(\(k=2\)) crosses at \(n \approx 6\) to \(7\) under realistic noise, while
+\(k = 3\) and \(k = 4\) hold out to \(n \approx 8\) --- sizes for the
+idealized bounded-outcome test of Section 2.3, not for its realization, whose
+gate cost Section~\ref{sec:compilation} gives.
 
 \hypertarget{where-single-copy-estimation-stops-being-useful}{%
 \subsection{Where single-copy estimation stops being
@@ -1410,23 +1379,19 @@ and all that a guess which never looks at the data can use, has RMSE
 0.310 at \(n = 10\) against its 0.582. From seven qubits on, the
 single-copy route is worse than that constant. The collective route holds
 out three qubits longer, beating the same constant through \(n = 9\) and
-falling behind it only at \(n = 10\) (0.320 against 0.310). The collective
-route stays
-bounded over the same range, because its error is a bias floor and the
-floor cannot exceed \(1 - d^{1-k} < 1\): both \(\mathrm{Tr}(\sigma^k)\)
-and \(\mathrm{Tr}(\rho^k)\) lie in \([d^{1-k}, 1]\), so their difference
-is bounded by the width of that interval. What is universal is the weaker
+falling behind it only at \(n = 10\) (0.320 against 0.310). The collective route stays bounded over the same range because its error is a
+bias floor: both \(\mathrm{Tr}(\sigma^k)\) and \(\mathrm{Tr}(\rho^k)\) lie
+in \([d^{1-k}, 1]\), so their difference is bounded by the width of that
+interval and cannot exceed \(1 - d^{1-k} < 1\). What is universal is the weaker
 statement that the floor stays below unity, and that is what the crossover
 argument uses.
 
-This speaks to the resource-cost concern behind the choice in
-\cite{qmladvantage2026} to keep its measure-first protocol single-copy.
-The entangling overhead that motivates such caution is real, and it is not
-the binding constraint. The binding constraint is that at the tested budgets
-the local-randomized-measurement shadow U-statistic we study becomes
-statistically unusable for moment estimation at comparable system sizes,
-a statement about this protocol, not about every single-copy
-strategy.
+This speaks to the resource-cost concern behind \cite{qmladvantage2026}'s
+choice to keep its measure-first protocol single-copy. The entangling overhead
+that motivates such caution is real and is not the binding constraint: at the
+tested budgets the local-randomized-measurement shadow U-statistic we study
+becomes statistically unusable for moment estimation at comparable system sizes
+--- a statement about this protocol, not about every single-copy strategy.
 
 \begin{figure}[tb]
 \centering
@@ -2092,8 +2057,10 @@ that weaker reading is the one we mean. The difficulty does
 vary: the per-state \(\zeta_2\) has relative spread \(1.6\%\) at
 \(n = 4\) on noisy-pure, being a weighted sum over the state's Pauli
 spectrum (Section~\ref{sec:zeta-closed-form}) rather than a function of
-\(\rho\)'s spectrum. The estimator is never given \(q\) or the ensemble. What the degeneracy costs is robustness testing against a varying
-target, which only the rank-2 family supplies.
+\(\rho\)'s spectrum. The estimator is never given \(q\) or the ensemble. What
+the degeneracy costs is robustness testing against a varying target, which the
+rank-2 family supplies too weakly to resolve an ordering and the varying-parameter
+families of Section~\ref{what-a-statewise-test-requires} supply properly.
 
 \textbf{Train/test separation.} The prediction and the measurement it is
 compared against do not share snapshots. The \(\zeta_c\) are estimated from
@@ -2169,12 +2136,12 @@ exists.
 \textbf{Fit uncertainty.} The exponential-fit residuals in Section~3.7 are
 positive at both ends of the range (\(+0.20\) at \(n = 2\), \(+0.13\) at
 \(n = 9\) in \(\log M^*\)) and negative through the middle, the signature of
-mild upward curvature; the fitted base accordingly rises with the window,
-\(5.14\) over \(n = 2\)--\(7\), \(5.34\) over \(2\)--\(9\), \(5.60\) over
-\(4\)--\(9\). Refitting with each \(n\) dropped in turn moves the base
-within \([5.25, 5.49]\), with the low-\(n\) point exerting the most leverage
-(dropping \(n = 2\) raises it to \(5.49\)). The base is a finite-size fit
-over the sizes reached, not an estimate of an asymptotic rate.
+mild upward curvature, and that is why the fitted base rises with the window as
+Section~\ref{sec:zeta-closed-form} reports. Refitting with each \(n\) dropped
+in turn moves the base within \([5.25, 5.49]\), with the low-\(n\) point
+exerting the most leverage (dropping \(n = 2\) raises it to \(5.49\)). The
+base is a finite-size fit over the sizes reached, not the asymptotic rate, which
+Section~\ref{sec:zeta-closed-form} gives in closed form.
 
 \textbf{The full crossover table.} The 83 resolved cells break down as: \(68\) noisy-pure
 cells drawn from two independent sweeps
@@ -2204,10 +2171,8 @@ giving \(82/83 = 98.8\%\) within one qubit and \(73/83 = 88.0\%\) exact.
 Stratified by the measured crossover, all \(52\) cells with
 \(n^*_{\text{meas}} \ge 3\) fall within one qubit and \(43\) are exact;
 the one miss beyond a qubit sits in the \(31\)-cell
-\(n^*_{\text{meas}} = 2\) group. Counted as configurations rather than
-evaluations, the \(83\) cells are \(69\) independent settings
-(\(54\) distinct noisy-pure plus \(15\) held-out) with \(14\)
-noisy-pure replications.
+\(n^*_{\text{meas}} = 2\) group. Counted as configurations rather than evaluations, they are \(69\) independent
+settings.
 
 
 \end{document}

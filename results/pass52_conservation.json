@@ -1,0 +1,292 @@
+{
+ "lost": [],
+ "thinned": [
+  {
+   "token": "2",
+   "was": 270,
+   "now": 266,
+   "surviving_sections": [
+    "Introduction",
+    "Setting and estimators",
+    "The projection variances",
+    "Statewise validation",
+    "Estimating the threshold from a pilot budget",
+    "The collective route: two exact bias",
+    "The crossover",
+    "Related work",
+    "Limitations",
+    "Conclusion",
+    "The exact fourth-moment",
+    "The destructive SWAP",
+    "Reproducibility and statistics"
+   ]
+  },
+  {
+   "token": "4",
+   "was": 99,
+   "now": 97,
+   "surviving_sections": [
+    "Introduction",
+    "Setting and estimators",
+    "The projection variances",
+    "Statewise validation",
+    "Estimating the threshold from a pilot budget",
+    "The collective route: two exact bias",
+    "The crossover",
+    "Related work",
+    "Limitations",
+    "Conclusion",
+    "Methods, data, and code",
+    "The exact fourth-moment",
+    "Reproducibility and statistics"
+   ]
+  },
+  {
+   "token": "3",
+   "was": 78,
+   "now": 77,
+   "surviving_sections": [
+    "Setting and estimators",
+    "The projection variances",
+    "Statewise validation",
+    "Estimating the threshold from a pilot budget",
+    "The collective route: two exact bias",
+    "The crossover",
+    "Related work",
+    "Limitations",
+    "Conclusion",
+    "Acknowledgements",
+    "Methods, data, and code",
+    "The exact fourth-moment",
+    "Reproducibility and statistics"
+   ]
+  },
+  {
+   "token": "7",
+   "was": 64,
+   "now": 63,
+   "surviving_sections": [
+    "Introduction",
+    "Setting and estimators",
+    "The projection variances",
+    "Estimating the threshold from a pilot budget",
+    "The crossover",
+    "Limitations",
+    "Conclusion",
+    "Methods, data, and code",
+    "The exact fourth-moment",
+    "Reproducibility and statistics"
+   ]
+  },
+  {
+   "token": "14",
+   "was": 24,
+   "now": 23,
+   "surviving_sections": [
+    "Introduction",
+    "The projection variances",
+    "Statewise validation",
+    "The crossover",
+    "Conclusion",
+    "The exact fourth-moment",
+    "Reproducibility and statistics"
+   ]
+  },
+  {
+   "token": "15",
+   "was": 19,
+   "now": 18,
+   "surviving_sections": [
+    "Introduction",
+    "Setting and estimators",
+    "The projection variances",
+    "The collective route: two exact bias",
+    "The crossover",
+    "Conclusion",
+    "Methods, data, and code",
+    "The exact fourth-moment",
+    "Reproducibility and statistics"
+   ]
+  },
+  {
+   "token": "83",
+   "was": 16,
+   "now": 15,
+   "surviving_sections": [
+    "The crossover",
+    "Reproducibility and statistics"
+   ]
+  },
+  {
+   "token": "9",
+   "was": 13,
+   "now": 11,
+   "surviving_sections": [
+    "The projection variances",
+    "The crossover",
+    "Methods, data, and code",
+    "Reproducibility and statistics"
+   ]
+  },
+  {
+   "token": "5.60",
+   "was": 6,
+   "now": 5,
+   "surviving_sections": [
+    "The projection variances"
+   ]
+  },
+  {
+   "token": "5.14",
+   "was": 4,
+   "now": 3,
+   "surviving_sections": [
+    "The projection variances"
+   ]
+  },
+  {
+   "token": "5.34",
+   "was": 3,
+   "now": 2,
+   "surviving_sections": [
+    "The projection variances"
+   ]
+  },
+  {
+   "token": "54",
+   "was": 3,
+   "now": 2,
+   "surviving_sections": [
+    "The projection variances",
+    "Reproducibility and statistics"
+   ]
+  }
+ ],
+ "gained": [],
+ "fraction_pairs_lost": [],
+ "per_section": [
+  {
+   "section": "Introduction",
+   "before": 34,
+   "after": 34,
+   "tokens_reduced": {},
+   "relocated_to": {}
+  },
+  {
+   "section": "Setting and estimators",
+   "before": 87,
+   "after": 86,
+   "tokens_reduced": {
+    "3": 1,
+    "2": 1,
+    "4": 1
+   },
+   "relocated_to": {}
+  },
+  {
+   "section": "The projection variances",
+   "before": 445,
+   "after": 445,
+   "tokens_reduced": {},
+   "relocated_to": {}
+  },
+  {
+   "section": "Statewise validation",
+   "before": 84,
+   "after": 84,
+   "tokens_reduced": {},
+   "relocated_to": {}
+  },
+  {
+   "section": "Estimating the threshold from a pilot budget",
+   "before": 127,
+   "after": 127,
+   "tokens_reduced": {},
+   "relocated_to": {}
+  },
+  {
+   "section": "The collective route: two exact bias",
+   "before": 41,
+   "after": 41,
+   "tokens_reduced": {},
+   "relocated_to": {}
+  },
+  {
+   "section": "The crossover",
+   "before": 149,
+   "after": 148,
+   "tokens_reduced": {
+    "2": 1
+   },
+   "relocated_to": {}
+  },
+  {
+   "section": "Related work",
+   "before": 71,
+   "after": 71,
+   "tokens_reduced": {},
+   "relocated_to": {}
+  },
+  {
+   "section": "Limitations",
+   "before": 23,
+   "after": 23,
+   "tokens_reduced": {},
+   "relocated_to": {}
+  },
+  {
+   "section": "Conclusion",
+   "before": 20,
+   "after": 20,
+   "tokens_reduced": {},
+   "relocated_to": {}
+  },
+  {
+   "section": "Acknowledgements",
+   "before": 2,
+   "after": 2,
+   "tokens_reduced": {},
+   "relocated_to": {}
+  },
+  {
+   "section": "Methods, data, and code",
+   "before": 138,
+   "after": 138,
+   "tokens_reduced": {},
+   "relocated_to": {}
+  },
+  {
+   "section": "The exact fourth-moment",
+   "before": 81,
+   "after": 81,
+   "tokens_reduced": {},
+   "relocated_to": {}
+  },
+  {
+   "section": "The destructive SWAP",
+   "before": 10,
+   "after": 10,
+   "tokens_reduced": {},
+   "relocated_to": {}
+  },
+  {
+   "section": "Reproducibility and statistics",
+   "before": 141,
+   "after": 128,
+   "tokens_reduced": {
+    "4": 1,
+    "2": 2,
+    "15": 1,
+    "7": 1,
+    "83": 1,
+    "9": 2,
+    "5.14": 1,
+    "5.34": 1,
+    "5.60": 1,
+    "54": 1,
+    "14": 1
+   },
+   "relocated_to": {}
+  }
+ ]
+}

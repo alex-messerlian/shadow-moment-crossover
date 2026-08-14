@@ -95,7 +95,10 @@ def main() -> None:
              a5["raw"]["exact"], "S4 all-five exact")
     rendered("scoring the non-crossing cells as", "42", a5["raw"]["all_cells_within_one"],
              "S4 all-cells 42 of 45")
-    rendered("the criterion places the crossover exactly in", "82",
+    # anchored after the number, not before it: as of PASS 52 this sentence straddles a page
+    # break with fig:statewise at the top of the new page, so PyMuPDF emits the caption between
+    # the two halves and any anchor spanning the break fails.
+    rendered("sequence-channel cells and within one qubit", "82",
              perstate["C_per_sequence_crossover"]["exact"], "S4 sequences 82")
     rendered("inside two standard errors, and the per-state budget-scaling", "194 of 205",
              perstate["B_per_state_alpha"]["within_2se"], "S4 alpha 194/205")
