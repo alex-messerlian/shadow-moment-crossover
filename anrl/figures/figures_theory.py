@@ -224,7 +224,7 @@ def make_fig9():
         c = np.polyfit([ns[i], ns[j]], [np.log(rm[i]), np.log(rm[j])], 1)
         cross = -c[1] / c[0]
         ax.plot([cross], [1.0], "*", color=C_VARY, ms=12, zorder=5,
-                label=f"crossing at $n \\approx {cross:.1f}$")
+                label=f"crossing at $n \\approx {cross:.2f}$")
         ax.annotate("", xy=(ns[j], rm[j]), xytext=(ns[i], rm[i]),
                     arrowprops=dict(arrowstyle="-", color=C_VARY, lw=2.4, alpha=0.35))
     ax.set_yscale("log")
