@@ -233,12 +233,8 @@ controlled-\(C_k\) on the \(k\) copies, and an \(X\)-basis measurement of
 the ancilla, whose \(\pm 1\) outcome has expectation
 \(\mathrm{Re}\,\mathrm{Tr}(C_k \rho^{\otimes k}) = \mathrm{Tr}(\rho^k)\).
 Its shot variance is \(1 - \mu^2\) exactly as at \(k = 2\), which is the
-model used for all \(k\) in Section 7. The cost is not comparable:
-transpiled to a published square-lattice coupling map, the controlled cyclic shift on
-\(kn\) qubits uses about ten times the two-qubit gate count of the
-\(k = 2\) destructive test at \(k = 3\) and about sixteen at \(k = 4\),
-and needs an ancilla and routing it does not. Our \(k \geq 3\) results are
-simulated, and the gate counts of Section 2.6 are for \(k = 2\) only.
+model used for all \(k\) in Section 7. The cost is not comparable: Section~\ref{sec:compilation} gives the transpiled
+gate-count ratios and the ancilla and routing this circuit needs.
 
 \hypertarget{copy-fair-accounting}{%
 \subsection{Copy-fair accounting}\label{copy-fair-accounting}}
@@ -318,8 +314,11 @@ prepare each copy and two for the pairing --- with zero routing overhead, and th
 states on a matched topology are therefore cheap to pair; generic states are not, and how much
 they cost depends on the state-preparation synthesis, so we make no claim there.
 
-For \(k \ge 3\) the relevant circuit is instead the ancilla-based Hadamard test, whose transpiled cost against the same map Section~2.3 gives and which is not
-comparable. Every \(k \ge 3\) result in this paper is a simulation of an idealized bounded-outcome
+For \(k \ge 3\) the relevant circuit is instead the ancilla-based Hadamard test of
+Section~2.3, and it is not comparable: transpiled to the same map, the controlled cyclic shift on
+\(kn\) qubits uses about ten times the two-qubit gate count of the \(k = 2\) destructive test at
+\(k = 3\) and about sixteen at \(k = 4\), and needs an ancilla and routing the destructive test
+does not. Every \(k \ge 3\) result in this paper is a simulation of an idealized bounded-outcome
 primitive that carries none of that cost, and the reader should read those sizes as an upper bound
 on what the collective route buys.
 
@@ -518,8 +517,9 @@ compatible pairs by the string they leave behind gives, for any state,
 \zeta_2 \;=\; 7^{\,n}\sum_{P} \langle P\rangle^2 \left(\tfrac{1}{14}\right)^{\!|P|}
 \;-\; \mathrm{Tr}(\rho^2)^2 ,
 \]
-the sum running over all \(4^n\) Pauli strings with \(|P|\) the weight.
-Only the identity term is state-independent, so the base of \(\zeta_2\)
+the sum running over all \(4^n\) Pauli strings with \(|P|\) the weight, the
+kernel following from the per-qubit weights of \(\mathrm{Tr}(G_1 G_2)^2\)
+counted in Appendix~A. Only the identity term is state-independent, so the base of \(\zeta_2\)
 is never below \(7\), and a counting argument over compatible pairs
 bounds it above by \(17/2\). At the maximally mixed state every other
 term vanishes and the expression returns \(7^n - 4^{-n}\), recovering
@@ -904,7 +904,10 @@ Adding the two families to the held-out crossover sweep extends it from three en
 \(45\) swept cells at \(k = 2\) over three channels and three rates. Three checks fix the
 comparison to what was already committed: the measured crossover on the original three ensembles
 reproduces the earlier sweep in all \(27\) cells for the unbiased estimator and all \(27\) for
-the range-projected one, and substituting the exact statewise projection variances for the
+the range-projected one --- the same estimator clipped to the interval \([d^{1-k}, 1]\) that every
+moment must lie in, defined in
+Section~\ref{physical-constraints-and-the-choice-of-estimator} --- and substituting the exact
+statewise projection variances for the
 sampled ones on the prediction side moves the predicted crossover in none of the \(27\). The
 exact evaluator is therefore free to adopt: it changes no number the earlier sweeps reported.
 
@@ -1575,15 +1578,13 @@ prefactors, though exact, are approached slowly: at the sizes reached here
 base we quote from a finite fitting window is labelled a fit for that
 reason.
 
-\textbf{The statewise claim rests on families built to test it.} A cell of
-states can separate a statewise law from a family-average law only where
-the predicted spread across the cell exceeds the measurement noise, and on
-none of the four families the sweeps use does it
-(Section~\ref{sec:statewise}). The ordering result therefore comes from two
-families we constructed for the purpose, and it is a claim about those
+\textbf{The statewise claim rests on families built to test it.} None of the four
+families the crossover sweeps use meets the discriminating condition of Section~\ref{sec:statewise}, so the
+ordering result comes from
+two families we constructed for the purpose, and it is a claim about those
 families' range of spectra rather than a demonstration that the law orders
-arbitrary states. The negative control is reported alongside precisely so
-this is visible.
+arbitrary states. The negative control is reported alongside precisely so this is
+visible.
 
 \textbf{The pilot estimator has no performance guarantee.} Both estimators
 of Section~\ref{sec:pilot} are exactly unbiased and their convergence is
@@ -1655,10 +1656,10 @@ which is the sort of thing that is easy to over-generalize from one ensemble.
 
 Because these are functionals of a state rather than of a family, they can be checked statewise,
 and we did: across a family whose thresholds span a decade the law orders individual states with
-rank correlation \(0.87\) and a slope of \(0.97\). The negative control matters as much as the
-result. On the families that the crossover literature, including our own earlier
-sweeps, has used, the statewise spread is smaller than the achievable measurement noise, so no
-such claim could have been established there --- a family-average law would have scored the same.
+rank correlation \(0.87\) and a slope of \(0.97\). The negative control matters as much as the result: on the families the
+crossover literature has used, including our own earlier sweeps, the statewise
+spread sits below the achievable measurement noise, so no such claim could have
+been established there at all.
 
 The threshold is also reachable from data. Unbiased estimators built from four disjoint blocks of
 a pilot budget recover \(M^*\) without forming the Pauli spectrum, to ten percent from a pilot
@@ -1882,8 +1883,8 @@ Commun. Phys. (published online 6 June 2026), doi:10.1038/s42005-026-02710-8, ar
 
 \appendix
 \hypertarget{appendix-a.-the-exact-fourth-moment-u-statistic}{%
-\section{The exact fourth-moment
-U-statistic}\label{appendix-a.-the-exact-fourth-moment-u-statistic}}
+\section{Exact evaluations of the fourth-moment U-statistic and the two projection
+variances}\label{appendix-a.-the-exact-fourth-moment-u-statistic}}
 
 The full U-statistic for \(\mathrm{Tr}(\rho^4)\) requires the sum over
 all distinct ordered 4-tuples of snapshots,

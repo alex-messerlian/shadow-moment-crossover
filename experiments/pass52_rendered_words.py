@@ -71,10 +71,11 @@ def main() -> None:
     print(f"\n{'rolled up':52s} {'words':>12s}")
     for s in roll:
         print(f"  {s['title'][:50]:52s} {s['words']:>12d}")
-    NUMBERED = [s for s in roll if s["title"] not in
-                ("Acknowledgements", "Methods, data, and code")
-                and not s["title"].startswith(("The exact fourth", "The destructive SWAP",
-                                               "Reproducibility and"))]
+    # Everything from Acknowledgements on is back matter.  Identifying it by title prefix
+    # broke the moment an appendix was renamed, so cut on position instead.
+    titles = [s["title"] for s in roll]
+    stop = titles.index("Acknowledgements") if "Acknowledgements" in titles else len(titles)
+    NUMBERED = roll[:stop]
     print(f"\n  pages {n_pages}   body (abstract + numbered sections) "
           f"{sum(s['words'] for s in NUMBERED)}   whole document {total}")
 
