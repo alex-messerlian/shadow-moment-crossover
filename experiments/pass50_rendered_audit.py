@@ -86,7 +86,7 @@ def main() -> None:
              "S4 table low-rank s/eta")
     rendered("state family estimand", "1.49", round(d4["variable_q"]["spread_over_noise"], 2),
              "S4 table variable-q s/eta")
-    rendered("reproduces the earlier sweep in all", "27",
+    rendered("the earlier sweep in all", "27",
              cross["validation_gates"]["G1_raw_vs_stress_test_part4"], "S4 gate 27 cells")
     a5 = cross["accuracy"]["all_five"]
     rendered("Over all five families the criterion resolves", "27",
@@ -98,7 +98,7 @@ def main() -> None:
     # anchored after the number, not before it: as of PASS 52 this sentence straddles a page
     # break with fig:statewise at the top of the new page, so PyMuPDF emits the caption between
     # the two halves and any anchor spanning the break fails.
-    rendered("sequence-channel cells and within one qubit", "82",
+    rendered("of the 123 sequence-channel cells", "82",
              perstate["C_per_sequence_crossover"]["exact"], "S4 sequences 82")
     rendered("inside two standard errors, and the per-state budget-scaling", "194 of 205",
              perstate["B_per_state_alpha"]["within_2se"], "S4 alpha 194/205")
@@ -124,7 +124,7 @@ def main() -> None:
              "S5 tail CI low")
     rendered("gives 27.7%", "10.9%", None, "S5 tail MADs")
     rendered("median of dM∗relative to M∗is", "0.992", None, "S5 pooled median offsets")
-    rendered("Interpolating log-linearly between those two bracketing", "7.95", None,
+    rendered("puts the crossing just below", "7.95", None,
              "S5 crossing 7.95")
     rendered("understating the required budget by a factor of", "3.8",
              512000 / p48["pass47_extrapolation"]["8"], "S5 understatement 3.8x")

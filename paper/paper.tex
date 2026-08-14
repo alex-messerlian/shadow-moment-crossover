@@ -71,6 +71,9 @@ nothing fitted to the crossover data, for when two-copy measurement attains the 
 equal copy budget, placing every resolving cell within one qubit across the five state families
 of the \(k = 2\) held-out sweep.
 Results are simulation to ten qubits; at \(k \ge 3\) the projection variances are numerical.
+The budget threshold \(M^*\) is a finite-budget effect over the sizes and budgets near-term
+experiments occupy: past it the error returns to the \(M^{-1/2}\) law, and we claim no improvement
+to that asymptotic scaling.
 \end{abstract}
 
 
@@ -134,8 +137,10 @@ criteria and bounds on negativity, and purity enters error-mitigation protocols 
 distillation. Any experiment characterizing the state its device actually prepared needs these
 numbers.
 
-We compare two routes throughout. The single-copy route measures one copy at a time in randomized
-local bases, building classical shadows \cite{huang2020shadows}, and forms an unbiased U-statistic
+We compare two routes throughout, and propose neither: both are established strategies, and what
+is new here is an exact account of what each of them costs --- the variance of one, the bias of
+the other. The single-copy route measures one copy
+at a time in randomized local bases, building classical shadows \cite{huang2020shadows}, and forms an unbiased U-statistic
 from the snapshots; it uses no entangling gates. The collective route holds \(k\) copies
 simultaneously and measures the cyclic-permutation operator, whose expectation is exactly
 \(\mathrm{Tr}(\rho^k)\); it has \(O(1)\) variance but requires entangling operations across
@@ -293,7 +298,8 @@ for every \emph{unital} channel, since \(\mathrm{Tr}(\rho^k)\) then sits
 exactly on the depolarizing floor \(2^{n(1-k)}\), so both routes
 degenerate at once and the comparison stops being informative. The
 restriction matters: amplitude damping is not unital, and carries
-\(\mathbb{I}/2\) to a state of purity \((1 + \gamma^2)/2\).
+\(\mathbb{I}/2\) to a state of purity \((1 + g^2)/2\), writing \(g\) throughout for a channel
+noise rate as in Section~6.
 
 We therefore benchmark on noisy-pure states, a prepared pure state under
 modest depolarizing noise,
@@ -575,7 +581,7 @@ ratio, and the two differ in general.
 
 \paragraph{The threshold for this ensemble.}
 For the ensemble of Section~2.5 the closed forms give
-\(\beta \equiv \mathrm{base}(\bar\zeta_1) = 5/4\) and
+\(\beta \equiv \mathrm{base}(\zeta_1)\), here \(\mathrm{base}(\bar\zeta_1) = 5/4\), and
 \(\mathrm{base}(\bar\zeta_2) = 7\), so
 \[
 M^*(n) \;\longrightarrow\; \frac{1}{2(1-q)^2}\left(\frac{28}{5}\right)^{\! n},
@@ -620,9 +626,9 @@ size. The per-qubit base is a limit, and only the limit obeys the bound.
 
 \paragraph{The threshold's base factorizes.}
 For a sequence \(a_n\) write \(\mathrm{base}(a) = \lim_{n\to\infty} a_n^{1/n}\) when the limit
-exists, and \(\beta = \mathrm{base}(\bar\zeta_1)\). Then
+exists. Then, for any state family,
 \[
-\boxed{\;\mathrm{base}(M^*) \;=\; \frac{\mathrm{base}(\zeta_2)}{\beta}\;}
+\boxed{\;\mathrm{base}(M^*) \;=\; \frac{\mathrm{base}(\zeta_2)}{\mathrm{base}(\zeta_1)}\;}
 \]
 whenever both limits exist \emph{and} both leading coefficients are nonzero. The second
 condition does real work rather than decorating the first: at \(\rho = \mathbb{I}/2^n\) we have
@@ -834,9 +840,10 @@ A cell of states can discriminate a statewise law from a family-average law only
 predictions actually differ across the states in it, by more than the noise on the measurement
 they are compared against. Write \(s\) for the relative spread of the predicted RMSE across a
 cell and \(\eta\) for the relative noise on each measured RMSE; the cell is informative only when
-\(s/\eta > 1\). On the three families the crossover sweeps hold out, it is not; the
-fourth, noisy-pure, is the derivation family and is quantified as the control in
-Section~\ref{the-law-orders-individual-states}:
+\(s/\eta > 1\). On the three families the crossover sweeps hold out, it is not, as the
+top three rows below show; the fourth, noisy-pure, is the derivation family, has no row here, and
+is quantified as the control in Section~\ref{the-law-orders-individual-states}. The last two rows
+are the families added below to fix this.
 
 \begin{center}
 \begin{tabular}{lccccc}
@@ -854,13 +861,15 @@ variable-rank      & \(73.8\%\) & \(9.74\) & \(27.0\%\) & \(5.9\%\)  & \(4.58\) 
 \end{center}
 
 \noindent
-at \(n = 4\), with \(s\) computed from the exact statewise variances and \(\eta\) from the trial
-count of the sweep. The reason is structural, not a matter of effort. For the noisy-pure family
-\(\mathrm{Tr}(\rho^k)\) is a function of \((n, q, k)\) alone and does not depend on
-\(|\psi\rangle\), so the estimand is identical across the family and the projection variances
-vary by a few percent; GHZ-noisy is a single state, so its spread is exactly zero. No affordable
-trial count rescues them: at \(1.20\) between the extreme thresholds there is almost nothing to
-order.
+All rows are at \(n = 4\); \(s\) is computed from the exact statewise variances and \(\eta\)
+from the trial count of the sweep.
+
+The reason is structural, not a matter of effort. Haar-pure has an estimand fixed by
+construction --- as does the noisy-pure control, since \(\mathrm{Tr}(\rho^k)\) is a function of
+\((n, q, k)\) alone and does not depend on \(|\psi\rangle\) --- and GHZ-noisy is a single state,
+so its spread is exactly zero. Low-rank does vary, by \(6.0\%\) in the estimand, but its extreme
+statewise thresholds differ by a factor of only \(1.42\). No affordable trial count rescues any
+of the three: with the extremes that close together there is almost nothing to order.
 
 We therefore added two families whose parameters are drawn per state rather than fixed:
 variable-\(q\), which is the noisy-pure construction with \(q \sim U[0.05, 0.45]\) drawn for each
@@ -897,13 +906,15 @@ fixed-estimand families, could not have established this.
 \label{fig:statewise}
 \end{figure}
 
-Two weaker statewise checks run over a wider grid, six families and \(n = 2\) to \(6\) at three
-budgets with \(24\) trials each. There the exact law predicts per-state RMSE to a median
+Three weaker statewise checks run over a wider grid, six families and \(n = 2\) to \(6\) at
+three budgets with \(24\) trials each. There the exact law predicts per-state RMSE to a median
 \(9.4\%\), consistent with the \(14\%\) trial noise of that run, with \(562\) of \(615\)
 state-budget points inside two standard errors, and the per-state budget-scaling exponent within
 two standard errors in \(194\) of \(205\) cases. Carrying one seed across sizes to form state
 \emph{sequences}, since a single state lives at one size and cannot cross over by itself, the
-criterion places the crossover exactly in \(82\) of \(123\) sequence-channel cells and within one
+crossover criterion of Section~\ref{the-law} places the crossover exactly in \(82\) of the
+\(123\) sequence-channel cells this construction yields --- a different population from the
+\(123\) swept family cells of Appendix~C, which happens to be the same size --- and within one
 qubit in all \(123\). The exact rate is lower than the family-aggregate figures of
 Section~\ref{validation-on-83-cells-and-four-ensembles}, which is the honest cost of asking a sharper question.
 
@@ -999,7 +1010,7 @@ with \(n\) --- but much more slowly than the threshold it is locating.
 \(8\) & \(520{,}935\) & \(512{,}000\) & \(0.98\)  & \(5.7\%\) \\
 \bottomrule
 \end{tabular}
-\caption{Pilot cost against the threshold it locates, noisy-pure ensemble. The \(10\%\) budget is the smallest \emph{swept} budget whose median relative error on \(\widehat{M^*}\) fell below \(10\%\), so it is an upper bound set by the granularity of the grid and not an interpolation; the last column gives the error actually achieved there. Full error-versus-budget curves are in Fig.~\ref{fig:pilotratio}. The ratio crosses unity between \(n = 7\) and \(n = 8\).}
+\caption{Pilot cost against the threshold it locates, noisy-pure ensemble. The \(M^*\) column is the median \emph{statewise} threshold over the states drawn here, so it differs by a few percent from the ensemble-averaged \(M^*(n)\) tabulated in Section~\ref{the-alpha-transition}. The \(10\%\) budget is the smallest \emph{swept} budget whose median relative error on \(\widehat{M^*}\) fell below \(10\%\), so it is an upper bound set by the granularity of the grid and not an interpolation; the last column gives the error actually achieved there. Full error-versus-budget curves are in Fig.~\ref{fig:pilotratio}. The ratio crosses unity between \(n = 7\) and \(n = 8\).}
 \label{tab:pilot}
 \end{table}
 
@@ -1043,9 +1054,8 @@ coarse instrument near the threshold, and should be read as one.
 The varying-estimand family is harder in absolute terms, and we report it separately rather than
 pooled, because pooling would hide the reason. On variable-rank the \(10\%\) budget is
 \(8{,}000\) at \(n = 2\), \(32{,}000\) at \(n = 4\), \(128{,}000\) at \(n = 6\), and more than
-\(256{,}000\) at \(n = 7\), where the error is still \(19.7\%\) at that budget. But its thresholds
-are correspondingly larger --- \(M^* = 503{,}444\) at \(n = 7\) against \(91{,}741\) for
-noisy-pure --- so the two move together: rank-deficient states have smaller \(\zeta_1\), which
+\(256{,}000\) at \(n = 7\), where the error is still \(19.7\%\) at that budget. But its thresholds are correspondingly larger --- a median \(M^*\) of \(503{,}444\) at
+\(n = 7\) against \(91{,}741\) for noisy-pure --- so the two move together: rank-deficient states have smaller \(\zeta_1\), which
 raises \(M^*\) and makes \(\zeta_1\) harder to estimate at once. The ratio, not the budget, is the
 quantity that transfers.
 
@@ -1869,7 +1879,7 @@ IEEE Trans. Inf. Theory (early access, 2026), doi:10.1109/TIT.2026.3699531, arXi
 \bibitem{zhang2025measuring}
 Yukun Zhang, Yusen Wu, You Zhou, and Xiao Yuan,
 \emph{Measuring less to learn more: quadratic speedup in learning nonlinear properties of
-quantum density matrices}, Phys. Rev. Lett. \textbf{136}, 130602 (2026),
+quantum states}, Phys. Rev. Lett. \textbf{136}, 130602 (2026),
 doi:10.1103/cllg-15kd, arXiv:2509.01571.
 
 \bibitem{ferrie2018inadmissible}
@@ -2042,7 +2052,16 @@ for the deterministic GHZ-noisy family
 (\texttt{run\_stress\_test.py}); their variance estimates use \(60{,}000\)
 snapshots. All states in these sweeps are depolarized Haar-random pure states at \(q = 0.1\), except the
 Haar-pure, low-rank and GHZ-noisy families defined in Section~6.3; the two varying-parameter
-families are defined in Section~\ref{what-a-statewise-test-requires}.
+families are defined in Section~\ref{what-a-statewise-test-requires}. The runs that use them
+carry their own designs. The ordering result of
+Section~\ref{the-law-orders-individual-states} draws \(14\) states per cell on variable-rank at
+\(n = 3, 4, 5\) and budgets \(2000\) and \(8000\), with \(300\) forward-simulation trials per
+state, and repeats the same run on noisy-pure as the control (\texttt{seed}~\(=47\)); the five-family crossover sweep of
+Section~\ref{the-crossover-sweep-on-the-new-families} is a separate run, whose prediction side is
+the sampling-free statewise evaluator rather than the \(4\) sampled states above; it uses \(24\)
+prediction states and \(24\) measurement states per cell at \(6\) trials each, over sizes \(2\) to \(6\), three channels and
+rates \(0.05\), \(0.1\) and \(0.3\) at budget \(2000\) (\texttt{seed}~\(=0\)), with the
+deterministic GHZ-noisy family again a single state at \(36\) trials.
 
 \textbf{The estimand is degenerate on three of the four ensembles.} For
 \(\rho = (1-q)\lvert\psi\rangle\langle\psi\rvert + q I/d\) the spectrum is

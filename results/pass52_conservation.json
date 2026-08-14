@@ -1,116 +1,18 @@
 {
- "lost": [
-  {
-   "token": "2604.22627",
-   "was": 1,
-   "permitted": true,
-   "reason": "cited preprint withdrawn by its author, 11 August 2026"
-  }
- ],
+ "lost": [],
  "thinned": [
   {
-   "token": "2",
-   "was": 263,
-   "now": 262,
-   "surviving_sections": [
-    "Introduction",
-    "Setting and estimators",
-    "The projection variances",
-    "Statewise validation",
-    "Estimating the threshold from a pilot budget",
-    "The collective route: two exact bias",
-    "The crossover",
-    "Related work",
-    "Limitations",
-    "Conclusion",
-    "Exact evaluations of the fourth-moment U-sta",
-    "The destructive SWAP",
-    "Reproducibility and statistics"
-   ]
-  },
-  {
-   "token": "3",
-   "was": 82,
-   "now": 80,
-   "surviving_sections": [
-    "Setting and estimators",
-    "The projection variances",
-    "Statewise validation",
-    "Estimating the threshold from a pilot budget",
-    "The collective route: two exact bias",
-    "The crossover",
-    "Related work",
-    "Limitations",
-    "Conclusion",
-    "Acknowledgements",
-    "Exact evaluations of the fourth-moment U-sta",
-    "Reproducibility and statistics"
-   ]
-  },
-  {
-   "token": "2025",
-   "was": 9,
-   "now": 6,
-   "surviving_sections": [
-    "Methods, data, and code"
-   ]
-  },
-  {
-   "token": "22",
+   "token": "1.20",
    "was": 2,
    "now": 1,
    "surviving_sections": [
-    "Related work"
-   ]
-  },
-  {
-   "token": "29",
-   "was": 2,
-   "now": 1,
-   "surviving_sections": [
-    "Methods, data, and code"
+    "Statewise validation"
    ]
   }
  ],
  "gained": [
   {
-   "token": "108",
-   "n": 1
-  },
-  {
-   "token": "6979",
-   "n": 1
-  },
-  {
-   "token": "3313",
-   "n": 1
-  },
-  {
-   "token": "3363",
-   "n": 1
-  },
-  {
-   "token": "10.1137",
-   "n": 1
-  },
-  {
-   "token": "1.9781611978971.120",
-   "n": 1
-  },
-  {
-   "token": "136",
-   "n": 1
-  },
-  {
-   "token": "130602",
-   "n": 1
-  },
-  {
-   "token": "94",
-   "n": 1
-  },
-  {
-   "token": "01247",
+   "token": "47",
    "n": 1
   }
  ],
@@ -125,8 +27,8 @@
   },
   {
    "section": "Setting and estimators",
-   "before": 86,
-   "after": 87,
+   "before": 87,
+   "after": 88,
    "tokens_reduced": {},
    "relocated_to": {}
   },
@@ -140,8 +42,10 @@
   {
    "section": "Statewise validation",
    "before": 89,
-   "after": 89,
-   "tokens_reduced": {},
+   "after": 91,
+   "tokens_reduced": {
+    "1.20": 1
+   },
    "relocated_to": {}
   },
   {
@@ -195,15 +99,9 @@
   },
   {
    "section": "Methods, data, and code",
-   "before": 138,
+   "before": 148,
    "after": 148,
-   "tokens_reduced": {
-    "29": 1,
-    "2025": 3,
-    "3": 2,
-    "2604.22627": 1,
-    "22": 1
-   },
+   "tokens_reduced": {},
    "relocated_to": {}
   },
   {
@@ -223,7 +121,7 @@
   {
    "section": "Reproducibility and statistics",
    "before": 129,
-   "after": 129,
+   "after": 149,
    "tokens_reduced": {},
    "relocated_to": {}
   }
