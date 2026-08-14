@@ -41,252 +41,252 @@
    "title": "The collective route",
    "page": 6,
    "at": 9666,
-   "words": 313
+   "words": 343
   },
   {
    "level": 3,
    "title": "Copy-fair accounting",
-   "page": 6,
-   "at": 11556,
+   "page": 7,
+   "at": 11765,
    "words": 50
   },
   {
    "level": 3,
    "title": "The state ensemble is not a free choice",
    "page": 7,
-   "at": 11851,
-   "words": 412
+   "at": 12058,
+   "words": 430
   },
   {
    "level": 3,
    "title": "What the collective circuit costs to compile",
    "page": 8,
-   "at": 14460,
-   "words": 310
+   "at": 14736,
+   "words": 314
   },
   {
    "level": 2,
    "title": "The projection variances",
    "page": 9,
-   "at": 16318,
+   "at": 16621,
    "words": 4
   },
   {
    "level": 3,
    "title": "The Hoeffding decomposition gives the variance exactly",
    "page": 9,
-   "at": 16348,
-   "words": 248
+   "at": 16651,
+   "words": 249
   },
   {
    "level": 3,
    "title": "Two terms compete, and their ratio is a budget threshold",
-   "page": 9,
-   "at": 17941,
+   "page": 10,
+   "at": 18245,
    "words": 143
   },
   {
    "level": 3,
    "title": "The single-qubit second moment, exactly",
    "page": 10,
-   "at": 18833,
-   "words": 153
+   "at": 19135,
+   "words": 165
   },
   {
    "level": 3,
    "title": "The weight-only quadratic ansatz fails already at one qubit",
    "page": 11,
-   "at": 19844,
+   "at": 20217,
    "words": 228
   },
   {
    "level": 3,
    "title": "Both variances in closed form, for any state",
-   "page": 11,
-   "at": 21348,
-   "words": 1527
+   "page": 12,
+   "at": 21724,
+   "words": 1541
   },
   {
    "level": 3,
    "title": "Evaluating them for a given state",
    "page": 16,
-   "at": 31186,
-   "words": 1066
+   "at": 31630,
+   "words": 1057
   },
   {
    "level": 2,
    "title": "Statewise validation",
    "page": 20,
-   "at": 38327,
+   "at": 38728,
    "words": 52
   },
   {
    "level": 3,
    "title": "What a statewise test requires",
    "page": 20,
-   "at": 38639,
+   "at": 39040,
    "words": 284
   },
   {
    "level": 3,
    "title": "The law orders individual states",
    "page": 21,
-   "at": 40461,
-   "words": 437
+   "at": 40862,
+   "words": 454
   },
   {
    "level": 3,
    "title": "The crossover sweep on the new families",
    "page": 22,
-   "at": 43431,
+   "at": 43946,
    "words": 189
   },
   {
    "level": 2,
    "title": "Estimating the threshold from a pilot budget",
    "page": 23,
-   "at": 44676,
+   "at": 45191,
    "words": 74
   },
   {
    "level": 3,
    "title": "Four blocks and two unbiased estimates",
    "page": 23,
-   "at": 45152,
+   "at": 45667,
    "words": 277
   },
   {
    "level": 3,
    "title": "How much pilot it takes",
    "page": 24,
-   "at": 46794,
-   "words": 858
+   "at": 47305,
+   "words": 863
   },
   {
    "level": 2,
    "title": "The collective route: two exact bias laws",
    "page": 27,
-   "at": 52397,
+   "at": 52930,
    "words": 92
   },
   {
    "level": 3,
    "title": "Global depolarizing noise: linear in g, with no compounding",
    "page": 27,
-   "at": 52947,
-   "words": 155
+   "at": 53480,
+   "words": 156
   },
   {
    "level": 3,
    "title": "Per-qubit channels: the noise relabels the state",
    "page": 27,
-   "at": 53827,
+   "at": 54368,
    "words": 281
   },
   {
    "level": 3,
    "title": "Verification",
    "page": 28,
-   "at": 55538,
-   "words": 181
+   "at": 56079,
+   "words": 98
   },
   {
    "level": 2,
    "title": "The crossover",
    "page": 29,
-   "at": 56742,
-   "words": 13
+   "at": 56717,
+   "words": 96
   },
   {
    "level": 3,
    "title": "The law",
    "page": 29,
-   "at": 56820,
+   "at": 57367,
    "words": 238
   },
   {
    "level": 3,
    "title": "Validation on 83 cells and four ensembles",
    "page": 30,
-   "at": 58290,
-   "words": 776
+   "at": 58837,
+   "words": 771
   },
   {
    "level": 3,
    "title": "Physical constraints and the choice of estimator",
    "page": 32,
-   "at": 63645,
-   "words": 401
+   "at": 64166,
+   "words": 404
   },
   {
    "level": 3,
    "title": "Three qualitative predictions, and the one we got wrong",
    "page": 34,
-   "at": 66437,
-   "words": 249
+   "at": 66980,
+   "words": 274
   },
   {
    "level": 3,
    "title": "Where single-copy estimation stops being useful",
    "page": 35,
-   "at": 68005,
-   "words": 436
+   "at": 68716,
+   "words": 443
   },
   {
    "level": 2,
    "title": "Related work",
-   "page": 36,
-   "at": 71002,
+   "page": 37,
+   "at": 71741,
    "words": 1162
   },
   {
    "level": 2,
    "title": "Limitations",
    "page": 40,
-   "at": 78958,
+   "at": 79694,
    "words": 591
   },
   {
    "level": 2,
    "title": "Conclusion",
    "page": 41,
-   "at": 82743,
-   "words": 585
+   "at": 83479,
+   "words": 591
   },
   {
    "level": 2,
    "title": "Acknowledgements",
    "page": 43,
-   "at": 86504,
-   "words": 164
+   "at": 87271,
+   "words": 147
   },
   {
    "level": 2,
    "title": "Methods, data, and code",
    "page": 43,
-   "at": 87597,
+   "at": 88245,
    "words": 849
   },
   {
    "level": 2,
    "title": "Exact evaluations of the fourth-moment U-statistic and the two projection variances",
    "page": 47,
-   "at": 94843,
-   "words": 682
+   "at": 95491,
+   "words": 705
   },
   {
    "level": 2,
    "title": "The destructive SWAP test",
    "page": 49,
-   "at": 99003,
+   "at": 99789,
    "words": 120
   },
   {
    "level": 2,
    "title": "Reproducibility and statistics",
    "page": 49,
-   "at": 99722,
-   "words": 1195
+   "at": 100508,
+   "words": 1234
   }
  ],
  "rolled": [
@@ -302,7 +302,7 @@
   },
   {
    "title": "Setting and estimators",
-   "words": 1379,
+   "words": 1431,
    "subs": [
     {
      "title": "Local random-unitary classical shadows",
@@ -314,7 +314,7 @@
     },
     {
      "title": "The collective route",
-     "words": 313
+     "words": 343
     },
     {
      "title": "Copy-fair accounting",
@@ -322,21 +322,21 @@
     },
     {
      "title": "The state ensemble is not a free choice",
-     "words": 412
+     "words": 430
     },
     {
      "title": "What the collective circuit costs to compile",
-     "words": 310
+     "words": 314
     }
    ]
   },
   {
    "title": "The projection variances",
-   "words": 3369,
+   "words": 3387,
    "subs": [
     {
      "title": "The Hoeffding decomposition gives the variance exactly",
-     "words": 248
+     "words": 249
     },
     {
      "title": "Two terms compete, and their ratio is a budget threshold",
@@ -344,7 +344,7 @@
     },
     {
      "title": "The single-qubit second moment, exactly",
-     "words": 153
+     "words": 165
     },
     {
      "title": "The weight-only quadratic ansatz fails already at one qubit",
@@ -352,17 +352,17 @@
     },
     {
      "title": "Both variances in closed form, for any state",
-     "words": 1527
+     "words": 1541
     },
     {
      "title": "Evaluating them for a given state",
-     "words": 1066
+     "words": 1057
     }
    ]
   },
   {
    "title": "Statewise validation",
-   "words": 962,
+   "words": 979,
    "subs": [
     {
      "title": "What a statewise test requires",
@@ -370,7 +370,7 @@
     },
     {
      "title": "The law orders individual states",
-     "words": 437
+     "words": 454
     },
     {
      "title": "The crossover sweep on the new families",
@@ -380,7 +380,7 @@
   },
   {
    "title": "Estimating the threshold from a pilot budget",
-   "words": 1209,
+   "words": 1214,
    "subs": [
     {
      "title": "Four blocks and two unbiased estimates",
@@ -388,17 +388,17 @@
     },
     {
      "title": "How much pilot it takes",
-     "words": 858
+     "words": 863
     }
    ]
   },
   {
    "title": "The collective route: two exact bias laws",
-   "words": 709,
+   "words": 627,
    "subs": [
     {
      "title": "Global depolarizing noise: linear in g, with no compounding",
-     "words": 155
+     "words": 156
     },
     {
      "title": "Per-qubit channels: the noise relabels the state",
@@ -406,13 +406,13 @@
     },
     {
      "title": "Verification",
-     "words": 181
+     "words": 98
     }
    ]
   },
   {
    "title": "The crossover",
-   "words": 2113,
+   "words": 2226,
    "subs": [
     {
      "title": "The law",
@@ -420,19 +420,19 @@
     },
     {
      "title": "Validation on 83 cells and four ensembles",
-     "words": 776
+     "words": 771
     },
     {
      "title": "Physical constraints and the choice of estimator",
-     "words": 401
+     "words": 404
     },
     {
      "title": "Three qualitative predictions, and the one we got wrong",
-     "words": 249
+     "words": 274
     },
     {
      "title": "Where single-copy estimation stops being useful",
-     "words": 436
+     "words": 443
     }
    ]
   },
@@ -448,12 +448,12 @@
   },
   {
    "title": "Conclusion",
-   "words": 585,
+   "words": 591,
    "subs": []
   },
   {
    "title": "Acknowledgements",
-   "words": 164,
+   "words": 147,
    "subs": []
   },
   {
@@ -463,7 +463,7 @@
   },
   {
    "title": "Exact evaluations of the fourth-moment U-statistic and the two projection variances",
-   "words": 682,
+   "words": 705,
    "subs": []
   },
   {
@@ -473,10 +473,10 @@
   },
   {
    "title": "Reproducibility and statistics",
-   "words": 1195,
+   "words": 1234,
    "subs": []
   }
  ],
- "body_words": 13250,
- "document_words": 16260
+ "body_words": 13379,
+ "document_words": 16434
 }

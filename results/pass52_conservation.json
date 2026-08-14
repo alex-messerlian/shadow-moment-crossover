@@ -2,36 +2,34 @@
  "lost": [],
  "thinned": [
   {
-   "token": "3",
-   "was": 77,
-   "now": 76,
+   "token": "0",
+   "was": 21,
+   "now": 20,
    "surviving_sections": [
-    "Setting and estimators",
     "The projection variances",
     "Statewise validation",
-    "Estimating the threshold from a pilot budget",
     "The collective route: two exact bias",
     "The crossover",
     "Related work",
-    "Limitations",
-    "Conclusion",
-    "Acknowledgements",
-    "Methods, data, and code",
-    "Exact evaluations of the fourth-moment U-sta",
+    "The destructive SWAP",
     "Reproducibility and statistics"
    ]
   },
   {
-   "token": "2.6",
+   "token": "5.14",
    "was": 3,
-   "now": 2,
+   "now": 1,
    "surviving_sections": [
-    "Setting and estimators",
-    "Methods, data, and code"
+    "The projection variances"
    ]
   }
  ],
- "gained": [],
+ "gained": [
+  {
+   "token": "5.3",
+   "n": 1
+  }
+ ],
  "fraction_pairs_lost": [],
  "per_section": [
   {
@@ -43,34 +41,33 @@
   },
   {
    "section": "Setting and estimators",
-   "before": 86,
-   "after": 83,
+   "before": 83,
+   "after": 85,
    "tokens_reduced": {
-    "3": 1,
-    "2": 1,
-    "2.6": 1
+    "2": 3,
+    "0": 1
    },
    "relocated_to": {
-    "3": [
-     "Exact evaluations of the fourth-moment U-sta"
-    ],
     "2": [
      "The projection variances",
+     "Conclusion",
      "Exact evaluations of the fourth-moment U-sta"
     ]
    }
   },
   {
    "section": "The projection variances",
-   "before": 445,
-   "after": 446,
-   "tokens_reduced": {},
+   "before": 446,
+   "after": 448,
+   "tokens_reduced": {
+    "5.14": 2
+   },
    "relocated_to": {}
   },
   {
    "section": "Statewise validation",
-   "before": 84,
-   "after": 86,
+   "before": 86,
+   "after": 88,
    "tokens_reduced": {},
    "relocated_to": {}
   },
@@ -84,16 +81,22 @@
   {
    "section": "The collective route: two exact bias",
    "before": 41,
-   "after": 41,
+   "after": 42,
    "tokens_reduced": {},
    "relocated_to": {}
   },
   {
    "section": "The crossover",
    "before": 148,
-   "after": 148,
-   "tokens_reduced": {},
-   "relocated_to": {}
+   "after": 149,
+   "tokens_reduced": {
+    "7": 1
+   },
+   "relocated_to": {
+    "7": [
+     "The collective route: two exact bias"
+    ]
+   }
   },
   {
    "section": "Related work",
@@ -112,7 +115,7 @@
   {
    "section": "Conclusion",
    "before": 20,
-   "after": 20,
+   "after": 21,
    "tokens_reduced": {},
    "relocated_to": {}
   },
@@ -131,87 +134,11 @@
    "relocated_to": {}
   },
   {
-   "section": "The exact fourth-moment",
+   "section": "Exact evaluations of the fourth-moment U-sta",
    "before": 81,
-   "after": 0,
-   "tokens_reduced": {
-    "4": 14,
-    "0,1,2,3": 1,
-    "1": 11,
-    "15": 1,
-    "2": 21,
-    "3": 11,
-    "0,2": 1,
-    "1,3": 1,
-    "10": 2,
-    "13": 1,
-    "112": 2,
-    "8": 2,
-    "7": 4,
-    "14": 2,
-    "16": 4,
-    "28": 1,
-    "34": 1,
-    "5": 1
-   },
-   "relocated_to": {
-    "4": [
-     "Exact evaluations of the fourth-moment U-sta"
-    ],
-    "0,1,2,3": [
-     "Exact evaluations of the fourth-moment U-sta"
-    ],
-    "1": [
-     "Statewise validation",
-     "Exact evaluations of the fourth-moment U-sta"
-    ],
-    "15": [
-     "Exact evaluations of the fourth-moment U-sta"
-    ],
-    "2": [
-     "The projection variances",
-     "Exact evaluations of the fourth-moment U-sta"
-    ],
-    "3": [
-     "Exact evaluations of the fourth-moment U-sta"
-    ],
-    "0,2": [
-     "Exact evaluations of the fourth-moment U-sta"
-    ],
-    "1,3": [
-     "Exact evaluations of the fourth-moment U-sta"
-    ],
-    "10": [
-     "Exact evaluations of the fourth-moment U-sta"
-    ],
-    "13": [
-     "Exact evaluations of the fourth-moment U-sta"
-    ],
-    "112": [
-     "Exact evaluations of the fourth-moment U-sta"
-    ],
-    "8": [
-     "Exact evaluations of the fourth-moment U-sta"
-    ],
-    "7": [
-     "Exact evaluations of the fourth-moment U-sta"
-    ],
-    "14": [
-     "Exact evaluations of the fourth-moment U-sta"
-    ],
-    "16": [
-     "Exact evaluations of the fourth-moment U-sta"
-    ],
-    "28": [
-     "Exact evaluations of the fourth-moment U-sta"
-    ],
-    "34": [
-     "Exact evaluations of the fourth-moment U-sta"
-    ],
-    "5": [
-     "Exact evaluations of the fourth-moment U-sta"
-    ]
-   }
+   "after": 82,
+   "tokens_reduced": {},
+   "relocated_to": {}
   },
   {
    "section": "The destructive SWAP",
@@ -223,7 +150,7 @@
   {
    "section": "Reproducibility and statistics",
    "before": 128,
-   "after": 128,
+   "after": 129,
    "tokens_reduced": {},
    "relocated_to": {}
   }
