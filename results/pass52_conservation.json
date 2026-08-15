@@ -1,6 +1,22 @@
 {
  "lost": [],
- "thinned": [],
+ "thinned": [
+  {
+   "token": "6",
+   "was": 23,
+   "now": 22,
+   "surviving_sections": [
+    "Setting and estimators",
+    "The projection variances",
+    "Statewise validation",
+    "Estimating the threshold from a pilot budget",
+    "The crossover",
+    "Limitations",
+    "Methods, data, and code",
+    "Reproducibility and statistics"
+   ]
+  }
+ ],
  "gained": [],
  "fraction_pairs_lost": [],
  "per_section": [

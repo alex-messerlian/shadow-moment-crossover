@@ -43,7 +43,7 @@
 \author{Ziwei Gu}
 \affiliation{Harvard John A. Paulson School of Engineering and Applied Sciences}
 
-\date{August 6, 2026}
+\date{August 15, 2026}
 
 \begin{abstract}
 Classical shadows estimate moments \(\mathrm{Tr}(\rho^k)\) from randomized single-copy
@@ -342,8 +342,8 @@ what the collective route buys.
 These are gate counts, not error budgets. What they establish is that the entangling overhead is
 not the binding constraint for the structured \(k = 2\) circuits we study; what binds instead is
 the statistical failure of the single-copy estimator, which
-Section~\ref{where-single-copy-estimation-stops-being-useful} quantifies. A companion study takes
-up the real-device case, where neither gate counts nor an idealized primitive are the whole story.
+Section~\ref{where-single-copy-estimation-stops-being-useful} quantifies. On a real device
+neither gate counts nor an idealized primitive are the whole story.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -399,7 +399,7 @@ term dominates,
 the familiar statistical scaling a fixed-exponent bound predicts; at small
 \(M\) the higher-order term dominates,
 
-\[\mathrm{Var}(U_M) \approx \frac{2\zeta_2}{M^2} \quad \Longrightarrow \quad \mathrm{RMSE} \propto M^{-1}, \qquad \alpha = 1.\]
+\[\mathrm{Var}(U_M) \approx \frac{2\zeta_2}{M^2} \quad \Longrightarrow \quad \mathrm{RMSE} \propto M^{-1}, \qquad \alpha = 1,\]
 
 and the two are equal at
 
@@ -1262,8 +1262,8 @@ direction that costs us: simulating readout on both routes, with the collective
 parity corrected exactly through its outcome-dependent per-pair contraction
 rather than a blanket factor, moves the crossover to smaller \(n\) in nine of
 the ten cells that resolve under both models and leaves the tenth unchanged. The
-magnitude depends on device-specific per-qubit rates and is quantified in a
-companion study of the hardware case, but the direction is what matters here, so
+magnitude depends on device-specific per-qubit rates, which are committed with
+the repository, but the direction is what matters here, so
 the sizes reported below are a conservative upper bound. Under uncorrected
 readout the single-copy U-statistic acquires a bias that does not shrink with the
 copy budget, so both routes then carry error floors and the comparison changes
@@ -1629,8 +1629,9 @@ rather than round it to 7 of 7.
 \textbf{The noise model is a channel abstraction.} Global depolarizing
 and independent per-qubit channels are idealizations. The bias laws are
 exact given the channel, and they say nothing about whether the channel
-describes any particular device; a companion study of a superconducting
-backend reports where a real device departs from them.
+describes any particular device. The raw counts from a superconducting
+backend that would test this are committed with the repository and are not
+analysed here.
 
 \textbf{Statistical caveats.} The out-of-ensemble RMSE validation
 carries a median relative deviation of 6.7\% between predicted and

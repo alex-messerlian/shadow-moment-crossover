@@ -2,8 +2,8 @@
 
     .venv/bin/python experiments/make_figures.py
 
-Reads ``results/*.json`` (never re-runs the science), builds the five figures, and
-writes each as a vector PDF (paper), a 300-dpi PNG (slides/web), and a tidy CSV of
+Reads ``results/*.json`` (never re-runs the science), builds every registered figure,
+and writes each as a vector PDF (paper), a 300-dpi PNG (slides/web), and a tidy CSV of
 the exact plotted data (for the interactive web demo) into ``results/figures/``.
 Prints the file list and the draft captions.
 """
