@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "shadow-moment-crossover"
 version = "0.0.0"
-description = "A finite-size crossover criterion for shadow-based moment estimation: exact variance and bias laws, the crossover to collective measurement, and a hardware case study."
+description = "Two spectral functionals set the exponential cost of shadow moment estimation: exact projection variances, the budget threshold their ratio fixes, and the crossover to collective measurement."
 readme = "README.md"
 requires-python = ">=3.11"
 authors = [{ name = "Alexander Messerlian" }, { name = "Ziwei Gu" }]
