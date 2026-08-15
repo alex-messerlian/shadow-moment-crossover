@@ -427,7 +427,7 @@ purity \(p = (1+t^2)/2\),
 
 and the single-qubit first projection variance follows as
 
-\[\zeta_1 = \tfrac{3}{4} t^2 - \tfrac{1}{4} t^4.\]
+\[\zeta_1 = \tfrac{3}{4} t^2 - \tfrac{1}{4} t^4,\]
 
 verified numerically across the full Bloch range. Two consequences follow.
 The second moment grows by a factor of six from a maximally mixed qubit,
@@ -491,7 +491,11 @@ shadows,
 when \(P\) and \(Q\) agree on every qubit where both are non-identity and
 zero otherwise, where \(\hat x_P = \mathrm{Tr}(G P)\) and \(P \ominus Q\)
 cancels the shared non-identity factors. We claim no novelty for this
-identity; what follows is its evaluation.
+identity; what follows is its evaluation. Hayashi
+\cite{hayashi2026covariance} restates it as a full covariance matrix over
+Pauli pairs, crediting the same lemma, and extends it to biased basis
+probabilities; that work bounds the finite-sample error of the covariance
+itself rather than contracting it, which is what we do below.
 
 Since \(\mathrm{Tr}(G\rho) = 2^{-n}\sum_s \langle P_s\rangle \hat x_s\),
 the first projection variance follows by contraction, and since the
@@ -1492,8 +1496,16 @@ al.~\cite{pelecanos2025spectrum} study the same estimator for
 \(\mathrm{Tr}(\sigma^k)\) under the uniform POVM and prove an explicit
 variance bound for it; that bound is an inequality in \(d\) for a
 worst-case state rather than an evaluation for an ensemble, and locates no
-threshold. We claim no novelty for the Hoeffding
-technique itself.
+threshold. Cioli et
+al.~\cite{cioli2025shallow} write the same pairwise U-statistic for purity
+under shallow shadows and bound its variance with both regimes present, an
+\(M^{-1}\) term and an \((M-1)^{-2}\) term; the two coefficients are
+worst-case bounds rather than evaluations, and their ratio is never formed,
+so no threshold budget follows from them. The Efron--Stein decomposition,
+the operator-valued relative of the Hoeffding one, has separately been used
+in quantum estimation to quantify post-measurement damage in online shadow
+tomography \cite{chen2026online}, a different use of the same tool. We
+claim no novelty for the Hoeffding technique itself.
 
 \textbf{Crossovers, hybrids, and cheaper collective routes.} A crossover in
 shot cost between Pauli and Clifford shadow ensembles has been reported for
@@ -1717,20 +1729,38 @@ exactly are the two extremes of the families we happened to examine.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
+\hypertarget{author-contributions}{%
+\section*{Author contributions}\label{author-contributions}}
+
+A.M. conceived the study, developed the theory and its evaluation, implemented the
+computational work, designed the validation, and wrote the manuscript. Z.G. directed the
+scope of the work, independently checked and pressure-tested the derivations, identified
+the estimator-projection issue that led to the revision of the paper's central claim, and
+reviewed the manuscript throughout. Both authors take responsibility for the work.
+
+\textbf{Use of AI tools.} An AI assistant (Anthropic Claude, accessed through the Claude
+Code command-line interface, 2026 releases) was used throughout the work: developing and
+checking the derivations of Section~3, implementing and refactoring the evaluators and
+estimators, writing the test suite and the numerical audits, running the simulations and
+analysing their output, generating the figures, searching the literature and verifying the
+bibliography, and drafting and editing the text of this manuscript. It was also used
+adversarially in the automated verification passes, to attempt to falsify the claims of
+Section~3: the searches for a state violating the \(\zeta_2\) bounds and the gradient
+ascent toward the upper bound in particular. The adversarial review that actually retired
+the paper's original central claim was Z.G.'s, not the assistant's. The authors set the
+research questions, chose the definitions and the validation design, and verified every
+derivation; no result is asserted on the assistant's word. The Methods section below states
+how every number is produced and locked, and the values reported here were regenerated from
+the committed artifacts before submission. The assistant did not select which results to
+report.
+
 \hypertarget{acknowledgements}{%
 \section*{Acknowledgements}\label{acknowledgements}}
 
-\textbf{Use of AI tools.} An AI coding assistant (Anthropic Claude, accessed through the Claude
-Code command-line interface, 2026 releases) was used throughout the computational work described
-in the Methods section: implementing and refactoring the evaluators and estimators, writing
-the test suite and the numerical audits, generating figures, and copy-editing the manuscript. It
-was also used adversarially, to attempt to falsify the claims of Section~3: the searches for a
-state violating the \(\zeta_2\) bounds and the gradient ascent toward the upper bound in
-particular. The authors set the research questions, chose the definitions and the validation
-design, and are responsible for every claim. No result is asserted on the assistant's word: the Methods section below states how every number
-is produced and locked, and the values reported here were regenerated from the committed artifacts
-before submission. The
-assistant did not select which results to report.
+The coupling map behind the transpilation counts of Section~2.6, and the device
+measurements committed with the repository but not analysed here, were obtained through
+public-tier access to the Open Quantum platform, whose provision of that access we
+acknowledge.
 
 \hypertarget{methods-data-and-code}{%
 \section*{Methods, data, and code}\label{sec:methods}}
@@ -1903,6 +1933,21 @@ npj Quantum Inf. \textbf{12}, 94 (2026), doi:10.1038/s41534-026-01247-6, arXiv:2
 Hongshun Yao, Yingjian Liu, Tengxiang Lin, and Xin Wang,
 \emph{Sample-efficient estimation of nonlinear quantum state functions},
 Commun. Phys. (published online 6 June 2026), doi:10.1038/s42005-026-02710-8, arXiv:2412.01696.
+
+\bibitem{cioli2025shallow}
+Riccardo Cioli, Elisa Ercolessi, Matteo Ippoliti, Xhek Turkeshi, and Lorenzo Piroli,
+\emph{Approximate inverse measurement channel for shallow shadows},
+Quantum \textbf{9}, 1698 (2025), doi:10.22331/q-2025-04-08-1698, arXiv:2407.11813.
+
+\bibitem{hayashi2026covariance}
+Masahito Hayashi,
+\emph{Finite-Sample Selected Covariance Spectra in Classical Shadows},
+arXiv:2606.00527 (30 May 2026).
+
+\bibitem{chen2026online}
+Sitan Chen, Ryan O'Donnell, Angelos Pelecanos, and John Wright,
+\emph{Online Shadow Tomography Matching the Classical Bounds},
+arXiv:2607.29686 (31 July 2026).
 
 \end{thebibliography}
 
