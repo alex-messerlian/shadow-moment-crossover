@@ -36,7 +36,7 @@ from a superconducting backend, which the paper does not analyse.
 | `anrl/physics/` | states, Pauli machinery, measurement, entanglement witnesses |
 | `anrl/figures/` | the publication figure builders (Okabe-Ito palette; PDF/PNG/CSV export) |
 | `anrl/hardware/` | Open Quantum / Rigetti Cepheus backend, circuit builders, the destructive-SWAP protocol |
-| `experiments/` | one runnable script per result (80 scripts) |
+| `experiments/` | one runnable script per result (77 scripts) |
 | `results/` | the saved outputs, including the raw hardware counts |
 | `tests/` | the test suite (303 tests) |
 
@@ -170,7 +170,7 @@ paper's numbers depend on:
   prediction was committed *before* the corresponding job was submitted.
 - **Theory / analysis outputs**: the variance-law, budget-scaling, crossover, general-$k$,
   statewise, pilot, stress-test, range-constrained, and CGK-reconciliation JSONs
-  (188 files at the top level of `results/`).
+  (183 files at the top level of `results/`).
 - **Figure data**: `results/figures/*.csv` (the exact plotted values, 10 files). The
   rendered `*.pdf`/`*.png` regenerate from these with `make_figures.py`.
 
