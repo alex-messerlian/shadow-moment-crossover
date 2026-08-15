@@ -43,7 +43,7 @@
 \author{Ziwei Gu}
 \affiliation{Harvard John A. Paulson School of Engineering and Applied Sciences}
 
-\date{August 15, 2026}
+\date{August 16, 2026}
 
 \begin{abstract}
 Classical shadows estimate moments \(\mathrm{Tr}(\rho^k)\) from randomized single-copy
@@ -83,10 +83,11 @@ near-term experiments occupy: once the budget passes \(M^*\) the error returns t
 \section{Introduction}\label{introduction}}
 
 At the maximally mixed state, estimating purity from classical shadows is as expensive as it ever
-gets. That sounds backwards. The estimand is \(2^{-n}\), nearly zero, and every snapshot returns
+gets. The estimand is \(2^{-n}\), nearly zero, and every snapshot returns
 \(\mathrm{Tr}(G\rho) = 2^{-n}\) deterministically, so the first-order projection variance
-\(\zeta_1\) vanishes identically. What does not vanish is the kernel term: the single-qubit second
-moment \(\mathbb{E}[\mathrm{Tr}(G_1G_2)^2]\) equals \(7\) for a maximally mixed qubit, so
+\(\zeta_1\) vanishes identically. What does not vanish, however, is the kernel term: the
+single-qubit second moment \(\mathbb{E}[\mathrm{Tr}(G_1G_2)^2]\) equals \(7\) for a maximally
+mixed qubit, so
 \(\zeta_2 = 7^n - 4^{-n}\), and the estimator's error is of order \(7^{n/2}/M\) against a target
 shrinking as \(2^{-n}\). Low purity does not remove the exponential cost; it concentrates it.
 
@@ -117,7 +118,7 @@ predict what an individual state does, which we verify by ordering states within
 thresholds span a decade, and (on a fixed-estimand control) show cannot be verified at all.
 
 That the quantities are exact does not make them usable, since evaluating them needs the state.
-We close that gap too, with unbiased estimators of both variances built from four disjoint blocks
+We close that gap as well, with unbiased estimators of both variances built from four disjoint blocks
 of a pilot shadow budget, which never form the Pauli spectrum and whose cost grows more slowly in
 \(n\) than the threshold they locate.
 
@@ -125,7 +126,7 @@ Set against two exact bias laws for collective measurement, the same machinery y
 criterion, with nothing fitted to the crossover data, for the size at which a two-copy measurement
 attains the lower RMSE at equal copy budget. That application is where the practical stakes sit,
 and they are not small: on the noisy-pure states we benchmark, at a fixed budget and ten qubits,
-the single-copy purity estimate projected into the interval purity is known a priori to occupy has
+the single-copy purity estimate projected into the interval that purity is known a priori to occupy has
 RMSE \(0.582\), while a constant fixed at the midpoint of that interval, which never looks at the
 data, has \(0.310\). From seven qubits on, the single-copy route is worse than that constant.
 Before projection the estimator is still unbiased; it is the spread that has become useless.
@@ -452,22 +453,21 @@ depending only on the weight,
 
 \[\zeta_1 \stackrel{?}{=} \sum_P c_{|P|} \langle P \rangle^2 .\]
 
-This fails already at one qubit, provably. With universal weight
-coefficients the most general one-qubit form is
-\(c_0 + c_1 t^2\), affine in \(t^2\), because the three squared Pauli
-expectations sum to \(t^2\) and carry no further invariant. The exact
-\(\zeta_1 = \tfrac{3}{4} t^2 - \tfrac{1}{4} t^4\) of Section 3.3 has a quartic term whose
-coefficient \(-\tfrac{1}{4}\) no choice of \(c_0, c_1\) reproduces. The
-obstruction is a quartic dependence on the state that a form quadratic in
-the Pauli expectations cannot carry, present before any question of
-entanglement arises.
+This provably fails at one qubit. With universal weight coefficients the
+most general one-qubit form is \(c_0 + c_1 t^2\), affine in \(t^2\),
+because the three squared Pauli expectations sum to \(t^2\) and carry no
+further invariant. The exact \(\zeta_1 = \tfrac{3}{4} t^2 - \tfrac{1}{4} t^4\)
+of Section 3.3 has a quartic term whose coefficient \(-\tfrac{1}{4}\) no
+choice of \(c_0, c_1\) reproduces. The obstruction is a quartic dependence
+on the state that a form quadratic in the Pauli expectations cannot carry,
+present before any question of entanglement arises.
 
 The insufficiency grows with size. Against a diverse family of 19 states
 at \(n = 2\), varying depolarizing rate, rank, and structure, the best-fit
 weight-only ansatz leaves a residual of up to 12.3\%. The ansatz
 nonetheless \emph{appears} to hold within a narrow single-parameter
-family, noisy-pure states at fixed \(q = 0.1\) (the derivation ensemble itself), where it
-fits to 0.1\%,
+family, noisy-pure states at fixed \(q = 0.1\) (the derivation ensemble itself),
+where it fits to 0.1\%,
 because that family spans a low-dimensional invariant subspace: a
 closed form validated on one ensemble is not a closed form. What the
 weight-only form actually is, and what it omits, is the subject of the
@@ -814,8 +814,8 @@ formula of Sec.~3.1, with no parameter fitted to the plotted points.} As $n$ gro
 \label{fig:alpha}
 \end{figure}
 
-A fixed-exponent bound \(\mathrm{RMSE} \leq C_n/\sqrt{M}\) is not wrong; it
-holds, and the tighter two-term treatments do not assume a fixed exponent
+A fixed-exponent bound \(\mathrm{RMSE} \leq C_n/\sqrt{M}\) is not wrong,
+and the tighter two-term treatments do not assume a fixed exponent
 either \cite{elben2020mixed}. What it describes is the wrong regime for the
 systems being run. At nine qubits and accessible budgets the estimator
 sits near \(\alpha = 1\), where extra shots reduce error faster than
@@ -1719,7 +1719,8 @@ test, whose \(k \ge 3\) realization costs about an order of magnitude more two-q
 (Section~\ref{sec:compilation}), and under global depolarizing noise the crossover falls earlier
 still.
 
-Three questions follow. Whether the higher-order projection variances admit the same treatment,
+Three questions follow from our work. Whether the higher-order projection variances admit the same
+treatment,
 which would extend the exact account past \(k = 2\) and is the obstacle to a performance
 guarantee. Whether the same variance law, applied to the partial-transpose moments, gives an exact
 sample-complexity account of entanglement negativity estimation, which is the application that
@@ -1733,24 +1734,26 @@ exactly are the two extremes of the families we happened to examine.
 \section*{Author contributions}\label{author-contributions}}
 
 A.M. conceived the study, developed the theory and its evaluation, implemented the
-computational work, designed the validation, and wrote the manuscript. Z.G. directed the
-scope of the work, independently checked and pressure-tested the derivations, identified
-the estimator-projection issue that led to the revision of the paper's central claim, and
-reviewed the manuscript throughout. Both authors take responsibility for the work.
+computational work, designed the validation, edited the manuscript, oversaw all agentic
+workflows, and funded the project personally. Z.G. directed the scope of the work,
+independently checked and
+pressure-tested the derivations, identified the estimator-projection issue that led to
+the revision of the paper's central claim, and reviewed the manuscript throughout.
+Both authors take responsibility for the work.
 
 \textbf{Use of AI tools.} An AI assistant (Anthropic Claude, accessed through the Claude
 Code command-line interface, 2026 releases) was used throughout the work: developing and
 checking the derivations of Section~3, implementing and refactoring the evaluators and
 estimators, writing the test suite and the numerical audits, running the simulations and
 analysing their output, generating the figures, searching the literature and verifying the
-bibliography, and drafting and editing the text of this manuscript. It was also used
+bibliography, as well as drafting and editing the text of this manuscript. It was also used
 adversarially in the automated verification passes, to attempt to falsify the claims of
 Section~3: the searches for a state violating the \(\zeta_2\) bounds and the gradient
 ascent toward the upper bound in particular. The adversarial review that actually retired
 the paper's original central claim was Z.G.'s, not the assistant's. The authors set the
 research questions, chose the definitions and the validation design, and verified every
 derivation; no result is asserted on the assistant's word. The Methods section below states
-how every number is produced and locked, and the values reported here were regenerated from
+how every number is produced, and the values reported here were regenerated from
 the committed artifacts before submission. The assistant did not select which results to
 report.
 

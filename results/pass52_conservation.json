@@ -1,28 +1,24 @@
 {
  "lost": [],
- "thinned": [],
- "gained": [
+ "thinned": [
   {
-   "token": "1698",
-   "n": 2
-  },
-  {
-   "token": "04",
-   "n": 1
-  },
-  {
-   "token": "2407.11813",
-   "n": 1
-  },
-  {
-   "token": "2606.00527",
-   "n": 1
-  },
-  {
-   "token": "2607.29686",
-   "n": 1
+   "token": "15",
+   "was": 19,
+   "now": 18,
+   "surviving_sections": [
+    "Introduction",
+    "Setting and estimators",
+    "The projection variances",
+    "The collective route: two exact bias",
+    "The crossover",
+    "Conclusion",
+    "Methods, data, and code",
+    "Exact evaluations of the fourth-moment U-sta",
+    "Reproducibility and statistics"
+   ]
   }
  ],
+ "gained": [],
  "fraction_pairs_lost": [],
  "per_section": [
   {
@@ -76,7 +72,7 @@
   },
   {
    "section": "Related work",
-   "before": 71,
+   "before": 74,
    "after": 74,
    "tokens_reduced": {},
    "relocated_to": {}
@@ -96,26 +92,22 @@
    "relocated_to": {}
   },
   {
+   "section": "Author contributions",
+   "before": 3,
+   "after": 3,
+   "tokens_reduced": {},
+   "relocated_to": {}
+  },
+  {
    "section": "Acknowledgements",
-   "before": 2,
+   "before": 1,
    "after": 1,
-   "tokens_reduced": {
-    "2026": 1,
-    "3": 1
-   },
-   "relocated_to": {
-    "2026": [
-     "Author contributions",
-     "Methods, data, and code"
-    ],
-    "3": [
-     "Author contributions"
-    ]
-   }
+   "tokens_reduced": {},
+   "relocated_to": {}
   },
   {
    "section": "Methods, data, and code",
-   "before": 148,
+   "before": 163,
    "after": 163,
    "tokens_reduced": {},
    "relocated_to": {}
