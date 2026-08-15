@@ -132,10 +132,11 @@ self-contained. Build either with:
 tectonic paper/paper.tex
 ```
 
-or with two `pdflatex` passes (the second resolves cross-references); see
-[`paper/PDFLATEX_CHECK.md`](paper/PDFLATEX_CHECK.md) for the pdflatex path. Each document
-carries its bibliography inline, so there is no separate BibTeX step and no `.bib` file
-in the repository.
+or with two `pdflatex` passes (the second resolves cross-references). Both engines work:
+the preamble sets `\pdfoutput=1` only under pdflatex, which is what arXiv and Quantum
+require, and skips it under XeTeX, where it would break hyperref; the comment at the top
+of `paper.tex` explains the conditional. Each document carries its bibliography inline, so
+there is no separate BibTeX step and no `.bib` file in the repository.
 
 ## Hardware runs cost real money
 
