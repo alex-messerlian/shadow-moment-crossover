@@ -1,23 +1,6 @@
 {
  "lost": [],
- "thinned": [
-  {
-   "token": "15",
-   "was": 19,
-   "now": 18,
-   "surviving_sections": [
-    "Introduction",
-    "Setting and estimators",
-    "The projection variances",
-    "The collective route: two exact bias",
-    "The crossover",
-    "Conclusion",
-    "Methods, data, and code",
-    "Exact evaluations of the fourth-moment U-sta",
-    "Reproducibility and statistics"
-   ]
-  }
- ],
+ "thinned": [],
  "gained": [],
  "fraction_pairs_lost": [],
  "per_section": [
