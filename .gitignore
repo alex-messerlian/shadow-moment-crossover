@@ -69,6 +69,25 @@ ipython_config.py
 .DS_Store
 Thumbs.db
 
+# ---- LaTeX build artifacts ----
+# The .tex sources and the built .pdf are tracked; everything a run leaves
+# behind is not.  tectonic --keep-logs writes paper/*.log; a pdflatex run
+# (the alternative the README documents) writes the rest.
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+*.lof
+*.lot
+*.nav
+*.snm
+*.vrb
+
 # ---- ML / experiment artifacts ----
 # Keep the results/ directory in the tree, ignore generated outputs.
 results/*
